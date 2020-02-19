@@ -11,14 +11,14 @@
 			<_id type="a">GUID fb48d6a1-4193-4abc-a7e4-2e98bfe4df96</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Data_Type_Metamodel</_name>
-			<_modifiedTimeWeak type="a">1.27.2020::13:6:35</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">2.7.2020::12:42:48</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Data_Type_Metamodel profile defines meta-classes allowing to model any kind of data types used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">1.27.2020::13:6:35</_modifiedTime>
+			<_modifiedTime type="a">2.7.2020::12:42:48</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">1.27.2020::13:6:35</weakCGTime>
+			<weakCGTime type="a">2.7.2020::12:42:48</weakCGTime>
 			<strongCGTime type="a">8.14.2019::9:19:12</strongCGTime>
 			<_defaultComposite type="s">GUID e1a7b393-5e2c-474c-bdbc-ce062cebc552</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 54ecf3c4-171e-4cc8-ab2e-76ed8a126266</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">1.27.2020::13:6:48</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.27.2020::13:6:48</_modifiedTime>
-			<_lastID type="a">20</_lastID>
-			<weakCGTime type="a">1.27.2020::13:6:48</weakCGTime>
+			<_modifiedTimeWeak type="a">2.7.2020::12:42:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">2.7.2020::12:42:48</_modifiedTime>
+			<_lastID type="a">21</_lastID>
+			<weakCGTime type="a">2.7.2020::12:42:48</weakCGTime>
 			<strongCGTime type="a">6.21.2018::9:54:10</strongCGTime>
 			<_defaultComposite type="s">GUID dff3b461-1a92-4f06-a501-6e103605318f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -58,6 +58,7 @@
 				<value>GUID d74c7bfa-9e57-443f-ab99-96ab3cdcce0b</value>
 				<value>GUID 9b2c2f9e-c662-4494-a932-00581b21d3bb</value>
 				<value>GUID 0b72335d-1ae5-4182-a916-c731838ed0b7</value>
+				<value>GUID b86a2bc4-2c3f-4cff-9217-4a07af95fdd2</value>
 				<value>GUID 16187095-9c50-4383-b8ab-e9c46e506de3</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -579,6 +580,14 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">10.28.2019::10:51:1</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.28.2019::10:51:1</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID b86a2bc4-2c3f-4cff-9217-4a07af95fdd2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">uint8_array</_name>
+			<_modifiedTimeWeak type="a">2.7.2020::12:42:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">2.7.2020::12:42:48</_modifiedTime>
 			<_kind type="a">Language</_kind>
 		</IType>
 		<ITableInstance type="e">
