@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">3.30.2020::12:19:56</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.4.2020::6:43:25</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">3.30.2020::12:19:56</_modifiedTime>
+			<_modifiedTime type="a">8.4.2020::6:43:25</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">3.30.2020::12:19:56</weakCGTime>
+			<weakCGTime type="a">8.4.2020::6:43:25</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -65,10 +65,10 @@
 			<_id type="a">GUID 2fa76a8a-3a37-423d-82f8-cb10371b657b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">3.30.2020::12:19:56</_modifiedTimeWeak>
-			<_modifiedTime type="a">3.30.2020::12:19:56</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.4.2020::6:43:25</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.4.2020::6:43:25</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">3.30.2020::12:19:56</weakCGTime>
+			<weakCGTime type="a">8.4.2020::6:43:25</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:29</strongCGTime>
 			<_defaultComposite type="s">GUID a7891663-41f3-4945-8795-f855279ddba9</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -78,7 +78,6 @@
 				<value>GUID e101f2b2-e3e3-4072-aed0-69558baa8af2</value>
 				<value>GUID 7022ddb7-be5e-48a4-b7ad-4fbaf99a811c</value>
 				<value>GUID 7bc8635c-da90-40ea-a26e-76ec5b649cf9</value>
-				<value>GUID cc4a2d0c-8bac-40d2-84d6-aa443663dda8</value>
 				<value>GUID afb0e42d-a399-4819-bb39-46f0fd0f0fbf</value>
 				<value>GUID a7891663-41f3-4945-8795-f855279ddba9</value>
 				<value>GUID 23b2697d-b805-4806-a43c-182c1cecc492</value>
@@ -2111,68 +2110,6 @@ Allows to design classic class diagram for SDD.\par%0D
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 		</IClass>
-		<IStereotype type="e">
-			<_id type="a">GUID cc4a2d0c-8bac-40d2-84d6-aa443663dda8</_id>
-			<_myState type="a">8192</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">1</size>
-						<IPropertySubject type="e">
-							<_Name type="a">Model</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Stereotype</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">3</size>
-												<IProperty type="e">
-													<_Name type="a">Owners</_Name>
-													<_Value type="a">Component_Type, Client_Server_Interface, Event_Interface</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Sources</_Name>
-													<_Value type="a">Component_Type, Client_Server_Interface, Event_Interface</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Targets</_Name>
-													<_Value type="a">Component_Type, Client_Server_Interface, Event_Interface</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">Inheritance_Link</_name>
-			<_modifiedTimeWeak type="a">11.7.2019::9:14:32</_modifiedTimeWeak>
-			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model inheritance relation between independent software units (sw_atomic_component_type) or interfaces.</_text>
-			</IDescription>
-			</_description>
-			<_modifiedTime type="a">11.7.2019::9:14:32</_modifiedTime>
-			<_m2Classes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					<value>Generalization</value>
-				</IRPYRawContainer>
-			</_m2Classes>
-			<_newTerm type="a">1</_newTerm>
-		</IStereotype>
 		<IStereotype type="e">
 			<_id type="a">GUID afb0e42d-a399-4819-bb39-46f0fd0f0fbf</_id>
 			<_myState type="a">8192</_myState>
@@ -14134,7 +14071,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Arduino\libraries\Software_Model_Toolset\Rhapsody_Profiles\icons\black_cross.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_cross.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -14470,7 +14407,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Arduino\libraries\Software_Model_Toolset\Rhapsody_Profiles\icons\black_minus.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_minus.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
