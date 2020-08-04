@@ -171,6 +171,35 @@ Public MustInherit Class Software_Element
             report.Add_Report_Item(item)
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for metrics computation
+    Public Sub Compute_Metrics()
+
+        'Me.Compute_Own_Metrics()
+
+        'Dim children As List(Of Software_Element) = Me.Get_Children
+        'If Not IsNothing(children) Then
+        '    For Each child In children
+        '        child.Compute_Own_Metrics()
+        '    Next
+        'End If
+
+    End Sub
+
+    Protected Overridable Sub Compute_Own_Metrics()
+        ' Nothing common
+    End Sub
+
+End Class
+
+
+Public MustInherit Class Classifier_Software_Element
+    Inherits Software_Element
+
+    Private Needed_Elements As New List(Of Software_Element)
+    Private Dependent_Elements As New List(Of Software_Element)
+
 End Class
 
 

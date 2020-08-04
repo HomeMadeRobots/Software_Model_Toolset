@@ -209,19 +209,14 @@ Public Class Component_Configuration
 
         If Not Me.Base_Data_Type_Ref.Equals(Guid.Empty) Then
 
-            Dim basic_type As Basic_Types
-            basic_type = Get_Basic_Type(Me.Base_Data_Type_Ref)
-
-            If basic_type = Basic_Types.NON_BASIC_TYPE Then
-                Dim config_data_type As Data_Type
-                config_data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
-                Select Case config_data_type.GetType
-                    Case GetType(Structured_Data_Type)
-                        Me.Add_Consistency_Check_Error_Item(report,
-                            "TBD",
-                            "Type shall not be Structured_Data_Type.")
-                End Select
-            End If
+            Dim config_data_type As Data_Type
+            config_data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+            Select Case config_data_type.GetType
+                Case GetType(Structured_Data_Type)
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "TBD",
+                        "Type shall not be Structured_Data_Type.")
+            End Select
 
         End If
 

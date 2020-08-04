@@ -21,6 +21,11 @@ Module Software_Model_Helpers
                     soft_mdl_app = New Rpy_Software_Model_Controller
                     soft_mdl_app.Check_Rpy_Soft_Model()
 
+                Case "Compute_Rpy_Soft_Model_Metrics"
+                    Dim soft_mdl_app As Rpy_Software_Model_Controller
+                    soft_mdl_app = New Rpy_Software_Model_Controller
+                    soft_mdl_app.Compute_Rpy_Soft_Model_Metrics()
+
             End Select
         Catch ex As Exception
             MsgBox("Software_Model_Tool : an error occured." & vbCrLf & vbCrLf & ex.Message)

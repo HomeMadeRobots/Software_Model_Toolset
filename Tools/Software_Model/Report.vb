@@ -4,7 +4,7 @@
 Public Class Report
 
     Protected Report_Items_List As List(Of Report_Item) = New List(Of Report_Item)
-    Protected Error_Number As UInteger = 0
+    Protected Nb_Error As Integer = 0
 
     Public Overridable Sub Generate_Csv_Report(report_file_stream As StreamWriter)
 
@@ -36,9 +36,13 @@ Public Class Report
     Public Sub Add_Report_Item(item As Report_Item)
         Me.Report_Items_List.Add(item)
         If item.Get_Criticality = Report_Item.Item_Criticality.CRITICALITY_ERROR Then
-            Error_Number = CUInt(Error_Number + 1)
+            Nb_Error = Nb_Error + 1
         End If
     End Sub
+
+    Public Function Get_Error_Number() As Integer
+        Return Me.Nb_Error
+    End Function
 
 End Class
 

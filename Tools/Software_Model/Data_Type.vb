@@ -4,6 +4,10 @@ Public MustInherit Class Data_Type
 
     Inherits Software_Element
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for metrics computation
+    Public MustOverride Function Get_Complexity() As Double
+
 End Class
 
 
@@ -41,6 +45,33 @@ Public MustInherit Class Data_Type_Base_Typed
 
     End Sub
 
+End Class
+
+
+Public Class Basic_Type
+
+    Inherits Data_Type
+
+    Public Overrides Function Get_Complexity() As Double
+        Return 1
+    End Function
+
+End Class
+
+Public Class Basic_Integer_Type
+    Inherits Basic_Type
+End Class
+
+Public Class Basic_Floating_Point_Type
+    Inherits Basic_Type
+End Class
+
+Public Class Basic_Boolean_Type
+    Inherits Basic_Type
+End Class
+
+Public Class Basic_Integer_Array_Type
+    Inherits Basic_Type
 End Class
 
 
@@ -131,6 +162,10 @@ Public Class Enumerated_Data_Type
 
     End Sub
 
+    Public Overrides Function Get_Complexity() As Double
+        Return 1.5
+    End Function
+
 End Class
 
 
@@ -167,6 +202,9 @@ Public Class Array_Data_Type
 
     Public Multiplicity As UInteger
 
+    Private Complexity As Double = 0
+    Private Const Default_Complexity As Double = 1.8
+
     Protected Overrides Function Get_Rpy_Data_Type() As RPModelElement
         Dim rpy_type As RPClassifier = CType(Me.Rpy_Element, RPType).typedefBaseType
         Return CType(rpy_type, RPModelElement)
@@ -194,6 +232,21 @@ Public Class Array_Data_Type
         End If
 
     End Sub
+
+    Public Overrides Function Get_Complexity() As Double
+        If Me.Complexity = 0 Then
+            Dim computed_complexity As Double
+            'If Get_Basic_Type(Me.Base_Data_Type_Ref) = Basic_Types.NON_BASIC_TYPE Then
+                Dim data_type As Data_Type
+                data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+                computed_complexity = Array_Data_Type.Default_Complexity * data_type.Get_Complexity
+            'Else
+            '    computed_complexity = Array_Data_Type.Default_Complexity
+            'End If
+            Me.Complexity = computed_complexity
+        End If
+        Return Me.Complexity
+    End Function
 
 End Class
 
@@ -263,13 +316,18 @@ Public Class Physical_Data_Type
                 "Offset shall be set to a numerical value.")
         End If
 
-        If Is_Basic_Integer_Type(Me.Base_Data_Type_Ref) = False Then
+        Dim referenced_type As Data_Type = CType(Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        If referenced_type.GetType <> GetType(Basic_Integer_Type) Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD", _
                 "Referenced type shall be a Basic_Integer_Type.")
         End If
 
     End Sub
+
+    Public Overrides Function Get_Complexity() As Double
+        Return 1.2
+    End Function
 
 End Class
 
@@ -279,6 +337,8 @@ Public Class Structured_Data_Type
     Inherits Data_Type
 
     Public Fields As List(Of Structured_Data_Type_Field)
+
+    Private Complexity As Double = 0
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         Dim children As New List(Of Software_Element)
@@ -315,6 +375,18 @@ Public Class Structured_Data_Type
 
     End Sub
 
+    Public Overrides Function Get_Complexity() As Double
+        If Me.Complexity = 0 Then
+            Dim computed_complexity As Double = 0
+            Dim field As Structured_Data_Type_Field
+            For Each field In Me.Fields
+                computed_complexity += field.Get_Complexity
+            Next
+            Me.Complexity = computed_complexity
+        End If
+        Return Me.Complexity
+    End Function
+
 End Class
 
 
@@ -337,5 +409,13 @@ Public Class Structured_Data_Type_Field
         End If
 
     End Sub
+
+    Public Function Get_Complexity() As Double
+
+        Dim referenced_data_type As Data_Type
+        referenced_data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        Return referenced_data_type.Get_Complexity
+
+    End Function
 
 End Class

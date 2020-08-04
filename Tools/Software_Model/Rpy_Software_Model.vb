@@ -43,13 +43,29 @@ Public Class Rpy_Software_Model
 
     End Sub
 
-    Sub Check_Consistency()
+    Public Sub Check_Consistency()
         Me.Consistency_Report = New Report
         Me.Soft_Mdl_Container.Check_Consistency(Me.Consistency_Report)
     End Sub
 
-    Sub Generate_Consistency_Report(report_file_stream As StreamWriter)
+    Public Sub Generate_Consistency_Report(report_file_stream As StreamWriter)
         Me.Consistency_Report.Generate_Csv_Report(report_file_stream)
+    End Sub
+
+    Public Function Has_Error() As Boolean
+        If Me.Consistency_Report.Get_Error_Number > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Sub Compute_Metrics()
+        Me.Soft_Mdl_Container.Compute_Metrics()
+    End Sub
+
+    Sub Generate_Metrics_Report(file_stream As StreamWriter)
+        file_stream.WriteLine("Metrics report")
     End Sub
 
 End Class
