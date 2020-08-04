@@ -5,7 +5,6 @@ Public Class Component_Type
 
     Inherits Software_Element
 
-    Public Base_Component_Type_Ref As Guid = Nothing
     Public Component_Operations As List(Of Component_Operation)
     Public Component_Configurations As List(Of Component_Configuration)
     Public Provider_Ports As List(Of Provider_Port)
@@ -36,28 +35,8 @@ Public Class Component_Type
                 children.Add(cf)
             Next
         End If
-
-        Return TryCast(children, List(Of Software_Element))
+        Return children
     End Function
-
-    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
-
-        MyBase.Get_Own_Data_From_Rhapsody_Model()
-
-        Dim rpy_inheritance As RPGeneralization
-        For Each rpy_inheritance In CType(Me.Rpy_Element, RPClass).generalizations
-            If Is_Inheritance_Link(CType(rpy_inheritance, RPModelElement)) Then
-                If Is_Component_Type(CType(rpy_inheritance.baseClass, RPModelElement)) Then
-                    Me.Base_Component_Type_Ref = _
-                        Transform_GUID_To_UUID(rpy_inheritance.baseClass.GUID)
-                    Me.Nb_Inheritance = CUInt(Me.Nb_Inheritance + 1)
-                Else
-                    Me.Invalid_Inheritance = True
-                End If
-            End If
-        Next
-
-    End Sub
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
@@ -116,6 +95,17 @@ Public Class Component_Type
 
     End Sub
 
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        If IsNothing(Me.Provider_Ports) And IsNothing(Me.Requirer_Ports) Then
+            Me.Add_Consistency_Check_Error_Item(report,
+                "TBD",
+                "Shall aggregate at least one Port.")
+        End If
+
+    End Sub
+
 End Class
 
 
@@ -127,6 +117,17 @@ Public MustInherit Class Port
 
     Protected Nb_Contracts As UInteger = 0
 
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        If Me.Nb_Contracts <> 1 Then
+            Me.Add_Consistency_Check_Error_Item(report,
+                "TBD",
+                "Shall have one and only one contract.")
+        End If
+
+    End Sub
+
 End Class
 
 
@@ -135,7 +136,6 @@ Public Class Provider_Port
     Inherits Port
 
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
-
         MyBase.Get_Own_Data_From_Rhapsody_Model()
 
         Dim rpy_port As RPPort = CType(Me.Rpy_Element, RPPort)
@@ -165,7 +165,7 @@ Public Class Requirer_Port
 
         Me.Nb_Contracts = CUInt(rpy_port.requiredInterfaces.Count)
 
-        If Me.Nb_Contracts = 1 Then
+        If Me.Nb_Contracts >= 1 Then
             Dim req_if As RPClass
             req_if = CType(rpy_port.requiredInterfaces.Item(1), RPClass)
             Contract_Ref = Transform_GUID_To_UUID(req_if.GUID)
@@ -202,6 +202,29 @@ Public Class Component_Configuration
         If default_val_raw <> "" Then
             Me.Default_Value = default_val_raw
         End If
+    End Sub
+
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        If Not Me.Base_Data_Type_Ref.Equals(Guid.Empty) Then
+
+            Dim basic_type As Basic_Types
+            basic_type = Get_Basic_Type(Me.Base_Data_Type_Ref)
+
+            If basic_type = Basic_Types.NON_BASIC_TYPE Then
+                Dim config_data_type As Data_Type
+                config_data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+                Select Case config_data_type.GetType
+                    Case GetType(Structured_Data_Type)
+                        Me.Add_Consistency_Check_Error_Item(report,
+                            "TBD",
+                            "Type shall not be Structured_Data_Type.")
+                End Select
+            End If
+
+        End If
+
     End Sub
 
 End Class

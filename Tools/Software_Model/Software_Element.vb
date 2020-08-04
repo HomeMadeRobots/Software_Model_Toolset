@@ -42,6 +42,18 @@ Public MustInherit Class Software_Element
         Return path
     End Function
 
+    Public Sub Add_To_Model_Element_List()
+        Dim container As Software_Model_Container
+        container = Me.Get_Model_Container
+        container.Add_Element(Me)
+    End Sub
+
+    Public Function Get_Element_By_Uuid(element_uuid As Guid) As Software_Element
+        Dim container As Software_Model_Container
+        container = Me.Get_Model_Container
+        Return container.Get_Element(element_uuid)
+    End Function
+
     Public Shared Function Is_Symbol_Valid(symbol As String) As Boolean
         Dim result As Boolean = False
         If Regex.IsMatch(symbol, "^[a-zA-Z][a-zA-Z0-9_]+$") Then
@@ -49,6 +61,7 @@ Public MustInherit Class Software_Element
         End If
         Return result
     End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -64,6 +77,8 @@ Public MustInherit Class Software_Element
         Me.Rpy_Element = rpy_mdl_element
 
         Me.Get_Own_Data_From_Rhapsody_Model()
+
+        Me.Add_To_Model_Element_List()
 
         Me.Import_Children_From_Rhapsody_Model()
 
@@ -117,7 +132,7 @@ Public MustInherit Class Software_Element
 
     End Sub
 
-    Protected Sub Add_Consistency_Check_Error_Item(
+    Public Sub Add_Consistency_Check_Error_Item(
         report As Report,
         id As String,
         message As String)
@@ -130,7 +145,7 @@ Public MustInherit Class Software_Element
             report.Add_Report_Item(item)
     End Sub
 
-    Protected Sub Add_Consistency_Check_Warning_Item(
+    Public Sub Add_Consistency_Check_Warning_Item(
         report As Report,
         id As String,
         message As String)
@@ -143,7 +158,7 @@ Public MustInherit Class Software_Element
             report.Add_Report_Item(item)
     End Sub
 
-    Protected Sub Add_Consistency_Check_Information_Item(
+    Public Sub Add_Consistency_Check_Information_Item(
         report As Report,
         id As String,
         message As String)
@@ -183,7 +198,7 @@ Public MustInherit Class Typed_Software_Element
         If Me.Base_Data_Type_Ref = Guid.Empty Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD",
-                "The referenced type shall be a Data_Type.")
+                "Referenced type shall be a Data_Type.")
         End If
 
     End Sub
@@ -213,10 +228,10 @@ Public MustInherit Class Stream_Typed_Software_Element
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
-        If Me.Stream = E_STREAM.INPUT Then
+        If Me.Stream = E_STREAM.INVALID Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD",
-                "The stream shall be In ou Out.")
+                "Stream shall be In ou Out.")
         End If
 
     End Sub

@@ -116,12 +116,6 @@ Module Software_Metamodel
 
 
     '----------------------------------------------------------------------------------------------'
-    Public Function Is_Inheritance_Link(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID cc4a2d0c-8bac-40d2-84d6-aa443663dda8")
-    End Function
-
-
-    '----------------------------------------------------------------------------------------------'
     Public Enum Basic_Types
         NON_BASIC_TYPE
         BOOLEAN_TYPE

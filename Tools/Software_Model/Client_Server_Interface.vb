@@ -9,6 +9,16 @@ Public Class Client_Server_Interface
      Global.System.Xml.Serialization.XmlArray("Operations")>
     Public Operations As List(Of Operation)
 
+    Public Overrides Function Get_Children() As List(Of Software_Element)
+        Dim children As New List(Of Software_Element)
+        If Not IsNothing(Me.Operations) Then
+            For Each op In Me.Operations
+                children.Add(op)
+            Next
+        End If
+        Return children
+    End Function
+
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
         Me.Operations = New List(Of Operation)
@@ -32,6 +42,18 @@ Public Class Client_Server_Interface
 
     End Sub
 
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        If IsNothing(Me.Operations) Then
+            Me.Add_Consistency_Check_Error_Item(report,
+                "TBD",
+                "Shall provide at least one operation.")
+        End If
+
+    End Sub
+
+
 End Class
 
 
@@ -42,8 +64,13 @@ Public Class Operation
     Public Arguments As List(Of Operation_Argument)
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
-        Dim children As Object = Me.Arguments
-        Return TryCast(children, List(Of Software_Element))
+        Dim children As New List(Of Software_Element)
+        If Not IsNothing(Me.Arguments) Then
+            For Each arg In Me.Arguments
+                children.Add(arg)
+            Next
+        End If
+        Return children
     End Function
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
@@ -103,9 +130,5 @@ Public Class Operation_Argument
         Return result
 
     End Function
-
-    Protected Overrides Sub Import_Children_From_Rhapsody_Model()
-        ' No child.
-    End Sub
 
 End Class

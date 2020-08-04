@@ -36,8 +36,7 @@ Public MustInherit Class Data_Type_Base_Typed
         If Me.Base_Data_Type_Ref = Guid.Empty Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD",
-                "A Software_Element that have the Base_Data_Type_Ref attribute " &
-                "shall reference a Data_Type.")
+                "Referenced type shall be a Data_Type.")
         End If
 
     End Sub
@@ -51,9 +50,9 @@ Public Class Enumerated_Data_Type
 
     Public Enumerals As List(Of Enumerated_Data_Type_Enumeral)
 
-    Protected Overrides Sub Import_Children_From_Rhapsody_Model()
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
 
-        MyBase.Import_Children_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
 
         Dim rpy_label As RPEnumerationLiteral
 
@@ -73,16 +72,60 @@ Public Class Enumerated_Data_Type
         If Me.Enumerals.Count = 0 Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD",
-                "An Enumerated_Data_Type shall aggregate at least " &
-                "one Enumerated_Data_Type_Enumeral.")
+                "Shall aggregate at least one Enumerated_Data_Type_Enumeral.")
         Else
             If Me.Enumerals.Count = 1 Then
                 Me.Add_Consistency_Check_Error_Item(report,
                 "TBD",
-                "An Enumerated_Data_Type should aggregate at least " &
-                "two Enumerated_Data_Type_Enumeral.")
+                "Should aggregate at least two Enumerated_Data_Type_Enumeral.")
             End If
 
+            Dim enumeral_values_list As New List(Of UInteger)
+            Dim enumeral_without_value_nb As Integer = 0
+            For Each enumeral In Me.Enumerals
+
+                If Not Is_Symbol_Valid(enumeral.Name) Then
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "TBD",
+                        "Invalid enumeral symbol : " & enumeral.Name)
+                End If
+
+                If enumeral.Description = "" Then
+                    Me.Add_Consistency_Check_Information_Item(report,
+                        "TBD",
+                        "Enumeral " & enumeral.Name & " could have a description.")
+                End If
+
+                If enumeral.Value <> "" Then
+                    Dim dummy As UInteger = 0
+                    Dim is_uinteger As Boolean
+                    is_uinteger = UInteger.TryParse(enumeral.Value, dummy)
+                    If is_uinteger = False Then
+                        Me.Add_Consistency_Check_Error_Item(report,
+                            "TBD",
+                            "Value of " & enumeral.Name & " shall be a positive integer or empty.")
+                    Else
+                        enumeral_values_list.Add(dummy)
+                    End If
+                Else
+                    enumeral_without_value_nb += 1
+                End If
+
+            Next
+
+            If enumeral_without_value_nb > 0 And enumeral_values_list.Count > 0 Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "TBD",
+                    "If at least one enumeral has a Value, all the enumerals shall have a Value.")
+            End If
+
+            If enumeral_values_list.Count > 0 Then
+                If enumeral_values_list.Count <> enumeral_values_list.Distinct.Count() Then
+                    Me.Add_Consistency_Check_Error_Item(report,
+                    "TBD",
+                    "The value of the enumerals shall be unique.")
+                End If
+            End If
 
         End If
 
@@ -106,9 +149,9 @@ Public Class Enumerated_Data_Type_Enumeral
 
         Me.Parent = owner
         Me.Rpy_Element = rpy_mdl_element
-        Me.Name = Rpy_Element.name
-        If Rpy_Element.description <> "" Then
-            Me.Description = Rpy_Element.description
+        Me.Name = Me.Rpy_Element.name
+        If Me.Rpy_Element.description <> "" Then
+            Me.Description = Me.Rpy_Element.description
         End If
         If Me.Rpy_Element.value <> "" Then
             Me.Value = Me.Rpy_Element.value
@@ -143,11 +186,11 @@ Public Class Array_Data_Type
         If Me.Multiplicity = 0 Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD",
-                "The Multiplicity shall be a strictly positive integer value.")
+                "Multiplicity shall be a strictly positive integer value.")
         ElseIf Me.Multiplicity = 1 Then
             Me.Add_Consistency_Check_Warning_Item(report,
                 "TBD",
-                "The Multiplicity should be greater than 1.")
+                "Multiplicity should be greater than 1.")
         End If
 
     End Sub
@@ -205,25 +248,25 @@ Public Class Physical_Data_Type
         If Me.Unit = "" Then
             Me.Add_Consistency_Check_Warning_Item(report,
                 "TBD",
-                "The Unit shall be set.")
+                "Unit shall be set.")
         End If
 
         If IsNothing(Me.Resolution) Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD",
-                "The Resolution shall be set to a non-null decimal value.")
+                "Resolution shall be set to a non-null decimal value.")
         End If
 
         If IsNothing(Me.Offset) Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD",
-                "The Offset shall be set to a numerical value.")
+                "Offset shall be set to a numerical value.")
         End If
 
         If Is_Basic_Integer_Type(Me.Base_Data_Type_Ref) = False Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD", _
-                "The referenced type shall be a Basic_Integer_Type.")
+                "Referenced type shall be a Basic_Integer_Type.")
         End If
 
     End Sub
@@ -237,8 +280,17 @@ Public Class Structured_Data_Type
 
     Public Fields As List(Of Structured_Data_Type_Field)
 
+    Public Overrides Function Get_Children() As List(Of Software_Element)
+        Dim children As New List(Of Software_Element)
+        If Not IsNothing(Me.Fields) Then
+            For Each fd In Me.Fields
+                children.Add(fd)
+            Next
+        End If
+        Return children
+    End Function
+
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
-        MyBase.Import_Children_From_Rhapsody_Model()
         Dim rpy_attr As RPAttribute
         Me.Fields = New List(Of Structured_Data_Type_Field)
         For Each rpy_attr In CType(Me.Rpy_Element, RPType).attributes
@@ -254,13 +306,11 @@ Public Class Structured_Data_Type
         If Me.Fields.Count = 0 Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "TBD",
-                "A Structured_Data_Type shall aggregate " &
-                "at least one Structured_Data_Type_Field.")
+                "Shall aggregate at least one field.")
         ElseIf Me.Fields.Count = 1 Then
             Me.Add_Consistency_Check_Warning_Item(report,
                 "TBD",
-                "A Structured_Data_Type should aggregate " &
-                "at least two Structured_Data_Type_Fields.")
+                "Should aggregate at least two fields.")
         End If
 
     End Sub
@@ -283,7 +333,7 @@ Public Class Structured_Data_Type_Field
         If Me.Parent.UUID = Me.Base_Data_Type_Ref Then
             Me.Add_Consistency_Check_Warning_Item(report,
                 "TBD", _
-                "A Structured_Data_Type_Field shall not reference its owner.")
+                "Shall not reference its owner.")
         End If
 
     End Sub
