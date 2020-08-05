@@ -2,3 +2,6 @@
 *.log
 *.ehl
 *.save
+
+Tools/Software_Model/obj
+Tools/Software_Model/bin/Debug
