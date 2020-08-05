@@ -2,19 +2,19 @@
 
 Public Class Event_Interface
 
-    Inherits Software_Element
+    Inherits Software_Interface
 
     Public Arguments As List(Of Event_Argument)
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
-        Dim children As List(Of Software_Element) = Nothing
-        If Not IsNothing(Me.Arguments) Then
-            children = New List(Of Software_Element)
-            For Each arg In Me.Arguments
-                children.Add(arg)
-            Next
+        If IsNothing(Me.Children) Then
+            Dim children_list As New List(Of Software_Element)
+            If Not IsNothing(Me.Arguments) Then
+                children_list.AddRange(Me.Arguments)
+            End If
+            Me.Children = children_list
         End If
-        Return children
+        Return Me.Children
     End Function
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
@@ -35,6 +35,36 @@ Public Class Event_Interface
         End If
 
     End Sub
+
+    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Needed_Elements) Then
+            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            If Not IsNothing(Me.Arguments) Then
+                For Each arg In Me.Arguments
+                    Dim data_type As Data_Type
+                    data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
+                    End If
+                Next
+            End If
+        End If
+        Return Me.Needed_Elements
+    End Function
+
+    Public Overrides Function Compute_WMC() As Double
+        If Me.Weighted_Methods_Per_Class = 0 Then
+            Me.Weighted_Methods_Per_Class = 1
+            If Not IsNothing(Me.Arguments) Then
+                For Each arg In Me.Arguments
+                    Dim data_type As Data_Type
+                    data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                    Me.Weighted_Methods_Per_Class += data_type.Get_Complexity
+                Next
+            End If
+        End If
+        Return Me.Weighted_Methods_Per_Class
+    End Function
 
 End Class
 

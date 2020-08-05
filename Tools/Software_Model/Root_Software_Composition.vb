@@ -2,7 +2,7 @@
 
 Public Class Root_Software_Composition
 
-    Inherits Software_Element
+    Inherits Classifier_Software_Element
 
     Public Component_Prototypes As List(Of Component_Prototype)
     Public Assembly_Connectors As List(Of Assembly_Connector)
@@ -11,18 +11,17 @@ Public Class Root_Software_Composition
     Private Nb_Conn_By_RPort_By_Component As New Dictionary(Of Guid, Dictionary(Of Guid, Integer))
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
-        Dim children As New List(Of Software_Element)
-        If Not IsNothing(Me.Component_Prototypes) Then
-            For Each swc In Me.Component_Prototypes
-                children.Add(swc)
-            Next
+        If IsNothing(Me.Children) Then
+            Dim children_list As New List(Of Software_Element)
+            If Not IsNothing(Me.Component_Prototypes) Then
+                children_list.AddRange(Me.Component_Prototypes)
+            End If
+            If Not IsNothing(Me.Assembly_Connectors) Then
+                children_list.AddRange(Me.Assembly_Connectors)
+            End If
+            Me.Children = children_list
         End If
-        If Not IsNothing(Me.Assembly_Connectors) Then
-            For Each conn In Me.Assembly_Connectors
-                children.Add(conn)
-            Next
-        End If
-        Return children
+        Return Me.Children
     End Function
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
@@ -36,6 +35,7 @@ Public Class Root_Software_Composition
                 Dim component As New Component_Prototype
                 Me.Component_Prototypes.Add(component)
                 component.Import_From_Rhapsody_Model(Me, CType(rpy_component, RPModelElement))
+                component.Set_Owner(Me)
             End If
         Next
 
@@ -133,6 +133,22 @@ Public Class Root_Software_Composition
         Return nb_conn
     End Function
 
+    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Needed_Elements) Then
+            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            If Not IsNothing(Me.Component_Prototypes) Then
+                For Each swc In Me.Component_Prototypes
+                    Dim swct As Component_Type
+                    swct = CType(Me.Get_Element_By_Uuid(swc.Component_Type_Ref), Component_Type)
+                    If Not Me.Needed_Elements.Contains(swct) Then
+                        Me.Needed_Elements.Add(swct)
+                    End If
+                Next
+            End If
+        End If
+        Return Me.Needed_Elements
+    End Function
+
 End Class
 
 
@@ -142,6 +158,8 @@ Public Class Component_Prototype
 
     Public Component_Type_Ref As Guid = Nothing
     Public Configuration_Values As List(Of Configuration_Value)
+
+    Private Owner As Root_Software_Composition = Nothing
 
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
         MyBase.Get_Own_Data_From_Rhapsody_Model()
@@ -177,6 +195,10 @@ Public Class Component_Prototype
 
     End Sub
 
+    Public Sub Set_Owner(parent As Root_Software_Composition)
+        Me.Owner = parent
+    End Sub
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -194,7 +216,7 @@ Public Class Component_Prototype
 
             If Not IsNothing(referenced_swct.Provider_Ports) Then
                 For Each port In referenced_swct.Provider_Ports
-                    nb_conn = CType(Me.Parent, Root_Software_Composition). _
+                    nb_conn = CType(Me.Owner, Root_Software_Composition). _
                                 Get_PPort_Nb_Connection(Me.UUID, port.UUID)
                     If nb_conn = 0 Then
                         Me.Add_Consistency_Check_Information_Item(report,
@@ -206,7 +228,7 @@ Public Class Component_Prototype
 
             If Not IsNothing(referenced_swct.Requirer_Ports) Then
                 For Each port In referenced_swct.Requirer_Ports
-                    nb_conn = CType(Me.Parent, Root_Software_Composition). _
+                    nb_conn = CType(Me.Owner, Root_Software_Composition). _
                                 Get_RPort_Nb_Connection(Me.UUID, port.UUID)
                     If nb_conn = 0 Then
                         Me.Add_Consistency_Check_Error_Item(report,

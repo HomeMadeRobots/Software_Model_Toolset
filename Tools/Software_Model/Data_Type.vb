@@ -1,8 +1,9 @@
 ﻿Imports rhapsody2
+Imports System.Globalization
 
 Public MustInherit Class Data_Type
 
-    Inherits Software_Element
+    Inherits Classifier_Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
@@ -45,16 +46,34 @@ Public MustInherit Class Data_Type_Base_Typed
 
     End Sub
 
+    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Needed_Elements) Then
+            Dim data_type As Data_Type
+            data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            Me.Needed_Elements.Add(data_type)
+        End If
+        Return Me.Needed_Elements
+    End Function
+
 End Class
 
 
-Public Class Basic_Type
+Public MustInherit Class Basic_Type
 
     Inherits Data_Type
 
     Public Overrides Function Get_Complexity() As Double
         Return 1
     End Function
+
+    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+        Return Nothing
+    End Function
+
+    Public Sub Set_Top_Package(pkg As Top_Level_PSWA_Package)
+        Me.Top_Package = pkg
+    End Sub
 
 End Class
 
@@ -74,6 +93,9 @@ Public Class Basic_Integer_Array_Type
     Inherits Basic_Type
 End Class
 
+Public Class Basic_Character_Type
+    Inherits Basic_Type
+End Class
 
 Public Class Enumerated_Data_Type
 
@@ -166,6 +188,10 @@ Public Class Enumerated_Data_Type
         Return 1.5
     End Function
 
+    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+        Return Nothing
+    End Function
+
 End Class
 
 
@@ -203,7 +229,6 @@ Public Class Array_Data_Type
     Public Multiplicity As UInteger
 
     Private Complexity As Double = 0
-    Private Const Default_Complexity As Double = 1.8
 
     Protected Overrides Function Get_Rpy_Data_Type() As RPModelElement
         Dim rpy_type As RPClassifier = CType(Me.Rpy_Element, RPType).typedefBaseType
@@ -235,15 +260,9 @@ Public Class Array_Data_Type
 
     Public Overrides Function Get_Complexity() As Double
         If Me.Complexity = 0 Then
-            Dim computed_complexity As Double
-            'If Get_Basic_Type(Me.Base_Data_Type_Ref) = Basic_Types.NON_BASIC_TYPE Then
-                Dim data_type As Data_Type
-                data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
-                computed_complexity = Array_Data_Type.Default_Complexity * data_type.Get_Complexity
-            'Else
-            '    computed_complexity = Array_Data_Type.Default_Complexity
-            'End If
-            Me.Complexity = computed_complexity
+            Dim data_type As Data_Type
+            data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+            Me.Complexity = 1.8 * data_type.Get_Complexity
         End If
         Return Me.Complexity
     End Function
@@ -277,8 +296,8 @@ Public Class Physical_Data_Type
         Me.Resolution = tag.value
         Decimal.TryParse(
             Me.Resolution,
-            System.Globalization.NumberStyles.Any, _
-            System.Globalization.CultureInfo.InvariantCulture, _
+            NumberStyles.Any, _
+            CultureInfo.InvariantCulture, _
             dummy)
         If dummy = 0 Then
             Me.Resolution = Nothing
@@ -287,8 +306,11 @@ Public Class Physical_Data_Type
         tag = CType(Me.Rpy_Element, RPType).getTag("Offset")
         Me.Offset = tag.value
         Dim is_decimal As Boolean
-        is_decimal = Decimal.TryParse(Me.Offset, System.Globalization.NumberStyles.Any, _
-                                      System.Globalization.CultureInfo.InvariantCulture, dummy)
+        is_decimal = Decimal.TryParse(
+            Me.Offset,
+            NumberStyles.Any,
+            CultureInfo.InvariantCulture,
+            dummy)
         If is_decimal = False Then
             Me.Offset = Nothing
         End If
@@ -341,13 +363,14 @@ Public Class Structured_Data_Type
     Private Complexity As Double = 0
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
-        Dim children As New List(Of Software_Element)
-        If Not IsNothing(Me.Fields) Then
-            For Each fd In Me.Fields
-                children.Add(fd)
-            Next
+        If IsNothing(Me.Children) Then
+            Dim children_list As New List(Of Software_Element)
+            If Not IsNothing(Me.Fields) Then
+                children_list.AddRange(Me.Fields)
+            End If
+            Me.Children = children_list
         End If
-        Return children
+        Return Me.Children
     End Function
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
@@ -377,14 +400,29 @@ Public Class Structured_Data_Type
 
     Public Overrides Function Get_Complexity() As Double
         If Me.Complexity = 0 Then
-            Dim computed_complexity As Double = 0
             Dim field As Structured_Data_Type_Field
             For Each field In Me.Fields
-                computed_complexity += field.Get_Complexity
+                Me.Complexity += field.Get_Complexity
             Next
-            Me.Complexity = computed_complexity
         End If
         Return Me.Complexity
+    End Function
+
+    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Needed_Elements) Then
+            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            If Not IsNothing(Me.Fields) Then
+                For Each fd In Me.Fields
+                    ' Get the argument data type
+                    Dim data_type As Data_Type
+                    data_type = CType(Me.Get_Element_By_Uuid(fd.Base_Data_Type_Ref), Data_Type)
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
+                    End If
+                Next
+            End If
+        End If
+        Return Me.Needed_Elements
     End Function
 
 End Class
@@ -402,10 +440,18 @@ Public Class Structured_Data_Type_Field
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
-        If Me.Parent.UUID = Me.Base_Data_Type_Ref Then
-            Me.Add_Consistency_Check_Warning_Item(report,
-                "TBD", _
-                "Shall not reference its owner.")
+        Dim referenced_data_type As Data_Type
+        referenced_data_type = CType(Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        If Not IsNothing(referenced_data_type) Then
+            If GetType(Structured_Data_Type) = referenced_data_type.GetType Then
+                For Each field In CType(referenced_data_type, Structured_Data_Type).Fields
+                    If field.UUID = Me.UUID Then
+                        Me.Add_Consistency_Check_Warning_Item(report,
+                        "TBD", _
+                        "Shall not reference its owner.")
+                    End If
+                Next
+            End If
         End If
 
     End Sub

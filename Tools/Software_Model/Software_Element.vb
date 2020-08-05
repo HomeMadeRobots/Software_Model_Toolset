@@ -1,4 +1,5 @@
 ﻿Imports rhapsody2
+Imports System.Xml.Serialization
 Imports System.Text.RegularExpressions
 
 Public MustInherit Class Software_Element
@@ -7,51 +8,23 @@ Public MustInherit Class Software_Element
     Public UUID As Guid = Nothing
     Public Description As String = Nothing
 
+    Protected Children As List(Of Software_Element) = Nothing
     Protected Rpy_Element As RPModelElement = Nothing
-    Protected Parent As Software_Element = Nothing
+    Protected Top_Package As Top_Level_PSWA_Package = Nothing
+    Protected Path As String = ""
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Protected Function Get_Model_Container() As Software_Model_Container
-        Dim container As Software_Model_Container = Nothing
-        Dim parent As Software_Element
-        parent = Me.Parent
-        If IsNothing(parent) Then
-            container = CType(Me, Software_Model_Container)
-        Else
-            While Not IsNothing(parent.Parent)
-                parent = parent.Parent
-            End While
-            container = CType(parent, Software_Model_Container)
-        End If
-        Return container
-    End Function
-
     Public Function Get_Path() As String
-        Dim path As String = ""
-        Dim sw_element As Software_Element
-        sw_element = CType(Me, Software_Element)
-        If Not IsNothing(sw_element.Parent) Then 'test if Me is a Software_Model_Container
-            path = "/" & sw_element.Name
-            sw_element = sw_element.Parent
-            While Not IsNothing(sw_element.Parent)
-                path = "/" & sw_element.Name & path
-                sw_element = sw_element.Parent
-            End While
-        End If
-        Return path
+        Return Me.Path
     End Function
 
-    Public Sub Add_To_Model_Element_List()
-        Dim container As Software_Model_Container
-        container = Me.Get_Model_Container
-        container.Add_Element(Me)
-    End Sub
+    Public Function Get_Top_Package() As Top_Level_PSWA_Package
+        Return Me.Top_Package
+    End Function
 
     Public Function Get_Element_By_Uuid(element_uuid As Guid) As Software_Element
-        Dim container As Software_Model_Container
-        container = Me.Get_Model_Container
-        Return container.Get_Element(element_uuid)
+        Return Me.Top_Package.Container.Get_Element(element_uuid)
     End Function
 
     Public Shared Function Is_Symbol_Valid(symbol As String) As Boolean
@@ -62,23 +35,25 @@ Public MustInherit Class Software_Element
         Return result
     End Function
 
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for model import from Rhapsody
     Public Overridable Function Get_Children() As List(Of Software_Element)
         Return Nothing
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
     Public Sub Import_From_Rhapsody_Model(
         owner As Software_Element,
         rpy_mdl_element As RPModelElement)
 
-        Me.Parent = owner
+        Me.Top_Package = owner.Top_Package
         Me.Rpy_Element = rpy_mdl_element
 
         Me.Get_Own_Data_From_Rhapsody_Model()
 
-        Me.Add_To_Model_Element_List()
+        Me.Path = owner.Get_Path & "/" & Me.Name
+
+        Me.Top_Package.Container.Add_Element(Me)
 
         Me.Import_Children_From_Rhapsody_Model()
 
@@ -174,21 +149,23 @@ Public MustInherit Class Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
-    Public Sub Compute_Metrics()
+    Sub Compute_Documentation_Level(
+        ByRef nb_documentable_elements As Double,
+        ByRef nb_documented_elements As Double)
 
-        'Me.Compute_Own_Metrics()
+        nb_documentable_elements = nb_documentable_elements + 1
 
-        'Dim children As List(Of Software_Element) = Me.Get_Children
-        'If Not IsNothing(children) Then
-        '    For Each child In children
-        '        child.Compute_Own_Metrics()
-        '    Next
-        'End If
+        If Me.Description <> "" Then
+            nb_documented_elements = nb_documented_elements + 1
+        End If
 
-    End Sub
+        Dim children As List(Of Software_Element) = Me.Get_Children
+        If Not IsNothing(children) Then
+            For Each child In children
+                child.Compute_Documentation_Level(nb_documentable_elements, nb_documented_elements)
+            Next
+        End If
 
-    Protected Overridable Sub Compute_Own_Metrics()
-        ' Nothing common
     End Sub
 
 End Class
@@ -197,8 +174,20 @@ End Class
 Public MustInherit Class Classifier_Software_Element
     Inherits Software_Element
 
-    Private Needed_Elements As New List(Of Software_Element)
-    Private Dependent_Elements As New List(Of Software_Element)
+    Protected Needed_Elements As List(Of Classifier_Software_Element) = Nothing
+    Protected Dependent_Elements As List(Of Classifier_Software_Element) = Nothing
+
+    Public MustOverride Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+
+End Class
+
+
+Public MustInherit Class Software_Interface
+    Inherits Classifier_Software_Element
+
+    Protected Weighted_Methods_Per_Class As Double = 0
+
+    Public MustOverride Function Compute_WMC() As Double
 
 End Class
 

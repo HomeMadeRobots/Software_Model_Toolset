@@ -1,22 +1,24 @@
 ﻿Imports rhapsody2
+Imports System.Xml.Serialization
 
 Public Class Client_Server_Interface
 
-    Inherits Software_Element
+    Inherits Software_Interface
 
-    <Global.System.Xml.Serialization.XmlArrayItemAttribute(GetType(Synchronous_Operation)), _
-     Global.System.Xml.Serialization.XmlArrayItemAttribute(GetType(Asynchronous_Operation)), _
-     Global.System.Xml.Serialization.XmlArray("Operations")>
+    <XmlArrayItemAttribute(GetType(Synchronous_Operation)), _
+     XmlArrayItemAttribute(GetType(Asynchronous_Operation)), _
+     XmlArray("Operations")>
     Public Operations As List(Of Operation)
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
-        Dim children As New List(Of Software_Element)
-        If Not IsNothing(Me.Operations) Then
-            For Each op In Me.Operations
-                children.Add(op)
-            Next
+        If IsNothing(Me.Children) Then
+            Dim children_list As New List(Of Software_Element)
+            If Not IsNothing(Me.Operations) Then
+                children_list.AddRange(Me.Operations)
+            End If
+            Me.Children = children_list
         End If
-        Return children
+        Return Me.Children
     End Function
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
@@ -53,7 +55,41 @@ Public Class Client_Server_Interface
 
     End Sub
 
+    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Needed_Elements) Then
+            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            For Each current_ope In Me.Operations
+                If Not IsNothing(current_ope.Arguments) Then
+                    For Each arg In current_ope.Arguments
+                        Dim data_type As Data_Type
+                        data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                        If Not IsNothing(data_type) Then
+                            If Not Me.Needed_Elements.Contains(data_type) Then
+                                Me.Needed_Elements.Add(data_type)
+                            End If
+                        End If
+                    Next
+                End If
+            Next
+        End If
+        Return Me.Needed_Elements
+    End Function
 
+    Public Overrides Function Compute_WMC() As Double
+        If Me.Weighted_Methods_Per_Class = 0 Then
+            For Each ope In Me.Operations
+                Me.Weighted_Methods_Per_Class += 1
+                If Not IsNothing(ope.Arguments) Then
+                    For Each arg In ope.Arguments
+                        Dim data_type As Data_Type
+                        data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                        Me.Weighted_Methods_Per_Class += data_type.Get_Complexity
+                    Next
+                End If
+            Next
+        End If
+        Return Me.Weighted_Methods_Per_Class
+    End Function
 End Class
 
 
@@ -64,13 +100,14 @@ Public Class Operation
     Public Arguments As List(Of Operation_Argument)
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
-        Dim children As New List(Of Software_Element)
-        If Not IsNothing(Me.Arguments) Then
-            For Each arg In Me.Arguments
-                children.Add(arg)
-            Next
+        If IsNothing(Me.Children) Then
+            Dim children_list As New List(Of Software_Element)
+            If Not IsNothing(Me.Arguments) Then
+                children_list.AddRange(Me.Arguments)
+            End If
+            Me.Children = children_list
         End If
-        Return children
+        Return Me.Children
     End Function
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()

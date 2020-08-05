@@ -1,5 +1,6 @@
 ﻿Imports rhapsody2
 Imports System.IO
+Imports System.Windows
 
 Class Rpy_Software_Model_Controller
 
@@ -144,7 +145,7 @@ Class Rpy_Software_Model_Controller
 
         If Not IsNothing(rpy_sw_mdl) Then
 
-            ' Create string of the date for created csv file
+            ' Create string of the date for created file
             Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
 
             ' Get model from Rhapsody
@@ -173,7 +174,7 @@ Class Rpy_Software_Model_Controller
                 If output_directory = "" Then
                     Rhapsody_App.writeToOutputWindow("out", " no directory selected." & vbCrLf)
                 Else
-                    ' Open csv file
+                    ' Open txt file
                     Rhapsody_App.writeToOutputWindow("out", "Create report file...")
                     Dim file_name As String =
                         rpy_sw_mdl.name & "_Metrics_Report_" & date_str & ".txt"
@@ -201,6 +202,109 @@ Class Rpy_Software_Model_Controller
     End Sub
 
 
+    Public Sub Generate_All()
+        ' Initialize output window and display start message
+        Dim chrono As New Stopwatch
+        chrono.Start()
+        Rhapsody_App.clearOutputWindow("out")
+        Rhapsody_App.writeToOutputWindow("out", "Generate all documents..." & vbCrLf)
+
+        ' Get selected element and check that it is a Rhapsody project
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
+
+        If Not IsNothing(rpy_sw_mdl) Then
+
+            ' Create string of the date for created files
+            Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
+
+            ' Select txt file directory
+            Dim output_directory As String
+            output_directory = Select_Directory(Rhapsody_App, "all documents")
+            If output_directory = "" Then
+                Rhapsody_App.writeToOutputWindow("out", " no directory selected." & vbCrLf)
+            Else
+
+                '----------------------------------------------------------------------------------'
+                ' Model extraction
+                ' Get model from Rhapsody
+                Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
+                Me.Model = New Rpy_Software_Model
+                Me.Model.Load_From_Rhapsody_Model(rpy_sw_mdl)
+                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+                ' Open XML file
+                Rhapsody_App.writeToOutputWindow("out", "Create xml file...")
+                Dim file_name As String = rpy_sw_mdl.name & "_" & date_str & ".xml"
+                Dim file_path As String = output_directory & "\" & file_name
+                Dim file_stream As New FileStream(file_path, FileMode.Create)
+
+                ' Serialize model
+                Me.Model.Create_Xml(file_stream)
+
+                file_stream.Close()
+                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+                Rhapsody_App.writeToOutputWindow("out",
+                    "xml file full path : " & file_path & vbCrLf)
+
+                '----------------------------------------------------------------------------------'
+                ' Consistency check
+                ' Check model
+                Rhapsody_App.writeToOutputWindow("out", "Check model...")
+                Me.Model.Check_Consistency()
+                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+                ' Open csv file
+                Rhapsody_App.writeToOutputWindow("out", "Create report file...")
+                file_name = rpy_sw_mdl.name & "_Consistency_Report_" & date_str & ".csv"
+                file_path = output_directory & "\" & file_name
+
+                Dim stream_writer As New StreamWriter(file_path, False)
+
+                Me.Model.Generate_Consistency_Report(stream_writer)
+
+                stream_writer.Close()
+                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+                Rhapsody_App.writeToOutputWindow("out",
+                    "Consistency report file full path : " & file_path & vbCrLf)
+
+                '----------------------------------------------------------------------------------'
+                ' Metrics computation
+                If Me.Model.Has_Error Then
+                    Rhapsody_App.writeToOutputWindow("out",
+                        "Model has errors, cannot compute metrics." & vbCrLf)
+                Else
+                    Rhapsody_App.writeToOutputWindow("out", "Compute model metrics...")
+                    Me.Model.Compute_Metrics()
+                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+                    ' Open txt file
+                    Rhapsody_App.writeToOutputWindow("out", "Create report file...")
+                    file_name = rpy_sw_mdl.name & "_Metrics_Report_" & date_str & ".txt"
+                    file_path = output_directory & "\" & file_name
+
+                    stream_writer = New StreamWriter(file_path, False)
+
+                    Me.Model.Generate_Metrics_Report(stream_writer)
+
+                    stream_writer.Close()
+                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+                    Rhapsody_App.writeToOutputWindow("out",
+                        "Metrics report file full path : " & file_path & vbCrLf)
+                End If
+
+            End If
+
+        End If
+
+        ' Display Result to output window
+        Rhapsody_App.writeToOutputWindow("out", "Generate all documents end." & vbCrLf)
+        chrono.Stop()
+        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+    End Sub
+
     Private Function Get_Rhapsody_Project(rpy_app As RPApplication) As RPProject
         Dim selected_element As RPModelElement
         selected_element = rpy_app.getSelectedElement
@@ -223,8 +327,8 @@ Class Rpy_Software_Model_Controller
             Dim dialog_box As FolderBrowserDialog
             dialog_box = New FolderBrowserDialog
             dialog_box.Description = "Select " & file_message & " directory..."
-            Dim result As Global.System.Windows.Forms.DialogResult = dialog_box.ShowDialog()
-            If result = Global.System.Windows.Forms.DialogResult.OK Then
+            Dim result As Forms.DialogResult = dialog_box.ShowDialog()
+            If result = Forms.DialogResult.OK Then
                 output_directory = dialog_box.SelectedPath
                 rpy_app.writeToOutputWindow("out", " done." & vbCrLf)
             End If

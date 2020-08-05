@@ -1,55 +1,58 @@
 ﻿Imports rhapsody2
+Imports System.Xml.Serialization
 
 Public Class PSWA_Package
 
     Inherits Software_Element
 
     Public PSWA_Packages As List(Of PSWA_Package)
-    <Global.System.Xml.Serialization.XmlArrayItemAttribute(GetType(Enumerated_Data_Type)), _
-     Global.System.Xml.Serialization.XmlArrayItemAttribute(GetType(Array_Data_Type)), _
-     Global.System.Xml.Serialization.XmlArrayItemAttribute(GetType(Physical_Data_Type)), _
-     Global.System.Xml.Serialization.XmlArrayItemAttribute(GetType(Structured_Data_Type)), _
-     Global.System.Xml.Serialization.XmlArray("Data_Types")>
+    <XmlArrayItemAttribute(GetType(Enumerated_Data_Type)), _
+     XmlArrayItemAttribute(GetType(Array_Data_Type)), _
+     XmlArrayItemAttribute(GetType(Physical_Data_Type)), _
+     XmlArrayItemAttribute(GetType(Structured_Data_Type)), _
+     XmlArray("Data_Types")>
     Public Data_Types As List(Of Data_Type)
-    Public Client_Server_Interfaces As List(Of Client_Server_Interface)
-    Public Event_Interfaces As List(Of Event_Interface)
+
+    <XmlArrayItemAttribute(GetType(Client_Server_Interface)), _
+     XmlArrayItemAttribute(GetType(Event_Interface)), _
+     XmlArray("Software_Interfaces")>
+    Public Software_Interfaces As List(Of Software_Interface)
+
     Public Component_Types As List(Of Component_Type)
     Public Root_Software_Compositions As List(Of Root_Software_Composition)
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
-        Dim children As New List(Of Software_Element)
-        If Not IsNothing(Me.PSWA_Packages) Then
-            For Each pkg In Me.PSWA_Packages
-                children.Add(pkg)
-            Next
+        If IsNothing(Me.Children) Then
+            Dim children_list As New List(Of Software_Element)
+            If Not IsNothing(Me.PSWA_Packages) Then
+                children_list.AddRange(Me.PSWA_Packages)
+            End If
+            If Not IsNothing(Me.Data_Types) Then
+                children_list.AddRange(Me.Data_Types)
+            End If
+            If Not IsNothing(Me.Software_Interfaces) Then
+                children_list.AddRange(Me.Software_Interfaces)
+            End If
+            If Not IsNothing(Me.Component_Types) Then
+                children_list.AddRange(Me.Component_Types)
+            End If
+            If Not IsNothing(Me.Root_Software_Compositions) Then
+                children_list.AddRange(Me.Root_Software_Compositions)
+            End If
+            Me.Children = children_list
         End If
-        If Not IsNothing(Me.Data_Types) Then
-            For Each dt In Me.Data_Types
-                children.Add(dt)
-            Next
-        End If
-        If Not IsNothing(Me.Client_Server_Interfaces) Then
-            For Each cs_if In Me.Client_Server_Interfaces
-                children.Add(cs_if)
-            Next
-        End If
-        If Not IsNothing(Me.Event_Interfaces) Then
-            For Each ev_if In Me.Event_Interfaces
-                children.Add(ev_if)
-            Next
-        End If
-        If Not IsNothing(Me.Component_Types) Then
-            For Each swct In Me.Component_Types
-                children.Add(swct)
-            Next
-        End If
-        If Not IsNothing(Me.Root_Software_Compositions) Then
-            For Each compo In Me.Root_Software_Compositions
-                children.Add(compo)
-            Next
-        End If
-        Return children
+        Return Me.Children
     End Function
+
+    Public Sub Get_All_Sub_Packages(ByRef pkg_list As List(Of PSWA_Package))
+        If Not IsNothing(Me.PSWA_Packages) Then
+            Dim pkg As PSWA_Package
+            For Each pkg In Me.PSWA_Packages
+                pkg_list.Add(pkg)
+                pkg.Get_All_Sub_Packages(pkg_list)
+            Next
+        End If
+    End Sub
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
@@ -72,7 +75,7 @@ Public Class PSWA_Package
             If Is_Data_Type(CType(rpy_type, RPModelElement)) Then
                 Dim type_kind As String
                 type_kind = rpy_type.kind
-                Select type_kind
+                Select Case type_kind
                 Case "Enumeration"
                     Dim enumeration As Enumerated_Data_Type
                     enumeration = New Enumerated_Data_Type
@@ -105,19 +108,18 @@ Public Class PSWA_Package
             Me.Data_Types = Nothing
         End If
 
-        Me.Client_Server_Interfaces = New List(Of Client_Server_Interface)
-        Me.Event_Interfaces = New List(Of Event_Interface)
+        Me.Software_Interfaces = New List(Of Software_Interface)
         Me.Component_Types = New List(Of Component_Type)
         Me.Root_Software_Compositions = New List(Of Root_Software_Composition)
         Dim rpy_class As RPClass
         For Each rpy_class In CType(Me.Rpy_Element, RPPackage).classes
             If Is_Client_Server_Interface(CType(rpy_class, RPModelElement)) Then
                 Dim cs_if As Client_Server_Interface = New Client_Server_Interface
-                Me.Client_Server_Interfaces.Add(cs_if)
+                Me.Software_Interfaces.Add(cs_if)
                 cs_if.Import_From_Rhapsody_Model(Me, CType(rpy_class, RPModelElement))
             ElseIf Is_Event_Interface(CType(rpy_class, RPModelElement)) Then
                 Dim event_interface As Event_Interface = New Event_Interface
-                Me.Event_Interfaces.Add(event_interface)
+                Me.Software_Interfaces.Add(event_interface)
                 event_interface.Import_From_Rhapsody_Model(Me, CType(rpy_class, RPModelElement))
             ElseIf Is_Component_Type(CType(rpy_class, RPModelElement)) Then
                 Dim comp_type As New Component_Type
@@ -130,11 +132,8 @@ Public Class PSWA_Package
             End If
 
         Next
-        If Me.Client_Server_Interfaces.Count = 0 Then
-            Me.Client_Server_Interfaces = Nothing
-        End If
-        If Me.Event_Interfaces.Count = 0 Then
-            Me.Event_Interfaces = Nothing
+        If Me.Software_Interfaces.Count = 0 Then
+            Me.Software_Interfaces = Nothing
         End If
         If Me.Component_Types.Count = 0 Then
             Me.Component_Types = Nothing
@@ -151,8 +150,7 @@ Public Class PSWA_Package
         If IsNothing(Me.PSWA_Packages) And
             IsNothing(Me.Component_Types) And
             IsNothing(Me.Root_Software_Compositions) And
-            IsNothing(Me.Client_Server_Interfaces) And
-            IsNothing(Me.Event_Interfaces) And
+            IsNothing(Me.Software_Interfaces) And
             IsNothing(Me.Data_Types) Then
 
             Me.Add_Consistency_Check_Warning_Item(report,
@@ -160,6 +158,124 @@ Public Class PSWA_Package
                 "A Shall contain at least one element.")
         End If
 
+    End Sub
+
+End Class
+
+
+Public Class Top_Level_PSWA_Package
+    Inherits PSWA_Package
+
+    <XmlIgnore()>
+    Public Container As Software_Model_Container
+
+    Private All_Packages As List(Of PSWA_Package) = Nothing
+
+    Private Nb_Documented_Elements As Double = 0
+    Private Nb_Documentable_Elements As Double = 1
+
+    Private Needed_Top_Packages_List As List(Of Top_Level_PSWA_Package) = Nothing
+
+    Public Function Get_All_Packages() As List(Of PSWA_Package)
+        If IsNothing(Me.All_Packages) Then
+            Me.All_Packages = New List(Of PSWA_Package)
+            Me.Get_All_Sub_Packages(Me.All_Packages)
+            Me.All_Packages.Add(Me)
+        End If
+        Return Me.All_Packages
+    End Function
+
+    Public Sub Compute_Package_Documentation_Level()
+        If Me.Description <> "" Then
+            Nb_Documented_Elements = 1
+        End If
+
+        Dim children As List(Of Software_Element) = Me.Get_Children
+        If Not IsNothing(children) Then
+            For Each child In children
+                child.Compute_Documentation_Level(
+                    Me.Nb_Documentable_Elements,
+                    Me.Nb_Documented_Elements)
+            Next
+        End If
+    End Sub
+
+    Public Function Get_Documentation_Rate() As Double
+        Return Nb_Documented_Elements / Nb_Documentable_Elements
+    End Function
+
+    Public Sub Find_Needed_Elements()
+
+        Me.Needed_Top_Packages_List = New List(Of Top_Level_PSWA_Package)
+        Dim needed_elements_list As New List(Of Classifier_Software_Element)
+
+        Dim pkg_list As List(Of PSWA_Package) = Me.Get_All_Packages
+
+        ' Parse the list of sub packages + Me
+        Dim pkg As PSWA_Package
+        For Each pkg In pkg_list
+
+            If Not IsNothing(pkg.Component_Types) Then
+                Dim swct As Component_Type
+                For Each swct In pkg.Component_Types
+                    needed_elements_list.AddRange(swct.Find_Needed_Elements)
+                Next
+            End If
+
+            If Not IsNothing(pkg.Software_Interfaces) Then
+                For Each sw_if In pkg.Software_Interfaces
+                    If Not IsNothing(sw_if.Find_Needed_Elements) Then
+                        needed_elements_list.AddRange(sw_if.Find_Needed_Elements)
+                    End If
+                Next
+            End If
+
+            If Not IsNothing(pkg.Data_Types) Then
+                Dim data_type As Data_Type
+                For Each data_type In pkg.Data_Types
+                    If Not IsNothing(data_type.Find_Needed_Elements) Then
+                        needed_elements_list.AddRange(data_type.Find_Needed_Elements)
+                    End If
+                Next
+            End If
+        Next
+
+        needed_elements_list = needed_elements_list.Distinct().ToList
+
+        For Each element In needed_elements_list
+            Dim owner_pkg As Top_Level_PSWA_Package = element.Get_Top_Package()
+            If owner_pkg.UUID <> Me.UUID Then
+                If Not Me.Needed_Top_Packages_List.Contains(owner_pkg) Then
+                    Me.Needed_Top_Packages_List.Add(owner_pkg)
+                End If
+            End If
+        Next
+    End Sub
+
+    Public Function Get_Needed_Top_Packages_List() As List(Of Top_Level_PSWA_Package)
+        Return Me.Needed_Top_Packages_List
+    End Function
+
+    Public Sub Compute_Interfaces_WMC()
+        Dim pkg_list As List(Of PSWA_Package) = Me.Get_All_Packages
+        For Each pkg In pkg_list
+            If Not IsNothing(pkg.Software_Interfaces) Then
+                For Each sw_if In pkg.Software_Interfaces
+                    sw_if.Compute_WMC()
+                Next
+            End If
+        Next
+    End Sub
+
+    Public Sub Compute_Component_Type_WMC()
+        Dim pkg_list As List(Of PSWA_Package) = Me.Get_All_Packages
+        For Each pkg In pkg_list
+            If Not IsNothing(pkg.Component_Types) Then
+                For Each swct In pkg.Component_Types
+                    swct.Compute_WMC()
+                Next
+            End If
+        Next
     End Sub
 
 End Class

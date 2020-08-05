@@ -3,39 +3,34 @@ Imports System.Guid
 
 Public Class Component_Type
 
-    Inherits Software_Element
+    Inherits Classifier_Software_Element
 
     Public Component_Operations As List(Of Component_Operation)
     Public Component_Configurations As List(Of Component_Configuration)
     Public Provider_Ports As List(Of Provider_Port)
     Public Requirer_Ports As List(Of Requirer_Port)
 
-    Private Nb_Inheritance As UInteger = 0
-    Private Invalid_Inheritance As Boolean = False
+    Private Weighted_Methods_Per_Class As Double = 0
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
-        Dim children As New List(Of Software_Element)
-        If Not IsNothing(Me.Provider_Ports) Then
-            For Each pp In Me.Provider_Ports
-                children.Add(pp)
-            Next
+        If IsNothing(Me.Children) Then
+            Dim children_list As New List(Of Software_Element)
+
+            If Not IsNothing(Me.Provider_Ports) Then
+                children_list.AddRange(Me.Provider_Ports)
+            End If
+            If Not IsNothing(Me.Requirer_Ports) Then
+                children_list.AddRange(Me.Requirer_Ports)
+            End If
+            If Not IsNothing(Me.Component_Operations) Then
+                children_list.AddRange(Me.Component_Operations)
+            End If
+            If Not IsNothing(Me.Component_Configurations) Then
+                children_list.AddRange(Me.Component_Configurations)
+            End If
+            Me.Children = children_list
         End If
-        If Not IsNothing(Me.Requirer_Ports) Then
-            For Each rp In Me.Requirer_Ports
-                children.Add(rp)
-            Next
-        End If
-        If Not IsNothing(Me.Component_Operations) Then
-            For Each op In Me.Component_Operations
-                children.Add(op)
-            Next
-        End If
-        If Not IsNothing(Me.Component_Configurations) Then
-            For Each cf In Me.Component_Configurations
-                children.Add(cf)
-            Next
-        End If
-        Return children
+        Return Me.Children
     End Function
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
@@ -105,6 +100,57 @@ Public Class Component_Type
         End If
 
     End Sub
+
+    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Needed_Elements) Then
+            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+
+            If Not IsNothing(Me.Provider_Ports) Then
+                For Each port In Me.Provider_Ports
+                    Dim sw_if As Software_Interface
+                    sw_if = CType(Me.Get_Element_By_Uuid(port.Contract_Ref), Software_Interface)
+                    If Not Me.Needed_Elements.Contains(sw_if) Then
+                        Me.Needed_Elements.Add(sw_if)
+                    End If
+                Next
+            End If
+
+            If Not IsNothing(Me.Requirer_Ports) Then
+                For Each port In Me.Requirer_Ports
+                    Dim sw_if As Software_Interface
+                    sw_if = CType(Me.Get_Element_By_Uuid(port.Contract_Ref), Software_Interface)
+                    If Not Me.Needed_Elements.Contains(sw_if) Then
+                        Me.Needed_Elements.Add(sw_if)
+                    End If
+                Next
+            End If
+
+            If Not IsNothing(Me.Component_Configurations) Then
+                For Each conf In Me.Component_Configurations
+                    Dim data_type As Data_Type
+                    data_type = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
+                    End If
+                Next
+            End If
+
+        End If
+        Return Me.Needed_Elements
+    End Function
+
+    Public Function Compute_WMC() As Double
+        If Me.Weighted_Methods_Per_Class = 0 Then
+            If Not IsNothing(Me.Provider_Ports) Then
+                For Each pport In Me.Provider_Ports
+                    Dim sw_if As Software_Interface
+                    sw_if = CType(Me.Get_Element_By_Uuid(pport.Contract_Ref), Software_Interface)
+                    Me.Weighted_Methods_Per_Class += sw_if.Compute_WMC
+                Next
+            End If
+        End If
+        Return Me.Weighted_Methods_Per_Class
+    End Function
 
 End Class
 
