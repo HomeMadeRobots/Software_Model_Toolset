@@ -38,7 +38,6 @@ Class Rpy_Software_Model_Controller
             Me.Model.Load_From_Rhapsody_Model(rpy_sw_mdl)
             Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
 
-
             ' Select xml file directory
             Dim output_directory As String
             output_directory = Select_Directory(Rhapsody_App, "xml file")
@@ -67,6 +66,72 @@ Class Rpy_Software_Model_Controller
         chrono.Stop()
         Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
 
+    End Sub
+
+
+    Public Sub Merge_Rpy_Soft_Model()
+        ' Initialize output window and display start message
+        Dim chrono As New Stopwatch
+        chrono.Start()
+        Rhapsody_App.clearOutputWindow("out")
+        Rhapsody_App.writeToOutputWindow("out", "Merge software model..." & vbCrLf)
+
+        ' Get selected element and check that it is a Rhapsody project
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
+
+        If Not IsNothing(rpy_sw_mdl) Then
+
+            ' Get XML file
+            Rhapsody_App.writeToOutputWindow("out", "Get XML file to merge...")
+            Dim xml_file_path As String
+            xml_file_path = Select_File("Select XML file", "XML file|*.xml")
+            If xml_file_path = "" Then
+                Rhapsody_App.writeToOutputWindow("out", "no file selected." & vbCrLf)
+                Rhapsody_App.writeToOutputWindow("OUT", "Merge end." & vbCrLf)
+                Exit Sub
+            Else
+                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+            End If
+
+            ' Get model from Rhapsody
+            Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
+            Me.Model = New Rpy_Software_Model
+            Me.Model.Load_From_Rhapsody_Model(rpy_sw_mdl)
+            Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+            ' Check model
+            Rhapsody_App.writeToOutputWindow("out", "Check model...")
+            Me.Model.Check_Consistency()
+            Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+            If Me.Model.Has_Error Then
+                Rhapsody_App.writeToOutputWindow("out",
+                    "Model has errors, cannot perform merge." & vbCrLf)
+            Else
+                Rhapsody_App.writeToOutputWindow("out", "Get software model from XML file...")
+                ' Open XML file
+                Dim file_stream As New FileStream(xml_file_path, FileMode.Open)
+                ' Deserialize XML file
+                Dim soft_mdl_from_file As New Rpy_Software_Model
+                Dim deserialization_status As Boolean
+                deserialization_status = soft_mdl_from_file.Load_From_Xml_File(file_stream)
+                ' Close stuff
+                file_stream.Close()
+                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                If deserialization_status = False Then
+                    Rhapsody_App.writeToOutputWindow("out",
+                        "Invalid xml file, cannot perform merge." & vbCrLf)
+                Else
+                    Me.Model.Merge(soft_mdl_from_file)
+                End If
+            End If
+
+        End If
+
+        ' Display Result to output window
+        Rhapsody_App.writeToOutputWindow("out", "Merge end." & vbCrLf)
+        chrono.Stop()
+        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
     End Sub
 
 
@@ -305,13 +370,14 @@ Class Rpy_Software_Model_Controller
         Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
     End Sub
 
+
     Private Function Get_Rhapsody_Project(rpy_app As RPApplication) As RPProject
         Dim selected_element As RPModelElement
         selected_element = rpy_app.getSelectedElement
-        Dim rpy_sw_mdl As rpProject = Nothing
+        Dim rpy_sw_mdl As RPProject = Nothing
         If Not IsNothing(selected_element) Then
             If IsNothing(selected_element.owner) Then
-                rpy_sw_mdl = CType(selected_element, rpProject)
+                rpy_sw_mdl = CType(selected_element, RPProject)
             Else
                 rpy_app.writeToOutputWindow("out", "A Rhapsody project shall be selected." & vbCrLf)
             End If
@@ -319,6 +385,20 @@ Class Rpy_Software_Model_Controller
             rpy_app.writeToOutputWindow("out", "A Rhapsody project shall be selected." & vbCrLf)
         End If
         Return rpy_sw_mdl
+    End Function
+
+    Private Function Select_File(title As String, filter As String) As String
+        Dim file_path As String = ""
+        Dim dialog_box As OpenFileDialog
+        dialog_box = New OpenFileDialog
+        dialog_box.Title = title
+        dialog_box.Filter = filter
+        dialog_box.CheckFileExists = True
+        Dim result As Forms.DialogResult = dialog_box.ShowDialog
+        If result = Forms.DialogResult.OK Then
+            file_path = dialog_box.FileName
+        End If
+        Return file_path
     End Function
 
     Private Function Select_Directory(rpy_app As RPApplication, file_message As String) As String

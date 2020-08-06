@@ -41,6 +41,23 @@ Public Class Rpy_Software_Model
 
     End Sub
 
+    ' Deserialize Me.Soft_Mdl_Container
+    Public Function Load_From_Xml_File(file_stream As FileStream) As Boolean
+        Dim serializer As New XmlSerializer(GetType(Software_Model_Container))
+        Me.Soft_Mdl_Container = New Software_Model_Container
+        Try
+            Me.Soft_Mdl_Container = CType(serializer.Deserialize(file_stream), Software_Model_Container)
+            Return True
+        Catch
+            Me.Soft_Mdl_Container = Nothing
+            Return False
+        End Try
+    End Function
+
+    Public Sub Merge(soft_mdl_from_file As Rpy_Software_Model)
+
+    End Sub
+
     Public Sub Check_Consistency()
         Me.Consistency_Report = New Report
         Me.Soft_Mdl_Container.Check_Consistency(Me.Consistency_Report)

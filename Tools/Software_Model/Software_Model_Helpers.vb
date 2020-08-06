@@ -16,6 +16,11 @@ Module Software_Model_Helpers
                     soft_mdl_app = New Rpy_Software_Model_Controller
                     soft_mdl_app.Export_Rpy_Soft_Model_To_Xml()
 
+                Case "Merge_Rpy_Soft_Model"
+                    Dim soft_mdl_app As Rpy_Software_Model_Controller
+                    soft_mdl_app = New Rpy_Software_Model_Controller
+                    soft_mdl_app.Merge_Rpy_Soft_Model()
+
                 Case "Check_Rpy_Soft_Model"
                     Dim soft_mdl_app As Rpy_Software_Model_Controller
                     soft_mdl_app = New Rpy_Software_Model_Controller
