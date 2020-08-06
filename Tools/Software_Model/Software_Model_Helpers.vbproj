@@ -70,11 +70,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client_Server_Interface.vb" />
     <Compile Include="Component_Type.vb" />
     <Compile Include="Consistency_Check_Report_Item.vb" />
     <Compile Include="Data_Type.vb" />
-    <Compile Include="Event_Interface.vb" />
     <Compile Include="Guid_Utilities.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -96,6 +94,7 @@
     <Compile Include="Root_Software_Composition.vb" />
     <Compile Include="Rpy_Software_Model_Controller.vb" />
     <Compile Include="Software_Element.vb" />
+    <Compile Include="Software_Interface.vb" />
     <Compile Include="Software_Metamodel.vb" />
     <Compile Include="Software_Model_Container.vb" />
     <Compile Include="Software_Model_Helpers.vb" />

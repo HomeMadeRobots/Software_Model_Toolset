@@ -3,14 +3,12 @@ Imports System.Guid
 
 Public Class Component_Type
 
-    Inherits Classifier_Software_Element
+    Inherits Software_Class
 
     Public Component_Operations As List(Of Component_Operation)
     Public Component_Configurations As List(Of Component_Configuration)
     Public Provider_Ports As List(Of Provider_Port)
     Public Requirer_Ports As List(Of Requirer_Port)
-
-    Private Weighted_Methods_Per_Class As Double = 0
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
@@ -139,7 +137,7 @@ Public Class Component_Type
         Return Me.Needed_Elements
     End Function
 
-    Public Function Compute_WMC() As Double
+    Public Overrides Function Compute_WMC() As Double
         If Me.Weighted_Methods_Per_Class = 0 Then
             If Not IsNothing(Me.Provider_Ports) Then
                 For Each pport In Me.Provider_Ports

@@ -182,7 +182,7 @@ Public MustInherit Class Classifier_Software_Element
 End Class
 
 
-Public MustInherit Class Software_Interface
+Public MustInherit Class Software_Class
     Inherits Classifier_Software_Element
 
     Protected Weighted_Methods_Per_Class As Double = 0
