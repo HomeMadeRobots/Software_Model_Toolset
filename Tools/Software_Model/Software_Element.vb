@@ -149,7 +149,7 @@ Public MustInherit Class Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
-    Sub Compute_Documentation_Level(
+    Sub Compute_Documentation_Rate(
         ByRef nb_documentable_elements As Double,
         ByRef nb_documented_elements As Double)
 
@@ -162,7 +162,7 @@ Public MustInherit Class Software_Element
         Dim children As List(Of Software_Element) = Me.Get_Children
         If Not IsNothing(children) Then
             For Each child In children
-                child.Compute_Documentation_Level(nb_documentable_elements, nb_documented_elements)
+                child.Compute_Documentation_Rate(nb_documentable_elements, nb_documented_elements)
             Next
         End If
 
@@ -178,6 +178,11 @@ Public MustInherit Class Classifier_Software_Element
     Protected Dependent_Elements As List(Of Classifier_Software_Element) = Nothing
 
     Public MustOverride Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+    Public MustOverride Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+
+    Public Function Get_Dependent_Elements_Nb() As Double
+        Return Me.Dependent_Elements.Count
+    End Function
 
 End Class
 

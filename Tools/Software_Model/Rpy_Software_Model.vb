@@ -67,7 +67,56 @@ Public Class Rpy_Software_Model
         Add_Seperator(file_stream)
         file_stream.WriteLine("Metrics report : " & Me.Soft_Mdl_Container.Name)
         Add_Seperator(file_stream)
+        file_stream.WriteLine()
+        file_stream.WriteLine()
 
+        Add_Seperator(file_stream)
+        file_stream.WriteLine("Project metrics")
+        file_stream.WriteLine()
+        file_stream.WriteLine(
+            "Number of PSWA_Packages : " &
+            Me.Soft_Mdl_Container.PSWA_Packages.Count)
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Soft_Mdl_Container.Get_Nb_Data_Types_Series,
+            "Number of Data_Types")
+        file_stream.WriteLine("    tot : " & Me.Soft_Mdl_Container.Get_Nb_Data_Types_Series.Get_Sum)
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Soft_Mdl_Container.Get_Nb_Interfaces_Series,
+            "Number of Interfaces")
+        file_stream.WriteLine("    tot : " & Me.Soft_Mdl_Container.Get_Nb_Interfaces_Series.Get_Sum)
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Soft_Mdl_Container.Get_Nb_Component_Types_Series,
+            "Number of Component_Types")
+            file_stream.WriteLine(
+                "    tot : " & Me.Soft_Mdl_Container.Get_Nb_Component_Types_Series.Get_Sum)
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Soft_Mdl_Container.Get_Documentation_Rate_Series,
+            "Documentation rate")
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Soft_Mdl_Container.Get_Distance_Series,
+            "Distance")
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Soft_Mdl_Container.Get_Component_Type_WMC_Series,
+            "Component_Type WMC")
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Soft_Mdl_Container.Get_Interfaces_WMC_Series,
+            "Interfaces WMC")
+        Add_Seperator(file_stream)
+        file_stream.WriteLine()
 
         For Each pkg In Me.Soft_Mdl_Container.PSWA_Packages
 
@@ -78,15 +127,23 @@ Public Class Rpy_Software_Model
             file_stream.WriteLine()
 
             file_stream.WriteLine("Documentation rate : " &
-                (pkg.Get_Documentation_Rate * 100).ToString("0") & "%")
+                pkg.Get_Package_Documentation_Rate.ToString("p0"))
+            file_stream.WriteLine()
 
-            'file_stream.WriteLine("Needed PSWA_Packages : ")
-            'Dim needed_pkg_list As List(Of Top_Level_PSWA_Package)
-            'needed_pkg_list = pkg.Get_Needed_Top_Packages_List
-            'For Each needed_pkg In needed_pkg_list
-            '    file_stream.WriteLine("    " & needed_pkg.Name)
-            'Next
-            'file_stream.WriteLine()
+            file_stream.WriteLine("Number of Data_Types : " & pkg.Get_Nb_Data_Types)
+            file_stream.WriteLine("Number of Interfaces : " & pkg.Get_Nb_Interfaces)
+            file_stream.WriteLine("Number of Component_Types : " & pkg.Get_Nb_Component_Types)
+            file_stream.WriteLine("Number of Compositions : " & pkg.Get_Nb_Compositions)
+            file_stream.WriteLine("Abstraction level : " _
+                & pkg.Get_Abstraction_Level.ToString("0.00"))
+            file_stream.WriteLine()
+
+            file_stream.WriteLine("Efferent coupling : " & pkg.Get_Efferent_Coupling)
+            file_stream.WriteLine("Afferent coupling : " & pkg.Get_Afferent_Coupling)
+            file_stream.WriteLine("Instability : " & pkg.Get_Instability.ToString("0.00"))
+            file_stream.WriteLine()
+
+            file_stream.WriteLine("Distance : " & pkg.Get_Distance.ToString("0.00"))
 
             file_stream.WriteLine()
             file_stream.WriteLine("Interfaces : ")
@@ -120,6 +177,17 @@ Public Class Rpy_Software_Model
 
     Private Sub Add_Seperator(file_stream As StreamWriter)
         file_stream.WriteLine("===============================================================")
+    End Sub
+
+    Private Sub Write_Series_Metrics(
+        file_stream As StreamWriter,
+        series As Data_Series,
+        series_name As String)
+        file_stream.WriteLine(series_name & " : ")
+        file_stream.WriteLine("    avg : " & series.Get_Average.ToString("0.00"))
+        file_stream.WriteLine("    min : " & series.Get_Min.ToString("0.00"))
+        file_stream.WriteLine("    max : " & series.Get_Max.ToString("0.00"))
+        file_stream.WriteLine("    dev : " & series.Get_Standard_Deviation.ToString("0.00"))
     End Sub
 
 End Class

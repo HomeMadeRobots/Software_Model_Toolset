@@ -149,6 +149,14 @@ Public Class Root_Software_Composition
         Return Me.Needed_Elements
     End Function
 
+    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Dependent_Elements) Then
+            Me.Dependent_Elements = New List(Of Classifier_Software_Element)
+            ' The list remains empty because nothing can depend on a Root_Software_Composition.
+        End If
+        Return Me.Dependent_Elements
+    End Function
+
 End Class
 
 

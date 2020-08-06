@@ -127,14 +127,36 @@ Public Class Component_Type
                 For Each conf In Me.Component_Configurations
                     Dim data_type As Data_Type
                     data_type = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
-                    If Not Me.Needed_Elements.Contains(data_type) Then
-                        Me.Needed_Elements.Add(data_type)
+                    If Not data_type.Is_Basic_Type Then
+                        If Not Me.Needed_Elements.Contains(data_type) Then
+                            Me.Needed_Elements.Add(data_type)
+                        End If
                     End If
                 Next
             End If
 
         End If
         Return Me.Needed_Elements
+    End Function
+
+    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Dependent_Elements) Then
+            Me.Dependent_Elements = New List(Of Classifier_Software_Element)
+            Dim compo_list As List(Of Root_Software_Composition)
+            compo_list = Me.Top_Package.Container.Get_All_Compositions
+            For Each compo In compo_list
+                If Not IsNothing(compo.Component_Prototypes) Then
+                    For Each swc In compo.Component_Prototypes
+                        If swc.Component_Type_Ref = Me.UUID Then
+                            If Not Me.Dependent_Elements.Contains(compo) Then
+                                Me.Dependent_Elements.Add(compo)
+                            End If
+                        End If
+                    Next
+                End If
+            Next
+        End If
+        Return Me.Dependent_Elements
     End Function
 
     Public Overrides Function Compute_WMC() As Double

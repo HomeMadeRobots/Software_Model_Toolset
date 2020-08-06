@@ -4,6 +4,36 @@ Imports System.Xml.Serialization
 
 Public MustInherit Class Software_Interface
     Inherits Software_Class
+
+    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Dependent_Elements) Then
+            Me.Dependent_Elements = New List(Of Classifier_Software_Element)
+            Dim swct_list As List(Of Component_Type)
+            swct_list = Me.Top_Package.Container.Get_All_Component_Types
+            For Each swct In swct_list
+                If Not IsNothing(swct.Provider_Ports) Then
+                    For Each pport In swct.Provider_Ports
+                        If pport.Contract_Ref = Me.UUID Then
+                            If Not Me.Dependent_Elements.Contains(swct) Then
+                                Me.Dependent_Elements.Add(swct)
+                            End If
+                        End If
+                    Next
+                End If
+                If Not IsNothing(swct.Requirer_Ports) Then
+                    For Each rport In swct.Requirer_Ports
+                        If rport.Contract_Ref = Me.UUID Then
+                            If Not Me.Dependent_Elements.Contains(swct) Then
+                                Me.Dependent_Elements.Add(swct)
+                            End If
+                        End If
+                    Next
+                End If
+            Next
+        End If
+        Return Me.Dependent_Elements
+    End Function
+
 End Class
 
 
@@ -69,7 +99,7 @@ Public Class Client_Server_Interface
                     For Each arg In current_ope.Arguments
                         Dim data_type As Data_Type
                         data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
-                        If Not IsNothing(data_type) Then
+                        If Not data_type.Is_Basic_Type Then
                             If Not Me.Needed_Elements.Contains(data_type) Then
                                 Me.Needed_Elements.Add(data_type)
                             End If
@@ -220,8 +250,10 @@ Public Class Event_Interface
                 For Each arg In Me.Arguments
                     Dim data_type As Data_Type
                     data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
-                    If Not Me.Needed_Elements.Contains(data_type) Then
-                        Me.Needed_Elements.Add(data_type)
+                    If Not data_type.Is_Basic_Type Then
+                        If Not Me.Needed_Elements.Contains(data_type) Then
+                            Me.Needed_Elements.Add(data_type)
+                        End If
                     End If
                 Next
             End If

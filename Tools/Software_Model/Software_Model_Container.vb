@@ -27,6 +27,20 @@ Public Class Software_Model_Container
         "1045feea-03f6-4690-a89c-33134ec24f54",
         "d74c7bfa-9e57-443f-ab99-96ab3cdcce0b"}
 
+    Private Data_Types_List As List(Of Data_Type) = Nothing
+    Private Interfaces_List As List(Of Software_Interface) = Nothing
+    Private Component_Types_List As List(Of Component_Type) = Nothing
+    Private Compositions_List As List(Of Root_Software_Composition) = Nothing
+
+    Private Nb_Interfaces As Data_Series
+    Private Nb_Component_Types As Data_Series
+    Private Nb_Data_Types As Data_Series
+
+    Private Documentation_Rate As Data_Series
+    Private Distance As Data_Series
+    Private Component_Type_WMC As Data_Series
+    Private Interfaces_WMC As Data_Series
+
     '----------------------------------------------------------------------------------------------'
     ' General methods 
     Public Sub Add_Element(software_element As Software_Element)
@@ -50,6 +64,66 @@ Public Class Software_Model_Container
             Me.Children = children_list
         End If
         Return Me.Children
+    End Function
+
+    Function Get_All_Compositions() As List(Of Root_Software_Composition)
+        If IsNothing(Me.Compositions_List) Then
+            Me.Compositions_List = New List(Of Root_Software_Composition)
+            For Each top_pkg In Me.PSWA_Packages
+                Dim all_pkg_list As List(Of PSWA_Package) = top_pkg.Get_All_Packages
+                For Each pkg In all_pkg_list
+                    If Not IsNothing(pkg.Root_Software_Compositions) Then
+                        Me.Compositions_List.AddRange(pkg.Root_Software_Compositions)
+                    End If
+                Next
+            Next
+        End If
+        Return Me.Compositions_List
+    End Function
+
+    Function Get_All_Component_Types() As List(Of Component_Type)
+        If IsNothing(Me.Component_Types_List) Then
+            Me.Component_Types_List = New List(Of Component_Type)
+            For Each top_pkg In Me.PSWA_Packages
+                Dim all_pkg_list As List(Of PSWA_Package) = top_pkg.Get_All_Packages
+                For Each pkg In all_pkg_list
+                    If Not IsNothing(pkg.Component_Types) Then
+                        Me.Component_Types_List.AddRange(pkg.Component_Types)
+                    End If
+                Next
+            Next
+        End If
+        Return Me.Component_Types_List
+    End Function
+
+    Function Get_All_Interfaces() As List(Of Software_Interface)
+        If IsNothing(Me.Interfaces_List) Then
+            Me.Interfaces_List = New List(Of Software_Interface)
+            For Each top_pkg In Me.PSWA_Packages
+                Dim all_pkg_list As List(Of PSWA_Package) = top_pkg.Get_All_Packages
+                For Each pkg In all_pkg_list
+                    If Not IsNothing(pkg.Software_Interfaces) Then
+                        Me.Interfaces_List.AddRange(pkg.Software_Interfaces)
+                    End If
+                Next
+            Next
+        End If
+        Return Me.Interfaces_List
+    End Function
+
+    Function Get_All_Data_Types() As List(Of Data_Type)
+        If IsNothing(Me.Data_Types_List) Then
+            Me.Data_Types_List = New List(Of Data_Type)
+            For Each top_pkg In Me.PSWA_Packages
+                Dim all_pkg_list As List(Of PSWA_Package) = top_pkg.Get_All_Packages
+                For Each pkg In all_pkg_list
+                    If Not IsNothing(pkg.Data_Types) Then
+                        Me.Data_Types_List.AddRange(pkg.Data_Types)
+                    End If
+                Next
+            Next
+        End If
+        Return Me.Data_Types_List
     End Function
 
 
@@ -158,11 +232,66 @@ Public Class Software_Model_Container
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
     Public Sub Compute_Metrics()
+        Me.Nb_Interfaces = New Data_Series
+        Me.Nb_Component_Types = New Data_Series
+        Me.Nb_Data_Types = New Data_Series
+
+        Me.Documentation_Rate = New Data_Series
+        Me.Distance = New Data_Series
+        Me.Component_Type_WMC = New Data_Series
+        Me.Interfaces_WMC = New Data_Series
+
         For Each pkg In Me.PSWA_Packages
-            pkg.Compute_Package_Documentation_Level()
+
+            Me.Documentation_Rate.Add_Value(pkg.Get_Package_Documentation_Rate())
+
+            pkg.Compute_Nb_Classifiers()
+            Me.Nb_Interfaces.Add_Value(pkg.Get_Nb_Interfaces)
+            Me.Nb_Component_Types.Add_Value(pkg.Get_Nb_Component_Types)
+            Me.Nb_Data_Types.Add_Value(pkg.Get_Nb_Data_Types)
+
             pkg.Find_Needed_Elements()
+            pkg.Find_Dependent_Elements()
+            pkg.Compute_Coupling()
+            Me.Distance.Add_Value(pkg.Get_Distance)
         Next
+
+        For Each swct In Me.Component_Types_List
+            Me.Component_Type_WMC.Add_Value(swct.Compute_WMC)
+        Next
+
+        For Each sw_if In Me.Interfaces_List
+            Me.Interfaces_WMC.Add_Value(sw_if.Compute_WMC)
+        Next
+
     End Sub
 
+    Public Function Get_Documentation_Rate_Series() As Data_Series
+        Return Me.Documentation_Rate
+    End Function
+
+    Public Function Get_Distance_Series() As Data_Series
+        Return Me.Distance
+    End Function
+
+    Public Function Get_Component_Type_WMC_Series() As Data_Series
+        Return Me.Component_Type_WMC
+    End Function
+
+    Public Function Get_Interfaces_WMC_Series() As Data_Series
+        Return Me.Interfaces_WMC
+    End Function
+
+    Public Function Get_Nb_Interfaces_Series() As Data_Series
+        Return Me.Nb_Interfaces
+    End Function
+
+    Public Function Get_Nb_Component_Types_Series() As Data_Series
+        Return Me.Nb_Component_Types
+    End Function
+
+    Public Function Get_Nb_Data_Types_Series() As Data_Series
+        Return Me.Nb_Data_Types
+    End Function
 
 End Class

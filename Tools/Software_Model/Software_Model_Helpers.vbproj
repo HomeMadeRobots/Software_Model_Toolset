@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="Component_Type.vb" />
     <Compile Include="Consistency_Check_Report_Item.vb" />
+    <Compile Include="Data_Series.vb" />
     <Compile Include="Data_Type.vb" />
     <Compile Include="Guid_Utilities.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

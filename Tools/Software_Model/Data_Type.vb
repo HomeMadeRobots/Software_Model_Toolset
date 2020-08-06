@@ -5,9 +5,60 @@ Public MustInherit Class Data_Type
 
     Inherits Classifier_Software_Element
 
+    Public Overridable Function Is_Basic_Type() As Boolean
+        Return False
+    End Function
+
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
     Public MustOverride Function Get_Complexity() As Double
+
+    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+        If IsNothing(Me.Dependent_Elements) Then
+            Me.Dependent_Elements = New List(Of Classifier_Software_Element)
+
+            Dim needed_elements As List(Of Classifier_Software_Element)
+
+            Dim swct_list As List(Of Component_Type)
+            swct_list = Me.Top_Package.Container.Get_All_Component_Types
+            For Each swtc In swct_list
+                needed_elements = swtc.Find_Needed_Elements
+                For Each element In needed_elements
+                    If element.UUID = Me.UUID Then
+                        Me.Dependent_Elements.Add(swtc)
+                    End If
+                Next
+            Next
+
+            Dim if_list As List(Of Software_Interface)
+            if_list = Me.Top_Package.Container.Get_All_Interfaces
+            For Each sw_if In if_list
+                needed_elements = sw_if.Find_Needed_Elements
+                If Not IsNothing(needed_elements) Then
+                    For Each element In needed_elements
+                        If element.UUID = Me.UUID Then
+                            Me.Dependent_Elements.Add(sw_if)
+                        End If
+                    Next
+                End If
+            Next
+
+            Dim dt_list As List(Of Data_Type)
+            dt_list = Me.Top_Package.Container.Get_All_Data_Types
+            For Each dt In dt_list
+                needed_elements = dt.Find_Needed_Elements
+                If Not IsNothing(needed_elements) Then
+                    For Each element In needed_elements
+                        If element.UUID = Me.UUID Then
+                            Me.Dependent_Elements.Add(dt)
+                        End If
+                    Next
+                End If
+            Next
+
+        End If
+        Return Me.Dependent_Elements
+    End Function
 
 End Class
 
@@ -48,10 +99,12 @@ Public MustInherit Class Data_Type_Base_Typed
 
     Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
         If IsNothing(Me.Needed_Elements) Then
+            Me.Needed_Elements = New List(Of Classifier_Software_Element)
             Dim data_type As Data_Type
             data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
-            Me.Needed_Elements = New List(Of Classifier_Software_Element)
-            Me.Needed_Elements.Add(data_type)
+            If Not data_type.Is_Basic_Type Then
+                Me.Needed_Elements.Add(data_type)
+            End If
         End If
         Return Me.Needed_Elements
     End Function
@@ -62,6 +115,10 @@ End Class
 Public MustInherit Class Basic_Type
 
     Inherits Data_Type
+
+    Public Overrides Function Is_Basic_Type() As Boolean
+        Return True
+    End Function
 
     Public Overrides Function Get_Complexity() As Double
         Return 1
@@ -96,6 +153,7 @@ End Class
 Public Class Basic_Character_Type
     Inherits Basic_Type
 End Class
+
 
 Public Class Enumerated_Data_Type
 
@@ -413,11 +471,12 @@ Public Class Structured_Data_Type
             Me.Needed_Elements = New List(Of Classifier_Software_Element)
             If Not IsNothing(Me.Fields) Then
                 For Each fd In Me.Fields
-                    ' Get the argument data type
                     Dim data_type As Data_Type
                     data_type = CType(Me.Get_Element_By_Uuid(fd.Base_Data_Type_Ref), Data_Type)
-                    If Not Me.Needed_Elements.Contains(data_type) Then
-                        Me.Needed_Elements.Add(data_type)
+                    If Not data_type.Is_Basic_Type Then
+                        If Not Me.Needed_Elements.Contains(data_type) Then
+                            Me.Needed_Elements.Add(data_type)
+                        End If
                     End If
                 Next
             End If
