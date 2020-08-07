@@ -41,20 +41,13 @@ Public Class Rpy_Software_Model
 
     End Sub
 
-    ' Deserialize Me.Soft_Mdl_Container
-    Public Function Load_From_Xml_File(file_stream As FileStream) As Boolean
-        Dim serializer As New XmlSerializer(GetType(Software_Model_Container))
-        Me.Soft_Mdl_Container = New Software_Model_Container
-        Try
-            Me.Soft_Mdl_Container = CType(serializer.Deserialize(file_stream), Software_Model_Container)
-            Return True
-        Catch
-            Me.Soft_Mdl_Container = Nothing
-            Return False
-        End Try
-    End Function
+    Public Sub Export_To_Rhapsody(
+        rpy_sw_mdl As RPProject,
+        mdl_to_export As Software_Model_Container)
 
-    Public Sub Merge(soft_mdl_from_file As Rpy_Software_Model)
+        Me.Rpy_Project = rpy_sw_mdl
+        mdl_to_export.Set_Rpy_Common_Attributes(CType(Me.Rpy_Project, RPModelElement))
+        mdl_to_export.Export_To_Rhapsody(Nothing)
 
     End Sub
 

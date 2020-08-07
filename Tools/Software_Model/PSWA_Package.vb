@@ -152,6 +152,94 @@ Public Class PSWA_Package
 
 
     '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Dim rpy_pkg As RPPackage = Nothing
+        rpy_pkg = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Package"), RPPackage)
+        If Not IsNothing(rpy_pkg) Then
+            Me.Merge_Rpy_Element(CType(rpy_pkg, RPModelElement))
+        Else
+            rpy_pkg = rpy_parent_pkg.addNestedPackage(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_pkg, RPModelElement))
+            rpy_pkg.addStereotype("PSWA_Package", "Package")
+        End If
+
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_To_Rhapsody(CType(rpy_pkg, RPModelElement))
+        Next
+
+    End Sub
+
+    Public Sub Export_Independent_Data_Types()
+        For Each dt In Me.Data_Types
+            Select Case dt.GetType
+                Case GetType(Enumerated_Data_Type)
+                    CType(dt, Enumerated_Data_Type).Export_To_Rhapsody(Me.Rpy_Element)
+                Case GetType(Physical_Data_Type)
+                    CType(dt, Physical_Data_Type).Export_To_Rhapsody(Me.Rpy_Element)
+            End Select
+        Next
+
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_Independent_Data_Types()
+        Next
+
+    End Sub
+
+    Public Sub Export_Dependent_Data_Types(ByRef exported_dt_list As List(Of Data_Type))
+        For Each dt In Me.Data_Types
+            Select Case dt.GetType
+                Case GetType(Array_Data_Type)
+                    If CType(dt, Array_Data_Type).Is_Exportable(Me.Rpy_Element) = True Then
+                        CType(dt, Array_Data_Type).Export_To_Rhapsody(Me.Rpy_Element)
+                        exported_dt_list.Add(dt)
+                    End If
+                Case GetType(Structured_Data_Type)
+                    If CType(dt, Structured_Data_Type).Is_Exportable(Me.Rpy_Element) = False Then
+                        CType(dt, Structured_Data_Type).Export_To_Rhapsody(Me.Rpy_Element)
+                        exported_dt_list.Add(dt)
+                    End If
+            End Select
+        Next
+
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_Dependent_Data_Types(exported_dt_list)
+        Next
+    End Sub
+
+    Public Sub Export_Interfaces()
+        For Each sw_if In Me.Software_Interfaces
+            sw_if.Export_To_Rhapsody(Me.Rpy_Element)
+        Next
+
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_Interfaces()
+        Next
+    End Sub
+
+    Public Sub Export_Component_Types()
+        For Each swct In Me.Component_Types
+            swct.Export_To_Rhapsody(Me.Rpy_Element)
+        Next
+
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_Component_Types()
+        Next
+    End Sub
+
+    Public Sub Export_Compositions()
+        For Each compo In Me.Root_Software_Compositions
+            compo.Export_To_Rhapsody(Me.Rpy_Element)
+        Next
+
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_Compositions()
+        Next
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)

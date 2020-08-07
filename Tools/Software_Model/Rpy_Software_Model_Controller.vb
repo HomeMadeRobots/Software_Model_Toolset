@@ -1,6 +1,7 @@
 ﻿Imports rhapsody2
 Imports System.IO
 Imports System.Windows
+Imports System.Xml.Serialization
 
 Class Rpy_Software_Model_Controller
 
@@ -93,37 +94,30 @@ Class Rpy_Software_Model_Controller
                 Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
             End If
 
-            ' Get model from Rhapsody
-            Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
             Me.Model = New Rpy_Software_Model
-            Me.Model.Load_From_Rhapsody_Model(rpy_sw_mdl)
-            Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
-
-            ' Check model
-            Rhapsody_App.writeToOutputWindow("out", "Check model...")
-            Me.Model.Check_Consistency()
-            Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
-
-            If Me.Model.Has_Error Then
-                Rhapsody_App.writeToOutputWindow("out",
-                    "Model has errors, cannot perform merge." & vbCrLf)
-            Else
-                Rhapsody_App.writeToOutputWindow("out", "Get software model from XML file...")
-                ' Open XML file
-                Dim file_stream As New FileStream(xml_file_path, FileMode.Open)
-                ' Deserialize XML file
-                Dim soft_mdl_from_file As New Rpy_Software_Model
-                Dim deserialization_status As Boolean
-                deserialization_status = soft_mdl_from_file.Load_From_Xml_File(file_stream)
-                ' Close stuff
-                file_stream.Close()
+            Rhapsody_App.writeToOutputWindow("out", "Get software model from XML file...")
+            ' Open XML file
+            Dim file_stream As New FileStream(xml_file_path, FileMode.Open)
+            ' Deserialize XML file
+            Dim deserialization_status As Boolean = False
+            Dim serializer As New XmlSerializer(GetType(Software_Model_Container))
+            Dim mdl_container_to_merge = New Software_Model_Container
+            Try
+                mdl_container_to_merge =
+                    CType(serializer.Deserialize(file_stream), Software_Model_Container)
                 Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
-                If deserialization_status = False Then
-                    Rhapsody_App.writeToOutputWindow("out",
-                        "Invalid xml file, cannot perform merge." & vbCrLf)
-                Else
-                    Me.Model.Merge(soft_mdl_from_file)
-                End If
+                deserialization_status = True
+            Catch
+                Rhapsody_App.writeToOutputWindow("out",
+                    "Invalid xml file, cannot perform merge." & vbCrLf)
+            End Try
+            ' Close stuff
+            file_stream.Close()
+
+            If deserialization_status = True Then
+                Rhapsody_App.writeToOutputWindow("out", "Merge models...")
+                Me.Model.Export_To_Rhapsody(rpy_sw_mdl, mdl_container_to_merge)
+                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
             End If
 
         End If

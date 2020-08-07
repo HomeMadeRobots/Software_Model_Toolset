@@ -52,6 +52,30 @@ Public Class Root_Software_Composition
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Dim rpy_class As RPClass
+        rpy_class = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Class"), RPClass)
+        If Not IsNothing(rpy_class) Then
+            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement))
+        Else
+            rpy_class = rpy_parent_pkg.addClass(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement))
+            rpy_class.addStereotype("Root_Software_Composition", "Class")
+        End If
+
+        Dim children As List(Of Software_Element) = Me.Get_Children
+        If Not IsNothing(children) Then
+            For Each child In children
+                child.Export_To_Rhapsody(CType(rpy_class, RPModelElement))
+            Next
+        End If
+    End Sub
+
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -207,6 +231,51 @@ Public Class Component_Prototype
         Me.Owner = parent
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_inst As RPInstance
+        rpy_inst = CType(rpy_parent_class.findNestedElement(Me.Name, "Instance"), RPInstance)
+        If Not IsNothing(rpy_inst) Then
+            Me.Merge_Rpy_Element(CType(rpy_inst, RPModelElement))
+            If rpy_inst.otherClass.GUID <> Transform_UUID_To_GUID(Me.Component_Type_Ref) Then
+                rpy_inst.getSaveUnit.setReadOnly(0)
+                Dim referenced_rpy_swct As RPClass
+                referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
+                rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
+            End If
+            If Not IsNothing(Me.Configuration_Values) Then
+                For Each conf In Me.Configuration_Values
+                    Dim rpy_conf_attr As RPAttribute = Nothing
+                    rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Component_Configuration_Ref), 
+                                    RPAttribute)
+                    If rpy_inst.getAttributeValue(rpy_conf_attr.name) <> conf.Value Then
+                        rpy_inst.getSaveUnit.setReadOnly(0)
+                        rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
+                    End If
+                Next
+            End If
+        Else
+            rpy_inst = CType(rpy_parent_class.addNewAggr("Instance", Me.Name), RPInstance)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_inst, RPModelElement))
+            rpy_inst.addStereotype("Component_Prototype", "Object")
+            Dim referenced_rpy_swct As RPClass
+            referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
+            rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
+            If Not IsNothing(Me.Configuration_Values) Then
+                For Each conf In Me.Configuration_Values
+                    Dim rpy_conf_attr As RPAttribute = Nothing
+                    rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Component_Configuration_Ref), 
+                                    RPAttribute)
+                    rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
+                Next
+            End If
+        End If
+    End Sub
+
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -315,6 +384,42 @@ Public Class Assembly_Connector
             requirer_component = rpy_link.to
         End If
     End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_link As RPLink
+        rpy_link = CType(rpy_parent_class.findNestedElement(Me.Name, "Link"), RPLink)
+        If Not IsNothing(rpy_link) Then
+            Me.Merge_Rpy_Element(CType(rpy_link, RPModelElement))
+
+        Else
+            ' Dirty trick to be able to call Find_In_Rpy_Project before really assigning Rpy_Element
+            Me.Rpy_Element = rpy_parent
+
+            Dim rpy_pport As RPPort = Nothing
+            Dim rpy_rport As RPPort = Nothing
+            Dim rpy_pcomp As RPInstance = Nothing
+            Dim rpy_rcomp As RPInstance = Nothing
+            rpy_pport = CType(Me.Find_In_Rpy_Project(Me.Provider_Port_Ref), RPPort)
+            rpy_rport = CType(Me.Find_In_Rpy_Project(Me.Requirer_Port_Ref), RPPort)
+            rpy_pcomp = CType(Me.Find_In_Rpy_Project(Me.Provider_Component_Ref), RPInstance)
+            rpy_rcomp = CType(Me.Find_In_Rpy_Project(Me.Requirer_Component_Ref), RPInstance)
+
+            rpy_link = rpy_parent_class.addLink(
+                rpy_pcomp,
+                rpy_rcomp,
+                Nothing,
+                rpy_pport,
+                rpy_rport)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_link, RPModelElement))
+            rpy_link.addStereotype("Assembly_Connector", "Link")
+
+        End If
+    End Sub
+
 
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)

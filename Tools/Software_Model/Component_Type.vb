@@ -88,6 +88,30 @@ Public Class Component_Type
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Dim rpy_class As RPClass
+        rpy_class = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Class"), RPClass)
+        If Not IsNothing(rpy_class) Then
+            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement))
+        Else
+            rpy_class = rpy_parent_pkg.addClass(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement))
+            rpy_class.addStereotype("Component_Type", "Class")
+        End If
+
+        Dim children As List(Of Software_Element) = Me.Get_Children
+        If Not IsNothing(children) Then
+            For Each child In children
+                child.Export_To_Rhapsody(CType(rpy_class, RPModelElement))
+            Next
+        End If
+    End Sub
+
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -183,6 +207,27 @@ Public MustInherit Class Port
 
     Protected Nb_Contracts As UInteger = 0
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_port As RPPort
+        rpy_port = CType(rpy_parent_class.findNestedElement(Me.Name, "Port"), RPPort)
+        If Not IsNothing(rpy_port) Then
+            Me.Merge_Rpy_Element(CType(rpy_port, RPModelElement))
+        Else
+            rpy_port = CType(rpy_parent_class.addNewAggr("Port", Me.Name), RPPort)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_port, RPModelElement))
+            Me.Set_Stereotype()
+            Me.Set_Contract()
+        End If
+    End Sub
+
+    Protected MustOverride Sub Set_Stereotype()
+    Protected MustOverride Sub Set_Contract()
+
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -216,6 +261,19 @@ Public Class Provider_Port
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Provider_Port", "Port")
+    End Sub
+
+    Protected Overrides Sub Set_Contract()
+        Dim rpy_if As RPClass
+        rpy_if = CType(Me.Find_In_Rpy_Project(Me.Contract_Ref), RPClass)
+        CType(Me.Rpy_Element, RPPort).addProvidedInterface(rpy_if)
+    End Sub
+
 End Class
 
 
@@ -237,7 +295,18 @@ Public Class Requirer_Port
             Contract_Ref = Transform_GUID_To_UUID(req_if.GUID)
         End If
 
+    End Sub
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Requirer_Port", "Port")
+    End Sub
+
+    Protected Overrides Sub Set_Contract()
+        Dim rpy_if As RPClass
+        rpy_if = CType(Me.Find_In_Rpy_Project(Me.Contract_Ref), RPClass)
+        CType(Me.Rpy_Element, RPPort).addRequiredInterface(rpy_if)
     End Sub
 
 End Class
@@ -246,6 +315,21 @@ End Class
 Public Class Component_Operation
 
     Inherits Software_Element
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_ope As RPOperation
+        rpy_ope = CType(rpy_parent_class.findNestedElement(Me.Name, "Operation"), RPOperation)
+        If Not IsNothing(rpy_ope) Then
+            Me.Merge_Rpy_Element(CType(rpy_ope, RPModelElement))
+        Else
+            rpy_ope = rpy_parent_class.addOperation(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_ope, RPModelElement))
+            rpy_ope.addStereotype("Component_Operation", "Operation")
+        End If
+    End Sub
 
 End Class
 
@@ -270,6 +354,30 @@ Public Class Component_Configuration
         End If
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Rpy_Data_Type(rpy_type As RPType)
+        CType(Me.Rpy_Element, RPAttribute).type = CType(rpy_type, RPClassifier)
+    End Sub
+
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_attr As RPAttribute
+        rpy_attr = CType(rpy_parent_class.findNestedElement(Me.Name, "Attribute"), RPAttribute)
+        If Not IsNothing(rpy_attr) Then
+            Me.Merge_Rpy_Element(CType(rpy_attr, RPModelElement))
+        Else
+            rpy_attr = rpy_parent_class.addAttribute(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_attr, RPModelElement))
+            rpy_attr.addStereotype("Configuration_Attribute", "Attribute")
+            Dim conf_type As RPType
+            conf_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
+            rpy_attr.type = CType(conf_type, RPClassifier)
+        End If
+    End Sub
+
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -287,5 +395,6 @@ Public Class Component_Configuration
         End If
 
     End Sub
+
 
 End Class

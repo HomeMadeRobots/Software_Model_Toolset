@@ -86,6 +86,27 @@ Public MustInherit Class Data_Type_Base_Typed
         End If
     End Sub
 
+    Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement)
+        MyBase.Merge_Rpy_Element(rpy_element)
+        Dim rpy_type As RPType = CType(rpy_element, RPType)
+        If rpy_type.typedefBaseType.GUID <> Transform_UUID_To_GUID(Me.Base_Data_Type_Ref) Then
+            rpy_type.getSaveUnit.setReadOnly(0)
+            Dim referenced_rpy_type As RPType
+            referenced_rpy_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
+            rpy_type.typedefBaseType = CType(referenced_rpy_type, RPClassifier)
+        End If
+    End Sub
+
+    Public Overrides Sub Set_Rpy_Common_Attributes(rpy_element As RPModelElement)
+        MyBase.Set_Rpy_Common_Attributes(rpy_element)
+        Dim rpy_type As RPType = CType(rpy_element, RPType)
+        rpy_type.kind = "Typedef"
+        Dim referenced_rpy_type As RPType
+        referenced_rpy_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
+        rpy_type.typedefBaseType = CType(referenced_rpy_type, RPClassifier)
+    End Sub
+
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -132,6 +153,10 @@ Public MustInherit Class Basic_Type
         Me.Top_Package = pkg
     End Sub
 
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        ' Basic_Type do not need to be exported as thay already belong to profile package.
+    End Sub
+
 End Class
 
 Public Class Basic_Integer_Type
@@ -175,6 +200,26 @@ Public Class Enumerated_Data_Type
             enumeral.Import_From_Rhapsody_Model(Me, rpy_label)
         Next
 
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Dim rpy_type As RPType
+        rpy_type = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Type"), RPType)
+        If Not IsNothing(rpy_type) Then
+            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement))
+        Else
+            rpy_type = rpy_parent_pkg.addType(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement))
+            rpy_type.addStereotype("Data_Type", "Type")
+            rpy_type.kind = "Enumeration"
+            For Each enumeral In Me.Enumerals
+                enumeral.Export_To_Rhapsody(rpy_type)
+            Next
+        End If
     End Sub
 
     Protected Overrides Sub Check_Own_Consistency(report As Report)
@@ -277,6 +322,17 @@ Public Class Enumerated_Data_Type_Enumeral
         End If
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Sub Export_To_Rhapsody(rpy_enum As RPType)
+        Dim rpy_label As RPEnumerationLiteral
+        rpy_label = rpy_enum.addEnumerationLiteral(Me.Name)
+        Me.Rpy_Element = rpy_label
+        rpy_label.description = Me.Description
+        rpy_label.value = Me.Value
+    End Sub
+
 End Class
 
 
@@ -299,6 +355,42 @@ Public Class Array_Data_Type
         multiplicity_str = CType(Me.Rpy_Element, RPType).typedefMultiplicity
         Me.Multiplicity = 0
         UInteger.TryParse(multiplicity_str, Me.Multiplicity)
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Function Is_Exportable(any_rpy_base As RPModelElement) As Boolean
+        Dim referenced_rpy_type As RPType
+        Dim rpy_proj As RPProject = CType(any_rpy_base.project, RPProject)
+        Dim base_dt_guid As String = Transform_UUID_To_GUID(Me.Base_Data_Type_Ref)
+        referenced_rpy_type = CType(rpy_proj.findElementByGUID(base_dt_guid), RPType)
+        If Not IsNothing(referenced_rpy_type) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Dim rpy_type As RPType
+        rpy_type = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Type"), RPType)
+        If Not IsNothing(rpy_type) Then
+            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement))
+            If rpy_type.typedefMultiplicity <> CStr(Me.Multiplicity) Then
+                rpy_type.getSaveUnit.setReadOnly(0)
+                rpy_type.typedefMultiplicity = CStr(Me.Multiplicity)
+            End If
+        Else
+            rpy_type = rpy_parent_pkg.addType(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement))
+
+            rpy_type.typedefMultiplicity = CStr(Me.Multiplicity)
+
+            rpy_type.addStereotype("Data_Type", "Type")
+
+        End If
     End Sub
 
     Protected Overrides Sub Check_Own_Consistency(report As Report)
@@ -375,6 +467,57 @@ Public Class Physical_Data_Type
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Dim rpy_type As RPType
+        rpy_type = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Type"), RPType)
+        If Not IsNothing(rpy_type) Then
+            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement))
+
+            Dim tag As RPTag
+            tag = rpy_type.getTag("Unit")
+            If tag.value <> Me.Unit Then
+                rpy_type.getSaveUnit.setReadOnly(0)
+                rpy_type.setTagValue(tag, Me.Unit)
+            End If
+
+            tag = rpy_type.getTag("Resolution")
+            If tag.value <> Me.Resolution Then
+                rpy_type.getSaveUnit.setReadOnly(0)
+                rpy_type.setTagValue(tag, Me.Resolution)
+            End If
+
+            tag = rpy_type.getTag("Offset")
+            If tag.value <> Me.Offset Then
+                rpy_type.getSaveUnit.setReadOnly(0)
+                rpy_type.setTagValue(tag, Me.Offset)
+            End If
+
+        Else
+            rpy_type = rpy_parent_pkg.addType(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement))
+
+            rpy_type.typedefMultiplicity = "1"
+
+            rpy_type.addStereotype("Physical_Data_Type", "Type")
+
+            Dim tag As RPTag
+            tag = rpy_type.getTag("Unit")
+            rpy_type.setTagValue(tag, Me.Unit)
+
+            tag = rpy_type.getTag("Resolution")
+            rpy_type.setTagValue(tag, Me.Resolution)
+
+            tag = rpy_type.getTag("Offset")
+            rpy_type.setTagValue(tag, Me.Offset)
+
+        End If
+    End Sub
+
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -397,10 +540,14 @@ Public Class Physical_Data_Type
         End If
 
         Dim referenced_type As Data_Type = CType(Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
-        If referenced_type.GetType <> GetType(Basic_Integer_Type) Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "TBD", _
-                "Referenced type shall be a Basic_Integer_Type.")
+        If Not IsNothing(referenced_type) Then
+            If referenced_type.GetType <> GetType(Basic_Integer_Type) Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "TBD", _
+                    "Referenced type shall be a Basic_Integer_Type.")
+            End If
+        Else
+            ' already checked in  MyBase.Check_Own_Consistency
         End If
 
     End Sub
@@ -440,6 +587,28 @@ Public Class Structured_Data_Type
             field.Import_From_Rhapsody_Model(Me, CType(rpy_attr, RPModelElement))
         Next
     End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Function Is_Exportable(any_rpy_base As RPModelElement) As Boolean
+        Dim result As Boolean = True
+        Dim rpy_proj As RPProject = CType(any_rpy_base.project, RPProject)
+        For Each fd In Me.Fields
+            Dim referenced_rpy_type As RPType
+            Dim base_dt_guid As String = Transform_UUID_To_GUID(fd.Base_Data_Type_Ref)
+            referenced_rpy_type = CType(rpy_proj.findElementByGUID(base_dt_guid), RPType)
+            If IsNothing(referenced_rpy_type) Then
+                result = False
+            End If
+        Next
+        Return result
+    End Function
+
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+
+    End Sub
+
 
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
@@ -495,6 +664,14 @@ Public Class Structured_Data_Type_Field
         Dim rpy_type As RPClassifier = CType(Me.Rpy_Element, RPAttribute).type
         Return CType(rpy_type, RPModelElement)
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+
+    End Sub
+
 
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)

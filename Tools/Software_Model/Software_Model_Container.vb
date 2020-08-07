@@ -218,7 +218,10 @@ Public Class Software_Model_Container
             If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
                 Dim pswa_pkg As Top_Level_PSWA_Package = New Top_Level_PSWA_Package
                 Me.PSWA_Packages.Add(pswa_pkg)
+
+                ' Trick to set pswa_pkg.Top_Package to pswa_pkg
                 Me.Top_Package = pswa_pkg
+
                 pswa_pkg.Container = Me
                 pswa_pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))
             End If
@@ -228,6 +231,60 @@ Public Class Software_Model_Container
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+
+        ' Export packages
+        For Each pkg_to_export In Me.PSWA_Packages
+            pkg_to_export.Container = Me
+            pkg_to_export.Export_To_Rhapsody(Me.Rpy_Element)
+        Next
+
+        ' Export independent Data_Types
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_Independent_Data_Types()
+        Next
+
+        ' Export dependent Data_Types
+        ' Create list of all "dependent" Data_Types
+        Dim all_dt_list As List(Of Data_Type) = Me.Get_All_Data_Types
+        Dim dt_list As New List(Of Data_Type)
+        For Each dt In all_dt_list
+            Select Case dt.GetType
+                Case GetType(Array_Data_Type)
+                    dt_list.Add(dt)
+                Case GetType(Structured_Data_Type)
+                    dt_list.Add(dt)
+            End Select
+        Next
+        ' While the list is not empty, export Data_Types
+        Dim exported_dt_list As New List(Of Data_Type)
+        While dt_list.Count <> 0
+            For Each pkg In Me.PSWA_Packages
+                pkg.Export_Dependent_Data_Types(exported_dt_list)
+            Next
+            For Each exp_dt In exported_dt_list
+                dt_list.Remove(exp_dt)
+            Next
+        End While
+
+        ' Export Interfaces
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_Interfaces()
+        Next
+
+        ' Export Component_Types
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_Component_Types()
+        Next
+
+        ' Export Compositions
+        For Each pkg In Me.PSWA_Packages
+            pkg.Export_Compositions()
+        Next
+    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation

@@ -77,6 +77,34 @@ Public MustInherit Class Software_Element
 
 
     '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public MustOverride Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+
+    Public Overridable Sub Merge_Rpy_Element(rpy_element As RPModelElement)
+        Me.Rpy_Element = rpy_element
+        If Me.Description <> "" Then
+            If Me.Description <> rpy_element.description Then
+                rpy_element.getSaveUnit.setReadOnly(0)
+                rpy_element.description = Me.Description
+            End If
+        End If
+    End Sub
+
+    Public Overridable Sub Set_Rpy_Common_Attributes(rpy_element As RPModelElement)
+        Me.Rpy_Element = rpy_element
+        rpy_element.description = Me.Description
+        rpy_element.GUID = Transform_UUID_To_GUID(Me.UUID)
+    End Sub
+
+    Public Function Find_In_Rpy_Project(element_uuid As Guid) As RPModelElement
+        Dim result As RPModelElement = Nothing
+        Dim rpy_proj As RPProject = CType(Me.Rpy_Element.project, RPProject)
+        result = rpy_proj.findElementByGUID(Transform_UUID_To_GUID(element_uuid))
+        Return result
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
     Public Sub Check_Consistency(report As Report)
 
@@ -203,6 +231,9 @@ Public MustInherit Class Typed_Software_Element
 
     Public Base_Data_Type_Ref As Guid = Guid.Empty
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
     Protected MustOverride Function Get_Rpy_Data_Type() As RPModelElement
 
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
@@ -215,6 +246,27 @@ Public MustInherit Class Typed_Software_Element
         End If
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overridable Sub Set_Rpy_Data_Type(rpy_type As RPType)
+        CType(Me.Rpy_Element, RPAttribute).type = CType(rpy_type, RPClassifier)
+    End Sub
+
+    Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement)
+        MyBase.Merge_Rpy_Element(rpy_element)
+        Dim rpy_type As RPModelElement = Me.Get_Rpy_Data_Type
+        If rpy_type.GUID <> Transform_UUID_To_GUID(Me.Base_Data_Type_Ref) Then
+            rpy_element.getSaveUnit.setReadOnly(0)
+            Dim arg_type As RPType
+            arg_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
+            Me.Set_Rpy_Data_Type(arg_type)
+        End If
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -241,13 +293,47 @@ Public MustInherit Class Stream_Typed_Software_Element
         INVALID
     End Enum
 
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
     Protected MustOverride Function Get_Rpy_Stream() As E_STREAM
+
+    Protected Shared Function Transform_Rpy_Stream_To_SMT_Stream(rpy_stream As String) As E_STREAM
+        Select Case rpy_stream
+            Case "In"
+                Return E_STREAM.INPUT
+            Case "Out"
+                Return E_STREAM.OUTPUT
+            Case Else
+                Return E_STREAM.INVALID
+        End Select
+    End Function
+
+    Protected Shared Function Transform_SMT_Stream_To_Rpy_Stream(smt_stream As E_STREAM) As String
+        Select Case smt_stream
+            Case E_STREAM.INPUT
+                Return "In"
+            Case E_STREAM.OUTPUT
+                Return "Out"
+            Case Else
+                Return "In"
+        End Select
+    End Function
 
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
         MyBase.Get_Own_Data_From_Rhapsody_Model()
         Me.Stream = Get_Rpy_Stream()
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Rpy_Data_Type(rpy_type As RPType)
+        CType(Me.Rpy_Element, RPArgument).type = CType(rpy_type, RPClassifier)
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 

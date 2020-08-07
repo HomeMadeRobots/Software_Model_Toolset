@@ -80,6 +80,29 @@ Public Class Client_Server_Interface
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Dim rpy_class As RPClass
+        rpy_class = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Class"), RPClass)
+        If Not IsNothing(rpy_class) Then
+            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement))
+        Else
+            rpy_class = rpy_parent_pkg.addClass(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement))
+            rpy_class.addStereotype("Client_Server_Interface", "Class")
+        End If
+
+        If Not IsNothing(Me.Operations) Then
+            For Each ope In Me.Operations
+                ope.Export_To_Rhapsody(CType(rpy_class, RPModelElement))
+            Next
+        End If
+    End Sub
+
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -163,11 +186,41 @@ Public MustInherit Class Operation
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_ope As RPOperation
+        rpy_ope = CType(rpy_parent_class.findNestedElement(Me.Name, "Operation"), RPOperation)
+        If Not IsNothing(rpy_ope) Then
+            Me.Merge_Rpy_Element(CType(rpy_ope, RPModelElement))
+        Else
+            rpy_ope = rpy_parent_class.addOperation(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_ope, RPModelElement))
+            Me.Set_Stereotype()
+        End If
+
+        If Not IsNothing(Me.Arguments) Then
+            For Each arg In Me.Arguments
+                arg.Export_To_Rhapsody(CType(rpy_ope, RPModelElement))
+            Next
+        End If
+    End Sub
+
+    Protected MustOverride Sub Set_Stereotype()
+
 End Class
 
 
 Public Class Synchronous_Operation
     Inherits Operation
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Synchronous_Operation", "Operation")
+    End Sub
 
 End Class
 
@@ -175,6 +228,11 @@ End Class
 Public Class Asynchronous_Operation
     Inherits Operation
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Asynchronous_Operation", "Operation")
+    End Sub
 End Class
 
 
@@ -203,6 +261,33 @@ Public Class Operation_Argument
         Return result
 
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_ope As RPOperation = CType(rpy_parent, RPOperation)
+        Dim rpy_arg As RPArgument
+        rpy_arg = CType(rpy_parent_ope.findNestedElement(Me.Name, "Argument"), RPArgument)
+        If Not IsNothing(rpy_arg) Then
+            Me.Merge_Rpy_Element(CType(rpy_arg, RPModelElement))
+
+            Dim arg_rpy_stream As String = Transform_SMT_Stream_To_Rpy_Stream(Me.Stream)
+            If rpy_arg.argumentDirection <> arg_rpy_stream Then
+                rpy_arg.getSaveUnit.setReadOnly(0)
+                rpy_arg.argumentDirection = arg_rpy_stream
+            End If
+
+        Else
+            rpy_arg = rpy_parent_ope.addArgument(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_arg, RPModelElement))
+            Dim arg_type As RPType
+            arg_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
+            rpy_arg.type = CType(arg_type, RPClassifier)
+            rpy_arg.argumentDirection = Transform_SMT_Stream_To_Rpy_Stream(Me.Stream)
+        End If
+    End Sub
+
 
 End Class
 
@@ -242,6 +327,29 @@ Public Class Event_Interface
         End If
 
     End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Dim rpy_class As RPClass
+        rpy_class = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Class"), RPClass)
+        If Not IsNothing(rpy_class) Then
+            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement))
+        Else
+            rpy_class = rpy_parent_pkg.addClass(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement))
+            rpy_class.addStereotype("Event_Interface", "Class")
+        End If
+
+        If Not IsNothing(Me.Arguments) Then
+            For Each arg In Me.Arguments
+                arg.Export_To_Rhapsody(CType(rpy_class, RPModelElement))
+            Next
+        End If
+    End Sub
+
 
     Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
         If IsNothing(Me.Needed_Elements) Then
@@ -286,5 +394,24 @@ Public Class Event_Argument
         Dim rpy_type As RPClassifier = CType(Me.Rpy_Element, RPAttribute).type
         Return CType(rpy_type, RPModelElement)
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_attr As RPAttribute
+        rpy_attr = CType(rpy_parent_class.findNestedElement(Me.Name, "Attribute"), RPAttribute)
+        If Not IsNothing(rpy_attr) Then
+            Me.Merge_Rpy_Element(CType(rpy_attr, RPModelElement))
+        Else
+            rpy_attr = rpy_parent_class.addAttribute(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_attr, RPModelElement))
+            rpy_attr.addStereotype("Event_Argument", "Attribute")
+            Dim arg_type As RPType
+            arg_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
+            rpy_attr.type = CType(arg_type, RPClassifier)
+        End If
+    End Sub
 
 End Class
