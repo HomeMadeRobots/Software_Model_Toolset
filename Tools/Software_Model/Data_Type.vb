@@ -222,6 +222,7 @@ Public Class Enumerated_Data_Type
         End If
     End Sub
 
+
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -606,7 +607,20 @@ Public Class Structured_Data_Type
     End Function
 
     Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
-
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Dim rpy_type As RPType
+        rpy_type = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Type"), RPType)
+        If Not IsNothing(rpy_type) Then
+            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement))
+        Else
+            rpy_type = rpy_parent_pkg.addType(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement))
+            rpy_type.addStereotype("Data_Type", "Type")
+            rpy_type.kind = "Structure"
+        End If
+        For Each field In Me.Fields
+            field.Export_To_Rhapsody(CType(rpy_type, RPModelElement))
+        Next
     End Sub
 
 
@@ -669,7 +683,18 @@ Public Class Structured_Data_Type_Field
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
-
+        Dim rpy_parent_type As RPType = CType(rpy_parent, RPType)
+        Dim rpy_attr As RPAttribute
+        rpy_attr = CType(rpy_parent_type.findNestedElement(Me.Name, "Attribute"), RPAttribute)
+        If Not IsNothing(rpy_attr) Then
+            Me.Merge_Rpy_Element(CType(rpy_attr, RPModelElement))
+        Else
+            rpy_attr = rpy_parent_type.addAttribute(Me.Name)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_attr, RPModelElement))
+            Dim conf_type As RPType
+            conf_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
+            rpy_attr.type = CType(conf_type, RPClassifier)
+        End If
     End Sub
 
 

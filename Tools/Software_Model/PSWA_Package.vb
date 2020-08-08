@@ -196,7 +196,7 @@ Public Class PSWA_Package
                         exported_dt_list.Add(dt)
                     End If
                 Case GetType(Structured_Data_Type)
-                    If CType(dt, Structured_Data_Type).Is_Exportable(Me.Rpy_Element) = False Then
+                    If CType(dt, Structured_Data_Type).Is_Exportable(Me.Rpy_Element) = True Then
                         CType(dt, Structured_Data_Type).Export_To_Rhapsody(Me.Rpy_Element)
                         exported_dt_list.Add(dt)
                     End If

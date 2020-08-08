@@ -415,6 +415,7 @@ Public Class Assembly_Connector
                 rpy_pport,
                 rpy_rport)
             Me.Set_Rpy_Common_Attributes(CType(rpy_link, RPModelElement))
+            rpy_link.name = Me.Name
             rpy_link.addStereotype("Assembly_Connector", "Link")
 
         End If
