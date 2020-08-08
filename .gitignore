@@ -3,5 +3,7 @@
 *.ehl
 *.save
 
+*.suo
+*.vbproj.user
 Tools/Software_Model/obj
 Tools/Software_Model/bin/Debug
