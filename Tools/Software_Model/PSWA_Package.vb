@@ -153,88 +153,93 @@ Public Class PSWA_Package
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
         Dim rpy_pkg As RPPackage = Nothing
         rpy_pkg = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Package"), RPPackage)
         If Not IsNothing(rpy_pkg) Then
-            Me.Merge_Rpy_Element(CType(rpy_pkg, RPModelElement))
+            Me.Merge_Rpy_Element(CType(rpy_pkg, RPModelElement), report)
         Else
             rpy_pkg = rpy_parent_pkg.addNestedPackage(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_pkg, RPModelElement))
+            Me.Set_Rpy_Common_Attributes(CType(rpy_pkg, RPModelElement), report)
             rpy_pkg.addStereotype("PSWA_Package", "Package")
         End If
 
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_To_Rhapsody(CType(rpy_pkg, RPModelElement))
+            pkg.Export_To_Rhapsody(CType(rpy_pkg, RPModelElement), report)
         Next
 
     End Sub
 
-    Public Sub Export_Independent_Data_Types()
+    Public Sub Export_Independent_Data_Types_To_Rhapsody(report As Report)
         For Each dt In Me.Data_Types
             Select Case dt.GetType
                 Case GetType(Enumerated_Data_Type)
-                    CType(dt, Enumerated_Data_Type).Export_To_Rhapsody(Me.Rpy_Element)
+                    CType(dt, Enumerated_Data_Type).Export_To_Rhapsody(Me.Rpy_Element, report)
                 Case GetType(Physical_Data_Type)
-                    CType(dt, Physical_Data_Type).Export_To_Rhapsody(Me.Rpy_Element)
+                    CType(dt, Physical_Data_Type).Export_To_Rhapsody(Me.Rpy_Element, report)
             End Select
         Next
 
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_Independent_Data_Types()
+            pkg.Export_Independent_Data_Types_To_Rhapsody(report)
         Next
 
     End Sub
 
-    Public Sub Export_Dependent_Data_Types(ByRef exported_dt_list As List(Of Data_Type))
+    Public Sub Export_Dependent_Data_Types_To_Rhapsody(
+        ByRef exported_dt_list As List(Of Data_Type),
+        report As Report,
+        force As Boolean)
         For Each dt In Me.Data_Types
             Select Case dt.GetType
                 Case GetType(Array_Data_Type)
-                    If CType(dt, Array_Data_Type).Is_Exportable(Me.Rpy_Element) = True Then
-                        CType(dt, Array_Data_Type).Export_To_Rhapsody(Me.Rpy_Element)
+                    If force = True Or
+                        CType(dt, Array_Data_Type).Is_Exportable(Me.Rpy_Element) = True Then
+                        CType(dt, Array_Data_Type).Export_To_Rhapsody(Me.Rpy_Element, report)
                         exported_dt_list.Add(dt)
                     End If
                 Case GetType(Structured_Data_Type)
-                    If CType(dt, Structured_Data_Type).Is_Exportable(Me.Rpy_Element) = True Then
-                        CType(dt, Structured_Data_Type).Export_To_Rhapsody(Me.Rpy_Element)
+                    If force = True Or
+                        CType(dt, Structured_Data_Type).Is_Exportable(Me.Rpy_Element) = True Then
+                        CType(dt, Structured_Data_Type).Export_To_Rhapsody(Me.Rpy_Element, report)
                         exported_dt_list.Add(dt)
                     End If
             End Select
         Next
 
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_Dependent_Data_Types(exported_dt_list)
+            pkg.Export_Dependent_Data_Types_To_Rhapsody(exported_dt_list, report, force)
         Next
     End Sub
 
-    Public Sub Export_Interfaces()
+    Public Sub Export_Interfaces_To_Rhapsody(report As Report)
         For Each sw_if In Me.Software_Interfaces
-            sw_if.Export_To_Rhapsody(Me.Rpy_Element)
+            sw_if.Export_To_Rhapsody(Me.Rpy_Element, report)
         Next
 
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_Interfaces()
+            pkg.Export_Interfaces_To_Rhapsody(report)
         Next
     End Sub
 
-    Public Sub Export_Component_Types()
+    Public Sub Export_Component_Types_To_Rhapsody(report As Report)
         For Each swct In Me.Component_Types
-            swct.Export_To_Rhapsody(Me.Rpy_Element)
+            swct.Export_To_Rhapsody(Me.Rpy_Element, report)
         Next
 
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_Component_Types()
+            pkg.Export_Component_Types_To_Rhapsody(report)
         Next
     End Sub
 
-    Public Sub Export_Compositions()
+    Public Sub Export_Compositions_To_Rhapsody(report As Report)
         For Each compo In Me.Root_Software_Compositions
-            compo.Export_To_Rhapsody(Me.Rpy_Element)
+            compo.Export_To_Rhapsody(Me.Rpy_Element, report)
         Next
 
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_Compositions()
+            pkg.Export_Compositions_To_Rhapsody(report)
         Next
     End Sub
 

@@ -234,17 +234,17 @@ Public Class Software_Model_Container
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
 
         ' Export packages
         For Each pkg_to_export In Me.PSWA_Packages
             pkg_to_export.Container = Me
-            pkg_to_export.Export_To_Rhapsody(Me.Rpy_Element)
+            pkg_to_export.Export_To_Rhapsody(Me.Rpy_Element, report)
         Next
 
         ' Export independent Data_Types
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_Independent_Data_Types()
+            pkg.Export_Independent_Data_Types_To_Rhapsody(report)
         Next
 
         ' Export dependent Data_Types
@@ -261,30 +261,43 @@ Public Class Software_Model_Container
         Next
         ' While the list is not empty, export Data_Types
         Dim exported_dt_list As New List(Of Data_Type)
+        Dim round_counter As Integer = 0
+        Dim force_export As Boolean = False
         While dt_list.Count <> 0
             For Each pkg In Me.PSWA_Packages
-                pkg.Export_Dependent_Data_Types(exported_dt_list)
+                pkg.Export_Dependent_Data_Types_To_Rhapsody(exported_dt_list, report, force_export)
             Next
             For Each exp_dt In exported_dt_list
                 dt_list.Remove(exp_dt)
             Next
+            round_counter += 1
+            If round_counter >= 5 Then
+                force_export = True
+            End If
         End While
 
         ' Export Interfaces
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_Interfaces()
+            pkg.Export_Interfaces_To_Rhapsody(report)
         Next
 
         ' Export Component_Types
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_Component_Types()
+            pkg.Export_Component_Types_To_Rhapsody(report)
         Next
 
         ' Export Compositions
         For Each pkg In Me.PSWA_Packages
-            pkg.Export_Compositions()
+            pkg.Export_Compositions_To_Rhapsody(report)
         Next
     End Sub
+
+    Public Overrides Sub Set_Rpy_Common_Attributes(
+            rpy_element As RPModelElement,
+            report As Report)
+        Me.Rpy_Element = rpy_element
+    End Sub
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation

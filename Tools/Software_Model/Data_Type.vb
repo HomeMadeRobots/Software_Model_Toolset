@@ -86,24 +86,40 @@ Public MustInherit Class Data_Type_Base_Typed
         End If
     End Sub
 
-    Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement)
-        MyBase.Merge_Rpy_Element(rpy_element)
+    Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
         Dim rpy_type As RPType = CType(rpy_element, RPType)
         If rpy_type.typedefBaseType.GUID <> Transform_UUID_To_GUID(Me.Base_Data_Type_Ref) Then
             rpy_type.getSaveUnit.setReadOnly(0)
             Dim referenced_rpy_type As RPType
             referenced_rpy_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
-            rpy_type.typedefBaseType = CType(referenced_rpy_type, RPClassifier)
+            If IsNothing(referenced_rpy_type) Then
+                Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Base_Data_Type not found : " & Me.Base_Data_Type_Ref.ToString & ".")
+            Else
+                rpy_type.typedefBaseType = CType(referenced_rpy_type, RPClassifier)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Merge Base_Data_Type.")
+            End If
+
         End If
     End Sub
 
-    Public Overrides Sub Set_Rpy_Common_Attributes(rpy_element As RPModelElement)
-        MyBase.Set_Rpy_Common_Attributes(rpy_element)
+    Public Overrides Sub Set_Rpy_Common_Attributes(rpy_element As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Common_Attributes(rpy_element, report)
         Dim rpy_type As RPType = CType(rpy_element, RPType)
         rpy_type.kind = "Typedef"
         Dim referenced_rpy_type As RPType
         referenced_rpy_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
-        rpy_type.typedefBaseType = CType(referenced_rpy_type, RPClassifier)
+        If IsNothing(referenced_rpy_type) Then
+            Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Base_Data_Type not found : " & Me.Base_Data_Type_Ref.ToString & ".")
+        Else
+            rpy_type.typedefBaseType = CType(referenced_rpy_type, RPClassifier)
+        End If
     End Sub
 
 
@@ -153,7 +169,7 @@ Public MustInherit Class Basic_Type
         Me.Top_Package = pkg
     End Sub
 
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         ' Basic_Type do not need to be exported as thay already belong to profile package.
     End Sub
 
@@ -205,15 +221,16 @@ Public Class Enumerated_Data_Type
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
         Dim rpy_type As RPType
         rpy_type = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Type"), RPType)
         If Not IsNothing(rpy_type) Then
-            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement))
+            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement), report)
+            ' TODO : merge Enumerals
         Else
             rpy_type = rpy_parent_pkg.addType(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement))
+            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement), report)
             rpy_type.addStereotype("Data_Type", "Type")
             rpy_type.kind = "Enumeration"
             For Each enumeral In Me.Enumerals
@@ -373,19 +390,22 @@ Public Class Array_Data_Type
         End If
     End Function
 
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
         Dim rpy_type As RPType
         rpy_type = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Type"), RPType)
         If Not IsNothing(rpy_type) Then
-            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement))
+            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement), report)
             If rpy_type.typedefMultiplicity <> CStr(Me.Multiplicity) Then
                 rpy_type.getSaveUnit.setReadOnly(0)
                 rpy_type.typedefMultiplicity = CStr(Me.Multiplicity)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Multplicity merged.")
             End If
         Else
             rpy_type = rpy_parent_pkg.addType(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement))
+            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement), report)
 
             rpy_type.typedefMultiplicity = CStr(Me.Multiplicity)
 
@@ -471,35 +491,44 @@ Public Class Physical_Data_Type
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
         Dim rpy_type As RPType
         rpy_type = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Type"), RPType)
         If Not IsNothing(rpy_type) Then
-            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement))
+            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement), report)
 
             Dim tag As RPTag
             tag = rpy_type.getTag("Unit")
             If tag.value <> Me.Unit Then
                 rpy_type.getSaveUnit.setReadOnly(0)
                 rpy_type.setTagValue(tag, Me.Unit)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Merge Unit.")
             End If
 
             tag = rpy_type.getTag("Resolution")
             If tag.value <> Me.Resolution Then
                 rpy_type.getSaveUnit.setReadOnly(0)
                 rpy_type.setTagValue(tag, Me.Resolution)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Merge Resolution.")
             End If
 
             tag = rpy_type.getTag("Offset")
             If tag.value <> Me.Offset Then
                 rpy_type.getSaveUnit.setReadOnly(0)
                 rpy_type.setTagValue(tag, Me.Offset)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Merge Offset.")
             End If
 
         Else
             rpy_type = rpy_parent_pkg.addType(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement))
+            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement), report)
 
             rpy_type.typedefMultiplicity = "1"
 
@@ -606,20 +635,20 @@ Public Class Structured_Data_Type
         Return result
     End Function
 
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
         Dim rpy_type As RPType
         rpy_type = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Type"), RPType)
         If Not IsNothing(rpy_type) Then
-            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement))
+            Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement), report)
         Else
             rpy_type = rpy_parent_pkg.addType(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement))
+            Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement), report)
             rpy_type.addStereotype("Data_Type", "Type")
             rpy_type.kind = "Structure"
         End If
         For Each field In Me.Fields
-            field.Export_To_Rhapsody(CType(rpy_type, RPModelElement))
+            field.Export_To_Rhapsody(CType(rpy_type, RPModelElement), report)
         Next
     End Sub
 
@@ -682,18 +711,15 @@ Public Class Structured_Data_Type_Field
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_type As RPType = CType(rpy_parent, RPType)
         Dim rpy_attr As RPAttribute
         rpy_attr = CType(rpy_parent_type.findNestedElement(Me.Name, "Attribute"), RPAttribute)
         If Not IsNothing(rpy_attr) Then
-            Me.Merge_Rpy_Element(CType(rpy_attr, RPModelElement))
+            Me.Merge_Rpy_Element(CType(rpy_attr, RPModelElement), report)
         Else
             rpy_attr = rpy_parent_type.addAttribute(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_attr, RPModelElement))
-            Dim conf_type As RPType
-            conf_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
-            rpy_attr.type = CType(conf_type, RPClassifier)
+            Me.Set_Rpy_Common_Attributes(CType(rpy_attr, RPModelElement), report)
         End If
     End Sub
 

@@ -9,6 +9,7 @@ Public Class Rpy_Software_Model
     Private Soft_Mdl_Container As Software_Model_Container = Nothing
     Private Rpy_Project As RPProject = Nothing
     Private Consistency_Report As Report
+    Private Import_Report As Report
 
     Public Sub Load_From_Rhapsody_Model(rpy_project As RPProject)
 
@@ -45,10 +46,17 @@ Public Class Rpy_Software_Model
         rpy_sw_mdl As RPProject,
         mdl_to_export As Software_Model_Container)
 
+        Me.Import_Report = New Report
         Me.Rpy_Project = rpy_sw_mdl
-        mdl_to_export.Set_Rpy_Common_Attributes(CType(Me.Rpy_Project, RPModelElement))
-        mdl_to_export.Export_To_Rhapsody(Nothing)
+        mdl_to_export.Set_Rpy_Common_Attributes(
+            CType(Me.Rpy_Project, RPModelElement),
+            Me.Import_Report)
+        mdl_to_export.Export_To_Rhapsody(Nothing, Me.Import_Report)
 
+    End Sub
+
+    Public Sub Generate_Importation_Report(report_file_stream As StreamWriter)
+        Me.Import_Report.Generate_Csv_Report(report_file_stream)
     End Sub
 
     Public Sub Check_Consistency()

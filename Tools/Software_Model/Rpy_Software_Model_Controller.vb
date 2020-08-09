@@ -69,13 +69,18 @@ Class Rpy_Software_Model_Controller
 
     End Sub
 
-
-    Public Sub Merge_Rpy_Soft_Model()
+    ' Import a model described in a xml file and merge it with the existing model in Rhapsody.
+    ' Two elements from the Rhaspody model or from the xml model are merged if they match "by name",
+    ' i.e. if they have the same path.
+    ' If UUID are differents, UUID from Rhaspody model is taken.
+    ' If Description of the xml model is empty, but not the Description from the Rhapsody model, the
+    ' Description from Rhaspody is kept.
+    Public Sub Import_And_Merge_By_Name()
         ' Initialize output window and display start message
         Dim chrono As New Stopwatch
         chrono.Start()
         Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Merge software model..." & vbCrLf)
+        Rhapsody_App.writeToOutputWindow("out", "Import and merge by name..." & vbCrLf)
 
         ' Get selected element and check that it is a Rhapsody project
         Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
@@ -94,36 +99,67 @@ Class Rpy_Software_Model_Controller
                 Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
             End If
 
-            Me.Model = New Rpy_Software_Model
-            Rhapsody_App.writeToOutputWindow("out", "Get software model from XML file...")
-            ' Open XML file
-            Dim file_stream As New FileStream(xml_file_path, FileMode.Open)
-            ' Deserialize XML file
-            Dim deserialization_status As Boolean = False
-            Dim serializer As New XmlSerializer(GetType(Software_Model_Container))
-            Dim mdl_container_to_merge = New Software_Model_Container
-            Try
-                mdl_container_to_merge =
-                    CType(serializer.Deserialize(file_stream), Software_Model_Container)
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
-                deserialization_status = True
-            Catch
-                Rhapsody_App.writeToOutputWindow("out",
-                    "Invalid xml file, cannot perform merge." & vbCrLf)
-            End Try
-            ' Close stuff
-            file_stream.Close()
+            ' Create string of the date for created csv file
+            Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
 
-            If deserialization_status = True Then
-                Rhapsody_App.writeToOutputWindow("out", "Merge models...")
-                Me.Model.Export_To_Rhapsody(rpy_sw_mdl, mdl_container_to_merge)
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+            ' Create report
+            ' Select csv file directory
+            Dim output_directory As String
+            output_directory = Select_Directory(Rhapsody_App, "model importation report file")
+            If output_directory = "" Then
+                Rhapsody_App.writeToOutputWindow("out", " no directory selected." & vbCrLf)
+            Else
+
+                Me.Model = New Rpy_Software_Model
+                Rhapsody_App.writeToOutputWindow("out", "Get software model from XML file...")
+                ' Open XML file
+                Dim file_stream As New FileStream(xml_file_path, FileMode.Open)
+                ' Deserialize XML file
+                Dim deserialization_status As Boolean = False
+                Dim serializer As New XmlSerializer(GetType(Software_Model_Container))
+                Dim mdl_container_to_merge = New Software_Model_Container
+                Try
+                    mdl_container_to_merge =
+                        CType(serializer.Deserialize(file_stream), Software_Model_Container)
+                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                    deserialization_status = True
+                Catch
+                    Rhapsody_App.writeToOutputWindow("out",
+                        "Invalid xml file, cannot perform merge." & vbCrLf)
+                End Try
+                ' Close stuff
+                file_stream.Close()
+
+                If deserialization_status = True Then
+                    Rhapsody_App.writeToOutputWindow("out", "Merge models...")
+                    Me.Model.Export_To_Rhapsody(rpy_sw_mdl, mdl_container_to_merge)
+                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+                    ' Open csv file
+                    Rhapsody_App.writeToOutputWindow("out", "Create report file...")
+                    Dim file_name As String =
+                        rpy_sw_mdl.name & "_Importation_Report_" & date_str & ".csv"
+                    Dim file_path As String = output_directory & "\" & file_name
+
+                    Dim report_file_stream As New StreamWriter(file_path, False)
+
+                    Me.Model.Generate_Importation_Report(report_file_stream)
+
+                    report_file_stream.Close()
+                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+
+                    Rhapsody_App.writeToOutputWindow(
+                        "out",
+                        "Importation report file full path : " & file_path & vbCrLf)
+
+                End If
+
             End If
 
         End If
 
         ' Display Result to output window
-        Rhapsody_App.writeToOutputWindow("out", "Merge end." & vbCrLf)
+        Rhapsody_App.writeToOutputWindow("out", "Importation end." & vbCrLf)
         chrono.Stop()
         Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
     End Sub

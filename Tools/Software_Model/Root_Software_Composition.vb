@@ -55,22 +55,22 @@ Public Class Root_Software_Composition
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
         Dim rpy_class As RPClass
         rpy_class = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Class"), RPClass)
         If Not IsNothing(rpy_class) Then
-            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement))
+            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement), report)
         Else
             rpy_class = rpy_parent_pkg.addClass(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement))
+            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement), report)
             rpy_class.addStereotype("Root_Software_Composition", "Class")
         End If
 
         Dim children As List(Of Software_Element) = Me.Get_Children
         If Not IsNothing(children) Then
             For Each child In children
-                child.Export_To_Rhapsody(CType(rpy_class, RPModelElement))
+                child.Export_To_Rhapsody(CType(rpy_class, RPModelElement), report)
             Next
         End If
     End Sub
@@ -234,17 +234,27 @@ Public Class Component_Prototype
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
         Dim rpy_inst As RPInstance
         rpy_inst = CType(rpy_parent_class.findNestedElement(Me.Name, "Instance"), RPInstance)
         If Not IsNothing(rpy_inst) Then
-            Me.Merge_Rpy_Element(CType(rpy_inst, RPModelElement))
+            Me.Merge_Rpy_Element(CType(rpy_inst, RPModelElement), report)
             If rpy_inst.otherClass.GUID <> Transform_UUID_To_GUID(Me.Component_Type_Ref) Then
                 rpy_inst.getSaveUnit.setReadOnly(0)
                 Dim referenced_rpy_swct As RPClass
                 referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
-                rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
+                If IsNothing(referenced_rpy_swct) Then
+                    Me.Add_Export_Error_Item(report,
+                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                        "Component_Type_Ref not found : " & Me.Component_Type_Ref.ToString & ".")
+                Else
+                    rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
+                    Me.Add_Export_Information_Item(report,
+                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                        "Component_Type_Ref merged.")
+                End If
+
             End If
             If Not IsNothing(Me.Configuration_Values) Then
                 For Each conf In Me.Configuration_Values
@@ -254,16 +264,27 @@ Public Class Component_Prototype
                     If rpy_inst.getAttributeValue(rpy_conf_attr.name) <> conf.Value Then
                         rpy_inst.getSaveUnit.setReadOnly(0)
                         rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
+                        Me.Add_Export_Information_Item(report,
+                            Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                            "Configuration_Value of " & rpy_conf_attr.name & " merged.")
                     End If
                 Next
             End If
         Else
             rpy_inst = CType(rpy_parent_class.addNewAggr("Instance", Me.Name), RPInstance)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_inst, RPModelElement))
+            Me.Set_Rpy_Common_Attributes(CType(rpy_inst, RPModelElement), report)
             rpy_inst.addStereotype("Component_Prototype", "Object")
+
             Dim referenced_rpy_swct As RPClass
             referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
-            rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
+            If IsNothing(referenced_rpy_swct) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Component_Type_Ref not found : " & Me.Component_Type_Ref.ToString & ".")
+            Else
+                rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
+            End If
+
             If Not IsNothing(Me.Configuration_Values) Then
                 For Each conf In Me.Configuration_Values
                     Dim rpy_conf_attr As RPAttribute = Nothing
@@ -388,13 +409,12 @@ Public Class Assembly_Connector
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
         Dim rpy_link As RPLink
         rpy_link = CType(rpy_parent_class.findNestedElement(Me.Name, "Link"), RPLink)
         If Not IsNothing(rpy_link) Then
-            Me.Merge_Rpy_Element(CType(rpy_link, RPModelElement))
-
+            Me.Merge_Rpy_Element(CType(rpy_link, RPModelElement), report)
         Else
             ' Dirty trick to be able to call Find_In_Rpy_Project before really assigning Rpy_Element
             Me.Rpy_Element = rpy_parent
@@ -414,7 +434,7 @@ Public Class Assembly_Connector
                 Nothing,
                 rpy_pport,
                 rpy_rport)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_link, RPModelElement))
+            Me.Set_Rpy_Common_Attributes(CType(rpy_link, RPModelElement), report)
             rpy_link.name = Me.Name
             rpy_link.addStereotype("Assembly_Connector", "Link")
 

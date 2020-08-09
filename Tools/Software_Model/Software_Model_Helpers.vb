@@ -19,7 +19,7 @@ Module Software_Model_Helpers
                 Case "Merge_Rpy_Soft_Model"
                     Dim soft_mdl_app As Rpy_Software_Model_Controller
                     soft_mdl_app = New Rpy_Software_Model_Controller
-                    soft_mdl_app.Merge_Rpy_Soft_Model()
+                    soft_mdl_app.Import_And_Merge_By_Name()
 
                 Case "Check_Rpy_Soft_Model"
                     Dim soft_mdl_app As Rpy_Software_Model_Controller

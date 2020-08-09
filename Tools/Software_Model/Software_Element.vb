@@ -39,6 +39,14 @@ Public MustInherit Class Software_Element
         Return Nothing
     End Function
 
+    Public Function Get_Rpy_Element_Path() As String
+        If IsNothing(Me.Rpy_Element) Then
+            Return ""
+        Else
+            Return Me.Rpy_Element.getFullPathName
+        End If
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -78,22 +86,33 @@ Public MustInherit Class Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public MustOverride Sub Export_To_Rhapsody(rpy_parent As RPModelElement)
+    Public MustOverride Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
 
-    Public Overridable Sub Merge_Rpy_Element(rpy_element As RPModelElement)
+    Public Overridable Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         Me.Rpy_Element = rpy_element
         If Me.Description <> "" Then
-            If Me.Description <> rpy_element.description Then
+            Dim tmp_desc_1 As String = Me.Description.Replace(vbLf, String.Empty)
+            Dim tmp_desc_2 As String
+            tmp_desc_2 = rpy_element.description.Replace(Environment.NewLine, String.Empty)
+            If tmp_desc_1 <> tmp_desc_2 Then
                 rpy_element.getSaveUnit.setReadOnly(0)
                 rpy_element.description = Me.Description
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Description merged.")
             End If
         End If
     End Sub
 
-    Public Overridable Sub Set_Rpy_Common_Attributes(rpy_element As RPModelElement)
+    Public Overridable Sub Set_Rpy_Common_Attributes(
+            rpy_element As RPModelElement,
+            report As Report)
         Me.Rpy_Element = rpy_element
         rpy_element.description = Me.Description
         rpy_element.GUID = Transform_UUID_To_GUID(Me.UUID)
+        Me.Add_Export_Information_Item(report,
+            Merge_Report_Item.E_Merge_Status.ELEMENT_CREATED,
+            "")
     End Sub
 
     Public Function Find_In_Rpy_Project(element_uuid As Guid) As RPModelElement
@@ -102,6 +121,32 @@ Public MustInherit Class Software_Element
         result = rpy_proj.findElementByGUID(Transform_UUID_To_GUID(element_uuid))
         Return result
     End Function
+
+    Public Sub Add_Export_Error_Item(
+        report As Report,
+        status As Merge_Report_Item.E_Merge_Status,
+        message As String)
+
+        Dim item As New Merge_Report_Item(
+                Me,
+                status,
+                Report_Item.Item_Criticality.CRITICALITY_ERROR,
+                message)
+            report.Add_Report_Item(item)
+    End Sub
+
+    Public Sub Add_Export_Information_Item(
+        report As Report,
+        status As Merge_Report_Item.E_Merge_Status,
+        message As String)
+
+        Dim item As New Merge_Report_Item(
+                Me,
+                status,
+                Report_Item.Item_Criticality.CRITICALITY_INFORMATION,
+                message)
+            report.Add_Report_Item(item)
+    End Sub
 
 
     '----------------------------------------------------------------------------------------------'
@@ -253,14 +298,36 @@ Public MustInherit Class Typed_Software_Element
         CType(Me.Rpy_Element, RPAttribute).type = CType(rpy_type, RPClassifier)
     End Sub
 
-    Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement)
-        MyBase.Merge_Rpy_Element(rpy_element)
+    Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
         Dim rpy_type As RPModelElement = Me.Get_Rpy_Data_Type
         If rpy_type.GUID <> Transform_UUID_To_GUID(Me.Base_Data_Type_Ref) Then
             rpy_element.getSaveUnit.setReadOnly(0)
-            Dim arg_type As RPType
-            arg_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
-            Me.Set_Rpy_Data_Type(arg_type)
+            Dim element_type As RPType
+            element_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
+            If IsNothing(element_type) Then
+                Me.Set_Rpy_Data_Type(element_type)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Base_Data_Type merged.")
+            Else
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Base_Data_Type not found : " & Me.Base_Data_Type_Ref.ToString & ".")
+            End If
+        End If
+    End Sub
+
+    Public Overrides Sub Set_Rpy_Common_Attributes(rpy_element As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Common_Attributes(rpy_element, report)
+        Dim element_type As RPType
+        element_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
+        If IsNothing(element_type) Then
+            Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Base_Data_Type not found : " & Me.Base_Data_Type_Ref.ToString & ".")
+        Else
+            Me.Set_Rpy_Data_Type(element_type)
         End If
     End Sub
 

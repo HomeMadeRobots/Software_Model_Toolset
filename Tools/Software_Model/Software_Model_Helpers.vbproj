@@ -75,6 +75,7 @@
     <Compile Include="Data_Series.vb" />
     <Compile Include="Data_Type.vb" />
     <Compile Include="Guid_Utilities.vb" />
+    <Compile Include="Merge_Report_Item.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
