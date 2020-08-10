@@ -216,7 +216,7 @@ Public MustInherit Class Port
         rpy_port = CType(rpy_parent_class.findNestedElement(Me.Name, "Port"), RPPort)
         If Not IsNothing(rpy_port) Then
             Me.Merge_Rpy_Element(CType(rpy_port, RPModelElement), report)
-            ' TODO : merge Contract_Ref
+            Me.Merge_Rpy_Contract(report)
         Else
             rpy_port = CType(rpy_parent_class.addNewAggr("Port", Me.Name), RPPort)
             Me.Set_Rpy_Common_Attributes(CType(rpy_port, RPModelElement), report)
@@ -227,6 +227,7 @@ Public MustInherit Class Port
 
     Protected MustOverride Sub Set_Stereotype()
     Protected MustOverride Sub Set_Contract(report As Report)
+    Protected MustOverride Sub Merge_Rpy_Contract(report As Report)
 
 
     Protected Overrides Sub Check_Own_Consistency(report As Report)
@@ -281,6 +282,36 @@ Public Class Provider_Port
         End If
     End Sub
 
+    Protected Overrides Sub Merge_Rpy_Contract(report As Report)
+        Dim rpy_port As RPPort = CType(Me.Rpy_Element, RPPort)
+        Dim current_rpy_if As RPClass = Nothing
+        If rpy_port.providedInterfaces.Count >= 1 Then
+            current_rpy_if = CType(rpy_port.providedInterfaces.Item(1), RPClass)
+        End If
+        Dim rpy_if As RPClass
+        rpy_if = CType(Me.Find_In_Rpy_Project(Me.Contract_Ref), RPClass)
+        If IsNothing(rpy_if) Then
+            Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Contract not found : " & Me.Contract_Ref.ToString & ".")
+        ElseIf Not IsNothing(current_rpy_if) Then
+            If current_rpy_if.GUID <> rpy_if.GUID Then
+                Me.Rpy_Element.getSaveUnit.setReadOnly(0)
+                rpy_port.removeProvidedInterface(current_rpy_if)
+                rpy_port.addProvidedInterface(rpy_if)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Contract merged.")
+            End If
+        Else
+            Me.Rpy_Element.getSaveUnit.setReadOnly(0)
+            rpy_port.addProvidedInterface(rpy_if)
+            Me.Add_Export_Information_Item(report,
+                Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                "Contract merged.")
+        End If
+    End Sub
+
 End Class
 
 
@@ -304,6 +335,7 @@ Public Class Requirer_Port
 
     End Sub
 
+
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
@@ -319,6 +351,36 @@ Public Class Requirer_Port
                 "Contract not found : " & Me.Contract_Ref.ToString & ".")
         Else
             CType(Me.Rpy_Element, RPPort).addRequiredInterface(rpy_if)
+        End If
+    End Sub
+
+    Protected Overrides Sub Merge_Rpy_Contract(report As Report)
+        Dim rpy_port As RPPort = CType(Me.Rpy_Element, RPPort)
+        Dim current_rpy_if As RPClass = Nothing
+        If rpy_port.requiredInterfaces.Count >= 1 Then
+            current_rpy_if = CType(rpy_port.requiredInterfaces.Item(1), RPClass)
+        End If
+        Dim rpy_if As RPClass
+        rpy_if = CType(Me.Find_In_Rpy_Project(Me.Contract_Ref), RPClass)
+        If IsNothing(rpy_if) Then
+            Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Contract not found : " & Me.Contract_Ref.ToString & ".")
+        ElseIf Not IsNothing(current_rpy_if) Then
+            If rpy_if.GUID <> current_rpy_if.GUID Then
+                Me.Rpy_Element.getSaveUnit.setReadOnly(0)
+                rpy_port.removeRequiredInterface(current_rpy_if)
+                rpy_port.addRequiredInterface(rpy_if)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Contract merged.")
+            End If
+        Else
+            Me.Rpy_Element.getSaveUnit.setReadOnly(0)
+            rpy_port.addRequiredInterface(rpy_if)
+            Me.Add_Export_Information_Item(report,
+                Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                "Contract merged.")
         End If
     End Sub
 
