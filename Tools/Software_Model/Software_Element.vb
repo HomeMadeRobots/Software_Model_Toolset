@@ -11,14 +11,9 @@ Public MustInherit Class Software_Element
     Protected Children As List(Of Software_Element) = Nothing
     Protected Rpy_Element As RPModelElement = Nothing
     Protected Top_Package As Top_Level_PSWA_Package = Nothing
-    Protected Path As String = ""
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Public Function Get_Path() As String
-        Return Me.Path
-    End Function
-
     Public Function Get_Top_Package() As Top_Level_PSWA_Package
         Return Me.Top_Package
     End Function
@@ -58,8 +53,6 @@ Public MustInherit Class Software_Element
         Me.Rpy_Element = rpy_mdl_element
 
         Me.Get_Own_Data_From_Rhapsody_Model()
-
-        Me.Path = owner.Get_Path & "/" & Me.Name
 
         Me.Top_Package.Container.Add_Element(Me)
 

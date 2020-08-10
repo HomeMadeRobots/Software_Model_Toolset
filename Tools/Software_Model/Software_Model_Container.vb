@@ -135,8 +135,6 @@ Public Class Software_Model_Container
 
         Me.Get_Own_Data_From_Rhapsody_Model()
 
-        Me.Path = ""
-
         Me.Import_Children_From_Rhapsody_Model()
 
     End Sub

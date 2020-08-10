@@ -15,7 +15,7 @@
         criticality As Report_Item.Item_Criticality,
         message As String)
 
-        Me.Rpy_Element_Path = sw_element.Get_Path
+        Me.Rpy_Element_Path = sw_element.Get_Rpy_Element_Path
         Me.Sw_Element_Type = sw_element.GetType
         Me.Rule_Id = rule_id
         Me.Criticality = criticality
