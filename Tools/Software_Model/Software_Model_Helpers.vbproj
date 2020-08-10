@@ -96,6 +96,7 @@
     <Compile Include="Root_Software_Composition.vb" />
     <Compile Include="Rpy_Connector_Controller.vb" />
     <Compile Include="Rpy_Controller.vb" />
+    <Compile Include="Rpy_Diagram_Controller.vb" />
     <Compile Include="Rpy_Software_Model_Controller.vb" />
     <Compile Include="Software_Element.vb" />
     <Compile Include="Software_Interface.vb" />

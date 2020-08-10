@@ -361,8 +361,6 @@ Public Class Assembly_Connector
     Public Requirer_Port_Ref As Guid = Nothing
 
 
-
-
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
 
         MyBase.Get_Own_Data_From_Rhapsody_Model()
@@ -396,11 +394,12 @@ Public Class Assembly_Connector
         End If
     End Sub
 
-    Public Shared Sub Get_Connector_Info(rpy_link As RPLink, _
-                                  ByRef provider_port As RPPort, _
-                                  ByRef requirer_port As RPPort, _
-                                  ByRef provider_component As RPInstance, _
-                                  ByRef requirer_component As RPInstance)
+    Public Shared Sub Get_Connector_Info(
+        rpy_link As RPLink,
+        ByRef provider_port As RPPort,
+        ByRef requirer_port As RPPort,
+        ByRef provider_component As RPInstance,
+        ByRef requirer_component As RPInstance)
         provider_port = rpy_link.toPort
         If Is_Provider_Port(CType(provider_port, RPModelElement)) Then
             requirer_port = rpy_link.fromPort

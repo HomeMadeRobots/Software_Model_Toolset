@@ -41,6 +41,16 @@ Module Software_Model_Helpers
                     conn_ctrl = New Rpy_Connector_Controller
                     conn_ctrl.Rename_Connectors()
 
+                Case "Generate_Component_Type_Diagram"
+                    Dim diagram_ctrl As Rpy_Diagram_Controller
+                    diagram_ctrl = New Rpy_Diagram_Controller
+                    diagram_ctrl.Generate_Component_Type_Diagram()
+
+                Case "Generate_Component_Prototype_Diagram"
+                    Dim diagram_ctrl As Rpy_Diagram_Controller
+                    diagram_ctrl = New Rpy_Diagram_Controller
+                    diagram_ctrl.Generate_Component_Prototype_Diagram()
+
             End Select
         Catch ex As Exception
             MsgBox("Software_Model_Tool : an error occured." & vbCrLf & vbCrLf & ex.Message)
