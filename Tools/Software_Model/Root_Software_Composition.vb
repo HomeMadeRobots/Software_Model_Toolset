@@ -361,6 +361,8 @@ Public Class Assembly_Connector
     Public Requirer_Port_Ref As Guid = Nothing
 
 
+
+
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
 
         MyBase.Get_Own_Data_From_Rhapsody_Model()
@@ -394,7 +396,7 @@ Public Class Assembly_Connector
         End If
     End Sub
 
-    Private Sub Get_Connector_Info(rpy_link As RPLink, _
+    Public Shared Sub Get_Connector_Info(rpy_link As RPLink, _
                                   ByRef provider_port As RPPort, _
                                   ByRef requirer_port As RPPort, _
                                   ByRef provider_component As RPInstance, _
