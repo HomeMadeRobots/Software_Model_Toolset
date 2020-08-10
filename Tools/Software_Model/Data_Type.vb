@@ -227,7 +227,51 @@ Public Class Enumerated_Data_Type
         rpy_type = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Type"), RPType)
         If Not IsNothing(rpy_type) Then
             Me.Merge_Rpy_Element(CType(rpy_type, RPModelElement), report)
-            ' TODO : merge Enumerals
+
+            Dim label_idx As Integer = 1
+            Dim rpy_label_nb As Integer = CType(Me.Rpy_Element, RPType).enumerationLiterals.Count
+            For Each label In Me.Enumerals
+                If label_idx <= rpy_label_nb Then
+                    Dim rpy_label As RPEnumerationLiteral
+                    rpy_label =
+                        CType(rpy_type.enumerationLiterals.Item(label_idx), RPEnumerationLiteral)
+                    If rpy_label.name <> label.Name Or
+                        rpy_label.value <> label.Value Or
+                        rpy_label.description <> label.Description Then
+                        rpy_type.getSaveUnit.setReadOnly(0)
+                        rpy_label.name = label.Name
+                        rpy_label.value = label.Value
+                        rpy_label.description = label.Description
+                        Me.Add_Export_Information_Item(report,
+                            Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                            "Merge enumeral #" & label_idx.ToString & ".")
+                    End If
+                Else
+                    rpy_type.getSaveUnit.setReadOnly(0)
+                    label.Export_To_Rhapsody(rpy_type)
+                    Me.Add_Export_Information_Item(report,
+                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                        "Add enumeral #" & label_idx.ToString & ".")
+                End If
+                label_idx += 1
+            Next
+
+            If rpy_label_nb > Me.Enumerals.Count Then
+                rpy_type.getSaveUnit.setReadOnly(0)
+                Dim rpy_label_to_remove_idx As Integer
+                For rpy_label_to_remove_idx = rpy_label_nb To (Me.Enumerals.Count + 1) Step -1
+                    Dim rpy_label_to_remove As RPEnumerationLiteral
+                    rpy_label_to_remove =
+                        CType(rpy_type.enumerationLiterals.Item(rpy_label_to_remove_idx), 
+                        RPEnumerationLiteral)
+                    rpy_type.deleteEnumerationLiteral(rpy_label_to_remove)
+                    Me.Add_Export_Information_Item(report,
+                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                        "Remove enumeral #" & label_idx.ToString & ".")
+                    label_idx += 1
+                Next
+            End If
+
         Else
             rpy_type = rpy_parent_pkg.addType(Me.Name)
             Me.Set_Rpy_Common_Attributes(CType(rpy_type, RPModelElement), report)
