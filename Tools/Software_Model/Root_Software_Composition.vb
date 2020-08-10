@@ -89,6 +89,10 @@ Public Class Root_Software_Composition
             Dim p_swc_port As Port = CType(Get_Element_By_Uuid(conn.Provider_Port_Ref), Port)
             Dim r_swc_port As Port = CType(Get_Element_By_Uuid(conn.Requirer_Port_Ref), Port)
 
+            If IsNothing(p_swc_port) Or IsNothing(r_swc_port) Then
+                Exit For
+            End If
+
             ' Check connected ports contract.
             If p_swc_port.Contract_Ref <> r_swc_port.Contract_Ref Then
                 Dim r_swc As Component_Prototype
@@ -247,7 +251,7 @@ Public Class Component_Prototype
                 If IsNothing(referenced_rpy_swct) Then
                     Me.Add_Export_Error_Item(report,
                         Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                        "Component_Type_Ref not found : " & Me.Component_Type_Ref.ToString & ".")
+                        "Component_Type not found : " & Me.Component_Type_Ref.ToString & ".")
                 Else
                     rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
                     Me.Add_Export_Information_Item(report,
@@ -280,7 +284,7 @@ Public Class Component_Prototype
             If IsNothing(referenced_rpy_swct) Then
                 Me.Add_Export_Error_Item(report,
                     Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                    "Component_Type_Ref not found : " & Me.Component_Type_Ref.ToString & ".")
+                    "Component_Type not found : " & Me.Component_Type_Ref.ToString & ".")
             Else
                 rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
             End If
@@ -370,22 +374,24 @@ Public Class Assembly_Connector
         Dim rpy_link As RPLink = CType(Me.Rpy_Element, RPLink)
 
         rpy_provider_port = rpy_link.toPort
-        If Is_Provider_Port(CType(rpy_provider_port, RPModelElement)) Then
-            rpy_requirer_port = rpy_link.fromPort
-            rpy_provider_component = rpy_link.to
-            rpy_requirer_component = rpy_link.from
-        Else
-            rpy_provider_port = rpy_link.fromPort
-            rpy_requirer_port = rpy_link.toPort
-            rpy_provider_component = rpy_link.from
-            rpy_requirer_component = rpy_link.to
+        rpy_requirer_port = rpy_link.fromPort
+        If Not IsNothing(rpy_provider_port) And Not IsNothing(rpy_requirer_port) Then
+            If Is_Provider_Port(CType(rpy_provider_port, RPModelElement)) Then
+                rpy_requirer_port = rpy_link.fromPort
+                rpy_provider_component = rpy_link.to
+                rpy_requirer_component = rpy_link.from
+            Else
+                rpy_provider_port = rpy_link.fromPort
+                rpy_requirer_port = rpy_link.toPort
+                rpy_provider_component = rpy_link.from
+                rpy_requirer_component = rpy_link.to
+            End If
+
+            Me.Provider_Component_Ref = Transform_GUID_To_UUID(rpy_provider_component.GUID)
+            Me.Provider_Port_Ref = Transform_GUID_To_UUID(rpy_provider_port.GUID)
+            Me.Requirer_Component_Ref = Transform_GUID_To_UUID(rpy_requirer_component.GUID)
+            Me.Requirer_Port_Ref = Transform_GUID_To_UUID(rpy_requirer_port.GUID)
         End If
-
-        Me.Provider_Component_Ref = Transform_GUID_To_UUID(rpy_provider_component.GUID)
-        Me.Provider_Port_Ref = Transform_GUID_To_UUID(rpy_provider_port.GUID)
-        Me.Requirer_Component_Ref = Transform_GUID_To_UUID(rpy_requirer_component.GUID)
-        Me.Requirer_Port_Ref = Transform_GUID_To_UUID(rpy_requirer_port.GUID)
-
     End Sub
 
     Private Sub Get_Connector_Info(rpy_link As RPLink, _
@@ -428,15 +434,43 @@ Public Class Assembly_Connector
             rpy_pcomp = CType(Me.Find_In_Rpy_Project(Me.Provider_Component_Ref), RPInstance)
             rpy_rcomp = CType(Me.Find_In_Rpy_Project(Me.Requirer_Component_Ref), RPInstance)
 
-            rpy_link = rpy_parent_class.addLink(
-                rpy_pcomp,
-                rpy_rcomp,
-                Nothing,
-                rpy_pport,
-                rpy_rport)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_link, RPModelElement), report)
-            rpy_link.name = Me.Name
-            rpy_link.addStereotype("Assembly_Connector", "Link")
+            If Not IsNothing(rpy_pport) And
+                Not IsNothing(rpy_rport) And
+                Not IsNothing(rpy_rcomp) And
+                Not IsNothing(rpy_pcomp) Then
+                rpy_link = rpy_parent_class.addLink(
+                    rpy_pcomp,
+                    rpy_rcomp,
+                    Nothing,
+                    rpy_pport,
+                    rpy_rport)
+                Me.Set_Rpy_Common_Attributes(CType(rpy_link, RPModelElement), report)
+                rpy_link.name = Me.Name
+                rpy_link.addStereotype("Assembly_Connector", "Link")
+            Else
+                If IsNothing(rpy_pport) Then
+                    Me.Add_Export_Error_Item(report,
+                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                        "Provider_Port not found : " & Me.Provider_Port_Ref.ToString & ".")
+                End If
+                If IsNothing(rpy_rport) Then
+                    Me.Add_Export_Error_Item(report,
+                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                        "Requirer_Port not found : " & Me.Requirer_Port_Ref.ToString & ".")
+                End If
+                If IsNothing(rpy_pcomp) Then
+                    Me.Add_Export_Error_Item(report,
+                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                        "Provider_Component not found : " _
+                        & Me.Provider_Component_Ref.ToString & ".")
+                End If
+                If IsNothing(rpy_rcomp) Then
+                    Me.Add_Export_Error_Item(report,
+                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                        "Requirer_Component not found : " _
+                        & Me.Requirer_Component_Ref.ToString & ".")
+                End If
+            End If
 
         End If
     End Sub

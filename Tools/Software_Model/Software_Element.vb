@@ -375,7 +375,7 @@ Public MustInherit Class Stream_Typed_Software_Element
             Case E_STREAM.OUTPUT
                 Return "Out"
             Case Else
-                Return "In"
+                Return "InOut"
         End Select
     End Function
 
