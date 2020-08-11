@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">8.5.2020::13:48:46</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.11.2020::13:45:7</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">8.5.2020::13:48:46</_modifiedTime>
+			<_modifiedTime type="a">8.11.2020::13:45:7</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">8.5.2020::13:48:46</weakCGTime>
+			<weakCGTime type="a">8.11.2020::13:45:7</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -65,10 +65,10 @@
 			<_id type="a">GUID 2fa76a8a-3a37-423d-82f8-cb10371b657b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">8.5.2020::13:48:46</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.5.2020::13:48:46</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.11.2020::13:45:7</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.11.2020::13:45:7</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">8.5.2020::13:48:46</weakCGTime>
+			<weakCGTime type="a">8.11.2020::13:45:7</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:29</strongCGTime>
 			<_defaultComposite type="s">GUID a7891663-41f3-4945-8795-f855279ddba9</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -87,10 +87,10 @@
 			<_id type="a">GUID b01a7485-2872-40b7-8b0f-3761dbef895c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Interfaces</_name>
-			<_modifiedTimeWeak type="a">1.27.2020::13:5:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.27.2020::13:5:57</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.10.2020::13:55:7</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.10.2020::13:55:7</_modifiedTime>
 			<_lastID type="a">10</_lastID>
-			<weakCGTime type="a">1.27.2020::13:5:57</weakCGTime>
+			<weakCGTime type="a">8.10.2020::13:55:7</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 3c82a337-1e56-4ed7-b917-2fdd55e2b50e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -217,7 +217,7 @@
 										<_Name type="a">Class</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Compartments</_Name>
 													<_Value type="a">Description, Operation</_Value>
@@ -225,10 +225,30 @@
 												</IProperty>
 												
 												<IProperty type="e">
+													<_Name type="a">ShowAttributes</_Name>
+													<_Value type="a">None</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowName</_Name>
+													<_Value type="a">Label</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Full_path,Relative,Name_only,Label</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
 													<_Name type="a">ShowOperations</_Name>
 													<_Value type="a">All</_Value>
 													<_Type type="a">Enum</_Type>
 													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowPortsInterfaces</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -244,13 +264,13 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Client_Server_Interface</_name>
-			<_modifiedTimeWeak type="a">1.27.2020::13:5:22</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.10.2020::13:55:7</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model information exchanged between software units (sw_atomic_component_type and sw_composite_component_type) throug their ports by formally describing the provided operations.%0D
 A services_interface can inherit from an other services_interface.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">1.27.2020::13:5:22</_modifiedTime>
+			<_modifiedTime type="a">8.10.2020::13:55:7</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -826,10 +846,10 @@ Has a data type.</_text>
 			<_id type="a">GUID e101f2b2-e3e3-4072-aed0-69558baa8af2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">3.30.2020::12:19:56</_modifiedTimeWeak>
-			<_modifiedTime type="a">3.30.2020::12:19:56</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.10.2020::13:57:35</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.10.2020::13:57:35</_modifiedTime>
 			<_lastID type="a">8</_lastID>
-			<weakCGTime type="a">3.30.2020::12:19:56</weakCGTime>
+			<weakCGTime type="a">8.10.2020::13:57:35</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:12:18</strongCGTime>
 			<_defaultComposite type="s">GUID 12866dc4-80e5-4782-9816-e02688faaa87</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -965,7 +985,7 @@ Has a data type.</_text>
 							<_Name type="a">ObjectModelGe</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">1</size>
+									<size type="a">2</size>
 									<IPropertyMetaclass type="e">
 										<_Name type="a">Class</_Name>
 										<Properties type="c">
@@ -995,6 +1015,48 @@ Has a data type.</_text>
 										</Properties>
 									</IPropertyMetaclass>
 									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Object</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">Compartments</_Name>
+													<_Value type="a">Description, Attribute</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowAttributes</_Name>
+													<_Value type="a">All</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowName</_Name>
+													<_Value type="a">Label</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Full_path,Relative,Name_only,Type,Label</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowOperations</_Name>
+													<_Value type="a">None</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowStereotypeOfClass</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
 								</IRPYRawContainer>
 							</Metaclasses>
 						</IPropertySubject>
@@ -1004,13 +1066,13 @@ Has a data type.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">3.30.2020::12:19:56</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.10.2020::13:57:35</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model an independent software unit.%0D
 </_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">3.30.2020::12:19:56</_modifiedTime>
+			<_modifiedTime type="a">8.10.2020::13:57:35</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -1555,10 +1617,10 @@ Has a contract : the dependent interface.</_text>
 			<_id type="a">GUID 7022ddb7-be5e-48a4-b7ad-4fbaf99a811c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Composition</_name>
-			<_modifiedTimeWeak type="a">1.27.2020::13:4:46</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.27.2020::13:4:46</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.11.2020::13:43:2</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.11.2020::13:43:2</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">1.27.2020::13:4:46</weakCGTime>
+			<weakCGTime type="a">8.11.2020::13:43:2</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 807477f8-c48c-4107-a18f-cb25af308f07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1769,18 +1831,25 @@ Has a contract : the dependent interface.</_text>
 										<_Name type="a">Object</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Compartments</_Name>
-													<_Value type="a">Description</_Value>
+													<_Value type="a">Description, Attribute</_Value>
 													<_Type type="a">MultiLine</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">ShowAttributes</_Name>
-													<_Value type="a">None</_Value>
+													<_Value type="a">All</_Value>
 													<_Type type="a">Enum</_Type>
 													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowName</_Name>
+													<_Value type="a">Name_only</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Full_path,Relative,Name_only,Type,Label</_ExtraTypeInfo>
 												</IProperty>
 												
 												<IProperty type="e">
@@ -1809,12 +1878,12 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Prototype</_name>
-			<_modifiedTimeWeak type="a">1.27.2020::13:4:38</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.11.2020::13:43:2</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model an instance of a software unit within a composite software unit (sw_composite_component_type) or a whole software (software_composition).</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">1.27.2020::13:4:38</_modifiedTime>
+			<_modifiedTime type="a">8.11.2020::13:43:2</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -1971,10 +2040,10 @@ Has a contract : the dependent interface.</_text>
 			<_id type="a">GUID 7bc8635c-da90-40ea-a26e-76ec5b649cf9</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">8.5.2020::13:48:46</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.5.2020::13:48:46</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.11.2020::13:45:32</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.11.2020::13:45:32</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">8.5.2020::13:48:46</weakCGTime>
+			<weakCGTime type="a">8.11.2020::13:45:32</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 4456ecac-9846-4117-95af-8d8693ef17fd</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2050,7 +2119,55 @@ Has a contract : the dependent interface.</_text>
 							<_Name type="a">ObjectModelGe</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">1</size>
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Object</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">6</size>
+												<IProperty type="e">
+													<_Name type="a">Compartments</_Name>
+													<_Value type="a">Description, Attribute</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowAttributes</_Name>
+													<_Value type="a">All</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowName</_Name>
+													<_Value type="a">Name_only</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Full_path,Relative,Name_only,Type,Label</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowOperations</_Name>
+													<_Value type="a">None</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowPorts</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowStereotypeOfClass</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
 									<IPropertyMetaclass type="e">
 										<_Name type="a">Tag</_Name>
 										<Properties type="c">
@@ -2075,7 +2192,7 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">PSWA_Diagram</_name>
-			<_modifiedTimeWeak type="a">8.5.2020::13:48:46</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.11.2020::13:45:32</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_textRTF type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 {\colortbl ;\red0\green0\blue0;}%0D
@@ -2087,7 +2204,7 @@ Allows to design classic class diagram for SDD.\par%0D
 </_textRTF>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">8.5.2020::13:48:46</_modifiedTime>
+			<_modifiedTime type="a">8.11.2020::13:45:32</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
