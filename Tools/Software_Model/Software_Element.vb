@@ -167,7 +167,7 @@ Public MustInherit Class Software_Element
 
         If Me.Description = "" Then
             Me.Add_Consistency_Check_Warning_Item(report,
-                "TBD",
+                "ELMT_5_1",
                 "Description is missing.")
         End If
 

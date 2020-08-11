@@ -42,7 +42,7 @@ Public Class Merge_Report_Item
             Case 2
                 Return Me.Sw_Element_Type.ToString.Split("."c).Last()
             Case 3
-                Return Report_Item.Get_Criticality_String(Me.Criticality)
+                Return Me.Get_Criticality_String()
             Case 4
                 Return Get_Status_String(Me.Merge_Status)
             Case 5
@@ -52,8 +52,8 @@ Public Class Merge_Report_Item
         End Select
     End Function
 
-    Private Shared Function Get_Status_String(status As E_Merge_Status) As String
-        Select Case status
+    Private Function Get_Status_String() As String
+        Select Case Me.Merge_Status
             Case E_Merge_Status.ELEMENT_ALREADY_EXISTS
                 Return "ELEMENT_ALREADY_EXISTS"
             Case E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED

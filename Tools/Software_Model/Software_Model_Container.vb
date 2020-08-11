@@ -13,7 +13,7 @@ Public Class Software_Model_Container
 
     Private Elements_Dictionary_By_Uuid As New Dictionary(Of Guid, Software_Element)
 
-    Private Consistency_Report As Report
+    Private Consistency_Report As Consistency_Check_Report
     Private Import_Report As Report
 
     Private Shared Basic_Integer_Type_Name_List() As String =
@@ -328,7 +328,7 @@ Public Class Software_Model_Container
     '----------------------------------------------------------------------------------------------'
     ' Methods for model check
     Public Overloads Sub Check_Consistency()
-        Me.Consistency_Report = New Report
+        Me.Consistency_Report = New Consistency_Check_Report
         Me.Check_Consistency(Me.Consistency_Report)
     End Sub
 

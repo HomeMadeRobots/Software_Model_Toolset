@@ -7,30 +7,34 @@ Public Class Report
     Protected Nb_Error As Integer = 0
 
     Public Overridable Sub Generate_Csv_Report(report_file_stream As StreamWriter)
-
         If Me.Report_Items_List.Count > 0 Then
+            Me.Write_Header(report_file_stream)
+            Me.Write_Content(report_file_stream)
+        End If
+    End Sub
 
-            ' Write header
-            Dim attribute_name As String
-            Dim item_attribute_name_list As List(Of String)
-            item_attribute_name_list = Me.Report_Items_List.First.Get_Item_Attribute_Name_List
-            For Each attribute_name In item_attribute_name_list
-                report_file_stream.Write(attribute_name & ";")
+    Protected Sub Write_Header(report_file_stream As StreamWriter)
+        Dim attribute_name As String
+        Dim item_attribute_name_list As List(Of String)
+        item_attribute_name_list = Me.Report_Items_List.First.Get_Item_Attribute_Name_List
+        For Each attribute_name In item_attribute_name_list
+            report_file_stream.Write(attribute_name & ";")
+        Next
+        report_file_stream.WriteLine()
+    End Sub
+
+    Protected Overridable Sub Write_Content(report_file_stream As StreamWriter)
+        Dim item_attribute_name_list As List(Of String)
+        item_attribute_name_list = Me.Report_Items_List.First.Get_Item_Attribute_Name_List
+        Dim nb_attribute As Integer = item_attribute_name_list.Count
+        Dim item As Report_Item
+        For Each item In Me.Report_Items_List
+            Dim attribute_idx As Integer
+            For attribute_idx = 1 To nb_attribute
+                report_file_stream.Write(item.Get_Item_Attribute_Value(attribute_idx) & ";")
             Next
             report_file_stream.WriteLine()
-
-            ' Write content
-            Dim nb_attribute As Integer = item_attribute_name_list.Count
-            Dim item As Report_Item
-            For Each item In Me.Report_Items_List
-                Dim attribute_idx As Integer
-                For attribute_idx = 1 To nb_attribute
-                    report_file_stream.Write(item.Get_Item_Attribute_Value(attribute_idx) & ";")
-                Next
-                report_file_stream.WriteLine()
-            Next
-        End If
-
+        Next
     End Sub
 
     Public Sub Add_Report_Item(item As Report_Item)
@@ -68,43 +72,8 @@ Public MustInherit Class Report_Item
         Return Me.Criticality
     End Function
 
-    Public Sub Set_Analyse(analyse As String)
-        Me.Analysis = analyse
-    End Sub
-
-    Public Sub Set_Error()
-        Me.Criticality = Item_Criticality.CRITICALITY_ERROR
-    End Sub
-
-    Public Sub Set_Warning()
-        Me.Criticality = Item_Criticality.CRITICALITY_WARNING
-    End Sub
-
-    Public Sub Set_Info()
-        Me.Criticality = Item_Criticality.CRITICALITY_INFORMATION
-    End Sub
-
-    Public Sub Set_Message(message As String)
-        Me.Message = message
-    End Sub
-
-    Public Sub Set_Error_Message(message As String)
-        Me.Criticality = Item_Criticality.CRITICALITY_ERROR
-        Me.Message = message
-    End Sub
-
-    Public Sub Set_Warning_Message(message As String)
-        Me.Criticality = Item_Criticality.CRITICALITY_WARNING
-        Me.Message = message
-    End Sub
-
-    Public Sub Set_Info_Message(message As String)
-        Me.Criticality = Item_Criticality.CRITICALITY_INFORMATION
-        Me.Message = message
-    End Sub
-
-    Shared Function Get_Criticality_String(criticality As Item_Criticality) As String
-        Select Case criticality
+    Public Function Get_Criticality_String() As String
+        Select Case Me.Criticality
         Case Item_Criticality.CRITICALITY_ERROR
             Return "ERROR"
         Case Item_Criticality.CRITICALITY_WARNING
