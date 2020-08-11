@@ -3,7 +3,7 @@ Imports System.IO
 Imports System.Windows
 Imports System.Xml.Serialization
 
-Public Class Rpy_Software_Model_Controller
+Public Class Rpy_Model_Controller
     Inherits Rpy_Controller
 
     Private Model As Software_Model_Container
