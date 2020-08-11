@@ -31,6 +31,10 @@ Module Software_Model_Helpers
                     Dim sw_mdl_ctrl As New Rpy_Model_Controller
                     sw_mdl_ctrl.Generate_All()
 
+                Case "Remove_Empty_Packages"
+                    Dim sw_mdl_ctrl As New Rpy_Model_Controller
+                    sw_mdl_ctrl.Remove_Empty_Packages()
+
                 Case "Rename_Connectors"
                     Dim conn_ctrl As New Rpy_Connector_Controller
                     conn_ctrl.Rename_Connectors()

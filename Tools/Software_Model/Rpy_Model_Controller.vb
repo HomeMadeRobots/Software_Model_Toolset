@@ -63,6 +63,7 @@ Public Class Rpy_Model_Controller
 
     End Sub
 
+
     ' Import a model described in a xml file and merge it with the existing model in Rhapsody.
     ' Two elements from the Rhaspody model or from the xml model are merged if they match "by name",
     ' i.e. if they have the same path.
@@ -393,5 +394,35 @@ Public Class Rpy_Model_Controller
         Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
     End Sub
 
+
+    ' Remove empty packages from the Rhapsody model.
+    ' It deals onmly with PSWA_Packages.
+    ' A package is considered as empty if it aggregates only packages that recursively only 
+    ' aggregates packages.
+    Public Sub Remove_Empty_Packages()
+        ' Initialize output window and display start message
+        Dim chrono As New Global.System.Diagnostics.Stopwatch
+        chrono.Start()
+        Rhapsody_App.clearOutputWindow("out")
+        Rhapsody_App.writeToOutputWindow("out", "Remove empty PSWA_Packages..." & vbCrLf)
+
+        ' Get selected element and check that it is a Rhapsody project
+        ' Get selected element and check that it is a Rhapsody project
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
+
+        If Not IsNothing(rpy_sw_mdl) Then
+            Dim root_level_package As RPPackage
+            For Each root_level_package In rpy_sw_mdl.packages
+                If Is_PSWA_Package(CType(root_level_package, RPModelElement)) Then
+                    PSWA_Package.Remove_Empty_Packages(root_level_package)
+                End If
+            Next
+        End If
+
+        ' Display result to output window
+        Rhapsody_App.writeToOutputWindow("out", "End removing empty PSWA_Packages." & vbCrLf)
+        chrono.Stop()
+        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+    End Sub
 
 End Class

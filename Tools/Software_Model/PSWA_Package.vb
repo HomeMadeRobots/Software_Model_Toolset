@@ -57,6 +57,28 @@ Public Class PSWA_Package
         End If
     End Sub
 
+    Public Shared Sub Remove_Empty_Packages(rpy_package As RPPackage)
+        Dim child_pgk As RPPackage
+        For Each child_pgk In rpy_package.packages
+            Remove_Empty_Packages(child_pgk)
+        Next
+        If PSWA_Package.Is_Empty(rpy_package) Then
+            rpy_package.deleteFromProject()
+        End If
+    End Sub
+
+    Private Shared Function Is_Empty(rpy_pkg As RPPackage) As Boolean
+        Dim result As Boolean = False
+        If rpy_pkg.classes.Count = 0 _
+            And rpy_pkg.types.Count = 0 _
+            And rpy_pkg.modules.Count = 0 _
+            And rpy_pkg.globalObjects.Count = 0 _
+            And rpy_pkg.packages.Count = 0 Then
+            result = True
+        End If
+        Return result
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
