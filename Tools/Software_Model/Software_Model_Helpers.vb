@@ -51,6 +51,14 @@ Module Software_Model_Helpers
                     Dim diagram_ctrl As New Rpy_Diagram_Controller
                     diagram_ctrl.Generate_Component_Prototype_Diagram()
 
+                Case "Display_GUID"
+                    Dim elmt_ctrl As New Rpy_Element_Controller
+                    elmt_ctrl.Display_Rpy_Element_GUID()
+
+                Case "Modify_GUID"
+                    Dim elmt_ctrl As New Rpy_Element_Controller
+                    elmt_ctrl.Modify_Rpy_Element_GUID()
+
             End Select
         Catch ex As Exception
             MsgBox("Software_Model_Tool : an error occured." & vbCrLf & vbCrLf & ex.Message)
