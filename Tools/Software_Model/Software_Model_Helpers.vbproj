@@ -97,13 +97,12 @@
     <Compile Include="Rpy_Connector_Controller.vb" />
     <Compile Include="Rpy_Controller.vb" />
     <Compile Include="Rpy_Diagram_Controller.vb" />
-    <Compile Include="Rpy_Software_Model_Controller.vb" />
+    <Compile Include="Rpy_Model_Controller.vb" />
     <Compile Include="Software_Element.vb" />
     <Compile Include="Software_Interface.vb" />
     <Compile Include="Software_Metamodel.vb" />
     <Compile Include="Software_Model_Container.vb" />
     <Compile Include="Software_Model_Helpers.vb" />
-    <Compile Include="Rpy_Software_Model.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

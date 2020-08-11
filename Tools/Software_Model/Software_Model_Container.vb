@@ -1,5 +1,8 @@
 ﻿Imports rhapsody2
+Imports System.IO
+Imports System.Xml
 Imports System.Xml.Serialization
+Imports System.Text
 
 Public Class Software_Model_Container
 
@@ -9,6 +12,9 @@ Public Class Software_Model_Container
     Public PSWA_Packages As List(Of Top_Level_PSWA_Package)
 
     Private Elements_Dictionary_By_Uuid As New Dictionary(Of Guid, Software_Element)
+
+    Private Consistency_Report As Report
+    Private Import_Report As Report
 
     Private Shared Basic_Integer_Type_Name_List() As String =
         {"sint8", "sint16", "sint32", "sint64", "uint8", "uint16", "uint32", "uint64"}
@@ -32,14 +38,14 @@ Public Class Software_Model_Container
     Private Component_Types_List As List(Of Component_Type) = Nothing
     Private Compositions_List As List(Of Root_Software_Composition) = Nothing
 
-    Private Nb_Interfaces As Data_Series
-    Private Nb_Component_Types As Data_Series
-    Private Nb_Data_Types As Data_Series
+    Private Nb_Interfaces_Series As Data_Series
+    Private Nb_Component_Types_Series As Data_Series
+    Private Nb_Data_Types_Series As Data_Series
 
-    Private Documentation_Rate As Data_Series
-    Private Distance As Data_Series
-    Private Component_Type_WMC As Data_Series
-    Private Interfaces_WMC As Data_Series
+    Private Documentation_Rate_Series As Data_Series
+    Private Distance_Series As Data_Series
+    Private Component_Type_WMC_Series As Data_Series
+    Private Interfaces_WMC_Series As Data_Series
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -125,6 +131,24 @@ Public Class Software_Model_Container
         End If
         Return Me.Data_Types_List
     End Function
+
+    Public Sub Create_Xml(xml_file_stream As FileStream)
+
+        ' Initialize XML writer
+        Dim writer As XmlTextWriter
+        writer = New XmlTextWriter(xml_file_stream, Encoding.UTF8)
+        writer.Indentation = 2
+        writer.IndentChar = CChar(" ")
+        writer.Formatting = Formatting.Indented
+
+        ' Serialize model
+        Dim serializer As New XmlSerializer(GetType(Software_Model_Container))
+        serializer.Serialize(writer, Me)
+
+        ' Close writter
+        writer.Close()
+
+    End Sub
 
 
     '----------------------------------------------------------------------------------------------'
@@ -232,6 +256,12 @@ Public Class Software_Model_Container
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
+    Public Overloads Sub Export_To_Rhapsody(rpy_sw_mdl As RPProject)
+        Me.Import_Report = New Report
+        Me.Rpy_Element = CType(rpy_sw_mdl, RPModelElement)
+        Me.Export_To_Rhapsody(Nothing, Me.Import_Report)
+    End Sub
+
     Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
 
         ' Export packages
@@ -290,76 +320,193 @@ Public Class Software_Model_Container
         Next
     End Sub
 
-    Public Overrides Sub Set_Rpy_Common_Attributes(
-            rpy_element As RPModelElement,
-            report As Report)
-        Me.Rpy_Element = rpy_element
+    Public Sub Generate_Importation_Report(report_file_stream As StreamWriter)
+        Me.Import_Report.Generate_Csv_Report(report_file_stream)
     End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model check
+    Public Overloads Sub Check_Consistency()
+        Me.Consistency_Report = New Report
+        Me.Check_Consistency(Me.Consistency_Report)
+    End Sub
+
+    Public Sub Generate_Consistency_Report(report_file_stream As StreamWriter)
+        Me.Consistency_Report.Generate_Csv_Report(report_file_stream)
+    End Sub
+
+    Public Function Has_Error() As Boolean
+        If Me.Consistency_Report.Get_Error_Number > 0 Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
     Public Sub Compute_Metrics()
-        Me.Nb_Interfaces = New Data_Series
-        Me.Nb_Component_Types = New Data_Series
-        Me.Nb_Data_Types = New Data_Series
+        Me.Nb_Interfaces_Series = New Data_Series
+        Me.Nb_Component_Types_Series = New Data_Series
+        Me.Nb_Data_Types_Series = New Data_Series
 
-        Me.Documentation_Rate = New Data_Series
-        Me.Distance = New Data_Series
-        Me.Component_Type_WMC = New Data_Series
-        Me.Interfaces_WMC = New Data_Series
+        Me.Documentation_Rate_Series = New Data_Series
+        Me.Distance_Series = New Data_Series
+        Me.Component_Type_WMC_Series = New Data_Series
+        Me.Interfaces_WMC_Series = New Data_Series
 
         For Each pkg In Me.PSWA_Packages
 
-            Me.Documentation_Rate.Add_Value(pkg.Get_Package_Documentation_Rate())
+            Me.Documentation_Rate_Series.Add_Value(pkg.Get_Package_Documentation_Rate())
 
             pkg.Compute_Nb_Classifiers()
-            Me.Nb_Interfaces.Add_Value(pkg.Get_Nb_Interfaces)
-            Me.Nb_Component_Types.Add_Value(pkg.Get_Nb_Component_Types)
-            Me.Nb_Data_Types.Add_Value(pkg.Get_Nb_Data_Types)
+            Me.Nb_Interfaces_Series.Add_Value(pkg.Get_Nb_Interfaces)
+            Me.Nb_Component_Types_Series.Add_Value(pkg.Get_Nb_Component_Types)
+            Me.Nb_Data_Types_Series.Add_Value(pkg.Get_Nb_Data_Types)
 
             pkg.Find_Needed_Elements()
             pkg.Find_Dependent_Elements()
             pkg.Compute_Coupling()
-            Me.Distance.Add_Value(pkg.Get_Distance)
+            Me.Distance_Series.Add_Value(pkg.Get_Distance)
         Next
 
         For Each swct In Me.Component_Types_List
-            Me.Component_Type_WMC.Add_Value(swct.Compute_WMC)
+            Me.Component_Type_WMC_Series.Add_Value(swct.Compute_WMC)
         Next
 
         For Each sw_if In Me.Interfaces_List
-            Me.Interfaces_WMC.Add_Value(sw_if.Compute_WMC)
+            Me.Interfaces_WMC_Series.Add_Value(sw_if.Compute_WMC)
         Next
 
     End Sub
 
-    Public Function Get_Documentation_Rate_Series() As Data_Series
-        Return Me.Documentation_Rate
-    End Function
+    Public Sub Generate_Metrics_Report(file_stream As StreamWriter)
 
-    Public Function Get_Distance_Series() As Data_Series
-        Return Me.Distance
-    End Function
+        Add_Seperator(file_stream)
+        file_stream.WriteLine("Metrics report : " & Me.Name)
+        Add_Seperator(file_stream)
+        file_stream.WriteLine()
+        file_stream.WriteLine()
 
-    Public Function Get_Component_Type_WMC_Series() As Data_Series
-        Return Me.Component_Type_WMC
-    End Function
+        Add_Seperator(file_stream)
+        file_stream.WriteLine("Project metrics")
+        file_stream.WriteLine()
+        file_stream.WriteLine(
+            "Number of PSWA_Packages : " &
+            Me.PSWA_Packages.Count)
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Nb_Data_Types_Series,
+            "Number of Data_Types")
+        file_stream.WriteLine("    tot : " & Me.Nb_Data_Types_Series.Get_Sum)
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Nb_Interfaces_Series,
+            "Number of Interfaces")
+        file_stream.WriteLine("    tot : " & Me.Nb_Interfaces_Series.Get_Sum)
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Nb_Component_Types_Series,
+            "Number of Component_Types")
+            file_stream.WriteLine("    tot : " & Me.Nb_Component_Types_Series.Get_Sum)
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Documentation_Rate_Series,
+            "Documentation rate")
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Distance_Series,
+            "Distance")
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Component_Type_WMC_Series,
+            "Component_Type WMC")
+        file_stream.WriteLine()
+        Me.Write_Series_Metrics(
+            file_stream,
+            Me.Interfaces_WMC_Series,
+            "Interfaces WMC")
+        Add_Seperator(file_stream)
+        file_stream.WriteLine()
 
-    Public Function Get_Interfaces_WMC_Series() As Data_Series
-        Return Me.Interfaces_WMC
-    End Function
+        For Each pkg In Me.PSWA_Packages
 
-    Public Function Get_Nb_Interfaces_Series() As Data_Series
-        Return Me.Nb_Interfaces
-    End Function
+            file_stream.WriteLine()
+            Add_Seperator(file_stream)
 
-    Public Function Get_Nb_Component_Types_Series() As Data_Series
-        Return Me.Nb_Component_Types
-    End Function
+            file_stream.WriteLine("PSWA_Package : " & pkg.Name)
+            file_stream.WriteLine()
 
-    Public Function Get_Nb_Data_Types_Series() As Data_Series
-        Return Me.Nb_Data_Types
-    End Function
+            file_stream.WriteLine("Documentation rate : " &
+                pkg.Get_Package_Documentation_Rate.ToString("p0"))
+            file_stream.WriteLine()
+
+            file_stream.WriteLine("Number of Data_Types : " & pkg.Get_Nb_Data_Types)
+            file_stream.WriteLine("Number of Interfaces : " & pkg.Get_Nb_Interfaces)
+            file_stream.WriteLine("Number of Component_Types : " & pkg.Get_Nb_Component_Types)
+            file_stream.WriteLine("Number of Compositions : " & pkg.Get_Nb_Compositions)
+            file_stream.WriteLine("Abstraction level : " _
+                & pkg.Get_Abstraction_Level.ToString("0.00"))
+            file_stream.WriteLine()
+
+            file_stream.WriteLine("Efferent coupling : " & pkg.Get_Efferent_Coupling)
+            file_stream.WriteLine("Afferent coupling : " & pkg.Get_Afferent_Coupling)
+            file_stream.WriteLine("Instability : " & pkg.Get_Instability.ToString("0.00"))
+            file_stream.WriteLine()
+
+            file_stream.WriteLine("Distance : " & pkg.Get_Distance.ToString("0.00"))
+
+            file_stream.WriteLine()
+            file_stream.WriteLine("Interfaces : ")
+            Dim pkg_list As List(Of PSWA_Package) = pkg.Get_All_Packages
+            For Each current_pkg In pkg_list
+
+                If Not IsNothing(current_pkg.Software_Interfaces) Then
+                    For Each sw_if In current_pkg.Software_Interfaces
+                        file_stream.WriteLine()
+                        file_stream.WriteLine("    " & sw_if.Name)
+                        file_stream.WriteLine("        WMC : " & sw_if.Compute_WMC())
+
+                    Next
+                End If
+            Next
+
+            file_stream.WriteLine()
+            file_stream.WriteLine("Component_Types : ")
+            For Each current_pkg In pkg_list
+                If Not IsNothing(current_pkg.Component_Types) Then
+                    For Each swct In current_pkg.Component_Types
+                        file_stream.WriteLine()
+                        file_stream.WriteLine("    " & swct.Name)
+                        file_stream.WriteLine("        WMC : " & swct.Compute_WMC())
+                    Next
+                End If
+            Next
+
+        Next
+    End Sub
+
+    Private Sub Add_Seperator(file_stream As StreamWriter)
+        file_stream.WriteLine("===============================================================")
+    End Sub
+
+    Private Sub Write_Series_Metrics(
+        file_stream As StreamWriter,
+        series As Data_Series,
+        series_name As String)
+        file_stream.WriteLine(series_name & " : ")
+        file_stream.WriteLine("    avg : " & series.Get_Average.ToString("0.00"))
+        file_stream.WriteLine("    min : " & series.Get_Min.ToString("0.00"))
+        file_stream.WriteLine("    max : " & series.Get_Max.ToString("0.00"))
+        file_stream.WriteLine("    dev : " & series.Get_Standard_Deviation.ToString("0.00"))
+    End Sub
 
 End Class

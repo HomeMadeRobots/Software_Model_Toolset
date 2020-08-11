@@ -6,7 +6,7 @@ Imports System.Xml.Serialization
 Public Class Rpy_Software_Model_Controller
     Inherits Rpy_Controller
 
-    Private Model As Rpy_Software_Model
+    Private Model As Software_Model_Container
 
     ' Export the Rhapsody model in a xml file.
     ' The Rhapsody model select element shall be the root (Rhapsody project).
@@ -29,8 +29,8 @@ Public Class Rpy_Software_Model_Controller
 
             ' Get model from Rhapsody
             Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
-            Me.Model = New Rpy_Software_Model
-            Me.Model.Load_From_Rhapsody_Model(rpy_sw_mdl)
+            Me.Model = New Software_Model_Container
+            Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
             Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
 
             ' Select xml file directory
@@ -104,16 +104,15 @@ Public Class Rpy_Software_Model_Controller
                 Rhapsody_App.writeToOutputWindow("out", " no directory selected." & vbCrLf)
             Else
 
-                Me.Model = New Rpy_Software_Model
+                Me.Model = New Software_Model_Container
                 Rhapsody_App.writeToOutputWindow("out", "Get software model from XML file...")
                 ' Open XML file
                 Dim file_stream As New FileStream(xml_file_path, FileMode.Open)
                 ' Deserialize XML file
                 Dim deserialization_status As Boolean = False
                 Dim serializer As New XmlSerializer(GetType(Software_Model_Container))
-                Dim mdl_container_to_merge = New Software_Model_Container
                 Try
-                    mdl_container_to_merge =
+                    Me.Model =
                         CType(serializer.Deserialize(file_stream), Software_Model_Container)
                     Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
                     deserialization_status = True
@@ -126,7 +125,7 @@ Public Class Rpy_Software_Model_Controller
 
                 If deserialization_status = True Then
                     Rhapsody_App.writeToOutputWindow("out", "Merge models...")
-                    Me.Model.Export_To_Rhapsody(rpy_sw_mdl, mdl_container_to_merge)
+                    Me.Model.Export_To_Rhapsody(rpy_sw_mdl)
                     Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
 
                     ' Open csv file
@@ -177,8 +176,8 @@ Public Class Rpy_Software_Model_Controller
 
             ' Get model from Rhapsody
             Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
-            Me.Model = New Rpy_Software_Model
-            Me.Model.Load_From_Rhapsody_Model(rpy_sw_mdl)
+            Me.Model = New Software_Model_Container
+            Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
             Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
 
             ' Check model
@@ -239,8 +238,8 @@ Public Class Rpy_Software_Model_Controller
 
             ' Get model from Rhapsody
             Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
-            Me.Model = New Rpy_Software_Model
-            Me.Model.Load_From_Rhapsody_Model(rpy_sw_mdl)
+            Me.Model = New Software_Model_Container
+            Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
             Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
 
             ' Check model
@@ -317,8 +316,8 @@ Public Class Rpy_Software_Model_Controller
                 ' Model extraction
                 ' Get model from Rhapsody
                 Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
-                Me.Model = New Rpy_Software_Model
-                Me.Model.Load_From_Rhapsody_Model(rpy_sw_mdl)
+                Me.Model = New Software_Model_Container
+                Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
                 Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
 
                 ' Open XML file

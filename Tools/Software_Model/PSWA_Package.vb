@@ -385,7 +385,7 @@ Public Class Top_Level_PSWA_Package
                 Next
             End If
 
-            If Not IsNothing(Me.Root_Software_Compositions) Then
+            If Not IsNothing(pkg.Root_Software_Compositions) Then
                 For Each compo In pkg.Root_Software_Compositions
                     tmp_needed_elements_list.AddRange(compo.Find_Needed_Elements)
                 Next
