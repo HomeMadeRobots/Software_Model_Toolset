@@ -256,7 +256,7 @@ Public Class PSWA_Package
             IsNothing(Me.Data_Types) Then
 
             Me.Add_Consistency_Check_Warning_Item(report,
-                "TBD",
+                "PKG_1",
                 "A Shall contain at least one element.")
         End If
 

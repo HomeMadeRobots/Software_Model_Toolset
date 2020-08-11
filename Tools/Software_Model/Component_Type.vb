@@ -117,7 +117,7 @@ Public Class Component_Type
 
         If IsNothing(Me.Provider_Ports) And IsNothing(Me.Requirer_Ports) Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "SWCT_1",
                 "Shall aggregate at least one Port.")
         End If
 
@@ -235,7 +235,7 @@ Public MustInherit Class Port
 
         If Me.Nb_Contracts <> 1 Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "PORT_1",
                 "Shall have one and only one contract.")
         End If
 
@@ -460,7 +460,7 @@ Public Class Component_Configuration
             Select Case config_data_type.GetType
                 Case GetType(Structured_Data_Type)
                     Me.Add_Consistency_Check_Error_Item(report,
-                        "TBD",
+                        "PARAM_1",
                         "Type shall not be Structured_Data_Type.")
             End Select
 

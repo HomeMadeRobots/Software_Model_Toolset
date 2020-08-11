@@ -128,7 +128,7 @@ Public MustInherit Class Data_Type_Base_Typed
 
         If Me.Base_Data_Type_Ref = Guid.Empty Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "TYP_1",
                 "Referenced type shall be a Data_Type.")
         End If
 
@@ -289,12 +289,12 @@ Public Class Enumerated_Data_Type
 
         If Me.Enumerals.Count = 0 Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "ENUM_1",
                 "Shall aggregate at least one Enumerated_Data_Type_Enumeral.")
         Else
             If Me.Enumerals.Count = 1 Then
                 Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "ENUM_2",
                 "Should aggregate at least two Enumerated_Data_Type_Enumeral.")
             End If
 
@@ -304,13 +304,13 @@ Public Class Enumerated_Data_Type
 
                 If Not Is_Symbol_Valid(enumeral.Name) Then
                     Me.Add_Consistency_Check_Error_Item(report,
-                        "TBD",
+                        "ENUM_7",
                         "Invalid enumeral symbol : " & enumeral.Name)
                 End If
 
                 If enumeral.Description = "" Then
                     Me.Add_Consistency_Check_Information_Item(report,
-                        "TBD",
+                        "ENUM_6",
                         "Enumeral " & enumeral.Name & " could have a description.")
                 End If
 
@@ -320,7 +320,7 @@ Public Class Enumerated_Data_Type
                     is_uinteger = UInteger.TryParse(enumeral.Value, dummy)
                     If is_uinteger = False Then
                         Me.Add_Consistency_Check_Error_Item(report,
-                            "TBD",
+                            "ENUM_4",
                             "Value of " & enumeral.Name & " shall be a positive integer or empty.")
                     Else
                         enumeral_values_list.Add(dummy)
@@ -333,14 +333,14 @@ Public Class Enumerated_Data_Type
 
             If enumeral_without_value_nb > 0 And enumeral_values_list.Count > 0 Then
                 Me.Add_Consistency_Check_Error_Item(report,
-                    "TBD",
+                    "ENUM_3",
                     "If at least one enumeral has a Value, all the enumerals shall have a Value.")
             End If
 
             If enumeral_values_list.Count > 0 Then
                 If enumeral_values_list.Count <> enumeral_values_list.Distinct.Count() Then
                     Me.Add_Consistency_Check_Error_Item(report,
-                    "TBD",
+                    "ENUM_5",
                     "The value of the enumerals shall be unique.")
                 End If
             End If
@@ -463,11 +463,11 @@ Public Class Array_Data_Type
 
         If Me.Multiplicity = 0 Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "ARR_1",
                 "Multiplicity shall be a strictly positive integer value.")
         ElseIf Me.Multiplicity = 1 Then
             Me.Add_Consistency_Check_Warning_Item(report,
-                "TBD",
+                "ARR_2",
                 "Multiplicity should be greater than 1.")
         End If
 
@@ -597,19 +597,19 @@ Public Class Physical_Data_Type
 
         If Me.Unit = "" Then
             Me.Add_Consistency_Check_Warning_Item(report,
-                "TBD",
+                "PHY_2",
                 "Unit shall be set.")
         End If
 
         If IsNothing(Me.Resolution) Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "PHY_1",
                 "Resolution shall be set to a non-null decimal value.")
         End If
 
         If IsNothing(Me.Offset) Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "PHY_4",
                 "Offset shall be set to a numerical value.")
         End If
 
@@ -617,7 +617,7 @@ Public Class Physical_Data_Type
         If Not IsNothing(referenced_type) Then
             If referenced_type.GetType <> GetType(Basic_Integer_Type) Then
                 Me.Add_Consistency_Check_Error_Item(report,
-                    "TBD", _
+                    "PHY_3", _
                     "Referenced type shall be a Basic_Integer_Type.")
             End If
         Else
@@ -702,11 +702,11 @@ Public Class Structured_Data_Type
 
         If Me.Fields.Count = 0 Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "STRUC_1",
                 "Shall aggregate at least one field.")
         ElseIf Me.Fields.Count = 1 Then
             Me.Add_Consistency_Check_Warning_Item(report,
-                "TBD",
+                "STRUC_2",
                 "Should aggregate at least two fields.")
         End If
 
@@ -778,7 +778,7 @@ Public Class Structured_Data_Type_Field
                 For Each field In CType(referenced_data_type, Structured_Data_Type).Fields
                     If field.UUID = Me.UUID Then
                         Me.Add_Consistency_Check_Warning_Item(report,
-                        "TBD", _
+                        "STRUC_3", _
                         "Shall not reference its owner.")
                     End If
                 Next

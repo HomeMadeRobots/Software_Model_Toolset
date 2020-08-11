@@ -108,7 +108,7 @@ Public Class Client_Server_Interface
 
         If IsNothing(Me.Operations) Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "CSIF_1",
                 "Shall provide at least one operation.")
         End If
 

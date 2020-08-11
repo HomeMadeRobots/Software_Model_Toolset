@@ -161,13 +161,13 @@ Public MustInherit Class Software_Element
 
         If Not Is_Symbol_Valid(Me.Name) Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "ELMT_2",
                 "Invalid symbol, expression shall match ^[a-zA-Z][a-zA-Z0-9_]+$.")
         End If
 
         If Me.Description = "" Then
             Me.Add_Consistency_Check_Warning_Item(report,
-                "ELMT_5_1",
+                "ELMT_5",
                 "Description is missing.")
         End If
 
@@ -332,7 +332,7 @@ Public MustInherit Class Typed_Software_Element
 
         If Me.Base_Data_Type_Ref = Guid.Empty Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "TYP_1",
                 "Referenced type shall be a Data_Type.")
         End If
 
@@ -399,7 +399,7 @@ Public MustInherit Class Stream_Typed_Software_Element
 
         If Me.Stream = E_STREAM.INVALID Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "STRM_1",
                 "Stream shall be In ou Out.")
         End If
 

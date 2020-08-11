@@ -81,7 +81,7 @@ Public Class Root_Software_Composition
 
         If Component_Prototypes.Count < 2 Then
             Me.Add_Consistency_Check_Warning_Item(report,
-                "TBD",
+                "COMP_1",
                 "Should aggregate at least two Component_Prototypes.")
         End If
 
@@ -98,7 +98,7 @@ Public Class Root_Software_Composition
                 Dim r_swc As Component_Prototype
                 r_swc = CType(Get_Element_By_Uuid(conn.Requirer_Component_Ref), Component_Prototype)
                 r_swc.Add_Consistency_Check_Error_Item(report,
-                    "TBD",
+                    "SWC_4",
                     r_swc_port.Name & " shall be linked to a Provider_Port with the same contract.")
             End If
 
@@ -306,7 +306,7 @@ Public Class Component_Prototype
 
         If Me.Component_Type_Ref.Equals(Guid.Empty) Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "SWC_1",
                 "Shall reference a Component_Type.")
         Else
             ' Check Ports connections
@@ -322,7 +322,7 @@ Public Class Component_Prototype
                                 Get_PPort_Nb_Connection(Me.UUID, port.UUID)
                     If nb_conn = 0 Then
                         Me.Add_Consistency_Check_Information_Item(report,
-                            "TBD",
+                            "SWC_3",
                             "Provider_Port " & port.Name & " not connected.")
                     End If
                 Next
@@ -334,11 +334,11 @@ Public Class Component_Prototype
                                 Get_RPort_Nb_Connection(Me.UUID, port.UUID)
                     If nb_conn = 0 Then
                         Me.Add_Consistency_Check_Error_Item(report,
-                            "TBD",
+                            "SWC_2",
                             "Requirer_Port " & port.Name & " shall be connected.")
                     ElseIf nb_conn > 1 Then
                         Me.Add_Consistency_Check_Error_Item(report,
-                            "TBD",
+                            "SWC_2",
                             "Requirer_Port " & port.Name & " shall be connected to only one port.")
                     End If
                 Next
@@ -482,7 +482,7 @@ Public Class Assembly_Connector
 
         If Me.Provider_Component_Ref = Me.Requirer_Component_Ref Then
             Me.Add_Consistency_Check_Error_Item(report,
-                "TBD",
+                "CONN_1",
                 "Shall link two different components.")
         End If
     End Sub
