@@ -361,6 +361,24 @@ Public Class Assembly_Connector
     Public Requirer_Port_Ref As Guid = Nothing
 
 
+    Public Shared Function Compute_Automatic_Name(rpy_link As RPLink) As String
+        Dim automatic_name As String
+        Dim provider_port As RPPort = Nothing
+        Dim requirer_port As RPPort = Nothing
+        Dim provider_component As RPInstance = Nothing
+        Dim requirer_component As RPInstance = Nothing
+        Assembly_Connector.Get_Connector_Info(
+            rpy_link,
+            provider_port,
+            requirer_port,
+            provider_component,
+            requirer_component)
+        automatic_name = requirer_component.name & "_" & requirer_port.name & "_" &
+                            provider_component.name & "_" & provider_port.name
+        Return automatic_name
+    End Function
+
+
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
 
         MyBase.Get_Own_Data_From_Rhapsody_Model()

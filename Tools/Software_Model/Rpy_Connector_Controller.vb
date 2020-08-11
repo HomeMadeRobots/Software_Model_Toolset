@@ -30,31 +30,18 @@ Public Class Rpy_Connector_Controller
         For Each rpy_link In rpy_composition.links
             If Is_Assembly_Connector(CType(rpy_link, RPModelElement)) Then
                 Dim connector_new_name As String
-                    Dim provider_port As RPPort = Nothing
-                    Dim requirer_port As RPPort = Nothing
-                    Dim provider_component As RPInstance = Nothing
-                    Dim requirer_component As RPInstance = Nothing
-                    Assembly_Connector.Get_Connector_Info(
-                        rpy_link,
-                        provider_port,
-                        requirer_port,
-                        provider_component,
-                        requirer_component)
-                    connector_new_name = requirer_component.name & "_" & _
-                                            requirer_port.name & "_" & _
-                                            provider_component.name & "_" & _
-                                            provider_port.name
-                    If connector_new_name.Length <= 128 Then
-                        If rpy_link.name <> connector_new_name Then
-                            Rhapsody_App.writeToOutputWindow("out",
-                                "Rename " & rpy_link.name & " as " & connector_new_name & vbCrLf)
-                            rpy_link.name = connector_new_name
-                        End If
-                    Else
+                connector_new_name = Assembly_Connector.Compute_Automatic_Name(rpy_link)
+                If connector_new_name.Length <= 128 Then
+                    If rpy_link.name <> connector_new_name Then
                         Rhapsody_App.writeToOutputWindow("out",
-                            "Warning : automatic name is too long (>128 characters) for " &
-                            rpy_link.name & vbCrLf)
+                            "Rename " & rpy_link.name & " as " & connector_new_name & vbCrLf)
+                        rpy_link.name = connector_new_name
                     End If
+                Else
+                    Rhapsody_App.writeToOutputWindow("out",
+                        "Warning : automatic name is too long (>128 characters) for " &
+                        rpy_link.name & vbCrLf)
+                End If
             End If
         Next
 
@@ -62,6 +49,36 @@ Public Class Rpy_Connector_Controller
         Rhapsody_App.writeToOutputWindow("out", "End connectors renaming." & vbCrLf)
         chrono.Stop()
         Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+    End Sub
+
+
+    Public Sub Navigate_To_Connector_Source()
+        Dim selected_element As RPModelElement = Me.Rhapsody_App.getSelectedElement
+        Dim rpy_link As RPLink = Nothing
+        If Is_Assembly_Connector(selected_element) Then
+            rpy_link = CType(selected_element, RPLink)
+            Dim p_port As RPPort = Nothing
+            Dim r_port As RPPort = Nothing
+            Dim p_swc As RPInstance = Nothing
+            Dim r_swc As RPInstance = Nothing
+            Assembly_Connector.Get_Connector_Info(rpy_link, p_port, r_port, p_swc, r_swc)
+            p_port.locateInBrowser()
+        End If
+    End Sub
+
+
+    Public Sub Navigate_To_Connector_Destination()
+        Dim selected_element As RPModelElement = Me.Rhapsody_App.getSelectedElement
+        Dim rpy_link As RPLink = Nothing
+        If Is_Assembly_Connector(selected_element) Then
+            rpy_link = CType(selected_element, RPLink)
+            Dim p_port As RPPort = Nothing
+            Dim r_port As RPPort = Nothing
+            Dim p_swc As RPInstance = Nothing
+            Dim r_swc As RPInstance = Nothing
+            Assembly_Connector.Get_Connector_Info(rpy_link, p_port, r_port, p_swc, r_swc)
+            r_port.locateInBrowser()
+        End If
     End Sub
 
 End Class

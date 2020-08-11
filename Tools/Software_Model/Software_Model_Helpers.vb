@@ -35,6 +35,14 @@ Module Software_Model_Helpers
                     Dim conn_ctrl As New Rpy_Connector_Controller
                     conn_ctrl.Rename_Connectors()
 
+                Case "Navigate_To_Connector_Source"
+                    Dim conn_ctrl As New Rpy_Connector_Controller
+                    conn_ctrl.Navigate_To_Connector_Source()
+
+                Case "Navigate_To_Connector_Destination"
+                    Dim conn_ctrl As New Rpy_Connector_Controller
+                    conn_ctrl.Navigate_To_Connector_Destination()
+
                 Case "Generate_Component_Type_Diagram"
                     Dim diagram_ctrl As New Rpy_Diagram_Controller
                     diagram_ctrl.Generate_Component_Type_Diagram()
