@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">8.11.2020::13:45:7</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.13.2020::7:38:28</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">8.11.2020::13:45:7</_modifiedTime>
+			<_modifiedTime type="a">8.13.2020::7:38:28</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">8.11.2020::13:45:7</weakCGTime>
+			<weakCGTime type="a">8.13.2020::7:38:28</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -65,10 +65,10 @@
 			<_id type="a">GUID 2fa76a8a-3a37-423d-82f8-cb10371b657b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">8.11.2020::13:45:7</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.11.2020::13:45:7</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::7:38:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::7:38:28</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">8.11.2020::13:45:7</weakCGTime>
+			<weakCGTime type="a">8.13.2020::7:38:28</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:29</strongCGTime>
 			<_defaultComposite type="s">GUID a7891663-41f3-4945-8795-f855279ddba9</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -846,10 +846,10 @@ Has a data type.</_text>
 			<_id type="a">GUID e101f2b2-e3e3-4072-aed0-69558baa8af2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">8.10.2020::13:57:35</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.10.2020::13:57:35</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::7:38:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::7:38:28</_modifiedTime>
 			<_lastID type="a">8</_lastID>
-			<weakCGTime type="a">8.10.2020::13:57:35</weakCGTime>
+			<weakCGTime type="a">8.13.2020::7:38:28</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:12:18</strongCGTime>
 			<_defaultComposite type="s">GUID 12866dc4-80e5-4782-9816-e02688faaa87</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -945,7 +945,7 @@ Has a data type.</_text>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Requirer_Port, Provider_Port, Component_Operation, Inheritance_Link, Configuration_Attribute</_Value>
+													<_Value type="a">Requirer_Port, Provider_Port, Component_Operation, Inheritance_Link, Configuration_Attribute, Statechart</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1066,13 +1066,13 @@ Has a data type.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">8.10.2020::13:57:35</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.13.2020::7:38:28</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model an independent software unit.%0D
 </_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">8.10.2020::13:57:35</_modifiedTime>
+			<_modifiedTime type="a">8.13.2020::7:38:28</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
