@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835649</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<IProfile type="e">
+			<_id type="a">GUID 88f85ef3-0683-4a3e-90c0-db97a0475fd0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Software_Implementation_Metamodel</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:26:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:26:48</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">8.13.2020::8:26:48</weakCGTime>
+			<strongCGTime type="a">8.13.2020::8:5:56</strongCGTime>
+			<_defaultComposite type="s">GUID 495cd905-0734-4ceb-b58c-ad580af1b51a</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.1.1970::1:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 72afc5b5-ea18-42a9-953c-c0181d96ba98</value>
+				<value>GUID 495cd905-0734-4ceb-b58c-ad580af1b51a</value>
+			</AggregatesList>
+		</IProfile>
+		<ISubsystem type="e">
+			<_id type="a">GUID 72afc5b5-ea18-42a9-953c-c0181d96ba98</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Stereotypes</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:26:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:26:48</_modifiedTime>
+			<_lastID type="a">2</_lastID>
+			<weakCGTime type="a">8.13.2020::8:26:48</weakCGTime>
+			<strongCGTime type="a">8.13.2020::8:10:49</strongCGTime>
+			<_defaultComposite type="s">GUID 9686916f-83cc-42ef-a11e-b1a36dfdae75</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.1.1970::1:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 682fe33e-0545-42e4-b788-b6aab98dcd8e</value>
+				<value>GUID 3980f18a-5055-498a-a2b8-0fd42b282604</value>
+				<value>GUID 9686916f-83cc-42ef-a11e-b1a36dfdae75</value>
+				<value>GUID 84fb63dd-c06b-4fee-b4e8-df3f9da8d9a4</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IStereotype type="e">
+			<_id type="a">GUID 682fe33e-0545-42e4-b788-b6aab98dcd8e</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Implementation_File, Class Diagram</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Owners</_Name>
+													<_Value type="a">Project, IMPL_Package</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">IMPL_Package</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:21:32</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:21:32</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Package</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<ISubsystem type="e">
+			<_id type="a">GUID 3980f18a-5055-498a-a2b8-0fd42b282604</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Files</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:26:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:26:48</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">8.13.2020::8:26:48</weakCGTime>
+			<strongCGTime type="a">8.13.2020::8:12:42</strongCGTime>
+			<_defaultComposite type="s">GUID 4c7e6b4d-0cce-4749-9c12-b9374a4d593d</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 76068085-5ce8-416c-81a0-105fa38a041d</value>
+				<value>GUID e1410ed5-8b64-43ee-a054-e77fd03a4de8</value>
+				<value>GUID 4c7e6b4d-0cce-4749-9c12-b9374a4d593d</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IStereotype type="e">
+			<_id type="a">GUID 76068085-5ce8-416c-81a0-105fa38a041d</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">3</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Format</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Object</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Line.LineColor</_Name>
+													<_Value type="a">255,128,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Implemented_Element, Hyperlink</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Owners</_Name>
+													<_Value type="a">IMPL_Package</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Object</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">Compartments</_Name>
+													<_Value type="a">Tag</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowAttributes</_Name>
+													<_Value type="a">None</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowOperations</_Name>
+													<_Value type="a">None</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Tag</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">CompartmentDisplayFormat</_Name>
+													<_Value type="a">?&lt;IsConditionalProperty&gt;$&lt;Name&gt;?&lt;begin&gt;$&lt;Value&gt;?&lt;==&gt;?&lt;?&gt;?&lt;:&gt;=$&lt;Value&gt;?&lt;end&gt;</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Implementation_File</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:25:20</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:25:20</_modifiedTime>
+			<_lastID type="a">2</_lastID>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Module</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+			<AggregatesList type="e">
+				<value>GUID b0ede556-fe02-4ae9-ae12-b64dfa7c02f0</value>
+				<value>GUID 4aed52f9-fd1f-4a5a-aec4-547136687a62</value>
+				<value>GUID a32fc3f0-da64-4116-bd08-59437f26a612</value>
+			</AggregatesList>
+		</IStereotype>
+		<ITag type="e">
+			<_id type="a">GUID b0ede556-fe02-4ae9-ae12-b64dfa7c02f0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">File_Name</_name>
+			<_modifiedTimeWeak type="a">6.13.2018::10:38:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">6.13.2018::10:38:12</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpString</_hname>
+					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+		</ITag>
+		<ITag type="e">
+			<_id type="a">GUID 4aed52f9-fd1f-4a5a-aec4-547136687a62</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Language</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:14:49</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:14:49</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hid type="a">GUID 84fb63dd-c06b-4fee-b4e8-df3f9da8d9a4</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<AggregatesList type="e">
+				<value>GUID f800a0c5-0d4d-4e91-b1f1-acd6ceba5ebc</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID f800a0c5-0d4d-4e91-b1f1-acd6ceba5ebc</_id>
+			<_modifiedTimeWeak type="a">8.13.2020::8:14:49</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:14:49</_modifiedTime>
+			<_value type="a">C</_value>
+		</ILiteralSpecification>
+		<IGeneralization type="e">
+			<_id type="a">GUID a32fc3f0-da64-4116-bd08-59437f26a612</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IStereotype</_hm2Class>
+					<_hfilename type="a">.\..\..\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hname type="a">Model_Element</_hname>
+					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IStereotype type="e">
+			<_id type="a">GUID e1410ed5-8b64-43ee-a054-e77fd03a4de8</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">Owners</_Name>
+													<_Value type="a">Implementation_File</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Sources</_Name>
+													<_Value type="a">Implementation_File</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Targets</_Name>
+													<_Value type="a">Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Design, SDD_Class</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Implemented_Element</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:26:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:26:48</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Dependency</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<IClass type="e">
+			<_id type="a">GUID 4c7e6b4d-0cce-4749-9c12-b9374a4d593d</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 9686916f-83cc-42ef-a11e-b1a36dfdae75</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IType type="e">
+			<_id type="a">GUID 84fb63dd-c06b-4fee-b4e8-df3f9da8d9a4</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">E_LANGUAGE</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:15:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:15:39</_modifiedTime>
+			<_lastID type="a">3</_lastID>
+			<_kind type="a">Enumeration</_kind>
+			<AggregatesList type="e">
+				<value>GUID ef4ff348-bf06-44c7-add7-60c2b22d6734</value>
+				<value>GUID 92425d20-56be-460b-a2e6-aeac147d3874</value>
+				<value>GUID 01e07fae-585a-41dc-8c4f-b9bd558365c6</value>
+			</AggregatesList>
+		</IType>
+		<IEnumerationLiteral type="e">
+			<_id type="a">GUID ef4ff348-bf06-44c7-add7-60c2b22d6734</_id>
+			<_name type="a">ASM</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:15:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:15:39</_modifiedTime>
+		</IEnumerationLiteral>
+		<IEnumerationLiteral type="e">
+			<_id type="a">GUID 92425d20-56be-460b-a2e6-aeac147d3874</_id>
+			<_name type="a">C</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:13:54</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:13:54</_modifiedTime>
+		</IEnumerationLiteral>
+		<IEnumerationLiteral type="e">
+			<_id type="a">GUID 01e07fae-585a-41dc-8c4f-b9bd558365c6</_id>
+			<_name type="a">C_PLUS_PLUS</_name>
+			<_modifiedTimeWeak type="a">8.13.2020::8:14:2</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:14:2</_modifiedTime>
+		</IEnumerationLiteral>
+		<IClass type="e">
+			<_id type="a">GUID 495cd905-0734-4ceb-b58c-ad580af1b51a</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

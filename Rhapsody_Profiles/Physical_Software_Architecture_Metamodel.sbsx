@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">8.13.2020::7:38:28</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.13.2020::8:31:54</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">8.13.2020::7:38:28</_modifiedTime>
+			<_modifiedTime type="a">8.13.2020::8:31:54</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">8.13.2020::7:38:28</weakCGTime>
+			<weakCGTime type="a">8.13.2020::8:31:54</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2411,10 +2411,10 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID d805ef58-dd19-4ea6-ad1f-99a12cea99b4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">3.30.2020::12:18:59</_modifiedTimeWeak>
-			<_modifiedTime type="a">3.30.2020::12:18:59</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::8:31:54</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::8:31:54</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">3.30.2020::12:18:59</weakCGTime>
+			<weakCGTime type="a">8.13.2020::8:31:54</weakCGTime>
 			<strongCGTime type="a">5.14.2018::8:35:23</strongCGTime>
 			<_defaultComposite type="s">GUID 4237a6eb-f20a-485c-b0bf-134376eacf45</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -20266,15 +20266,15 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">PSWA_Package</_name>
-			<_modifiedTimeWeak type="a">1.16.2020::10:44:3</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.13.2020::8:31:54</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hid type="a">GUID 4400a687-9169-49ac-84a9-d8dc1fcc537a</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">1.16.2020::10:44:3</_modifiedTime>
-			<weakCGTime type="a">1.16.2020::10:44:3</weakCGTime>
+			<_modifiedTime type="a">8.13.2020::8:31:54</_modifiedTime>
+			<weakCGTime type="a">8.13.2020::8:31:54</weakCGTime>
 			<strongCGTime type="a">11.7.2019::9:10:37</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -20289,7 +20289,6 @@ It gathers cohesive software elements.</_text>
 				<value>GUID 0e22a1b2-feda-4544-a06a-5a76b08db870</value>
 				<value>GUID 20b3c65e-6fd0-4f19-825c-7bb7f2c8a747</value>
 				<value>GUID 2cae7f13-114a-47f5-9a63-952e3325209c</value>
-				<value>GUID f4047765-08db-496a-a4a9-de00a2547e0f</value>
 			</AggregatesList>
 		</IClass>
 		<IGeneralization type="e">
@@ -20450,35 +20449,6 @@ It gathers cohesive software elements.</_text>
 				</IHandle>
 			</_inverse>
 			<_linkType type="a">Assoc</_linkType>
-			<_navigability type="a">Navigable</_navigability>
-		</IAssociationEnd>
-		<IAssociationEnd type="e">
-			<_id type="a">GUID f4047765-08db-496a-a4a9-de00a2547e0f</_id>
-			<_myState type="a">10240</_myState>
-			<_name type="a">itsImplementation_File</_name>
-			<_modifiedTimeWeak type="a">8.14.2019::9:7:50</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.14.2019::9:7:50</_modifiedTime>
-			<_multiplicity type="a">*</_multiplicity>
-			<_otherClass type="r">
-				<IClassifierHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hfilename type="a">.\Software_Detailed_Design_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::Files</_hsubsystem>
-					<_hname type="a">Implementation_File</_hname>
-					<_hid type="a">GUID ff1123ee-76eb-4a16-84d1-55e0f2901d9f</_hid>
-				</IClassifierHandle>
-			</_otherClass>
-			<_inverse type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IAssociationEnd</_hm2Class>
-					<_hfilename type="a">.\Software_Detailed_Design_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::Files</_hsubsystem>
-					<_hclass type="a">Implementation_File</_hclass>
-					<_hname type="a">itsSoftware_package</_hname>
-					<_hid type="a">GUID 2a53d31f-e783-45ef-a92b-a36be7b10527</_hid>
-				</IHandle>
-			</_inverse>
-			<_linkType type="a">Composition</_linkType>
 			<_navigability type="a">Navigable</_navigability>
 		</IAssociationEnd>
 		<IClass type="e">
