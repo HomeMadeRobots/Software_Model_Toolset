@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">8.13.2020::8:31:54</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.13.2020::12:43:25</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">8.13.2020::8:31:54</_modifiedTime>
+			<_modifiedTime type="a">8.13.2020::12:43:25</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">8.13.2020::8:31:54</weakCGTime>
+			<weakCGTime type="a">8.13.2020::12:43:25</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -65,10 +65,10 @@
 			<_id type="a">GUID 2fa76a8a-3a37-423d-82f8-cb10371b657b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">8.13.2020::7:38:28</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.13.2020::7:38:28</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::12:43:25</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::12:43:25</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">8.13.2020::7:38:28</weakCGTime>
+			<weakCGTime type="a">8.13.2020::12:43:25</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:29</strongCGTime>
 			<_defaultComposite type="s">GUID a7891663-41f3-4945-8795-f855279ddba9</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2276,7 +2276,7 @@ Allows to design classic class diagram for SDD.\par%0D
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">PSWA_Package, Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Root_Software_Composition, PSWA_Diagram, Class Diagram, ObjectModelDiagram, SequenceDiagram, TableLayout, TableView, Hyperlink</_Value>
+													<_Value type="a">PSWA_Package, Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Root_Software_Composition, PSWA_Diagram, Class Diagram, ObjectModelDiagram, SequenceDiagram, TimingDiagram, TableLayout, TableView, Hyperlink</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -2299,14 +2299,14 @@ Allows to design classic class diagram for SDD.\par%0D
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">PSWA_Package</_name>
-			<_modifiedTimeWeak type="a">11.7.2019::9:15:1</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.13.2020::12:43:25</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The software_package stereotype apply to UML package meta-class.%0D
 A software_package is the atomic reusable item of a software model.%0D
 It gathers cohesive software elements.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">11.7.2019::9:15:1</_modifiedTime>
+			<_modifiedTime type="a">8.13.2020::12:43:25</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

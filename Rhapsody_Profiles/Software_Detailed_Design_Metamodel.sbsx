@@ -11,14 +11,14 @@
 			<_id type="a">GUID e6dd7000-5327-4839-ad4b-6da8f8351563</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Detailed_Design_Metamodel</_name>
-			<_modifiedTimeWeak type="a">8.13.2020::8:31:54</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">8.13.2020::12:43:39</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Component_Design_Metamodel profile defines meta-classes allowing to model any design pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">8.13.2020::8:31:54</_modifiedTime>
+			<_modifiedTime type="a">8.13.2020::12:43:39</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">8.13.2020::8:31:54</weakCGTime>
+			<weakCGTime type="a">8.13.2020::12:43:39</weakCGTime>
 			<strongCGTime type="a">10.25.2019::13:35:24</strongCGTime>
 			<_defaultComposite type="s">GUID f61c1e09-4b38-4294-ba41-f87637329589</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 9c4f06ad-7647-4018-8692-8c6ae32b4d1b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">8.13.2020::8:27:34</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.13.2020::8:27:34</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::12:43:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::12:43:39</_modifiedTime>
 			<_lastID type="a">33</_lastID>
-			<weakCGTime type="a">8.13.2020::8:27:34</weakCGTime>
+			<weakCGTime type="a">8.13.2020::12:43:39</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:18</strongCGTime>
 			<_defaultComposite type="s">GUID 1c3659ae-c124-4218-83bf-cc594f2a034c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -54,10 +54,10 @@
 			<_id type="a">GUID bc1d51e4-d1f5-4009-9809-324aa67b2197</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">1.28.2020::9:10:7</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.28.2020::9:10:7</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::9:2:1</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::9:2:1</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">1.28.2020::9:10:7</weakCGTime>
+			<weakCGTime type="a">8.13.2020::9:2:1</weakCGTime>
 			<strongCGTime type="a">1.11.2019::10:44:50</strongCGTime>
 			<_defaultComposite type="s">GUID a7b8aca8-98fe-49b3-9ca3-777d5cfacb2b</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -86,7 +86,7 @@
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, Implementation_File, Implemented_Element, Class, , Attribute, Operation, Generalization, Realization, Association, Object, Link</_Value>
+													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, SDD_Event, SDD_Class, Variable_Attribute, Configuration_Parameter, Private_Method, Public_Method, Event_Reception, SDD_Object, Generalization, Realization, Association, Link</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -163,8 +163,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SDD_Diagram</_name>
-			<_modifiedTimeWeak type="a">1.28.2020::9:10:7</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.28.2020::9:10:7</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::9:2:1</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::9:2:1</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -464,7 +464,7 @@
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">SDD_Package, SDD_Diagram, Component_Design, SDD_Class, SDD_Event, Implementation_File, Data_Type, Physical_Data_Type, Class, Event, Class Diagram, ObjectModelDiagram, SequenceDiagram, TableLayout, TableView, Hyperlink, Requirement</_Value>
+													<_Value type="a">SDD_Package, SDD_Diagram, Component_Design, SDD_Class, SDD_Event, Implementation_File, Data_Type, Physical_Data_Type, Class, Event, Class Diagram, ObjectModelDiagram, SequenceDiagram, TimingDiagram, TableLayout, TableView, Hyperlink, Requirement</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -487,8 +487,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SDD_Package</_name>
-			<_modifiedTimeWeak type="a">8.12.2020::17:53:33</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.12.2020::17:53:33</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::12:43:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::12:43:39</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -520,10 +520,10 @@
 			<_id type="a">GUID 1b5e9666-ab8f-4637-aefa-a215239054eb</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">SDD_Class</_name>
-			<_modifiedTimeWeak type="a">8.13.2020::7:45:41</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.13.2020::7:45:41</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::9:6:5</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::9:6:5</_modifiedTime>
 			<_lastID type="a">9</_lastID>
-			<weakCGTime type="a">8.13.2020::7:45:41</weakCGTime>
+			<weakCGTime type="a">8.13.2020::9:6:5</weakCGTime>
 			<strongCGTime type="a">8.12.2020::15:10:44</strongCGTime>
 			<_defaultComposite type="s">GUID ca2c5f7b-8ba2-49cb-aa10-9f981db50e62</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -585,7 +585,7 @@
 												<size type="a">6</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Variable_Attribute, Configuration_Parameter, Event_Sending, Private_Method, Public_Method, Event_Reception, Dependency, Realization, Statechart</_Value>
+													<_Value type="a">Variable_Attribute, Configuration_Parameter, Event_Sending, Private_Method, Public_Method, Event_Reception, Dependency, Realization, Statechart, ActivityDiagram</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -677,8 +677,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SDD_Class</_name>
-			<_modifiedTimeWeak type="a">8.13.2020::7:28:58</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.13.2020::7:28:58</_modifiedTime>
+			<_modifiedTimeWeak type="a">8.13.2020::9:6:5</_modifiedTimeWeak>
+			<_modifiedTime type="a">8.13.2020::9:6:5</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
