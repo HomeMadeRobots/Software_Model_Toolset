@@ -11,6 +11,7 @@ Public MustInherit Class Software_Element
     Protected Children As List(Of Software_Element) = Nothing
     Protected Rpy_Element As RPModelElement = Nothing
     Protected Top_Package As Top_Level_PSWA_Package = Nothing
+    Protected Container As Software_Model_Container = Nothing
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -19,7 +20,7 @@ Public MustInherit Class Software_Element
     End Function
 
     Public Function Get_Element_By_Uuid(element_uuid As Guid) As Software_Element
-        Return Me.Top_Package.Container.Get_Element(element_uuid)
+        Return Me.Container.Get_Element(element_uuid)
     End Function
 
     Public Shared Function Is_Symbol_Valid(symbol As String) As Boolean
@@ -50,11 +51,12 @@ Public MustInherit Class Software_Element
         rpy_mdl_element As RPModelElement)
 
         Me.Top_Package = owner.Top_Package
+        Me.Container = owner.Container
         Me.Rpy_Element = rpy_mdl_element
 
         Me.Get_Own_Data_From_Rhapsody_Model()
 
-        Me.Top_Package.Container.Add_Element(Me)
+        Me.Container.Add_Element(Me)
 
         Me.Import_Children_From_Rhapsody_Model()
 

@@ -167,7 +167,7 @@ Public Class Component_Type
         If IsNothing(Me.Dependent_Elements) Then
             Me.Dependent_Elements = New List(Of Classifier_Software_Element)
             Dim compo_list As List(Of Root_Software_Composition)
-            compo_list = Me.Top_Package.Container.Get_All_Compositions
+            compo_list = Me.Container.Get_All_Compositions
             For Each compo In compo_list
                 If Not IsNothing(compo.Component_Prototypes) Then
                     For Each swc In compo.Component_Prototypes

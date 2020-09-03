@@ -20,7 +20,7 @@ Public MustInherit Class Data_Type
             Dim needed_elements As List(Of Classifier_Software_Element)
 
             Dim swct_list As List(Of Component_Type)
-            swct_list = Me.Top_Package.Container.Get_All_Component_Types
+            swct_list = Me.Container.Get_All_Component_Types
             For Each swtc In swct_list
                 needed_elements = swtc.Find_Needed_Elements
                 For Each element In needed_elements
@@ -31,7 +31,7 @@ Public MustInherit Class Data_Type
             Next
 
             Dim if_list As List(Of Software_Interface)
-            if_list = Me.Top_Package.Container.Get_All_Interfaces
+            if_list = Me.Container.Get_All_Interfaces
             For Each sw_if In if_list
                 needed_elements = sw_if.Find_Needed_Elements
                 If Not IsNothing(needed_elements) Then
@@ -44,7 +44,7 @@ Public MustInherit Class Data_Type
             Next
 
             Dim dt_list As List(Of Data_Type)
-            dt_list = Me.Top_Package.Container.Get_All_Data_Types
+            dt_list = Me.Container.Get_All_Data_Types
             For Each dt In dt_list
                 needed_elements = dt.Find_Needed_Elements
                 If Not IsNothing(needed_elements) Then
@@ -613,7 +613,8 @@ Public Class Physical_Data_Type
                 "Offset shall be set to a numerical value.")
         End If
 
-        Dim referenced_type As Data_Type = CType(Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        Dim referenced_type As Data_Type
+        referenced_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
         If Not IsNothing(referenced_type) Then
             If referenced_type.GetType <> GetType(Basic_Integer_Type) Then
                 Me.Add_Consistency_Check_Error_Item(report,
@@ -772,7 +773,7 @@ Public Class Structured_Data_Type_Field
         MyBase.Check_Own_Consistency(report)
 
         Dim referenced_data_type As Data_Type
-        referenced_data_type = CType(Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        referenced_data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
         If Not IsNothing(referenced_data_type) Then
             If GetType(Structured_Data_Type) = referenced_data_type.GetType Then
                 For Each field In CType(referenced_data_type, Structured_Data_Type).Fields
@@ -788,11 +789,9 @@ Public Class Structured_Data_Type_Field
     End Sub
 
     Public Function Get_Complexity() As Double
-
         Dim referenced_data_type As Data_Type
         referenced_data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
         Return referenced_data_type.Get_Complexity
-
     End Function
 
 End Class

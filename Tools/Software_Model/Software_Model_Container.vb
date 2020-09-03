@@ -156,6 +156,7 @@ Public Class Software_Model_Container
     Public Sub Import_All_From_Rhapsody_Model(rpy_proj As RPProject)
 
         Me.Rpy_Element = CType(rpy_proj, RPModelElement)
+        Me.Container = Me
 
         Me.Get_Own_Data_From_Rhapsody_Model()
 
@@ -244,7 +245,6 @@ Public Class Software_Model_Container
                 ' Trick to set pswa_pkg.Top_Package to pswa_pkg
                 Me.Top_Package = pswa_pkg
 
-                pswa_pkg.Container = Me
                 pswa_pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))
             End If
         Next
@@ -266,7 +266,6 @@ Public Class Software_Model_Container
 
         ' Export packages
         For Each pkg_to_export In Me.PSWA_Packages
-            pkg_to_export.Container = Me
             pkg_to_export.Export_To_Rhapsody(Me.Rpy_Element, report)
         Next
 

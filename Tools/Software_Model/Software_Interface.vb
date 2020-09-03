@@ -9,7 +9,7 @@ Public MustInherit Class Software_Interface
         If IsNothing(Me.Dependent_Elements) Then
             Me.Dependent_Elements = New List(Of Classifier_Software_Element)
             Dim swct_list As List(Of Component_Type)
-            swct_list = Me.Top_Package.Container.Get_All_Component_Types
+            swct_list = Me.Container.Get_All_Component_Types
             For Each swct In swct_list
                 If Not IsNothing(swct.Provider_Ports) Then
                     For Each pport In swct.Provider_Ports

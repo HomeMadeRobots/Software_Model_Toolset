@@ -47,7 +47,7 @@ Public Class PSWA_Package
         Return Me.Children
     End Function
 
-    Public Sub Get_All_Sub_Packages(ByRef pkg_list As List(Of PSWA_Package))
+    Protected Sub Get_All_Sub_Packages(ByRef pkg_list As List(Of PSWA_Package))
         If Not IsNothing(Me.PSWA_Packages) Then
             Dim pkg As PSWA_Package
             For Each pkg In Me.PSWA_Packages
@@ -290,11 +290,7 @@ End Class
 Public Class Top_Level_PSWA_Package
     Inherits PSWA_Package
 
-    <XmlIgnore()>
-    Public Container As Software_Model_Container
-
     Private All_Packages As List(Of PSWA_Package) = Nothing
-
 
     Private Documentation_Rate As Double = -1
 
@@ -332,7 +328,6 @@ Public Class Top_Level_PSWA_Package
     ' Methods for metrics computation
     Public Function Get_Package_Documentation_Rate() As Double
         If Me.Documentation_Rate = -1 Then
-
             Dim nb_documented_elements As Double = 0
             Dim nb_documentable_elements As Double = 0
             Me.Compute_Documentation_Rate(nb_documentable_elements, nb_documented_elements)
