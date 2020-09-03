@@ -222,12 +222,12 @@ Public Class Rpy_Model_Controller
     End Sub
 
 
-    Public Sub Compute_Rpy_Soft_Model_Metrics()
+    Public Sub Compute_Rpy_Soft_Model_PSWA_Metrics()
         ' Initialize output window and display start message
         Dim chrono As New Stopwatch
         chrono.Start()
         Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Compute software model metrics..." & vbCrLf)
+        Rhapsody_App.writeToOutputWindow("out", "Compute PSWA metrics..." & vbCrLf)
 
         ' Get selected element and check that it is a Rhapsody project
         Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
@@ -266,7 +266,7 @@ Public Class Rpy_Model_Controller
                     ' Open txt file
                     Rhapsody_App.writeToOutputWindow("out", "Create report file...")
                     Dim file_name As String =
-                        rpy_sw_mdl.name & "_Metrics_Report_" & date_str & ".txt"
+                        rpy_sw_mdl.name & "_PSWA_Metrics_Report_" & date_str & ".txt"
                     Dim file_path As String = output_directory & "\" & file_name
 
                     Dim file_stream As New StreamWriter(file_path, False)
@@ -285,7 +285,7 @@ Public Class Rpy_Model_Controller
         End If
 
         ' Display Result to output window
-        Rhapsody_App.writeToOutputWindow("out", "Metrics computation end." & vbCrLf)
+        Rhapsody_App.writeToOutputWindow("out", "PSWA metrics computation end." & vbCrLf)
         chrono.Stop()
         Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
     End Sub
@@ -365,7 +365,7 @@ Public Class Rpy_Model_Controller
                         "Model has errors, cannot compute metrics." & vbCrLf)
                 Else
                     Rhapsody_App.writeToOutputWindow("out", "Compute model metrics...")
-                    Me.Model.Compute_Metrics()
+                    Me.Model.Compute_PSWA_Metrics()
                     Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
 
                     ' Open txt file

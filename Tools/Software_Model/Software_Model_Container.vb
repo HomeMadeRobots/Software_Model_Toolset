@@ -347,7 +347,7 @@ Public Class Software_Model_Container
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
-    Public Sub Compute_Metrics()
+    Public Sub Compute_PSWA_Metrics()
         Me.Nb_Interfaces_Series = New Data_Series
         Me.Nb_Component_Types_Series = New Data_Series
         Me.Nb_Data_Types_Series = New Data_Series
@@ -382,10 +382,10 @@ Public Class Software_Model_Container
 
     End Sub
 
-    Public Sub Generate_Metrics_Report(file_stream As StreamWriter)
+    Public Sub Generate_PSWA_Metrics_Report(file_stream As StreamWriter)
 
         Add_Seperator(file_stream)
-        file_stream.WriteLine("Metrics report : " & Me.Name)
+        file_stream.WriteLine("PSWA metrics report : " & Me.Name)
         Add_Seperator(file_stream)
         file_stream.WriteLine()
         file_stream.WriteLine()

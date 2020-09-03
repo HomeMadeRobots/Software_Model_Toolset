@@ -23,9 +23,9 @@ Module Software_Model_Helpers
                     Dim sw_mdl_ctrl As New Rpy_Model_Controller
                     sw_mdl_ctrl.Check_Rpy_Soft_Model()
 
-                Case "Compute_Rpy_Soft_Model_Metrics"
+                Case "Compute_Rpy_Soft_Model_PSWA_Metrics"
                     Dim sw_mdl_ctrl As New Rpy_Model_Controller
-                    sw_mdl_ctrl.Compute_Rpy_Soft_Model_Metrics()
+                    sw_mdl_ctrl.Compute_Rpy_Soft_Model_PSWA_Metrics()
 
                 Case "Generate_All"
                     Dim sw_mdl_ctrl As New Rpy_Model_Controller

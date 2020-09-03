@@ -334,20 +334,8 @@ Public Class Top_Level_PSWA_Package
         If Me.Documentation_Rate = -1 Then
 
             Dim nb_documented_elements As Double = 0
-            Dim nb_documentable_elements As Double = 1
-
-            If Me.Description <> "" Then
-                nb_documented_elements = 1
-            End If
-
-            Dim children As List(Of Software_Element) = Me.Get_Children
-            If Not IsNothing(children) Then
-                For Each child In children
-                    child.Compute_Documentation_Rate(
-                        nb_documentable_elements,
-                        nb_documented_elements)
-                Next
-            End If
+            Dim nb_documentable_elements As Double = 0
+            Me.Compute_Documentation_Rate(nb_documentable_elements, nb_documented_elements)
             Me.Documentation_Rate = nb_documented_elements / nb_documentable_elements
         End If
         Return Me.Documentation_Rate
@@ -513,28 +501,6 @@ Public Class Top_Level_PSWA_Package
         ' Compute Distance
         Me.Distance = Math.Abs(Me.Abstraction_Level + Me.Instability - 1)
 
-    End Sub
-
-    Public Sub Compute_Interfaces_WMC()
-        Dim pkg_list As List(Of PSWA_Package) = Me.Get_All_Packages
-        For Each pkg In pkg_list
-            If Not IsNothing(pkg.Software_Interfaces) Then
-                For Each sw_if In pkg.Software_Interfaces
-                    sw_if.Compute_WMC()
-                Next
-            End If
-        Next
-    End Sub
-
-    Public Sub Compute_Component_Type_WMC()
-        Dim pkg_list As List(Of PSWA_Package) = Me.Get_All_Packages
-        For Each pkg In pkg_list
-            If Not IsNothing(pkg.Component_Types) Then
-                For Each swct In pkg.Component_Types
-                    swct.Compute_WMC()
-                Next
-            End If
-        Next
     End Sub
 
     Public Function Get_Nb_Data_Types() As Double
