@@ -64,7 +64,7 @@ Public MustInherit Class Software_Element
             Me.Description = Rpy_Element.description
         End If
 
-        Me.UUID = Transform_GUID_To_UUID(Rpy_Element.GUID)
+        Me.UUID = Transform_Rpy_GUID_To_Guid(Rpy_Element.GUID)
 
     End Sub
 
@@ -98,7 +98,7 @@ Public MustInherit Class Software_Element
             report As Report)
         Me.Rpy_Element = rpy_element
         rpy_element.description = Me.Description
-        rpy_element.GUID = Transform_UUID_To_GUID(Me.UUID)
+        rpy_element.GUID = Transform_Guid_To_Rpy_GUID(Me.UUID)
         Me.Add_Export_Information_Item(report,
             Merge_Report_Item.E_Merge_Status.ELEMENT_CREATED,
             "")
@@ -107,7 +107,7 @@ Public MustInherit Class Software_Element
     Public Function Find_In_Rpy_Project(element_uuid As Guid) As RPModelElement
         Dim result As RPModelElement = Nothing
         Dim rpy_proj As RPProject = CType(Me.Rpy_Element.project, RPProject)
-        result = rpy_proj.findElementByGUID(Transform_UUID_To_GUID(element_uuid))
+        result = rpy_proj.findElementByGUID(Transform_Guid_To_Rpy_GUID(element_uuid))
         Return result
     End Function
 
@@ -249,7 +249,7 @@ Public MustInherit Class Classifier_Software_Element
 
         ' Get the Rhapsody top level package
         Dim project_guid As String
-        project_guid = Transform_UUID_To_GUID(Me.Container.UUID)
+        project_guid = Transform_Guid_To_Rpy_GUID(Me.Container.UUID)
         Dim rpy_top_pkg As RPModelElement = Me.Rpy_Element.owner
         While rpy_top_pkg.owner.GUID <> project_guid
             rpy_top_pkg = rpy_top_pkg.owner
@@ -257,7 +257,7 @@ Public MustInherit Class Classifier_Software_Element
 
         ' Find the corresponding Software_Package
         Dim top_level_package_uuid As Guid
-        top_level_package_uuid = Transform_GUID_To_UUID(rpy_top_pkg.GUID)
+        top_level_package_uuid = Transform_Rpy_GUID_To_Guid(rpy_top_pkg.GUID)
         result = CType(Me.Container.Get_Element_By_Uuid(top_level_package_uuid), Top_Level_Package)
 
         Return result
@@ -296,7 +296,7 @@ Public MustInherit Class Typed_Software_Element
         Dim rpy_type As RPModelElement = Me.Get_Rpy_Data_Type
         If Not IsNothing(rpy_type) Then
             If Is_Data_Type(rpy_type) Or Is_Physical_Data_Type(rpy_type) Then
-                Me.Base_Data_Type_Ref = Transform_GUID_To_UUID(rpy_type.GUID)
+                Me.Base_Data_Type_Ref = Transform_Rpy_GUID_To_Guid(rpy_type.GUID)
             End If
         End If
     End Sub
@@ -311,7 +311,7 @@ Public MustInherit Class Typed_Software_Element
     Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
         Dim rpy_type As RPModelElement = Me.Get_Rpy_Data_Type
-        If rpy_type.GUID <> Transform_UUID_To_GUID(Me.Base_Data_Type_Ref) Then
+        If rpy_type.GUID <> Transform_Guid_To_Rpy_GUID(Me.Base_Data_Type_Ref) Then
             rpy_element.getSaveUnit.setReadOnly(0)
             Dim element_type As RPType
             element_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)

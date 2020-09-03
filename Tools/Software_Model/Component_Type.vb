@@ -258,7 +258,7 @@ Public Class Provider_Port
         If Me.Nb_Contracts >= 1 Then
             Dim prov_if As RPClass
             prov_if = CType(rpy_port.providedInterfaces.Item(1), RPClass)
-            Contract_Ref = Transform_GUID_To_UUID(prov_if.GUID)
+            Contract_Ref = Transform_Rpy_GUID_To_Guid(prov_if.GUID)
         End If
 
     End Sub
@@ -330,7 +330,7 @@ Public Class Requirer_Port
         If Me.Nb_Contracts >= 1 Then
             Dim req_if As RPClass
             req_if = CType(rpy_port.requiredInterfaces.Item(1), RPClass)
-            Contract_Ref = Transform_GUID_To_UUID(req_if.GUID)
+            Contract_Ref = Transform_Rpy_GUID_To_Guid(req_if.GUID)
         End If
 
     End Sub

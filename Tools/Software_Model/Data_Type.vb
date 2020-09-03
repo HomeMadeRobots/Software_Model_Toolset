@@ -77,7 +77,7 @@ Public MustInherit Class Data_Type_Base_Typed
         Dim rpy_type As RPModelElement = Me.Get_Rpy_Data_Type
         If Not IsNothing(rpy_type) Then
             If Is_Data_Type(rpy_type) Or Is_Physical_Data_Type(rpy_type) Then
-                Me.Base_Data_Type_Ref = Transform_GUID_To_UUID(rpy_type.GUID)
+                Me.Base_Data_Type_Ref = Transform_Rpy_GUID_To_Guid(rpy_type.GUID)
             Else
                 Me.Base_Data_Type_Ref = Nothing
             End If
@@ -89,7 +89,7 @@ Public MustInherit Class Data_Type_Base_Typed
     Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
         Dim rpy_type As RPType = CType(rpy_element, RPType)
-        If rpy_type.typedefBaseType.GUID <> Transform_UUID_To_GUID(Me.Base_Data_Type_Ref) Then
+        If rpy_type.typedefBaseType.GUID <> Transform_Guid_To_Rpy_GUID(Me.Base_Data_Type_Ref) Then
             rpy_type.getSaveUnit.setReadOnly(0)
             Dim referenced_rpy_type As RPType
             referenced_rpy_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
@@ -425,7 +425,7 @@ Public Class Array_Data_Type
     Function Is_Exportable(any_rpy_base As RPModelElement) As Boolean
         Dim referenced_rpy_type As RPType
         Dim rpy_proj As RPProject = CType(any_rpy_base.project, RPProject)
-        Dim base_dt_guid As String = Transform_UUID_To_GUID(Me.Base_Data_Type_Ref)
+        Dim base_dt_guid As String = Transform_Guid_To_Rpy_GUID(Me.Base_Data_Type_Ref)
         referenced_rpy_type = CType(rpy_proj.findElementByGUID(base_dt_guid), RPType)
         If Not IsNothing(referenced_rpy_type) Then
             Return True
@@ -671,7 +671,7 @@ Public Class Structured_Data_Type
         Dim rpy_proj As RPProject = CType(any_rpy_base.project, RPProject)
         For Each fd In Me.Fields
             Dim referenced_rpy_type As RPType
-            Dim base_dt_guid As String = Transform_UUID_To_GUID(fd.Base_Data_Type_Ref)
+            Dim base_dt_guid As String = Transform_Guid_To_Rpy_GUID(fd.Base_Data_Type_Ref)
             referenced_rpy_type = CType(rpy_proj.findElementByGUID(base_dt_guid), RPType)
             If IsNothing(referenced_rpy_type) Then
                 result = False

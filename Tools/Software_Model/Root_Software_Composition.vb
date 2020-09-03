@@ -209,7 +209,7 @@ Public Class Component_Prototype
             rpy_base_class = CType(rpy_component.otherClass, RPClass)
             If Not IsNothing(rpy_base_class) Then
 
-                Me.Component_Type_Ref = Transform_GUID_To_UUID(rpy_base_class.GUID)
+                Me.Component_Type_Ref = Transform_Rpy_GUID_To_Guid(rpy_base_class.GUID)
 
                 Me.Configuration_Values = New List(Of Configuration_Value)
                 Dim rpy_attribute As RPAttribute
@@ -217,7 +217,7 @@ Public Class Component_Prototype
                     If Is_Component_Configuration(CType(rpy_attribute, RPModelElement)) Then
                         Dim conf_val As New Configuration_Value
                         conf_val.Component_Configuration_Ref =
-                            Transform_GUID_To_UUID(rpy_attribute.GUID)
+                            Transform_Rpy_GUID_To_Guid(rpy_attribute.GUID)
                         conf_val.Value =
                             CType(Me.Rpy_Element, RPInstance).getAttributeValue(rpy_attribute.name)
                         Me.Configuration_Values.Add(conf_val)
@@ -246,7 +246,7 @@ Public Class Component_Prototype
         rpy_inst = CType(rpy_parent_class.findNestedElement(Me.Name, "Instance"), RPInstance)
         If Not IsNothing(rpy_inst) Then
             Me.Merge_Rpy_Element(CType(rpy_inst, RPModelElement), report)
-            If rpy_inst.otherClass.GUID <> Transform_UUID_To_GUID(Me.Component_Type_Ref) Then
+            If rpy_inst.otherClass.GUID <> Transform_Guid_To_Rpy_GUID(Me.Component_Type_Ref) Then
                 rpy_inst.getSaveUnit.setReadOnly(0)
                 Dim referenced_rpy_swct As RPClass
                 referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
@@ -407,10 +407,10 @@ Public Class Assembly_Connector
                 rpy_requirer_component = rpy_link.to
             End If
 
-            Me.Provider_Component_Ref = Transform_GUID_To_UUID(rpy_provider_component.GUID)
-            Me.Provider_Port_Ref = Transform_GUID_To_UUID(rpy_provider_port.GUID)
-            Me.Requirer_Component_Ref = Transform_GUID_To_UUID(rpy_requirer_component.GUID)
-            Me.Requirer_Port_Ref = Transform_GUID_To_UUID(rpy_requirer_port.GUID)
+            Me.Provider_Component_Ref = Transform_Rpy_GUID_To_Guid(rpy_provider_component.GUID)
+            Me.Provider_Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_provider_port.GUID)
+            Me.Requirer_Component_Ref = Transform_Rpy_GUID_To_Guid(rpy_requirer_component.GUID)
+            Me.Requirer_Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_requirer_port.GUID)
         End If
     End Sub
 
