@@ -44,7 +44,7 @@ Public Class Merge_Report_Item
             Case 3
                 Return Me.Get_Criticality_String()
             Case 4
-                Return Get_Status_String(Me.Merge_Status)
+                Return Me.Get_Status_String()
             Case 5
                 Return Me.Message
             Case Else

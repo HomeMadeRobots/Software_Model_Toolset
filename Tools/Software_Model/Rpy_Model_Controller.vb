@@ -253,7 +253,7 @@ Public Class Rpy_Model_Controller
                     "Model has errors, cannot compute metrics." & vbCrLf)
             Else
                 Rhapsody_App.writeToOutputWindow("out", "Compute model metrics...")
-                Me.Model.Compute_Metrics()
+                Me.Model.Compute_PSWA_Metrics()
                 Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
 
     '            Create report
@@ -271,7 +271,7 @@ Public Class Rpy_Model_Controller
 
                     Dim file_stream As New StreamWriter(file_path, False)
 
-                    Me.Model.Generate_Metrics_Report(file_stream)
+                    Me.Model.Generate_PSWA_Metrics_Report(file_stream)
 
                     file_stream.Close()
                     Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
@@ -375,7 +375,7 @@ Public Class Rpy_Model_Controller
 
                     stream_writer = New StreamWriter(file_path, False)
 
-                    Me.Model.Generate_Metrics_Report(stream_writer)
+                    Me.Model.Generate_PSWA_Metrics_Report(stream_writer)
 
                     stream_writer.Close()
                     Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
