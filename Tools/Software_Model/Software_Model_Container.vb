@@ -72,7 +72,7 @@ Public Class Software_Model_Container
         Return Me.Children
     End Function
 
-    Function Get_All_Compositions() As List(Of Root_Software_Composition)
+    Public Function Get_All_Compositions() As List(Of Root_Software_Composition)
         If IsNothing(Me.Compositions_List) Then
             Me.Compositions_List = New List(Of Root_Software_Composition)
             For Each top_pkg In Me.PSWA_Packages
@@ -87,7 +87,7 @@ Public Class Software_Model_Container
         Return Me.Compositions_List
     End Function
 
-    Function Get_All_Component_Types() As List(Of Component_Type)
+    Public Function Get_All_Component_Types() As List(Of Component_Type)
         If IsNothing(Me.Component_Types_List) Then
             Me.Component_Types_List = New List(Of Component_Type)
             For Each top_pkg In Me.PSWA_Packages
@@ -102,7 +102,7 @@ Public Class Software_Model_Container
         Return Me.Component_Types_List
     End Function
 
-    Function Get_All_Interfaces() As List(Of Software_Interface)
+    Public Function Get_All_Interfaces() As List(Of Software_Interface)
         If IsNothing(Me.Interfaces_List) Then
             Me.Interfaces_List = New List(Of Software_Interface)
             For Each top_pkg In Me.PSWA_Packages
@@ -117,7 +117,7 @@ Public Class Software_Model_Container
         Return Me.Interfaces_List
     End Function
 
-    Function Get_All_Data_Types() As List(Of Data_Type)
+    Public Function Get_All_Data_Types() As List(Of Data_Type)
         If IsNothing(Me.Data_Types_List) Then
             Me.Data_Types_List = New List(Of Data_Type)
             For Each top_pkg In Me.PSWA_Packages

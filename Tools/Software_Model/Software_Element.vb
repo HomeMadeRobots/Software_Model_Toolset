@@ -121,11 +121,11 @@ Public MustInherit Class Software_Element
         message As String)
 
         Dim item As New Merge_Report_Item(
-                Me,
-                status,
-                Report_Item.Item_Criticality.CRITICALITY_ERROR,
-                message)
-            report.Add_Report_Item(item)
+            Me,
+            status,
+            Report_Item.Item_Criticality.CRITICALITY_ERROR,
+            message)
+        report.Add_Report_Item(item)
     End Sub
 
     Public Sub Add_Export_Information_Item(
@@ -134,11 +134,11 @@ Public MustInherit Class Software_Element
         message As String)
 
         Dim item As New Merge_Report_Item(
-                Me,
-                status,
-                Report_Item.Item_Criticality.CRITICALITY_INFORMATION,
-                message)
-            report.Add_Report_Item(item)
+            Me,
+            status,
+            Report_Item.Item_Criticality.CRITICALITY_INFORMATION,
+            message)
+        report.Add_Report_Item(item)
     End Sub
 
 
@@ -215,7 +215,7 @@ Public MustInherit Class Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
-    Sub Compute_Documentation_Rate(
+    Protected Sub Compute_Documentation_Rate(
         ByRef nb_documentable_elements As Double,
         ByRef nb_documented_elements As Double)
 

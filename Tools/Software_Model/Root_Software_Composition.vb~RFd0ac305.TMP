@@ -96,9 +96,7 @@ Public Class Root_Software_Composition
             ' Check connected ports contract.
             If p_swc_port.Contract_Ref <> r_swc_port.Contract_Ref Then
                 Dim r_swc As Component_Prototype
-                r_swc = CType(
-                            Me.Get_Element_By_Uuid(conn.Requirer_Component_Ref), 
-                            Component_Prototype)
+                r_swc = CType(Me.Get_Element_By_Uuid(conn.Requirer_Component_Ref), Component_Prototype)
                 r_swc.Add_Consistency_Check_Error_Item(report,
                     "SWC_4",
                     r_swc_port.Name & " shall be linked to a Provider_Port with the same contract.")
