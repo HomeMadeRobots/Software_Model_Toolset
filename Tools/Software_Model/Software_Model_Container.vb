@@ -8,8 +8,8 @@ Public Class Software_Model_Container
 
     Inherits Software_Element
 
-    <XmlArrayItem("PSWA_Package")>
-    Public PSWA_Packages As List(Of Top_Level_PSWA_Package)
+    <XmlArrayItem("Package")>
+    Public Packages As List(Of Top_Level_Package)
 
     Private Elements_Dictionary_By_Uuid As New Dictionary(Of Guid, Software_Element)
 
@@ -64,8 +64,8 @@ Public Class Software_Model_Container
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.PSWA_Packages) Then
-                children_list.AddRange(Me.PSWA_Packages)
+            If Not IsNothing(Me.Packages) Then
+                children_list.AddRange(Me.Packages)
             End If
             Me.Children = children_list
         End If
@@ -75,8 +75,8 @@ Public Class Software_Model_Container
     Public Function Get_All_Compositions() As List(Of Root_Software_Composition)
         If IsNothing(Me.Compositions_List) Then
             Me.Compositions_List = New List(Of Root_Software_Composition)
-            For Each top_pkg In Me.PSWA_Packages
-                Dim all_pkg_list As List(Of PSWA_Package) = top_pkg.Get_All_Packages
+            For Each top_pkg In Me.Packages
+                Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
                     If Not IsNothing(pkg.Root_Software_Compositions) Then
                         Me.Compositions_List.AddRange(pkg.Root_Software_Compositions)
@@ -90,8 +90,8 @@ Public Class Software_Model_Container
     Public Function Get_All_Component_Types() As List(Of Component_Type)
         If IsNothing(Me.Component_Types_List) Then
             Me.Component_Types_List = New List(Of Component_Type)
-            For Each top_pkg In Me.PSWA_Packages
-                Dim all_pkg_list As List(Of PSWA_Package) = top_pkg.Get_All_Packages
+            For Each top_pkg In Me.Packages
+                Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
                     If Not IsNothing(pkg.Component_Types) Then
                         Me.Component_Types_List.AddRange(pkg.Component_Types)
@@ -105,8 +105,8 @@ Public Class Software_Model_Container
     Public Function Get_All_Interfaces() As List(Of Software_Interface)
         If IsNothing(Me.Interfaces_List) Then
             Me.Interfaces_List = New List(Of Software_Interface)
-            For Each top_pkg In Me.PSWA_Packages
-                Dim all_pkg_list As List(Of PSWA_Package) = top_pkg.Get_All_Packages
+            For Each top_pkg In Me.Packages
+                Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
                     If Not IsNothing(pkg.Software_Interfaces) Then
                         Me.Interfaces_List.AddRange(pkg.Software_Interfaces)
@@ -120,8 +120,8 @@ Public Class Software_Model_Container
     Public Function Get_All_Data_Types() As List(Of Data_Type)
         If IsNothing(Me.Data_Types_List) Then
             Me.Data_Types_List = New List(Of Data_Type)
-            For Each top_pkg In Me.PSWA_Packages
-                Dim all_pkg_list As List(Of PSWA_Package) = top_pkg.Get_All_Packages
+            For Each top_pkg In Me.Packages
+                Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
                     If Not IsNothing(pkg.Data_Types) Then
                         Me.Data_Types_List.AddRange(pkg.Data_Types)
@@ -167,14 +167,14 @@ Public Class Software_Model_Container
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
         MyBase.Get_Own_Data_From_Rhapsody_Model()
 
-        ' Create "virtual" PSWA_Package named "Basic_Types"
-        Dim basic_types_pkg As New Top_Level_PSWA_Package
+        ' Create "virtual" Package named "Basic_Types"
+        Dim basic_types_pkg As New Top_Level_Package
         basic_types_pkg.Name = "Basic_Types"
-        basic_types_pkg.Description = "Automatically created PSWA_Package to gathers Basic_Types."
+        basic_types_pkg.Description = "Automatically created Package to gathers Basic_Types."
         basic_types_pkg.UUID = Guid.NewGuid
         basic_types_pkg.Data_Types = New List(Of Data_Type)
         ' !!! IMPORTANT NOTE !!! '
-        ' basic_types_pkg is not added to Me.PSWA_Packages nor to Elements_Dictionary_By_Uuid but
+        ' basic_types_pkg is not added to Me.Packages nor to Elements_Dictionary_By_Uuid but
         ' all its aggregated Data_Types are added to Elements_Dictionary_By_Uuid.
         ' It allows to make Basic_Types available for other methods.
 
@@ -234,22 +234,16 @@ Public Class Software_Model_Container
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
-        Me.PSWA_Packages = New List(Of Top_Level_PSWA_Package)
+        Me.Packages = New List(Of Top_Level_Package)
 
         Dim rpy_pkg As RPPackage
         For Each rpy_pkg In CType(Me.Rpy_Element, RPPackage).packages
             If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
-                Dim pswa_pkg As Top_Level_PSWA_Package = New Top_Level_PSWA_Package
-                Me.PSWA_Packages.Add(pswa_pkg)
-
-                ' Trick to set pswa_pkg.Top_Package to pswa_pkg
-                Me.Top_Package = pswa_pkg
-
-                pswa_pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))
+                Dim pkg As Top_Level_Package = New Top_Level_Package
+                Me.Packages.Add(pkg)
+                pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))
             End If
         Next
-
-        Me.Top_Package = Nothing
 
     End Sub
 
@@ -265,12 +259,12 @@ Public Class Software_Model_Container
     Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
 
         ' Export packages
-        For Each pkg_to_export In Me.PSWA_Packages
+        For Each pkg_to_export In Me.Packages
             pkg_to_export.Export_To_Rhapsody(Me.Rpy_Element, report)
         Next
 
         ' Export independent Data_Types
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_Independent_Data_Types_To_Rhapsody(report)
         Next
 
@@ -291,7 +285,7 @@ Public Class Software_Model_Container
         Dim round_counter As Integer = 0
         Dim force_export As Boolean = False
         While dt_list.Count <> 0
-            For Each pkg In Me.PSWA_Packages
+            For Each pkg In Me.Packages
                 pkg.Export_Dependent_Data_Types_To_Rhapsody(exported_dt_list, report, force_export)
             Next
             For Each exp_dt In exported_dt_list
@@ -304,17 +298,17 @@ Public Class Software_Model_Container
         End While
 
         ' Export Interfaces
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_Interfaces_To_Rhapsody(report)
         Next
 
         ' Export Component_Types
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_Component_Types_To_Rhapsody(report)
         Next
 
         ' Export Compositions
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_Compositions_To_Rhapsody(report)
         Next
     End Sub
@@ -356,7 +350,7 @@ Public Class Software_Model_Container
         Me.Component_Type_WMC_Series = New Data_Series
         Me.Interfaces_WMC_Series = New Data_Series
 
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
 
             Me.Documentation_Rate_Series.Add_Value(pkg.Get_Package_Documentation_Rate())
 
@@ -393,8 +387,8 @@ Public Class Software_Model_Container
         file_stream.WriteLine("Project metrics")
         file_stream.WriteLine()
         file_stream.WriteLine(
-            "Number of PSWA_Packages : " &
-            Me.PSWA_Packages.Count)
+            "Number of Packages : " &
+            Me.Packages.Count)
         file_stream.WriteLine()
         Me.Write_Series_Metrics(
             file_stream,
@@ -436,12 +430,12 @@ Public Class Software_Model_Container
         Add_Seperator(file_stream)
         file_stream.WriteLine()
 
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
 
             file_stream.WriteLine()
             Add_Seperator(file_stream)
 
-            file_stream.WriteLine("PSWA_Package : " & pkg.Name)
+            file_stream.WriteLine("Package : " & pkg.Name)
             file_stream.WriteLine()
 
             file_stream.WriteLine("Documentation rate : " &
@@ -465,7 +459,7 @@ Public Class Software_Model_Container
 
             file_stream.WriteLine()
             file_stream.WriteLine("Interfaces : ")
-            Dim pkg_list As List(Of PSWA_Package) = pkg.Get_All_Packages
+            Dim pkg_list As List(Of Software_Package) = pkg.Get_All_Packages
             For Each current_pkg In pkg_list
 
                 If Not IsNothing(current_pkg.Software_Interfaces) Then

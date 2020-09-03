@@ -396,7 +396,6 @@ Public Class Rpy_Model_Controller
 
 
     ' Remove empty packages from the Rhapsody model.
-    ' It deals onmly with PSWA_Packages.
     ' A package is considered as empty if it aggregates only packages that recursively only 
     ' aggregates packages.
     Public Sub Remove_Empty_Packages()
@@ -404,7 +403,7 @@ Public Class Rpy_Model_Controller
         Dim chrono As New Global.System.Diagnostics.Stopwatch
         chrono.Start()
         Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Remove empty PSWA_Packages..." & vbCrLf)
+        Rhapsody_App.writeToOutputWindow("out", "Remove empty Packages..." & vbCrLf)
 
         ' Get selected element and check that it is a Rhapsody project
         ' Get selected element and check that it is a Rhapsody project
@@ -414,13 +413,13 @@ Public Class Rpy_Model_Controller
             Dim root_level_package As RPPackage
             For Each root_level_package In rpy_sw_mdl.packages
                 If Is_PSWA_Package(CType(root_level_package, RPModelElement)) Then
-                    PSWA_Package.Remove_Empty_Packages(root_level_package)
+                    Software_Package.Remove_Empty_Packages(root_level_package)
                 End If
             Next
         End If
 
         ' Display result to output window
-        Rhapsody_App.writeToOutputWindow("out", "End removing empty PSWA_Packages." & vbCrLf)
+        Rhapsody_App.writeToOutputWindow("out", "End removing empty Packages." & vbCrLf)
         chrono.Stop()
         Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
     End Sub

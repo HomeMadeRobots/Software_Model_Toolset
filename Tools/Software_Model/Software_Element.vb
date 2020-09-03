@@ -10,15 +10,10 @@ Public MustInherit Class Software_Element
 
     Protected Children As List(Of Software_Element) = Nothing
     Protected Rpy_Element As RPModelElement = Nothing
-    Protected Top_Package As Top_Level_PSWA_Package = Nothing
     Protected Container As Software_Model_Container = Nothing
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Public Function Get_Top_Package() As Top_Level_PSWA_Package
-        Return Me.Top_Package
-    End Function
-
     Public Function Get_Element_By_Uuid(element_uuid As Guid) As Software_Element
         Return Me.Container.Get_Element(element_uuid)
     End Function
@@ -50,7 +45,6 @@ Public MustInherit Class Software_Element
         owner As Software_Element,
         rpy_mdl_element As RPModelElement)
 
-        Me.Top_Package = owner.Top_Package
         Me.Container = owner.Container
         Me.Rpy_Element = rpy_mdl_element
 
@@ -242,11 +236,32 @@ End Class
 Public MustInherit Class Classifier_Software_Element
     Inherits Software_Element
 
+    Protected Top_Package As Top_Level_Package = Nothing
+
     Protected Needed_Elements As List(Of Classifier_Software_Element) = Nothing
     Protected Dependent_Elements As List(Of Classifier_Software_Element) = Nothing
 
     Public MustOverride Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
     Public MustOverride Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+
+    Public Function Get_Top_Package() As Top_Level_Package
+        Dim result As Top_Level_Package = Nothing
+
+        ' Get the Rhapsody top level package
+        Dim project_guid As String
+        project_guid = Transform_UUID_To_GUID(Me.Container.UUID)
+        Dim rpy_top_pkg As RPModelElement = Me.Rpy_Element.owner
+        While rpy_top_pkg.owner.GUID <> project_guid
+            rpy_top_pkg = rpy_top_pkg.owner
+        End While
+
+        ' Find the corresponding Software_Package
+        Dim top_level_package_uuid As Guid
+        top_level_package_uuid = Transform_GUID_To_UUID(rpy_top_pkg.GUID)
+        result = CType(Me.Container.Get_Element_By_Uuid(top_level_package_uuid), Top_Level_Package)
+
+        Return result
+    End Function
 
     Public Function Get_Dependent_Elements_Nb() As Double
         Return Me.Dependent_Elements.Count

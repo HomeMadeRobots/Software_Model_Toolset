@@ -165,7 +165,7 @@ Public MustInherit Class Basic_Type
         Return Nothing
     End Function
 
-    Public Sub Set_Top_Package(pkg As Top_Level_PSWA_Package)
+    Public Sub Set_Top_Package(pkg As Top_Level_Package)
         Me.Top_Package = pkg
     End Sub
 

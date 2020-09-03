@@ -1,11 +1,13 @@
 ﻿Imports rhapsody2
 Imports System.Xml.Serialization
 
-Public Class PSWA_Package
+Public Class Software_Package
 
     Inherits Software_Element
 
-    Public PSWA_Packages As List(Of PSWA_Package)
+    <XmlArrayItem("Package")>
+    Public Packages As List(Of Software_Package)
+
     <XmlArrayItemAttribute(GetType(Enumerated_Data_Type)), _
      XmlArrayItemAttribute(GetType(Array_Data_Type)), _
      XmlArrayItemAttribute(GetType(Physical_Data_Type)), _
@@ -15,7 +17,7 @@ Public Class PSWA_Package
 
     <XmlArrayItemAttribute(GetType(Client_Server_Interface)), _
      XmlArrayItemAttribute(GetType(Event_Interface)), _
-     XmlArray("Software_Interfaces")>
+     XmlArray("Interfaces")>
     Public Software_Interfaces As List(Of Software_Interface)
 
     Public Component_Types As List(Of Component_Type)
@@ -27,8 +29,8 @@ Public Class PSWA_Package
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.PSWA_Packages) Then
-                children_list.AddRange(Me.PSWA_Packages)
+            If Not IsNothing(Me.Packages) Then
+                children_list.AddRange(Me.Packages)
             End If
             If Not IsNothing(Me.Data_Types) Then
                 children_list.AddRange(Me.Data_Types)
@@ -47,10 +49,10 @@ Public Class PSWA_Package
         Return Me.Children
     End Function
 
-    Protected Sub Get_All_Sub_Packages(ByRef pkg_list As List(Of PSWA_Package))
-        If Not IsNothing(Me.PSWA_Packages) Then
-            Dim pkg As PSWA_Package
-            For Each pkg In Me.PSWA_Packages
+    Protected Sub Get_All_Sub_Packages(ByRef pkg_list As List(Of Software_Package))
+        If Not IsNothing(Me.Packages) Then
+            Dim pkg As Software_Package
+            For Each pkg In Me.Packages
                 pkg_list.Add(pkg)
                 pkg.Get_All_Sub_Packages(pkg_list)
             Next
@@ -62,7 +64,7 @@ Public Class PSWA_Package
         For Each child_pgk In rpy_package.packages
             Remove_Empty_Packages(child_pgk)
         Next
-        If PSWA_Package.Is_Empty(rpy_package) Then
+        If Software_Package.Is_Empty(rpy_package) Then
             rpy_package.deleteFromProject()
         End If
     End Sub
@@ -84,17 +86,17 @@ Public Class PSWA_Package
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
-        Me.PSWA_Packages = New List(Of PSWA_Package)
+        Me.Packages = New List(Of Software_Package)
         Dim rpy_pkg As RPPackage
         For Each rpy_pkg In CType(Me.Rpy_Element, RPPackage).packages
             If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
-                Dim pswa_pkg As PSWA_Package = New PSWA_Package
-                Me.PSWA_Packages.Add(pswa_pkg)
-                pswa_pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))
+                Dim pkg As Software_Package = New Software_Package
+                Me.Packages.Add(pkg)
+                pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))
             End If
         Next
-        If Me.PSWA_Packages.Count = 0 Then
-            Me.PSWA_Packages = Nothing
+        If Me.Packages.Count = 0 Then
+            Me.Packages = Nothing
         End If
 
         Me.Data_Types = New List(Of Data_Type)
@@ -184,10 +186,10 @@ Public Class PSWA_Package
         Else
             rpy_pkg = rpy_parent_pkg.addNestedPackage(Me.Name)
             Me.Set_Rpy_Common_Attributes(CType(rpy_pkg, RPModelElement), report)
-            rpy_pkg.addStereotype("PSWA_Package", "Package")
+            rpy_pkg.addStereotype("Software_Package", "Package")
         End If
 
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_To_Rhapsody(CType(rpy_pkg, RPModelElement), report)
         Next
 
@@ -203,7 +205,7 @@ Public Class PSWA_Package
             End Select
         Next
 
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_Independent_Data_Types_To_Rhapsody(report)
         Next
 
@@ -230,7 +232,7 @@ Public Class PSWA_Package
             End Select
         Next
 
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_Dependent_Data_Types_To_Rhapsody(exported_dt_list, report, force)
         Next
     End Sub
@@ -240,7 +242,7 @@ Public Class PSWA_Package
             sw_if.Export_To_Rhapsody(Me.Rpy_Element, report)
         Next
 
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_Interfaces_To_Rhapsody(report)
         Next
     End Sub
@@ -250,7 +252,7 @@ Public Class PSWA_Package
             swct.Export_To_Rhapsody(Me.Rpy_Element, report)
         Next
 
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_Component_Types_To_Rhapsody(report)
         Next
     End Sub
@@ -260,7 +262,7 @@ Public Class PSWA_Package
             compo.Export_To_Rhapsody(Me.Rpy_Element, report)
         Next
 
-        For Each pkg In Me.PSWA_Packages
+        For Each pkg In Me.Packages
             pkg.Export_Compositions_To_Rhapsody(report)
         Next
     End Sub
@@ -271,7 +273,7 @@ Public Class PSWA_Package
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
-        If IsNothing(Me.PSWA_Packages) And
+        If IsNothing(Me.Packages) And
             IsNothing(Me.Component_Types) And
             IsNothing(Me.Root_Software_Compositions) And
             IsNothing(Me.Software_Interfaces) And
@@ -287,18 +289,18 @@ Public Class PSWA_Package
 End Class
 
 
-Public Class Top_Level_PSWA_Package
-    Inherits PSWA_Package
+Public Class Top_Level_Package
+    Inherits Software_Package
 
-    Private All_Packages As List(Of PSWA_Package) = Nothing
+    Private All_Packages As List(Of Software_Package) = Nothing
 
     Private Documentation_Rate As Double = -1
 
     Private Needed_Elements_List As List(Of Classifier_Software_Element) = Nothing
-    Private Needed_Top_Packages_List As List(Of Top_Level_PSWA_Package) = Nothing
+    Private Needed_Top_Packages_List As List(Of Top_Level_Package) = Nothing
 
     Private Dependent_Elements_List As List(Of Classifier_Software_Element) = Nothing
-    Private Dependent_Top_Packages_List As List(Of Top_Level_PSWA_Package) = Nothing
+    Private Dependent_Top_Packages_List As List(Of Top_Level_Package) = Nothing
 
     Private Nb_Data_Types As Double = 0
     Private Nb_Interfaces As Double = 0
@@ -314,9 +316,9 @@ Public Class Top_Level_PSWA_Package
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Public Function Get_All_Packages() As List(Of PSWA_Package)
+    Public Function Get_All_Packages() As List(Of Software_Package)
         If IsNothing(Me.All_Packages) Then
-            Me.All_Packages = New List(Of PSWA_Package)
+            Me.All_Packages = New List(Of Software_Package)
             Me.Get_All_Sub_Packages(Me.All_Packages)
             Me.All_Packages.Add(Me)
         End If
@@ -337,7 +339,7 @@ Public Class Top_Level_PSWA_Package
     End Function
 
     Public Sub Compute_Nb_Classifiers()
-        Dim pkg_list As List(Of PSWA_Package) = Me.Get_All_Packages
+        Dim pkg_list As List(Of Software_Package) = Me.Get_All_Packages
         For Each pkg In pkg_list
             If Not IsNothing(pkg.Component_Types) Then
                 Me.Nb_Component_Types += pkg.Component_Types.Count
@@ -356,15 +358,15 @@ Public Class Top_Level_PSWA_Package
 
     Public Sub Find_Needed_Elements()
 
-        Me.Needed_Top_Packages_List = New List(Of Top_Level_PSWA_Package)
+        Me.Needed_Top_Packages_List = New List(Of Top_Level_Package)
         Me.Needed_Elements_List = New List(Of Classifier_Software_Element)
 
         Dim tmp_needed_elements_list = New List(Of Classifier_Software_Element)
 
-        Dim pkg_list As List(Of PSWA_Package) = Me.Get_All_Packages
+        Dim pkg_list As List(Of Software_Package) = Me.Get_All_Packages
 
         ' Parse the list of sub packages + Me
-        Dim pkg As PSWA_Package
+        Dim pkg As Software_Package
         For Each pkg In pkg_list
 
             If Not IsNothing(pkg.Component_Types) Then
@@ -400,7 +402,7 @@ Public Class Top_Level_PSWA_Package
         tmp_needed_elements_list = tmp_needed_elements_list.Distinct().ToList
 
         For Each element In tmp_needed_elements_list
-            Dim owner_pkg As Top_Level_PSWA_Package = element.Get_Top_Package()
+            Dim owner_pkg As Top_Level_Package = element.Get_Top_Package()
             If owner_pkg.UUID <> Me.UUID Then
                 If Not Me.Needed_Top_Packages_List.Contains(owner_pkg) Then
                     Me.Needed_Top_Packages_List.Add(owner_pkg)
@@ -413,15 +415,15 @@ Public Class Top_Level_PSWA_Package
     Public Sub Find_Dependent_Elements()
         ' Find_Needed_Elements shall be called first.
 
-        Me.Dependent_Top_Packages_List = New List(Of Top_Level_PSWA_Package)
+        Me.Dependent_Top_Packages_List = New List(Of Top_Level_Package)
         Me.Dependent_Elements_List = New List(Of Classifier_Software_Element)
 
         Dim tmp_dependent_elements_list As New List(Of Classifier_Software_Element)
 
-        Dim pkg_list As List(Of PSWA_Package) = Me.Get_All_Packages
+        Dim pkg_list As List(Of Software_Package) = Me.Get_All_Packages
 
         ' Parse the list of sub packages + Me
-        Dim pkg As PSWA_Package
+        Dim pkg As Software_Package
         For Each pkg In pkg_list
 
             If Not IsNothing(pkg.Component_Types) Then
@@ -454,7 +456,7 @@ Public Class Top_Level_PSWA_Package
         tmp_dependent_elements_list = tmp_dependent_elements_list.Distinct().ToList
 
         For Each element In tmp_dependent_elements_list
-            Dim owner_pkg As Top_Level_PSWA_Package = element.Get_Top_Package()
+            Dim owner_pkg As Top_Level_Package = element.Get_Top_Package()
             If owner_pkg.UUID <> Me.UUID Then
                 If Not Me.Dependent_Top_Packages_List.Contains(owner_pkg) Then
                     Me.Dependent_Top_Packages_List.Add(owner_pkg)
