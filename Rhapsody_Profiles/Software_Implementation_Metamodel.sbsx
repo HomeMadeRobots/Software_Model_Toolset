@@ -11,16 +11,17 @@
 			<_id type="a">GUID 88f85ef3-0683-4a3e-90c0-db97a0475fd0</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Implementation_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::9:6:25</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::9:6:25</_modifiedTime>
-			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">9.3.2020::9:6:25</weakCGTime>
+			<_modifiedTimeWeak type="a">9.3.2020::14:39:30</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.3.2020::14:39:30</_modifiedTime>
+			<_lastID type="a">2</_lastID>
+			<weakCGTime type="a">9.3.2020::14:39:30</weakCGTime>
 			<strongCGTime type="a">8.13.2020::8:5:56</strongCGTime>
 			<_defaultComposite type="s">GUID 495cd905-0734-4ceb-b58c-ad580af1b51a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 72afc5b5-ea18-42a9-953c-c0181d96ba98</value>
+				<value>GUID 17c201db-5717-4fb9-9e71-509c5d85bbd2</value>
 				<value>GUID 495cd905-0734-4ceb-b58c-ad580af1b51a</value>
 			</AggregatesList>
 		</IProfile>
@@ -390,6 +391,84 @@
 			<_modifiedTimeWeak type="a">8.13.2020::8:14:2</_modifiedTimeWeak>
 			<_modifiedTime type="a">8.13.2020::8:14:2</_modifiedTime>
 		</IEnumerationLiteral>
+		<ISubsystem type="e">
+			<_id type="a">GUID 17c201db-5717-4fb9-9e71-509c5d85bbd2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Metamodel_Description</_name>
+			<_modifiedTimeWeak type="a">9.3.2020::14:40:1</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.3.2020::14:40:1</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">9.3.2020::14:40:1</weakCGTime>
+			<strongCGTime type="a">9.3.2020::14:39:46</strongCGTime>
+			<_defaultComposite type="s">GUID be09648f-3577-41a2-88c5-6575eb12e3c4</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.1.1970::1:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID be09648f-3577-41a2-88c5-6575eb12e3c4</value>
+				<value>GUID fe26b8f2-18fc-43d1-8daa-14776264152d</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID be09648f-3577-41a2-88c5-6575eb12e3c4</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID fe26b8f2-18fc-43d1-8daa-14776264152d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Implementation_File</_name>
+			<_modifiedTimeWeak type="a">9.3.2020::14:41:35</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hname type="a">CD_Software_Packages_Impl_Children</_hname>
+					<_hid type="a">GUID af521ef7-d829-4113-a8b7-d71d94470a86</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">9.3.2020::14:41:35</_modifiedTime>
+			<weakCGTime type="a">9.3.2020::14:41:35</weakCGTime>
+			<strongCGTime type="a">9.3.2020::14:40:8</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<Associations type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Associations>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 36c5cfb0-1a18-46f6-aed9-fbd265178cc3</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 36c5cfb0-1a18-46f6-aed9-fbd265178cc3</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hname type="a">Software_Element</_hname>
+					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
 		<IClass type="e">
 			<_id type="a">GUID 495cd905-0734-4ceb-b58c-ad580af1b51a</_id>
 			<_myState type="a">40960</_myState>

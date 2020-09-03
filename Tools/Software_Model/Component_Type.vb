@@ -6,7 +6,7 @@ Public Class Component_Type
     Inherits Software_Class
 
     Public Component_Operations As List(Of Component_Operation)
-    Public Component_Configurations As List(Of Component_Configuration)
+    Public Component_Parameters As List(Of Component_Parameter)
     Public Provider_Ports As List(Of Provider_Port)
     Public Requirer_Ports As List(Of Requirer_Port)
 
@@ -23,8 +23,8 @@ Public Class Component_Type
             If Not IsNothing(Me.Component_Operations) Then
                 children_list.AddRange(Me.Component_Operations)
             End If
-            If Not IsNothing(Me.Component_Configurations) Then
-                children_list.AddRange(Me.Component_Configurations)
+            If Not IsNothing(Me.Component_Parameters) Then
+                children_list.AddRange(Me.Component_Parameters)
             End If
             Me.Children = children_list
         End If
@@ -71,19 +71,19 @@ Public Class Component_Type
             Me.Component_Operations = Nothing
         End If
 
-        Me.Component_Configurations = New List(Of Component_Configuration)
+        Me.Component_Parameters = New List(Of Component_Parameter)
 
          Dim rpy_attribute As RPAttribute
         For Each rpy_attribute In CType(Me.Rpy_Element, RPClass).attributes
             If Is_Component_Configuration(CType(rpy_attribute, RPModelElement)) Then
-                Dim conf As Component_Configuration = New Component_Configuration
-                Me.Component_Configurations.Add(conf)
+                Dim conf As Component_Parameter = New Component_Parameter
+                Me.Component_Parameters.Add(conf)
                 conf.Import_From_Rhapsody_Model(Me, CType(rpy_attribute, RPModelElement))
             End If
         Next
 
-        If Me.Component_Configurations.Count = 0 Then
-            Me.Component_Configurations = Nothing
+        If Me.Component_Parameters.Count = 0 Then
+            Me.Component_Parameters = Nothing
         End If
 
     End Sub
@@ -147,8 +147,8 @@ Public Class Component_Type
                 Next
             End If
 
-            If Not IsNothing(Me.Component_Configurations) Then
-                For Each conf In Me.Component_Configurations
+            If Not IsNothing(Me.Component_Parameters) Then
+                For Each conf In Me.Component_Parameters
                     Dim data_type As Data_Type
                     data_type = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
                     If Not data_type.Is_Basic_Type Then
@@ -409,7 +409,7 @@ Public Class Component_Operation
 End Class
 
 
-Public Class Component_Configuration
+Public Class Component_Parameter
 
     Inherits Typed_Software_Element
 
