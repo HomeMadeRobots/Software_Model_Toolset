@@ -11,14 +11,14 @@
 			<_id type="a">GUID fb48d6a1-4193-4abc-a7e4-2e98bfe4df96</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Data_Type_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::15:17:3</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.4.2020::8:53:59</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Data_Type_Metamodel profile defines meta-classes allowing to model any kind of data types used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.3.2020::15:17:3</_modifiedTime>
+			<_modifiedTime type="a">9.4.2020::8:55:59</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">9.3.2020::15:17:3</weakCGTime>
+			<weakCGTime type="a">9.4.2020::8:53:59</weakCGTime>
 			<strongCGTime type="a">8.14.2019::9:19:12</strongCGTime>
 			<_defaultComposite type="s">GUID e1a7b393-5e2c-474c-bdbc-ce062cebc552</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -632,10 +632,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_id type="a">GUID aacddf34-804b-419c-8593-e1557c6452f1</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::15:17:3</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::15:17:3</_modifiedTime>
-			<_lastID type="a">15</_lastID>
-			<weakCGTime type="a">9.3.2020::15:17:3</weakCGTime>
+			<_modifiedTimeWeak type="a">9.4.2020::8:53:59</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.4.2020::8:53:59</_modifiedTime>
+			<_lastID type="a">17</_lastID>
+			<weakCGTime type="a">9.4.2020::8:53:59</weakCGTime>
 			<strongCGTime type="a">6.21.2018::9:54:10</strongCGTime>
 			<_defaultComposite type="s">GUID 5589414c-eac2-4252-8a39-9b48b514233d</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -658,6 +658,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<value>GUID da7d6728-aad2-4eee-8870-a037d8c3a56f</value>
 				<value>GUID 4d91587b-3719-4fe6-bae7-2bf3049774cb</value>
 				<value>GUID 3623761a-9c3e-4925-b8c8-1990b96687cc</value>
+				<value>GUID eb011042-e77d-49a9-b1b8-8fc5ba2ae494</value>
+				<value>GUID 30306c13-2efb-4e27-93f1-ccfdb732aefb</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IDiagram type="e">
@@ -1882,8 +1884,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::14:22:3</_modifiedTime>
-			<_lastModifiedTime type="a">9.3.2020::14:22:3</_lastModifiedTime>
+			<_modifiedTime type="a">9.4.2020::6:23:12</_modifiedTime>
+			<_lastModifiedTime type="a">9.4.2020::6:23:12</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -2497,8 +2499,6 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<m_TargetPort type="a">515 890 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
-					<_hm2Class type="a">IAssociationEnd</_hm2Class>
-					<_hid type="a">GUID dfecb8c4-40c1-49d5-b0f1-d742a27efef9</_hid>
 				</IAssociationEndHandle>
 			</m_pInverseModelObject>
 			<m_pInstance type="r">
@@ -2547,12 +2547,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_position type="a">1 0 0  </m_position>
 					<m_nIdent type="a">3</m_nIdent>
 					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nVerticalSpacing type="a">-7</m_nVerticalSpacing>
 					<m_nOrientationCtrlPt type="a">4</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetRole>
 			<m_sourceMultiplicity type="p">
 				<CGIText type="e">
-					<m_str type="a">1</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -2582,6 +2582,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_position type="a">1 0 0  </m_position>
 					<m_nIdent type="a">5</m_nIdent>
 					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nVerticalSpacing type="a">-7</m_nVerticalSpacing>
 					<m_nOrientationCtrlPt type="a">6</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetMultiplicity>
@@ -2617,7 +2618,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetQualifier>
-			<m_specificType type="a">symmetric_type</m_specificType>
+			<m_specificType type="a">type_122</m_specificType>
 		</CGIAssociationEnd>
 		<CGIClass type="e">
 			<_id type="a">GUID f492c9ca-53a6-44c0-8ee4-f2240cc561ed</_id>
@@ -5325,8 +5326,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::14:22:3</_modifiedTime>
-			<_lastModifiedTime type="a">9.3.2020::14:22:3</_lastModifiedTime>
+			<_modifiedTime type="a">9.4.2020::6:23:2</_modifiedTime>
+			<_lastModifiedTime type="a">9.4.2020::6:23:2</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -6208,8 +6209,6 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<m_TargetPort type="a">539 890 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
-					<_hm2Class type="a">IAssociationEnd</_hm2Class>
-					<_hid type="a">GUID cbacc35b-7217-4cf9-a6b2-da9804cfdd55</_hid>
 				</IAssociationEndHandle>
 			</m_pInverseModelObject>
 			<m_pInstance type="r">
@@ -6258,12 +6257,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_position type="a">1 0 0  </m_position>
 					<m_nIdent type="a">3</m_nIdent>
 					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nVerticalSpacing type="a">-7</m_nVerticalSpacing>
 					<m_nOrientationCtrlPt type="a">4</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetRole>
 			<m_sourceMultiplicity type="p">
 				<CGIText type="e">
-					<m_str type="a">1</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -6293,6 +6292,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_position type="a">1 0 0  </m_position>
 					<m_nIdent type="a">5</m_nIdent>
 					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nVerticalSpacing type="a">-7</m_nVerticalSpacing>
 					<m_nOrientationCtrlPt type="a">6</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetMultiplicity>
@@ -6328,7 +6328,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetQualifier>
-			<m_specificType type="a">symmetric_type</m_specificType>
+			<m_specificType type="a">type_122</m_specificType>
 		</CGIAssociationEnd>
 		<CGIAssociationEnd type="e">
 			<_id type="a">GUID 3ea4a843-81c0-4b50-99c4-b8e8727dbf03</_id>
@@ -7025,8 +7025,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::14:27:16</_modifiedTime>
-			<_lastModifiedTime type="a">9.3.2020::14:27:16</_lastModifiedTime>
+			<_modifiedTime type="a">9.4.2020::7:11:53</_modifiedTime>
+			<_lastModifiedTime type="a">9.4.2020::7:11:53</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -7069,7 +7069,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</m_name>
 			<m_drawBehavior type="a">0</m_drawBehavior>
 			<m_bIsPreferencesInitialized type="a">0</m_bIsPreferencesInitialized>
-			<elementList type="a">27</elementList>
+			<elementList type="a">31</elementList>
 			
 			<m_access type="a">'Z'</m_access>
 			<m_modified type="a">'N'</m_modified>
@@ -7109,6 +7109,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<value>GUID 832f0310-1aaa-4d05-befb-06c68daa351d</value>
 				<value>GUID 33757b42-deca-4468-97e0-84faad2c8386</value>
 				<value>GUID 950f398e-4b0b-42ab-a4b1-586ea4066d3d</value>
+				<value>GUID 546864f6-4f31-448a-a719-7d4c51a20c4b</value>
+				<value>GUID 24d38f1d-1395-4020-8908-bd70a9f8dd56</value>
+				<value>GUID 4340c166-fc0b-4ba5-b068-b494496698d1</value>
+				<value>GUID 26d489c5-5523-405b-97a4-fa81edc9ca0a</value>
 			</AggregatesList>
 		</CGIClassChart>
 		<CGIClass type="e">
@@ -7203,7 +7207,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">1</size>
+						<size type="a">2</size>
 						<IPropertySubject type="e">
 							<_Name type="a">General</_Name>
 							<Metaclasses type="c">
@@ -7216,6 +7220,36 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">ShowLabels</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Composition</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">ShowRedefinesLabel</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowRoleVisibility</_Name>
 													<_Value type="a">False</_Value>
 													<_Type type="a">Bool</_Type>
 												</IProperty>
@@ -7282,12 +7316,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">534 1262 </m_SourcePort>
-			<m_TargetPort type="a">529 525 </m_TargetPort>
+			<m_SourcePort type="a">534 1451 </m_SourcePort>
+			<m_TargetPort type="a">529 329 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
-					<_hm2Class type="a">IAssociationEnd</_hm2Class>
-					<_hid type="a">GUID cbacc35b-7217-4cf9-a6b2-da9804cfdd55</_hid>
 				</IAssociationEndHandle>
 			</m_pInverseModelObject>
 			<m_pInstance type="r">
@@ -7301,12 +7333,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<m_bShowSourceMultiplicity type="a">1</m_bShowSourceMultiplicity>
 			<m_bShowSourceRole type="a">0</m_bShowSourceRole>
 			<m_bShowTargetMultiplicity type="a">1</m_bShowTargetMultiplicity>
-			<m_bShowTargetRole type="a">0</m_bShowTargetRole>
+			<m_bShowTargetRole type="a">1</m_bShowTargetRole>
 			<m_bShowLinkName type="a">1</m_bShowLinkName>
 			<m_bShowSpecificType type="a">0</m_bShowSpecificType>
 			<m_bInstance type="a">0</m_bInstance>
 			<m_bShowQualifier1 type="a">1</m_bShowQualifier1>
-			<m_bShowQualifier2 type="a">1</m_bShowQualifier2>
+			<m_bShowQualifier2 type="a">0</m_bShowQualifier2>
 			<m_sourceRole type="p">
 				<CGIText type="e">
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
@@ -7326,6 +7358,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</m_sourceRole>
 			<m_targetRole type="p">
 				<CGIText type="e">
+					<m_str type="a">Fields</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -7337,12 +7370,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_position type="a">1 0 0  </m_position>
 					<m_nIdent type="a">3</m_nIdent>
 					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nVerticalSpacing type="a">-7</m_nVerticalSpacing>
 					<m_nOrientationCtrlPt type="a">4</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetRole>
 			<m_sourceMultiplicity type="p">
 				<CGIText type="e">
-					<m_str type="a">1</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -7372,6 +7405,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_position type="a">1 0 0  </m_position>
 					<m_nIdent type="a">5</m_nIdent>
 					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nVerticalSpacing type="a">-7</m_nVerticalSpacing>
 					<m_nOrientationCtrlPt type="a">6</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetMultiplicity>
@@ -7407,7 +7441,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetQualifier>
-			<m_specificType type="a">symmetric_type</m_specificType>
+			<m_specificType type="a">type_122</m_specificType>
 		</CGIAssociationEnd>
 		<CGIAssociationEnd type="e">
 			<_id type="a">GUID 0a21473c-351f-483f-ae1d-621873caf916</_id>
@@ -7490,12 +7524,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 619 838  184 838  </m_arrow>
+			<m_arrow type="a">2 619 877  168 877  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
 			<m_SourcePort type="a">473 1451 </m_SourcePort>
-			<m_TargetPort type="a">703 1430 </m_TargetPort>
+			<m_TargetPort type="a">703 1451 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
 				</IAssociationEndHandle>
@@ -7544,11 +7578,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 							<m_bgFlag type="a">0</m_bgFlag>
 						</IColor>
 					</m_color>
-					<m_position type="a">4 -6 -9  99 -9  99 5  -6 5  </m_position>
+					<m_position type="a">4 -6 -9  122 -9  122 5  -6 5  </m_position>
 					<m_nIdent type="a">3</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_transform type="a">1 0 0 1 50 502 </m_transform>
-					<m_nVerticalSpacing type="a">19</m_nVerticalSpacing>
+					<m_bImplicitSetRectPoints type="a">1</m_bImplicitSetRectPoints>
+					<m_transform type="a">1 0 0 1.42857 211 884.857 </m_transform>
+					<m_nHorizontalSpacing type="a">165</m_nHorizontalSpacing>
+					<m_nVerticalSpacing type="a">16</m_nVerticalSpacing>
 					<m_nOrientationCtrlPt type="a">2</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetRole>
@@ -7712,7 +7747,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">2122</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 754.575 406.084 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 754.575 427.084 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -7823,7 +7858,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">2062</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 34.5751 362.084 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 18.5751 649.084 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -7957,7 +7992,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">2122</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 282.575 406.084 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 282.575 427.084 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -8092,7 +8127,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">2122</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 755.575 619.084 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 755.575 650.084 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -8237,7 +8272,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">4170</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 518.575 406.084 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 518.575 427.084 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -8388,7 +8423,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">4170</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 990.575 406.084 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 990.575 427.084 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -8525,7 +8560,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">4110</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 34.5751 188.084 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 18.5751 148.084 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -8653,7 +8688,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">4110</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 34.5751 14.0838 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 18.5751 -18.9162 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -8787,7 +8822,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">4170</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 284.575 615.084 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 284.575 650.084 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -8840,7 +8875,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">1</size>
+						<size type="a">2</size>
 						<IPropertySubject type="e">
 							<_Name type="a">General</_Name>
 							<Metaclasses type="c">
@@ -8853,6 +8888,36 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">ShowLabels</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Composition</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">ShowRedefinesLabel</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowRoleVisibility</_Name>
 													<_Value type="a">False</_Value>
 													<_Type type="a">Bool</_Type>
 												</IProperty>
@@ -8919,12 +8984,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">543 890 </m_SourcePort>
-			<m_TargetPort type="a">534 897 </m_TargetPort>
+			<m_SourcePort type="a">543 1451 </m_SourcePort>
+			<m_TargetPort type="a">534 329 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
-					<_hm2Class type="a">IAssociationEnd</_hm2Class>
-					<_hid type="a">GUID dfecb8c4-40c1-49d5-b0f1-d742a27efef9</_hid>
 				</IAssociationEndHandle>
 			</m_pInverseModelObject>
 			<m_pInstance type="r">
@@ -8938,7 +9001,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<m_bShowSourceMultiplicity type="a">1</m_bShowSourceMultiplicity>
 			<m_bShowSourceRole type="a">0</m_bShowSourceRole>
 			<m_bShowTargetMultiplicity type="a">1</m_bShowTargetMultiplicity>
-			<m_bShowTargetRole type="a">0</m_bShowTargetRole>
+			<m_bShowTargetRole type="a">1</m_bShowTargetRole>
 			<m_bShowLinkName type="a">0</m_bShowLinkName>
 			<m_bShowSpecificType type="a">0</m_bShowSpecificType>
 			<m_bInstance type="a">0</m_bInstance>
@@ -8961,6 +9024,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</m_sourceRole>
 			<m_targetRole type="p">
 				<CGIText type="e">
+					<m_str type="a">Enumerals</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -8972,11 +9036,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_position type="a">1 0 0  </m_position>
 					<m_nIdent type="a">3</m_nIdent>
 					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nVerticalSpacing type="a">-7</m_nVerticalSpacing>
+					<m_nOrientationCtrlPt type="a">4</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetRole>
 			<m_sourceMultiplicity type="p">
 				<CGIText type="e">
-					<m_str type="a">1</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -9006,6 +9071,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_position type="a">1 0 0  </m_position>
 					<m_nIdent type="a">5</m_nIdent>
 					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nVerticalSpacing type="a">-7</m_nVerticalSpacing>
 					<m_nOrientationCtrlPt type="a">6</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetMultiplicity>
@@ -9041,7 +9107,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_targetQualifier>
-			<m_specificType type="a">symmetric_type</m_specificType>
+			<m_specificType type="a">type_122</m_specificType>
 		</CGIAssociationEnd>
 		<CGIImageData type="e">
 			<_id type="a">GUID 221d26a9-3a12-47d5-999f-b95c17bd470d</_id>
@@ -9176,7 +9242,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">135178</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 523.575 196.084 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 523.575 204.084 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -9235,7 +9301,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
 							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Name</_hname>
 							<_hid type="a">GUID 5b570ec3-77b8-4d1b-ab55-7a5ab9a44922</_hid>
 						</IHandle>
@@ -9245,7 +9311,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
 							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">UUID</_hname>
 							<_hid type="a">GUID 7605bd74-6af2-4c83-8c63-611092ebdf15</_hid>
 						</IHandle>
@@ -9255,7 +9321,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
 							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Description</_hname>
 							<_hid type="a">GUID bd8623ef-3c2e-4135-bd93-c2e067a2c59c</_hid>
 						</IHandle>
@@ -9348,12 +9414,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">1 1083 353  </m_arrow>
+			<m_arrow type="a">1 1102 361  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">435 890 </m_SourcePort>
-			<m_TargetPort type="a">430 1100 </m_TargetPort>
+			<m_SourcePort type="a">524 329 </m_SourcePort>
+			<m_TargetPort type="a">1061 1100 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
 				</IAssociationEndHandle>
@@ -9563,7 +9629,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 1048 428  635 428  </m_arrow>
+			<m_arrow type="a">2 1048 449  635 449  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
@@ -9653,12 +9719,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 338 209  338 307  </m_arrow>
+			<m_arrow type="a">2 268 176  268 315  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">529 1367 </m_SourcePort>
-			<m_TargetPort type="a">26 778 </m_TargetPort>
+			<m_SourcePort type="a">1061 1367 </m_SourcePort>
+			<m_TargetPort type="a">2 778 </m_TargetPort>
 			<m_ShowName type="a">0</m_ShowName>
 			<m_ShowStereotype type="a">1</m_ShowStereotype>
 		</CGIInheritance>
@@ -9743,11 +9809,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
+			<m_arrow type="a">2 268 267  268 315  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">529 834 </m_SourcePort>
-			<m_TargetPort type="a">7 778 </m_TargetPort>
+			<m_SourcePort type="a">1061 834 </m_SourcePort>
+			<m_TargetPort type="a">2 778 </m_TargetPort>
 			<m_ShowName type="a">0</m_ShowName>
 			<m_ShowStereotype type="a">1</m_ShowStereotype>
 		</CGIInheritance>
@@ -9832,12 +9899,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 338 420  338 307  </m_arrow>
+			<m_arrow type="a">2 268 776  268 315  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">1037 406 </m_SourcePort>
-			<m_TargetPort type="a">7 778 </m_TargetPort>
+			<m_SourcePort type="a">1061 890 </m_SourcePort>
+			<m_TargetPort type="a">2 778 </m_TargetPort>
 			<m_ShowName type="a">0</m_ShowName>
 			<m_ShowStereotype type="a">1</m_ShowStereotype>
 		</CGIInheritance>
@@ -9928,11 +9995,11 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 419 428  635 428  </m_arrow>
+			<m_arrow type="a">2 397 449  635 449  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">642 329 </m_SourcePort>
+			<m_SourcePort type="a">539 329 </m_SourcePort>
 			<m_TargetPort type="a">524 1451 </m_TargetPort>
 			<m_ShowName type="a">0</m_ShowName>
 			<m_ShowStereotype type="a">1</m_ShowStereotype>
@@ -10024,11 +10091,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 638 428  635 428  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">562 890 </m_SourcePort>
+			<m_SourcePort type="a">548 329 </m_SourcePort>
 			<m_TargetPort type="a">524 1451 </m_TargetPort>
 			<m_ShowName type="a">0</m_ShowName>
 			<m_ShowStereotype type="a">1</m_ShowStereotype>
@@ -10120,11 +10186,11 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 830 428  635 428  </m_arrow>
+			<m_arrow type="a">2 867 449  635 449  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">355 890 </m_SourcePort>
+			<m_SourcePort type="a">529 329 </m_SourcePort>
 			<m_TargetPort type="a">524 1451 </m_TargetPort>
 			<m_ShowName type="a">0</m_ShowName>
 			<m_ShowStereotype type="a">1</m_ShowStereotype>
@@ -10210,12 +10276,12 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 1231 736  1231 283  </m_arrow>
+			<m_arrow type="a">2 1231 767  1231 291  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">1052 820 </m_SourcePort>
-			<m_TargetPort type="a">1056 610 </m_TargetPort>
+			<m_SourcePort type="a">1061 820 </m_SourcePort>
+			<m_TargetPort type="a">1061 610 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
 				</IAssociationEndHandle>
@@ -10443,7 +10509,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</CGIText>
 			</m_name>
 			<m_drawBehavior type="a">135178</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 362.575 -18.9162 </m_transform>
+			<m_transform type="a">0.212465 0 0 0.142602 518.575 -18.9162 </m_transform>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_AdditionalLabel type="p">
 				<CGIText type="e">
@@ -10502,7 +10568,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
 							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Name</_hname>
 							<_hid type="a">GUID 5b570ec3-77b8-4d1b-ab55-7a5ab9a44922</_hid>
 						</IHandle>
@@ -10512,7 +10578,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
 							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">UUID</_hname>
 							<_hid type="a">GUID 7605bd74-6af2-4c83-8c63-611092ebdf15</_hid>
 						</IHandle>
@@ -10522,7 +10588,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
 							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Description</_hname>
 							<_hid type="a">GUID bd8623ef-3c2e-4135-bd93-c2e067a2c59c</_hid>
 						</IHandle>
@@ -10619,12 +10685,11 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 475 216  567 216  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
-			<m_SourcePort type="a">529 1430 </m_SourcePort>
-			<m_TargetPort type="a">204 890 </m_TargetPort>
+			<m_SourcePort type="a">529 1451 </m_SourcePort>
+			<m_TargetPort type="a">506 329 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
 				</IAssociationEndHandle>
@@ -10776,6 +10841,408 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<m_srcFile type="a">.\icons\data_type.ico</m_srcFile>
 			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
 		</CGIImageData>
+		<CGIClass type="e">
+			<_id type="a">GUID 546864f6-4f31-448a-a719-7d4c51a20c4b</_id>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">3</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Format</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Class</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">Font.FontColor</_Name>
+													<_Value type="a">0,0,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Font.Underline</_Name>
+													<_Value type="a">0</_Value>
+													<_Type type="a">Int</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ShowLabels</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Class</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Compartments</_Name>
+													<_Value type="a">Description</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<m_type type="a">87</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID eb011042-e77d-49a9-b1b8-8fc5ba2ae494</_hid>
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID 5275eb9b-1edc-4b4c-b7e6-25adb0cd81f6</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_str type="a">Basic_Integer_Array_Type</m_str>
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">5</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4110</m_drawBehavior>
+			<m_transform type="a">0.212465 0 0 0.142602 18.5751 315.084 </m_transform>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_AdditionalLabel type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_AdditionalLabel>
+			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
+			<m_nNameFormat type="a">0</m_nNameFormat>
+			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
+			<frameset type="a">&lt;frameset rows=100%25&gt;
+&lt;frame name=DescriptionCompartment&gt;</frameset>
+			<Attrs type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Attrs>
+			<Operations type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Operations>
+			<AggregatesList type="e">
+				<value>GUID c10ce20a-b05d-4877-b8a2-4ed2a9185e30</value>
+			</AggregatesList>
+		</CGIClass>
+		<CGICompartment type="e">
+			<_id type="a">GUID c10ce20a-b05d-4877-b8a2-4ed2a9185e30</_id>
+			<m_name type="a">Description</m_name>
+			<m_displayOption type="a">All</m_displayOption>
+			<m_bShowInherited type="a">0</m_bShowInherited>
+			<m_bOrdered type="a">0</m_bOrdered>
+		</CGICompartment>
+		<CGIClass type="e">
+			<_id type="a">GUID 24d38f1d-1395-4020-8908-bd70a9f8dd56</_id>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ShowLabels</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">ObjectModelGe</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Class</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Compartments</_Name>
+													<_Value type="a">Description</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<m_type type="a">87</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 30306c13-2efb-4e27-93f1-ccfdb732aefb</_hid>
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID 5275eb9b-1edc-4b4c-b7e6-25adb0cd81f6</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_str type="a">Basic_Character_Type</m_str>
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">5</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4110</m_drawBehavior>
+			<m_transform type="a">0.212465 0 0 0.142602 18.5751 482.084 </m_transform>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_AdditionalLabel type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_AdditionalLabel>
+			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
+			<m_nNameFormat type="a">0</m_nNameFormat>
+			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
+			<frameset type="a">&lt;frameset rows=100%25&gt;
+&lt;frame name=DescriptionCompartment&gt;</frameset>
+			<Attrs type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Attrs>
+			<Operations type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Operations>
+			<AggregatesList type="e">
+				<value>GUID c6ab4b5c-661c-40d5-9a2a-ff129c4860b9</value>
+			</AggregatesList>
+		</CGIClass>
+		<CGICompartment type="e">
+			<_id type="a">GUID c6ab4b5c-661c-40d5-9a2a-ff129c4860b9</_id>
+			<m_name type="a">Description</m_name>
+			<m_displayOption type="a">All</m_displayOption>
+			<m_bShowInherited type="a">0</m_bShowInherited>
+			<m_bOrdered type="a">0</m_bOrdered>
+		</CGICompartment>
+		<CGIInheritance type="e">
+			<_id type="a">GUID 4340c166-fc0b-4ba5-b068-b494496698d1</_id>
+			<m_type type="a">103</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IGeneralization</_hm2Class>
+					<_hid type="a">GUID 3decfda1-9bca-4f2c-9dea-75cc22e4dd9b</_hid>
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s"></m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4104</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_pSource type="s">GUID 546864f6-4f31-448a-a719-7d4c51a20c4b</m_pSource>
+			<m_sourceType type="a">'F'</m_sourceType>
+			<m_pTarget type="s">GUID cf336993-96e2-40e0-b5ba-0bc3c156ec48</m_pTarget>
+			<m_targetType type="a">'T'</m_targetType>
+			<m_direction type="a">' '</m_direction>
+			<m_rpn type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_rpn>
+			<m_arrow type="a">2 268 445  268 315  </m_arrow>
+			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
+			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
+			<m_line_style type="a">2</m_line_style>
+			<m_SourcePort type="a">1061 911 </m_SourcePort>
+			<m_TargetPort type="a">-3 778 </m_TargetPort>
+			<m_ShowName type="a">0</m_ShowName>
+			<m_ShowStereotype type="a">1</m_ShowStereotype>
+		</CGIInheritance>
+		<CGIInheritance type="e">
+			<_id type="a">GUID 26d489c5-5523-405b-97a4-fa81edc9ca0a</_id>
+			<m_type type="a">103</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IGeneralization</_hm2Class>
+					<_hid type="a">GUID 4369ebb8-9833-4dd6-9a4c-600064ebfbdf</_hid>
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s"></m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4104</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_pSource type="s">GUID 24d38f1d-1395-4020-8908-bd70a9f8dd56</m_pSource>
+			<m_sourceType type="a">'F'</m_sourceType>
+			<m_pTarget type="s">GUID cf336993-96e2-40e0-b5ba-0bc3c156ec48</m_pTarget>
+			<m_targetType type="a">'T'</m_targetType>
+			<m_direction type="a">' '</m_direction>
+			<m_rpn type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_rpn>
+			<m_arrow type="a">2 268 607  268 316  </m_arrow>
+			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
+			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
+			<m_line_style type="a">2</m_line_style>
+			<m_SourcePort type="a">1061 876 </m_SourcePort>
+			<m_TargetPort type="a">-3 785 </m_TargetPort>
+			<m_ShowName type="a">0</m_ShowName>
+			<m_ShowStereotype type="a">1</m_ShowStereotype>
+		</CGIInheritance>
 		<IClass type="e">
 			<_id type="a">GUID 5589414c-eac2-4252-8a39-9b48b514233d</_id>
 			<_myState type="a">40960</_myState>
@@ -10832,7 +11299,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::15:17:3</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.4.2020::8:53:59</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -10843,19 +11310,14 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<_text type="a">Abstract class.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.3.2020::15:17:3</_modifiedTime>
+			<_modifiedTime type="a">9.4.2020::8:53:59</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">9.3.2020::15:17:3</weakCGTime>
-			<strongCGTime type="a">9.3.2020::15:17:3</strongCGTime>
+			<weakCGTime type="a">9.4.2020::8:53:59</weakCGTime>
+			<strongCGTime type="a">9.4.2020::8:53:59</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
 			</_itsStateChart>
-			<Associations type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</Associations>
 			<_classModifier type="a">Unspecified</_classModifier>
 			<AggregatesList type="e">
 				<value>GUID e712b27b-a72b-417f-bd04-81a7735a0f87</value>
@@ -10919,9 +11381,9 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Enumerated_Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.2.2019::16:6:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.2.2019::16:6:54</_modifiedTime>
-			<weakCGTime type="a">9.2.2019::16:6:54</weakCGTime>
+			<_modifiedTimeWeak type="a">9.4.2020::6:23:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.4.2020::6:23:12</_modifiedTime>
+			<weakCGTime type="a">9.4.2020::6:23:12</weakCGTime>
 			<strongCGTime type="a">7.25.2019::12:7:14</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -10950,8 +11412,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_id type="a">GUID 78ee49dd-69ca-4273-9712-76fb9dfdb830</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Enumerals</_name>
-			<_modifiedTimeWeak type="a">9.2.2019::16:6:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.2.2019::16:6:54</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.4.2020::6:23:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.4.2020::6:23:12</_modifiedTime>
 			<_multiplicity type="a">2..*</_multiplicity>
 			<_otherClass type="r">
 				<IClassifierHandle type="e">
@@ -10961,8 +11423,6 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</_otherClass>
 			<_inverse type="r">
 				<IHandle type="e">
-					<_hm2Class type="a">IAssociationEnd</_hm2Class>
-					<_hid type="a">GUID dfecb8c4-40c1-49d5-b0f1-d742a27efef9</_hid>
 				</IHandle>
 			</_inverse>
 			<_linkType type="a">Composition</_linkType>
@@ -11278,9 +11738,9 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Structured_Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.2.2019::16:9:18</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.2.2019::16:9:18</_modifiedTime>
-			<weakCGTime type="a">9.2.2019::16:9:18</weakCGTime>
+			<_modifiedTimeWeak type="a">9.4.2020::6:23:2</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.4.2020::6:23:2</_modifiedTime>
+			<weakCGTime type="a">9.4.2020::6:23:2</weakCGTime>
 			<strongCGTime type="a">7.25.2019::13:45:56</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11309,8 +11769,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_id type="a">GUID 2511a5cf-6500-49da-8ba6-0f614615c587</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Fields</_name>
-			<_modifiedTimeWeak type="a">9.2.2019::16:9:18</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.2.2019::16:9:18</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.4.2020::6:23:2</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.4.2020::6:23:2</_modifiedTime>
 			<_multiplicity type="a">2..*</_multiplicity>
 			<_otherClass type="r">
 				<IClassifierHandle type="e">
@@ -11320,8 +11780,6 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</_otherClass>
 			<_inverse type="r">
 				<IHandle type="e">
-					<_hm2Class type="a">IAssociationEnd</_hm2Class>
-					<_hid type="a">GUID cbacc35b-7217-4cf9-a6b2-da9804cfdd55</_hid>
 				</IHandle>
 			</_inverse>
 			<_linkType type="a">Composition</_linkType>
@@ -11331,10 +11789,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_id type="a">GUID 3e4f68e4-9855-4a6d-ae30-e3cbc1610ac4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Structured_Data_Type_Field</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::13:53:46</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::13:53:46</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.4.2020::6:23:2</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.4.2020::6:23:2</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">9.3.2020::13:53:46</weakCGTime>
+			<weakCGTime type="a">9.4.2020::6:23:2</weakCGTime>
 			<strongCGTime type="a">7.25.2019::13:43:55</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11343,7 +11801,6 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_classModifier type="a">Unspecified</_classModifier>
 			<AggregatesList type="e">
 				<value>GUID cfc9ae7c-8d6d-46e8-a2bb-907560c61db3</value>
-				<value>GUID cbacc35b-7217-4cf9-a6b2-da9804cfdd55</value>
 				<value>GUID a1ba6b36-ac59-4c9e-b1a4-f512fc2ef23b</value>
 			</AggregatesList>
 		</IClass>
@@ -11363,28 +11820,6 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_inheritanceType type="a">iPublic</_inheritanceType>
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
-		<IAssociationEnd type="e">
-			<_id type="a">GUID cbacc35b-7217-4cf9-a6b2-da9804cfdd55</_id>
-			<_myState type="a">10240</_myState>
-			<_name type="a">itsStructured_Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.2.2019::16:9:18</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.2.2019::16:9:18</_modifiedTime>
-			<_multiplicity type="a">1</_multiplicity>
-			<_otherClass type="r">
-				<IClassifierHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hid type="a">GUID ba887938-d22e-4290-b1a8-e76d583d2568</_hid>
-				</IClassifierHandle>
-			</_otherClass>
-			<_inverse type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IAssociationEnd</_hm2Class>
-					<_hid type="a">GUID 2511a5cf-6500-49da-8ba6-0f614615c587</_hid>
-				</IHandle>
-			</_inverse>
-			<_linkType type="a">Assoc</_linkType>
-			<_navigability type="a">Navigable</_navigability>
-		</IAssociationEnd>
 		<IAssociationEnd type="e">
 			<_id type="a">GUID a1ba6b36-ac59-4c9e-b1a4-f512fc2ef23b</_id>
 			<_myState type="a">8192</_myState>
@@ -11409,16 +11844,19 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_id type="a">GUID 18e28ecf-608e-4e2a-ae45-0e9daf7b7329</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Basic_Integer_Type</_name>
-			<_modifiedTimeWeak type="a">7.25.2019::14:12:34</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.4.2020::6:25:58</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">uint8                  sint8%0D
-uint16                sint16%0D
-uint32                sint32%0D
-uint64                sint64</_text>
+				<_textRTF type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\ulwave\fs20 uint\ulnone 8                  \ulwave sint\ulnone 8\par%0D
+\ulwave uint\ulnone 16                \ulwave sint\ulnone 16\par%0D
+\ulwave uint\ulnone 32                \ulwave sint\ulnone 32\par%0D
+\ulwave uint\ulnone 64                \ulwave sint\ulnone 64\par%0D
+}%0D
+</_textRTF>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">7.25.2019::14:12:34</_modifiedTime>
-			<weakCGTime type="a">7.25.2019::14:12:34</weakCGTime>
+			<_modifiedTime type="a">9.4.2020::6:25:58</_modifiedTime>
+			<weakCGTime type="a">9.4.2020::6:25:58</weakCGTime>
 			<strongCGTime type="a">7.25.2019::13:14:55</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11446,10 +11884,10 @@ uint64                sint64</_text>
 			<_id type="a">GUID da7d6728-aad2-4eee-8870-a037d8c3a56f</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Enumerated_Data_Type_Enumeral</_name>
-			<_modifiedTimeWeak type="a">9.2.2019::16:6:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.2.2019::16:6:54</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.4.2020::6:23:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.4.2020::6:23:12</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.2.2019::16:6:54</weakCGTime>
+			<weakCGTime type="a">9.4.2020::6:23:12</weakCGTime>
 			<strongCGTime type="a">7.25.2019::12:3:32</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11460,7 +11898,6 @@ uint64                sint64</_text>
 				<value>GUID 8e0efd85-025d-498d-a5e9-ce3e75274e70</value>
 				<value>GUID 3aa9d62a-f9d0-4cdb-b75d-2365fe28fdc6</value>
 				<value>GUID 03395200-049a-4e27-a5ed-5d79373a12a7</value>
-				<value>GUID dfecb8c4-40c1-49d5-b0f1-d742a27efef9</value>
 			</AggregatesList>
 		</IClass>
 		<IAttribute type="e">
@@ -11526,28 +11963,6 @@ uint64                sint64</_text>
 			<_isReferenceAttr type="a">0</_isReferenceAttr>
 			<_isConstant type="a">0</_isConstant>
 		</IAttribute>
-		<IAssociationEnd type="e">
-			<_id type="a">GUID dfecb8c4-40c1-49d5-b0f1-d742a27efef9</_id>
-			<_myState type="a">10240</_myState>
-			<_name type="a">itsEnumerated_Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.2.2019::16:6:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.2.2019::16:6:54</_modifiedTime>
-			<_multiplicity type="a">1</_multiplicity>
-			<_otherClass type="r">
-				<IClassifierHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hid type="a">GUID 8eb7b478-f387-4948-aead-c99302f2b71a</_hid>
-				</IClassifierHandle>
-			</_otherClass>
-			<_inverse type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IAssociationEnd</_hm2Class>
-					<_hid type="a">GUID 78ee49dd-69ca-4273-9712-76fb9dfdb830</_hid>
-				</IHandle>
-			</_inverse>
-			<_linkType type="a">Assoc</_linkType>
-			<_navigability type="a">Navigable</_navigability>
-		</IAssociationEnd>
 		<IClass type="e">
 			<_id type="a">GUID 4d91587b-3719-4fe6-bae7-2bf3049774cb</_id>
 			<_myState type="a">8192</_myState>
@@ -11587,13 +12002,13 @@ fp64</_text>
 			<_id type="a">GUID 3623761a-9c3e-4925-b8c8-1990b96687cc</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Basic_Boolean_Type</_name>
-			<_modifiedTimeWeak type="a">7.25.2019::14:12:34</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.4.2020::6:29:3</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">boolean</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">7.25.2019::14:12:34</_modifiedTime>
-			<weakCGTime type="a">7.25.2019::14:12:34</weakCGTime>
+			<_modifiedTime type="a">9.4.2020::6:29:3</_modifiedTime>
+			<weakCGTime type="a">9.4.2020::6:29:3</weakCGTime>
 			<strongCGTime type="a">7.25.2019::13:14:45</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11606,6 +12021,95 @@ fp64</_text>
 		</IClass>
 		<IGeneralization type="e">
 			<_id type="a">GUID 7adb7d46-a8f3-4f1a-b365-335f85e05a1b</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 55241a3a-b274-454e-8440-39c0d234a140</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID eb011042-e77d-49a9-b1b8-8fc5ba2ae494</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Basic_Integer_Array_Type</_name>
+			<_modifiedTimeWeak type="a">9.4.2020::7:11:43</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hid type="a">GUID 371f45c7-a020-4eae-b89f-96e3c54cac02</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_description type="p"><IDescription type="e">
+				<_textRTF type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fprq13\fcharset0 Arial;}{\f1\fnil\fcharset0 Arial;}}%0D
+{\colortbl ;\red0\green0\blue0;\red255\green255\blue255;}%0D
+\viewkind4\uc1\pard\cf1\highlight2\f0\fs20 uint8_array\cf0\highlight0\f1\par%0D
+}%0D
+</_textRTF>
+			</IDescription>
+			</_description>
+			<_modifiedTime type="a">9.4.2020::7:11:43</_modifiedTime>
+			<weakCGTime type="a">9.4.2020::7:11:43</weakCGTime>
+			<strongCGTime type="a">9.4.2020::7:11:43</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 3decfda1-9bca-4f2c-9dea-75cc22e4dd9b</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 3decfda1-9bca-4f2c-9dea-75cc22e4dd9b</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 55241a3a-b274-454e-8440-39c0d234a140</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 30306c13-2efb-4e27-93f1-ccfdb732aefb</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Basic_Character_Type</_name>
+			<_modifiedTimeWeak type="a">9.4.2020::7:11:53</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hid type="a">GUID 371f45c7-a020-4eae-b89f-96e3c54cac02</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_description type="p"><IDescription type="e">
+				<_textRTF type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fswiss\fprq14\fcharset0 Arial;}{\f1\fnil\fcharset0 Arial;}}%0D
+{\colortbl ;\red0\green0\blue0;\red255\green255\blue255;}%0D
+\viewkind4\uc1\pard\cf1\highlight2\f0\fs20 character\par%0D
+\ulwave characters_string\cf0\highlight0\ulnone\f1\par%0D
+}%0D
+</_textRTF>
+			</IDescription>
+			</_description>
+			<_modifiedTime type="a">9.4.2020::7:11:53</_modifiedTime>
+			<weakCGTime type="a">9.4.2020::7:11:53</weakCGTime>
+			<strongCGTime type="a">9.4.2020::7:11:53</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 4369ebb8-9833-4dd6-9a4c-600064ebfbdf</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 4369ebb8-9833-4dd6-9a4c-600064ebfbdf</_id>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
