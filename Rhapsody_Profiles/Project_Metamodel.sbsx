@@ -11,14 +11,14 @@
 			<_id type="a">GUID 8bd5e492-f817-4ae3-bbe5-45e3bd35c53b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Project_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:1:6</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.7.2020::16:53:27</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Structure_Metamodel profile defines common elements used by the other profiles of software meta-model.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.6.2020::20:1:6</_modifiedTime>
+			<_modifiedTime type="a">9.7.2020::16:53:27</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">9.6.2020::20:1:6</weakCGTime>
+			<weakCGTime type="a">9.7.2020::16:53:27</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID 81b20c47-0170-4a3f-8aef-091534e9641f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 29a0f24c-c828-476b-8466-2726475052f4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:3:28</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::20:3:28</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.7.2020::16:53:27</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.7.2020::16:53:27</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">9.6.2020::20:3:28</weakCGTime>
+			<weakCGTime type="a">9.7.2020::16:53:27</weakCGTime>
 			<strongCGTime type="a">6.12.2018::7:56:1</strongCGTime>
 			<_defaultComposite type="s">GUID efd5a87b-0e6f-4a8a-820f-9dd3252203e7</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -116,7 +116,7 @@
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Software_Package, Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Root_Software_Composition, Component_Design, SDD_Class, SDD_Event, Implementation_File, PSWA_Diagram, SDD_Diagram, IMPL_Diagram, Class Diagram, ObjectModelDiagram, SequenceDiagram, TimingDiagram, TableLayout, TableView, Hyperlink</_Value>
+													<_Value type="a">Software_Package, Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Root_Software_Composition, Component_Design, SDD_Class, SDD_Event, Implementation_File, PSWA_Diagram, SDD_Diagram, IMPL_Diagram, Class Diagram, ObjectModelDiagram, SequenceDiagram, TimingDiagram, TableLayout, TableView, Hyperlink, Operation</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -139,14 +139,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Software_Package</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::9:10:17</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.7.2020::16:53:27</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The software_package stereotype apply to UML package meta-class.%0D
 A software_package is the atomic reusable item of a software model.%0D
 It gathers cohesive software elements.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.3.2020::9:10:17</_modifiedTime>
+			<_modifiedTime type="a">9.7.2020::16:53:27</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -223,7 +223,7 @@ It gathers cohesive software elements.</_text>
 		<IGeneralization type="e">
 			<_id type="a">GUID 38622938-af3b-4bd2-aad8-51f45f9f2297</_id>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
@@ -283,7 +283,7 @@ It gathers cohesive software elements.</_text>
 		<IGeneralization type="e">
 			<_id type="a">GUID 1dd32dbc-01bf-44fe-b528-ee8e29fdc765</_id>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
