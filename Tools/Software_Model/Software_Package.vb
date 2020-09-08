@@ -22,6 +22,7 @@ Public Class Software_Package
 
     Public Component_Types As List(Of Component_Type)
     Public Root_Software_Compositions As List(Of Root_Software_Composition)
+    Public Component_Designs As List(Of Component_Design)
 
 
     '----------------------------------------------------------------------------------------------'
@@ -43,6 +44,9 @@ Public Class Software_Package
             End If
             If Not IsNothing(Me.Root_Software_Compositions) Then
                 children_list.AddRange(Me.Root_Software_Compositions)
+            End If
+            If Not IsNothing(Me.Component_Designs) Then
+                children_list.AddRange(Me.Component_Designs)
             End If
             Me.Children = children_list
         End If
@@ -141,24 +145,30 @@ Public Class Software_Package
         Me.Software_Interfaces = New List(Of Software_Interface)
         Me.Component_Types = New List(Of Component_Type)
         Me.Root_Software_Compositions = New List(Of Root_Software_Composition)
+        Me.Component_Designs = New List(Of Component_Design)
         Dim rpy_class As RPClass
         For Each rpy_class In CType(Me.Rpy_Element, RPPackage).classes
-            If Is_Client_Server_Interface(CType(rpy_class, RPModelElement)) Then
+            Dim rpy_element As RPModelElement = CType(rpy_class, RPModelElement)
+            If Is_Client_Server_Interface(rpy_element) Then
                 Dim cs_if As Client_Server_Interface = New Client_Server_Interface
                 Me.Software_Interfaces.Add(cs_if)
-                cs_if.Import_From_Rhapsody_Model(Me, CType(rpy_class, RPModelElement))
-            ElseIf Is_Event_Interface(CType(rpy_class, RPModelElement)) Then
+                cs_if.Import_From_Rhapsody_Model(Me, rpy_element)
+            ElseIf Is_Event_Interface(rpy_element) Then
                 Dim event_interface As Event_Interface = New Event_Interface
                 Me.Software_Interfaces.Add(event_interface)
-                event_interface.Import_From_Rhapsody_Model(Me, CType(rpy_class, RPModelElement))
-            ElseIf Is_Component_Type(CType(rpy_class, RPModelElement)) Then
+                event_interface.Import_From_Rhapsody_Model(Me, rpy_element)
+            ElseIf Is_Component_Type(rpy_element) Then
                 Dim comp_type As New Component_Type
                 Me.Component_Types.Add(comp_type)
-                comp_type.Import_From_Rhapsody_Model(Me, CType(rpy_class, RPModelElement))
-            ElseIf Is_Root_Software_Composition(CType(rpy_class, RPModelElement)) Then
+                comp_type.Import_From_Rhapsody_Model(Me, rpy_element)
+            ElseIf Is_Root_Software_Composition(rpy_element) Then
                 Dim compo As New Root_Software_Composition
                 Me.Root_Software_Compositions.Add(compo)
-                compo.Import_From_Rhapsody_Model(Me, CType(rpy_class, RPModelElement))
+                compo.Import_From_Rhapsody_Model(Me, rpy_element)
+            ElseIf Is_Component_Design(rpy_element) Then
+                Dim comp_design As New Component_Design
+                Me.Component_Designs.Add(comp_design)
+                comp_design.Import_From_Rhapsody_Model(Me, rpy_element)
             End If
 
         Next
@@ -170,6 +180,9 @@ Public Class Software_Package
         End If
         If Me.Root_Software_Compositions.Count = 0 Then
             Me.Root_Software_Compositions = Nothing
+        End If
+        If Me.Component_Designs.Count = 0 Then
+            Me.Component_Designs = Nothing
         End If
 
     End Sub
@@ -277,7 +290,8 @@ Public Class Software_Package
             IsNothing(Me.Component_Types) And
             IsNothing(Me.Root_Software_Compositions) And
             IsNothing(Me.Software_Interfaces) And
-            IsNothing(Me.Data_Types) Then
+            IsNothing(Me.Data_Types) And
+            IsNothing(Me.Component_Designs) Then
 
             Me.Add_Consistency_Check_Warning_Item(report,
                 "PKG_1",

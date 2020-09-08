@@ -115,4 +115,10 @@ Module Software_Metamodel
     End Function
 
 
+    '----------------------------------------------------------------------------------------------'
+    ' Component_Design
+    Public Function Is_Component_Design(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 5cef8605-f11b-45b0-9267-4db1d6e495d6")
+    End Function
+
 End Module

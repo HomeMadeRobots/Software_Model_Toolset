@@ -70,6 +70,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component_Design.vb" />
     <Compile Include="Component_Type.vb" />
     <Compile Include="Consistency_Check_Report.vb" />
     <Compile Include="Data_Series.vb" />
