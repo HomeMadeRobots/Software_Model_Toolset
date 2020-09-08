@@ -311,6 +311,11 @@ Public Class Software_Model_Container
         For Each pkg In Me.Packages
             pkg.Export_Compositions_To_Rhapsody(report)
         Next
+
+        For Each pkg In Me.Packages
+            pkg.Export_Component_Design_To_Rhapsody(report)
+        Next
+
     End Sub
 
     Public Sub Generate_Importation_Report(report_file_stream As StreamWriter)

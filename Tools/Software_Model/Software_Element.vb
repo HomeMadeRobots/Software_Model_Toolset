@@ -111,6 +111,13 @@ Public MustInherit Class Software_Element
         Return result
     End Function
 
+    Public Function Find_In_Rpy_Project(element_uuid As String) As RPModelElement
+        Dim result As RPModelElement = Nothing
+        Dim rpy_proj As RPProject = CType(Me.Rpy_Element.project, RPProject)
+        result = rpy_proj.findElementByGUID(element_uuid)
+        Return result
+    End Function
+
     Public Sub Add_Export_Error_Item(
         report As Report,
         status As Merge_Report_Item.E_Merge_Status,

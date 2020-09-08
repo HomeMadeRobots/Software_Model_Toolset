@@ -280,6 +280,16 @@ Public Class Software_Package
         Next
     End Sub
 
+    Public Sub Export_Component_Design_To_Rhapsody(report As Report)
+        For Each swcd In Me.Component_Designs
+            swcd.Export_To_Rhapsody(Me.Rpy_Element, report)
+        Next
+
+        For Each pkg In Me.Packages
+            pkg.Export_Component_Design_To_Rhapsody(report)
+        Next
+    End Sub
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
