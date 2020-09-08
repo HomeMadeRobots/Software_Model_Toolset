@@ -390,12 +390,6 @@ Public Class Event_Argument
 
     Inherits Typed_Software_Element
 
-    Protected Overrides Function Get_Rpy_Data_Type() As RPModelElement
-        Dim rpy_type As RPClassifier = CType(Me.Rpy_Element, RPAttribute).type
-        Return CType(rpy_type, RPModelElement)
-    End Function
-
-
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)

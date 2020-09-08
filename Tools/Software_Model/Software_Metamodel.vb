@@ -95,7 +95,7 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 03e6f281-8593-48b0-a435-0fc8687783f6")
     End Function
 
-    Public Function Is_Component_Configuration(ByVal model_element As RPModelElement) As Boolean
+    Public Function Is_Component_Parameter(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID c7a97ee0-e497-4c57-aaf1-4aefdce59a69")
     End Function
 
@@ -123,6 +123,10 @@ Module Software_Metamodel
 
     Public Function Is_Component_Type_Ref(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID 6a9f6eaa-cb72-4f60-98f9-0b0e21de73e0")
+    End Function
+
+    Public Function Is_Component_Attribute(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID aa55d7fc-6ca5-467b-bc1c-246b0d2bbb0b")
     End Function
 
 End Module

@@ -214,7 +214,7 @@ Public Class Component_Prototype
                 Me.Configuration_Values = New List(Of Configuration_Value)
                 Dim rpy_attribute As RPAttribute
                 For Each rpy_attribute In rpy_base_class.attributes
-                    If Is_Component_Configuration(CType(rpy_attribute, RPModelElement)) Then
+                    If Is_Component_Parameter(CType(rpy_attribute, RPModelElement)) Then
                         Dim conf_val As New Configuration_Value
                         conf_val.Component_Configuration_Ref =
                             Transform_Rpy_GUID_To_Guid(rpy_attribute.GUID)

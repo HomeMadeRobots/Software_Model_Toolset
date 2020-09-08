@@ -35,7 +35,6 @@ Public Class Component_Type
 
         Me.Provider_Ports = New List(Of Provider_Port)
         Me.Requirer_Ports = New List(Of Requirer_Port)
-
         Dim rpy_port As RPPort
         For Each rpy_port In CType(Me.Rpy_Element, RPClass).ports
             If Is_Provider_Port(CType(rpy_port, RPModelElement)) Then
@@ -48,7 +47,6 @@ Public Class Component_Type
                 rport.Import_From_Rhapsody_Model(Me, CType(rpy_port, RPModelElement))
             End If
         Next
-
         If Me.Provider_Ports.Count = 0 Then
             Me.Provider_Ports = Nothing
         End If
@@ -57,7 +55,6 @@ Public Class Component_Type
         End If
 
         Me.Component_Operations = New List(Of Component_Operation)
-
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             If Is_Component_Operation(CType(rpy_ope, RPModelElement)) Then
@@ -66,22 +63,19 @@ Public Class Component_Type
                 ope.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             End If
         Next
-
         If Me.Component_Operations.Count = 0 Then
             Me.Component_Operations = Nothing
         End If
 
         Me.Component_Parameters = New List(Of Component_Parameter)
-
          Dim rpy_attribute As RPAttribute
         For Each rpy_attribute In CType(Me.Rpy_Element, RPClass).attributes
-            If Is_Component_Configuration(CType(rpy_attribute, RPModelElement)) Then
+            If Is_Component_Parameter(CType(rpy_attribute, RPModelElement)) Then
                 Dim conf As Component_Parameter = New Component_Parameter
                 Me.Component_Parameters.Add(conf)
                 conf.Import_From_Rhapsody_Model(Me, CType(rpy_attribute, RPModelElement))
             End If
         Next
-
         If Me.Component_Parameters.Count = 0 Then
             Me.Component_Parameters = Nothing
         End If
@@ -411,31 +405,11 @@ End Class
 
 Public Class Component_Parameter
 
-    Inherits Typed_Software_Element
-
-    Public Default_Value As String = Nothing
-
-
-    Protected Overrides Function Get_Rpy_Data_Type() As RPModelElement
-        Dim rpy_type As RPClassifier = CType(Me.Rpy_Element, RPAttribute).type
-        Return CType(rpy_type, RPModelElement)
-    End Function
-
-    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
-        MyBase.Get_Own_Data_From_Rhapsody_Model()
-        Dim default_val_raw As String = CType(Me.Rpy_Element, RPAttribute).defaultValue
-        If default_val_raw <> "" Then
-            Me.Default_Value = default_val_raw
-        End If
-    End Sub
+    Inherits Attribute_Software_Element
 
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Sub Set_Rpy_Data_Type(rpy_type As RPType)
-        CType(Me.Rpy_Element, RPAttribute).type = CType(rpy_type, RPClassifier)
-    End Sub
-
     Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
         Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
         Dim rpy_attr As RPAttribute
@@ -445,11 +419,13 @@ Public Class Component_Parameter
         Else
             rpy_attr = rpy_parent_class.addAttribute(Me.Name)
             Me.Set_Rpy_Common_Attributes(CType(rpy_attr, RPModelElement), report)
-            rpy_attr.addStereotype("Configuration_Attribute", "Attribute")
+            rpy_attr.addStereotype("Component_Parameter", "Attribute")
         End If
     End Sub
 
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 

@@ -296,7 +296,10 @@ Public MustInherit Class Typed_Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
-    Protected MustOverride Function Get_Rpy_Data_Type() As RPModelElement
+    Protected Overridable Function Get_Rpy_Data_Type() As RPModelElement
+        Dim rpy_type As RPClassifier = CType(Me.Rpy_Element, RPAttribute).type
+        Return CType(rpy_type, RPModelElement)
+    End Function
 
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
         MyBase.Get_Own_Data_From_Rhapsody_Model()
@@ -427,6 +430,46 @@ Public MustInherit Class Stream_Typed_Software_Element
                 "Stream shall be In ou Out.")
         End If
 
+    End Sub
+
+End Class
+
+
+Public MustInherit Class Attribute_Software_Element
+
+    Inherits Typed_Software_Element
+
+    Public Default_Value As String = Nothing
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+        Dim default_val_raw As String = CType(Me.Rpy_Element, RPAttribute).defaultValue
+        If default_val_raw <> "" Then
+            Me.Default_Value = default_val_raw
+        End If
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+        Dim new_default_val As String
+        new_default_val = CType(rpy_element, RPAttribute).defaultValue
+        If Me.Default_Value <> new_default_val Then
+            Me.Default_Value = new_default_val
+            Me.Add_Export_Information_Item(report,
+                Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                "Default_Value merged.")
+        End If
+    End Sub
+
+    Public Overrides Sub Set_Rpy_Common_Attributes(rpy_element As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Common_Attributes(rpy_element, report)
+        Me.Default_Value = CType(rpy_element, RPAttribute).defaultValue
     End Sub
 
 End Class
