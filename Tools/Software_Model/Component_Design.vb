@@ -2,7 +2,7 @@
 
 Public Class Component_Design
 
-    Inherits Software_Element
+    Inherits Software_Class
 
     Public Component_Type_Ref As Guid = Guid.Empty
     Public Component_Attributes As List(Of Component_Attribute)
@@ -103,60 +103,52 @@ Public Class Component_Design
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
 
-        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
-        Dim rpy_class As RPClass
-        rpy_class = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Class"), RPClass)
+        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
 
-        If Not IsNothing(rpy_class) Then
-
-            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement), report)
-
-            '---------------------------------------------------------------------------------------
-            ' Merge Component_Type_Ref
-            ' Get the list of current Component_Type references
-            Dim rpy_swct_gen_list As New List(Of RPGeneralization)
-            Dim rpy_gen As RPGeneralization = Nothing
-            For Each rpy_gen In rpy_class.generalizations
-                If Is_Component_Type_Ref(CType(rpy_gen, RPModelElement)) Then
-                    rpy_swct_gen_list.Add(rpy_gen)
-                End If
-            Next
-            ' Check Component_Type references
-            If rpy_swct_gen_list.Count = 0 Then
-                ' There is no Component_Type references
-                ' Create one.
-                Me.Set_Component_Type_Ref(rpy_class, report, True)
-            Else
-                Dim reference_found As Boolean = False
-                Dim referenced_rpy_swct_guid As String
-                referenced_rpy_swct_guid = Transform_Guid_To_Rpy_GUID(Me.Component_Type_Ref)
-                For Each rpy_gen In rpy_swct_gen_list
-                    Dim current_rpy_swct As RPClass = CType(rpy_gen.baseClass, RPClass)
-                    If current_rpy_swct.GUID = referenced_rpy_swct_guid Then
-                        ' No change
-                        reference_found = True
-                    End If
-                Next
-
-                If reference_found = False Then
-                    Me.Set_Component_Type_Ref(rpy_class, report, True)
-                End If
+        ' Merge Component_Type_Ref
+        ' Get the list of current Component_Type references
+        Dim rpy_swct_gen_list As New List(Of RPGeneralization)
+        Dim rpy_gen As RPGeneralization = Nothing
+        For Each rpy_gen In rpy_class.generalizations
+            If Is_Component_Type_Ref(CType(rpy_gen, RPModelElement)) Then
+                rpy_swct_gen_list.Add(rpy_gen)
             End If
+        Next
+        ' Check Component_Type references
+        If rpy_swct_gen_list.Count = 0 Then
+            ' There is no Component_Type references
+            ' Create one.
+            Me.Set_Component_Type_Ref(rpy_class, report, True)
         Else
-            rpy_class = rpy_parent_pkg.addClass(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement), report)
-            rpy_class.addStereotype("Component_Design", "Class")
-            Me.Set_Component_Type_Ref(rpy_class, report, False)
-        End If
-
-        Dim children As List(Of Software_Element) = Me.Get_Children
-        If Not IsNothing(children) Then
-            For Each child In children
-                child.Export_To_Rhapsody(CType(rpy_class, RPModelElement), report)
+            Dim reference_found As Boolean = False
+            Dim referenced_rpy_swct_guid As String
+            referenced_rpy_swct_guid = Transform_Guid_To_Rpy_GUID(Me.Component_Type_Ref)
+            For Each rpy_gen In rpy_swct_gen_list
+                Dim current_rpy_swct As RPClass = CType(rpy_gen.baseClass, RPClass)
+                If current_rpy_swct.GUID = referenced_rpy_swct_guid Then
+                    ' No change
+                    reference_found = True
+                End If
             Next
+
+            If reference_found = False Then
+                Me.Set_Component_Type_Ref(rpy_class, report, True)
+            End If
         End If
+    End Sub
+
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Component_Design", "Class")
+    End Sub
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(
+        rpy_elmt As RPModelElement,
+        report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        Me.Set_Component_Type_Ref(CType(rpy_elmt, RPClass), report, False)
     End Sub
 
     Private Sub Set_Component_Type_Ref(rpy_class As RPClass, report As Report, is_merge As Boolean)
@@ -194,26 +186,33 @@ Public Class Component_Design
         End If
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for metrics computation (not yet implemented for Component_Design)
+    Public Overrides Function Compute_WMC() As Double
+        Return 0
+    End Function
+
+    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+        Return Nothing
+    End Function
+
+    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+        Return Nothing
+    End Function
+
 End Class
 
 
 Public Class Component_Attribute
+
     Inherits Attribute_Software_Element
 
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
-        Dim rpy_attr As RPAttribute
-        rpy_attr = CType(rpy_parent_class.findNestedElement(Me.Name, "Attribute"), RPAttribute)
-        If Not IsNothing(rpy_attr) Then
-            Me.Merge_Rpy_Element(CType(rpy_attr, RPModelElement), report)
-        Else
-            rpy_attr = rpy_parent_class.addAttribute(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_attr, RPModelElement), report)
-            rpy_attr.addStereotype("Component_Attribute", "Attribute")
-        End If
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Component_Attribute", "Attribute")
     End Sub
 
 End Class
@@ -243,15 +242,11 @@ Public Class Operation_Realization
 
     Inherits Operation_With_Arguments
 
-    Public Provider_Port_Ref As Guid = Nothing
+    Public Provider_Port_Ref As Guid = Guid.Empty
     Public Operation_Ref As Guid
 
     Private Nb_Provider_Port_Ref As Integer
     Private Nb_Operation_Ref As Integer
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' General methods 
 
 
     '----------------------------------------------------------------------------------------------'
@@ -269,8 +264,8 @@ Public Class Operation_Realization
                 Me.Operation_Ref = Transform_Rpy_GUID_To_Guid(rpy_dep.dependsOn.GUID)
             End If
         Next
-
     End Sub
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge

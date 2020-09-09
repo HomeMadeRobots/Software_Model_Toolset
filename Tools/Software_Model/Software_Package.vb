@@ -190,22 +190,24 @@ Public Class Software_Package
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
+    Protected Overrides Function Search_Nested_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+        Return rpy_parent.findNestedElement(Me.Name, "Package")
+    End Function
+
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
         Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
-        Dim rpy_pkg As RPPackage = Nothing
-        rpy_pkg = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Package"), RPPackage)
-        If Not IsNothing(rpy_pkg) Then
-            Me.Merge_Rpy_Element(CType(rpy_pkg, RPModelElement), report)
-        Else
-            rpy_pkg = rpy_parent_pkg.addNestedPackage(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_pkg, RPModelElement), report)
-            rpy_pkg.addStereotype("Software_Package", "Package")
-        End If
+        Return CType(rpy_parent_pkg.addNestedPackage(Me.Name), RPModelElement)
+    End Function
 
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Software_Package", "Package")
+    End Sub
+
+    Protected Overrides Sub Export_Children(rpy_elmt As RPModelElement, report As Report)
         For Each pkg In Me.Packages
-            pkg.Export_To_Rhapsody(CType(rpy_pkg, RPModelElement), report)
+            pkg.Export_To_Rhapsody(rpy_elmt, report)
         Next
-
     End Sub
 
     Public Sub Export_Independent_Data_Types_To_Rhapsody(report As Report)

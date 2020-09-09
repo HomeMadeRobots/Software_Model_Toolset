@@ -250,22 +250,32 @@ Public Class Software_Model_Container
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        ' Not used, Software_Model_Container is a special Software_Element
+        Return Nothing
+    End Function
+
+    Protected Overrides Function Search_Nested_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        ' Not used, Software_Model_Container is a special Software_Element
+        Return Nothing
+    End Function
+
+    Protected Overrides Sub Set_Stereotype()
+        ' No stereotype for Software_Model_Container
+    End Sub
+
     Public Overloads Sub Export_To_Rhapsody(rpy_sw_mdl As RPProject)
         Me.Import_Report = New Report
         Me.Rpy_Element = CType(rpy_sw_mdl, RPModelElement)
-        Me.Export_To_Rhapsody(Nothing, Me.Import_Report)
-    End Sub
-
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
 
         ' Export packages
         For Each pkg_to_export In Me.Packages
-            pkg_to_export.Export_To_Rhapsody(Me.Rpy_Element, report)
+            pkg_to_export.Export_To_Rhapsody(Me.Rpy_Element, Me.Import_Report)
         Next
 
         ' Export independent Data_Types
         For Each pkg In Me.Packages
-            pkg.Export_Independent_Data_Types_To_Rhapsody(report)
+            pkg.Export_Independent_Data_Types_To_Rhapsody(Me.Import_Report)
         Next
 
         ' Export dependent Data_Types
@@ -286,7 +296,10 @@ Public Class Software_Model_Container
         Dim force_export As Boolean = False
         While dt_list.Count <> 0
             For Each pkg In Me.Packages
-                pkg.Export_Dependent_Data_Types_To_Rhapsody(exported_dt_list, report, force_export)
+                pkg.Export_Dependent_Data_Types_To_Rhapsody(
+                    exported_dt_list,
+                    Me.Import_Report,
+                    force_export)
             Next
             For Each exp_dt In exported_dt_list
                 dt_list.Remove(exp_dt)
@@ -299,21 +312,22 @@ Public Class Software_Model_Container
 
         ' Export Interfaces
         For Each pkg In Me.Packages
-            pkg.Export_Interfaces_To_Rhapsody(report)
+            pkg.Export_Interfaces_To_Rhapsody(Me.Import_Report)
         Next
 
         ' Export Component_Types
         For Each pkg In Me.Packages
-            pkg.Export_Component_Types_To_Rhapsody(report)
+            pkg.Export_Component_Types_To_Rhapsody(Me.Import_Report)
         Next
 
         ' Export Compositions
         For Each pkg In Me.Packages
-            pkg.Export_Compositions_To_Rhapsody(report)
+            pkg.Export_Compositions_To_Rhapsody(Me.Import_Report)
         Next
 
+        ' Export Component_Designs
         For Each pkg In Me.Packages
-            pkg.Export_Component_Design_To_Rhapsody(report)
+            pkg.Export_Component_Design_To_Rhapsody(Me.Import_Report)
         Next
 
     End Sub

@@ -46,6 +46,9 @@ Public Class Client_Server_Interface
      XmlArray("Operations")>
     Public Operations As List(Of Operation_With_Arguments)
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
@@ -57,6 +60,9 @@ Public Class Client_Server_Interface
         Return Me.Children
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
         Me.Operations = New List(Of Operation_With_Arguments)
@@ -83,26 +89,13 @@ Public Class Client_Server_Interface
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
-        Dim rpy_class As RPClass
-        rpy_class = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Class"), RPClass)
-        If Not IsNothing(rpy_class) Then
-            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement), report)
-        Else
-            rpy_class = rpy_parent_pkg.addClass(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement), report)
-            rpy_class.addStereotype("Client_Server_Interface", "Class")
-        End If
-
-        If Not IsNothing(Me.Operations) Then
-            For Each ope In Me.Operations
-                ope.Export_To_Rhapsody(CType(rpy_class, RPModelElement), report)
-            Next
-        End If
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Client_Server_Interface", "Class")
     End Sub
 
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -114,6 +107,9 @@ Public Class Client_Server_Interface
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for metrics computation
     Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
         If IsNothing(Me.Needed_Elements) Then
             Me.Needed_Elements = New List(Of Classifier_Software_Element)
@@ -149,6 +145,7 @@ Public Class Client_Server_Interface
         End If
         Return Me.Weighted_Methods_Per_Class
     End Function
+
 End Class
 
 
@@ -182,6 +179,8 @@ Public Class Event_Interface
 
     Public Arguments As List(Of Event_Argument)
 
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
@@ -193,6 +192,9 @@ Public Class Event_Interface
         Return Me.Children
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
         Me.Arguments = New List(Of Event_Argument)
@@ -215,26 +217,13 @@ Public Class Event_Interface
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
-        Dim rpy_class As RPClass
-        rpy_class = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Class"), RPClass)
-        If Not IsNothing(rpy_class) Then
-            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement), report)
-        Else
-            rpy_class = rpy_parent_pkg.addClass(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement), report)
-            rpy_class.addStereotype("Event_Interface", "Class")
-        End If
-
-        If Not IsNothing(Me.Arguments) Then
-            For Each arg In Me.Arguments
-                arg.Export_To_Rhapsody(CType(rpy_class, RPModelElement), report)
-            Next
-        End If
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Event_Interface", "Class")
     End Sub
 
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for metrics computation
     Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
         If IsNothing(Me.Needed_Elements) Then
             Me.Needed_Elements = New List(Of Classifier_Software_Element)
@@ -276,17 +265,19 @@ Public Class Event_Argument
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
+    Protected Overrides Function Search_Nested_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+        Return rpy_parent.findNestedElement(Me.Name, "Attribute")
+    End Function
+
+    Protected Overrides Function Create_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
         Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
-        Dim rpy_attr As RPAttribute
-        rpy_attr = CType(rpy_parent_class.findNestedElement(Me.Name, "Attribute"), RPAttribute)
-        If Not IsNothing(rpy_attr) Then
-            Me.Merge_Rpy_Element(CType(rpy_attr, RPModelElement), report)
-        Else
-            rpy_attr = rpy_parent_class.addAttribute(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_attr, RPModelElement), report)
-            rpy_attr.addStereotype("Event_Argument", "Attribute")
-        End If
+        Return CType(rpy_parent_class.addAttribute(Me.Name), RPModelElement)
+    End Function
+
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Event_Argument", "Attribute")
     End Sub
 
 End Class

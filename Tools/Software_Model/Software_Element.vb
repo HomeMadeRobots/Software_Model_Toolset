@@ -75,9 +75,10 @@ Public MustInherit Class Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public MustOverride Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
+    Protected MustOverride Function Search_Nested_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
 
-    Public Overridable Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+    Protected Overridable Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         Me.Rpy_Element = rpy_element
         If Me.Description <> "" Then
             Dim tmp_desc_1 As String = Me.Description.Replace(vbLf, String.Empty)
@@ -93,15 +94,45 @@ Public MustInherit Class Software_Element
         End If
     End Sub
 
-    Public Overridable Sub Set_Rpy_Common_Attributes(
-            rpy_element As RPModelElement,
-            report As Report)
-        Me.Rpy_Element = rpy_element
-        rpy_element.description = Me.Description
-        rpy_element.GUID = Transform_Guid_To_Rpy_GUID(Me.UUID)
+    Protected MustOverride Function Create_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+
+    Protected MustOverride Sub Set_Stereotype()
+
+    Protected Overridable Sub Set_Rpy_Element_Attributes(
+        rpy_elmt As RPModelElement,
+        report As Report)
+        Me.Rpy_Element = rpy_elmt
+        Rpy_Element.description = Me.Description
+        Rpy_Element.GUID = Transform_Guid_To_Rpy_GUID(Me.UUID)
+        Me.Set_Stereotype()
         Me.Add_Export_Information_Item(report,
             Merge_Report_Item.E_Merge_Status.ELEMENT_CREATED,
             "")
+    End Sub
+
+    Public Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
+
+        Dim rpy_elmt As RPModelElement
+        rpy_elmt = Me.Search_Nested_Rpy_Element(rpy_parent)
+
+        If Not IsNothing(rpy_elmt) Then
+            Me.Merge_Rpy_Element(rpy_elmt, report)
+        Else
+            rpy_elmt = Me.Create_Rpy_Element(rpy_parent)
+            Me.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        End If
+
+        Me.Export_Children(rpy_elmt, report)
+    End Sub
+
+    Protected Overridable Sub Export_Children(rpy_elmt As RPModelElement, report As Report)
+        Dim children As List(Of Software_Element) = Me.Get_Children
+        If Not IsNothing(children) Then
+            For Each child In children
+                child.Export_To_Rhapsody(rpy_elmt, report)
+            Next
+        End If
     End Sub
 
     Public Function Find_In_Rpy_Project(element_uuid As Guid) As RPModelElement
@@ -282,6 +313,20 @@ Public MustInherit Class Software_Class
 
     Protected Weighted_Methods_Per_Class As Double = 0
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Function Search_Nested_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+        Return rpy_parent.findNestedElement(Me.Name, "Class")
+    End Function
+
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
+        Return CType(rpy_parent_pkg.addClass(Me.Name), RPModelElement)
+    End Function
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for metrics computation
     Public MustOverride Function Compute_WMC() As Double
 
 End Class
@@ -318,14 +363,14 @@ Public MustInherit Class Typed_Software_Element
         CType(Me.Rpy_Element, RPAttribute).type = CType(rpy_type, RPClassifier)
     End Sub
 
-    Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
         Dim rpy_type As RPModelElement = Me.Get_Rpy_Data_Type
         If rpy_type.GUID <> Transform_Guid_To_Rpy_GUID(Me.Base_Data_Type_Ref) Then
             rpy_element.getSaveUnit.setReadOnly(0)
             Dim element_type As RPType
             element_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
-            If IsNothing(element_type) Then
+            If Not IsNothing(element_type) Then
                 Me.Set_Rpy_Data_Type(element_type)
                 Me.Add_Export_Information_Item(report,
                     Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
@@ -338,8 +383,8 @@ Public MustInherit Class Typed_Software_Element
         End If
     End Sub
 
-    Public Overrides Sub Set_Rpy_Common_Attributes(rpy_element As RPModelElement, report As Report)
-        MyBase.Set_Rpy_Common_Attributes(rpy_element, report)
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
         Dim element_type As RPType
         element_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
         If IsNothing(element_type) Then
@@ -368,73 +413,6 @@ Public MustInherit Class Typed_Software_Element
 End Class
 
 
-Public MustInherit Class Stream_Typed_Software_Element
-
-    Inherits Typed_Software_Element
-
-    Public Stream As E_STREAM
-
-    Public Enum E_STREAM
-        INPUT
-        OUTPUT
-        INVALID
-    End Enum
-
-    '----------------------------------------------------------------------------------------------'
-    ' General methods 
-    Protected MustOverride Function Get_Rpy_Stream() As E_STREAM
-
-    Protected Shared Function Transform_Rpy_Stream_To_SMT_Stream(rpy_stream As String) As E_STREAM
-        Select Case rpy_stream
-            Case "In"
-                Return E_STREAM.INPUT
-            Case "Out"
-                Return E_STREAM.OUTPUT
-            Case Else
-                Return E_STREAM.INVALID
-        End Select
-    End Function
-
-    Protected Shared Function Transform_SMT_Stream_To_Rpy_Stream(smt_stream As E_STREAM) As String
-        Select Case smt_stream
-            Case E_STREAM.INPUT
-                Return "In"
-            Case E_STREAM.OUTPUT
-                Return "Out"
-            Case Else
-                Return "InOut"
-        End Select
-    End Function
-
-    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
-        MyBase.Get_Own_Data_From_Rhapsody_Model()
-        Me.Stream = Get_Rpy_Stream()
-    End Sub
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Protected Overrides Sub Set_Rpy_Data_Type(rpy_type As RPType)
-        CType(Me.Rpy_Element, RPArgument).type = CType(rpy_type, RPClassifier)
-    End Sub
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for consistency check model
-    Protected Overrides Sub Check_Own_Consistency(report As Report)
-        MyBase.Check_Own_Consistency(report)
-
-        If Me.Stream = E_STREAM.INVALID Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "STRM_1",
-                "Stream shall be In ou Out.")
-        End If
-
-    End Sub
-
-End Class
-
-
 Public MustInherit Class Attribute_Software_Element
 
     Inherits Typed_Software_Element
@@ -455,7 +433,18 @@ Public MustInherit Class Attribute_Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+    Protected Overrides Function Search_Nested_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+        Return rpy_parent.findNestedElement(Me.Name, "Attribute")
+    End Function
+
+    Protected Overrides Function Create_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Return CType(rpy_parent_class.addAttribute(Me.Name), RPModelElement)
+    End Function
+
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
         Dim current_default_val As String
         current_default_val = CType(rpy_element, RPAttribute).defaultValue
@@ -467,9 +456,11 @@ Public MustInherit Class Attribute_Software_Element
         End If
     End Sub
 
-    Public Overrides Sub Set_Rpy_Common_Attributes(rpy_element As RPModelElement, report As Report)
-        MyBase.Set_Rpy_Common_Attributes(rpy_element, report)
-        Me.Default_Value = CType(rpy_element, RPAttribute).defaultValue
+    Protected Overrides Sub Set_Rpy_Element_Attributes(
+        rpy_elmt As RPModelElement,
+        report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        Me.Default_Value = CType(rpy_elmt, RPAttribute).defaultValue
     End Sub
 
 End Class
@@ -478,6 +469,17 @@ End Class
 Public MustInherit Class Operation
     Inherits Software_Element
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Function Search_Nested_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+        Return rpy_parent.findNestedElement(Me.Name, "Operation")
+    End Function
+
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Return CType(rpy_parent_class.addOperation(Me.Name), RPModelElement)
+    End Function
 
 End Class
 
@@ -523,41 +525,24 @@ Public MustInherit Class Operation_With_Arguments
     End Sub
 
 
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
-        Dim rpy_ope As RPOperation
-        rpy_ope = CType(rpy_parent_class.findNestedElement(Me.Name, "Operation"), RPOperation)
-        If Not IsNothing(rpy_ope) Then
-            Me.Merge_Rpy_Element(CType(rpy_ope, RPModelElement), report)
-        Else
-            rpy_ope = rpy_parent_class.addOperation(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_ope, RPModelElement), report)
-            Me.Set_Stereotype()
-        End If
-
-        If Not IsNothing(Me.Arguments) Then
-            For Each arg In Me.Arguments
-                arg.Export_To_Rhapsody(CType(rpy_ope, RPModelElement), report)
-            Next
-        End If
-    End Sub
-
-    Protected MustOverride Sub Set_Stereotype()
-
 End Class
 
 
 Public Class Operation_Argument
 
-    Inherits Stream_Typed_Software_Element
+    Inherits Typed_Software_Element
 
-    Protected Overrides Function Get_Rpy_Data_Type() As RPModelElement
-        Return CType(CType(Me.Rpy_Element, RPArgument).type, RPModelElement)
-    End Function
+    Public Stream As E_STREAM
 
-    Protected Overrides Function Get_Rpy_Stream() As E_STREAM
+    Public Enum E_STREAM
+        INPUT
+        OUTPUT
+        INVALID
+    End Enum
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
+    Private Function Get_Rpy_Stream() As E_STREAM
 
         Dim result As E_STREAM = E_STREAM.INVALID
 
@@ -575,31 +560,71 @@ Public Class Operation_Argument
 
     End Function
 
+    Protected Shared Function Transform_Rpy_Stream_To_SMT_Stream(rpy_stream As String) As E_STREAM
+        Select Case rpy_stream
+            Case "In"
+                Return E_STREAM.INPUT
+            Case "Out"
+                Return E_STREAM.OUTPUT
+            Case Else
+                Return E_STREAM.INVALID
+        End Select
+    End Function
+
+    Protected Shared Function Transform_SMT_Stream_To_Rpy_Stream(smt_stream As E_STREAM) As String
+        Select Case smt_stream
+            Case E_STREAM.INPUT
+                Return "In"
+            Case E_STREAM.OUTPUT
+                Return "Out"
+            Case Else
+                Return "InOut"
+        End Select
+    End Function
+
+    Protected Overrides Function Get_Rpy_Data_Type() As RPModelElement
+        Return CType(CType(Me.Rpy_Element, RPArgument).type, RPModelElement)
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_ope As RPOperation = CType(rpy_parent, RPOperation)
-        Dim rpy_arg As RPArgument
-        rpy_arg = CType(rpy_parent_ope.findNestedElement(Me.Name, "Argument"), RPArgument)
-        If Not IsNothing(rpy_arg) Then
-            Me.Merge_Rpy_Element(CType(rpy_arg, RPModelElement), report)
+    Protected Overrides Sub Set_Rpy_Data_Type(rpy_type As RPType)
+        CType(Me.Rpy_Element, RPArgument).type = CType(rpy_type, RPClassifier)
+    End Sub
 
-            Dim arg_rpy_stream As String = Transform_SMT_Stream_To_Rpy_Stream(Me.Stream)
-            If rpy_arg.argumentDirection <> arg_rpy_stream Then
-                rpy_arg.getSaveUnit.setReadOnly(0)
-                rpy_arg.argumentDirection = arg_rpy_stream
-                Me.Add_Export_Information_Item(report,
-                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                    "Stream merged")
-            End If
+    Protected Overrides Function Search_Nested_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+        Return rpy_parent.findNestedElement(Me.Name, "Argument")
+    End Function
 
-        Else
-            rpy_arg = rpy_parent_ope.addArgument(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_arg, RPModelElement), report)
-            rpy_arg.argumentDirection = Transform_SMT_Stream_To_Rpy_Stream(Me.Stream)
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+        Dim rpy_arg As RPArgument = CType(rpy_element, RPArgument)
+        Dim arg_rpy_stream As String = Transform_SMT_Stream_To_Rpy_Stream(Me.Stream)
+        If rpy_arg.argumentDirection <> arg_rpy_stream Then
+            rpy_arg.getSaveUnit.setReadOnly(0)
+            rpy_arg.argumentDirection = arg_rpy_stream
+            Me.Add_Export_Information_Item(report,
+                Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                "Stream merged")
         End If
     End Sub
 
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_parent_ope As RPOperation = CType(rpy_parent, RPOperation)
+        Dim rpy_arg As RPArgument = rpy_parent_ope.addArgument(Me.Name)
+        Return CType(rpy_arg, RPModelElement)
+    End Function
+
+    Protected Overrides Sub Set_Stereotype()
+        ' No stereotype for Operation_Argument
+    End Sub
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        Dim rpy_arg As RPArgument = CType(rpy_elmt, RPArgument)
+        rpy_arg.argumentDirection = Transform_SMT_Stream_To_Rpy_Stream(Me.Stream)
+    End Sub
 
 End Class

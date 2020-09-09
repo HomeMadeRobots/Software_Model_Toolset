@@ -2,7 +2,7 @@
 
 Public Class Root_Software_Composition
 
-    Inherits Classifier_Software_Element
+    Inherits Software_Class
 
     Public Component_Prototypes As List(Of Component_Prototype)
     Public Assembly_Connectors As List(Of Assembly_Connector)
@@ -10,6 +10,8 @@ Public Class Root_Software_Composition
     Private Nb_Conn_By_PPort_By_Component As New Dictionary(Of Guid, Dictionary(Of Guid, Integer))
     Private Nb_Conn_By_RPort_By_Component As New Dictionary(Of Guid, Dictionary(Of Guid, Integer))
 
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
@@ -24,6 +26,9 @@ Public Class Root_Software_Composition
         Return Me.Children
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
         Me.Component_Prototypes = New List(Of Component_Prototype)
@@ -55,27 +60,13 @@ Public Class Root_Software_Composition
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_pkg As RPPackage = CType(rpy_parent, RPPackage)
-        Dim rpy_class As RPClass
-        rpy_class = CType(rpy_parent_pkg.findNestedElement(Me.Name, "Class"), RPClass)
-        If Not IsNothing(rpy_class) Then
-            Me.Merge_Rpy_Element(CType(rpy_class, RPModelElement), report)
-        Else
-            rpy_class = rpy_parent_pkg.addClass(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_class, RPModelElement), report)
-            rpy_class.addStereotype("Root_Software_Composition", "Class")
-        End If
-
-        Dim children As List(Of Software_Element) = Me.Get_Children
-        If Not IsNothing(children) Then
-            For Each child In children
-                child.Export_To_Rhapsody(CType(rpy_class, RPModelElement), report)
-            Next
-        End If
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Root_Software_Composition", "Class")
     End Sub
 
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -141,6 +132,9 @@ Public Class Root_Software_Composition
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for metrics computation
     Public Function Get_PPort_Nb_Connection(component_uuid As Guid, port_uuid As Guid) As Integer
         Dim nb_conn As Integer = 0
         If Nb_Conn_By_PPort_By_Component.ContainsKey(component_uuid) Then
@@ -187,6 +181,10 @@ Public Class Root_Software_Composition
         Return Me.Dependent_Elements
     End Function
 
+    Public Overrides Function Compute_WMC() As Double
+        Return 0 ' to be implemented when OS_Task will be modeled.
+    End Function
+
 End Class
 
 
@@ -199,6 +197,8 @@ Public Class Component_Prototype
 
     Private Owner As Root_Software_Composition = Nothing
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
         MyBase.Get_Own_Data_From_Rhapsody_Model()
 
@@ -240,47 +240,16 @@ Public Class Component_Prototype
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
-        Dim rpy_inst As RPInstance
-        rpy_inst = CType(rpy_parent_class.findNestedElement(Me.Name, "Instance"), RPInstance)
-        If Not IsNothing(rpy_inst) Then
-            Me.Merge_Rpy_Element(CType(rpy_inst, RPModelElement), report)
-            If rpy_inst.otherClass.GUID <> Transform_Guid_To_Rpy_GUID(Me.Component_Type_Ref) Then
-                rpy_inst.getSaveUnit.setReadOnly(0)
-                Dim referenced_rpy_swct As RPClass
-                referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
-                If IsNothing(referenced_rpy_swct) Then
-                    Me.Add_Export_Error_Item(report,
-                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                        "Component_Type not found : " & Me.Component_Type_Ref.ToString & ".")
-                Else
-                    rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
-                    Me.Add_Export_Information_Item(report,
-                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                        "Component_Type_Ref merged.")
-                End If
+    Protected Overrides Function Search_Nested_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+        Return rpy_parent.findNestedElement(Me.Name, "Instance")
+    End Function
 
-            End If
-            If Not IsNothing(Me.Configuration_Values) Then
-                For Each conf In Me.Configuration_Values
-                    Dim rpy_conf_attr As RPAttribute = Nothing
-                    rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Component_Configuration_Ref), 
-                                    RPAttribute)
-                    If rpy_inst.getAttributeValue(rpy_conf_attr.name) <> conf.Value Then
-                        rpy_inst.getSaveUnit.setReadOnly(0)
-                        rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
-                        Me.Add_Export_Information_Item(report,
-                            Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                            "Configuration_Value of " & rpy_conf_attr.name & " merged.")
-                    End If
-                Next
-            End If
-        Else
-            rpy_inst = CType(rpy_parent_class.addNewAggr("Instance", Me.Name), RPInstance)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_inst, RPModelElement), report)
-            rpy_inst.addStereotype("Component_Prototype", "Object")
-
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+        Dim rpy_inst As RPInstance = CType(rpy_element, RPInstance)
+        If rpy_inst.otherClass.GUID <> Transform_Guid_To_Rpy_GUID(Me.Component_Type_Ref) Then
+            rpy_inst.getSaveUnit.setReadOnly(0)
             Dim referenced_rpy_swct As RPClass
             referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
             If IsNothing(referenced_rpy_swct) Then
@@ -289,20 +258,65 @@ Public Class Component_Prototype
                     "Component_Type not found : " & Me.Component_Type_Ref.ToString & ".")
             Else
                 rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Component_Type_Ref merged.")
             End If
-
-            If Not IsNothing(Me.Configuration_Values) Then
-                For Each conf In Me.Configuration_Values
-                    Dim rpy_conf_attr As RPAttribute = Nothing
-                    rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Component_Configuration_Ref), 
-                                    RPAttribute)
+        End If
+        If Not IsNothing(Me.Configuration_Values) Then
+            For Each conf In Me.Configuration_Values
+                Dim rpy_conf_attr As RPAttribute = Nothing
+                rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Component_Configuration_Ref), 
+                                RPAttribute)
+                If rpy_inst.getAttributeValue(rpy_conf_attr.name) <> conf.Value Then
+                    rpy_inst.getSaveUnit.setReadOnly(0)
                     rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
-                Next
-            End If
+                    Me.Add_Export_Information_Item(report,
+                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                        "Configuration_Value of " & rpy_conf_attr.name & " merged.")
+                End If
+            Next
+        End If
+    End Sub
+
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Return rpy_parent_class.addNewAggr("Instance", Me.Name)
+    End Function
+
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Component_Prototype", "Object")
+    End Sub
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        Dim rpy_inst As RPInstance = CType(rpy_elmt, RPInstance)
+
+        ' Set Component_Type_Ref
+        Dim referenced_rpy_swct As RPClass
+        referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
+        If IsNothing(referenced_rpy_swct) Then
+            Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Component_Type not found : " & Me.Component_Type_Ref.ToString & ".")
+        Else
+            rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
+        End If
+
+        ' Set Configuration_Values
+        If Not IsNothing(Me.Configuration_Values) Then
+            For Each conf In Me.Configuration_Values
+                Dim rpy_conf_attr As RPAttribute = Nothing
+                rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Component_Configuration_Ref), 
+                                RPAttribute)
+                rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
+            Next
         End If
     End Sub
 
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
@@ -362,7 +376,14 @@ Public Class Assembly_Connector
     Public Requirer_Component_Ref As Guid = Nothing
     Public Requirer_Port_Ref As Guid = Nothing
 
+    ' Used for model merge
+    Private Rpy_Prov_Port As RPPort = Nothing
+    Private Rpy_Req_Port As RPPort = Nothing
+    Private Rpy_Prov_Comp As RPInstance = Nothing
+    Private Rpy_Req_Comp As RPInstance = Nothing
 
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
     Public Shared Function Compute_Automatic_Name(rpy_link As RPLink) As String
         Dim automatic_name As String
         Dim provider_port As RPPort = Nothing
@@ -380,7 +401,28 @@ Public Class Assembly_Connector
         Return automatic_name
     End Function
 
+    Public Shared Sub Get_Connector_Info(
+        rpy_link As RPLink,
+        ByRef provider_port As RPPort,
+        ByRef requirer_port As RPPort,
+        ByRef provider_component As RPInstance,
+        ByRef requirer_component As RPInstance)
+        provider_port = rpy_link.toPort
+        If Is_Provider_Port(CType(provider_port, RPModelElement)) Then
+            requirer_port = rpy_link.fromPort
+            provider_component = rpy_link.to
+            requirer_component = rpy_link.from
+        Else
+            provider_port = rpy_link.fromPort
+            requirer_port = rpy_link.toPort
+            provider_component = rpy_link.from
+            requirer_component = rpy_link.to
+        End If
+    End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
 
         MyBase.Get_Own_Data_From_Rhapsody_Model()
@@ -414,89 +456,77 @@ Public Class Assembly_Connector
         End If
     End Sub
 
-    Public Shared Sub Get_Connector_Info(
-        rpy_link As RPLink,
-        ByRef provider_port As RPPort,
-        ByRef requirer_port As RPPort,
-        ByRef provider_component As RPInstance,
-        ByRef requirer_component As RPInstance)
-        provider_port = rpy_link.toPort
-        If Is_Provider_Port(CType(provider_port, RPModelElement)) Then
-            requirer_port = rpy_link.fromPort
-            provider_component = rpy_link.to
-            requirer_component = rpy_link.from
+   
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Function Search_Nested_Rpy_Element(
+        rpy_parent As RPModelElement) As RPModelElement
+        Return rpy_parent.findNestedElement(Me.Name, "Link")
+    End Function
+
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_link As RPLink = Nothing
+
+        ' Dirty trick to be able to call Find_In_Rpy_Project before really assigning Rpy_Element
+        Me.Rpy_Element = rpy_parent
+
+        Me.Rpy_Prov_Port = CType(Me.Find_In_Rpy_Project(Me.Provider_Port_Ref), RPPort)
+        Me.Rpy_Req_Port = CType(Me.Find_In_Rpy_Project(Me.Requirer_Port_Ref), RPPort)
+        Me.Rpy_Prov_Comp = CType(Me.Find_In_Rpy_Project(Me.Provider_Component_Ref), RPInstance)
+        Me.Rpy_Req_Comp = CType(Me.Find_In_Rpy_Project(Me.Requirer_Component_Ref), RPInstance)
+
+        If Not IsNothing(Me.Rpy_Prov_Port) And
+            Not IsNothing(Me.Rpy_Req_Port) And
+            Not IsNothing(Me.Rpy_Req_Comp) And
+            Not IsNothing(Me.Rpy_Prov_Comp) Then
+            rpy_link = rpy_parent_class.addLink(
+                Me.Rpy_Prov_Comp,
+                Me.Rpy_Req_Comp,
+                Nothing,
+                Me.Rpy_Prov_Port,
+                Me.Rpy_Req_Port)
+        End If
+        Return CType(rpy_link, RPModelElement)
+    End Function
+
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Assembly_Connector", "Link")
+    End Sub
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        If Not IsNothing(rpy_elmt) Then
+            MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+            rpy_elmt.name = Me.Name
         Else
-            provider_port = rpy_link.fromPort
-            requirer_port = rpy_link.toPort
-            provider_component = rpy_link.from
-            requirer_component = rpy_link.to
+            If IsNothing(Me.Rpy_Prov_Port) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Provider_Port not found : " & Me.Provider_Port_Ref.ToString & ".")
+            End If
+            If IsNothing(Me.Rpy_Req_Port) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Requirer_Port not found : " & Me.Requirer_Port_Ref.ToString & ".")
+            End If
+            If IsNothing(Me.Rpy_Req_Comp) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Provider_Component not found : " _
+                    & Me.Provider_Component_Ref.ToString & ".")
+            End If
+            If IsNothing(Me.Rpy_Req_Comp) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Requirer_Component not found : " _
+                    & Me.Requirer_Component_Ref.ToString & ".")
+            End If
         End If
     End Sub
 
 
     '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
-        Dim rpy_link As RPLink
-        rpy_link = CType(rpy_parent_class.findNestedElement(Me.Name, "Link"), RPLink)
-        If Not IsNothing(rpy_link) Then
-            Me.Merge_Rpy_Element(CType(rpy_link, RPModelElement), report)
-        Else
-            ' Dirty trick to be able to call Find_In_Rpy_Project before really assigning Rpy_Element
-            Me.Rpy_Element = rpy_parent
-
-            Dim rpy_pport As RPPort = Nothing
-            Dim rpy_rport As RPPort = Nothing
-            Dim rpy_pcomp As RPInstance = Nothing
-            Dim rpy_rcomp As RPInstance = Nothing
-            rpy_pport = CType(Me.Find_In_Rpy_Project(Me.Provider_Port_Ref), RPPort)
-            rpy_rport = CType(Me.Find_In_Rpy_Project(Me.Requirer_Port_Ref), RPPort)
-            rpy_pcomp = CType(Me.Find_In_Rpy_Project(Me.Provider_Component_Ref), RPInstance)
-            rpy_rcomp = CType(Me.Find_In_Rpy_Project(Me.Requirer_Component_Ref), RPInstance)
-
-            If Not IsNothing(rpy_pport) And
-                Not IsNothing(rpy_rport) And
-                Not IsNothing(rpy_rcomp) And
-                Not IsNothing(rpy_pcomp) Then
-                rpy_link = rpy_parent_class.addLink(
-                    rpy_pcomp,
-                    rpy_rcomp,
-                    Nothing,
-                    rpy_pport,
-                    rpy_rport)
-                Me.Set_Rpy_Common_Attributes(CType(rpy_link, RPModelElement), report)
-                rpy_link.name = Me.Name
-                rpy_link.addStereotype("Assembly_Connector", "Link")
-            Else
-                If IsNothing(rpy_pport) Then
-                    Me.Add_Export_Error_Item(report,
-                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                        "Provider_Port not found : " & Me.Provider_Port_Ref.ToString & ".")
-                End If
-                If IsNothing(rpy_rport) Then
-                    Me.Add_Export_Error_Item(report,
-                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                        "Requirer_Port not found : " & Me.Requirer_Port_Ref.ToString & ".")
-                End If
-                If IsNothing(rpy_pcomp) Then
-                    Me.Add_Export_Error_Item(report,
-                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                        "Provider_Component not found : " _
-                        & Me.Provider_Component_Ref.ToString & ".")
-                End If
-                If IsNothing(rpy_rcomp) Then
-                    Me.Add_Export_Error_Item(report,
-                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                        "Requirer_Component not found : " _
-                        & Me.Requirer_Component_Ref.ToString & ".")
-                End If
-            End If
-
-        End If
-    End Sub
-
-
+    ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
