@@ -457,10 +457,10 @@ Public MustInherit Class Attribute_Software_Element
     ' Methods for models merge
     Public Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
-        Dim new_default_val As String
-        new_default_val = CType(rpy_element, RPAttribute).defaultValue
-        If Me.Default_Value <> new_default_val Then
-            Me.Default_Value = new_default_val
+        Dim current_default_val As String
+        current_default_val = CType(rpy_element, RPAttribute).defaultValue
+        If Me.Default_Value <> current_default_val Then
+            CType(rpy_element, RPAttribute).defaultValue = Me.Default_Value
             Me.Add_Export_Information_Item(report,
                 Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
                 "Default_Value merged.")
