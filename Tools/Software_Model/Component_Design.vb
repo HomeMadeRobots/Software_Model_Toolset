@@ -104,7 +104,6 @@ Public Class Component_Design
             For Each rpy_gen In rpy_class.generalizations
                 If Is_Component_Type_Ref(CType(rpy_gen, RPModelElement)) Then
                     rpy_swct_gen_list.Add(rpy_gen)
-                    Exit For
                 End If
             Next
             ' Check Component_Type references
