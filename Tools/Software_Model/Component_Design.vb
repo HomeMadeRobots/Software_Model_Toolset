@@ -7,6 +7,7 @@ Public Class Component_Design
     Public Component_Type_Ref As Guid = Guid.Empty
     Public Component_Attributes As List(Of Component_Attribute)
     Public Private_Operations As List(Of Private_Operation)
+    Public Operation_Realizations As List(Of Operation_Realization)
 
     Private Nb_Component_Type_Ref As Integer
     Private Nb_Invalid_Component_Type_Ref As Integer = 0 ' nb ref on not a Component_Type
@@ -22,6 +23,9 @@ Public Class Component_Design
             If Not IsNothing(Me.Private_Operations) Then
                 children_list.AddRange(Me.Private_Operations)
             End If
+            If Not IsNothing(Me.Operation_Realizations) Then
+                children_list.AddRange(Me.Operation_Realizations)
+            End If
             Me.Children = children_list
         End If
         Return Me.Children
@@ -32,13 +36,16 @@ Public Class Component_Design
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
+        Dim rpy_elmt As RPModelElement
+
         Me.Component_Attributes = New List(Of Component_Attribute)
         Dim rpy_attribute As RPAttribute
         For Each rpy_attribute In CType(Me.Rpy_Element, RPClass).attributes
-            If Is_Component_Attribute(CType(rpy_attribute, RPModelElement)) Then
+            rpy_elmt = CType(rpy_attribute, RPModelElement)
+            If Is_Component_Attribute(rpy_elmt) Then
                 Dim attr As Component_Attribute = New Component_Attribute
                 Me.Component_Attributes.Add(attr)
-                attr.Import_From_Rhapsody_Model(Me, CType(rpy_attribute, RPModelElement))
+                attr.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
         If Me.Component_Attributes.Count = 0 Then
@@ -46,17 +53,27 @@ Public Class Component_Design
         End If
 
         Me.Private_Operations = New List(Of Private_Operation)
+        Me.Operation_Realizations = New List(Of Operation_Realization)
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
-            If Is_Private_Operation(CType(rpy_ope, RPModelElement)) Then
+            rpy_elmt = CType(rpy_ope, RPModelElement)
+            If Is_Private_Operation(rpy_elmt) Then
                 Dim priv_op As Private_Operation = New Private_Operation
                 Me.Private_Operations.Add(priv_op)
-                priv_op.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
+                priv_op.Import_From_Rhapsody_Model(Me, rpy_elmt)
+            ElseIf Is_Operation_Realization(rpy_elmt) Then
+                Dim op_rea As Operation_Realization = New Operation_Realization
+                Me.Operation_Realizations.Add(op_rea)
+                op_rea.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
         If Me.Private_Operations.Count = 0 Then
             Me.Private_Operations = Nothing
         End If
+        If Me.Operation_Realizations.Count = 0 Then
+            Me.Operation_Realizations = Nothing
+        End If
+
     End Sub
 
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
@@ -217,6 +234,48 @@ Public Class Private_Operation
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Private_Operation", "Operation")
+    End Sub
+
+End Class
+
+
+Public Class Operation_Realization
+
+    Inherits Operation_With_Arguments
+
+    Public Provider_Port_Ref As Guid = Nothing
+    Public Operation_Ref As Guid
+
+    Private Nb_Provider_Port_Ref As Integer
+    Private Nb_Operation_Ref As Integer
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+
+        Dim rpy_dep As RPDependency
+        For Each rpy_dep In CType(Me.Rpy_Element, RPOperation).dependencies
+            If Is_Provider_Port_Ref(CType(rpy_dep, RPModelElement)) Then
+                Me.Nb_Provider_Port_Ref += 1
+                Me.Provider_Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_dep.dependsOn.GUID)
+            ElseIf Is_Operation_Ref(CType(rpy_dep, RPModelElement)) Then
+                Me.Nb_Operation_Ref += 1
+                Me.Operation_Ref = Transform_Rpy_GUID_To_Guid(rpy_dep.dependsOn.GUID)
+            End If
+        Next
+
+    End Sub
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Operation_Realization", "Operation")
     End Sub
 
 End Class

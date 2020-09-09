@@ -133,5 +133,18 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID f83e5855-ba0a-49b4-a839-2d1cddc54bd8")
     End Function
 
+    Public Function Is_Operation_Realization(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID d92413ce-606f-470d-927e-c71200c04793")
+    End Function
+
+    Public Function Is_Provider_Port_Ref(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID a9743e19-c009-49cd-a592-1e4f0eb1be92")
+    End Function
+
+    Public Function Is_Operation_Ref(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 0cbb1e61-9891-48a6-8b90-26f789cc116a")
+    End Function
+
+
 
 End Module
