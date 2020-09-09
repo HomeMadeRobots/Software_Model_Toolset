@@ -44,7 +44,7 @@ Public Class Client_Server_Interface
     <XmlArrayItemAttribute(GetType(Synchronous_Operation)), _
      XmlArrayItemAttribute(GetType(Asynchronous_Operation)), _
      XmlArray("Operations")>
-    Public Operations As List(Of Operation)
+    Public Operations As List(Of Operation_With_Arguments)
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
@@ -59,7 +59,7 @@ Public Class Client_Server_Interface
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
-        Me.Operations = New List(Of Operation)
+        Me.Operations = New List(Of Operation_With_Arguments)
 
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
@@ -152,69 +152,8 @@ Public Class Client_Server_Interface
 End Class
 
 
-Public MustInherit Class Operation
-
-    Inherits Software_Element
-
-    Public Arguments As List(Of Operation_Argument)
-
-    Public Overrides Function Get_Children() As List(Of Software_Element)
-        If IsNothing(Me.Children) Then
-            Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.Arguments) Then
-                children_list.AddRange(Me.Arguments)
-            End If
-            Me.Children = children_list
-        End If
-        Return Me.Children
-    End Function
-
-    Protected Overrides Sub Import_Children_From_Rhapsody_Model()
-
-        Me.Arguments = New List(Of Operation_Argument)
-
-        Dim rpy_arg As RPArgument
-        For Each rpy_arg In CType(Me.Rpy_Element, RPOperation).arguments
-            Dim argument As Operation_Argument = New Operation_Argument
-            Me.Arguments.Add(argument)
-            argument.Import_From_Rhapsody_Model(Me, CType(rpy_arg, RPModelElement))
-        Next
-
-        If Me.Arguments.Count = 0 Then
-            Me.Arguments = Nothing
-        End If
-
-    End Sub
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
-        Dim rpy_ope As RPOperation
-        rpy_ope = CType(rpy_parent_class.findNestedElement(Me.Name, "Operation"), RPOperation)
-        If Not IsNothing(rpy_ope) Then
-            Me.Merge_Rpy_Element(CType(rpy_ope, RPModelElement), report)
-        Else
-            rpy_ope = rpy_parent_class.addOperation(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_ope, RPModelElement), report)
-            Me.Set_Stereotype()
-        End If
-
-        If Not IsNothing(Me.Arguments) Then
-            For Each arg In Me.Arguments
-                arg.Export_To_Rhapsody(CType(rpy_ope, RPModelElement), report)
-            Next
-        End If
-    End Sub
-
-    Protected MustOverride Sub Set_Stereotype()
-
-End Class
-
-
 Public Class Synchronous_Operation
-    Inherits Operation
+    Inherits Operation_With_Arguments
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
@@ -226,68 +165,13 @@ End Class
 
 
 Public Class Asynchronous_Operation
-    Inherits Operation
+    Inherits Operation_With_Arguments
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Asynchronous_Operation", "Operation")
     End Sub
-End Class
-
-
-Public Class Operation_Argument
-
-    Inherits Stream_Typed_Software_Element
-
-    Protected Overrides Function Get_Rpy_Data_Type() As RPModelElement
-        Return CType(CType(Me.Rpy_Element, RPArgument).type, RPModelElement)
-    End Function
-
-    Protected Overrides Function Get_Rpy_Stream() As E_STREAM
-
-        Dim result As E_STREAM = E_STREAM.INVALID
-
-        Dim rpy_stream As String
-        rpy_stream = CType(Me.Rpy_Element, RPArgument).argumentDirection
-
-        Select Case rpy_stream
-            Case "In"
-                result = E_STREAM.INPUT
-            Case "Out"
-                result = E_STREAM.OUTPUT
-        End Select
-
-        Return result
-
-    End Function
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Public Overrides Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
-        Dim rpy_parent_ope As RPOperation = CType(rpy_parent, RPOperation)
-        Dim rpy_arg As RPArgument
-        rpy_arg = CType(rpy_parent_ope.findNestedElement(Me.Name, "Argument"), RPArgument)
-        If Not IsNothing(rpy_arg) Then
-            Me.Merge_Rpy_Element(CType(rpy_arg, RPModelElement), report)
-
-            Dim arg_rpy_stream As String = Transform_SMT_Stream_To_Rpy_Stream(Me.Stream)
-            If rpy_arg.argumentDirection <> arg_rpy_stream Then
-                rpy_arg.getSaveUnit.setReadOnly(0)
-                rpy_arg.argumentDirection = arg_rpy_stream
-                Me.Add_Export_Information_Item(report,
-                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                    "Stream merged")
-            End If
-
-        Else
-            rpy_arg = rpy_parent_ope.addArgument(Me.Name)
-            Me.Set_Rpy_Common_Attributes(CType(rpy_arg, RPModelElement), report)
-            rpy_arg.argumentDirection = Transform_SMT_Stream_To_Rpy_Stream(Me.Stream)
-        End If
-    End Sub
-
 
 End Class
 

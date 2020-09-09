@@ -6,6 +6,7 @@ Public Class Component_Design
 
     Public Component_Type_Ref As Guid = Guid.Empty
     Public Component_Attributes As List(Of Component_Attribute)
+    Public Private_Operations As List(Of Private_Operation)
 
     Private Nb_Component_Type_Ref As Integer
     Private Nb_Invalid_Component_Type_Ref As Integer = 0 ' nb ref on not a Component_Type
@@ -18,6 +19,9 @@ Public Class Component_Design
             If Not IsNothing(Me.Component_Attributes) Then
                 children_list.AddRange(Me.Component_Attributes)
             End If
+            If Not IsNothing(Me.Private_Operations) Then
+                children_list.AddRange(Me.Private_Operations)
+            End If
             Me.Children = children_list
         End If
         Return Me.Children
@@ -27,6 +31,7 @@ Public Class Component_Design
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
+
         Me.Component_Attributes = New List(Of Component_Attribute)
         Dim rpy_attribute As RPAttribute
         For Each rpy_attribute In CType(Me.Rpy_Element, RPClass).attributes
@@ -38,6 +43,19 @@ Public Class Component_Design
         Next
         If Me.Component_Attributes.Count = 0 Then
             Me.Component_Attributes = Nothing
+        End If
+
+        Me.Private_Operations = New List(Of Private_Operation)
+        Dim rpy_ope As RPOperation
+        For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
+            If Is_Private_Operation(CType(rpy_ope, RPModelElement)) Then
+                Dim priv_op As Private_Operation = New Private_Operation
+                Me.Private_Operations.Add(priv_op)
+                priv_op.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
+            End If
+        Next
+        If Me.Private_Operations.Count = 0 Then
+            Me.Private_Operations = Nothing
         End If
     End Sub
 
@@ -180,6 +198,26 @@ Public Class Component_Attribute
             Me.Set_Rpy_Common_Attributes(CType(rpy_attr, RPModelElement), report)
             rpy_attr.addStereotype("Component_Attribute", "Attribute")
         End If
+    End Sub
+
+End Class
+
+
+Public Class Private_Operation
+    Inherits Operation_With_Arguments
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Private_Operation", "Operation")
     End Sub
 
 End Class

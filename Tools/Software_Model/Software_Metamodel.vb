@@ -129,4 +129,9 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID aa55d7fc-6ca5-467b-bc1c-246b0d2bbb0b")
     End Function
 
+    Public Function Is_Private_Operation(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID f83e5855-ba0a-49b4-a839-2d1cddc54bd8")
+    End Function
+
+
 End Module

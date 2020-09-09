@@ -383,7 +383,7 @@ End Class
 
 Public Class Component_Operation
 
-    Inherits Software_Element
+    Inherits Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
