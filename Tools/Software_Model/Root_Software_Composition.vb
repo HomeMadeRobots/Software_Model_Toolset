@@ -240,9 +240,8 @@ Public Class Component_Prototype
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Instance")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Instance"
     End Function
 
     Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
@@ -459,9 +458,8 @@ Public Class Assembly_Connector
    
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Link")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Link"
     End Function
 
     Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement

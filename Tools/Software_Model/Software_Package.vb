@@ -190,9 +190,8 @@ Public Class Software_Package
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Package")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Package"
     End Function
 
     Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement

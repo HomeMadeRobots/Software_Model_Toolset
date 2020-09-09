@@ -75,8 +75,7 @@ Public MustInherit Class Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected MustOverride Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
+    Protected MustOverride Function Get_Rpy_Metaclass() As String
 
     Protected Overridable Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         Me.Rpy_Element = rpy_element
@@ -114,7 +113,7 @@ Public MustInherit Class Software_Element
     Public Sub Export_To_Rhapsody(rpy_parent As RPModelElement, report As Report)
 
         Dim rpy_elmt As RPModelElement
-        rpy_elmt = Me.Search_Nested_Rpy_Element(rpy_parent)
+        rpy_elmt = rpy_parent.findNestedElement(Me.Name, Me.Get_Rpy_Metaclass())
 
         If Not IsNothing(rpy_elmt) Then
             Me.Merge_Rpy_Element(rpy_elmt, report)
@@ -315,9 +314,8 @@ Public MustInherit Class Software_Class
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Class")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Class"
     End Function
 
     Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
@@ -433,9 +431,8 @@ Public MustInherit Class Attribute_Software_Element
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Attribute")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Attribute"
     End Function
 
     Protected Overrides Function Create_Rpy_Element(
@@ -471,9 +468,8 @@ Public MustInherit Class Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Operation")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Operation"
     End Function
 
     Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
@@ -593,9 +589,8 @@ Public Class Operation_Argument
         CType(Me.Rpy_Element, RPArgument).type = CType(rpy_type, RPClassifier)
     End Sub
 
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Argument")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Argument"
     End Function
 
     Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)

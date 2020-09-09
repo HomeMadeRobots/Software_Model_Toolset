@@ -14,9 +14,8 @@ Public MustInherit Class Data_Type
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Type")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Type"
     End Function
 
     Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
@@ -788,9 +787,8 @@ Public Class Structured_Data_Type_Field
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Attribute")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Attribute"
     End Function
 
     Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement

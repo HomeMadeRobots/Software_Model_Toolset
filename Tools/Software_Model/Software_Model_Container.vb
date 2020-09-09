@@ -255,9 +255,9 @@ Public Class Software_Model_Container
         Return Nothing
     End Function
 
-    Protected Overrides Function Search_Nested_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+    Protected Overrides Function Get_Rpy_Metaclass() As String
         ' Not used, Software_Model_Container is a special Software_Element
-        Return Nothing
+        Return "Project"
     End Function
 
     Protected Overrides Sub Set_Stereotype()

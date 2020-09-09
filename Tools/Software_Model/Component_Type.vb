@@ -196,9 +196,8 @@ Public MustInherit Class Port
     Protected MustOverride Sub Set_Contract(report As Report)
     Protected MustOverride Sub Merge_Rpy_Contract(report As Report)
 
-    Protected Overrides Function Search_Nested_Rpy_Element(
-        rpy_parent As RPModelElement) As RPModelElement
-        Return rpy_parent.findNestedElement(Me.Name, "Port")
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Port"
     End Function
 
     Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
