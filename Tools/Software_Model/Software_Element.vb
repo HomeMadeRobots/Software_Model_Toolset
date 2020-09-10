@@ -457,7 +457,7 @@ Public MustInherit Class Attribute_Software_Element
         rpy_elmt As RPModelElement,
         report As Report)
         MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
-        Me.Default_Value = CType(rpy_elmt, RPAttribute).defaultValue
+        CType(rpy_elmt, RPAttribute).defaultValue = Me.Default_Value
     End Sub
 
 End Class
@@ -594,6 +594,7 @@ Public Class Operation_Argument
         MyBase.Get_Own_Data_From_Rhapsody_Model()
         Me.Stream = Get_Rpy_Stream()
     End Sub
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
