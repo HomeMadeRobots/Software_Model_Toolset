@@ -589,6 +589,13 @@ Public Class Operation_Argument
 
 
     '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+        Me.Stream = Get_Rpy_Stream()
+    End Sub
+
+    '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Protected Overrides Sub Set_Rpy_Data_Type(rpy_type As RPType)
         CType(Me.Rpy_Element, RPArgument).type = CType(rpy_type, RPClassifier)
