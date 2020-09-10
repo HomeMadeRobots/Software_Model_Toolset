@@ -477,6 +477,11 @@ Public MustInherit Class Operation
         Return CType(rpy_parent_class.addOperation(Me.Name), RPModelElement)
     End Function
 
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        CType(rpy_elmt, RPOperation).setReturnTypeDeclaration("")
+    End Sub
+
 End Class
 
 
