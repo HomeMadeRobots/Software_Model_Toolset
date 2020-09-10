@@ -11,14 +11,14 @@
 			<_id type="a">GUID e6dd7000-5327-4839-ad4b-6da8f8351563</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Detailed_Design_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.7.2020::15:59:30</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.10.2020::8:1:57</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Component_Design_Metamodel profile defines meta-classes allowing to model any design pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.7.2020::15:59:30</_modifiedTime>
+			<_modifiedTime type="a">9.10.2020::8:1:57</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">9.7.2020::15:59:30</weakCGTime>
+			<weakCGTime type="a">9.10.2020::8:1:57</weakCGTime>
 			<strongCGTime type="a">10.25.2019::13:35:24</strongCGTime>
 			<_defaultComposite type="s">GUID f61c1e09-4b38-4294-ba41-f87637329589</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 9c4f06ad-7647-4018-8692-8c6ae32b4d1b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.7.2020::15:59:30</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.7.2020::15:59:30</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.10.2020::8:1:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.10.2020::8:1:57</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">9.7.2020::15:59:30</weakCGTime>
+			<weakCGTime type="a">9.10.2020::8:1:57</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:18</strongCGTime>
 			<_defaultComposite type="s">GUID 1c3659ae-c124-4218-83bf-cc594f2a034c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -313,10 +313,10 @@
 			<_id type="a">GUID 12048228-d7eb-47c2-9016-90250609be6c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.7.2020::8:4:38</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.7.2020::8:4:38</_modifiedTime>
-			<_lastID type="a">8</_lastID>
-			<weakCGTime type="a">9.7.2020::8:4:38</weakCGTime>
+			<_modifiedTimeWeak type="a">9.10.2020::8:1:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.10.2020::8:1:57</_modifiedTime>
+			<_lastID type="a">9</_lastID>
+			<weakCGTime type="a">9.10.2020::8:1:57</weakCGTime>
 			<strongCGTime type="a">11.30.2018::9:38:46</strongCGTime>
 			<_defaultComposite type="s">GUID 100f872a-a62e-4cfc-a3c8-ef5346429906</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -331,6 +331,7 @@
 				<value>GUID aa55d7fc-6ca5-467b-bc1c-246b0d2bbb0b</value>
 				<value>GUID 0cbb1e61-9891-48a6-8b90-26f789cc116a</value>
 				<value>GUID a9743e19-c009-49cd-a592-1e4f0eb1be92</value>
+				<value>GUID 3c9476aa-db4c-4a17-9581-c47651b0862a</value>
 				<value>GUID 100f872a-a62e-4cfc-a3c8-ef5346429906</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -571,7 +572,13 @@
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">ActivityDiagram, Argument, Requirer_Port_Ref</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
 													<_Value type="a">./icons/black_flash.ico</_Value>
@@ -609,8 +616,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Event_Reception_Realization</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:4:2</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::20:4:2</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.10.2020::8:1:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.10.2020::8:1:57</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1065,6 +1072,64 @@
 			<_name type="a">Provider_Port_Ref</_name>
 			<_modifiedTimeWeak type="a">9.6.2020::20:34:19</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.6.2020::20:34:19</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Dependency</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+		</IStereotype>
+		<IStereotype type="e">
+			<_id type="a">GUID 3c9476aa-db4c-4a17-9581-c47651b0862a</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">Owners</_Name>
+													<_Value type="a">Event_Reception_Realization</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Sources</_Name>
+													<_Value type="a">Event_Reception_Realization</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Targets</_Name>
+													<_Value type="a">Requirer_Port</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Requirer_Port_Ref</_name>
+			<_modifiedTimeWeak type="a">9.10.2020::8:1:27</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.10.2020::8:1:27</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
