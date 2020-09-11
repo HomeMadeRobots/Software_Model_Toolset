@@ -292,14 +292,23 @@ Public Class Software_Package
         Next
     End Sub
 
-    Public Sub Export_Classes_To_Rhapsody(report As Report)
+    Public Sub Export_Classes_To_Rhapsody(
+        ByRef exported_classes_list As List(Of SDD_Class),
+        report As Report,
+        force As Boolean)
+
         For Each sdd_class In Me.Classes
-            sdd_class.Export_To_Rhapsody(Me.Rpy_Element, report)
+            If force = True Or
+                sdd_class.Is_Exportable(Me.Rpy_Element) = True Then
+                sdd_class.Export_To_Rhapsody(Me.Rpy_Element, report)
+                exported_classes_list.Add(sdd_class)
+            End If
         Next
 
         For Each pkg In Me.Packages
-            pkg.Export_Classes_To_Rhapsody(report)
+            pkg.Export_Classes_To_Rhapsody(exported_classes_list, report, force)
         Next
+
     End Sub
 
     Public Sub Export_Component_Design_To_Rhapsody(report As Report)

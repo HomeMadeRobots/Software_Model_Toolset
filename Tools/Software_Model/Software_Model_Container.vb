@@ -37,6 +37,7 @@ Public Class Software_Model_Container
     Private Interfaces_List As List(Of Software_Interface) = Nothing
     Private Component_Types_List As List(Of Component_Type) = Nothing
     Private Compositions_List As List(Of Root_Software_Composition) = Nothing
+    Private SDD_Classes_List As List(Of SDD_Class) = Nothing
 
     Private Nb_Interfaces_Series As Data_Series
     Private Nb_Component_Types_Series As Data_Series
@@ -131,6 +132,22 @@ Public Class Software_Model_Container
         End If
         Return Me.Data_Types_List
     End Function
+
+    Public Function Get_All_SDD_Classes() As List(Of SDD_Class)
+        If IsNothing(Me.SDD_Classes_List) Then
+            Me.SDD_Classes_List = New List(Of SDD_Class)
+            For Each top_pkg In Me.Packages
+                Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
+                For Each pkg In all_pkg_list
+                    If Not IsNothing(pkg.Classes) Then
+                        Me.SDD_Classes_List.AddRange(pkg.Classes)
+                    End If
+                Next
+            Next
+        End If
+        Return Me.SDD_Classes_List
+    End Function
+
 
     Public Sub Create_Xml(xml_file_stream As FileStream)
 
@@ -326,9 +343,26 @@ Public Class Software_Model_Container
         Next
 
         ' Export Class
-        For Each pkg In Me.Packages
-            pkg.Export_Classes_To_Rhapsody(Me.Import_Report)
-        Next
+        Dim sdd_classes_list As New List(Of SDD_Class)
+        sdd_classes_list = Me.Get_All_SDD_Classes()
+        Dim exported_sdd_classes_list As New List(Of SDD_Class)
+        round_counter = 0
+        force_export = False
+        While sdd_classes_list.Count <> 0
+            For Each pkg In Me.Packages
+                pkg.Export_Classes_To_Rhapsody(
+                    exported_sdd_classes_list,
+                    Me.Import_Report,
+                    force_export)
+            Next
+            For Each exp_class In exported_sdd_classes_list
+                sdd_classes_list.Remove(exp_class)
+            Next
+            round_counter += 1
+            If round_counter >= 5 Then
+                force_export = True
+            End If
+        End While
 
         ' Export Component_Designs
         For Each pkg In Me.Packages

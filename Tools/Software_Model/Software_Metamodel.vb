@@ -160,4 +160,32 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 9db356bc-6146-4703-a6f1-f05eb819dbfa")
     End Function
 
+    Public Function Is_Variable_Attribute(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 1ab5b469-21ae-4135-9ec4-5adfcbba6a24")
+    End Function
+
+    Public Function Is_Configuration_Attribute(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID a1930d35-ed9e-409a-bdd8-ec16bd7df6fb")
+    End Function
+
+    Public Function Is_Private_Method(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 6db49990-fbcb-4572-8e07-b11631cc19c2")
+    End Function
+
+    Public Function Is_Public_Method(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID ecaa2fe0-5d3b-4cc3-9862-9159c7ea16d8")
+    End Function
+
+    Public Function Is_Event_Reception(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 92c0d054-4885-4324-a809-168f50241810")
+    End Function
+
+    Public Function Is_Send_Event(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 8d3c01aa-c9f5-4df6-91f9-66e5fd75fd0e")
+    End Function
+
+    Public Function Is_Receive_Event(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID bbc84abc-ada7-4082-98d4-c7ae4bd0d743")
+    End Function
+
 End Module
