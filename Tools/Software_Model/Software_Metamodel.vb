@@ -153,4 +153,11 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 3c9476aa-db4c-4a17-9581-c47651b0862a")
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' SDD_Class
+    Public Function Is_SDD_Class(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 9db356bc-6146-4703-a6f1-f05eb819dbfa")
+    End Function
+
 End Module

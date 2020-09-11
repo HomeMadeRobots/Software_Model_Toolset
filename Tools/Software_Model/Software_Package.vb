@@ -23,6 +23,7 @@ Public Class Software_Package
     Public Component_Types As List(Of Component_Type)
     Public Root_Software_Compositions As List(Of Root_Software_Composition)
     Public Component_Designs As List(Of Component_Design)
+    Public Classes As List(Of SDD_Class)
 
 
     '----------------------------------------------------------------------------------------------'
@@ -47,6 +48,9 @@ Public Class Software_Package
             End If
             If Not IsNothing(Me.Component_Designs) Then
                 children_list.AddRange(Me.Component_Designs)
+            End If
+            If Not IsNothing(Me.Classes) Then
+                children_list.AddRange(Me.Classes)
             End If
             Me.Children = children_list
         End If
@@ -146,6 +150,7 @@ Public Class Software_Package
         Me.Component_Types = New List(Of Component_Type)
         Me.Root_Software_Compositions = New List(Of Root_Software_Composition)
         Me.Component_Designs = New List(Of Component_Design)
+        Me.Classes = New List(Of SDD_Class)
         Dim rpy_class As RPClass
         For Each rpy_class In CType(Me.Rpy_Element, RPPackage).classes
             Dim rpy_element As RPModelElement = CType(rpy_class, RPModelElement)
@@ -169,6 +174,10 @@ Public Class Software_Package
                 Dim comp_design As New Component_Design
                 Me.Component_Designs.Add(comp_design)
                 comp_design.Import_From_Rhapsody_Model(Me, rpy_element)
+            ElseIf Is_SDD_Class(rpy_element) Then
+                Dim sdd_class As New SDD_Class
+                Me.Classes.Add(sdd_class)
+                sdd_class.Import_From_Rhapsody_Model(Me, rpy_element)
             End If
 
         Next
@@ -184,7 +193,9 @@ Public Class Software_Package
         If Me.Component_Designs.Count = 0 Then
             Me.Component_Designs = Nothing
         End If
-
+        If Me.Classes.Count = 0 Then
+            Me.Classes = Nothing
+        End If
     End Sub
 
 
@@ -281,6 +292,16 @@ Public Class Software_Package
         Next
     End Sub
 
+    Public Sub Export_Classes_To_Rhapsody(report As Report)
+        For Each sdd_class In Me.Classes
+            sdd_class.Export_To_Rhapsody(Me.Rpy_Element, report)
+        Next
+
+        For Each pkg In Me.Packages
+            pkg.Export_Classes_To_Rhapsody(report)
+        Next
+    End Sub
+
     Public Sub Export_Component_Design_To_Rhapsody(report As Report)
         For Each swcd In Me.Component_Designs
             swcd.Export_To_Rhapsody(Me.Rpy_Element, report)
@@ -302,6 +323,7 @@ Public Class Software_Package
             IsNothing(Me.Root_Software_Compositions) And
             IsNothing(Me.Software_Interfaces) And
             IsNothing(Me.Data_Types) And
+            IsNothing(Me.Classes) And
             IsNothing(Me.Component_Designs) Then
 
             Me.Add_Consistency_Check_Warning_Item(report,

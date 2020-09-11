@@ -92,6 +92,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="SDD_Class.vb" />
     <Compile Include="Software_Package.vb" />
     <Compile Include="Report.vb" />
     <Compile Include="Root_Software_Composition.vb" />

@@ -325,6 +325,11 @@ Public Class Software_Model_Container
             pkg.Export_Compositions_To_Rhapsody(Me.Import_Report)
         Next
 
+        ' Export Class
+        For Each pkg In Me.Packages
+            pkg.Export_Classes_To_Rhapsody(Me.Import_Report)
+        Next
+
         ' Export Component_Designs
         For Each pkg In Me.Packages
             pkg.Export_Component_Design_To_Rhapsody(Me.Import_Report)
@@ -388,9 +393,11 @@ Public Class Software_Model_Container
             Me.Component_Type_WMC_Series.Add_Value(swct.Compute_WMC)
         Next
 
-        For Each sw_if In Me.Interfaces_List
-            Me.Interfaces_WMC_Series.Add_Value(sw_if.Compute_WMC)
-        Next
+        If Not IsNothing(Me.Interfaces_List) Then
+            For Each sw_if In Me.Interfaces_List
+                Me.Interfaces_WMC_Series.Add_Value(sw_if.Compute_WMC)
+            Next
+        End If
 
     End Sub
 
