@@ -16,11 +16,11 @@ Public Class Rpy_Model_Controller
         ' Initialize output window and display start message
         Dim chrono As New Stopwatch
         chrono.Start()
-        Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Export software model to xml..." & vbCrLf)
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Export software model to xml...")
 
         ' Get selected element and check that it is a Rhapsody project
-        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project()
 
         If Not IsNothing(rpy_sw_mdl) Then
 
@@ -28,19 +28,19 @@ Public Class Rpy_Model_Controller
             Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
 
             ' Get model from Rhapsody
-            Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
+            Me.Write_Csl("Get model from Rhapsody...")
             Me.Model = New Software_Model_Container
             Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
-            Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+            Me.Write_Csl_Line(" done.")
 
             ' Select xml file directory
             Dim output_directory As String
-            output_directory = Select_Directory(Rhapsody_App, "xml file")
+            output_directory = Me.Select_Directory("xml file")
             If output_directory = "" Then
-                Rhapsody_App.writeToOutputWindow("out", " no directory selected." & vbCrLf)
+                Me.Write_Csl_Line(" no directory selected.")
             Else
                 ' Open XML file
-                Rhapsody_App.writeToOutputWindow("out", "Create xml file...")
+                Me.Write_Csl("Create xml file...")
                 Dim file_name As String = rpy_sw_mdl.name & "_" & date_str & ".xml"
                 Dim file_path As String = output_directory & "\" & file_name
                 Dim file_stream As New FileStream(file_path, FileMode.Create)
@@ -49,17 +49,17 @@ Public Class Rpy_Model_Controller
                 Me.Model.Create_Xml(file_stream)
 
                 file_stream.Close()
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                Me.Write_Csl_Line(" done.")
 
-                Rhapsody_App.writeToOutputWindow("out", "xml file full path : " & file_path & vbCrLf)
+                Me.Write_Csl_Line("xml file full path : " & file_path)
             End If
 
         End If
 
         ' Display Result to output window
-        Rhapsody_App.writeToOutputWindow("out", "Export end." & vbCrLf)
+        Me.Write_Csl_Line("Export end.")
         chrono.Stop()
-        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
 
     End Sub
 
@@ -74,24 +74,24 @@ Public Class Rpy_Model_Controller
         ' Initialize output window and display start message
         Dim chrono As New Stopwatch
         chrono.Start()
-        Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Import and merge by name..." & vbCrLf)
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Import and merge by name...")
 
         ' Get selected element and check that it is a Rhapsody project
-        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project()
 
         If Not IsNothing(rpy_sw_mdl) Then
 
             ' Get XML file
-            Rhapsody_App.writeToOutputWindow("out", "Get XML file to merge...")
+            Me.Write_Csl("Get XML file to merge...")
             Dim xml_file_path As String
             xml_file_path = Select_File("Select XML file", "XML file|*.xml")
             If xml_file_path = "" Then
-                Rhapsody_App.writeToOutputWindow("out", "no file selected." & vbCrLf)
-                Rhapsody_App.writeToOutputWindow("OUT", "Merge end." & vbCrLf)
+                Me.Write_Csl_Line("no file selected.")
+                Me.Write_Csl_Line("Merge end.")
                 Exit Sub
             Else
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                Me.Write_Csl_Line(" done.")
             End If
 
             ' Create string of the date for created csv file
@@ -100,13 +100,13 @@ Public Class Rpy_Model_Controller
             ' Create report
             ' Select csv file directory
             Dim output_directory As String
-            output_directory = Select_Directory(Rhapsody_App, "model importation report file")
+            output_directory = Me.Select_Directory("model importation report file")
             If output_directory = "" Then
-                Rhapsody_App.writeToOutputWindow("out", " no directory selected." & vbCrLf)
+                Me.Write_Csl_Line(" no directory selected.")
             Else
 
                 Me.Model = New Software_Model_Container
-                Rhapsody_App.writeToOutputWindow("out", "Get software model from XML file...")
+                Me.Write_Csl("Get software model from XML file...")
                 ' Open XML file
                 Dim file_stream As New FileStream(xml_file_path, FileMode.Open)
                 ' Deserialize XML file
@@ -115,22 +115,21 @@ Public Class Rpy_Model_Controller
                 Try
                     Me.Model =
                         CType(serializer.Deserialize(file_stream), Software_Model_Container)
-                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                    Me.Write_Csl_Line(" done.")
                     deserialization_status = True
                 Catch
-                    Rhapsody_App.writeToOutputWindow("out",
-                        "Invalid xml file, cannot perform merge." & vbCrLf)
+                    Me.Write_Csl_Line("Invalid xml file, cannot perform merge.")
                 End Try
                 ' Close stuff
                 file_stream.Close()
 
                 If deserialization_status = True Then
-                    Rhapsody_App.writeToOutputWindow("out", "Merge models...")
+                    Me.Write_Csl("Merge models...")
                     Me.Model.Export_To_Rhapsody(rpy_sw_mdl)
-                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                    Me.Write_Csl_Line(" done.")
 
                     ' Open csv file
-                    Rhapsody_App.writeToOutputWindow("out", "Create report file...")
+                    Me.Write_Csl("Create report file...")
                     Dim file_name As String =
                         rpy_sw_mdl.name & "_Importation_Report_" & date_str & ".csv"
                     Dim file_path As String = output_directory & "\" & file_name
@@ -140,11 +139,9 @@ Public Class Rpy_Model_Controller
                     Me.Model.Generate_Importation_Report(report_file_stream)
 
                     report_file_stream.Close()
-                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                    Me.Write_Csl_Line(" done.")
 
-                    Rhapsody_App.writeToOutputWindow(
-                        "out",
-                        "Importation report file full path : " & file_path & vbCrLf)
+                    Me.Write_Csl_Line("Importation report file full path : " & file_path)
 
                 End If
 
@@ -153,9 +150,9 @@ Public Class Rpy_Model_Controller
         End If
 
         ' Display Result to output window
-        Rhapsody_App.writeToOutputWindow("out", "Importation end." & vbCrLf)
+        Me.Write_Csl_Line("Importation end.")
         chrono.Stop()
-        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
     End Sub
 
 
@@ -164,11 +161,11 @@ Public Class Rpy_Model_Controller
         ' Initialize output window and display start message
         Dim chrono As New Stopwatch
         chrono.Start()
-        Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Check software model consistency..." & vbCrLf)
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Check software model consistency...")
 
         ' Get selected element and check that it is a Rhapsody project
-        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project()
 
         If Not IsNothing(rpy_sw_mdl) Then
 
@@ -176,25 +173,25 @@ Public Class Rpy_Model_Controller
             Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
 
             ' Get model from Rhapsody
-            Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
+            Me.Write_Csl("Get model from Rhapsody...")
             Me.Model = New Software_Model_Container
             Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
-            Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+            Me.Write_Csl_Line(" done.")
 
             ' Check model
-            Rhapsody_App.writeToOutputWindow("out", "Check model...")
+            Me.Write_Csl("Check model...")
             Me.Model.Check_Consistency()
-            Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+            Me.Write_Csl_Line(" done.")
 
             ' Create report
             ' Select csv file directory
             Dim output_directory As String
-            output_directory = Select_Directory(Rhapsody_App, "model consistency report file")
+            output_directory = Me.Select_Directory("model consistency report file")
             If output_directory = "" Then
-                Rhapsody_App.writeToOutputWindow("out", " no directory selected." & vbCrLf)
+                Me.Write_Csl_Line(" no directory selected.")
             Else
                 ' Open csv file
-                Rhapsody_App.writeToOutputWindow("out", "Create report file...")
+                Me.Write_Csl("Create report file...")
                 Dim file_name As String =
                     rpy_sw_mdl.name & "_Consistency_Report_" & date_str & ".csv"
                 Dim file_path As String = output_directory & "\" & file_name
@@ -204,20 +201,18 @@ Public Class Rpy_Model_Controller
                 Me.Model.Generate_Consistency_Report(file_stream)
 
                 file_stream.Close()
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                Me.Write_Csl_Line(" done.")
 
-                Rhapsody_App.writeToOutputWindow(
-                    "out",
-                    "Consistency report file full path : " & file_path & vbCrLf)
+                Me.Write_Csl_Line("Consistency report file full path : " & file_path)
             End If
 
 
         End If
 
         ' Display Result to output window
-        Rhapsody_App.writeToOutputWindow("out", "Export end." & vbCrLf)
+        Me.Write_Csl_Line("Export end.")
         chrono.Stop()
-        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
 
     End Sub
 
@@ -226,11 +221,11 @@ Public Class Rpy_Model_Controller
         ' Initialize output window and display start message
         Dim chrono As New Stopwatch
         chrono.Start()
-        Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Compute PSWA metrics..." & vbCrLf)
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Compute PSWA metrics...")
 
         ' Get selected element and check that it is a Rhapsody project
-        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project()
 
         If Not IsNothing(rpy_sw_mdl) Then
 
@@ -238,33 +233,32 @@ Public Class Rpy_Model_Controller
             Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
 
             ' Get model from Rhapsody
-            Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
+            Me.Write_Csl("Get model from Rhapsody...")
             Me.Model = New Software_Model_Container
             Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
-            Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+            Me.Write_Csl_Line(" done.")
 
             ' Check model
-            Rhapsody_App.writeToOutputWindow("out", "Check model...")
+            Me.Write_Csl("Check model...")
             Me.Model.Check_Consistency()
-            Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+            Me.Write_Csl_Line(" done.")
 
             If Me.Model.Has_Error Then
-                Rhapsody_App.writeToOutputWindow("out",
-                    "Model has errors, cannot compute metrics." & vbCrLf)
+                Me.Write_Csl_Line("Model has errors, cannot compute metrics.")
             Else
-                Rhapsody_App.writeToOutputWindow("out", "Compute model metrics...")
+                Me.Write_Csl("Compute model metrics...")
                 Me.Model.Compute_PSWA_Metrics()
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                Me.Write_Csl_Line(" done.")
 
-    '            Create report
+                ' Create report
                 ' Select txt file directory
                 Dim output_directory As String
-                output_directory = Select_Directory(Rhapsody_App, "model metrics report file")
+                output_directory = Me.Select_Directory("model metrics report file")
                 If output_directory = "" Then
-                    Rhapsody_App.writeToOutputWindow("out", " no directory selected." & vbCrLf)
+                    Me.Write_Csl_Line(" no directory selected.")
                 Else
                     ' Open txt file
-                    Rhapsody_App.writeToOutputWindow("out", "Create report file...")
+                    Me.Write_Csl("Create report file...")
                     Dim file_name As String =
                         rpy_sw_mdl.name & "_PSWA_Metrics_Report_" & date_str & ".txt"
                     Dim file_path As String = output_directory & "\" & file_name
@@ -274,20 +268,18 @@ Public Class Rpy_Model_Controller
                     Me.Model.Generate_PSWA_Metrics_Report(file_stream)
 
                     file_stream.Close()
-                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                    Me.Write_Csl_Line(" done.")
 
-                    Rhapsody_App.writeToOutputWindow(
-                        "out",
-                        "Metrics report file full path : " & file_path & vbCrLf)
+                    Me.Write_Csl_Line("Metrics report file full path : " & file_path)
                 End If
             End If
 
         End If
 
         ' Display Result to output window
-        Rhapsody_App.writeToOutputWindow("out", "PSWA metrics computation end." & vbCrLf)
+        Me.Write_Csl_Line("PSWA metrics computation end.")
         chrono.Stop()
-        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
     End Sub
 
 
@@ -295,11 +287,11 @@ Public Class Rpy_Model_Controller
         ' Initialize output window and display start message
         Dim chrono As New Stopwatch
         chrono.Start()
-        Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Generate all documents..." & vbCrLf)
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Generate all documents...")
 
         ' Get selected element and check that it is a Rhapsody project
-        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project()
 
         If Not IsNothing(rpy_sw_mdl) Then
 
@@ -308,21 +300,21 @@ Public Class Rpy_Model_Controller
 
             ' Select txt file directory
             Dim output_directory As String
-            output_directory = Select_Directory(Rhapsody_App, "all documents")
+            output_directory = Me.Select_Directory("all documents")
             If output_directory = "" Then
-                Rhapsody_App.writeToOutputWindow("out", " no directory selected." & vbCrLf)
+                Me.Write_Csl_Line(" no directory selected.")
             Else
 
                 '----------------------------------------------------------------------------------'
                 ' Model extraction
                 ' Get model from Rhapsody
-                Rhapsody_App.writeToOutputWindow("out", "Get model from Rhapsody...")
+                Me.Write_Csl("Get model from Rhapsody...")
                 Me.Model = New Software_Model_Container
                 Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                Me.Write_Csl_Line(" done.")
 
                 ' Open XML file
-                Rhapsody_App.writeToOutputWindow("out", "Create xml file...")
+                Me.Write_Csl("Create xml file...")
                 Dim file_name As String = rpy_sw_mdl.name & "_" & date_str & ".xml"
                 Dim file_path As String = output_directory & "\" & file_name
                 Dim file_stream As New FileStream(file_path, FileMode.Create)
@@ -331,20 +323,19 @@ Public Class Rpy_Model_Controller
                 Me.Model.Create_Xml(file_stream)
 
                 file_stream.Close()
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                Me.Write_Csl_Line(" done.")
 
-                Rhapsody_App.writeToOutputWindow("out",
-                    "xml file full path : " & file_path & vbCrLf)
+                Me.Write_Csl_Line("xml file full path : " & file_path)
 
                 '----------------------------------------------------------------------------------'
                 ' Consistency check
                 ' Check model
-                Rhapsody_App.writeToOutputWindow("out", "Check model...")
+                Me.Write_Csl("Check model...")
                 Me.Model.Check_Consistency()
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                Me.Write_Csl_Line(" done.")
 
                 ' Open csv file
-                Rhapsody_App.writeToOutputWindow("out", "Create report file...")
+                Me.Write_Csl("Create report file...")
                 file_name = rpy_sw_mdl.name & "_Consistency_Report_" & date_str & ".csv"
                 file_path = output_directory & "\" & file_name
 
@@ -353,23 +344,21 @@ Public Class Rpy_Model_Controller
                 Me.Model.Generate_Consistency_Report(stream_writer)
 
                 stream_writer.Close()
-                Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                Me.Write_Csl_Line(" done.")
 
-                Rhapsody_App.writeToOutputWindow("out",
-                    "Consistency report file full path : " & file_path & vbCrLf)
+                Me.Write_Csl_Line("Consistency report file full path : " & file_path)
 
                 '----------------------------------------------------------------------------------'
                 ' Metrics computation
                 If Me.Model.Has_Error Then
-                    Rhapsody_App.writeToOutputWindow("out",
-                        "Model has errors, cannot compute metrics." & vbCrLf)
+                    Me.Write_Csl_Line("Model has errors, cannot compute metrics.")
                 Else
-                    Rhapsody_App.writeToOutputWindow("out", "Compute model metrics...")
+                    Me.Write_Csl("Compute model metrics...")
                     Me.Model.Compute_PSWA_Metrics()
-                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                    Me.Write_Csl_Line(" done.")
 
                     ' Open txt file
-                    Rhapsody_App.writeToOutputWindow("out", "Create report file...")
+                    Me.Write_Csl("Create report file...")
                     file_name = rpy_sw_mdl.name & "_Metrics_Report_" & date_str & ".txt"
                     file_path = output_directory & "\" & file_name
 
@@ -378,10 +367,9 @@ Public Class Rpy_Model_Controller
                     Me.Model.Generate_PSWA_Metrics_Report(stream_writer)
 
                     stream_writer.Close()
-                    Rhapsody_App.writeToOutputWindow("out", " done." & vbCrLf)
+                    Me.Write_Csl_Line(" done.")
 
-                    Rhapsody_App.writeToOutputWindow("out",
-                        "Metrics report file full path : " & file_path & vbCrLf)
+                    Me.Write_Csl_Line("Metrics report file full path : " & file_path)
                 End If
 
             End If
@@ -389,9 +377,9 @@ Public Class Rpy_Model_Controller
         End If
 
         ' Display Result to output window
-        Rhapsody_App.writeToOutputWindow("out", "Generate all documents end." & vbCrLf)
+        Me.Write_Csl_Line("Generate all documents end.")
         chrono.Stop()
-        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
     End Sub
 
 
@@ -402,12 +390,12 @@ Public Class Rpy_Model_Controller
         ' Initialize output window and display start message
         Dim chrono As New Global.System.Diagnostics.Stopwatch
         chrono.Start()
-        Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Remove empty Packages..." & vbCrLf)
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Remove empty Packages...")
 
         ' Get selected element and check that it is a Rhapsody project
         ' Get selected element and check that it is a Rhapsody project
-        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project(Rhapsody_App)
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project()
 
         If Not IsNothing(rpy_sw_mdl) Then
             Dim root_level_package As RPPackage
@@ -419,9 +407,9 @@ Public Class Rpy_Model_Controller
         End If
 
         ' Display result to output window
-        Rhapsody_App.writeToOutputWindow("out", "End removing empty Packages." & vbCrLf)
+        Me.Write_Csl_Line("End removing empty Packages.")
         chrono.Stop()
-        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
     End Sub
 
 End Class

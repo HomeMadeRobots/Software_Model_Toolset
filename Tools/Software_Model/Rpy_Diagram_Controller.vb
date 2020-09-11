@@ -26,8 +26,8 @@ Public Class Rpy_Diagram_Controller
         ' Initialize output window and display start message
         Dim chrono As New Global.System.Diagnostics.Stopwatch
         chrono.Start()
-        Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Generate Component_Type diagram..." & vbCrLf)
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Generate Component_Type diagram...")
 
         ' Get selected element and check that it is a Component_Type
         Dim selected_element As RPModelElement
@@ -39,9 +39,8 @@ Public Class Rpy_Diagram_Controller
             End If
         End If
         If IsNothing(rpy_swct) Then
-            Me.Rhapsody_App.writeToOutputWindow("out", _
-                "A Component_Type shall be selected." & vbCrLf &
-                "End Component_Type diagram generation.")
+            Me.Write_Csl_Line("A Component_Type shall be selected.")
+            Me.Write_Csl_Line("End Component_Type diagram generation.")
             Exit Sub
         End If
 
@@ -119,20 +118,20 @@ Public Class Rpy_Diagram_Controller
 
         swct_diagram.openDiagram()
 
-        Rhapsody_App.writeToOutputWindow("out", diagram_name & " successfully generated." & vbCrLf)
+        Me.Write_Csl_Line(diagram_name & " successfully generated.")
 
         ' Display Result to output window
-        Rhapsody_App.writeToOutputWindow("out", "End Component_Type diagram generation." & vbCrLf)
+        Me.Write_Csl_Line("End Component_Type diagram generation.")
         chrono.Stop()
-        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
     End Sub
 
     Public Sub Generate_Component_Prototype_Diagram()
         ' Initialize output window and display start message
         Dim chrono As New Global.System.Diagnostics.Stopwatch
         chrono.Start()
-        Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Generate Component_Prototype diagram..." & vbCrLf)
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Generate Component_Prototype diagram...")
 
         ' Get selected element and check that it is a Component_Type
         Dim selected_element As RPModelElement
@@ -144,9 +143,8 @@ Public Class Rpy_Diagram_Controller
             End If
         End If
         If IsNothing(rpy_swc) Then
-            Me.Rhapsody_App.writeToOutputWindow("out", _
-                "A Component_Prototype shall be selected." & vbCrLf &
-                "End Component_Prototype diagram generation.")
+            Me.Write_Csl_Line("A Component_Prototype shall be selected.")
+            Me.Write_Csl_Line("End Component_Prototype diagram generation.")
             Exit Sub
         End If
 
@@ -255,13 +253,12 @@ Public Class Rpy_Diagram_Controller
 
         swc_diagram.openDiagram()
 
-        Rhapsody_App.writeToOutputWindow("out", diagram_name & " successfully generated." & vbCrLf)
+        Me.Write_Csl_Line(diagram_name & " successfully generated.")
 
         ' Display Result to output window
-        Rhapsody_App.writeToOutputWindow("out",
-            "End Component_Prototype diagram generation." & vbCrLf)
+        Me.Write_Csl_Line("End Component_Prototype diagram generation.")
         chrono.Stop()
-        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
     End Sub
 
 

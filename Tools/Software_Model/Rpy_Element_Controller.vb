@@ -8,11 +8,11 @@ Public Class Rpy_Element_Controller
         Dim name As String
         Dim rpy_element As RPModelElement
 
-        Me.Rhapsody_App.clearOutputWindow("out")
+        Me.Clear_Window()
         rpy_element = Me.Rhapsody_App.getSelectedElement
         elmt_guid = rpy_element.GUID
         name = rpy_element.name
-        Me.Rhapsody_App.writeToOutputWindow("out", "GUID of " & name & " : " & elmt_guid)
+        Me.Write_Csl_Line("GUID of " & name & " : " & elmt_guid)
     End Sub
 
     Public Sub Modify_Rpy_Element_GUID()

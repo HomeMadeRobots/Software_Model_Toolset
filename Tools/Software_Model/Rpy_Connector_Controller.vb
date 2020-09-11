@@ -8,8 +8,8 @@ Public Class Rpy_Connector_Controller
         ' Initialize output window and display start message
         Dim chrono As New Stopwatch
         chrono.Start()
-        Rhapsody_App.clearOutputWindow("out")
-        Rhapsody_App.writeToOutputWindow("out", "Rename connectors" & vbCrLf)
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Rename connectors")
 
         ' Get selected element and check that it is a Root_Software_Composition
         Dim selected_element As RPModelElement = Rhapsody_App.getSelectedElement
@@ -19,9 +19,8 @@ Public Class Rpy_Connector_Controller
         End If
 
         If IsNothing(rpy_composition) Then
-            Rhapsody_App.writeToOutputWindow("out",
-                "Error : a Root_Software_Composition shall be selected." & vbCrLf &
-                "End connectors renaming.")
+            Me.Write_Csl_Line("Error : a Root_Software_Composition shall be selected.")
+            Me.Write_Csl_Line("End connectors renaming.")
             Exit Sub
         End If
 
@@ -33,22 +32,21 @@ Public Class Rpy_Connector_Controller
                 connector_new_name = Assembly_Connector.Compute_Automatic_Name(rpy_link)
                 If connector_new_name.Length <= 128 Then
                     If rpy_link.name <> connector_new_name Then
-                        Rhapsody_App.writeToOutputWindow("out",
-                            "Rename " & rpy_link.name & " as " & connector_new_name & vbCrLf)
+                        Me.Write_Csl_Line("Rename " & rpy_link.name & " as " & connector_new_name)
                         rpy_link.name = connector_new_name
                     End If
                 Else
-                    Rhapsody_App.writeToOutputWindow("out",
+                    Me.Write_Csl_Line(
                         "Warning : automatic name is too long (>128 characters) for " &
-                        rpy_link.name & vbCrLf)
+                        rpy_link.name)
                 End If
             End If
         Next
 
         ' Display result to output window
-        Rhapsody_App.writeToOutputWindow("out", "End connectors renaming." & vbCrLf)
+        Me.Write_Csl_Line("End connectors renaming.")
         chrono.Stop()
-        Rhapsody_App.writeToOutputWindow("out", Get_Elapsed_Time(chrono))
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
     End Sub
 
 
