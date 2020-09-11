@@ -11,15 +11,15 @@ Module Software_Model_Helpers
         Try
             Select Case function_to_call
 
-                Case "Export_Rpy_Soft_Model_To_Xml"
+                Case "Export"
                     Dim sw_mdl_ctrl As New Rpy_Model_Controller
                     sw_mdl_ctrl.Export_Rpy_Soft_Model_To_Xml()
 
-                Case "Merge_Rpy_Soft_Model"
+                Case "Merge"
                     Dim sw_mdl_ctrl As New Rpy_Model_Controller
                     sw_mdl_ctrl.Import_And_Merge_By_Name()
 
-                Case "Check_Rpy_Soft_Model"
+                Case "Check"
                     Dim sw_mdl_ctrl As New Rpy_Model_Controller
                     sw_mdl_ctrl.Check_Rpy_Soft_Model()
 
