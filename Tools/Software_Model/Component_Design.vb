@@ -203,7 +203,7 @@ Public Class Component_Design
             swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), Component_Type)
             If Not IsNothing(Me.Operation_Realizations) Then
                 For Each op_real In Me.Operation_Realizations
-
+                    op_real.Check_Referenced_Elements(report, swct)
                 Next
             End If
             If Not IsNothing(Me.Event_Reception_Realizations) Then
@@ -285,8 +285,14 @@ Public Class Operation_Realization
         Dim rpy_dep As RPDependency
         For Each rpy_dep In CType(Me.Rpy_Element, RPOperation).dependencies
             If Is_Provider_Port_Ref(CType(rpy_dep, RPModelElement)) Then
+                Dim rpy_port As RPPort
+                Try
+                    rpy_port = CType(rpy_dep.dependsOn, RPPort)
+                Catch
+                    rpy_port = CType(rpy_dep.dependsOn.owner, RPPort)
+                End Try
                 Me.Nb_Provider_Port_Ref += 1
-                Me.Provider_Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_dep.dependsOn.GUID)
+                Me.Provider_Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_port.GUID)
             ElseIf Is_Operation_Ref(CType(rpy_dep, RPModelElement)) Then
                 Me.Nb_Operation_Ref += 1
                 Me.Operation_Ref = Transform_Rpy_GUID_To_Guid(rpy_dep.dependsOn.GUID)
@@ -297,8 +303,266 @@ Public Class Operation_Realization
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+
+        Dim rpy_dep_list As New List(Of RPDependency)
+        Dim rpy_dep As RPDependency = Nothing
+
+        ' Merge Provider_Port_Ref (if exists)
+        If Me.Provider_Port_Ref <> Guid.Empty Then
+            ' Get the list of current Provider_Port references
+            For Each rpy_dep In rpy_element.dependencies
+                If Is_Requirer_Port_Ref(CType(rpy_dep, RPModelElement)) Then
+                    rpy_dep_list.Add(rpy_dep)
+                End If
+            Next
+            ' Check Requirer_Port references
+            If rpy_dep_list.Count = 0 Then
+                ' There is no Requirer_Port references
+                ' Create one.
+                Me.Set_Provider_Port_Ref(rpy_element, report, True)
+            Else
+                Dim reference_found As Boolean = False
+                Dim referenced_rpy_port_guid As String
+                referenced_rpy_port_guid = Transform_Guid_To_Rpy_GUID(Me.Provider_Port_Ref)
+                For Each rpy_dep In rpy_dep_list
+                    Dim current_rpy_port As RPPort
+                    Try
+                        current_rpy_port = CType(rpy_dep.dependsOn, RPPort)
+                    Catch
+                        current_rpy_port = CType(rpy_dep.dependsOn.owner, RPPort)
+                    End Try
+                    If current_rpy_port.GUID = referenced_rpy_port_guid Then
+                        ' No change
+                        reference_found = True
+                        Exit For
+                    End If
+                Next
+                If reference_found = False Then
+                    Me.Set_Provider_Port_Ref(rpy_element, report, True)
+                End If
+            End If
+        End If
+
+        ' Merge Operation_Ref
+        rpy_dep_list.Clear()
+        For Each rpy_dep In rpy_element.dependencies
+            If Is_Operation_Ref(CType(rpy_dep, RPModelElement)) Then
+                rpy_dep_list.Add(rpy_dep)
+            End If
+        Next
+        If rpy_dep_list.Count = 0 Then
+            ' There is no Operation references
+            ' Create one.
+            Me.Set_Operation_Ref(rpy_element, report, True)
+        Else
+            Dim reference_found As Boolean = False
+            Dim referenced_rpy_op_guid As String
+            referenced_rpy_op_guid = Transform_Guid_To_Rpy_GUID(Me.Operation_Ref)
+            For Each rpy_dep In rpy_dep_list
+                Dim current_rpy_op As RPOperation
+                Try
+                    current_rpy_op = CType(rpy_dep.dependsOn, RPOperation)
+                Catch
+                    current_rpy_op = CType(rpy_dep.dependsOn.owner, RPOperation)
+                End Try
+                If current_rpy_op.GUID = referenced_rpy_op_guid Then
+                    ' No change
+                    reference_found = True
+                    Exit For
+                End If
+            Next
+            If reference_found = False Then
+                Me.Set_Operation_Ref(rpy_element, report, True)
+            End If
+        End If
+    End Sub
+
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Operation_Realization", "Operation")
+    End Sub
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        If Me.Provider_Port_Ref <> Guid.Empty Then
+            Me.Set_Provider_Port_Ref(rpy_elmt, report, False)
+        End If
+        Me.Set_Operation_Ref(rpy_elmt, report, False)
+    End Sub
+
+    Private Sub Set_Provider_Port_Ref(
+        rpy_elmt As RPModelElement,
+        report As Report,
+        is_merge As Boolean)
+
+        Dim rpy_port As RPModelElement = Me.Find_In_Rpy_Project(Me.Provider_Port_Ref)
+        If Not IsNothing(rpy_port) Then
+            Dim rpy_dep As RPDependency
+            rpy_dep = rpy_elmt.addDependencyTo(rpy_port)
+            rpy_dep.addStereotype("Provider_Port_Ref", "Dependency")
+            If is_merge = True Then
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Merge Provider_Port_Ref.")
+            End If
+        Else
+            Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Referenced Provider_Port not not found : " &
+                Me.Provider_Port_Ref.ToString & ".")
+        End If
+
+    End Sub
+
+    Private Sub Set_Operation_Ref(
+        rpy_elmt As RPModelElement,
+        report As Report,
+        is_merge As Boolean)
+
+        If Me.Operation_Ref <> Guid.Empty Then
+            Dim rpy_op As RPModelElement = Me.Find_In_Rpy_Project(Me.Operation_Ref)
+            If Not IsNothing(rpy_op) Then
+                Dim rpy_dep As RPDependency
+                rpy_dep = rpy_elmt.addDependencyTo(rpy_op)
+                rpy_dep.addStereotype("Operation_Ref", "Dependency")
+                If is_merge = True Then
+                    Me.Add_Export_Information_Item(report,
+                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                        "Merge Operation_Ref.")
+                End If
+            Else
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Referenced Operation not not found : " &
+                    Me.Operation_Ref.ToString & ".")
+            End If
+        End If
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        If Me.Nb_Operation_Ref <> 1 Then
+            Me.Add_Consistency_Check_Error_Item(report,
+                "OPREAL_1",
+                "Shall reference one and only one Operation.")
+        End If
+
+        If Me.Operation_Ref <> Guid.Empty Then
+            Dim ope As Operation
+            ope = CType(Me.Get_Element_By_Uuid(Me.Operation_Ref), Operation)
+            If ope.GetType = GetType(Component_Operation) Then
+                If Me.Provider_Port_Ref <> Guid.Empty Then
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "OPREAL_2",
+                        "Realize a Component_Operation : shall not be linked to a Port.")
+                End If
+            ElseIf ope.GetType = GetType(Synchronous_Operation) Or
+                    ope.GetType = GetType(Asynchronous_Operation) Then
+                If Me.Provider_Port_Ref = Guid.Empty Then
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "OPREAL_3",
+                        "Shall not be linked to a Provider_Port.")
+                End If
+            Else
+                If Me.Provider_Port_Ref = Guid.Empty Then
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "OPREAL_4",
+                        "Shall reference a Component_Operation " & _
+                        "or a Synchronous_Operation or a Asynchronous_Operation.")
+                End If
+            End If
+        End If
+
+        If Me.Nb_Provider_Port_Ref > 1 Then
+            Me.Add_Consistency_Check_Error_Item(report,
+                "OPREAL_1",
+                "Shall reference only one Provider_Port.")
+        End If
+    End Sub
+
+    Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
+        If Me.Operation_Ref = Guid.Empty Then
+            Exit Sub
+        End If
+
+        Dim referenced_ope As Operation
+        referenced_ope = CType(Me.Get_Element_By_Uuid(Me.Operation_Ref), Operation)
+
+        Dim reference_allowed As Boolean = False
+
+        If referenced_ope.GetType = GetType(Component_Operation) Then
+            Dim ope As Component_Operation = Nothing
+            For Each ope In swct.Component_Operations
+                If ope.UUID = referenced_ope.UUID Then
+                    reference_allowed = True
+                    Exit For
+                End If
+            Next
+            If reference_allowed = False Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "OPREAL_5",
+                    "The referenced Operation shall belong to the implemented Component_Type.")
+            End If
+        ElseIf referenced_ope.GetType = GetType(Synchronous_Operation) Or
+                referenced_ope.GetType = GetType(Asynchronous_Operation) Then
+
+            If Me.Provider_Port_Ref = Guid.Empty Then
+                Exit Sub
+            End If
+
+            Dim referenced_port As Provider_Port
+            referenced_port = CType(Me.Get_Element_By_Uuid(Me.Provider_Port_Ref), Provider_Port)
+
+            Dim port As Provider_Port = Nothing
+            For Each port In swct.Provider_Ports
+                If port.UUID = referenced_port.UUID Then
+                    reference_allowed = True
+                    Exit For
+                End If
+            Next
+            If reference_allowed = False Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "OPREAL_6",
+                    "The referenced Provider_Port shall belong to the implemented Component_Type.")
+            End If
+
+            ' Check the interface of the referenced Provider_Port.
+            Dim sw_if As Software_Interface
+            sw_if = CType(Me.Get_Element_By_Uuid(referenced_port.Contract_Ref), Software_Interface)
+            If Not IsNothing(sw_if) Then
+
+                If sw_if.GetType <> GetType(Client_Server_Interface) Then
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "OPREAL_7",
+                        "The contract of the referenced Provider_Port shall " & _
+                        "be a Client_Server_Interface.")
+                Else
+                    ' Check if the referenced Operation belong to the interface of the 
+                    ' referenced Provider_Port.
+                    reference_allowed = False
+                    Dim cs_if As Client_Server_Interface = CType(sw_if, Client_Server_Interface)
+                    Dim ope As Operation
+                    For Each ope In cs_if.Operations
+                        If ope.UUID = referenced_ope.UUID Then
+                            reference_allowed = True
+                            Exit For
+                        End If
+                    Next
+                    If reference_allowed = False Then
+                        Me.Add_Consistency_Check_Error_Item(report,
+                            "OPREAL_8",
+                            "The referenced Operation shall belong to the " & _
+                            "Client_Server_Interface of the referenced Provider_Port.")
+                    End If
+                End If
+            End If
+
+        End If
     End Sub
 
 End Class
@@ -372,6 +636,7 @@ Public Class Event_Reception_Realization
                 If current_rpy_port.GUID = referenced_rpy_port_guid Then
                     ' No change
                     reference_found = True
+                    Exit For
                 End If
             Next
             If reference_found = False Then
@@ -423,15 +688,17 @@ Public Class Event_Reception_Realization
         If Me.Nb_Requirer_Port_Ref <> 1 Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "EVREAL_1",
-                "Shall referenced one and only one Required_Port.")
+                "Shall reference one and only one Required_Port.")
         End If
-
     End Sub
 
     Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
         Dim reference_allowed As Boolean = False
         Dim referenced_req_port As Requirer_Port
         referenced_req_port = CType(Me.Get_Element_By_Uuid(Me.Requirer_Port_Ref), Requirer_Port)
+        If IsNothing(referenced_req_port) Then
+            Exit Sub
+        End If
         Dim req_port As Requirer_Port = Nothing
         For Each req_port In swct.Requirer_Ports
             If req_port.UUID = referenced_req_port.UUID Then
