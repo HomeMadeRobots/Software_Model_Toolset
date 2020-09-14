@@ -1,5 +1,7 @@
 ﻿Imports rhapsody2
 Imports System.Windows
+Imports System.IO
+Imports Microsoft.VisualBasic.FileIO
 
 Public MustInherit Class Rpy_Controller
     Protected Rhapsody_App As RPApplication = Nothing
@@ -87,6 +89,64 @@ Public MustInherit Class Rpy_Controller
 
     Protected Sub Write_Csl(message As String)
         Me.Rhapsody_App.writeToOutputWindow("out", message)
+    End Sub
+
+    Shared Function Load_User_Record(file_name As String) As Dictionary(Of String, String)
+        Dim user_record As New Dictionary(Of String, String)
+
+        ' Get tool local folder 
+        Dim tool_user_files_path As String
+        tool_user_files_path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+        tool_user_files_path = tool_user_files_path & "\Software_Model_Toolset"
+
+        ' Get record file full path
+        Dim file_path As String
+        file_path = tool_user_files_path & "\" & file_name
+
+        ' Read data
+        If File.Exists(file_path) = False Then
+            'user_record = Nothing
+        Else
+            Dim stream_reader As FileIO.TextFieldParser
+            stream_reader = New TextFieldParser(file_path)
+            stream_reader.Delimiters = {";"}
+            While stream_reader.EndOfData = False
+                Dim line As String() = stream_reader.ReadFields
+                user_record.Add(line(0), line(1))
+            End While
+        End If
+
+        Return user_record
+
+    End Function
+
+    Shared Sub Save_User_Record(
+        file_name As String,
+        user_record As Dictionary(Of String, String))
+
+        ' Get tool local folder 
+        Dim tool_user_files_path As String
+        tool_user_files_path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
+        tool_user_files_path = tool_user_files_path & "\Software_Model_Toolset"
+        If Not Directory.Exists(tool_user_files_path) Then
+            Directory.CreateDirectory(tool_user_files_path)
+        End If
+
+
+        ' Get record file full path
+        Dim file_path As String
+        file_path = tool_user_files_path & "\" & file_name
+
+        ' Create or replace file
+        Dim stream_writer As StreamWriter
+        stream_writer = New StreamWriter(file_path, False)
+
+        For Each key In user_record.Keys
+            stream_writer.WriteLine(key & ";" & user_record(key))
+        Next
+
+        stream_writer.Close()
+
     End Sub
 
 End Class

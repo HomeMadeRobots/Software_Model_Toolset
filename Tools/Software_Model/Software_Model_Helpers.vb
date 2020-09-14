@@ -6,7 +6,12 @@ Module Software_Model_Helpers
     Public Sub main()
 
         Dim function_to_call As String
-        function_to_call = My.Application.CommandLineArgs.Item(0)
+
+        If My.Application.CommandLineArgs.Count <> 0 Then
+            function_to_call = My.Application.CommandLineArgs.Item(0)
+        Else
+            function_to_call = "Configure"
+        End If
 
         Try
             Select Case function_to_call
@@ -62,6 +67,11 @@ Module Software_Model_Helpers
                 Case "Modify_GUID"
                     Dim elmt_ctrl As New Rpy_Element_Controller
                     elmt_ctrl.Modify_Rpy_Element_GUID()
+
+                Case "Configure"
+                    Dim prj_ctrl As New Rpy_Project_Controller
+                    prj_ctrl.Configure()
+
 
             End Select
         Catch ex As Exception
