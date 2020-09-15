@@ -70,7 +70,7 @@ Module Software_Model_Helpers
 
                 Case "Configure"
                     Dim prj_ctrl As New Rpy_Project_Controller
-                    prj_ctrl.Configure()
+                    prj_ctrl.Open_Configuration_View()
 
 
             End Select

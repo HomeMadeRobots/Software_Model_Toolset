@@ -92,9 +92,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Rpy_Project_Controller.vb">
+    <Compile Include="Rhapsody_Project_Configuration_Form.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Rhapsody_Project_Configurator.vb" />
+    <Compile Include="Rpy_Project_Controller.vb" />
     <Compile Include="SDD_Class.vb" />
     <Compile Include="Software_Package.vb" />
     <Compile Include="Report.vb" />

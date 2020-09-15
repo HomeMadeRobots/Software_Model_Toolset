@@ -91,8 +91,8 @@ Public MustInherit Class Rpy_Controller
         Me.Rhapsody_App.writeToOutputWindow("out", message)
     End Sub
 
-    Shared Function Load_User_Record(file_name As String) As Dictionary(Of String, String)
-        Dim user_record As New Dictionary(Of String, String)
+    Shared Function Load_User_Choices(file_name As String) As Dictionary(Of String, String)
+        Dim user_choices As New Dictionary(Of String, String)
 
         ' Get tool local folder 
         Dim tool_user_files_path As String
@@ -104,25 +104,23 @@ Public MustInherit Class Rpy_Controller
         file_path = tool_user_files_path & "\" & file_name
 
         ' Read data
-        If File.Exists(file_path) = False Then
-            'user_record = Nothing
-        Else
+        If File.Exists(file_path) = True Then
             Dim stream_reader As FileIO.TextFieldParser
             stream_reader = New TextFieldParser(file_path)
             stream_reader.Delimiters = {";"}
             While stream_reader.EndOfData = False
                 Dim line As String() = stream_reader.ReadFields
-                user_record.Add(line(0), line(1))
+                user_choices.Add(line(0), line(1))
             End While
         End If
 
-        Return user_record
+        Return user_choices
 
     End Function
 
-    Shared Sub Save_User_Record(
+    Shared Sub Save_User_Choices(
         file_name As String,
-        user_record As Dictionary(Of String, String))
+        user_choices As Dictionary(Of String, String))
 
         ' Get tool local folder 
         Dim tool_user_files_path As String
@@ -141,8 +139,8 @@ Public MustInherit Class Rpy_Controller
         Dim stream_writer As StreamWriter
         stream_writer = New StreamWriter(file_path, False)
 
-        For Each key In user_record.Keys
-            stream_writer.WriteLine(key & ";" & user_record(key))
+        For Each key In user_choices.Keys
+            stream_writer.WriteLine(key & ";" & user_choices(key))
         Next
 
         stream_writer.Close()
