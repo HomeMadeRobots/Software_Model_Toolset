@@ -72,14 +72,9 @@ Public Class Rpy_Project_Controller
 
         Me.Viewer.Reset_Status()
 
-        Dim new_choices As New Dictionary(Of String, String)
-
-        new_choices.Add("Toolset_Path", toolset_path)
-
         If configure_profiles = True Then
             Dim status As Rhapsody_Project_Configurator.E_Profile_Configuration_Status
             Me.Configurator.Configure_Profiles(Me.Rhapsody_App, toolset_path, status)
-            new_choices.Add("Configure_Profiles", configure_profiles.ToString)
             Select Case status
                 Case Rhapsody_Project_Configurator.E_Profile_Configuration_Status.CONFIGURATION_OK
                     Me.Viewer.Update_Profiles_Configuration_Status("OK", "Done.")
@@ -93,29 +88,31 @@ Public Class Rpy_Project_Controller
         If configure_helpers = True Then
             Me.Configurator.Configure_Helper(toolset_path)
             Me.Viewer.Update_Helpers_Configuration_Status("OK", "Done.")
-            new_choices.Add("Configure_Helpers", configure_helpers.ToString)
         End If
 
         If configure_activity_diagrams = True Then
             Me.Configurator.Configure_Activity_Diagrams_Default_View()
             Me.Viewer.Update_Act_Diagrams_Configuration_Status("OK", "Done.")
-            new_choices.Add("Configure_Activity_Diagrams",
-                configure_activity_diagrams.ToString)
         End If
 
         If configure_package = True Then
             Me.Configurator.Configure_Packages_Are_Not_Unit()
             Me.Viewer.Update_Pkg_Are_Not_Unit_Configuration_Status("OK", "Done.")
-            new_choices.Add("Configure_Packages_Are_Not_Unit", configure_package.ToString)
         End If
 
         If configure_accessible_types = True Then
             Me.Configurator.Configure_Accessible_Types()
             Me.Viewer.Update_Accessible_Types_Configuration_Status("OK", "Done.")
-            new_choices.Add("Configure_Accessible_Types", configure_accessible_types.ToString)
         End If
 
-        ' Save configuration
+        ' Save configuration choices
+        Dim new_choices As New Dictionary(Of String, String)
+        new_choices.Add("Toolset_Path", toolset_path)
+        new_choices.Add("Configure_Profiles", configure_profiles.ToString)
+        new_choices.Add("Configure_Helpers", configure_helpers.ToString)
+        new_choices.Add("Configure_Activity_Diagrams", configure_activity_diagrams.ToString)
+        new_choices.Add("Configure_Packages_Are_Not_Unit", configure_package.ToString)
+        new_choices.Add("Configure_Accessible_Types", configure_accessible_types.ToString)
         Rpy_Controller.Save_User_Choices("Rpy_Project_Config_User_Choices", new_choices)
 
         Me.Rpy_Proj.save()
