@@ -188,4 +188,12 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID bbc84abc-ada7-4082-98d4-c7ae4bd0d743")
     End Function
 
+    Public Function Is_Realize_Interface(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID b8d7b10a-4172-405e-b4b5-868172505c54")
+    End Function
+
+    Public Function Is_Need_Interface(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID c4d77dea-4713-4da2-b474-305d676af411")
+    End Function
+
 End Module

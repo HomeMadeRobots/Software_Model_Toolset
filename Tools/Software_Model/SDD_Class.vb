@@ -22,6 +22,12 @@ Public Class SDD_Class
     Public Send_Events As List(Of Guid)
     <XmlArrayItem("Receive_Event")>
     Public Receive_Events As List(Of Guid)
+    <XmlArrayItem("Realize_Interface")>
+    Public Realize_Interfaces As List(Of Guid)
+    <XmlArrayItem("Need_Interface")>
+    Public Need_Interfaces As List(Of Guid)
+
+    Private Nb_Base_Class_Ref As Integer = 0
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -54,20 +60,31 @@ Public Class SDD_Class
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
         MyBase.Get_Own_Data_From_Rhapsody_Model()
 
-        ' Get Component_Type_Ref
+        Me.Realize_Interfaces = New List(Of Guid)
         Dim rpy_gen As RPGeneralization
         For Each rpy_gen In CType(Me.Rpy_Element, RPClass).generalizations
             Dim referenced_rpy_elmt_guid As String
             referenced_rpy_elmt_guid = rpy_gen.baseClass.GUID
-            Dim referenced_rpy_elmt As RPModelElement
-            referenced_rpy_elmt = Me.Find_In_Rpy_Project(referenced_rpy_elmt_guid)
-            If Is_SDD_Class(referenced_rpy_elmt) Then
-                Me.Base_Class_Ref = Transform_Rpy_GUID_To_Guid(rpy_gen.baseClass.GUID)
+            Dim ref_elmt_guid As Guid
+            ref_elmt_guid = Transform_Rpy_GUID_To_Guid(referenced_rpy_elmt_guid)
+            If Is_Realize_Interface(CType(rpy_gen, RPModelElement)) Then
+                Me.Realize_Interfaces.Add(ref_elmt_guid)
+            Else
+                Dim referenced_rpy_elmt As RPModelElement
+                referenced_rpy_elmt = Me.Find_In_Rpy_Project(referenced_rpy_elmt_guid)
+                If Is_SDD_Class(referenced_rpy_elmt) Then
+                    Me.Base_Class_Ref = ref_elmt_guid
+                End If
+                Nb_Base_Class_Ref += 1
             End If
         Next
+        If Me.Realize_Interfaces.Count = 0 Then
+            Me.Realize_Interfaces = Nothing
+        End If
 
         Me.Send_Events = New List(Of Guid)
         Me.Receive_Events = New List(Of Guid)
+        Me.Need_Interfaces = New List(Of Guid)
         Dim rpy_dep As RPDependency
         For Each rpy_dep In CType(Me.Rpy_Element, RPClass).dependencies
             Dim rpy_elmt As RPModelElement = CType(rpy_dep, RPModelElement)
@@ -77,6 +94,8 @@ Public Class SDD_Class
                 Me.Send_Events.Add(ref_elmt_guid)
             ElseIf Is_Receive_Event(rpy_elmt) Then
                 Me.Receive_Events.Add(ref_elmt_guid)
+            ElseIf Is_Need_Interface(rpy_elmt) Then
+                Me.Need_Interfaces.Add(ref_elmt_guid)
             End If
         Next
         If Me.Send_Events.Count = 0 Then
@@ -85,7 +104,9 @@ Public Class SDD_Class
         If Me.Receive_Events.Count = 0 Then
             Me.Receive_Events = Nothing
         End If
-
+        If Me.Need_Interfaces.Count = 0 Then
+            Me.Need_Interfaces = Nothing
+        End If
     End Sub
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
@@ -170,11 +191,11 @@ Public Class SDD_Class
         Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
 
         ' Merge Base_Class_Ref
+        Dim rpy_gen As RPGeneralization = Nothing
+        Dim reference_found As Boolean = False
         If Me.Base_Class_Ref <> Guid.Empty Then
             Dim referenced_rpy_class_guid As String
             referenced_rpy_class_guid = Transform_Guid_To_Rpy_GUID(Me.Base_Class_Ref)
-            Dim reference_found As Boolean = False
-            Dim rpy_gen As RPGeneralization = Nothing
             For Each rpy_gen In rpy_class.generalizations
                 Dim current_rpy_class As RPClass = CType(rpy_gen.baseClass, RPClass)
                 If current_rpy_class.GUID = referenced_rpy_class_guid Then
@@ -197,6 +218,38 @@ Public Class SDD_Class
 
         Merge_Dependencies(report, "Send_Event", Me.Send_Events, AddressOf Is_Send_Event)
         Merge_Dependencies(report, "Receive_Event", Me.Receive_Events, AddressOf Is_Receive_Event)
+        Merge_Dependencies(report, "Need_Interface", Me.Need_Interfaces,
+            AddressOf Is_Need_Interface)
+
+        ' Merge Realize_Interfaces
+        For Each id In Me.Realize_Interfaces
+            reference_found = False
+            Dim rpy_if_guid As String = Transform_Guid_To_Rpy_GUID(id)
+            For Each rpy_gen In rpy_class.generalizations
+                If Is_Realize_Interface(CType(rpy_gen, RPModelElement)) Then
+                    If rpy_gen.baseClass.GUID = rpy_if_guid Then
+                        reference_found = True
+                        Exit For
+                    End If
+                End If
+            Next
+            If reference_found = False Then
+                Dim rpy_if As RPModelElement = Me.Find_In_Rpy_Project(rpy_if_guid)
+                If IsNothing(rpy_if) Then
+                    Me.Add_Export_Error_Item(report,
+                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                        "Realize_Interface not found : " & id.ToString & ".")
+                Else
+                    Dim created_rpy_gen As RPGeneralization
+                    rpy_class.addGeneralization(CType(rpy_if, RPClassifier))
+                    created_rpy_gen = rpy_class.findGeneralization(rpy_if.name)
+                    created_rpy_gen.addStereotype("Realize_Interface", "Generalization")
+                    Me.Add_Export_Information_Item(report,
+                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                        "Realize_Interface merged : " & id.ToString & ".")
+                End If
+            End If
+        Next
 
     End Sub
 
@@ -207,19 +260,40 @@ Public Class SDD_Class
     Protected Overrides Sub Set_Rpy_Element_Attributes(
         rpy_elmt As RPModelElement,
         report As Report)
+
         MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
-        If Me.Base_Class_Ref = Guid.Empty Then
-            Exit Sub
-        End If
+
+        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
+
         Dim referenced_rpy_class As RPClass
-        referenced_rpy_class = CType(Find_In_Rpy_Project(Me.Base_Class_Ref), RPClass)
-        If IsNothing(referenced_rpy_class) Then
-            Me.Add_Export_Error_Item(report,
-            Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-            "Base_Class not found : " & Me.Base_Class_Ref.ToString & ".")
-        Else
-            CType(rpy_elmt, RPClass).addGeneralization(CType(referenced_rpy_class, RPClassifier))
+        If Me.Base_Class_Ref <> Guid.Empty Then
+            referenced_rpy_class = CType(Find_In_Rpy_Project(Me.Base_Class_Ref), RPClass)
+            If IsNothing(referenced_rpy_class) Then
+                Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Base_Class not found : " & Me.Base_Class_Ref.ToString & ".")
+            Else
+                rpy_class.addGeneralization(CType(referenced_rpy_class, RPClassifier))
+            End If
         End If
+
+        Me.Set_Dependencies(report, "Send_Event", Me.Send_Events)
+        Me.Set_Dependencies(report, "Receive_Event", Me.Receive_Events)
+        Me.Set_Dependencies(report, "Need_Interface", Me.Need_Interfaces)
+
+        For Each elmt_ref In Me.Realize_Interfaces
+            Dim ref_rpy_elemt As RPModelElement = Me.Find_In_Rpy_Project(elmt_ref)
+            If Not IsNothing(ref_rpy_elemt) Then
+                Dim created_rpy_gen As RPGeneralization
+                rpy_class.addGeneralization(CType(ref_rpy_elemt, RPClassifier))
+                created_rpy_gen = rpy_class.findGeneralization(ref_rpy_elemt.name)
+                created_rpy_gen.addStereotype("Realize_Interface", "Generalization")
+            Else
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Realize_Interface not not found : " & elmt_ref.ToString & ".")
+            End If
+        Next
 
     End Sub
 
@@ -261,19 +335,38 @@ Public Class SDD_Class
         Next
     End Sub
 
+    Private Sub Set_Dependencies(
+        report As Report,
+        stereotype_str As String,
+        element_list As List(Of Guid))
+        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
+        For Each elmt_ref In element_list
+            Dim ref_rpy_elemt As RPModelElement = Me.Find_In_Rpy_Project(elmt_ref)
+            If Not IsNothing(ref_rpy_elemt) Then
+                Dim rpy_dep As RPDependency
+                rpy_dep = rpy_class.addDependencyTo(ref_rpy_elemt)
+                rpy_dep.addStereotype(stereotype_str, "Dependency")
+            Else
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    stereotype_str & " not not found : " & elmt_ref.ToString & ".")
+            End If
+        Next
+    End Sub
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
-        If CType(Me.Rpy_Element, RPClass).generalizations.Count > 1 Then
+        If Me.Nb_Base_Class_Ref > 1 Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "CLASS_1",
                 "Shall generalize at most 1 class.")
         End If
 
-        If CType(Me.Rpy_Element, RPClass).generalizations.Count <> 0 Then
+        If Me.Nb_Base_Class_Ref <> 0 Then
             If Me.Base_Class_Ref = Guid.Empty Then
                 Me.Add_Consistency_Check_Error_Item(report,
                     "CLASS_2",
