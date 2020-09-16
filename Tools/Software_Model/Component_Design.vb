@@ -313,7 +313,7 @@ Public Class Operation_Realization
         If Me.Provider_Port_Ref <> Guid.Empty Then
             ' Get the list of current Provider_Port references
             For Each rpy_dep In rpy_element.dependencies
-                If Is_Requirer_Port_Ref(CType(rpy_dep, RPModelElement)) Then
+                If Is_Provider_Port_Ref(CType(rpy_dep, RPModelElement)) Then
                     rpy_dep_list.Add(rpy_dep)
                 End If
             Next
