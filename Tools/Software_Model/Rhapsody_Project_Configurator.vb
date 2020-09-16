@@ -19,7 +19,7 @@ Public Class Rhapsody_Project_Configurator
 
     Private Shared Helpers_Function As String(,) = New String(,) {
         {"Export to XML", "Export", "Project"},
-        {"Merge to XML", "Merge", "Project"},
+        {"Merge from XML", "Merge", "Project"},
         {"Check", "Check", "Project"},
         {"Compute PSWA metrics", "Compute_Rpy_Soft_Model_PSWA_Metrics", "Project"},
         {"Generate All", "Generate_All", "Project"},
