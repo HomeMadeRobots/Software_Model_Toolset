@@ -163,7 +163,7 @@ Public Class Root_Software_Composition
             If Not IsNothing(Me.Component_Prototypes) Then
                 For Each swc In Me.Component_Prototypes
                     Dim swct As Component_Type
-                    swct = CType(Me.Get_Element_By_Uuid(swc.Component_Type_Ref), Component_Type)
+                    swct = CType(Me.Get_Element_By_Uuid(swc.Type_Ref), Component_Type)
                     If Not Me.Needed_Elements.Contains(swct) Then
                         Me.Needed_Elements.Add(swct)
                     End If
@@ -190,52 +190,23 @@ End Class
 
 Public Class Component_Prototype
 
-    Inherits Software_Element
-
-    Public Component_Type_Ref As Guid = Nothing
-    Public Configuration_Values As List(Of Configuration_Value)
+    Inherits Software_Object
 
     Private Owner As Root_Software_Composition = Nothing
 
+
     '----------------------------------------------------------------------------------------------'
-    ' Methods for model import from Rhapsody
-    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
-        MyBase.Get_Own_Data_From_Rhapsody_Model()
-
-        Dim rpy_component As RPInstance
-        rpy_component = CType(Me.Rpy_Element, RPInstance)
-        If IsNothing(rpy_component.ObjectAsObjectType) Then
-            Dim rpy_base_class As RPClass
-            rpy_base_class = CType(rpy_component.otherClass, RPClass)
-            If Not IsNothing(rpy_base_class) Then
-
-                Me.Component_Type_Ref = Transform_Rpy_GUID_To_Guid(rpy_base_class.GUID)
-
-                Me.Configuration_Values = New List(Of Configuration_Value)
-                Dim rpy_attribute As RPAttribute
-                For Each rpy_attribute In rpy_base_class.attributes
-                    If Is_Component_Parameter(CType(rpy_attribute, RPModelElement)) Then
-                        Dim conf_val As New Configuration_Value
-                        conf_val.Component_Configuration_Ref =
-                            Transform_Rpy_GUID_To_Guid(rpy_attribute.GUID)
-                        conf_val.Value =
-                            CType(Me.Rpy_Element, RPInstance).getAttributeValue(rpy_attribute.name)
-                        Me.Configuration_Values.Add(conf_val)
-                    End If
-                Next
-
-                If Me.Configuration_Values.Count = 0 Then
-                    Me.Configuration_Values = Nothing
-                End If
-
-            End If
-        End If
-
-    End Sub
-
+    ' General methods
     Public Sub Set_Owner(parent As Root_Software_Composition)
         Me.Owner = parent
     End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Function Is_Configuration(rpy_elmt As RPModelElement) As Boolean
+        Return Is_Component_Parameter(rpy_elmt)
+    End Function
 
 
     '----------------------------------------------------------------------------------------------'
@@ -244,73 +215,8 @@ Public Class Component_Prototype
         Return "Instance"
     End Function
 
-    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
-        MyBase.Merge_Rpy_Element(rpy_element, report)
-        Dim rpy_inst As RPInstance = CType(rpy_element, RPInstance)
-        If rpy_inst.otherClass.GUID <> Transform_Guid_To_Rpy_GUID(Me.Component_Type_Ref) Then
-            rpy_inst.getSaveUnit.setReadOnly(0)
-            Dim referenced_rpy_swct As RPClass
-            referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
-            If IsNothing(referenced_rpy_swct) Then
-                Me.Add_Export_Error_Item(report,
-                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                    "Component_Type not found : " & Me.Component_Type_Ref.ToString & ".")
-            Else
-                rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
-                Me.Add_Export_Information_Item(report,
-                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                    "Component_Type_Ref merged.")
-            End If
-        End If
-        If Not IsNothing(Me.Configuration_Values) Then
-            For Each conf In Me.Configuration_Values
-                Dim rpy_conf_attr As RPAttribute = Nothing
-                rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Component_Configuration_Ref), 
-                                RPAttribute)
-                If rpy_inst.getAttributeValue(rpy_conf_attr.name) <> conf.Value Then
-                    rpy_inst.getSaveUnit.setReadOnly(0)
-                    rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
-                    Me.Add_Export_Information_Item(report,
-                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                        "Configuration_Value of " & rpy_conf_attr.name & " merged.")
-                End If
-            Next
-        End If
-    End Sub
-
-    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
-        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
-        Return rpy_parent_class.addNewAggr("Instance", Me.Name)
-    End Function
-
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Component_Prototype", "Object")
-    End Sub
-
-    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
-        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
-        Dim rpy_inst As RPInstance = CType(rpy_elmt, RPInstance)
-
-        ' Set Component_Type_Ref
-        Dim referenced_rpy_swct As RPClass
-        referenced_rpy_swct = CType(Me.Find_In_Rpy_Project(Me.Component_Type_Ref), RPClass)
-        If IsNothing(referenced_rpy_swct) Then
-            Me.Add_Export_Error_Item(report,
-                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                "Component_Type not found : " & Me.Component_Type_Ref.ToString & ".")
-        Else
-            rpy_inst.otherClass = CType(referenced_rpy_swct, RPClassifier)
-        End If
-
-        ' Set Configuration_Values
-        If Not IsNothing(Me.Configuration_Values) Then
-            For Each conf In Me.Configuration_Values
-                Dim rpy_conf_attr As RPAttribute = Nothing
-                rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Component_Configuration_Ref), 
-                                RPAttribute)
-                rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
-            Next
-        End If
     End Sub
 
 
@@ -319,17 +225,13 @@ Public Class Component_Prototype
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
-        If Me.Component_Type_Ref.Equals(Guid.Empty) Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "SWC_1",
-                "Shall reference a Component_Type.")
-        Else
+        If Not Me.Type_Ref.Equals(Guid.Empty) Then
             ' Check Ports connections
             Dim port As Port
             Dim nb_conn As Integer
 
             Dim referenced_swct As Component_Type
-            referenced_swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), Component_Type)
+            referenced_swct = CType(Me.Get_Element_By_Uuid(Me.Type_Ref), Component_Type)
 
             If Not IsNothing(referenced_swct.Provider_Ports) Then
                 For Each port In referenced_swct.Provider_Ports
@@ -455,7 +357,7 @@ Public Class Assembly_Connector
         End If
     End Sub
 
-   
+
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Protected Overrides Function Get_Rpy_Metaclass() As String
@@ -534,13 +436,5 @@ Public Class Assembly_Connector
                 "Shall link two different components.")
         End If
     End Sub
-
-End Class
-
-
-Public Class Configuration_Value
-
-    Public Component_Configuration_Ref As Guid = Nothing
-    Public Value As String
 
 End Class

@@ -9,6 +9,7 @@ Public Class Component_Design
     Public Private_Operations As List(Of Private_Operation)
     Public Operation_Realizations As List(Of Operation_Realization)
     Public Event_Reception_Realizations As List(Of Event_Reception_Realization)
+    Public Parts As List(Of SDD_Object)
 
     Private Nb_Component_Type_Ref As Integer
     Private Nb_Invalid_Component_Type_Ref As Integer = 0 ' nb ref on not a Component_Type
@@ -29,6 +30,9 @@ Public Class Component_Design
             End If
             If Not IsNothing(Me.Event_Reception_Realizations) Then
                 children_list.AddRange(Me.Event_Reception_Realizations)
+            End If
+            If Not IsNothing(Me.Parts) Then
+                children_list.AddRange(Me.Parts)
             End If
             Me.Children = children_list
         End If
@@ -84,6 +88,20 @@ Public Class Component_Design
         End If
         If Me.Event_Reception_Realizations.Count = 0 Then
             Me.Event_Reception_Realizations = Nothing
+        End If
+
+        Me.Parts = New List(Of SDD_Object)
+        Dim rpy_instance As RPInstance
+        For Each rpy_instance In CType(Me.Rpy_Element, RPClass).relations
+            rpy_elmt = CType(rpy_instance, RPModelElement)
+            If Is_SDD_Object(rpy_elmt) Then
+                Dim obj As SDD_Object = New SDD_Object
+                Me.Parts.Add(obj)
+                obj.Import_From_Rhapsody_Model(Me, rpy_elmt)
+            End If
+        Next
+        If Me.Parts.Count = 0 Then
+            Me.Parts = Nothing
         End If
 
     End Sub
@@ -722,5 +740,37 @@ Public Class Event_Reception_Realization
             End If
         End If
     End Sub
+
+End Class
+
+
+Public Class SDD_Object
+    Inherits Software_Object
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Function Is_Configuration(rpy_elmt As RPModelElement) As Boolean
+        Return Is_Configuration_Attribute(rpy_elmt)
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Instance"
+    End Function
+
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("SDD_Object", "Object")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
 
 End Class

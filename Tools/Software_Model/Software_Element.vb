@@ -636,3 +636,141 @@ Public Class Operation_Argument
     End Sub
 
 End Class
+
+
+Public MustInherit Class Software_Object
+
+    Inherits Software_Element
+
+    Public Type_Ref As Guid = Nothing
+    Public Configuration_Values As List(Of Configuration_Value)
+
+    Public Class Configuration_Value
+
+        Public Configuration_Ref As Guid = Nothing
+        Public Value As String
+
+    End Class
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected MustOverride Function Is_Configuration(rpy_elmt As RPModelElement) As Boolean
+
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+
+        Dim rpy_component As RPInstance
+        rpy_component = CType(Me.Rpy_Element, RPInstance)
+        If IsNothing(rpy_component.ObjectAsObjectType) Then
+            Dim rpy_base_class As RPClass
+            rpy_base_class = CType(rpy_component.otherClass, RPClass)
+            If Not IsNothing(rpy_base_class) Then
+
+                Me.Type_Ref = Transform_Rpy_GUID_To_Guid(rpy_base_class.GUID)
+
+                Me.Configuration_Values = New List(Of Configuration_Value)
+                Dim rpy_attribute As RPAttribute
+                For Each rpy_attribute In rpy_base_class.attributes
+                    If Is_Configuration(CType(rpy_attribute, RPModelElement)) Then
+                        Dim conf_val As New Configuration_Value
+                        conf_val.Configuration_Ref =Transform_Rpy_GUID_To_Guid(rpy_attribute.GUID)
+                        conf_val.Value = rpy_component.getAttributeValue(rpy_attribute.name)
+                        Me.Configuration_Values.Add(conf_val)
+                    End If
+                Next
+
+                If Me.Configuration_Values.Count = 0 Then
+                    Me.Configuration_Values = Nothing
+                End If
+
+            End If
+        End If
+
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+        Dim rpy_inst As RPInstance = CType(rpy_element, RPInstance)
+        If rpy_inst.otherClass.GUID <> Transform_Guid_To_Rpy_GUID(Me.Type_Ref) Then
+            rpy_inst.getSaveUnit.setReadOnly(0)
+            Dim referenced_rpy_class As RPClass
+            referenced_rpy_class = CType(Me.Find_In_Rpy_Project(Me.Type_Ref), RPClass)
+            If IsNothing(referenced_rpy_class) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Type not found : " & Me.Type_Ref.ToString & ".")
+            Else
+                rpy_inst.otherClass = CType(referenced_rpy_class, RPClassifier)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Type_Ref merged.")
+            End If
+        End If
+        If Not IsNothing(Me.Configuration_Values) Then
+            For Each conf In Me.Configuration_Values
+                Dim rpy_conf_attr As RPAttribute = Nothing
+                rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Configuration_Ref), 
+                                RPAttribute)
+                If rpy_inst.getAttributeValue(rpy_conf_attr.name) <> conf.Value Then
+                    rpy_inst.getSaveUnit.setReadOnly(0)
+                    rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
+                    Me.Add_Export_Information_Item(report,
+                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                        "Configuration_Value of " & rpy_conf_attr.name & " merged.")
+                End If
+            Next
+        End If
+    End Sub
+
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Return rpy_parent_class.addNewAggr("Instance", Me.Name)
+    End Function
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        Dim rpy_inst As RPInstance = CType(rpy_elmt, RPInstance)
+
+        ' Set Type_Ref
+        Dim referenced_rpy_class As RPClass
+        referenced_rpy_class = CType(Me.Find_In_Rpy_Project(Me.Type_Ref), RPClass)
+        If IsNothing(referenced_rpy_class) Then
+            Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Type not found : " & Me.Type_Ref.ToString & ".")
+        Else
+            rpy_inst.otherClass = CType(referenced_rpy_class, RPClassifier)
+        End If
+
+        ' Set Configuration_Values
+        If Not IsNothing(Me.Configuration_Values) Then
+            For Each conf In Me.Configuration_Values
+                Dim rpy_conf_attr As RPAttribute = Nothing
+                rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Configuration_Ref), 
+                                RPAttribute)
+                rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
+            Next
+        End If
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+        If Me.Type_Ref.Equals(Guid.Empty) Then
+            Me.Add_Consistency_Check_Error_Item(report, "OBJ_1", "Shall reference a Class.")
+        End If
+    End Sub
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for metrics computation
+
+End Class

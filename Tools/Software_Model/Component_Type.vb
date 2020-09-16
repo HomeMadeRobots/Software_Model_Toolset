@@ -154,7 +154,7 @@ Public Class Component_Type
             For Each compo In compo_list
                 If Not IsNothing(compo.Component_Prototypes) Then
                     For Each swc In compo.Component_Prototypes
-                        If swc.Component_Type_Ref = Me.UUID Then
+                        If swc.Type_Ref = Me.UUID Then
                             If Not Me.Dependent_Elements.Contains(compo) Then
                                 Me.Dependent_Elements.Add(compo)
                             End If
