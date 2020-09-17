@@ -24,6 +24,7 @@ Public Class Software_Package
     Public Root_Software_Compositions As List(Of Root_Software_Composition)
     Public Component_Designs As List(Of Component_Design)
     Public Classes As List(Of Internal_Design_Class)
+    Public Files As List(Of Implementation_File)
 
 
     '----------------------------------------------------------------------------------------------'
@@ -51,6 +52,9 @@ Public Class Software_Package
             End If
             If Not IsNothing(Me.Classes) Then
                 children_list.AddRange(Me.Classes)
+            End If
+            If Not IsNothing(Me.Files) Then
+                children_list.AddRange(Me.Files)
             End If
             Me.Children = children_list
         End If
@@ -83,7 +87,8 @@ Public Class Software_Package
             And rpy_pkg.types.Count = 0 _
             And rpy_pkg.modules.Count = 0 _
             And rpy_pkg.globalObjects.Count = 0 _
-            And rpy_pkg.packages.Count = 0 Then
+            And rpy_pkg.packages.Count = 0 _
+            And rpy_pkg.modules.Count = 0 Then
             result = True
         End If
         Return result
@@ -195,6 +200,20 @@ Public Class Software_Package
         End If
         If Me.Classes.Count = 0 Then
             Me.Classes = Nothing
+        End If
+
+
+        Me.Files = New List(Of Implementation_File)
+        Dim rpy_file As RPModule
+        For Each rpy_file In CType(Me.Rpy_Element, RPPackage).modules
+            If Is_Implementation_File(CType(rpy_file, RPModelElement)) Then
+                Dim sw_file As Implementation_File = New Implementation_File
+                Me.Files.Add(sw_file)
+                sw_file.Import_From_Rhapsody_Model(Me, CType(rpy_file, RPModelElement))
+            End If
+        Next
+        If Me.Files.Count = 0 Then
+            Me.Files = Nothing
         End If
     End Sub
 
@@ -321,6 +340,17 @@ Public Class Software_Package
         Next
     End Sub
 
+    Public Sub Export_Files_To_Rhapsody(report As Report)
+        For Each file In Me.Files
+            file.Export_To_Rhapsody(Me.Rpy_Element, report)
+        Next
+
+        For Each pkg In Me.Packages
+            pkg.Export_Files_To_Rhapsody(report)
+        Next
+    End Sub
+
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
@@ -333,7 +363,8 @@ Public Class Software_Package
             IsNothing(Me.Software_Interfaces) And
             IsNothing(Me.Data_Types) And
             IsNothing(Me.Classes) And
-            IsNothing(Me.Component_Designs) Then
+            IsNothing(Me.Component_Designs) And
+            IsNothing(Me.Files) Then
 
             Me.Add_Consistency_Check_Warning_Item(report,
                 "PKG_1",

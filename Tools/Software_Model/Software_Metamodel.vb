@@ -191,4 +191,15 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID c4d77dea-4713-4da2-b474-305d676af411")
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Implementation_File
+    Public Function Is_Implementation_File(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 76068085-5ce8-416c-81a0-105fa38a041d")
+    End Function
+
+    Public Function Is_Implemented_Element(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID e1410ed5-8b64-43ee-a054-e77fd03a4de8")
+    End Function
+
 End Module

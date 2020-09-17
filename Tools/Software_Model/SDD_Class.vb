@@ -96,82 +96,16 @@ Public MustInherit Class SDD_Class
     ' Methods for models merge
     Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
-
-        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
-
         Merge_Dependencies(report, "Sent_Event", Me.Sent_Events, AddressOf Is_Sent_Event)
         Merge_Dependencies(report, "Received_Event", Me.Received_Events, AddressOf Is_Received_Event)
-
     End Sub
 
     Protected Overrides Sub Set_Rpy_Element_Attributes(
         rpy_elmt As RPModelElement,
         report As Report)
-
         MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
-
-        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
-
         Me.Set_Dependencies(report, "Sent_Event", Me.Sent_Events)
         Me.Set_Dependencies(report, "Received_Event", Me.Received_Events)
-
-    End Sub
-
-    Protected Sub Merge_Dependencies(
-        report As Report,
-        stereotype_str As String,
-        element_list As List(Of Guid),
-        is_of_stereotype As Func(Of RPModelElement, Boolean))
-
-        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
-        Dim rpy_dep As RPDependency
-        Dim ref_found As Boolean
-
-        For Each id In element_list
-            ref_found = False
-            Dim rpy_if_guid As String = Transform_Guid_To_Rpy_GUID(id)
-            For Each rpy_dep In rpy_class.dependencies
-                If is_of_stereotype(CType(rpy_dep, RPModelElement)) Then
-                    If rpy_dep.dependsOn.GUID = rpy_if_guid Then
-                        ref_found = True
-                        Exit For
-                    End If
-                End If
-            Next
-            If ref_found = False Then
-                Dim rpy_if As RPModelElement = Me.Find_In_Rpy_Project(rpy_if_guid)
-                If IsNothing(rpy_if) Then
-                    Me.Add_Export_Error_Item(report,
-                        Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                        stereotype_str & " not found : " & id.ToString & ".")
-                Else
-                    Dim created_rpy_dep As RPDependency = rpy_class.addDependencyTo(rpy_if)
-                    created_rpy_dep.addStereotype(stereotype_str, "Dependency")
-                    Me.Add_Export_Information_Item(report,
-                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                        stereotype_str & " merged : " & id.ToString & ".")
-                End If
-            End If
-        Next
-    End Sub
-
-    Protected Sub Set_Dependencies(
-        report As Report,
-        stereotype_str As String,
-        element_list As List(Of Guid))
-        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
-        For Each elmt_ref In element_list
-            Dim ref_rpy_elemt As RPModelElement = Me.Find_In_Rpy_Project(elmt_ref)
-            If Not IsNothing(ref_rpy_elemt) Then
-                Dim rpy_dep As RPDependency
-                rpy_dep = rpy_class.addDependencyTo(ref_rpy_elemt)
-                rpy_dep.addStereotype(stereotype_str, "Dependency")
-            Else
-                Me.Add_Export_Error_Item(report,
-                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                    stereotype_str & " not not found : " & elmt_ref.ToString & ".")
-            End If
-        Next
     End Sub
 
 
