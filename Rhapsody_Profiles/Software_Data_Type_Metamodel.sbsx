@@ -11,14 +11,14 @@
 			<_id type="a">GUID fb48d6a1-4193-4abc-a7e4-2e98bfe4df96</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Data_Type_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.4.2020::8:53:59</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.16.2020::16:12:39</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Data_Type_Metamodel profile defines meta-classes allowing to model any kind of data types used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.4.2020::8:55:59</_modifiedTime>
+			<_modifiedTime type="a">9.16.2020::16:12:39</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">9.4.2020::8:53:59</weakCGTime>
+			<weakCGTime type="a">9.16.2020::16:12:39</weakCGTime>
 			<strongCGTime type="a">8.14.2019::9:19:12</strongCGTime>
 			<_defaultComposite type="s">GUID e1a7b393-5e2c-474c-bdbc-ce062cebc552</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -632,10 +632,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_id type="a">GUID aacddf34-804b-419c-8593-e1557c6452f1</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">9.4.2020::8:53:59</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.4.2020::8:53:59</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.16.2020::16:12:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.16.2020::16:12:39</_modifiedTime>
 			<_lastID type="a">17</_lastID>
-			<weakCGTime type="a">9.4.2020::8:53:59</weakCGTime>
+			<weakCGTime type="a">9.16.2020::16:12:39</weakCGTime>
 			<strongCGTime type="a">6.21.2018::9:54:10</strongCGTime>
 			<_defaultComposite type="s">GUID 5589414c-eac2-4252-8a39-9b48b514233d</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11299,7 +11299,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.4.2020::8:53:59</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.16.2020::16:12:39</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -11310,10 +11310,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<_text type="a">Abstract class.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.4.2020::8:53:59</_modifiedTime>
+			<_modifiedTime type="a">9.16.2020::16:12:39</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">9.4.2020::8:53:59</weakCGTime>
-			<strongCGTime type="a">9.4.2020::8:53:59</strongCGTime>
+			<weakCGTime type="a">9.16.2020::16:12:39</weakCGTime>
+			<strongCGTime type="a">9.16.2020::16:12:39</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>

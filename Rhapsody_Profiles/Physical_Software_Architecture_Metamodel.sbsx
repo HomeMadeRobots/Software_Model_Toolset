@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.16.2020::9:54:10</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.17.2020::7:7:21</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.16.2020::9:54:10</_modifiedTime>
+			<_modifiedTime type="a">9.17.2020::7:7:21</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">9.16.2020::9:54:10</weakCGTime>
+			<weakCGTime type="a">9.17.2020::7:7:21</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -65,10 +65,10 @@
 			<_id type="a">GUID 2fa76a8a-3a37-423d-82f8-cb10371b657b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.16.2020::9:54:10</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.16.2020::9:54:10</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::7:7:21</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::7:7:21</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">9.16.2020::9:54:10</weakCGTime>
+			<weakCGTime type="a">9.17.2020::7:7:21</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:29</strongCGTime>
 			<_defaultComposite type="s">GUID a7891663-41f3-4945-8795-f855279ddba9</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -845,10 +845,10 @@ Has a data type.</_text>
 			<_id type="a">GUID e101f2b2-e3e3-4072-aed0-69558baa8af2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">9.7.2020::9:2:34</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.7.2020::9:2:34</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::7:4:32</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::7:4:32</_modifiedTime>
 			<_lastID type="a">8</_lastID>
-			<weakCGTime type="a">9.7.2020::9:2:34</weakCGTime>
+			<weakCGTime type="a">9.17.2020::7:4:32</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:12:18</strongCGTime>
 			<_defaultComposite type="s">GUID 12866dc4-80e5-4782-9816-e02688faaa87</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -857,7 +857,6 @@ Has a data type.</_text>
 				<value>GUID 9f000df0-3104-4bba-93b4-e2b6a64d3833</value>
 				<value>GUID 43e5b673-6ae5-4daa-bc4a-d98f20fdda4d</value>
 				<value>GUID 7444794b-65c8-474c-aeb7-0eb0afcdae66</value>
-				<value>GUID c7a97ee0-e497-4c57-aaf1-4aefdce59a69</value>
 				<value>GUID 12866dc4-80e5-4782-9816-e02688faaa87</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -944,25 +943,25 @@ Has a data type.</_text>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Requirer_Port, Provider_Port, Component_Operation, Component_Parameter, Statechart</_Value>
+													<_Value type="a">Requirer_Port, Provider_Port, Component_Operation, Configuration_Parameter, Statechart</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">./icons/black_component.ico</_Value>
+													<_Value type="a">./icons/black_class_with_ports.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">./icons/black_component.ico</_Value>
+													<_Value type="a">./icons/black_class_with_ports.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">DrawingToolIcon</_Name>
-													<_Value type="a">./icons/black_component.ico</_Value>
+													<_Value type="a">./icons/black_class_with_ports.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -984,7 +983,7 @@ Has a data type.</_text>
 							<_Name type="a">ObjectModelGe</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">2</size>
+									<size type="a">1</size>
 									<IPropertyMetaclass type="e">
 										<_Name type="a">Class</_Name>
 										<Properties type="c">
@@ -1014,48 +1013,6 @@ Has a data type.</_text>
 										</Properties>
 									</IPropertyMetaclass>
 									
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Object</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">5</size>
-												<IProperty type="e">
-													<_Name type="a">Compartments</_Name>
-													<_Value type="a">Description, Attribute</_Value>
-													<_Type type="a">MultiLine</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">ShowAttributes</_Name>
-													<_Value type="a">All</_Value>
-													<_Type type="a">Enum</_Type>
-													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">ShowName</_Name>
-													<_Value type="a">Label</_Value>
-													<_Type type="a">Enum</_Type>
-													<_ExtraTypeInfo type="a">Full_path,Relative,Name_only,Type,Label</_ExtraTypeInfo>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">ShowOperations</_Name>
-													<_Value type="a">None</_Value>
-													<_Type type="a">Enum</_Type>
-													<_ExtraTypeInfo type="a">All,None,Public,Explicit</_ExtraTypeInfo>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">ShowStereotypeOfClass</_Name>
-													<_Value type="a">False</_Value>
-													<_Type type="a">Bool</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
 								</IRPYRawContainer>
 							</Metaclasses>
 						</IPropertySubject>
@@ -1065,13 +1022,13 @@ Has a data type.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:40:18</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.17.2020::7:4:32</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model an independent software unit.%0D
 </_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.6.2020::20:40:18</_modifiedTime>
+			<_modifiedTime type="a">9.17.2020::7:4:32</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -1481,123 +1438,6 @@ Has a contract : the dependent interface.</_text>
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 		</IClass>
-		<IStereotype type="e">
-			<_id type="a">GUID c7a97ee0-e497-4c57-aaf1-4aefdce59a69</_id>
-			<_myState type="a">8192</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">2</size>
-						<IPropertySubject type="e">
-							<_Name type="a">General</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Graphics</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">2</size>
-												<IProperty type="e">
-													<_Name type="a">AssociatedImageFile</_Name>
-													<_Value type="a">./icons/black_minus.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">EnableImageView</_Name>
-													<_Value type="a">True</_Value>
-													<_Type type="a">Bool</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-						<IPropertySubject type="e">
-							<_Name type="a">Model</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Stereotype</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">4</size>
-												<IProperty type="e">
-													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">./icons/black_gears.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">./icons/black_gears.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">DrawingToolIcon</_Name>
-													<_Value type="a">./icons/black_gears.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Owners</_Name>
-													<_Value type="a">Component_Type</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">Component_Parameter</_name>
-			<_modifiedTimeWeak type="a">9.7.2020::9:2:34</_modifiedTimeWeak>
-			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model a constant attribute set at Component_Prototype creation of a Component_Type.</_text>
-			</IDescription>
-			</_description>
-			<_modifiedTime type="a">9.7.2020::9:2:34</_modifiedTime>
-			<_m2Classes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					<value>Attribute</value>
-				</IRPYRawContainer>
-			</_m2Classes>
-			<_newTerm type="a">1</_newTerm>
-			<AggregatesList type="e">
-				<value>GUID 736d0a56-a37d-4237-a2ba-e2e93cab4d46</value>
-			</AggregatesList>
-		</IStereotype>
-		<IGeneralization type="e">
-			<_id type="a">GUID 736d0a56-a37d-4237-a2ba-e2e93cab4d46</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<_dependsOn type="r">
-				<INObjectHandle type="e">
-					<_hm2Class type="a">IStereotype</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
-					<_hname type="a">Model_Element</_hname>
-					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
-				</INObjectHandle>
-			</_dependsOn>
-			<_inheritanceType type="a">iPublic</_inheritanceType>
-			<_isVirtual type="a">0</_isVirtual>
-		</IGeneralization>
 		<IClass type="e">
 			<_id type="a">GUID 12866dc4-80e5-4782-9816-e02688faaa87</_id>
 			<_myState type="a">40960</_myState>
@@ -1616,10 +1456,10 @@ Has a contract : the dependent interface.</_text>
 			<_id type="a">GUID 7022ddb7-be5e-48a4-b7ad-4fbaf99a811c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Composition</_name>
-			<_modifiedTimeWeak type="a">9.16.2020::9:54:10</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.16.2020::9:54:10</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::7:6:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::7:6:28</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">9.16.2020::9:54:10</weakCGTime>
+			<weakCGTime type="a">9.17.2020::7:6:28</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 807477f8-c48c-4107-a18f-cb25af308f07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1730,7 +1570,7 @@ Has a contract : the dependent interface.</_text>
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">4</size>
+						<size type="a">3</size>
 						<IPropertySubject type="e">
 							<_Name type="a">Format</_Name>
 							<Metaclasses type="c">
@@ -1745,30 +1585,6 @@ Has a contract : the dependent interface.</_text>
 													<_Name type="a">Line.LineColor</_Name>
 													<_Value type="a">128,128,128</_Value>
 													<_Type type="a">Color</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-						<IPropertySubject type="e">
-							<_Name type="a">General</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Graphics</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">1</size>
-												<IProperty type="e">
-													<_Name type="a">EnableImageView</_Name>
-													<_Value type="a">True</_Value>
-													<_Type type="a">Bool</_Type>
 												</IProperty>
 												
 											</IRPYRawContainer>
@@ -1797,19 +1613,19 @@ Has a contract : the dependent interface.</_text>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">./icons/component_inst.ico</_Value>
+													<_Value type="a">./icons/grey_object_with_ports.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">./icons/component_inst.ico</_Value>
+													<_Value type="a">./icons/grey_object_with_ports.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">DrawingToolIcon</_Name>
-													<_Value type="a">./icons/component_inst.ico</_Value>
+													<_Value type="a">./icons/grey_object_with_ports.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -1883,12 +1699,12 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Prototype</_name>
-			<_modifiedTimeWeak type="a">9.16.2020::9:54:10</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.17.2020::7:6:28</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model an instance of a software unit within a composite software unit (sw_composite_component_type) or a whole software (software_composition).</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.16.2020::9:54:10</_modifiedTime>
+			<_modifiedTime type="a">9.17.2020::7:6:28</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -2045,10 +1861,10 @@ Has a contract : the dependent interface.</_text>
 			<_id type="a">GUID 7bc8635c-da90-40ea-a26e-76ec5b649cf9</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::13:56:18</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::13:56:18</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::7:7:21</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::7:7:21</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.3.2020::13:56:18</weakCGTime>
+			<weakCGTime type="a">9.17.2020::7:7:21</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 4456ecac-9846-4117-95af-8d8693ef17fd</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2102,7 +1918,7 @@ Has a contract : the dependent interface.</_text>
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Requirer_Port, Provider_Port, Component_Operation, Component_Parameter, Generalization, Root_Software_Composition, Component_Prototype, Assembly_Connector</_Value>
+													<_Value type="a">Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Requirer_Port, Provider_Port, Component_Operation, Configuration_Parameter, Generalization, Root_Software_Composition, Component_Prototype, Assembly_Connector</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -2197,7 +2013,7 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">PSWA_Diagram</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::13:56:18</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.17.2020::7:7:21</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_textRTF type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 {\colortbl ;\red0\green0\blue0;}%0D
@@ -2209,7 +2025,7 @@ Allows to design classic class diagram for SDD.\par%0D
 </_textRTF>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.3.2020::13:56:18</_modifiedTime>
+			<_modifiedTime type="a">9.17.2020::7:7:21</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2309,10 +2125,10 @@ Allows to design classic class diagram for SDD.\par%0D
 			<_id type="a">GUID d805ef58-dd19-4ea6-ad1f-99a12cea99b4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::18:58:35</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::18:58:35</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::6:54:34</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::6:54:34</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">9.6.2020::18:58:35</weakCGTime>
+			<weakCGTime type="a">9.17.2020::6:54:34</weakCGTime>
 			<strongCGTime type="a">5.14.2018::8:35:23</strongCGTime>
 			<_defaultComposite type="s">GUID 4237a6eb-f20a-485c-b0bf-134376eacf45</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -9504,21 +9320,20 @@ Allows to design classic class diagram for SDD.\par%0D
 			<_id type="a">GUID f28a6f03-2134-4631-860b-f7cf76664d78</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::18:58:35</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::18:58:35</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::6:54:34</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::6:54:34</_modifiedTime>
 			<_lastID type="a">21</_lastID>
-			<weakCGTime type="a">9.6.2020::18:58:35</weakCGTime>
+			<weakCGTime type="a">9.17.2020::6:54:34</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:0:12</strongCGTime>
 			<_defaultComposite type="s">GUID 157e4980-50b5-4091-987e-9c9729619a3d</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">11.7.2019::9:2:39</_configurationRelatedTime>
+			<_configurationRelatedTime type="a">9.17.2020::6:54:34</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 698eaaca-a093-489d-9ead-3c057defa948</value>
 				<value>GUID 258e9f0c-839a-43d1-9628-910380390ecd</value>
 				<value>GUID 157e4980-50b5-4091-987e-9c9729619a3d</value>
 				<value>GUID 5c2516a7-2f69-4104-b74e-5c0e27257c84</value>
 				<value>GUID 59a90eb2-482c-4228-9d4f-c908d99139fa</value>
-				<value>GUID 35b55716-2abb-43c0-9710-9054c17be25a</value>
 			</AggregatesList>
 		</ISubsystem>
 		<ISubsystem type="e">
@@ -11382,8 +11197,8 @@ Allows to design classic class diagram for SDD.\par%0D
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::17:55:29</_modifiedTime>
-			<_lastModifiedTime type="a">9.6.2020::17:55:29</_lastModifiedTime>
+			<_modifiedTime type="a">9.17.2020::6:54:34</_modifiedTime>
+			<_lastModifiedTime type="a">9.17.2020::6:54:34</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -11455,8 +11270,6 @@ Allows to design classic class diagram for SDD.\par%0D
 				<value>GUID 876310b5-4c03-4651-9500-0472e6698642</value>
 				<value>GUID 9f1513e3-4a90-4cee-b194-d952aa764653</value>
 				<value>GUID a6b2ce5b-7788-47c8-b094-7436352eb95a</value>
-				<value>GUID 4ae3ebea-15f0-41ad-8813-7ffe3e632b8a</value>
-				<value>GUID e38d3f6a-4152-4081-9d40-5d9b6d8f3cdb</value>
 				<value>GUID ca424325-93d1-483b-b4ec-058810cc5753</value>
 				<value>GUID cbd8dc15-3b69-49ed-9270-3938cf7f6b33</value>
 				<value>GUID 708b5f68-66dc-40df-b4b2-34768f675c71</value>
@@ -11464,6 +11277,8 @@ Allows to design classic class diagram for SDD.\par%0D
 				<value>GUID fbd02d74-036c-416a-bb4e-4159cf41ca71</value>
 				<value>GUID 8c2ef59b-2dfa-4231-8e56-bafcc9152bfa</value>
 				<value>GUID 135e46c3-987b-4306-9440-21f30ee4b118</value>
+				<value>GUID 5df7a740-6018-4ee8-8240-7285c0158e97</value>
+				<value>GUID 1d15d6c3-34a5-4dee-b550-8c4478fae301</value>
 			</AggregatesList>
 		</CGIClassChart>
 		<CGIClass type="e">
@@ -11700,7 +11515,7 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_pImageViewData type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID 4ae3ebea-15f0-41ad-8813-7ffe3e632b8a</_hid>
+					<_hid type="a">GUID 1d15d6c3-34a5-4dee-b550-8c4478fae301</_hid>
 				</IHandle>
 			</m_pImageViewData>
 			<m_bFramesetModified type="a">1</m_bFramesetModified>
@@ -11708,7 +11523,7 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACE4ae3ebea-15f0-41ad-8813-7ffe3e632b8a.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_class_with_ports.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -13794,13 +13609,16 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_pModelObject type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hname type="a">Configuration_Parameter</_hname>
 					<_hid type="a">GUID 35b55716-2abb-43c0-9710-9054c17be25a</_hid>
 				</IHandle>
 			</m_pModelObject>
 			<m_pParent type="s">GUID 41d66070-e82c-40ca-90ee-e42bcd9f40da</m_pParent>
 			<m_name type="p">
 				<CGIText type="e">
-					<m_str type="a">Component_Parameter</m_str>
+					<m_str type="a">Configuration_Parameter</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -13837,15 +13655,15 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_pImageViewData type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID e38d3f6a-4152-4081-9d40-5d9b6d8f3cdb</_hid>
+					<_hid type="a">GUID 5df7a740-6018-4ee8-8240-7285c0158e97</_hid>
 				</IHandle>
 			</m_pImageViewData>
 			<m_bFramesetModified type="a">1</m_bFramesetModified>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACEe38d3f6a-4152-4081-9d40-5d9b6d8f3cdb.ico&gt;
+			<frameset type="a">&lt;frameset rows=36%25,64%25&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_gears.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -13903,6 +13721,10 @@ Allows to design classic class diagram for SDD.\par%0D
 					
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hclass type="a">Configuration_Parameter</_hclass>
+							<_hname type="a">Default_Value</_hname>
 							<_hid type="a">GUID 329c8ebe-caeb-4a2e-a288-43cdb64b8725</_hid>
 						</IHandle>
 					
@@ -14039,7 +13861,7 @@ Allows to design classic class diagram for SDD.\par%0D
 			</m_sourceRole>
 			<m_targetRole type="p">
 				<CGIText type="e">
-					<m_str type="a">Component_Parameters</m_str>
+					<m_str type="a">Configuration_Parameters</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -14124,68 +13946,6 @@ Allows to design classic class diagram for SDD.\par%0D
 			</m_targetQualifier>
 			<m_specificType type="a">type_122</m_specificType>
 		</CGIAssociationEnd>
-		<CGIImageData type="e">
-			<_id type="a">GUID 4ae3ebea-15f0-41ad-8813-7ffe3e632b8a</_id>
-			<m_type type="a">0</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID 41d66070-e82c-40ca-90ee-e42bcd9f40da</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_dataSize type="a">3004</m_dataSize>
-			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az28g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z31g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z1dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z19g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z15g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z21gFFg81</m_data>
-			<m_srcFile type="a">.\icons\component.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.2.1990::0:0:0</m_fileModifiedTime>
-		</CGIImageData>
-		<CGIImageData type="e">
-			<_id type="a">GUID e38d3f6a-4152-4081-9d40-5d9b6d8f3cdb</_id>
-			<m_type type="a">0</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID 41d66070-e82c-40ca-90ee-e42bcd9f40da</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_dataSize type="a">2208</m_dataSize>
-			<m_data type="a">10be#GG01G01G2020GG01G20Ga8HGG16g0328g0320g03Jg0301G20g06HGGc30eGGc30eg0azbc858585Z252525z05cacacaz69d7d7d7z05424242Zg03Zl03Zg03Z222222z65g03Zg03Zg03Z212121Z020202Zg03Z989898z65abababZg03Z8e8e8ez09494949Zg03Zg03Zf1f1f1z59ddddddZ444444Zg03z0dcececeZg03Z383838Zebebebz599a9a9aZg03Zg03Zb2b2b2z09686868Zg03z69454545Zg03Z494949Z353535Zg03Zg03Z161616z09r03Ze7e7e7z55g03Zg03Z232323Zg03Z828282ZcececeZdcdcdcz05070707Zg03Z545454z05a1a1a1Z070707Zdfdfdfz45cececeZcfcfcfz05g03Zr03z0d3c3c3cZg03Zg03Z616161Zg03Zg03Z282828z59414141Zg03Z595959Zg03Zg03Zg03Zg03Zg03Zg03Zcfcfcfz09fefefez21e3e3e3Za3a3a3z21f4f4f4Zg03Zg03Zg03Zg03Zl03Zc9c9c9Za1a1a1Zg03Zg03Z414141Z787878Z919191z1dd3d3d3Zg03Zg03Zg03Zeaeaeaz09f6f6f6Z8c8c8cz11dededeZg03Zg03Z868686z11g03Zg03Zg03Zg03z1dd7d7d7Zg03Zg03Zg03Z656565z09010101Zg03Z242424Zx03z0dg03Zg03z15454545Zg03Zg03Z323232z11ecececz09f4f4f4Zg03Zg03Zg03Zg03Z606060Z1a1a1aZg03Zg03Zg03Z545454z05727272Zg03Zg03Zg03z153c3c3cZg03Zd1d1d1z119d9d9dZg03Z3a3a3aZd1d1d1Z4f4f4fZg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zf7f7f7z05n03Zg03Zg03Zg03Z636363z0de7e7e7Zg03Zg03Z454545z0df9f9f9Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Z3c3c3cz09y03Z919191ZacacacZg03Zg03Z393939Zq03Z757575Zg03Zg03Zg03Zg03Z6e6e6ez09a6a6a6Zg03Zg03Zg03Zg03Zg03Zg03Z535353Zc6c6c6ZdbdbdbZ9d9d9dZ020202Zg03Zg03Zg03Zv03ZcececeZbcbcbcz09g03Zg03Zg03Zg03Zg03Zg03Z5f5f5fZ474747Zg03z11b7b7b7Zg03Zg03Zg03Zg03Zb3b3b3z15181818Zg03Zg03Zg03Zg03Zg03Z9e9e9eZafafafZg03Zg03Z606060Z313131Zg03Zg03z21n03Zg03Zg03Z494949z19f4f4f4Zg03Zg03Zg03Zg03Zg03Z505050z058d8d8dZ484848z05f1f1f1Zg03Zg03Zdededez1d292929Zg03Zg03Zb8b8b8z1d141414Zg03Zg03Zg03Zg03Z131313z15c5c5c5z19e4e4e4Z373737Zg03Zg03Zg03Zg03Zc7c7c7z1d272727Zg03Zg03Z353535Zc2c2c2z35d7d7d7Zg03Zg03Zg03Zg03Zg03Z828282z1dg03Zg03Zg03z41g03Zg03Zg03Zg03Zg03Zg03z19767676Zg03Zg03Zg03Z9e9e9ez3d565656Z444444Z5c5c5cZ090909Zg03Zg03Z030303Zd9d9d9z0dm03Zg03Zg03Zg03Zg03Zg03Z7d7d7dz45d9d9d9Zg03Zg03Zg03Zg03Zg03Z171717Zg03Zg03Zg03Zg03Zg03Zg03Zg03Z020202z45909090Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Z3c3c3cZ090909Zg03Zg03Zedededz45g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Z3c3c3cz09b3b3b3Z8f8f8fz45f8f8f8Z090909Zg03Zg03Z1e1e1ez05d0d0d0Zg03Zg03Zg03Z3e3e3ez5d828282Z060606z0d0e0e0eZg03Zg03Z1f1f1fz719b9b9bZ353535Z878787Zd2d2d2zc9g80</m_data>
-			<m_srcFile type="a">.\icons\Component_Parameter.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.2.1990::0:0:0</m_fileModifiedTime>
-		</CGIImageData>
 		<CGIClass type="e">
 			<_id type="a">GUID ca424325-93d1-483b-b4ec-058810cc5753</_id>
 			<_properties type="p"><IPropertyContainer type="e">
@@ -14445,6 +14205,10 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_pModelObject type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IAssociationEnd</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hclass type="a">Configuration_Parameter</_hclass>
+					<_hname type="a">Base_Data_Type_Ref</_hname>
 					<_hid type="a">GUID c00a8f18-d833-4538-9e36-6aa433bca27d</_hid>
 				</IHandle>
 			</m_pModelObject>
@@ -14871,6 +14635,68 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_srcFile type="a">.\icons\requirer_port.ico</m_srcFile>
 			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
 		</CGIImageData>
+		<CGIImageData type="e">
+			<_id type="a">GUID 5df7a740-6018-4ee8-8240-7285c0158e97</_id>
+			<m_type type="a">0</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID 41d66070-e82c-40ca-90ee-e42bcd9f40da</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4096</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_dataSize type="a">2208</m_dataSize>
+			<m_data type="a">10be#GG01G01G2020GG01G20Ga8HGG16g0328g0320g03Jg0301G20g06HGGc30eGGc30eg0azbc858585Z252525z05cacacaz69d7d7d7z05424242Zg03Zl03Zg03Z222222z65g03Zg03Zg03Z212121Z020202Zg03Z989898z65abababZg03Z8e8e8ez09494949Zg03Zg03Zf1f1f1z59ddddddZ444444Zg03z0dcececeZg03Z383838Zebebebz599a9a9aZg03Zg03Zb2b2b2z09686868Zg03z69454545Zg03Z494949Z353535Zg03Zg03Z161616z09r03Ze7e7e7z55g03Zg03Z232323Zg03Z828282ZcececeZdcdcdcz05070707Zg03Z545454z05a1a1a1Z070707Zdfdfdfz45cececeZcfcfcfz05g03Zr03z0d3c3c3cZg03Zg03Z616161Zg03Zg03Z282828z59414141Zg03Z595959Zg03Zg03Zg03Zg03Zg03Zg03Zcfcfcfz09fefefez21e3e3e3Za3a3a3z21f4f4f4Zg03Zg03Zg03Zg03Zl03Zc9c9c9Za1a1a1Zg03Zg03Z414141Z787878Z919191z1dd3d3d3Zg03Zg03Zg03Zeaeaeaz09f6f6f6Z8c8c8cz11dededeZg03Zg03Z868686z11g03Zg03Zg03Zg03z1dd7d7d7Zg03Zg03Zg03Z656565z09010101Zg03Z242424Zx03z0dg03Zg03z15454545Zg03Zg03Z323232z11ecececz09f4f4f4Zg03Zg03Zg03Zg03Z606060Z1a1a1aZg03Zg03Zg03Z545454z05727272Zg03Zg03Zg03z153c3c3cZg03Zd1d1d1z119d9d9dZg03Z3a3a3aZd1d1d1Z4f4f4fZg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zf7f7f7z05n03Zg03Zg03Zg03Z636363z0de7e7e7Zg03Zg03Z454545z0df9f9f9Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Z3c3c3cz09y03Z919191ZacacacZg03Zg03Z393939Zq03Z757575Zg03Zg03Zg03Zg03Z6e6e6ez09a6a6a6Zg03Zg03Zg03Zg03Zg03Zg03Z535353Zc6c6c6ZdbdbdbZ9d9d9dZ020202Zg03Zg03Zg03Zv03ZcececeZbcbcbcz09g03Zg03Zg03Zg03Zg03Zg03Z5f5f5fZ474747Zg03z11b7b7b7Zg03Zg03Zg03Zg03Zb3b3b3z15181818Zg03Zg03Zg03Zg03Zg03Z9e9e9eZafafafZg03Zg03Z606060Z313131Zg03Zg03z21n03Zg03Zg03Z494949z19f4f4f4Zg03Zg03Zg03Zg03Zg03Z505050z058d8d8dZ484848z05f1f1f1Zg03Zg03Zdededez1d292929Zg03Zg03Zb8b8b8z1d141414Zg03Zg03Zg03Zg03Z131313z15c5c5c5z19e4e4e4Z373737Zg03Zg03Zg03Zg03Zc7c7c7z1d272727Zg03Zg03Z353535Zc2c2c2z35d7d7d7Zg03Zg03Zg03Zg03Zg03Z828282z1dg03Zg03Zg03z41g03Zg03Zg03Zg03Zg03Zg03z19767676Zg03Zg03Zg03Z9e9e9ez3d565656Z444444Z5c5c5cZ090909Zg03Zg03Z030303Zd9d9d9z0dm03Zg03Zg03Zg03Zg03Zg03Z7d7d7dz45d9d9d9Zg03Zg03Zg03Zg03Zg03Z171717Zg03Zg03Zg03Zg03Zg03Zg03Zg03Z020202z45909090Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Z3c3c3cZ090909Zg03Zg03Zedededz45g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Z3c3c3cz09b3b3b3Z8f8f8fz45f8f8f8Z090909Zg03Zg03Z1e1e1ez05d0d0d0Zg03Zg03Zg03Z3e3e3ez5d828282Z060606z0d0e0e0eZg03Zg03Z1f1f1fz719b9b9bZ353535Z878787Zd2d2d2zc9g80</m_data>
+			<m_srcFile type="a">.\icons\black_gears.ico</m_srcFile>
+			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
+		</CGIImageData>
+		<CGIImageData type="e">
+			<_id type="a">GUID 1d15d6c3-34a5-4dee-b550-8c4478fae301</_id>
+			<m_type type="a">0</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID 41d66070-e82c-40ca-90ee-e42bcd9f40da</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4096</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_dataSize type="a">3004</m_dataSize>
+			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az28g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z31g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z1dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z19g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z15g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z21gFFg81</m_data>
+			<m_srcFile type="a">.\icons\black_class_with_ports.ico</m_srcFile>
+			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
+		</CGIImageData>
 		<IClass type="e">
 			<_id type="a">GUID 157e4980-50b5-4091-987e-9c9729619a3d</_id>
 			<_myState type="a">40960</_myState>
@@ -14904,7 +14730,7 @@ Allows to design classic class diagram for SDD.\par%0D
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">AssociatedImageFile</_Name>
-													<_Value type="a">.\icons\component.ico</_Value>
+													<_Value type="a">.\icons\black_class_with_ports.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -14927,17 +14753,17 @@ Allows to design classic class diagram for SDD.\par%0D
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">9.4.2020::11:23:23</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.17.2020::6:43:22</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hid type="a">GUID 4400a687-9169-49ac-84a9-d8dc1fcc537a</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">9.4.2020::11:23:23</_modifiedTime>
+			<_modifiedTime type="a">9.17.2020::6:43:22</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.4.2020::11:23:23</weakCGTime>
-			<strongCGTime type="a">9.3.2020::14:12:43</strongCGTime>
+			<weakCGTime type="a">9.17.2020::6:43:22</weakCGTime>
+			<strongCGTime type="a">9.17.2020::6:43:22</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -15030,13 +14856,16 @@ Allows to design classic class diagram for SDD.\par%0D
 		<IAssociationEnd type="e">
 			<_id type="a">GUID 875bac3b-cdc2-4b88-89b8-e02383e1d10f</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">Component_Parameters</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::14:54:8</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::14:54:8</_modifiedTime>
+			<_name type="a">Configuration_Parameters</_name>
+			<_modifiedTimeWeak type="a">9.16.2020::16:1:15</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.16.2020::16:1:15</_modifiedTime>
 			<_multiplicity type="a">*</_multiplicity>
 			<_otherClass type="r">
 				<IClassifierHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hname type="a">Configuration_Parameter</_hname>
 					<_hid type="a">GUID 35b55716-2abb-43c0-9710-9054c17be25a</_hid>
 				</IClassifierHandle>
 			</_otherClass>
@@ -15124,132 +14953,14 @@ Allows to design classic class diagram for SDD.\par%0D
 			<_inheritanceType type="a">iPublic</_inheritanceType>
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
-		<IClass type="e">
-			<_id type="a">GUID 35b55716-2abb-43c0-9710-9054c17be25a</_id>
-			<_myState type="a">8192</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">1</size>
-						<IPropertySubject type="e">
-							<_Name type="a">General</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Graphics</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">1</size>
-												<IProperty type="e">
-													<_Name type="a">AssociatedImageFile</_Name>
-													<_Value type="a">.\icons\Component_Parameter.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">Component_Parameter</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::15:19:18</_modifiedTimeWeak>
-			<_theMainDiagram type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IDiagram</_hm2Class>
-					<_hid type="a">GUID 258e9f0c-839a-43d1-9628-910380390ecd</_hid>
-				</IHandle>
-			</_theMainDiagram>
-			<_modifiedTime type="a">9.3.2020::15:19:18</_modifiedTime>
-			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">9.3.2020::15:19:18</weakCGTime>
-			<strongCGTime type="a">9.3.2020::14:51:26</strongCGTime>
-			<_itsStateChart type="r">
-				<IHandle type="e">
-				</IHandle>
-			</_itsStateChart>
-			<_classModifier type="a">Unspecified</_classModifier>
-			<AggregatesList type="e">
-				<value>GUID 329c8ebe-caeb-4a2e-a288-43cdb64b8725</value>
-				<value>GUID 802da37e-53f5-490d-b94c-f100ecb37dce</value>
-				<value>GUID c00a8f18-d833-4538-9e36-6aa433bca27d</value>
-			</AggregatesList>
-		</IClass>
-		<IAttribute type="e">
-			<_id type="a">GUID 329c8ebe-caeb-4a2e-a288-43cdb64b8725</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">Default_Value</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::15:19:18</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::15:19:18</_modifiedTime>
-			<_typeOf type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IType</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-					<_hname type="a">Characters_String</_hname>
-					<_hid type="a">GUID e42f3d42-de5c-4bed-9f6c-fae9bef9cb6a</_hid>
-				</IHandle>
-			</_typeOf>
-			<_isOrdered type="a">0</_isOrdered>
-			<_protection type="a">iPublic</_protection>
-			<_static type="a">0</_static>
-			<_isReferenceAttr type="a">0</_isReferenceAttr>
-			<_isConstant type="a">0</_isConstant>
-		</IAttribute>
-		<IGeneralization type="e">
-			<_id type="a">GUID 802da37e-53f5-490d-b94c-f100ecb37dce</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<_dependsOn type="r">
-				<INObjectHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-					<_hname type="a">Software_Element</_hname>
-					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
-				</INObjectHandle>
-			</_dependsOn>
-			<_inheritanceType type="a">iPublic</_inheritanceType>
-			<_isVirtual type="a">0</_isVirtual>
-		</IGeneralization>
-		<IAssociationEnd type="e">
-			<_id type="a">GUID c00a8f18-d833-4538-9e36-6aa433bca27d</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">Base_Data_Type_Ref</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::15:17:56</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::15:17:56</_modifiedTime>
-			<_multiplicity type="a">1</_multiplicity>
-			<_otherClass type="r">
-				<IClassifierHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hfilename type="a">.\Software_Data_Type_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Software_Data_Type_Metamodel::Metamodel_Description</_hsubsystem>
-					<_hname type="a">Data_Type</_hname>
-					<_hid type="a">GUID 55241a3a-b274-454e-8440-39c0d234a140</_hid>
-				</IClassifierHandle>
-			</_otherClass>
-			<_inverse type="r">
-				<IHandle type="e">
-				</IHandle>
-			</_inverse>
-			<_linkType type="a">Assoc</_linkType>
-			<_navigability type="a">Navigable</_navigability>
-		</IAssociationEnd>
 		<ISubsystem type="e">
 			<_id type="a">GUID ddbd4b83-969d-4f5d-81bb-c7b52017df0d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Compositions</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::17:55:32</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::17:55:32</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::6:50:18</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::6:50:18</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">9.6.2020::17:55:32</weakCGTime>
+			<weakCGTime type="a">9.17.2020::6:50:18</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:3:56</strongCGTime>
 			<_defaultComposite type="s">GUID ffab7b65-dabd-4c05-ab73-5f233604e4a5</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -15454,8 +15165,8 @@ Allows to design classic class diagram for SDD.\par%0D
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::17:55:32</_modifiedTime>
-			<_lastModifiedTime type="a">9.6.2020::17:55:32</_lastModifiedTime>
+			<_modifiedTime type="a">9.17.2020::6:52:50</_modifiedTime>
+			<_lastModifiedTime type="a">9.17.2020::6:52:50</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -15517,7 +15228,6 @@ Allows to design classic class diagram for SDD.\par%0D
 				<value>GUID fb54c26b-70f9-4383-a1a1-9b2a607acb84</value>
 				<value>GUID 33cc91f2-c8bd-45f4-8d36-a53abab6d225</value>
 				<value>GUID 29c2d3b5-2d70-4b83-a4e2-a851e1907ae4</value>
-				<value>GUID 661ab6fe-15e5-454c-b1f2-f7ed964d5a1c</value>
 				<value>GUID 92c602a0-1203-4514-a2f6-31b30492435b</value>
 				<value>GUID eba25e75-bbd5-4f4e-92e0-cbedc1cefa32</value>
 				<value>GUID fc0c8e1b-b67d-4034-a04a-78a60db478f9</value>
@@ -15530,10 +15240,11 @@ Allows to design classic class diagram for SDD.\par%0D
 				<value>GUID 421508d9-8c87-4f6c-aa0b-e002e0993368</value>
 				<value>GUID 8c24cf4b-e402-4061-b98b-25059fde8ce6</value>
 				<value>GUID dab5b210-230b-43c4-9e8b-d5457fc028f5</value>
-				<value>GUID edd74e42-888c-4528-a5e5-63d9560712ad</value>
 				<value>GUID c583ba85-0186-4c49-840c-fa2835424476</value>
 				<value>GUID 7c16c438-b5fc-4356-8828-1c52913b0c61</value>
 				<value>GUID abfaa398-572a-4ae1-ba53-47ffedaca71f</value>
+				<value>GUID c75ea794-7d29-4608-852e-49c1f1b54086</value>
+				<value>GUID b690e032-dfd5-4421-9374-b421ed186593</value>
 			</AggregatesList>
 		</CGIClassChart>
 		<CGIClass type="e">
@@ -15641,7 +15352,7 @@ Allows to design classic class diagram for SDD.\par%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">255,0,0</_Value>
+													<_Value type="a">166,202,240</_Value>
 													<_Type type="a">Color</_Type>
 												</IProperty>
 												
@@ -15870,7 +15581,7 @@ Allows to design classic class diagram for SDD.\par%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">255,0,0</_Value>
+													<_Value type="a">166,202,240</_Value>
 													<_Type type="a">Color</_Type>
 												</IProperty>
 												
@@ -16312,7 +16023,7 @@ Allows to design classic class diagram for SDD.\par%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">255,0,0</_Value>
+													<_Value type="a">166,202,240</_Value>
 													<_Type type="a">Color</_Type>
 												</IProperty>
 												
@@ -16333,7 +16044,13 @@ Allows to design classic class diagram for SDD.\par%0D
 										<_Name type="a">Graphics</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">EnableImageView</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">FitBoxToItsTextuals</_Name>
 													<_Value type="a">False</_Value>
@@ -16429,14 +16146,14 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_pImageViewData type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID 661ab6fe-15e5-454c-b1f2-f7ed964d5a1c</_hid>
+					<_hid type="a">GUID b690e032-dfd5-4421-9374-b421ed186593</_hid>
 				</IHandle>
 			</m_pImageViewData>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACE661ab6fe-15e5-454c-b1f2-f7ed964d5a1c.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\grey_object_with_ports.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -16498,37 +16215,6 @@ Allows to design classic class diagram for SDD.\par%0D
 			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
 			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
 		</CGICompartment>
-		<CGIImageData type="e">
-			<_id type="a">GUID 661ab6fe-15e5-454c-b1f2-f7ed964d5a1c</_id>
-			<m_type type="a">0</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID c014a6c8-8d9b-4121-9ae0-8595af5b5021</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_dataSize type="a">3056</m_dataSize>
-			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az28g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z31g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z1dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z19g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z15g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z11g03z4dg03Zg03Zg03z49g03Zg03Zg03z11g03z4dg03Zg03Zg03z49g03Zg03Zg03z11g03z4dg03Zg03Zg03z49g03Zg03Zg03z11g03z4dg03Zg03Zg03z49g03Zg03Zg03z09g03z05g03z4dg03Zg03Zg03z49g03Zg03Zg03z0dg03Zg03z4dg03Zg03Zg03z49g03Zg03Zg03z11g03z4dg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z21gFFg81</m_data>
-			<m_srcFile type="a">..\icons\component_inst.ico</m_srcFile>
-			<m_fileModifiedTime type="a">9.3.2020::8:25:53</m_fileModifiedTime>
-		</CGIImageData>
 		<CGIAssociationEnd type="e">
 			<_id type="a">GUID 92c602a0-1203-4514-a2f6-31b30492435b</_id>
 			<_properties type="p"><IPropertyContainer type="e">
@@ -18002,14 +17688,14 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_pImageViewData type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID edd74e42-888c-4528-a5e5-63d9560712ad</_hid>
+					<_hid type="a">GUID c75ea794-7d29-4608-852e-49c1f1b54086</_hid>
 				</IHandle>
 			</m_pImageViewData>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACEedd74e42-888c-4528-a5e5-63d9560712ad.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_class_with_ports.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -18186,7 +17872,7 @@ Allows to design classic class diagram for SDD.\par%0D
 			</m_sourceRole>
 			<m_targetRole type="p">
 				<CGIText type="e">
-					<m_str type="a">Component_Type_Ref</m_str>
+					<m_str type="a">Type_Ref</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -18641,37 +18327,6 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_specificType type="a">type_122</m_specificType>
 		</CGIAssociationEnd>
 		<CGIImageData type="e">
-			<_id type="a">GUID edd74e42-888c-4528-a5e5-63d9560712ad</_id>
-			<m_type type="a">0</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID c014a6c8-8d9b-4121-9ae0-8595af5b5021</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_dataSize type="a">3004</m_dataSize>
-			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az28g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z31g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z1dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z19g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z15g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z21gFFg81</m_data>
-			<m_srcFile type="a">.\icons\component.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.2.1990::0:0:0</m_fileModifiedTime>
-		</CGIImageData>
-		<CGIImageData type="e">
 			<_id type="a">GUID c583ba85-0186-4c49-840c-fa2835424476</_id>
 			<m_type type="a">0</m_type>
 			<m_pModelObject type="r">
@@ -18762,6 +18417,68 @@ Allows to design classic class diagram for SDD.\par%0D
 			<m_dataSize type="a">625</m_dataSize>
 			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc20eGGc20eg0azFFz41g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z09g03Z8b8b8bZ848484Z848484Z848484Z848484Z848484Zg03z09g03Z7f7f7fZ828282Z7f7f7fz09g03Z858585Z7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZg03z05g03Z7f7f7fZ818181z11g03Z858585Z7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ868686Zg03Zg03Zg03Z838383z15g03Z858585Z7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ828282Zg03Zg03Zg03Z838383z15g03Z858585Z7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZg03z05g03Z828282Zn03z11g03Z868686Z7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZg03z05f6f6f6Zg03Z7f7f7fZ828282Z7f7f7fz09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09f8f8f8Zg03Zg03Zg03zc9g40</m_data>
 			<m_srcFile type="a">.\icons\requirer_port.ico</m_srcFile>
+			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
+		</CGIImageData>
+		<CGIImageData type="e">
+			<_id type="a">GUID c75ea794-7d29-4608-852e-49c1f1b54086</_id>
+			<m_type type="a">0</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID c014a6c8-8d9b-4121-9ae0-8595af5b5021</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4096</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_dataSize type="a">3004</m_dataSize>
+			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az28g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z31g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z1dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z19g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z15g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z21gFFg81</m_data>
+			<m_srcFile type="a">.\icons\black_class_with_ports.ico</m_srcFile>
+			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
+		</CGIImageData>
+		<CGIImageData type="e">
+			<_id type="a">GUID b690e032-dfd5-4421-9374-b421ed186593</_id>
+			<m_type type="a">0</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID c014a6c8-8d9b-4121-9ae0-8595af5b5021</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4096</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_dataSize type="a">5168</m_dataSize>
+			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az287f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz2d7f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz297f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz257f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz217f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz217f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz217f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz257f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz297f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz2d7f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz157f7f7fZ7f7f7fZ7f7f7fz297f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz297f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fz317f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fz357f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fz357f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fz1d7f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz197f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz157f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fz117f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz157f7f7fZ7f7f7fZ7f7f7fz297f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz117f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz097f7f7fz057f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fz617f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz497f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz21gFFg81</m_data>
+			<m_srcFile type="a">.\icons\grey_object_with_ports.ico</m_srcFile>
 			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
 		</CGIImageData>
 		<IClass type="e">
@@ -18920,7 +18637,7 @@ Allows to design classic class diagram for SDD.\par%0D
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">AssociatedImageFile</_Name>
-													<_Value type="a">..\icons\component_inst.ico</_Value>
+													<_Value type="a">.\icons\grey_object_with_ports.ico</_Value>
 													<_Type type="a">File</_Type>
 												</IProperty>
 												
@@ -18943,11 +18660,11 @@ Allows to design classic class diagram for SDD.\par%0D
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Prototype</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::15:22:51</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::15:22:51</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::6:52:50</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::6:52:50</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.3.2020::15:22:51</weakCGTime>
-			<strongCGTime type="a">9.17.2019::13:43:57</strongCGTime>
+			<weakCGTime type="a">9.17.2020::6:52:50</weakCGTime>
+			<strongCGTime type="a">9.17.2020::6:52:50</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -18977,9 +18694,9 @@ Allows to design classic class diagram for SDD.\par%0D
 		<IAssociationEnd type="e">
 			<_id type="a">GUID 36c02377-8f66-4eac-a914-c30481558dfd</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">Component_Type_Ref</_name>
-			<_modifiedTimeWeak type="a">9.17.2019::13:57:31</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2019::13:57:31</_modifiedTime>
+			<_name type="a">Type_Ref</_name>
+			<_modifiedTimeWeak type="a">9.17.2020::6:50:18</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::6:50:18</_modifiedTime>
 			<_multiplicity type="a">1</_multiplicity>
 			<_otherClass type="r">
 				<IClassifierHandle type="e">

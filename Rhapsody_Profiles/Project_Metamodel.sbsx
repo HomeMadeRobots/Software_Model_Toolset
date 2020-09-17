@@ -11,14 +11,14 @@
 			<_id type="a">GUID 8bd5e492-f817-4ae3-bbe5-45e3bd35c53b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Project_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.8.2020::8:7:59</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.17.2020::11:6:17</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Structure_Metamodel profile defines common elements used by the other profiles of software meta-model.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.8.2020::8:7:59</_modifiedTime>
+			<_modifiedTime type="a">9.17.2020::11:6:17</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">9.8.2020::8:7:59</weakCGTime>
+			<weakCGTime type="a">9.17.2020::11:6:17</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID 81b20c47-0170-4a3f-8aef-091534e9641f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 29a0f24c-c828-476b-8466-2726475052f4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.8.2020::8:7:59</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.8.2020::8:7:59</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::11:6:17</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::11:6:17</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">9.8.2020::8:7:59</weakCGTime>
+			<weakCGTime type="a">9.17.2020::11:6:17</weakCGTime>
 			<strongCGTime type="a">6.12.2018::7:56:1</strongCGTime>
 			<_defaultComposite type="s">GUID efd5a87b-0e6f-4a8a-820f-9dd3252203e7</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -46,6 +46,7 @@
 				<value>GUID afb0e42d-a399-4819-bb39-46f0fd0f0fbf</value>
 				<value>GUID b5fca458-ca0a-4261-bfd9-48d5e148b046</value>
 				<value>GUID 5b11666f-afe9-4354-b1b6-31cfebc83170</value>
+				<value>GUID c7a97ee0-e497-4c57-aaf1-4aefdce59a69</value>
 				<value>GUID efd5a87b-0e6f-4a8a-820f-9dd3252203e7</value>
 				<value>GUID f8b296e4-3321-4b2e-b4c5-89fe01cf3784</value>
 			</AggregatesList>
@@ -116,7 +117,7 @@
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Software_Package, Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Root_Software_Composition, Component_Design, SDD_Class, SDD_Event, Implementation_File, PSWA_Diagram, SDD_Class_Diagram, Component_Design_Diagram, IMPL_Diagram, Class Diagram, ObjectModelDiagram, SequenceDiagram, TimingDiagram, TableLayout, TableView, Hyperlink, Operation</_Value>
+													<_Value type="a">Software_Package, Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Root_Software_Composition, Component_Design, Internal_Design_Class, Implementation_File, PSWA_Diagram, Internal_Design_Class_Diagram, Component_Design_Diagram, IMPL_Diagram, Class Diagram, ObjectModelDiagram, SequenceDiagram, TimingDiagram, TableLayout, TableView, Hyperlink, Operation</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -139,14 +140,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Software_Package</_name>
-			<_modifiedTimeWeak type="a">9.8.2020::8:7:59</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.17.2020::11:4:56</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The software_package stereotype apply to UML package meta-class.%0D
 A software_package is the atomic reusable item of a software model.%0D
 It gathers cohesive software elements.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.8.2020::8:7:59</_modifiedTime>
+			<_modifiedTime type="a">9.17.2020::11:4:56</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -288,6 +289,90 @@ It gathers cohesive software elements.</_text>
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hid type="a">GUID b5fca458-ca0a-4261-bfd9-48d5e148b046</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IStereotype type="e">
+			<_id type="a">GUID c7a97ee0-e497-4c57-aaf1-4aefdce59a69</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">./icons/black_gears.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">./icons/black_gears.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DrawingToolIcon</_Name>
+													<_Value type="a">./icons/black_gears.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Owners</_Name>
+													<_Value type="a">Component_Type, Internal_Design_Class</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Configuration_Parameter</_name>
+			<_modifiedTimeWeak type="a">9.17.2020::11:6:17</_modifiedTimeWeak>
+			<_description type="p"><IDescription type="e">
+				<_text type="a">Allows to model a constant attribute set at Component_Prototype creation of a Component_Type.</_text>
+			</IDescription>
+			</_description>
+			<_modifiedTime type="a">9.17.2020::11:6:17</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Attribute</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+			<AggregatesList type="e">
+				<value>GUID 736d0a56-a37d-4237-a2ba-e2e93cab4d46</value>
+			</AggregatesList>
+		</IStereotype>
+		<IGeneralization type="e">
+			<_id type="a">GUID 736d0a56-a37d-4237-a2ba-e2e93cab4d46</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IStereotype</_hm2Class>
+					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
 				</INObjectHandle>
 			</_dependsOn>
 			<_inheritanceType type="a">iPublic</_inheritanceType>
@@ -663,14 +748,14 @@ return apply_on;&lt;/CODE&gt;%0D
 			<_id type="a">GUID 33e89129-d52e-4c81-8ace-f9b9ec5cf010</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::19:32:49</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::19:32:49</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::11:2:53</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::11:2:53</_modifiedTime>
 			<_lastID type="a">10</_lastID>
-			<weakCGTime type="a">9.6.2020::19:32:49</weakCGTime>
+			<weakCGTime type="a">9.17.2020::11:2:53</weakCGTime>
 			<strongCGTime type="a">6.12.2018::8:3:32</strongCGTime>
 			<_defaultComposite type="s">GUID 6577669f-22fc-4683-a0ca-efa1c9825a2c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">9.3.2020::15:15:30</_configurationRelatedTime>
+			<_configurationRelatedTime type="a">9.17.2020::6:56:38</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 5b67ad94-8b31-498e-8a7b-06873a6db04f</value>
 				<value>GUID 133304e0-b714-43e9-a14e-c075c3beb445</value>
@@ -686,6 +771,7 @@ return apply_on;&lt;/CODE&gt;%0D
 				<value>GUID 2d20ab1c-6fb7-46c5-9add-ce13c04378f3</value>
 				<value>GUID 4e3d7e33-6cc1-4806-85a1-99bb7983d347</value>
 				<value>GUID 8b85d1b2-34c0-444c-bd21-f6d7f50054dc</value>
+				<value>GUID 35b55716-2abb-43c0-9710-9054c17be25a</value>
 				<value>GUID e42f3d42-de5c-4bed-9f6c-fae9bef9cb6a</value>
 				<value>GUID 6f880818-4cf2-4ab7-bdc8-3241c5e5d2b8</value>
 			</AggregatesList>
@@ -1022,8 +1108,8 @@ return apply_on;&lt;/CODE&gt;%0D
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::13:53:46</_modifiedTime>
-			<_lastModifiedTime type="a">9.3.2020::13:53:46</_lastModifiedTime>
+			<_modifiedTime type="a">9.17.2020::6:59:42</_modifiedTime>
+			<_lastModifiedTime type="a">9.17.2020::6:59:42</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -1188,7 +1274,7 @@ return apply_on;&lt;/CODE&gt;%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">255,0,0</_Value>
+													<_Value type="a">166,202,240</_Value>
 													<_Type type="a">Color</_Type>
 												</IProperty>
 												
@@ -1577,8 +1663,8 @@ return apply_on;&lt;/CODE&gt;%0D
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::14:43:58</_modifiedTime>
-			<_lastModifiedTime type="a">9.3.2020::14:43:58</_lastModifiedTime>
+			<_modifiedTime type="a">9.17.2020::6:59:52</_modifiedTime>
+			<_lastModifiedTime type="a">9.17.2020::6:59:52</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -1747,7 +1833,7 @@ return apply_on;&lt;/CODE&gt;%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">255,0,0</_Value>
+													<_Value type="a">166,202,240</_Value>
 													<_Type type="a">Color</_Type>
 												</IProperty>
 												
@@ -2793,8 +2879,8 @@ return apply_on;&lt;/CODE&gt;%0D
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::17:48:27</_modifiedTime>
-			<_lastModifiedTime type="a">9.6.2020::17:48:27</_lastModifiedTime>
+			<_modifiedTime type="a">9.17.2020::7:0:4</_modifiedTime>
+			<_lastModifiedTime type="a">9.17.2020::7:0:4</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -2856,7 +2942,6 @@ return apply_on;&lt;/CODE&gt;%0D
 				<value>GUID 69b6f7de-db7a-4da0-801a-4d77a5cd99a6</value>
 				<value>GUID 935c9bca-cc0d-4f29-aa73-84c9fb3b0391</value>
 				<value>GUID db9df56f-aa37-4664-8fa0-0c387b004de1</value>
-				<value>GUID eba7dde8-5fcf-4ca6-9e15-bca3dfd313f8</value>
 				<value>GUID 43043a9c-5187-4cc2-b8aa-b53e5a0ced14</value>
 				<value>GUID a9dda2df-b6ae-41a5-901f-29b7fd7810e1</value>
 				<value>GUID 7f27cbdb-2f3d-4ba1-ada5-17dfd63ffe3d</value>
@@ -2865,6 +2950,7 @@ return apply_on;&lt;/CODE&gt;%0D
 				<value>GUID 46539a40-aff6-4777-a169-a8011b1043c5</value>
 				<value>GUID fdc4c78f-8845-49fb-85fb-e5250438129a</value>
 				<value>GUID 47d61017-ca20-40aa-927b-2f88635cc30a</value>
+				<value>GUID 2ac11981-70ab-4b4d-9d07-0ad7e2ded542</value>
 			</AggregatesList>
 		</CGIClassChart>
 		<CGIClass type="e">
@@ -2975,7 +3061,7 @@ return apply_on;&lt;/CODE&gt;%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">255,0,0</_Value>
+													<_Value type="a">166,202,240</_Value>
 													<_Type type="a">Color</_Type>
 												</IProperty>
 												
@@ -3501,14 +3587,14 @@ return apply_on;&lt;/CODE&gt;%0D
 			<m_pImageViewData type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID eba7dde8-5fcf-4ca6-9e15-bca3dfd313f8</_hid>
+					<_hid type="a">GUID 2ac11981-70ab-4b4d-9d07-0ad7e2ded542</_hid>
 				</IHandle>
 			</m_pImageViewData>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACEeba7dde8-5fcf-4ca6-9e15-bca3dfd313f8.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_class_with_ports.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -3768,37 +3854,6 @@ return apply_on;&lt;/CODE&gt;%0D
 			</m_targetQualifier>
 			<m_specificType type="a">type_122</m_specificType>
 		</CGIAssociationEnd>
-		<CGIImageData type="e">
-			<_id type="a">GUID eba7dde8-5fcf-4ca6-9e15-bca3dfd313f8</_id>
-			<m_type type="a">0</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID 9dbe311b-9cbc-4c5b-ba41-c3eb0c17cd30</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_dataSize type="a">3004</m_dataSize>
-			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az28g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z31g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z1dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z19g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z15g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z21gFFg81</m_data>
-			<m_srcFile type="a">.\icons\component.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.2.1990::0:0:0</m_fileModifiedTime>
-		</CGIImageData>
 		<CGIClass type="e">
 			<_id type="a">GUID 43043a9c-5187-4cc2-b8aa-b53e5a0ced14</_id>
 			<_properties type="p"><IPropertyContainer type="e">
@@ -5027,6 +5082,37 @@ return apply_on;&lt;/CODE&gt;%0D
 			</m_targetQualifier>
 			<m_specificType type="a">type_122</m_specificType>
 		</CGIAssociationEnd>
+		<CGIImageData type="e">
+			<_id type="a">GUID 2ac11981-70ab-4b4d-9d07-0ad7e2ded542</_id>
+			<m_type type="a">0</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID 9dbe311b-9cbc-4c5b-ba41-c3eb0c17cd30</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4096</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_dataSize type="a">3004</m_dataSize>
+			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az28g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z31g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z1dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z19g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z15g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z61g03Zg03Zg03z09g03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z21gFFg81</m_data>
+			<m_srcFile type="a">.\icons\black_class_with_ports.ico</m_srcFile>
+			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
+		</CGIImageData>
 		<IDiagram type="e">
 			<_id type="a">GUID 20aabdf7-e5f6-475c-b513-86c4efaeb722</_id>
 			<_myState type="a">8192</_myState>
@@ -5306,8 +5392,8 @@ return apply_on;&lt;/CODE&gt;%0D
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::18:55:33</_modifiedTime>
-			<_lastModifiedTime type="a">9.6.2020::18:55:33</_lastModifiedTime>
+			<_modifiedTime type="a">9.17.2020::11:2:53</_modifiedTime>
+			<_lastModifiedTime type="a">9.17.2020::11:2:53</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -5372,10 +5458,10 @@ return apply_on;&lt;/CODE&gt;%0D
 				<value>GUID 2fea219f-5e38-474e-8a89-b846b7a49ff0</value>
 				<value>GUID 2d2c27f7-aca9-424c-9e2e-9ec02d673829</value>
 				<value>GUID 78170ca4-05c0-4df4-bffa-7ac331f8143e</value>
-				<value>GUID 7eae865a-ceae-4cc7-b159-c1e8b5a79957</value>
 				<value>GUID b7b5da4c-a4f3-4128-a678-5c39193949d5</value>
 				<value>GUID 30b13578-5bcf-4dc8-b3e7-a39eff65cc9d</value>
-				<value>GUID c27f9f5c-daa2-483e-8ca3-a425915ab1b9</value>
+				<value>GUID 8f6ec7a9-c023-4b9c-95eb-ae0bd97b82f9</value>
+				<value>GUID 0617eec4-af97-4189-b834-d2aa3f2a66ef</value>
 			</AggregatesList>
 		</CGIClassChart>
 		<CGIClass type="e">
@@ -5483,7 +5569,7 @@ return apply_on;&lt;/CODE&gt;%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">255,0,0</_Value>
+													<_Value type="a">166,202,240</_Value>
 													<_Type type="a">Color</_Type>
 												</IProperty>
 												
@@ -6779,14 +6865,14 @@ return apply_on;&lt;/CODE&gt;%0D
 			<m_pImageViewData type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID c27f9f5c-daa2-483e-8ca3-a425915ab1b9</_hid>
+					<_hid type="a">GUID 8f6ec7a9-c023-4b9c-95eb-ae0bd97b82f9</_hid>
 				</IHandle>
 			</m_pImageViewData>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_composite_class.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_composite_class_with_ports.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -6851,13 +6937,7 @@ return apply_on;&lt;/CODE&gt;%0D
 										<_Name type="a">Graphics</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">5</size>
-												<IProperty type="e">
-													<_Name type="a">AssociatedImageFile</_Name>
-													<_Value type="a">.\icons\class.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
+												<size type="a">4</size>
 												<IProperty type="e">
 													<_Name type="a">EnableImageView</_Name>
 													<_Value type="a">True</_Value>
@@ -6923,15 +7003,15 @@ return apply_on;&lt;/CODE&gt;%0D
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Software_Detailed_Design_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::SDD_Class</_hsubsystem>
-					<_hname type="a">SDD_Class</_hname>
+					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::Internal_Design_Class</_hsubsystem>
+					<_hname type="a">Internal_Design_Class</_hname>
 					<_hid type="a">GUID f7f41a85-c280-4330-b75f-b7abfd9d0b05</_hid>
 				</IHandle>
 			</m_pModelObject>
 			<m_pParent type="s">GUID 80104487-3a49-4696-8ff5-7c0f20d58fe8</m_pParent>
 			<m_name type="p">
 				<CGIText type="e">
-					<m_str type="a">SDD_Class</m_str>
+					<m_str type="a">Internal_Design_Class</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -6968,14 +7048,14 @@ return apply_on;&lt;/CODE&gt;%0D
 			<m_pImageViewData type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID 7eae865a-ceae-4cc7-b159-c1e8b5a79957</_hid>
+					<_hid type="a">GUID 0617eec4-af97-4189-b834-d2aa3f2a66ef</_hid>
 				</IHandle>
 			</m_pImageViewData>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACE7eae865a-ceae-4cc7-b159-c1e8b5a79957.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_class.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -7025,37 +7105,6 @@ return apply_on;&lt;/CODE&gt;%0D
 			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
 			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
 		</CGICompartment>
-		<CGIImageData type="e">
-			<_id type="a">GUID 7eae865a-ceae-4cc7-b159-c1e8b5a79957</_id>
-			<m_type type="a">0</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID 80104487-3a49-4696-8ff5-7c0f20d58fe8</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_dataSize type="a">4976</m_dataSize>
-			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0azFFza9e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2Gz61e8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2Gz49e8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GZe8a2GzFFza2gFFg81</m_data>
-			<m_srcFile type="a">.\icons\class.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.2.1990::0:0:0</m_fileModifiedTime>
-		</CGIImageData>
 		<CGIAssociationEnd type="e">
 			<_id type="a">GUID b7b5da4c-a4f3-4128-a678-5c39193949d5</_id>
 			<_properties type="p"><IPropertyContainer type="e">
@@ -7477,7 +7526,7 @@ return apply_on;&lt;/CODE&gt;%0D
 			<m_specificType type="a">type_122</m_specificType>
 		</CGIAssociationEnd>
 		<CGIImageData type="e">
-			<_id type="a">GUID c27f9f5c-daa2-483e-8ca3-a425915ab1b9</_id>
+			<_id type="a">GUID 8f6ec7a9-c023-4b9c-95eb-ae0bd97b82f9</_id>
 			<m_type type="a">0</m_type>
 			<m_pModelObject type="r">
 				<IHandle type="e">
@@ -7502,9 +7551,40 @@ return apply_on;&lt;/CODE&gt;%0D
 			</m_name>
 			<m_drawBehavior type="a">4096</m_drawBehavior>
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_dataSize type="a">511</m_dataSize>
-			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az0cg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z19g03z11g03Zg03Zg03z05g03z19g03z11g03z05g03z05g03z19g03z09g03Zg03Zg03z05g03z05g03z19g03z09g03z05g03Zg03Zg03z05g03z19g03z09g03z09g03z09g03z19g03z05g03Zg03Zg03z05g03z09g03z19g03z05g03z05g03z05g03z09g03z19g03z05g03z05g03Zg03Zg03z09g03z19g03z05g03Zg03Zg03z11g03z19g03z21g03z19g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z19g03z21g03z19g03z21g03z19g03z21g03z19g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z0dg40</m_data>
-			<m_srcFile type="a">.\icons\black_composite_class.ico</m_srcFile>
+			<m_dataSize type="a">3944</m_dataSize>
+			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az28g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z61g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z61g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z39g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z39g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z21g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z39g03Zg03z11g03Zg03z09g03Zg03Zg03z25g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z39g03Zg03z11g03Zg03z09g03Zg03Zg03z29g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z39g03Zg03z11g03Zg03z09g03Zg03Zg03z2dg03Zg03Zg03z11g03Zg03Zg03z39g03Zg03z11g03Zg03z09g03Zg03Zg03z49g03Zg03Zg03z2dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z49g03Zg03Zg03z2dg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z49g03Zg03Zg03z2dg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z49g03Zg03Zg03z2dg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z2dg03z31g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z29g03Zg03Zg03z2dg03z31g03Zg03Zg03z0dg03Zg03Zg03z31g03Zg03Zg03z2dg03z31g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z05g03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z09g03Zg03Zg03z35g03Zg03Zg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z05g03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z09g03Zg03z1dg03Zg03Zg03z11g03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03z19g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z09g03Zg03z11g03Zg03z11g03Zg03z11g03Zg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03z15g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z09g03Zg03z11g03Zg03z11g03Zg03z11g03Zg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03z09g03Zg03Zg03z09g03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z09g03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z09g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z09g03Zg03Zg03z0dg03Zg03Zg03Zg03Zg03z0dg03Zg03Zg03z11g03Zg03Zg03z61g03Zg03Zg03z15g03Zg03Zg03z29g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z21gFFg81</m_data>
+			<m_srcFile type="a">.\icons\black_composite_class_with_ports.ico</m_srcFile>
+			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
+		</CGIImageData>
+		<CGIImageData type="e">
+			<_id type="a">GUID 0617eec4-af97-4189-b834-d2aa3f2a66ef</_id>
+			<m_type type="a">0</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID 80104487-3a49-4696-8ff5-7c0f20d58fe8</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4096</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_dataSize type="a">3404</m_dataSize>
+			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0az28g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03z61g03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z49g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z21gFFg81</m_data>
+			<m_srcFile type="a">.\icons\black_class.ico</m_srcFile>
 			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
 		</CGIImageData>
 		<IDiagram type="e">
@@ -7786,8 +7866,8 @@ return apply_on;&lt;/CODE&gt;%0D
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::14:43:9</_modifiedTime>
-			<_lastModifiedTime type="a">9.3.2020::14:43:9</_lastModifiedTime>
+			<_modifiedTime type="a">9.17.2020::6:59:7</_modifiedTime>
+			<_lastModifiedTime type="a">9.17.2020::6:59:7</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -7959,7 +8039,7 @@ return apply_on;&lt;/CODE&gt;%0D
 												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Line.LineColor</_Name>
-													<_Value type="a">255,0,0</_Value>
+													<_Value type="a">166,202,240</_Value>
 													<_Type type="a">Color</_Type>
 												</IProperty>
 												
@@ -8364,7 +8444,37 @@ return apply_on;&lt;/CODE&gt;%0D
 			<_properties type="p"><IPropertyContainer type="e">
 				<Subjects type="c">
 					<IRPYRawContainer type="e">
-						<size type="a">2</size>
+						<size type="a">3</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Format</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Class</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">Font.FontColor</_Name>
+													<_Value type="a">0,0,0</_Value>
+													<_Type type="a">Color</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Font.Underline</_Name>
+													<_Value type="a">0</_Value>
+													<_Type type="a">Int</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
 						<IPropertySubject type="e">
 							<_Name type="a">General</_Name>
 							<Metaclasses type="c">
@@ -10504,8 +10614,8 @@ return apply_on;&lt;/CODE&gt;%0D
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hfilename type="a">.\Software_Detailed_Design_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::SDD_Class</_hsubsystem>
-					<_hname type="a">CD_SDD_Class</_hname>
+					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::Internal_Design_Class</_hsubsystem>
+					<_hname type="a">CD_Internal_Design_Class</_hname>
 					<_hid type="a">GUID 02fb6493-0a09-449d-b325-b2f9b243658c</_hid>
 				</IHandle>
 			</_theMainDiagram>
@@ -10891,8 +11001,8 @@ return apply_on;&lt;/CODE&gt;%0D
 				<IClassifierHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Software_Detailed_Design_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::SDD_Class</_hsubsystem>
-					<_hname type="a">SDD_Class</_hname>
+					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::Internal_Design_Class</_hsubsystem>
+					<_hname type="a">Internal_Design_Class</_hname>
 					<_hid type="a">GUID f7f41a85-c280-4330-b75f-b7abfd9d0b05</_hid>
 				</IClassifierHandle>
 			</_otherClass>
@@ -11113,6 +11223,121 @@ return apply_on;&lt;/CODE&gt;%0D
 			<_inheritanceType type="a">iPublic</_inheritanceType>
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 35b55716-2abb-43c0-9710-9054c17be25a</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">AssociatedImageFile</_Name>
+													<_Value type="a">.\icons\black_gears.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Configuration_Parameter</_name>
+			<_modifiedTimeWeak type="a">9.17.2020::6:54:34</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\Physical_Software_Architecture_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Physical_Software_Architecture_Metamodel::Metamodel_Description::Component_Type</_hsubsystem>
+					<_hname type="a">CD_Component_Type</_hname>
+					<_hid type="a">GUID 258e9f0c-839a-43d1-9628-910380390ecd</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">9.17.2020::6:54:34</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">9.17.2020::6:54:34</weakCGTime>
+			<strongCGTime type="a">9.17.2020::6:54:34</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 329c8ebe-caeb-4a2e-a288-43cdb64b8725</value>
+				<value>GUID 802da37e-53f5-490d-b94c-f100ecb37dce</value>
+				<value>GUID c00a8f18-d833-4538-9e36-6aa433bca27d</value>
+			</AggregatesList>
+		</IClass>
+		<IAttribute type="e">
+			<_id type="a">GUID 329c8ebe-caeb-4a2e-a288-43cdb64b8725</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Default_Value</_name>
+			<_modifiedTimeWeak type="a">9.3.2020::15:19:18</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.3.2020::15:19:18</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hid type="a">GUID e42f3d42-de5c-4bed-9f6c-fae9bef9cb6a</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_protection type="a">iPublic</_protection>
+			<_static type="a">0</_static>
+			<_isReferenceAttr type="a">0</_isReferenceAttr>
+			<_isConstant type="a">0</_isConstant>
+		</IAttribute>
+		<IGeneralization type="e">
+			<_id type="a">GUID 802da37e-53f5-490d-b94c-f100ecb37dce</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IAssociationEnd type="e">
+			<_id type="a">GUID c00a8f18-d833-4538-9e36-6aa433bca27d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Base_Data_Type_Ref</_name>
+			<_modifiedTimeWeak type="a">9.3.2020::15:17:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.3.2020::15:17:56</_modifiedTime>
+			<_multiplicity type="a">1</_multiplicity>
+			<_otherClass type="r">
+				<IClassifierHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\Software_Data_Type_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Software_Data_Type_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hname type="a">Data_Type</_hname>
+					<_hid type="a">GUID 55241a3a-b274-454e-8440-39c0d234a140</_hid>
+				</IClassifierHandle>
+			</_otherClass>
+			<_inverse type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_inverse>
+			<_linkType type="a">Assoc</_linkType>
+			<_navigability type="a">Navigable</_navigability>
+		</IAssociationEnd>
 		<IType type="e">
 			<_id type="a">GUID e42f3d42-de5c-4bed-9f6c-fae9bef9cb6a</_id>
 			<_myState type="a">8192</_myState>
