@@ -3,7 +3,7 @@ Imports System.Globalization
 
 Public MustInherit Class Data_Type
 
-    Inherits Classifier_Software_Element
+    Inherits SMM_Classifier
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -32,11 +32,11 @@ Public MustInherit Class Data_Type
     ' Methods for metrics computation
     Public MustOverride Function Get_Complexity() As Double
 
-    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Dependent_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Dependent_Elements) Then
-            Me.Dependent_Elements = New List(Of Classifier_Software_Element)
+            Me.Dependent_Elements = New List(Of SMM_Classifier)
 
-            Dim needed_elements As List(Of Classifier_Software_Element)
+            Dim needed_elements As List(Of SMM_Classifier)
 
             Dim swct_list As List(Of Component_Type)
             swct_list = Me.Container.Get_All_Component_Types
@@ -164,9 +164,9 @@ Public MustInherit Class Data_Type_Base_Typed
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
-    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
-            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            Me.Needed_Elements = New List(Of SMM_Classifier)
             Dim data_type As Data_Type
             data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
             If Not data_type.Is_Basic_Type Then
@@ -191,7 +191,7 @@ Public MustInherit Class Basic_Type
         Return 1
     End Function
 
-    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         Return Nothing
     End Function
 
@@ -382,7 +382,7 @@ Public Class Enumerated_Data_Type
         Return 1.5
     End Function
 
-    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         Return Nothing
     End Function
 
@@ -759,9 +759,9 @@ Public Class Structured_Data_Type
         Return Me.Complexity
     End Function
 
-    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
-            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            Me.Needed_Elements = New List(Of SMM_Classifier)
             If Not IsNothing(Me.Fields) Then
                 For Each fd In Me.Fields
                     Dim data_type As Data_Type

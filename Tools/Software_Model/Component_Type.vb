@@ -1,12 +1,14 @@
 ﻿Imports rhapsody2
-Imports System.Guid
+Imports System.Xml.Serialization
+
 
 Public Class Component_Type
 
-    Inherits Software_Class
+    Inherits SMM_Class
 
     Public Component_Operations As List(Of Component_Operation)
-    Public Component_Parameters As List(Of Component_Parameter)
+    <XmlArrayItem("Configuration")>
+    Public Configurations As List(Of Configuration_Parameter)
     Public Provider_Ports As List(Of Provider_Port)
     Public Requirer_Ports As List(Of Requirer_Port)
 
@@ -23,8 +25,8 @@ Public Class Component_Type
             If Not IsNothing(Me.Component_Operations) Then
                 children_list.AddRange(Me.Component_Operations)
             End If
-            If Not IsNothing(Me.Component_Parameters) Then
-                children_list.AddRange(Me.Component_Parameters)
+            If Not IsNothing(Me.Configurations) Then
+                children_list.AddRange(Me.Configurations)
             End If
             Me.Children = children_list
         End If
@@ -67,17 +69,17 @@ Public Class Component_Type
             Me.Component_Operations = Nothing
         End If
 
-        Me.Component_Parameters = New List(Of Component_Parameter)
+        Me.Configurations = New List(Of Configuration_Parameter)
          Dim rpy_attribute As RPAttribute
         For Each rpy_attribute In CType(Me.Rpy_Element, RPClass).attributes
-            If Is_Component_Parameter(CType(rpy_attribute, RPModelElement)) Then
-                Dim conf As Component_Parameter = New Component_Parameter
-                Me.Component_Parameters.Add(conf)
+            If Is_Configuration_Parameter(CType(rpy_attribute, RPModelElement)) Then
+                Dim conf As Configuration_Parameter = New Configuration_Parameter
+                Me.Configurations.Add(conf)
                 conf.Import_From_Rhapsody_Model(Me, CType(rpy_attribute, RPModelElement))
             End If
         Next
-        If Me.Component_Parameters.Count = 0 Then
-            Me.Component_Parameters = Nothing
+        If Me.Configurations.Count = 0 Then
+            Me.Configurations = Nothing
         End If
 
     End Sub
@@ -106,9 +108,9 @@ Public Class Component_Type
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
-    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
-            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            Me.Needed_Elements = New List(Of SMM_Classifier)
 
             If Not IsNothing(Me.Provider_Ports) Then
                 For Each port In Me.Provider_Ports
@@ -130,8 +132,8 @@ Public Class Component_Type
                 Next
             End If
 
-            If Not IsNothing(Me.Component_Parameters) Then
-                For Each conf In Me.Component_Parameters
+            If Not IsNothing(Me.Configurations) Then
+                For Each conf In Me.Configurations
                     Dim data_type As Data_Type
                     data_type = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
                     If Not data_type.Is_Basic_Type Then
@@ -146,9 +148,9 @@ Public Class Component_Type
         Return Me.Needed_Elements
     End Function
 
-    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Dependent_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Dependent_Elements) Then
-            Me.Dependent_Elements = New List(Of Classifier_Software_Element)
+            Me.Dependent_Elements = New List(Of SMM_Classifier)
             Dim compo_list As List(Of Root_Software_Composition)
             compo_list = Me.Container.Get_All_Compositions
             For Each compo In compo_list
@@ -381,48 +383,12 @@ End Class
 
 Public Class Component_Operation
 
-    Inherits Operation
+    Inherits SMM_Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Component_Operation", "Operation")
     End Sub
-
-End Class
-
-
-Public Class Component_Parameter
-
-    Inherits Attribute_Software_Element
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Protected Overrides Sub Set_Stereotype()
-        Me.Rpy_Element.addStereotype("Component_Parameter", "Attribute")
-    End Sub
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for consistency check model
-    Protected Overrides Sub Check_Own_Consistency(report As Report)
-        MyBase.Check_Own_Consistency(report)
-
-        If Not Me.Base_Data_Type_Ref.Equals(Guid.Empty) Then
-
-            Dim config_data_type As Data_Type
-            config_data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
-            Select Case config_data_type.GetType
-                Case GetType(Structured_Data_Type)
-                    Me.Add_Consistency_Check_Error_Item(report,
-                        "PARAM_1",
-                        "Type shall not be Structured_Data_Type.")
-            End Select
-
-        End If
-
-    End Sub
-
 
 End Class

@@ -23,7 +23,7 @@ Public Class Software_Package
     Public Component_Types As List(Of Component_Type)
     Public Root_Software_Compositions As List(Of Root_Software_Composition)
     Public Component_Designs As List(Of Component_Design)
-    Public Classes As List(Of SDD_Class)
+    Public Classes As List(Of Internal_Design_Class)
 
 
     '----------------------------------------------------------------------------------------------'
@@ -150,7 +150,7 @@ Public Class Software_Package
         Me.Component_Types = New List(Of Component_Type)
         Me.Root_Software_Compositions = New List(Of Root_Software_Composition)
         Me.Component_Designs = New List(Of Component_Design)
-        Me.Classes = New List(Of SDD_Class)
+        Me.Classes = New List(Of Internal_Design_Class)
         Dim rpy_class As RPClass
         For Each rpy_class In CType(Me.Rpy_Element, RPPackage).classes
             Dim rpy_element As RPModelElement = CType(rpy_class, RPModelElement)
@@ -174,8 +174,8 @@ Public Class Software_Package
                 Dim comp_design As New Component_Design
                 Me.Component_Designs.Add(comp_design)
                 comp_design.Import_From_Rhapsody_Model(Me, rpy_element)
-            ElseIf Is_SDD_Class(rpy_element) Then
-                Dim sdd_class As New SDD_Class
+            ElseIf Is_Internal_Design_Class(rpy_element) Then
+                Dim sdd_class As New Internal_Design_Class
                 Me.Classes.Add(sdd_class)
                 sdd_class.Import_From_Rhapsody_Model(Me, rpy_element)
             End If
@@ -293,7 +293,7 @@ Public Class Software_Package
     End Sub
 
     Public Sub Export_Classes_To_Rhapsody(
-        ByRef exported_classes_list As List(Of SDD_Class),
+        ByRef exported_classes_list As List(Of Internal_Design_Class),
         report As Report,
         force As Boolean)
 
@@ -352,10 +352,10 @@ Public Class Top_Level_Package
 
     Private Documentation_Rate As Double = -1
 
-    Private Needed_Elements_List As List(Of Classifier_Software_Element) = Nothing
+    Private Needed_Elements_List As List(Of SMM_Classifier) = Nothing
     Private Needed_Top_Packages_List As List(Of Top_Level_Package) = Nothing
 
-    Private Dependent_Elements_List As List(Of Classifier_Software_Element) = Nothing
+    Private Dependent_Elements_List As List(Of SMM_Classifier) = Nothing
     Private Dependent_Top_Packages_List As List(Of Top_Level_Package) = Nothing
 
     Private Nb_Data_Types As Double = 0
@@ -415,9 +415,9 @@ Public Class Top_Level_Package
     Public Sub Find_Needed_Elements()
 
         Me.Needed_Top_Packages_List = New List(Of Top_Level_Package)
-        Me.Needed_Elements_List = New List(Of Classifier_Software_Element)
+        Me.Needed_Elements_List = New List(Of SMM_Classifier)
 
-        Dim tmp_needed_elements_list = New List(Of Classifier_Software_Element)
+        Dim tmp_needed_elements_list = New List(Of SMM_Classifier)
 
         Dim pkg_list As List(Of Software_Package) = Me.Get_All_Packages
 
@@ -472,9 +472,9 @@ Public Class Top_Level_Package
         ' Find_Needed_Elements shall be called first.
 
         Me.Dependent_Top_Packages_List = New List(Of Top_Level_Package)
-        Me.Dependent_Elements_List = New List(Of Classifier_Software_Element)
+        Me.Dependent_Elements_List = New List(Of SMM_Classifier)
 
-        Dim tmp_dependent_elements_list As New List(Of Classifier_Software_Element)
+        Dim tmp_dependent_elements_list As New List(Of SMM_Classifier)
 
         Dim pkg_list As List(Of Software_Package) = Me.Get_All_Packages
 

@@ -37,6 +37,33 @@ Module Software_Metamodel
 
 
     '----------------------------------------------------------------------------------------------'
+    ' Shared
+    Public Function Is_Operation_Argument(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID a861ee16-1a2a-4570-98f4-5212221dd68d")
+    End Function
+
+    Public Function Is_Configuration_Parameter(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID c7a97ee0-e497-4c57-aaf1-4aefdce59a69")
+    End Function
+
+    Public Function Is_Private_Operation(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID f83e5855-ba0a-49b4-a839-2d1cddc54bd8")
+    End Function
+
+    Public Function Is_Variable_Attribute(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 1ab5b469-21ae-4135-9ec4-5adfcbba6a24")
+    End Function
+
+    Public Function Is_Sent_Event(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 8d3c01aa-c9f5-4df6-91f9-66e5fd75fd0e")
+    End Function
+
+    Public Function Is_Received_Event(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID bbc84abc-ada7-4082-98d4-c7ae4bd0d743")
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
     ' Data_Types
     Public Function Is_Data_Type(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID e059166f-c470-4144-ae7d-af8a82db546f")
@@ -59,10 +86,6 @@ Module Software_Metamodel
 
     Public Function Is_Asynchronous_Operation(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID cb10b39d-04db-49fa-8fc9-89760eff9508")
-    End Function
-
-    Public Function Is_Operation_Argument(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID a861ee16-1a2a-4570-98f4-5212221dd68d")
     End Function
 
 
@@ -95,10 +118,6 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 03e6f281-8593-48b0-a435-0fc8687783f6")
     End Function
 
-    Public Function Is_Component_Parameter(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID c7a97ee0-e497-4c57-aaf1-4aefdce59a69")
-    End Function
-
 
     '----------------------------------------------------------------------------------------------'
     ' Root_Software_Composition
@@ -125,14 +144,6 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 6a9f6eaa-cb72-4f60-98f9-0b0e21de73e0")
     End Function
 
-    Public Function Is_Component_Attribute(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID aa55d7fc-6ca5-467b-bc1c-246b0d2bbb0b")
-    End Function
-
-    Public Function Is_Private_Operation(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID f83e5855-ba0a-49b4-a839-2d1cddc54bd8")
-    End Function
-
     Public Function Is_Operation_Realization(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID d92413ce-606f-470d-927e-c71200c04793")
     End Function
@@ -153,30 +164,18 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 3c9476aa-db4c-4a17-9581-c47651b0862a")
     End Function
 
-    Public Function Is_SDD_Object(ByVal model_element As RPModelElement) As Boolean
+    Public Function Is_Internal_Design_Object(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID 7318acee-3a17-4e05-959f-405011302abe")
     End Function
 
 
     '----------------------------------------------------------------------------------------------'
-    ' SDD_Class
-    Public Function Is_SDD_Class(ByVal model_element As RPModelElement) As Boolean
+    ' Software_Class
+    Public Function Is_Internal_Design_Class(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID 9db356bc-6146-4703-a6f1-f05eb819dbfa")
     End Function
 
-    Public Function Is_Variable_Attribute(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID 1ab5b469-21ae-4135-9ec4-5adfcbba6a24")
-    End Function
-
-    Public Function Is_Configuration_Attribute(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID a1930d35-ed9e-409a-bdd8-ec16bd7df6fb")
-    End Function
-
-    Public Function Is_Private_Method(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID 6db49990-fbcb-4572-8e07-b11631cc19c2")
-    End Function
-
-    Public Function Is_Public_Method(ByVal model_element As RPModelElement) As Boolean
+    Public Function Is_Public_Operation(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID ecaa2fe0-5d3b-4cc3-9862-9159c7ea16d8")
     End Function
 
@@ -184,19 +183,11 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 92c0d054-4885-4324-a809-168f50241810")
     End Function
 
-    Public Function Is_Send_Event(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID 8d3c01aa-c9f5-4df6-91f9-66e5fd75fd0e")
-    End Function
-
-    Public Function Is_Receive_Event(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID bbc84abc-ada7-4082-98d4-c7ae4bd0d743")
-    End Function
-
-    Public Function Is_Realize_Interface(ByVal model_element As RPModelElement) As Boolean
+    Public Function Is_Realized_Interface(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID b8d7b10a-4172-405e-b4b5-868172505c54")
     End Function
 
-    Public Function Is_Need_Interface(ByVal model_element As RPModelElement) As Boolean
+    Public Function Is_Needed_Interface(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID c4d77dea-4713-4da2-b474-305d676af411")
     End Function
 

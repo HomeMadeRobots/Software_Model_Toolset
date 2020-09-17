@@ -1,15 +1,16 @@
 ﻿Imports rhapsody2
+Imports System.Xml.Serialization
+
 
 Public Class Component_Design
 
-    Inherits Software_Class
+    Inherits SDD_Class
 
     Public Component_Type_Ref As Guid = Guid.Empty
-    Public Component_Attributes As List(Of Component_Attribute)
-    Public Private_Operations As List(Of Private_Operation)
     Public Operation_Realizations As List(Of Operation_Realization)
     Public Event_Reception_Realizations As List(Of Event_Reception_Realization)
-    Public Parts As List(Of SDD_Object)
+    <XmlArrayItem("Part")>
+    Public Parts As List(Of Internal_Design_Object)
 
     Private Nb_Component_Type_Ref As Integer
     Private Nb_Invalid_Component_Type_Ref As Integer = 0 ' nb ref on not a Component_Type
@@ -18,13 +19,10 @@ Public Class Component_Design
     ' General methods 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
-            Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.Component_Attributes) Then
-                children_list.AddRange(Me.Component_Attributes)
-            End If
-            If Not IsNothing(Me.Private_Operations) Then
-                children_list.AddRange(Me.Private_Operations)
-            End If
+
+            Dim children_list As List(Of Software_Element)
+            children_list = MyBase.Get_Children
+
             If Not IsNothing(Me.Operation_Realizations) Then
                 children_list.AddRange(Me.Operation_Realizations)
             End If
@@ -43,34 +41,16 @@ Public Class Component_Design
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
-
+        MyBase.Import_Children_From_Rhapsody_Model()
         Dim rpy_elmt As RPModelElement
 
-        Me.Component_Attributes = New List(Of Component_Attribute)
-        Dim rpy_attribute As RPAttribute
-        For Each rpy_attribute In CType(Me.Rpy_Element, RPClass).attributes
-            rpy_elmt = CType(rpy_attribute, RPModelElement)
-            If Is_Component_Attribute(rpy_elmt) Then
-                Dim attr As Component_Attribute = New Component_Attribute
-                Me.Component_Attributes.Add(attr)
-                attr.Import_From_Rhapsody_Model(Me, rpy_elmt)
-            End If
-        Next
-        If Me.Component_Attributes.Count = 0 Then
-            Me.Component_Attributes = Nothing
-        End If
 
-        Me.Private_Operations = New List(Of Private_Operation)
         Me.Operation_Realizations = New List(Of Operation_Realization)
         Me.Event_Reception_Realizations = New List(Of Event_Reception_Realization)
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             rpy_elmt = CType(rpy_ope, RPModelElement)
-            If Is_Private_Operation(rpy_elmt) Then
-                Dim priv_op As Private_Operation = New Private_Operation
-                Me.Private_Operations.Add(priv_op)
-                priv_op.Import_From_Rhapsody_Model(Me, rpy_elmt)
-            ElseIf Is_Operation_Realization(rpy_elmt) Then
+            If Is_Operation_Realization(rpy_elmt) Then
                 Dim op_rea As Operation_Realization = New Operation_Realization
                 Me.Operation_Realizations.Add(op_rea)
                 op_rea.Import_From_Rhapsody_Model(Me, rpy_elmt)
@@ -80,9 +60,6 @@ Public Class Component_Design
                 ev_recep_rea.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
-        If Me.Private_Operations.Count = 0 Then
-            Me.Private_Operations = Nothing
-        End If
         If Me.Operation_Realizations.Count = 0 Then
             Me.Operation_Realizations = Nothing
         End If
@@ -90,12 +67,12 @@ Public Class Component_Design
             Me.Event_Reception_Realizations = Nothing
         End If
 
-        Me.Parts = New List(Of SDD_Object)
+        Me.Parts = New List(Of Internal_Design_Object)
         Dim rpy_instance As RPInstance
         For Each rpy_instance In CType(Me.Rpy_Element, RPClass).relations
             rpy_elmt = CType(rpy_instance, RPModelElement)
-            If Is_SDD_Object(rpy_elmt) Then
-                Dim obj As SDD_Object = New SDD_Object
+            If Is_Internal_Design_Object(rpy_elmt) Then
+                Dim obj As Internal_Design_Object = New Internal_Design_Object
                 Me.Parts.Add(obj)
                 obj.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
@@ -234,52 +211,7 @@ Public Class Component_Design
 
 
     '----------------------------------------------------------------------------------------------'
-    ' Methods for metrics computation (not yet implemented for Component_Design)
-    Public Overrides Function Compute_WMC() As Double
-        Return 0
-    End Function
-
-    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
-        Return Nothing
-    End Function
-
-    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
-        Return Nothing
-    End Function
-
-End Class
-
-
-Public Class Component_Attribute
-
-    Inherits Attribute_Software_Element
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Protected Overrides Sub Set_Stereotype()
-        Me.Rpy_Element.addStereotype("Component_Attribute", "Attribute")
-    End Sub
-
-End Class
-
-
-Public Class Private_Operation
-    Inherits Operation_With_Arguments
-
-    '----------------------------------------------------------------------------------------------'
-    ' General methods 
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for model import from Rhapsody
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Protected Overrides Sub Set_Stereotype()
-        Me.Rpy_Element.addStereotype("Private_Operation", "Operation")
-    End Sub
+    ' Methods for metrics computation
 
 End Class
 
@@ -471,8 +403,8 @@ Public Class Operation_Realization
         End If
 
         If Me.Operation_Ref <> Guid.Empty Then
-            Dim ope As Operation
-            ope = CType(Me.Get_Element_By_Uuid(Me.Operation_Ref), Operation)
+            Dim ope As SMM_Operation
+            ope = CType(Me.Get_Element_By_Uuid(Me.Operation_Ref), SMM_Operation)
             If ope.GetType = GetType(Component_Operation) Then
                 If Me.Provider_Port_Ref <> Guid.Empty Then
                     Me.Add_Consistency_Check_Error_Item(report,
@@ -508,8 +440,8 @@ Public Class Operation_Realization
             Exit Sub
         End If
 
-        Dim referenced_ope As Operation
-        referenced_ope = CType(Me.Get_Element_By_Uuid(Me.Operation_Ref), Operation)
+        Dim referenced_ope As SMM_Operation
+        referenced_ope = CType(Me.Get_Element_By_Uuid(Me.Operation_Ref), SMM_Operation)
 
         Dim reference_allowed As Boolean = False
 
@@ -564,7 +496,7 @@ Public Class Operation_Realization
                     ' referenced Provider_Port.
                     reference_allowed = False
                     Dim cs_if As Client_Server_Interface = CType(sw_if, Client_Server_Interface)
-                    Dim ope As Operation
+                    Dim ope As SMM_Operation
                     For Each ope In cs_if.Operations
                         If ope.UUID = referenced_ope.UUID Then
                             reference_allowed = True
@@ -744,8 +676,8 @@ Public Class Event_Reception_Realization
 End Class
 
 
-Public Class SDD_Object
-    Inherits Software_Object
+Public Class Internal_Design_Object
+    Inherits SMM_Object
 
 
     '----------------------------------------------------------------------------------------------'
@@ -754,19 +686,12 @@ Public Class SDD_Object
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
-    Protected Overrides Function Is_Configuration(rpy_elmt As RPModelElement) As Boolean
-        Return Is_Configuration_Attribute(rpy_elmt)
-    End Function
 
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Get_Rpy_Metaclass() As String
-        Return "Instance"
-    End Function
-
     Protected Overrides Sub Set_Stereotype()
-        Me.Rpy_Element.addStereotype("SDD_Object", "Object")
+        Me.Rpy_Element.addStereotype("Internal_Design_Object", "Object")
     End Sub
 
 

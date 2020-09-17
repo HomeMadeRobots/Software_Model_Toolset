@@ -2,7 +2,7 @@
 
 Public Class Root_Software_Composition
 
-    Inherits Software_Class
+    Inherits SMM_Class
 
     Public Component_Prototypes As List(Of Component_Prototype)
     Public Assembly_Connectors As List(Of Assembly_Connector)
@@ -157,9 +157,9 @@ Public Class Root_Software_Composition
         Return nb_conn
     End Function
 
-    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
-            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            Me.Needed_Elements = New List(Of SMM_Classifier)
             If Not IsNothing(Me.Component_Prototypes) Then
                 For Each swc In Me.Component_Prototypes
                     Dim swct As Component_Type
@@ -173,9 +173,9 @@ Public Class Root_Software_Composition
         Return Me.Needed_Elements
     End Function
 
-    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Dependent_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Dependent_Elements) Then
-            Me.Dependent_Elements = New List(Of Classifier_Software_Element)
+            Me.Dependent_Elements = New List(Of SMM_Classifier)
             ' The list remains empty because nothing can depend on a Root_Software_Composition.
         End If
         Return Me.Dependent_Elements
@@ -190,7 +190,7 @@ End Class
 
 Public Class Component_Prototype
 
-    Inherits Software_Object
+    Inherits SMM_Object
 
     Private Owner As Root_Software_Composition = Nothing
 
@@ -204,17 +204,10 @@ Public Class Component_Prototype
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
-    Protected Overrides Function Is_Configuration(rpy_elmt As RPModelElement) As Boolean
-        Return Is_Component_Parameter(rpy_elmt)
-    End Function
 
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Get_Rpy_Metaclass() As String
-        Return "Instance"
-    End Function
-
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Component_Prototype", "Object")
     End Sub

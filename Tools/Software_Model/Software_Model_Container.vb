@@ -37,7 +37,7 @@ Public Class Software_Model_Container
     Private Interfaces_List As List(Of Software_Interface) = Nothing
     Private Component_Types_List As List(Of Component_Type) = Nothing
     Private Compositions_List As List(Of Root_Software_Composition) = Nothing
-    Private SDD_Classes_List As List(Of SDD_Class) = Nothing
+    Private Software_Classes_List As List(Of Internal_Design_Class) = Nothing
 
     Private Nb_Interfaces_Series As Data_Series
     Private Nb_Component_Types_Series As Data_Series
@@ -133,19 +133,19 @@ Public Class Software_Model_Container
         Return Me.Data_Types_List
     End Function
 
-    Public Function Get_All_SDD_Classes() As List(Of SDD_Class)
-        If IsNothing(Me.SDD_Classes_List) Then
-            Me.SDD_Classes_List = New List(Of SDD_Class)
+    Public Function Get_All_Software_Classes() As List(Of Internal_Design_Class)
+        If IsNothing(Me.Software_Classes_List) Then
+            Me.Software_Classes_List = New List(Of Internal_Design_Class)
             For Each top_pkg In Me.Packages
                 Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
                     If Not IsNothing(pkg.Classes) Then
-                        Me.SDD_Classes_List.AddRange(pkg.Classes)
+                        Me.Software_Classes_List.AddRange(pkg.Classes)
                     End If
                 Next
             Next
         End If
-        Return Me.SDD_Classes_List
+        Return Me.Software_Classes_List
     End Function
 
 
@@ -343,9 +343,9 @@ Public Class Software_Model_Container
         Next
 
         ' Export Class
-        Dim sdd_classes_list As New List(Of SDD_Class)
-        sdd_classes_list = Me.Get_All_SDD_Classes()
-        Dim exported_sdd_classes_list As New List(Of SDD_Class)
+        Dim sdd_classes_list As New List(Of Internal_Design_Class)
+        sdd_classes_list = Me.Get_All_Software_Classes()
+        Dim exported_sdd_classes_list As New List(Of Internal_Design_Class)
         round_counter = 0
         force_export = False
         While sdd_classes_list.Count <> 0

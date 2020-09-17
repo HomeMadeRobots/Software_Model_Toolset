@@ -3,11 +3,11 @@ Imports System.Xml.Serialization
 
 
 Public MustInherit Class Software_Interface
-    Inherits Software_Class
+    Inherits SMM_Class
 
-    Public Overrides Function Find_Dependent_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Dependent_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Dependent_Elements) Then
-            Me.Dependent_Elements = New List(Of Classifier_Software_Element)
+            Me.Dependent_Elements = New List(Of SMM_Classifier)
             Dim swct_list As List(Of Component_Type)
             swct_list = Me.Container.Get_All_Component_Types
             For Each swct In swct_list
@@ -110,9 +110,9 @@ Public Class Client_Server_Interface
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
-    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
-            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            Me.Needed_Elements = New List(Of SMM_Classifier)
             For Each current_ope In Me.Operations
                 If Not IsNothing(current_ope.Arguments) Then
                     For Each arg In current_ope.Arguments
@@ -224,9 +224,9 @@ Public Class Event_Interface
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
-    Public Overrides Function Find_Needed_Elements() As List(Of Classifier_Software_Element)
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
-            Me.Needed_Elements = New List(Of Classifier_Software_Element)
+            Me.Needed_Elements = New List(Of SMM_Classifier)
             If Not IsNothing(Me.Arguments) Then
                 For Each arg In Me.Arguments
                     Dim data_type As Data_Type
