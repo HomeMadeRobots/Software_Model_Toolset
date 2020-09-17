@@ -3,9 +3,13 @@
 Public Class Consistency_Check_Report
     Inherits Report
 
+    Public Sub New(item_list As List(Of String))
+        MyBase.New(item_list)
+    End Sub
+
     Protected Overrides Sub Write_Content(report_file_stream As StreamWriter)
         Dim item_attribute_name_list As List(Of String)
-        item_attribute_name_list = Me.Report_Items_List.First.Get_Item_Attribute_Name_List
+        item_attribute_name_list = Consistency_Check_Report_Item.Get_Item_Attribute_Name_List
         Dim nb_attribute As Integer = item_attribute_name_list.Count
         Dim item As Report_Item
         For Each item In Me.Report_Items_List
@@ -30,9 +34,6 @@ Public Class Consistency_Check_Report_Item
 
     Inherits Report_Item
 
-    Private Shared Attribute_Name_List As List(Of String) = _
-        New List(Of String)({"Path", "Meta-class", "Rule ID", "Criticality", "Message"})
-
     Private Rpy_Element_Path As String
     Private Rule_Id As String
     Private Sw_Element_Type As Type
@@ -50,10 +51,6 @@ Public Class Consistency_Check_Report_Item
         Me.Message = message
 
     End Sub
-
-    Public Overrides Function Get_Item_Attribute_Name_List() As List(Of String)
-        Return Consistency_Check_Report_Item.Attribute_Name_List
-    End Function
 
     Public Overrides Function Get_Item_Attribute_Value(attribute_idx As Integer) As String
         Select Case attribute_idx

@@ -282,7 +282,9 @@ Public Class Software_Model_Container
     End Sub
 
     Public Overloads Sub Export_To_Rhapsody(rpy_sw_mdl As RPProject)
-        Me.Import_Report = New Report
+        Dim attr_list As New List(Of String) From
+            {"Path", "Kind", "Criticality", "Merge status", "Message"}
+        Me.Import_Report = New Report(attr_list)
         Me.Rpy_Element = CType(rpy_sw_mdl, RPModelElement)
 
         ' Export packages
@@ -384,7 +386,9 @@ Public Class Software_Model_Container
     '----------------------------------------------------------------------------------------------'
     ' Methods for model check
     Public Overloads Sub Check_Consistency()
-        Me.Consistency_Report = New Consistency_Check_Report
+        Dim attr_list As New List(Of String) From
+        {"Path", "Meta-class", "Rule ID", "Criticality", "Message"}
+        Me.Consistency_Report = New Consistency_Check_Report(attr_list)
         Me.Check_Consistency(Me.Consistency_Report)
     End Sub
 

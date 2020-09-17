@@ -6,17 +6,23 @@ Public Class Report
     Protected Report_Items_List As List(Of Report_Item) = New List(Of Report_Item)
     Protected Nb_Error As Integer = 0
 
+    Public Sub New(item_list As List(Of String))
+        Report_Item.Set_Item_Attribute_Name_List(item_list)
+    End Sub
+
     Public Overridable Sub Generate_Csv_Report(report_file_stream As StreamWriter)
+        Me.Write_Header(report_file_stream)
         If Me.Report_Items_List.Count > 0 Then
-            Me.Write_Header(report_file_stream)
             Me.Write_Content(report_file_stream)
+        Else
+            report_file_stream.Write("No item to report.;")
         End If
     End Sub
 
     Protected Sub Write_Header(report_file_stream As StreamWriter)
         Dim attribute_name As String
         Dim item_attribute_name_list As List(Of String)
-        item_attribute_name_list = Me.Report_Items_List.First.Get_Item_Attribute_Name_List
+        item_attribute_name_list = Report_Item.Get_Item_Attribute_Name_List
         For Each attribute_name In item_attribute_name_list
             report_file_stream.Write(attribute_name & ";")
         Next
@@ -25,7 +31,7 @@ Public Class Report
 
     Protected Overridable Sub Write_Content(report_file_stream As StreamWriter)
         Dim item_attribute_name_list As List(Of String)
-        item_attribute_name_list = Me.Report_Items_List.First.Get_Item_Attribute_Name_List
+        item_attribute_name_list = Report_Item.Get_Item_Attribute_Name_List
         Dim nb_attribute As Integer = item_attribute_name_list.Count
         Dim item As Report_Item
         For Each item In Me.Report_Items_List
@@ -53,6 +59,7 @@ End Class
 
 Public MustInherit Class Report_Item
 
+    Protected Shared Attribute_Name_List As List(Of String)
     Protected Criticality As Item_Criticality = Item_Criticality.CRITICALITY_INFORMATION
     Protected Message As String
     Protected Analysis As String
@@ -63,8 +70,13 @@ Public MustInherit Class Report_Item
         CRITICALITY_INFORMATION
     End Enum
 
+    Public Shared Function Get_Item_Attribute_Name_List() As List(Of String)
+        Return Attribute_Name_List
+    End Function
 
-    Public MustOverride Function Get_Item_Attribute_Name_List() As List(Of String)
+    Public Shared Sub Set_Item_Attribute_Name_List(item_list As List(Of String))
+        Report_Item.Attribute_Name_List = item_list
+    End Sub
 
     Public MustOverride Function Get_Item_Attribute_Value(attribute_idx As Integer) As String
 

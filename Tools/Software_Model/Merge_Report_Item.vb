@@ -10,9 +10,6 @@ Public Class Merge_Report_Item
         MISSING_REFERENCED_ELEMENTS
     End Enum
 
-    Private Shared Attribute_Name_List As List(Of String) = _
-        New List(Of String)({"Path", "Kind", "Criticality", "Merge status", "Message"})
-
     Private Rpy_Element_Path As String
     Private Merge_Status As E_Merge_Status
     Private Sw_Element_Type As Type
@@ -30,10 +27,6 @@ Public Class Merge_Report_Item
         Me.Message = message
 
     End Sub
-
-    Public Overrides Function Get_Item_Attribute_Name_List() As List(Of String)
-        Return Merge_Report_Item.Attribute_Name_List
-    End Function
 
     Public Overrides Function Get_Item_Attribute_Value(attribute_idx As Integer) As String
         Select Case attribute_idx
