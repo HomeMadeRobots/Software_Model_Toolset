@@ -657,3 +657,31 @@ Public MustInherit Class SMM_Object
     ' Methods for metrics computation
 
 End Class
+
+
+Public MustInherit Class Software_Connector
+    Inherits Software_Element
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Link"
+    End Function
+
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Connector_Prototype", "Link")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+
+End Class

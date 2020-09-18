@@ -62,6 +62,10 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID bbc84abc-ada7-4082-98d4-c7ae4bd0d743")
     End Function
 
+    Public Function Is_Connector_Prototype(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 99befb32-f0c3-413e-9f84-63c4ee447063")
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Data_Types
@@ -127,10 +131,6 @@ Module Software_Metamodel
 
     Public Function Is_Component_Prototype(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID 9ab1904a-0588-4eac-9f37-c6224bbd3de7")
-    End Function
-
-    Public Function Is_Assembly_Connector(ByVal model_element As RPModelElement) As Boolean
-        Return Is_Element_Of_Sterotype(model_element, "GUID 99befb32-f0c3-413e-9f84-63c4ee447063")
     End Function
 
 

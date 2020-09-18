@@ -11,6 +11,8 @@ Public Class Component_Design
     Public Event_Reception_Realizations As List(Of Event_Reception_Realization)
     <XmlArrayItem("Part")>
     Public Parts As List(Of Internal_Design_Object)
+    Public Object_Connectors As List(Of Object_Connector)
+    Public Delegation_Connectors As List(Of Object_Delegation_Connector)
 
     Private Nb_Component_Type_Ref As Integer
     Private Nb_Invalid_Component_Type_Ref As Integer = 0 ' nb ref on not a Component_Type
@@ -32,6 +34,13 @@ Public Class Component_Design
             If Not IsNothing(Me.Parts) Then
                 children_list.AddRange(Me.Parts)
             End If
+            If Not IsNothing(Me.Object_Connectors) Then
+                children_list.AddRange(Me.Object_Connectors)
+            End If
+            If Not IsNothing(Me.Delegation_Connectors) Then
+                children_list.AddRange(Me.Delegation_Connectors)
+            End If
+
             Me.Children = children_list
         End If
         Return Me.Children
@@ -79,6 +88,30 @@ Public Class Component_Design
         Next
         If Me.Parts.Count = 0 Then
             Me.Parts = Nothing
+        End If
+
+        Me.Object_Connectors = New List(Of Object_Connector)
+        Me.Delegation_Connectors = New List(Of Object_Delegation_Connector)
+        Dim rpy_link As RPLink
+        For Each rpy_link In CType(Me.Rpy_Element, RPClass).links
+            rpy_elmt = CType(rpy_link, RPModelElement)
+            If Is_Connector_Prototype(CType(rpy_link, RPModelElement)) Then
+                If Object_Connector.Is_Object_Connector(rpy_link) Then
+                    Dim link As New Object_Connector
+                    Me.Object_Connectors.Add(link)
+                    link.Import_From_Rhapsody_Model(Me, rpy_elmt)
+                ElseIf Object_Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
+                    Dim link As New Object_Delegation_Connector
+                    Me.Delegation_Connectors.Add(link)
+                    link.Import_From_Rhapsody_Model(Me, rpy_elmt)
+                End If
+            End If
+        Next
+        If Me.Object_Connectors.Count = 0 Then
+            Me.Object_Connectors = Nothing
+        End If
+        If Me.Delegation_Connectors.Count = 0 Then
+            Me.Delegation_Connectors = Nothing
         End If
 
     End Sub
@@ -692,6 +725,220 @@ Public Class Internal_Design_Object
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Internal_Design_Object", "Object")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+
+End Class
+
+
+Public Class Object_Connector
+    Inherits Software_Connector
+
+    Public Object_From_Ref As Guid
+    Public Object_To_Ref As Guid
+
+    ' Used for model merge
+    Private Rpy_Object_From As RPInstance = Nothing
+    Private Rpy_Object_To As RPInstance = Nothing
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods
+    Public Shared Function Is_Object_Connector(rpy_link As RPLink) As Boolean
+        Dim result As Boolean = False
+        If IsNothing(rpy_link.fromPort) And IsNothing(rpy_link.toPort) _
+            And rpy_link.toElement Is rpy_link.to _
+            And rpy_link.fromElement Is rpy_link.from Then
+            If Is_Internal_Design_Object(CType(rpy_link.to, RPModelElement)) _
+                And Is_Internal_Design_Object(CType(rpy_link.from, RPModelElement)) Then
+                result = True
+            End If
+        End If
+        Return result
+    End Function
+
+    Public Shared Sub Get_Connector_Info(
+        rpy_link As RPLink,
+        ByRef obj_from As RPInstance,
+        ByRef obj_to As RPInstance)
+        obj_to = rpy_link.to
+        obj_from = rpy_link.from
+    End Sub
+
+    Public Shared Function Compute_Automatic_Name(rpy_link As RPLink) As String
+        Dim automatic_name As String
+        automatic_name = rpy_link.fromElement.name & "__" & rpy_link.toElement.name
+        Return automatic_name
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+        Dim rpy_link As RPLink = CType(Me.Rpy_Element, RPLink)
+        Me.Object_To_Ref = Transform_Rpy_GUID_To_Guid(rpy_link.toElement.GUID)
+        Me.Object_From_Ref = Transform_Rpy_GUID_To_Guid(rpy_link.fromElement.GUID)
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_link As RPLink = Nothing
+
+        ' Dirty trick to be able to call Find_In_Rpy_Project before really assigning Rpy_Element
+        Me.Rpy_Element = rpy_parent
+
+        Me.Rpy_Object_To = CType(Me.Find_In_Rpy_Project(Me.Object_To_Ref), RPInstance)
+        Me.Rpy_Object_From = CType(Me.Find_In_Rpy_Project(Me.Object_From_Ref), RPInstance)
+
+        If Not IsNothing(Me.Rpy_Object_To) And
+            Not IsNothing(Me.Rpy_Object_From) Then
+            rpy_link = rpy_parent_class.addLink(
+                Me.Rpy_Object_From,
+                Me.Rpy_Object_To,
+                Nothing,
+                Nothing,
+                Nothing)
+        End If
+        Return CType(rpy_link, RPModelElement)
+    End Function
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        If Not IsNothing(rpy_elmt) Then
+            MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+            rpy_elmt.name = Me.Name
+        Else
+            If IsNothing(Me.Rpy_Object_To) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "'To' Object not found : " & Me.Rpy_Object_To.ToString & ".")
+            End If
+            If IsNothing(Me.Rpy_Object_From) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "'From' Object not found : " & Me.Rpy_Object_From.ToString & ".")
+            End If
+        End If
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+
+End Class
+
+
+Public Class Object_Delegation_Connector
+    Inherits Software_Connector
+
+    Public Object_Ref As Guid
+    Public Port_Ref As Guid
+
+    ' Used for model merge
+    Private Rpy_Object As RPInstance = Nothing
+    Private Rpy_Port As RPPort = Nothing
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods
+    Public Shared Function Is_Delegation_Connector(rpy_link As RPLink) As Boolean
+        Dim result As Boolean = False
+        If IsNothing(rpy_link.fromPort) And IsNothing(rpy_link.toPort) _
+            And rpy_link.toElement Is rpy_link.to _
+            And rpy_link.fromElement Is rpy_link.from Then
+            Dim to_elmt As RPModelElement = CType(rpy_link.to, RPModelElement)
+            Dim from_elmt As RPModelElement = CType(rpy_link.from, RPModelElement)
+            If (Is_Internal_Design_Object(to_elmt) _
+                And (Is_Provider_Port(from_elmt) Or Is_Requirer_Port(from_elmt))) _
+                Or Is_Internal_Design_Object(from_elmt) _
+                And (Is_Provider_Port(to_elmt) Or Is_Requirer_Port(to_elmt)) Then
+                result = True
+            End If
+        End If
+        Return result
+    End Function
+
+    Public Shared Sub Get_Connector_Info(
+        rpy_link As RPLink,
+        ByRef port As RPPort,
+        ByRef obj As RPInstance)
+        obj = rpy_link.to
+        If Is_Internal_Design_Object(CType(obj, RPModelElement)) Then
+            port = CType(rpy_link.from, RPPort)
+        Else
+            obj = rpy_link.from
+            port = CType(rpy_link.to, RPPort)
+        End If
+    End Sub
+
+    Public Shared Function Compute_Automatic_Name(rpy_link As RPLink) As String
+        Dim automatic_name As String
+        Dim rpy_port As RPPort = Nothing
+        Dim rpy_obj As RPInstance = Nothing
+        Object_Delegation_Connector.Get_Connector_Info(rpy_link, rpy_port, rpy_obj)
+        automatic_name = rpy_obj.name & "__" & rpy_port.name
+        Return automatic_name
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+        Dim rpy_link As RPLink = CType(Me.Rpy_Element, RPLink)
+        If Is_Internal_Design_Object(rpy_link.toElement) Then
+            Me.Object_Ref = Transform_Rpy_GUID_To_Guid(rpy_link.toElement.GUID)
+            Me.Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_link.fromElement.GUID)
+        Else
+            Me.Object_Ref = Transform_Rpy_GUID_To_Guid(rpy_link.fromElement.GUID)
+            Me.Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_link.toElement.GUID)
+        End If
+    End Sub
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+        Dim rpy_link As RPLink = Nothing
+
+        ' Dirty trick to be able to call Find_In_Rpy_Project before really assigning Rpy_Element
+        Me.Rpy_Element = rpy_parent
+
+        Me.Rpy_Object = CType(Me.Find_In_Rpy_Project(Me.Object_Ref), RPInstance)
+        Me.Rpy_Port = CType(Me.Find_In_Rpy_Project(Me.Port_Ref), RPPort)
+
+        If Not IsNothing(Me.Rpy_Object) And
+            Not IsNothing(Me.Rpy_Port) Then
+            rpy_link = rpy_parent_class.addLink(
+                Me.Rpy_Object,
+                CType(Me.Rpy_Port, RPInstance),
+                Nothing,
+                Nothing,
+                Nothing)
+        End If
+        Return CType(rpy_link, RPModelElement)
+    End Function
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        If Not IsNothing(rpy_elmt) Then
+            MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+            rpy_elmt.name = Me.Name
+        Else
+            If IsNothing(Me.Rpy_Object) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Object not found : " & Me.Rpy_Object.ToString & ".")
+            End If
+            If IsNothing(Me.Rpy_Port) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Port not found : " & Me.Rpy_Port.ToString & ".")
+            End If
+        End If
     End Sub
 
 

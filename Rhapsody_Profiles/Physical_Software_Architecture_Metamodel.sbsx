@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::7:7:21</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.18.2020::6:47:51</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.17.2020::7:7:21</_modifiedTime>
+			<_modifiedTime type="a">9.18.2020::6:47:51</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">9.17.2020::7:7:21</weakCGTime>
+			<weakCGTime type="a">9.18.2020::6:47:51</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -65,10 +65,10 @@
 			<_id type="a">GUID 2fa76a8a-3a37-423d-82f8-cb10371b657b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::7:7:21</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::7:7:21</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.18.2020::6:47:51</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.18.2020::6:47:51</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">9.17.2020::7:7:21</weakCGTime>
+			<weakCGTime type="a">9.18.2020::6:47:51</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:29</strongCGTime>
 			<_defaultComposite type="s">GUID a7891663-41f3-4945-8795-f855279ddba9</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1456,10 +1456,10 @@ Has a contract : the dependent interface.</_text>
 			<_id type="a">GUID 7022ddb7-be5e-48a4-b7ad-4fbaf99a811c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Composition</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::7:6:28</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::7:6:28</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.18.2020::6:47:51</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.18.2020::6:47:51</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">9.17.2020::7:6:28</weakCGTime>
+			<weakCGTime type="a">9.18.2020::6:47:51</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 807477f8-c48c-4107-a18f-cb25af308f07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1467,7 +1467,6 @@ Has a contract : the dependent interface.</_text>
 			<AggregatesList type="e">
 				<value>GUID a5bc8b23-148b-45cb-b210-3def4059fcd0</value>
 				<value>GUID 9ab1904a-0588-4eac-9f37-c6224bbd3de7</value>
-				<value>GUID 99befb32-f0c3-413e-9f84-63c4ee447063</value>
 				<value>GUID 807477f8-c48c-4107-a18f-cb25af308f07</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -1490,7 +1489,7 @@ Has a contract : the dependent interface.</_text>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Component_Prototype, Assembly_Connector</_Value>
+													<_Value type="a">Component_Prototype, Connector_Prototype</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1531,12 +1530,12 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Root_Software_Composition</_name>
-			<_modifiedTimeWeak type="a">1.27.2020::13:4:46</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.18.2020::6:47:51</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model the whole software embedded on an ECU.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">1.27.2020::13:4:46</_modifiedTime>
+			<_modifiedTime type="a">9.18.2020::6:47:51</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1733,116 +1732,6 @@ Has a contract : the dependent interface.</_text>
 			<_inheritanceType type="a">iPublic</_inheritanceType>
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
-		<IStereotype type="e">
-			<_id type="a">GUID 99befb32-f0c3-413e-9f84-63c4ee447063</_id>
-			<_myState type="a">8192</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">2</size>
-						<IPropertySubject type="e">
-							<_Name type="a">Model</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Stereotype</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">3</size>
-												<IProperty type="e">
-													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">./icons/connector.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">./icons/connector.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">DrawingToolIcon</_Name>
-													<_Value type="a">./icons/connector.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-						<IPropertySubject type="e">
-							<_Name type="a">ObjectModelGe</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Link</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">1</size>
-												<IProperty type="e">
-													<_Name type="a">ShowName</_Name>
-													<_Value type="a">None</_Value>
-													<_Type type="a">Enum</_Type>
-													<_ExtraTypeInfo type="a">Name,Label,None</_ExtraTypeInfo>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">Assembly_Connector</_name>
-			<_modifiedTimeWeak type="a">1.27.2020::13:4:8</_modifiedTimeWeak>
-			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model links betwen :%0D
-    - connection points (ports) of instances of software units;%0D
-    - a signal and a connection point (port) of an instance of a software unit;%0D
-    - a connection point of an instance of a software unit and a connection point of its composite software unit.%0D
-</_text>
-			</IDescription>
-			</_description>
-			<_modifiedTime type="a">1.27.2020::13:4:8</_modifiedTime>
-			<_m2Classes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					<value>Link</value>
-				</IRPYRawContainer>
-			</_m2Classes>
-			<_newTerm type="a">1</_newTerm>
-			<AggregatesList type="e">
-				<value>GUID 833b7524-1850-4799-9a26-b78e84b92eaf</value>
-			</AggregatesList>
-		</IStereotype>
-		<IGeneralization type="e">
-			<_id type="a">GUID 833b7524-1850-4799-9a26-b78e84b92eaf</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<_dependsOn type="r">
-				<INObjectHandle type="e">
-					<_hm2Class type="a">IStereotype</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
-					<_hname type="a">Model_Element</_hname>
-					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
-				</INObjectHandle>
-			</_dependsOn>
-			<_inheritanceType type="a">iPublic</_inheritanceType>
-			<_isVirtual type="a">0</_isVirtual>
-		</IGeneralization>
 		<IClass type="e">
 			<_id type="a">GUID 807477f8-c48c-4107-a18f-cb25af308f07</_id>
 			<_myState type="a">40960</_myState>
@@ -1861,10 +1750,10 @@ Has a contract : the dependent interface.</_text>
 			<_id type="a">GUID 7bc8635c-da90-40ea-a26e-76ec5b649cf9</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::7:7:21</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::7:7:21</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.18.2020::6:48:3</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.18.2020::6:48:3</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.17.2020::7:7:21</weakCGTime>
+			<weakCGTime type="a">9.18.2020::6:48:3</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 4456ecac-9846-4117-95af-8d8693ef17fd</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1918,7 +1807,7 @@ Has a contract : the dependent interface.</_text>
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Requirer_Port, Provider_Port, Component_Operation, Configuration_Parameter, Generalization, Root_Software_Composition, Component_Prototype, Assembly_Connector</_Value>
+													<_Value type="a">Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Requirer_Port, Provider_Port, Component_Operation, Configuration_Parameter, Generalization, Root_Software_Composition, Component_Prototype, Connector_Prototype</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -2013,7 +1902,7 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">PSWA_Diagram</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::7:7:21</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.18.2020::6:48:3</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_textRTF type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 {\colortbl ;\red0\green0\blue0;}%0D
@@ -2025,7 +1914,7 @@ Allows to design classic class diagram for SDD.\par%0D
 </_textRTF>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.17.2020::7:7:21</_modifiedTime>
+			<_modifiedTime type="a">9.18.2020::6:48:3</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>

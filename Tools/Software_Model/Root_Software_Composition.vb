@@ -48,7 +48,7 @@ Public Class Root_Software_Composition
 
         Dim rpy_link As RPLink
         For Each rpy_link In CType(Me.Rpy_Element, RPClass).links
-            If Is_Assembly_Connector(CType(rpy_link, RPModelElement)) Then
+            If Is_Connector_Prototype(CType(rpy_link, RPModelElement)) Then
                 Dim connector As New Assembly_Connector
                 Me.Assembly_Connectors.Add(connector)
                 connector.Import_From_Rhapsody_Model(Me, CType(rpy_link, RPModelElement))
@@ -263,7 +263,7 @@ End Class
 
 Public Class Assembly_Connector
 
-    Inherits Software_Element
+    Inherits Software_Connector
 
     Public Provider_Component_Ref As Guid = Nothing
     Public Provider_Port_Ref As Guid = Nothing
@@ -278,6 +278,16 @@ Public Class Assembly_Connector
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
+    Public Shared Function Is_Assembly_Connector(rpy_link As RPLink) As Boolean
+        If Not IsNothing(rpy_link.fromPort) And Not IsNothing(rpy_link.toPort) _
+           And Not IsNothing(rpy_link.from) And Not IsNothing(rpy_link.to) _
+           And Not IsNothing(rpy_link.fromElement) And Not IsNothing(rpy_link.toElement) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
     Public Shared Function Compute_Automatic_Name(rpy_link As RPLink) As String
         Dim automatic_name As String
         Dim provider_port As RPPort = Nothing
@@ -290,8 +300,8 @@ Public Class Assembly_Connector
             requirer_port,
             provider_component,
             requirer_component)
-        automatic_name = requirer_component.name & "_" & requirer_port.name & "_" &
-                            provider_component.name & "_" & provider_port.name
+        automatic_name = requirer_component.name & "__" & requirer_port.name & "__" &
+                            provider_component.name & "__" & provider_port.name
         Return automatic_name
     End Function
 
@@ -353,10 +363,6 @@ Public Class Assembly_Connector
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Protected Overrides Function Get_Rpy_Metaclass() As String
-        Return "Link"
-    End Function
-
     Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
         Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
         Dim rpy_link As RPLink = Nothing
@@ -382,10 +388,6 @@ Public Class Assembly_Connector
         End If
         Return CType(rpy_link, RPModelElement)
     End Function
-
-    Protected Overrides Sub Set_Stereotype()
-        Me.Rpy_Element.addStereotype("Assembly_Connector", "Link")
-    End Sub
 
     Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
         If Not IsNothing(rpy_elmt) Then

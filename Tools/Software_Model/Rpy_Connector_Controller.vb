@@ -13,32 +13,51 @@ Public Class Rpy_Connector_Controller
 
         ' Get selected element and check that it is a Root_Software_Composition
         Dim selected_element As RPModelElement = Rhapsody_App.getSelectedElement
-        Dim rpy_composition As RPClass = Nothing
-        If Is_Root_Software_Composition(selected_element) Then
-            rpy_composition = CType(selected_element, RPClass)
+        Dim rpy_class As RPClass = Nothing
+        If Is_Root_Software_Composition(selected_element) _
+            Or Is_Component_Design(selected_element) Then
+            rpy_class = CType(selected_element, RPClass)
         End If
 
-        If IsNothing(rpy_composition) Then
-            Me.Write_Csl_Line("Error : a Root_Software_Composition shall be selected.")
+        If IsNothing(rpy_class) Then
+            Me.Write_Csl_Line("Error : a Root_Software_Composition " &
+                "or a Component_Design shall be selected.")
             Me.Write_Csl_Line("End connectors renaming.")
             Exit Sub
         End If
 
         ' Check all Assembly_Connector within the composition
         Dim rpy_link As RPLink
-        For Each rpy_link In rpy_composition.links
-            If Is_Assembly_Connector(CType(rpy_link, RPModelElement)) Then
-                Dim connector_new_name As String
-                connector_new_name = Assembly_Connector.Compute_Automatic_Name(rpy_link)
-                If connector_new_name.Length <= 128 Then
-                    If rpy_link.name <> connector_new_name Then
-                        Me.Write_Csl_Line("Rename " & rpy_link.name & " as " & connector_new_name)
-                        rpy_link.name = connector_new_name
+        Dim link_new_name As String
+        For Each rpy_link In rpy_class.links
+            If Is_Connector_Prototype(CType(rpy_link, RPModelElement)) Then
+                If Assembly_Connector.Is_Assembly_Connector(rpy_link) Then
+                    link_new_name = Assembly_Connector.Compute_Automatic_Name(rpy_link)
+                    If link_new_name.Length <= 128 Then
+                        If rpy_link.name <> link_new_name Then
+                            Me.Write_Csl_Line("Rename " & rpy_link.name &
+                                " as " & link_new_name)
+                            rpy_link.name = link_new_name
+                        End If
+                    Else
+                        Me.Write_Csl_Line(
+                            "Warning : automatic name is too long (>128 characters) for " &
+                            rpy_link.name)
                     End If
-                Else
-                    Me.Write_Csl_Line(
-                        "Warning : automatic name is too long (>128 characters) for " &
-                        rpy_link.name)
+                ElseIf Object_Connector.Is_Object_Connector(rpy_link) Then
+                    link_new_name = Object_Connector.Compute_Automatic_Name(rpy_link)
+                    If rpy_link.name <> link_new_name Then
+                        Me.Write_Csl_Line("Rename " & rpy_link.name &
+                            " as " & link_new_name)
+                        rpy_link.name = link_new_name
+                    End If
+                ElseIf Object_Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
+                    link_new_name = Object_Delegation_Connector.Compute_Automatic_Name(rpy_link)
+                    If rpy_link.name <> link_new_name Then
+                        Me.Write_Csl_Line("Rename " & rpy_link.name &
+                            " as " & link_new_name)
+                        rpy_link.name = link_new_name
+                    End If
                 End If
             End If
         Next
@@ -53,14 +72,26 @@ Public Class Rpy_Connector_Controller
     Public Sub Navigate_To_Connector_Source()
         Dim selected_element As RPModelElement = Me.Rhapsody_App.getSelectedElement
         Dim rpy_link As RPLink = Nothing
-        If Is_Assembly_Connector(selected_element) Then
+        If Is_Connector_Prototype(selected_element) Then
             rpy_link = CType(selected_element, RPLink)
-            Dim p_port As RPPort = Nothing
-            Dim r_port As RPPort = Nothing
-            Dim p_swc As RPInstance = Nothing
-            Dim r_swc As RPInstance = Nothing
-            Assembly_Connector.Get_Connector_Info(rpy_link, p_port, r_port, p_swc, r_swc)
-            p_port.locateInBrowser()
+            If Assembly_Connector.Is_Assembly_Connector(rpy_link) Then
+                Dim p_port As RPPort = Nothing
+                Dim r_port As RPPort = Nothing
+                Dim p_swc As RPInstance = Nothing
+                Dim r_swc As RPInstance = Nothing
+                Assembly_Connector.Get_Connector_Info(rpy_link, p_port, r_port, p_swc, r_swc)
+                p_port.locateInBrowser()
+            ElseIf Object_Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
+                Dim port As RPPort = Nothing
+                Dim obj As RPInstance = Nothing
+                Object_Delegation_Connector.Get_Connector_Info(rpy_link, port, obj)
+                obj.locateInBrowser()
+            ElseIf Object_Connector.Is_Object_Connector(rpy_link) Then
+                Dim obj_to As RPInstance = Nothing
+                Dim obj_from As RPInstance = Nothing
+                Object_Connector.Get_Connector_Info(rpy_link, obj_from, obj_to)
+                obj_from.locateInBrowser()
+            End If
         End If
     End Sub
 
@@ -68,14 +99,26 @@ Public Class Rpy_Connector_Controller
     Public Sub Navigate_To_Connector_Destination()
         Dim selected_element As RPModelElement = Me.Rhapsody_App.getSelectedElement
         Dim rpy_link As RPLink = Nothing
-        If Is_Assembly_Connector(selected_element) Then
+        If Is_Connector_Prototype(selected_element) Then
             rpy_link = CType(selected_element, RPLink)
-            Dim p_port As RPPort = Nothing
-            Dim r_port As RPPort = Nothing
-            Dim p_swc As RPInstance = Nothing
-            Dim r_swc As RPInstance = Nothing
-            Assembly_Connector.Get_Connector_Info(rpy_link, p_port, r_port, p_swc, r_swc)
-            r_port.locateInBrowser()
+            If Assembly_Connector.Is_Assembly_Connector(rpy_link) Then
+                Dim p_port As RPPort = Nothing
+                Dim r_port As RPPort = Nothing
+                Dim p_swc As RPInstance = Nothing
+                Dim r_swc As RPInstance = Nothing
+                Assembly_Connector.Get_Connector_Info(rpy_link, p_port, r_port, p_swc, r_swc)
+                r_port.locateInBrowser()
+            ElseIf Object_Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
+                Dim port As RPPort = Nothing
+                Dim obj As RPInstance = Nothing
+                Object_Delegation_Connector.Get_Connector_Info(rpy_link, port, obj)
+                port.locateInBrowser()
+            ElseIf Object_Connector.Is_Object_Connector(rpy_link) Then
+                Dim obj_to As RPInstance = Nothing
+                Dim obj_from As RPInstance = Nothing
+                Object_Connector.Get_Connector_Info(rpy_link, obj_from, obj_to)
+                obj_from.locateInBrowser()
+            End If
         End If
     End Sub
 

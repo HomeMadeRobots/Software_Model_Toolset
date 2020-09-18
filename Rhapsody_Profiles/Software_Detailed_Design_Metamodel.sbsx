@@ -11,14 +11,14 @@
 			<_id type="a">GUID e6dd7000-5327-4839-ad4b-6da8f8351563</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Detailed_Design_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::18:49:41</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.18.2020::6:48:39</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Component_Design_Metamodel profile defines meta-classes allowing to model any design pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.17.2020::18:49:41</_modifiedTime>
+			<_modifiedTime type="a">9.18.2020::6:48:39</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">9.17.2020::18:49:41</weakCGTime>
+			<weakCGTime type="a">9.18.2020::6:48:39</weakCGTime>
 			<strongCGTime type="a">10.25.2019::13:35:24</strongCGTime>
 			<_defaultComposite type="s">GUID f61c1e09-4b38-4294-ba41-f87637329589</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 9c4f06ad-7647-4018-8692-8c6ae32b4d1b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::18:49:41</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:49:41</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.18.2020::6:48:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.18.2020::6:48:39</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">9.17.2020::18:49:41</weakCGTime>
+			<weakCGTime type="a">9.18.2020::6:48:39</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:18</strongCGTime>
 			<_defaultComposite type="s">GUID 1c3659ae-c124-4218-83bf-cc594f2a034c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -54,10 +54,10 @@
 			<_id type="a">GUID bc1d51e4-d1f5-4009-9809-324aa67b2197</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::18:50:8</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:50:8</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.18.2020::6:48:54</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.18.2020::6:48:54</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">9.17.2020::18:50:8</weakCGTime>
+			<weakCGTime type="a">9.18.2020::6:48:54</weakCGTime>
 			<strongCGTime type="a">1.11.2019::10:44:50</strongCGTime>
 			<_defaultComposite type="s">GUID a7b8aca8-98fe-49b3-9ca3-777d5cfacb2b</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -87,7 +87,7 @@
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, Event_Interface, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Event_Reception, Internal_Design_Object, Link, Sent_Event, Received_Event</_Value>
+													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, Event_Interface, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Event_Reception, Internal_Design_Object, Connector_Prototype, Sent_Event, Received_Event</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -164,8 +164,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Design_Diagram</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::18:50:8</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:50:8</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.18.2020::6:48:54</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.18.2020::6:48:54</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -313,10 +313,10 @@
 			<_id type="a">GUID 12048228-d7eb-47c2-9016-90250609be6c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::18:49:41</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:49:41</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.18.2020::6:48:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.18.2020::6:48:39</_modifiedTime>
 			<_lastID type="a">9</_lastID>
-			<weakCGTime type="a">9.17.2020::18:49:41</weakCGTime>
+			<weakCGTime type="a">9.18.2020::6:48:39</weakCGTime>
 			<strongCGTime type="a">11.30.2018::9:38:46</strongCGTime>
 			<_defaultComposite type="s">GUID 100f872a-a62e-4cfc-a3c8-ef5346429906</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -401,7 +401,7 @@
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Component_Type_Ref, Internal_Design_Object, Link, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Event_Reception, Sent_Event, Received_Event, Statechart</_Value>
+													<_Value type="a">Component_Type_Ref, Internal_Design_Object, Connector_Prototype, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Event_Reception, Sent_Event, Received_Event, Statechart</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -466,8 +466,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::18:49:41</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:49:41</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.18.2020::6:48:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.18.2020::6:48:39</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -9020,6 +9020,7 @@
 			</m_sourceRole>
 			<m_targetRole type="p">
 				<CGIText type="e">
+					<m_str type="a">Inner_Event_Receptions</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
