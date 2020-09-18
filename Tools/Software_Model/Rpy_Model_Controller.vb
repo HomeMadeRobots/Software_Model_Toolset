@@ -27,18 +27,19 @@ Public Class Rpy_Model_Controller
             ' Create string of the date for created xml file
             Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
 
-            ' Get model from Rhapsody
-            Me.Write_Csl("Get model from Rhapsody...")
-            Me.Model = New Software_Model_Container
-            Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
-            Me.Write_Csl_Line(" done.")
-
             ' Select xml file directory
             Dim output_directory As String
             output_directory = Me.Select_Directory("xml file")
             If output_directory = "" Then
                 Me.Write_Csl_Line(" no directory selected.")
             Else
+                ' Get model from Rhapsody
+                Me.Write_Csl("Get model from Rhapsody...")
+                Me.Model = New Software_Model_Container
+                Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
+                Me.Write_Csl_Line(" done.")
+
+
                 ' Open XML file
                 Me.Write_Csl("Create xml file...")
                 Dim file_name As String = rpy_sw_mdl.name & "_" & date_str & ".xml"
