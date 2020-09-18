@@ -11,14 +11,14 @@
 			<_id type="a">GUID e6dd7000-5327-4839-ad4b-6da8f8351563</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Detailed_Design_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:5:12</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.17.2020::18:49:41</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Component_Design_Metamodel profile defines meta-classes allowing to model any design pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.17.2020::11:5:12</_modifiedTime>
+			<_modifiedTime type="a">9.17.2020::18:49:41</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">9.17.2020::11:5:12</weakCGTime>
+			<weakCGTime type="a">9.17.2020::18:49:41</weakCGTime>
 			<strongCGTime type="a">10.25.2019::13:35:24</strongCGTime>
 			<_defaultComposite type="s">GUID f61c1e09-4b38-4294-ba41-f87637329589</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 9c4f06ad-7647-4018-8692-8c6ae32b4d1b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:5:12</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:5:12</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:49:41</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:49:41</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">9.17.2020::11:5:12</weakCGTime>
+			<weakCGTime type="a">9.17.2020::18:49:41</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:18</strongCGTime>
 			<_defaultComposite type="s">GUID 1c3659ae-c124-4218-83bf-cc594f2a034c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -54,10 +54,10 @@
 			<_id type="a">GUID bc1d51e4-d1f5-4009-9809-324aa67b2197</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:7:15</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:7:15</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:50:8</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:50:8</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">9.17.2020::11:7:15</weakCGTime>
+			<weakCGTime type="a">9.17.2020::18:50:8</weakCGTime>
 			<strongCGTime type="a">1.11.2019::10:44:50</strongCGTime>
 			<_defaultComposite type="s">GUID a7b8aca8-98fe-49b3-9ca3-777d5cfacb2b</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -87,7 +87,7 @@
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, Event_Interface, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Inner_Event_Reception, Internal_Design_Object, Link, Sent_Event, Received_Event</_Value>
+													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, Event_Interface, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Event_Reception, Internal_Design_Object, Link, Sent_Event, Received_Event</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -164,8 +164,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Design_Diagram</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:7:15</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:7:15</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:50:8</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:50:8</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -313,10 +313,10 @@
 			<_id type="a">GUID 12048228-d7eb-47c2-9016-90250609be6c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:4:19</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:4:19</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:49:41</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:49:41</_modifiedTime>
 			<_lastID type="a">9</_lastID>
-			<weakCGTime type="a">9.17.2020::11:4:19</weakCGTime>
+			<weakCGTime type="a">9.17.2020::18:49:41</weakCGTime>
 			<strongCGTime type="a">11.30.2018::9:38:46</strongCGTime>
 			<_defaultComposite type="s">GUID 100f872a-a62e-4cfc-a3c8-ef5346429906</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -326,7 +326,6 @@
 				<value>GUID 6a9f6eaa-cb72-4f60-98f9-0b0e21de73e0</value>
 				<value>GUID ce5b0aaa-6e4a-4df3-b351-42c8dad0b421</value>
 				<value>GUID d92413ce-606f-470d-927e-c71200c04793</value>
-				<value>GUID 27f1137d-f0c8-4d94-bddd-134b08190db7</value>
 				<value>GUID 0cbb1e61-9891-48a6-8b90-26f789cc116a</value>
 				<value>GUID a9743e19-c009-49cd-a592-1e4f0eb1be92</value>
 				<value>GUID 3c9476aa-db4c-4a17-9581-c47651b0862a</value>
@@ -402,7 +401,7 @@
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Component_Type_Ref, Internal_Design_Object, Link, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Inner_Event_Reception, Sent_Event, Received_Event, Statechart</_Value>
+													<_Value type="a">Component_Type_Ref, Internal_Design_Object, Link, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Event_Reception, Sent_Event, Received_Event, Statechart</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -467,8 +466,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:4:19</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:4:19</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:49:41</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:49:41</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -719,89 +718,6 @@
 		</IStereotype>
 		<IGeneralization type="e">
 			<_id type="a">GUID 845e8b12-b40b-42b0-8c89-3ab170f1abde</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<_dependsOn type="r">
-				<INObjectHandle type="e">
-					<_hm2Class type="a">IStereotype</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
-					<_hname type="a">Operation_With_Arguments</_hname>
-					<_hid type="a">GUID 5b11666f-afe9-4354-b1b6-31cfebc83170</_hid>
-				</INObjectHandle>
-			</_dependsOn>
-			<_inheritanceType type="a">iPublic</_inheritanceType>
-			<_isVirtual type="a">0</_isVirtual>
-		</IGeneralization>
-		<IStereotype type="e">
-			<_id type="a">GUID 27f1137d-f0c8-4d94-bddd-134b08190db7</_id>
-			<_myState type="a">8192</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">1</size>
-						<IPropertySubject type="e">
-							<_Name type="a">Model</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Stereotype</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">4</size>
-												<IProperty type="e">
-													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">./icons/grey_flash.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">./icons/grey_flash.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">DrawingToolIcon</_Name>
-													<_Value type="a">./icons/grey_flash.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Owners</_Name>
-													<_Value type="a">Component_Design</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">Inner_Event_Reception</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:4:21</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::20:4:21</_modifiedTime>
-			<_m2Classes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					<value>Operation</value>
-				</IRPYRawContainer>
-			</_m2Classes>
-			<_newTerm type="a">1</_newTerm>
-			<AggregatesList type="e">
-				<value>GUID 87410be5-3b50-473c-a0bb-84f0db2edb39</value>
-			</AggregatesList>
-		</IStereotype>
-		<IGeneralization type="e">
-			<_id type="a">GUID 87410be5-3b50-473c-a0bb-84f0db2edb39</_id>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
 			<_dependsOn type="r">
@@ -1165,10 +1081,10 @@
 			<_id type="a">GUID 1b5e9666-ab8f-4637-aefa-a215239054eb</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Internal_Design_Class</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:6:1</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:6:1</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:48:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:48:33</_modifiedTime>
 			<_lastID type="a">13</_lastID>
-			<weakCGTime type="a">9.17.2020::11:6:1</weakCGTime>
+			<weakCGTime type="a">9.17.2020::18:48:33</weakCGTime>
 			<strongCGTime type="a">9.17.2020::11:3:39</strongCGTime>
 			<_defaultComposite type="s">GUID ca2c5f7b-8ba2-49cb-aa10-9f981db50e62</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1176,7 +1092,6 @@
 			<AggregatesList type="e">
 				<value>GUID 9db356bc-6146-4703-a6f1-f05eb819dbfa</value>
 				<value>GUID ecaa2fe0-5d3b-4cc3-9862-9159c7ea16d8</value>
-				<value>GUID 92c0d054-4885-4324-a809-168f50241810</value>
 				<value>GUID c4d77dea-4713-4da2-b474-305d676af411</value>
 				<value>GUID b8d7b10a-4172-405e-b4b5-868172505c54</value>
 				<value>GUID ca2c5f7b-8ba2-49cb-aa10-9f981db50e62</value>
@@ -1438,89 +1353,6 @@
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
 		<IStereotype type="e">
-			<_id type="a">GUID 92c0d054-4885-4324-a809-168f50241810</_id>
-			<_myState type="a">8192</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">1</size>
-						<IPropertySubject type="e">
-							<_Name type="a">Model</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Stereotype</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">4</size>
-												<IProperty type="e">
-													<_Name type="a">BrowserGroupIcon</_Name>
-													<_Value type="a">./icons/black_flash.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">BrowserIcon</_Name>
-													<_Value type="a">./icons/black_flash.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">DrawingToolIcon</_Name>
-													<_Value type="a">./icons/black_flash.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">Owners</_Name>
-													<_Value type="a">Internal_Design_Class</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">Event_Reception</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:5:49</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:5:49</_modifiedTime>
-			<_m2Classes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					<value>Operation</value>
-				</IRPYRawContainer>
-			</_m2Classes>
-			<_newTerm type="a">1</_newTerm>
-			<AggregatesList type="e">
-				<value>GUID 1b6436f5-f109-4f13-be64-6ebb41e64a8c</value>
-			</AggregatesList>
-		</IStereotype>
-		<IGeneralization type="e">
-			<_id type="a">GUID 1b6436f5-f109-4f13-be64-6ebb41e64a8c</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<_dependsOn type="r">
-				<INObjectHandle type="e">
-					<_hm2Class type="a">IStereotype</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
-					<_hname type="a">Operation_With_Arguments</_hname>
-					<_hid type="a">GUID 5b11666f-afe9-4354-b1b6-31cfebc83170</_hid>
-				</INObjectHandle>
-			</_dependsOn>
-			<_inheritanceType type="a">iPublic</_inheritanceType>
-			<_isVirtual type="a">0</_isVirtual>
-		</IGeneralization>
-		<IStereotype type="e">
 			<_id type="a">GUID c4d77dea-4713-4da2-b474-305d676af411</_id>
 			<_myState type="a">8192</_myState>
 			<_properties type="p"><IPropertyContainer type="e">
@@ -1752,9 +1584,9 @@
 			<_id type="a">GUID 4a279f7f-35ae-4661-b677-00e271144369</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Shared</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:6:42</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:6:42</_modifiedTime>
-			<weakCGTime type="a">9.17.2020::11:6:42</weakCGTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:48:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:48:33</_modifiedTime>
+			<weakCGTime type="a">9.17.2020::18:48:33</weakCGTime>
 			<strongCGTime type="a">9.7.2020::7:50:55</strongCGTime>
 			<_defaultComposite type="s">GUID 53653bde-ad25-4480-9c71-a39aee3e42a2</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1764,6 +1596,7 @@
 				<value>GUID 8d3c01aa-c9f5-4df6-91f9-66e5fd75fd0e</value>
 				<value>GUID f83e5855-ba0a-49b4-a839-2d1cddc54bd8</value>
 				<value>GUID 1ab5b469-21ae-4135-9ec4-5adfcbba6a24</value>
+				<value>GUID 92c0d054-4885-4324-a809-168f50241810</value>
 				<value>GUID 53653bde-ad25-4480-9c71-a39aee3e42a2</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -2073,6 +1906,89 @@
 			<_inheritanceType type="a">iPublic</_inheritanceType>
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
+		<IStereotype type="e">
+			<_id type="a">GUID 92c0d054-4885-4324-a809-168f50241810</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">./icons/black_flash.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">./icons/black_flash.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DrawingToolIcon</_Name>
+													<_Value type="a">./icons/black_flash.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Owners</_Name>
+													<_Value type="a">Internal_Design_Class</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Event_Reception</_name>
+			<_modifiedTimeWeak type="a">9.17.2020::18:48:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:48:33</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Operation</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+			<AggregatesList type="e">
+				<value>GUID 1b6436f5-f109-4f13-be64-6ebb41e64a8c</value>
+			</AggregatesList>
+		</IStereotype>
+		<IGeneralization type="e">
+			<_id type="a">GUID 1b6436f5-f109-4f13-be64-6ebb41e64a8c</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IStereotype</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hname type="a">Operation_With_Arguments</_hname>
+					<_hid type="a">GUID 5b11666f-afe9-4354-b1b6-31cfebc83170</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
 		<IClass type="e">
 			<_id type="a">GUID 53653bde-ad25-4480-9c71-a39aee3e42a2</_id>
 			<_myState type="a">40960</_myState>
@@ -2132,10 +2048,10 @@
 			<_id type="a">GUID 538bd72c-6cc0-4c8b-ac43-1bab68856a49</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:2:47</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:2:47</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:46:29</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:46:29</_modifiedTime>
 			<_lastID type="a">30</_lastID>
-			<weakCGTime type="a">9.17.2020::11:2:47</weakCGTime>
+			<weakCGTime type="a">9.17.2020::18:46:29</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:6</strongCGTime>
 			<_defaultComposite type="s">GUID 59d0682b-2dcd-4778-adc3-0947b890e75e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2151,14 +2067,14 @@
 			<_id type="a">GUID f7a7144b-a29e-4dd6-99e5-4bac84eca03d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:2:53</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:2:53</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:46:55</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:46:55</_modifiedTime>
 			<_lastID type="a">11</_lastID>
-			<weakCGTime type="a">9.17.2020::11:2:53</weakCGTime>
+			<weakCGTime type="a">9.17.2020::18:46:55</weakCGTime>
 			<strongCGTime type="a">11.30.2018::10:10:24</strongCGTime>
 			<_defaultComposite type="s">GUID f1c4f7f1-d84b-4508-b1c4-d3264aad0292</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">9.17.2020::6:56:33</_configurationRelatedTime>
+			<_configurationRelatedTime type="a">9.17.2020::18:46:55</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID dc5fef9e-f7d6-4827-af76-e9fb6128e16d</value>
 				<value>GUID f1c4f7f1-d84b-4508-b1c4-d3264aad0292</value>
@@ -2169,7 +2085,6 @@
 				<value>GUID fdb68da5-7b49-4b66-a7f6-6b2afd6d6e03</value>
 				<value>GUID ca161b38-efad-4d2e-9817-a642cb0018d2</value>
 				<value>GUID 608701cd-0e2f-4cb1-93d2-e5a3002be4bd</value>
-				<value>GUID ab1c3626-5cb0-40c9-bc15-c3af9fbbec33</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IDiagram type="e">
@@ -2473,8 +2388,8 @@
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:3:23</_modifiedTime>
-			<_lastModifiedTime type="a">9.17.2020::11:3:23</_lastModifiedTime>
+			<_modifiedTime type="a">9.17.2020::18:47:46</_modifiedTime>
+			<_lastModifiedTime type="a">9.17.2020::18:47:46</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -2517,7 +2432,7 @@
 			</m_name>
 			<m_drawBehavior type="a">0</m_drawBehavior>
 			<m_bIsPreferencesInitialized type="a">0</m_bIsPreferencesInitialized>
-			<elementList type="a">61</elementList>
+			<elementList type="a">60</elementList>
 			
 			<m_access type="a">'Z'</m_access>
 			<m_modified type="a">'N'</m_modified>
@@ -2573,12 +2488,10 @@
 				<value>GUID 7d6b2a0b-bf1d-4c7a-8579-df383d5a4168</value>
 				<value>GUID 541789e5-d879-42bb-ae85-8aa047a5d53f</value>
 				<value>GUID d3a1efb1-95cc-4e75-a737-8bbcf7746f57</value>
-				<value>GUID 52b40d56-9a8c-4263-a9fb-2cc0a2e5bd20</value>
 				<value>GUID 69d8d76c-914a-431f-90e3-14088386d7e7</value>
 				<value>GUID 733521a9-0082-4d82-8745-0138f9021e6e</value>
 				<value>GUID ae093aef-b3e1-40cb-a23f-ea0643dd46ca</value>
 				<value>GUID fa706d93-3dce-4c8e-8858-4c02cb2e04ab</value>
-				<value>GUID 3c063d26-76fe-48f5-a818-639bc460ebe2</value>
 				<value>GUID 820aa97d-c2da-4a5d-aea4-c8faff1cbd80</value>
 				<value>GUID 0fee128a-75ed-43a1-ad0f-ab4c783f4812</value>
 				<value>GUID 517a4b3c-69f6-451a-9431-47aca067def2</value>
@@ -2591,6 +2504,7 @@
 				<value>GUID 1fec5e97-42a3-4fac-bcd8-8a2bc258ec0a</value>
 				<value>GUID 046a7fc3-5d73-4857-b991-28be787c6e37</value>
 				<value>GUID 2716be4d-5319-4130-b248-947209a91067</value>
+				<value>GUID cad8eb3d-91e0-43a1-a577-6c3ce036f867</value>
 			</AggregatesList>
 		</CGIClassChart>
 		<CGIClass type="e">
@@ -8981,129 +8895,6 @@
 			<m_bShowInherited type="a">0</m_bShowInherited>
 			<m_bOrdered type="a">0</m_bOrdered>
 		</CGICompartment>
-		<CGIClass type="e">
-			<_id type="a">GUID 52b40d56-9a8c-4263-a9fb-2cc0a2e5bd20</_id>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">1</size>
-						<IPropertySubject type="e">
-							<_Name type="a">General</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Graphics</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">3</size>
-												<IProperty type="e">
-													<_Name type="a">EnableImageView</_Name>
-													<_Value type="a">True</_Value>
-													<_Type type="a">Bool</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">ImageViewLayout</_Name>
-													<_Value type="a">Compartment</_Value>
-													<_Type type="a">Enum</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">ShowLabels</_Name>
-													<_Value type="a">True</_Value>
-													<_Type type="a">Bool</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<m_type type="a">87</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hid type="a">GUID ab1c3626-5cb0-40c9-bc15-c3af9fbbec33</_hid>
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID 0c11acd9-7d73-4dd5-8f40-470cf53a0ddd</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_str type="a">Inner_Event_Reception</m_str>
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">5</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4170</m_drawBehavior>
-			<m_transform type="a">0.212465 0 0 0.142602 998.58 752.084 </m_transform>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_AdditionalLabel type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_AdditionalLabel>
-			<m_pImageViewData type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID 3c063d26-76fe-48f5-a818-639bc460ebe2</_hid>
-				</IHandle>
-			</m_pImageViewData>
-			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
-			<m_nNameFormat type="a">0</m_nNameFormat>
-			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\grey_flash.ico&gt;
-&lt;frame name=AttributeListCompartment&gt;</frameset>
-			<Attrs type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</Attrs>
-			<Operations type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</Operations>
-			<AggregatesList type="e">
-				<value>GUID c973e32b-97be-4135-b888-475e672dbf79</value>
-			</AggregatesList>
-		</CGIClass>
-		<CGICompartment type="e">
-			<_id type="a">GUID c973e32b-97be-4135-b888-475e672dbf79</_id>
-			<m_name type="a">Attribute</m_name>
-			<m_displayOption type="a">All</m_displayOption>
-			<m_bShowInherited type="a">0</m_bShowInherited>
-			<m_bOrdered type="a">0</m_bOrdered>
-		</CGICompartment>
 		<CGIAssociationEnd type="e">
 			<_id type="a">GUID 69d8d76c-914a-431f-90e3-14088386d7e7</_id>
 			<_properties type="p"><IPropertyContainer type="e">
@@ -9166,7 +8957,7 @@
 			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
 			<m_pSource type="s">GUID a4de2a2c-8c91-4fa2-9a0e-f29467497fde</m_pSource>
 			<m_sourceType type="a">'F'</m_sourceType>
-			<m_pTarget type="s">GUID 52b40d56-9a8c-4263-a9fb-2cc0a2e5bd20</m_pTarget>
+			<m_pTarget type="s">GUID cad8eb3d-91e0-43a1-a577-6c3ce036f867</m_pTarget>
 			<m_targetType type="a">'T'</m_targetType>
 			<m_direction type="a">' '</m_direction>
 			<m_rpn type="p">
@@ -9185,12 +8976,12 @@
 					<m_nOrientationCtrlPt type="a">7</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_rpn>
-			<m_arrow type="a">2 894 743  1133 743  </m_arrow>
+			<m_arrow type="a">2 894 743  1109 743  </m_arrow>
 			<m_anglePoint1 type="a">0 0 </m_anglePoint1>
 			<m_anglePoint2 type="a">0 0 </m_anglePoint2>
 			<m_line_style type="a">2</m_line_style>
 			<m_SourcePort type="a">713 1451 </m_SourcePort>
-			<m_TargetPort type="a">633 329 </m_TargetPort>
+			<m_TargetPort type="a">496 329 </m_TargetPort>
 			<m_pInverseModelObject type="r">
 				<IAssociationEndHandle type="e">
 				</IAssociationEndHandle>
@@ -9229,7 +9020,6 @@
 			</m_sourceRole>
 			<m_targetRole type="p">
 				<CGIText type="e">
-					<m_str type="a">Inner_Event_Receptions</m_str>
 					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
 					<m_color type="p">
 						<IColor type="e">
@@ -9405,37 +9195,6 @@
 			<m_dataSize type="a">185</m_dataSize>
 			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0azFFzc9g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z11g03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03zFFzcag40</m_data>
 			<m_srcFile type="a">.\icons\black_minus.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
-		</CGIImageData>
-		<CGIImageData type="e">
-			<_id type="a">GUID 3c063d26-76fe-48f5-a818-639bc460ebe2</_id>
-			<m_type type="a">0</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID 0c11acd9-7d73-4dd5-8f40-470cf53a0ddd</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_dataSize type="a">1684</m_dataSize>
-			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0azFFzFFzFFzFFzFFzFFz7e7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza17f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz9d7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz9d7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz997f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fza57f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fzFFzFFzFFzFFzFFzFFz7bgFFg81</m_data>
-			<m_srcFile type="a">.\icons\grey_flash.ico</m_srcFile>
 			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
 		</CGIImageData>
 		<CGIImageData type="e">
@@ -10306,6 +10065,129 @@
 			<m_srcFile type="a">.\icons\black_class.ico</m_srcFile>
 			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
 		</CGIImageData>
+		<CGIClass type="e">
+			<_id type="a">GUID cad8eb3d-91e0-43a1-a577-6c3ce036f867</_id>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">EnableImageView</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ImageViewLayout</_Name>
+													<_Value type="a">Compartment</_Value>
+													<_Type type="a">Enum</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ShowLabels</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<m_type type="a">87</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID f7e8d8c0-e63e-4da7-9a62-ffedd1ffcef6</_hid>
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID 0c11acd9-7d73-4dd5-8f40-470cf53a0ddd</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_str type="a">Event_Reception</m_str>
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">5</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4170</m_drawBehavior>
+			<m_transform type="a">0.212465 0 0 0.142602 1003.58 752.084 </m_transform>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_AdditionalLabel type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_AdditionalLabel>
+			<m_pImageViewData type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">OMGEElement</_hm2Class>
+					<_hid type="a">GUID ae093aef-b3e1-40cb-a23f-ea0643dd46ca</_hid>
+				</IHandle>
+			</m_pImageViewData>
+			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
+			<m_nNameFormat type="a">0</m_nNameFormat>
+			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
+			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_flash.ico&gt;
+&lt;frame name=AttributeListCompartment&gt;</frameset>
+			<Attrs type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Attrs>
+			<Operations type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Operations>
+			<AggregatesList type="e">
+				<value>GUID 8fd35bb3-a31d-4282-bdf6-9a1bb944256c</value>
+			</AggregatesList>
+		</CGIClass>
+		<CGICompartment type="e">
+			<_id type="a">GUID 8fd35bb3-a31d-4282-bdf6-9a1bb944256c</_id>
+			<m_name type="a">Attribute</m_name>
+			<m_displayOption type="a">All</m_displayOption>
+			<m_bShowInherited type="a">0</m_bShowInherited>
+			<m_bOrdered type="a">0</m_bOrdered>
+		</CGICompartment>
 		<IClass type="e">
 			<_id type="a">GUID f1c4f7f1-d84b-4508-b1c4-d3264aad0292</_id>
 			<_myState type="a">40960</_myState>
@@ -10362,16 +10244,16 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::7:15:35</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.17.2020::18:46:47</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hid type="a">GUID dc5fef9e-f7d6-4827-af76-e9fb6128e16d</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">9.17.2020::7:15:35</_modifiedTime>
+			<_modifiedTime type="a">9.17.2020::18:46:47</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">9.17.2020::7:15:35</weakCGTime>
+			<weakCGTime type="a">9.17.2020::18:46:47</weakCGTime>
 			<strongCGTime type="a">9.17.2020::6:42:54</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -10578,13 +10460,13 @@
 			<_id type="a">GUID be7c4950-2157-4319-aaa3-f770815c5483</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Inner_Event_Receptions</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::6:44:29</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::6:44:29</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:46:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:46:47</_modifiedTime>
 			<_multiplicity type="a">*</_multiplicity>
 			<_otherClass type="r">
 				<IClassifierHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
-					<_hid type="a">GUID ab1c3626-5cb0-40c9-bc15-c3af9fbbec33</_hid>
+					<_hid type="a">GUID f7e8d8c0-e63e-4da7-9a62-ffedd1ffcef6</_hid>
 				</IClassifierHandle>
 			</_otherClass>
 			<_inverse type="r">
@@ -11060,76 +10942,23 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 			<_linkType type="a">Assoc</_linkType>
 			<_navigability type="a">Navigable</_navigability>
 		</IAssociationEnd>
-		<IClass type="e">
-			<_id type="a">GUID ab1c3626-5cb0-40c9-bc15-c3af9fbbec33</_id>
-			<_myState type="a">8192</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">1</size>
-						<IPropertySubject type="e">
-							<_Name type="a">General</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Graphics</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">1</size>
-												<IProperty type="e">
-													<_Name type="a">AssociatedImageFile</_Name>
-													<_Value type="a">.\icons\grey_flash.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">Inner_Event_Reception</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::18:58:0</_modifiedTimeWeak>
-			<_theMainDiagram type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IDiagram</_hm2Class>
-					<_hid type="a">GUID dc5fef9e-f7d6-4827-af76-e9fb6128e16d</_hid>
-				</IHandle>
-			</_theMainDiagram>
-			<_modifiedTime type="a">9.6.2020::18:58:0</_modifiedTime>
-			<weakCGTime type="a">9.6.2020::18:58:0</weakCGTime>
-			<strongCGTime type="a">9.6.2020::18:58:0</strongCGTime>
-			<_itsStateChart type="r">
-				<IHandle type="e">
-				</IHandle>
-			</_itsStateChart>
-			<_classModifier type="a">Unspecified</_classModifier>
-		</IClass>
 		<ISubsystem type="e">
 			<_id type="a">GUID 9c24e27d-1208-4da1-81a3-ed9eeb81d328</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Internal_Design_Class</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:2:47</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:2:47</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:47:46</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:47:46</_modifiedTime>
 			<_lastID type="a">12</_lastID>
-			<weakCGTime type="a">9.17.2020::11:2:47</weakCGTime>
+			<weakCGTime type="a">9.17.2020::18:47:46</weakCGTime>
 			<strongCGTime type="a">9.17.2020::11:2:47</strongCGTime>
 			<_defaultComposite type="s">GUID 3ff0fc08-d575-4b69-ac19-faea3d80461a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">9.16.2020::16:6:37</_configurationRelatedTime>
+			<_configurationRelatedTime type="a">9.17.2020::18:47:46</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 02fb6493-0a09-449d-b325-b2f9b243658c</value>
 				<value>GUID 3ff0fc08-d575-4b69-ac19-faea3d80461a</value>
 				<value>GUID f7f41a85-c280-4330-b75f-b7abfd9d0b05</value>
 				<value>GUID 24a98d78-f3c6-49d0-b271-d681587cf62d</value>
-				<value>GUID f7e8d8c0-e63e-4da7-9a62-ffedd1ffcef6</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IDiagram type="e">
@@ -11375,8 +11204,8 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:3:7</_modifiedTime>
-			<_lastModifiedTime type="a">9.17.2020::11:3:7</_lastModifiedTime>
+			<_modifiedTime type="a">9.17.2020::18:47:46</_modifiedTime>
+			<_lastModifiedTime type="a">9.17.2020::18:47:46</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -16176,84 +16005,13 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 			<_inheritanceType type="a">iPublic</_inheritanceType>
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
-		<IClass type="e">
-			<_id type="a">GUID f7e8d8c0-e63e-4da7-9a62-ffedd1ffcef6</_id>
-			<_myState type="a">8192</_myState>
-			<_properties type="p"><IPropertyContainer type="e">
-				<Subjects type="c">
-					<IRPYRawContainer type="e">
-						<size type="a">1</size>
-						<IPropertySubject type="e">
-							<_Name type="a">General</_Name>
-							<Metaclasses type="c">
-								<IRPYRawContainer type="e">
-									<size type="a">1</size>
-									<IPropertyMetaclass type="e">
-										<_Name type="a">Graphics</_Name>
-										<Properties type="c">
-											<IRPYRawContainer type="e">
-												<size type="a">1</size>
-												<IProperty type="e">
-													<_Name type="a">AssociatedImageFile</_Name>
-													<_Value type="a">.\icons\black_flash.ico</_Value>
-													<_Type type="a">File</_Type>
-												</IProperty>
-												
-											</IRPYRawContainer>
-										</Properties>
-									</IPropertyMetaclass>
-									
-								</IRPYRawContainer>
-							</Metaclasses>
-						</IPropertySubject>
-						
-					</IRPYRawContainer>
-				</Subjects>
-			</IPropertyContainer>
-			</_properties>
-			<_name type="a">Event_Reception</_name>
-			<_modifiedTimeWeak type="a">9.16.2020::16:10:1</_modifiedTimeWeak>
-			<_theMainDiagram type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IDiagram</_hm2Class>
-					<_hid type="a">GUID 02fb6493-0a09-449d-b325-b2f9b243658c</_hid>
-				</IHandle>
-			</_theMainDiagram>
-			<_modifiedTime type="a">9.16.2020::16:10:1</_modifiedTime>
-			<weakCGTime type="a">9.16.2020::16:10:1</weakCGTime>
-			<strongCGTime type="a">9.16.2020::16:10:1</strongCGTime>
-			<_itsStateChart type="r">
-				<IHandle type="e">
-				</IHandle>
-			</_itsStateChart>
-			<_classModifier type="a">Unspecified</_classModifier>
-			<AggregatesList type="e">
-				<value>GUID 77efe8a3-4ae1-4832-8de0-0fc299f9d39f</value>
-			</AggregatesList>
-		</IClass>
-		<IGeneralization type="e">
-			<_id type="a">GUID 77efe8a3-4ae1-4832-8de0-0fc299f9d39f</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<_dependsOn type="r">
-				<INObjectHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-					<_hname type="a">Operation_With_Arguments</_hname>
-					<_hid type="a">GUID 2d20ab1c-6fb7-46c5-9add-ce13c04378f3</_hid>
-				</INObjectHandle>
-			</_dependsOn>
-			<_inheritanceType type="a">iPublic</_inheritanceType>
-			<_isVirtual type="a">0</_isVirtual>
-		</IGeneralization>
 		<ISubsystem type="e">
 			<_id type="a">GUID 9ba8449a-7ff3-4c7c-8f4d-31f5e00bf8de</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Shared</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::6:56:38</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::6:56:38</_modifiedTime>
-			<weakCGTime type="a">9.17.2020::6:56:38</weakCGTime>
+			<_modifiedTimeWeak type="a">9.17.2020::18:47:46</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.17.2020::18:47:46</_modifiedTime>
+			<weakCGTime type="a">9.17.2020::18:47:46</weakCGTime>
 			<strongCGTime type="a">9.17.2020::6:56:30</strongCGTime>
 			<_defaultComposite type="s">GUID f89c8f42-fa73-48b4-8a46-68889b3b2f49</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -16262,6 +16020,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<value>GUID f89c8f42-fa73-48b4-8a46-68889b3b2f49</value>
 				<value>GUID cb502b80-f862-4593-bd4b-7abd37a1a4be</value>
 				<value>GUID d96bf309-153d-4e87-a45c-02da05a736a8</value>
+				<value>GUID f7e8d8c0-e63e-4da7-9a62-ffedd1ffcef6</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IClass type="e">
@@ -16427,6 +16186,77 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 			<_linkType type="a">Assoc</_linkType>
 			<_navigability type="a">Navigable</_navigability>
 		</IAssociationEnd>
+		<IClass type="e">
+			<_id type="a">GUID f7e8d8c0-e63e-4da7-9a62-ffedd1ffcef6</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">AssociatedImageFile</_Name>
+													<_Value type="a">.\icons\black_flash.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Event_Reception</_name>
+			<_modifiedTimeWeak type="a">9.17.2020::18:47:46</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hid type="a">GUID 02fb6493-0a09-449d-b325-b2f9b243658c</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">9.17.2020::18:47:46</_modifiedTime>
+			<weakCGTime type="a">9.17.2020::18:47:46</weakCGTime>
+			<strongCGTime type="a">9.17.2020::18:47:46</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 77efe8a3-4ae1-4832-8de0-0fc299f9d39f</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 77efe8a3-4ae1-4832-8de0-0fc299f9d39f</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hname type="a">Operation_With_Arguments</_hname>
+					<_hid type="a">GUID 2d20ab1c-6fb7-46c5-9add-ce13c04378f3</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
 		<IClass type="e">
 			<_id type="a">GUID 59d0682b-2dcd-4778-adc3-0947b890e75e</_id>
 			<_myState type="a">40960</_myState>

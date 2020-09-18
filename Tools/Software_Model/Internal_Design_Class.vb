@@ -10,7 +10,6 @@ Public Class Internal_Design_Class
     <XmlArrayItem("Configuration")>
     Public Configurations As List(Of Configuration_Parameter)
     Public Public_Operations As List(Of Public_Operation)
-    Public Event_Receptions As List(Of Event_Reception)
     <XmlArrayItem("Realized_Interface")>
     Public Realized_Interfaces As List(Of Guid)
     <XmlArrayItem("Needed_Interface")>
@@ -32,9 +31,7 @@ Public Class Internal_Design_Class
             If Not IsNothing(Me.Public_Operations) Then
                 children_list.AddRange(Me.Public_Operations)
             End If
-            If Not IsNothing(Me.Event_Receptions) Then
-                children_list.AddRange(Me.Event_Receptions)
-            End If
+
             Me.Children = children_list
         End If
         Return Me.Children
@@ -114,7 +111,6 @@ Public Class Internal_Design_Class
         End If
 
         Me.Public_Operations = New List(Of Public_Operation)
-        Me.Event_Receptions = New List(Of Event_Reception)
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             rpy_elmt = CType(rpy_ope, RPModelElement)
@@ -122,17 +118,10 @@ Public Class Internal_Design_Class
                 Dim ope As Public_Operation = New Public_Operation
                 Me.Public_Operations.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
-            ElseIf Is_Event_Reception(rpy_elmt) Then
-                Dim ope As Event_Reception = New Event_Reception
-                Me.Event_Receptions.Add(ope)
-                ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
         If Me.Public_Operations.Count = 0 Then
             Me.Public_Operations = Nothing
-        End If
-        If Me.Event_Receptions.Count = 0 Then
-            Me.Event_Receptions = Nothing
         End If
 
     End Sub
@@ -343,20 +332,6 @@ Public Class Public_Operation
         Else
             CType(Me.Rpy_Element, RPOperation).isAbstract = 0
         End If
-    End Sub
-
-End Class
-
-
-Public Class Event_Reception
-
-    Inherits Operation_With_Arguments
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Protected Overrides Sub Set_Stereotype()
-        Me.Rpy_Element.addStereotype("Event_Reception", "Operation")
     End Sub
 
 End Class

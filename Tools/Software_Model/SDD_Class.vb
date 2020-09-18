@@ -8,6 +8,7 @@ Public MustInherit Class SDD_Class
     <XmlArrayItem("Attribute")>
     Public Attributes As List(Of Variable_Attribute)
     Public Private_Operations As List(Of Private_Operation)
+    Public Event_Receptions As List(Of Event_Reception)
     <XmlArrayItem("Sent_Event")>
     Public Sent_Events As List(Of Guid)
     <XmlArrayItem("Received_Event")>
@@ -23,6 +24,9 @@ Public MustInherit Class SDD_Class
             End If
             If Not IsNothing(Me.Private_Operations) Then
                 children_list.AddRange(Me.Private_Operations)
+            End If
+            If Not IsNothing(Me.Event_Receptions) Then
+                children_list.AddRange(Me.Event_Receptions)
             End If
             Me.Children = children_list
         End If
@@ -76,6 +80,7 @@ Public MustInherit Class SDD_Class
         End If
 
         Me.Private_Operations = New List(Of Private_Operation)
+        Me.Event_Receptions = New List(Of Event_Reception)
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             rpy_elmt = CType(rpy_ope, RPModelElement)
@@ -83,10 +88,17 @@ Public MustInherit Class SDD_Class
                 Dim ope As Private_Operation = New Private_Operation
                 Me.Private_Operations.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
+            ElseIf Is_Event_Reception(rpy_elmt) Then
+                Dim ope As Event_Reception = New Event_Reception
+                Me.Event_Receptions.Add(ope)
+                ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
         If Me.Private_Operations.Count = 0 Then
             Me.Private_Operations = Nothing
+        End If
+        If Me.Event_Receptions.Count = 0 Then
+            Me.Event_Receptions = Nothing
         End If
 
     End Sub
@@ -159,6 +171,20 @@ Public Class Private_Operation
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Private_Operation", "Operation")
+    End Sub
+
+End Class
+
+
+Public Class Event_Reception
+
+    Inherits Operation_With_Arguments
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Event_Reception", "Operation")
     End Sub
 
 End Class
