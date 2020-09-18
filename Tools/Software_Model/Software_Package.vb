@@ -6,25 +6,25 @@ Public Class Software_Package
     Inherits Software_Element
 
     <XmlArrayItem("Package")>
-    Public Packages As List(Of Software_Package)
+    Public Packages As New List(Of Software_Package)
 
     <XmlArrayItemAttribute(GetType(Enumerated_Data_Type)), _
      XmlArrayItemAttribute(GetType(Array_Data_Type)), _
      XmlArrayItemAttribute(GetType(Physical_Data_Type)), _
      XmlArrayItemAttribute(GetType(Structured_Data_Type)), _
      XmlArray("Data_Types")>
-    Public Data_Types As List(Of Data_Type)
+    Public Data_Types As New List(Of Data_Type)
 
     <XmlArrayItemAttribute(GetType(Client_Server_Interface)), _
      XmlArrayItemAttribute(GetType(Event_Interface)), _
      XmlArray("Interfaces")>
-    Public Software_Interfaces As List(Of Software_Interface)
+    Public Software_Interfaces As New List(Of Software_Interface)
 
-    Public Component_Types As List(Of Component_Type)
-    Public Root_Software_Compositions As List(Of Root_Software_Composition)
-    Public Component_Designs As List(Of Component_Design)
-    Public Classes As List(Of Internal_Design_Class)
-    Public Files As List(Of Implementation_File)
+    Public Component_Types As New List(Of Component_Type)
+    Public Root_Software_Compositions As New List(Of Root_Software_Composition)
+    Public Component_Designs As New List(Of Component_Design)
+    Public Classes As New List(Of Internal_Design_Class)
+    Public Files As New List(Of Implementation_File)
 
 
     '----------------------------------------------------------------------------------------------'
@@ -32,43 +32,24 @@ Public Class Software_Package
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.Packages) Then
-                children_list.AddRange(Me.Packages)
-            End If
-            If Not IsNothing(Me.Data_Types) Then
-                children_list.AddRange(Me.Data_Types)
-            End If
-            If Not IsNothing(Me.Software_Interfaces) Then
-                children_list.AddRange(Me.Software_Interfaces)
-            End If
-            If Not IsNothing(Me.Component_Types) Then
-                children_list.AddRange(Me.Component_Types)
-            End If
-            If Not IsNothing(Me.Root_Software_Compositions) Then
-                children_list.AddRange(Me.Root_Software_Compositions)
-            End If
-            If Not IsNothing(Me.Component_Designs) Then
-                children_list.AddRange(Me.Component_Designs)
-            End If
-            If Not IsNothing(Me.Classes) Then
-                children_list.AddRange(Me.Classes)
-            End If
-            If Not IsNothing(Me.Files) Then
-                children_list.AddRange(Me.Files)
-            End If
+            children_list.AddRange(Me.Packages)
+            children_list.AddRange(Me.Data_Types)
+            children_list.AddRange(Me.Software_Interfaces)
+            children_list.AddRange(Me.Component_Types)
+            children_list.AddRange(Me.Root_Software_Compositions)
+            children_list.AddRange(Me.Component_Designs)
+            children_list.AddRange(Me.Classes)
+            children_list.AddRange(Me.Files)
             Me.Children = children_list
         End If
         Return Me.Children
     End Function
 
     Protected Sub Get_All_Sub_Packages(ByRef pkg_list As List(Of Software_Package))
-        If Not IsNothing(Me.Packages) Then
-            Dim pkg As Software_Package
-            For Each pkg In Me.Packages
-                pkg_list.Add(pkg)
-                pkg.Get_All_Sub_Packages(pkg_list)
-            Next
-        End If
+        For Each pkg In Me.Packages
+            pkg_list.Add(pkg)
+            pkg.Get_All_Sub_Packages(pkg_list)
+        Next
     End Sub
 
     Public Shared Sub Remove_Empty_Packages(rpy_package As RPPackage)
@@ -99,7 +80,6 @@ Public Class Software_Package
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
-        Me.Packages = New List(Of Software_Package)
         Dim rpy_pkg As RPPackage
         For Each rpy_pkg In CType(Me.Rpy_Element, RPPackage).packages
             If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
@@ -108,11 +88,7 @@ Public Class Software_Package
                 pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))
             End If
         Next
-        If Me.Packages.Count = 0 Then
-            Me.Packages = Nothing
-        End If
 
-        Me.Data_Types = New List(Of Data_Type)
         Dim rpy_type As RPType
         For Each rpy_type In CType(Me.Rpy_Element, RPPackage).types
             If Is_Data_Type(CType(rpy_type, RPModelElement)) Then
@@ -147,15 +123,7 @@ Public Class Software_Package
                 End Select
             End If
         Next
-        If Me.Data_Types.Count = 0 Then
-            Me.Data_Types = Nothing
-        End If
 
-        Me.Software_Interfaces = New List(Of Software_Interface)
-        Me.Component_Types = New List(Of Component_Type)
-        Me.Root_Software_Compositions = New List(Of Root_Software_Composition)
-        Me.Component_Designs = New List(Of Component_Design)
-        Me.Classes = New List(Of Internal_Design_Class)
         Dim rpy_class As RPClass
         For Each rpy_class In CType(Me.Rpy_Element, RPPackage).classes
             Dim rpy_element As RPModelElement = CType(rpy_class, RPModelElement)
@@ -186,24 +154,7 @@ Public Class Software_Package
             End If
 
         Next
-        If Me.Software_Interfaces.Count = 0 Then
-            Me.Software_Interfaces = Nothing
-        End If
-        If Me.Component_Types.Count = 0 Then
-            Me.Component_Types = Nothing
-        End If
-        If Me.Root_Software_Compositions.Count = 0 Then
-            Me.Root_Software_Compositions = Nothing
-        End If
-        If Me.Component_Designs.Count = 0 Then
-            Me.Component_Designs = Nothing
-        End If
-        If Me.Classes.Count = 0 Then
-            Me.Classes = Nothing
-        End If
 
-
-        Me.Files = New List(Of Implementation_File)
         Dim rpy_file As RPModule
         For Each rpy_file In CType(Me.Rpy_Element, RPPackage).modules
             If Is_Implementation_File(CType(rpy_file, RPModelElement)) Then
@@ -212,9 +163,7 @@ Public Class Software_Package
                 sw_file.Import_From_Rhapsody_Model(Me, CType(rpy_file, RPModelElement))
             End If
         Next
-        If Me.Files.Count = 0 Then
-            Me.Files = Nothing
-        End If
+
     End Sub
 
 
@@ -357,15 +306,14 @@ Public Class Software_Package
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
-        If IsNothing(Me.Packages) And
-            IsNothing(Me.Component_Types) And
-            IsNothing(Me.Root_Software_Compositions) And
-            IsNothing(Me.Software_Interfaces) And
-            IsNothing(Me.Data_Types) And
-            IsNothing(Me.Classes) And
-            IsNothing(Me.Component_Designs) And
-            IsNothing(Me.Files) Then
-
+        If Me.Packages.Count = 0 And
+            Me.Component_Types.Count = 0 And
+            Me.Root_Software_Compositions.Count = 0 And
+            Me.Software_Interfaces.Count = 0 And
+            Me.Data_Types.Count = 0 And
+            Me.Classes.Count = 0 And
+            Me.Component_Designs.Count = 0 And
+            Me.Files.Count = 0 Then
             Me.Add_Consistency_Check_Warning_Item(report,
                 "PKG_1",
                 "A Shall contain at least one element.")
@@ -428,18 +376,10 @@ Public Class Top_Level_Package
     Public Sub Compute_Nb_Classifiers()
         Dim pkg_list As List(Of Software_Package) = Me.Get_All_Packages
         For Each pkg In pkg_list
-            If Not IsNothing(pkg.Component_Types) Then
-                Me.Nb_Component_Types += pkg.Component_Types.Count
-            End If
-            If Not IsNothing(pkg.Software_Interfaces) Then
-                Me.Nb_Interfaces += pkg.Software_Interfaces.Count
-            End If
-            If Not IsNothing(pkg.Data_Types) Then
-                Me.Nb_Data_Types += pkg.Data_Types.Count
-            End If
-            If Not IsNothing(pkg.Root_Software_Compositions) Then
-                Me.Nb_Root_Software_Composition += pkg.Root_Software_Compositions.Count
-            End If
+            Me.Nb_Component_Types += pkg.Component_Types.Count
+            Me.Nb_Interfaces += pkg.Software_Interfaces.Count
+            Me.Nb_Data_Types += pkg.Data_Types.Count
+            Me.Nb_Root_Software_Composition += pkg.Root_Software_Compositions.Count
         Next
     End Sub
 
@@ -455,35 +395,22 @@ Public Class Top_Level_Package
         ' Parse the list of sub packages + Me
         Dim pkg As Software_Package
         For Each pkg In pkg_list
-
-            If Not IsNothing(pkg.Component_Types) Then
-                Dim swct As Component_Type
-                For Each swct In pkg.Component_Types
-                    tmp_needed_elements_list.AddRange(swct.Find_Needed_Elements)
-                Next
-            End If
-
-            If Not IsNothing(pkg.Software_Interfaces) Then
-                For Each sw_if In pkg.Software_Interfaces
-                    If Not IsNothing(sw_if.Find_Needed_Elements) Then
-                        tmp_needed_elements_list.AddRange(sw_if.Find_Needed_Elements)
-                    End If
-                Next
-            End If
-
-            If Not IsNothing(pkg.Data_Types) Then
-                For Each data_type In pkg.Data_Types
-                    If Not IsNothing(data_type.Find_Needed_Elements) Then
-                        tmp_needed_elements_list.AddRange(data_type.Find_Needed_Elements)
-                    End If
-                Next
-            End If
-
-            If Not IsNothing(pkg.Root_Software_Compositions) Then
-                For Each compo In pkg.Root_Software_Compositions
-                    tmp_needed_elements_list.AddRange(compo.Find_Needed_Elements)
-                Next
-            End If
+            For Each swct In pkg.Component_Types
+                tmp_needed_elements_list.AddRange(swct.Find_Needed_Elements)
+            Next
+            For Each sw_if In pkg.Software_Interfaces
+                If Not IsNothing(sw_if.Find_Needed_Elements) Then
+                    tmp_needed_elements_list.AddRange(sw_if.Find_Needed_Elements)
+                End If
+            Next
+            For Each data_type In pkg.Data_Types
+                If Not IsNothing(data_type.Find_Needed_Elements) Then
+                    tmp_needed_elements_list.AddRange(data_type.Find_Needed_Elements)
+                End If
+            Next
+            For Each compo In pkg.Root_Software_Compositions
+                tmp_needed_elements_list.AddRange(compo.Find_Needed_Elements)
+            Next
         Next
 
         tmp_needed_elements_list = tmp_needed_elements_list.Distinct().ToList
@@ -512,32 +439,21 @@ Public Class Top_Level_Package
         ' Parse the list of sub packages + Me
         Dim pkg As Software_Package
         For Each pkg In pkg_list
-
-            If Not IsNothing(pkg.Component_Types) Then
-                Dim swct As Component_Type
-                For Each swct In pkg.Component_Types
-                    If Not IsNothing(swct.Find_Dependent_Elements) Then
-                        tmp_dependent_elements_list.AddRange(swct.Find_Dependent_Elements)
-                    End If
-                Next
-            End If
-
-            If Not IsNothing(pkg.Software_Interfaces) Then
-                For Each sw_if In pkg.Software_Interfaces
-                    If Not IsNothing(sw_if.Find_Dependent_Elements) Then
-                        tmp_dependent_elements_list.AddRange(sw_if.Find_Dependent_Elements)
-                    End If
-                Next
-            End If
-
-            If Not IsNothing(pkg.Data_Types) Then
-                For Each data_type In pkg.Data_Types
-                    If Not IsNothing(data_type.Find_Dependent_Elements) Then
-                        tmp_dependent_elements_list.AddRange(data_type.Find_Dependent_Elements)
-                    End If
-                Next
-            End If
-
+            For Each swct In pkg.Component_Types
+                If Not IsNothing(swct.Find_Dependent_Elements) Then
+                    tmp_dependent_elements_list.AddRange(swct.Find_Dependent_Elements)
+                End If
+            Next
+            For Each sw_if In pkg.Software_Interfaces
+                If Not IsNothing(sw_if.Find_Dependent_Elements) Then
+                    tmp_dependent_elements_list.AddRange(sw_if.Find_Dependent_Elements)
+                End If
+            Next
+            For Each data_type In pkg.Data_Types
+                If Not IsNothing(data_type.Find_Dependent_Elements) Then
+                    tmp_dependent_elements_list.AddRange(data_type.Find_Dependent_Elements)
+                End If
+            Next
         Next
 
         tmp_dependent_elements_list = tmp_dependent_elements_list.Distinct().ToList

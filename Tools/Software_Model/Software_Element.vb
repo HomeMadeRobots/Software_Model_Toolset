@@ -562,10 +562,6 @@ Public MustInherit Class SMM_Object
                     End If
                 Next
 
-                If Me.Configuration_Values.Count = 0 Then
-                    Me.Configuration_Values = Nothing
-                End If
-
             End If
         End If
 
@@ -633,14 +629,13 @@ Public MustInherit Class SMM_Object
         End If
 
         ' Set Configuration_Values
-        If Not IsNothing(Me.Configuration_Values) Then
-            For Each conf In Me.Configuration_Values
-                Dim rpy_conf_attr As RPAttribute = Nothing
-                rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Configuration_Ref), 
-                                RPAttribute)
-                rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
-            Next
-        End If
+        For Each conf In Me.Configuration_Values
+            Dim rpy_conf_attr As RPAttribute = Nothing
+            rpy_conf_attr = CType(Me.Find_In_Rpy_Project(conf.Configuration_Ref), 
+                            RPAttribute)
+            rpy_inst.setAttributeValue(rpy_conf_attr.name, conf.Value)
+        Next
+
     End Sub
 
 

@@ -226,25 +226,19 @@ Public Class Enumerated_Data_Type
 
     Inherits Data_Type
 
-    Public Enumerals As List(Of Enumerated_Data_Type_Enumeral)
+    Public Enumerals As New List(Of Enumerated_Data_Type_Enumeral)
 
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
-
         MyBase.Get_Own_Data_From_Rhapsody_Model()
-
         Dim rpy_label As RPEnumerationLiteral
-
-        Me.Enumerals = New List(Of Enumerated_Data_Type_Enumeral)
-
         For Each rpy_label In CType(Me.Rpy_Element, RPType).enumerationLiterals
             Dim enumeral As Enumerated_Data_Type_Enumeral = New Enumerated_Data_Type_Enumeral
             Me.Enumerals.Add(enumeral)
             enumeral.Import_From_Rhapsody_Model(Me, rpy_label)
         Next
-
     End Sub
 
 
@@ -677,7 +671,7 @@ Public Class Structured_Data_Type
 
     Inherits Data_Type
 
-    Public Fields As List(Of Structured_Data_Type_Field)
+    Public Fields As New List(Of Structured_Data_Type_Field)
 
     Private Complexity As Double = 0
 
@@ -687,9 +681,7 @@ Public Class Structured_Data_Type
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.Fields) Then
-                children_list.AddRange(Me.Fields)
-            End If
+            children_list.AddRange(Me.Fields)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -697,7 +689,6 @@ Public Class Structured_Data_Type
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
         Dim rpy_attr As RPAttribute
-        Me.Fields = New List(Of Structured_Data_Type_Field)
         For Each rpy_attr In CType(Me.Rpy_Element, RPType).attributes
             Dim field As Structured_Data_Type_Field = New Structured_Data_Type_Field
             Me.Fields.Add(field)
@@ -762,17 +753,15 @@ Public Class Structured_Data_Type
     Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
             Me.Needed_Elements = New List(Of SMM_Classifier)
-            If Not IsNothing(Me.Fields) Then
-                For Each fd In Me.Fields
-                    Dim data_type As Data_Type
-                    data_type = CType(Me.Get_Element_By_Uuid(fd.Base_Data_Type_Ref), Data_Type)
-                    If Not data_type.Is_Basic_Type Then
-                        If Not Me.Needed_Elements.Contains(data_type) Then
-                            Me.Needed_Elements.Add(data_type)
-                        End If
+            For Each fd In Me.Fields
+                Dim data_type As Data_Type
+                data_type = CType(Me.Get_Element_By_Uuid(fd.Base_Data_Type_Ref), Data_Type)
+                If Not data_type.Is_Basic_Type Then
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
                     End If
-                Next
-            End If
+                End If
+            Next
         End If
         Return Me.Needed_Elements
     End Function

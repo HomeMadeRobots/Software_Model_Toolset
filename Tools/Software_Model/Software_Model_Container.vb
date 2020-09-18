@@ -9,7 +9,7 @@ Public Class Software_Model_Container
     Inherits Software_Element
 
     <XmlArrayItem("Package")>
-    Public Packages As List(Of Top_Level_Package)
+    Public Packages As New List(Of Top_Level_Package)
 
     Private Elements_Dictionary_By_Uuid As New Dictionary(Of Guid, Software_Element)
 
@@ -65,9 +65,7 @@ Public Class Software_Model_Container
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.Packages) Then
-                children_list.AddRange(Me.Packages)
-            End If
+            children_list.AddRange(Me.Packages)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -79,9 +77,7 @@ Public Class Software_Model_Container
             For Each top_pkg In Me.Packages
                 Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
-                    If Not IsNothing(pkg.Root_Software_Compositions) Then
-                        Me.Compositions_List.AddRange(pkg.Root_Software_Compositions)
-                    End If
+                    Me.Compositions_List.AddRange(pkg.Root_Software_Compositions)
                 Next
             Next
         End If
@@ -94,9 +90,7 @@ Public Class Software_Model_Container
             For Each top_pkg In Me.Packages
                 Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
-                    If Not IsNothing(pkg.Component_Types) Then
-                        Me.Component_Types_List.AddRange(pkg.Component_Types)
-                    End If
+                    Me.Component_Types_List.AddRange(pkg.Component_Types)
                 Next
             Next
         End If
@@ -109,9 +103,7 @@ Public Class Software_Model_Container
             For Each top_pkg In Me.Packages
                 Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
-                    If Not IsNothing(pkg.Software_Interfaces) Then
-                        Me.Interfaces_List.AddRange(pkg.Software_Interfaces)
-                    End If
+                    Me.Interfaces_List.AddRange(pkg.Software_Interfaces)
                 Next
             Next
         End If
@@ -124,9 +116,7 @@ Public Class Software_Model_Container
             For Each top_pkg In Me.Packages
                 Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
-                    If Not IsNothing(pkg.Data_Types) Then
-                        Me.Data_Types_List.AddRange(pkg.Data_Types)
-                    End If
+                    Me.Data_Types_List.AddRange(pkg.Data_Types)
                 Next
             Next
         End If
@@ -139,9 +129,7 @@ Public Class Software_Model_Container
             For Each top_pkg In Me.Packages
                 Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
                 For Each pkg In all_pkg_list
-                    If Not IsNothing(pkg.Classes) Then
-                        Me.Software_Classes_List.AddRange(pkg.Classes)
-                    End If
+                    Me.Software_Classes_List.AddRange(pkg.Classes)
                 Next
             Next
         End If
@@ -250,9 +238,6 @@ Public Class Software_Model_Container
     End Sub
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
-
-        Me.Packages = New List(Of Top_Level_Package)
-
         Dim rpy_pkg As RPPackage
         For Each rpy_pkg In CType(Me.Rpy_Element, RPPackage).packages
             If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
@@ -261,7 +246,6 @@ Public Class Software_Model_Container
                 pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))
             End If
         Next
-
     End Sub
 
 
@@ -418,7 +402,6 @@ Public Class Software_Model_Container
         Me.Interfaces_WMC_Series = New Data_Series
 
         For Each pkg In Me.Packages
-
             Me.Documentation_Rate_Series.Add_Value(pkg.Get_Package_Documentation_Rate())
 
             pkg.Compute_Nb_Classifiers()
@@ -436,11 +419,9 @@ Public Class Software_Model_Container
             Me.Component_Type_WMC_Series.Add_Value(swct.Compute_WMC)
         Next
 
-        If Not IsNothing(Me.Interfaces_List) Then
-            For Each sw_if In Me.Interfaces_List
-                Me.Interfaces_WMC_Series.Add_Value(sw_if.Compute_WMC)
-            Next
-        End If
+        For Each sw_if In Me.Interfaces_List
+            Me.Interfaces_WMC_Series.Add_Value(sw_if.Compute_WMC)
+        Next
 
     End Sub
 
@@ -530,27 +511,22 @@ Public Class Software_Model_Container
             file_stream.WriteLine("Interfaces : ")
             Dim pkg_list As List(Of Software_Package) = pkg.Get_All_Packages
             For Each current_pkg In pkg_list
+                For Each sw_if In current_pkg.Software_Interfaces
+                    file_stream.WriteLine()
+                    file_stream.WriteLine("    " & sw_if.Name)
+                    file_stream.WriteLine("        WMC : " & sw_if.Compute_WMC())
 
-                If Not IsNothing(current_pkg.Software_Interfaces) Then
-                    For Each sw_if In current_pkg.Software_Interfaces
-                        file_stream.WriteLine()
-                        file_stream.WriteLine("    " & sw_if.Name)
-                        file_stream.WriteLine("        WMC : " & sw_if.Compute_WMC())
-
-                    Next
-                End If
+                Next
             Next
 
             file_stream.WriteLine()
             file_stream.WriteLine("Component_Types : ")
             For Each current_pkg In pkg_list
-                If Not IsNothing(current_pkg.Component_Types) Then
-                    For Each swct In current_pkg.Component_Types
-                        file_stream.WriteLine()
-                        file_stream.WriteLine("    " & swct.Name)
-                        file_stream.WriteLine("        WMC : " & swct.Compute_WMC())
-                    Next
-                End If
+                For Each swct In current_pkg.Component_Types
+                    file_stream.WriteLine()
+                    file_stream.WriteLine("    " & swct.Name)
+                    file_stream.WriteLine("        WMC : " & swct.Compute_WMC())
+                Next
             Next
 
         Next

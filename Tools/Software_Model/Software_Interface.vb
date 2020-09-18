@@ -11,24 +11,20 @@ Public MustInherit Class Software_Interface
             Dim swct_list As List(Of Component_Type)
             swct_list = Me.Container.Get_All_Component_Types
             For Each swct In swct_list
-                If Not IsNothing(swct.Provider_Ports) Then
-                    For Each pport In swct.Provider_Ports
-                        If pport.Contract_Ref = Me.UUID Then
-                            If Not Me.Dependent_Elements.Contains(swct) Then
-                                Me.Dependent_Elements.Add(swct)
-                            End If
+                For Each pport In swct.Provider_Ports
+                    If pport.Contract_Ref = Me.UUID Then
+                        If Not Me.Dependent_Elements.Contains(swct) Then
+                            Me.Dependent_Elements.Add(swct)
                         End If
-                    Next
-                End If
-                If Not IsNothing(swct.Requirer_Ports) Then
-                    For Each rport In swct.Requirer_Ports
-                        If rport.Contract_Ref = Me.UUID Then
-                            If Not Me.Dependent_Elements.Contains(swct) Then
-                                Me.Dependent_Elements.Add(swct)
-                            End If
+                    End If
+                Next
+                For Each rport In swct.Requirer_Ports
+                    If rport.Contract_Ref = Me.UUID Then
+                        If Not Me.Dependent_Elements.Contains(swct) Then
+                            Me.Dependent_Elements.Add(swct)
                         End If
-                    Next
-                End If
+                    End If
+                Next
             Next
         End If
         Return Me.Dependent_Elements
@@ -44,7 +40,7 @@ Public Class Client_Server_Interface
     <XmlArrayItemAttribute(GetType(Synchronous_Operation)), _
      XmlArrayItemAttribute(GetType(Asynchronous_Operation)), _
      XmlArray("Operations")>
-    Public Operations As List(Of Operation_With_Arguments)
+    Public Operations As New List(Of Operation_With_Arguments)
 
 
     '----------------------------------------------------------------------------------------------'
@@ -52,9 +48,7 @@ Public Class Client_Server_Interface
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.Operations) Then
-                children_list.AddRange(Me.Operations)
-            End If
+            children_list.AddRange(Me.Operations)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -64,9 +58,6 @@ Public Class Client_Server_Interface
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
-
-        Me.Operations = New List(Of Operation_With_Arguments)
-
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             If Is_Synchronous_Operation(CType(rpy_ope, RPModelElement)) Then
@@ -79,11 +70,6 @@ Public Class Client_Server_Interface
                 operation.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             End If
         Next
-
-        If Me.Operations.Count = 0 Then
-            Me.Operations = Nothing
-        End If
-
     End Sub
 
 
@@ -99,7 +85,7 @@ Public Class Client_Server_Interface
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
-        If IsNothing(Me.Operations) Then
+        If Me.Operations.Count = 0 Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "CSIF_1",
                 "Shall provide at least one operation.")
@@ -114,17 +100,15 @@ Public Class Client_Server_Interface
         If IsNothing(Me.Needed_Elements) Then
             Me.Needed_Elements = New List(Of SMM_Classifier)
             For Each current_ope In Me.Operations
-                If Not IsNothing(current_ope.Arguments) Then
-                    For Each arg In current_ope.Arguments
-                        Dim data_type As Data_Type
-                        data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
-                        If Not data_type.Is_Basic_Type Then
-                            If Not Me.Needed_Elements.Contains(data_type) Then
-                                Me.Needed_Elements.Add(data_type)
-                            End If
+                For Each arg In current_ope.Arguments
+                    Dim data_type As Data_Type
+                    data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                    If Not data_type.Is_Basic_Type Then
+                        If Not Me.Needed_Elements.Contains(data_type) Then
+                            Me.Needed_Elements.Add(data_type)
                         End If
-                    Next
-                End If
+                    End If
+                Next
             Next
         End If
         Return Me.Needed_Elements
@@ -177,16 +161,14 @@ Public Class Event_Interface
 
     Inherits Software_Interface
 
-    Public Arguments As List(Of Event_Argument)
+    Public Arguments As New List(Of Event_Argument)
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.Arguments) Then
-                children_list.AddRange(Me.Arguments)
-            End If
+            children_list.AddRange(Me.Arguments)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -196,9 +178,6 @@ Public Class Event_Interface
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
-
-        Me.Arguments = New List(Of Event_Argument)
-
         Dim rpy_event_arg As RPAttribute
         For Each rpy_event_arg In CType(Me.Rpy_Element, RPClass).attributes
             If Is_Event_Argument(CType(rpy_event_arg, RPModelElement)) Then
@@ -207,11 +186,6 @@ Public Class Event_Interface
                 arg.Import_From_Rhapsody_Model(Me, CType(rpy_event_arg, RPModelElement))
             End If
         Next
-
-        If Me.Arguments.Count = 0 Then
-            Me.Arguments = Nothing
-        End If
-
     End Sub
 
 
@@ -227,17 +201,15 @@ Public Class Event_Interface
     Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
             Me.Needed_Elements = New List(Of SMM_Classifier)
-            If Not IsNothing(Me.Arguments) Then
-                For Each arg In Me.Arguments
-                    Dim data_type As Data_Type
-                    data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
-                    If Not data_type.Is_Basic_Type Then
-                        If Not Me.Needed_Elements.Contains(data_type) Then
-                            Me.Needed_Elements.Add(data_type)
-                        End If
+            For Each arg In Me.Arguments
+                Dim data_type As Data_Type
+                data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                If Not data_type.Is_Basic_Type Then
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
                     End If
-                Next
-            End If
+                End If
+            Next
         End If
         Return Me.Needed_Elements
     End Function
@@ -245,13 +217,11 @@ Public Class Event_Interface
     Public Overrides Function Compute_WMC() As Double
         If Me.Weighted_Methods_Per_Class = 0 Then
             Me.Weighted_Methods_Per_Class = 1
-            If Not IsNothing(Me.Arguments) Then
-                For Each arg In Me.Arguments
-                    Dim data_type As Data_Type
-                    data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
-                    Me.Weighted_Methods_Per_Class += data_type.Get_Complexity
-                Next
-            End If
+            For Each arg In Me.Arguments
+                Dim data_type As Data_Type
+                data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                Me.Weighted_Methods_Per_Class += data_type.Get_Complexity
+            Next
         End If
         Return Me.Weighted_Methods_Per_Class
     End Function

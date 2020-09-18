@@ -8,12 +8,12 @@ Public Class Internal_Design_Class
 
     Public Base_Class_Ref As Guid
     <XmlArrayItem("Configuration")>
-    Public Configurations As List(Of Configuration_Parameter)
-    Public Public_Operations As List(Of Public_Operation)
+    Public Configurations As New List(Of Configuration_Parameter)
+    Public Public_Operations As New List(Of Public_Operation)
     <XmlArrayItem("Realized_Interface")>
-    Public Realized_Interfaces As List(Of Guid)
+    Public Realized_Interfaces As New List(Of Guid)
     <XmlArrayItem("Needed_Interface")>
-    Public Needed_Interfaces As List(Of Guid)
+    Public Needed_Interfaces As New List(Of Guid)
 
     Private Nb_Base_Class_Ref As Integer = 0
 
@@ -21,17 +21,10 @@ Public Class Internal_Design_Class
     ' General methods 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
-
             Dim children_list As List(Of Software_Element)
             children_list = MyBase.Get_Children
-
-            If Not IsNothing(Me.Configurations) Then
-                children_list.AddRange(Me.Configurations)
-            End If
-            If Not IsNothing(Me.Public_Operations) Then
-                children_list.AddRange(Me.Public_Operations)
-            End If
-
+            children_list.AddRange(Me.Configurations)
+            children_list.AddRange(Me.Public_Operations)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -43,7 +36,6 @@ Public Class Internal_Design_Class
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
         MyBase.Get_Own_Data_From_Rhapsody_Model()
 
-        Me.Realized_Interfaces = New List(Of Guid)
         Dim rpy_gen As RPGeneralization
         For Each rpy_gen In CType(Me.Rpy_Element, RPClass).generalizations
             Dim referenced_rpy_elmt_guid As String
@@ -61,42 +53,23 @@ Public Class Internal_Design_Class
                 Nb_Base_Class_Ref += 1
             End If
         Next
-        If Me.Realized_Interfaces.Count = 0 Then
-            Me.Realized_Interfaces = Nothing
-        End If
 
-        Me.Sent_Events = New List(Of Guid)
-        Me.Received_Events = New List(Of Guid)
-        Me.Needed_Interfaces = New List(Of Guid)
         Dim rpy_dep As RPDependency
         For Each rpy_dep In CType(Me.Rpy_Element, RPClass).dependencies
             Dim rpy_elmt As RPModelElement = CType(rpy_dep, RPModelElement)
             Dim ref_elmt_guid As Guid
             ref_elmt_guid = Transform_Rpy_GUID_To_Guid(rpy_dep.dependsOn.GUID)
-            If Is_Sent_Event(rpy_elmt) Then
-                Me.Sent_Events.Add(ref_elmt_guid)
-            ElseIf Is_Received_Event(rpy_elmt) Then
-                Me.Received_Events.Add(ref_elmt_guid)
-            ElseIf Is_Needed_Interface(rpy_elmt) Then
+            If Is_Needed_Interface(rpy_elmt) Then
                 Me.Needed_Interfaces.Add(ref_elmt_guid)
             End If
         Next
-        If Me.Sent_Events.Count = 0 Then
-            Me.Sent_Events = Nothing
-        End If
-        If Me.Received_Events.Count = 0 Then
-            Me.Received_Events = Nothing
-        End If
-        If Me.Needed_Interfaces.Count = 0 Then
-            Me.Needed_Interfaces = Nothing
-        End If
+
     End Sub
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
         MyBase.Import_Children_From_Rhapsody_Model()
         Dim rpy_elmt As RPModelElement
 
-        Me.Configurations = New List(Of Configuration_Parameter)
         Dim rpy_attribute As RPAttribute
         For Each rpy_attribute In CType(Me.Rpy_Element, RPClass).attributes
             rpy_elmt = CType(rpy_attribute, RPModelElement)
@@ -106,11 +79,7 @@ Public Class Internal_Design_Class
                 attr.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
-        If Me.Configurations.Count = 0 Then
-            Me.Configurations = Nothing
-        End If
 
-        Me.Public_Operations = New List(Of Public_Operation)
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             rpy_elmt = CType(rpy_ope, RPModelElement)
@@ -120,9 +89,6 @@ Public Class Internal_Design_Class
                 ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
-        If Me.Public_Operations.Count = 0 Then
-            Me.Public_Operations = Nothing
-        End If
 
     End Sub
 

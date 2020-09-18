@@ -7,12 +7,12 @@ Public Class Component_Design
     Inherits SDD_Class
 
     Public Component_Type_Ref As Guid = Guid.Empty
-    Public Operation_Realizations As List(Of Operation_Realization)
-    Public Event_Reception_Realizations As List(Of Event_Reception_Realization)
+    Public Operation_Realizations As New List(Of Operation_Realization)
+    Public Event_Reception_Realizations As New List(Of Event_Reception_Realization)
     <XmlArrayItem("Part")>
-    Public Parts As List(Of Internal_Design_Object)
-    Public Object_Connectors As List(Of Object_Connector)
-    Public Delegation_Connectors As List(Of Object_Delegation_Connector)
+    Public Parts As New List(Of Internal_Design_Object)
+    Public Object_Connectors As New List(Of Object_Connector)
+    Public Delegation_Connectors As New List(Of Object_Delegation_Connector)
 
     Private Nb_Component_Type_Ref As Integer
     Private Nb_Invalid_Component_Type_Ref As Integer = 0 ' nb ref on not a Component_Type
@@ -21,26 +21,13 @@ Public Class Component_Design
     ' General methods 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
-
             Dim children_list As List(Of Software_Element)
             children_list = MyBase.Get_Children
-
-            If Not IsNothing(Me.Operation_Realizations) Then
-                children_list.AddRange(Me.Operation_Realizations)
-            End If
-            If Not IsNothing(Me.Event_Reception_Realizations) Then
-                children_list.AddRange(Me.Event_Reception_Realizations)
-            End If
-            If Not IsNothing(Me.Parts) Then
-                children_list.AddRange(Me.Parts)
-            End If
-            If Not IsNothing(Me.Object_Connectors) Then
-                children_list.AddRange(Me.Object_Connectors)
-            End If
-            If Not IsNothing(Me.Delegation_Connectors) Then
-                children_list.AddRange(Me.Delegation_Connectors)
-            End If
-
+            children_list.AddRange(Me.Operation_Realizations)
+            children_list.AddRange(Me.Event_Reception_Realizations)
+            children_list.AddRange(Me.Parts)
+            children_list.AddRange(Me.Object_Connectors)
+            children_list.AddRange(Me.Delegation_Connectors)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -53,9 +40,6 @@ Public Class Component_Design
         MyBase.Import_Children_From_Rhapsody_Model()
         Dim rpy_elmt As RPModelElement
 
-
-        Me.Operation_Realizations = New List(Of Operation_Realization)
-        Me.Event_Reception_Realizations = New List(Of Event_Reception_Realization)
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             rpy_elmt = CType(rpy_ope, RPModelElement)
@@ -69,14 +53,7 @@ Public Class Component_Design
                 ev_recep_rea.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
-        If Me.Operation_Realizations.Count = 0 Then
-            Me.Operation_Realizations = Nothing
-        End If
-        If Me.Event_Reception_Realizations.Count = 0 Then
-            Me.Event_Reception_Realizations = Nothing
-        End If
 
-        Me.Parts = New List(Of Internal_Design_Object)
         Dim rpy_instance As RPInstance
         For Each rpy_instance In CType(Me.Rpy_Element, RPClass).relations
             rpy_elmt = CType(rpy_instance, RPModelElement)
@@ -86,12 +63,7 @@ Public Class Component_Design
                 obj.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
-        If Me.Parts.Count = 0 Then
-            Me.Parts = Nothing
-        End If
 
-        Me.Object_Connectors = New List(Of Object_Connector)
-        Me.Delegation_Connectors = New List(Of Object_Delegation_Connector)
         Dim rpy_link As RPLink
         For Each rpy_link In CType(Me.Rpy_Element, RPClass).links
             rpy_elmt = CType(rpy_link, RPModelElement)
@@ -107,12 +79,6 @@ Public Class Component_Design
                 End If
             End If
         Next
-        If Me.Object_Connectors.Count = 0 Then
-            Me.Object_Connectors = Nothing
-        End If
-        If Me.Delegation_Connectors.Count = 0 Then
-            Me.Delegation_Connectors = Nothing
-        End If
 
     End Sub
 
@@ -229,16 +195,12 @@ Public Class Component_Design
         If Me.Component_Type_Ref <> Guid.Empty Then
             Dim swct As Component_Type
             swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), Component_Type)
-            If Not IsNothing(Me.Operation_Realizations) Then
-                For Each op_real In Me.Operation_Realizations
-                    op_real.Check_Referenced_Elements(report, swct)
-                Next
-            End If
-            If Not IsNothing(Me.Event_Reception_Realizations) Then
-                For Each ev_recep_real In Me.Event_Reception_Realizations
-                    ev_recep_real.Check_Referenced_Elements(report, swct)
-                Next
-            End If
+            For Each op_real In Me.Operation_Realizations
+                op_real.Check_Referenced_Elements(report, swct)
+            Next
+            For Each ev_recep_real In Me.Event_Reception_Realizations
+                ev_recep_real.Check_Referenced_Elements(report, swct)
+            Next
         End If
     End Sub
 
@@ -254,7 +216,7 @@ Public Class Operation_Realization
     Inherits Operation_With_Arguments
 
     Public Provider_Port_Ref As Guid = Guid.Empty
-    Public Operation_Ref As Guid
+    Public Operation_Ref As Guid = Guid.Empty
 
     Private Nb_Provider_Port_Ref As Integer
     Private Nb_Operation_Ref As Integer
@@ -268,14 +230,20 @@ Public Class Operation_Realization
         Dim rpy_dep As RPDependency
         For Each rpy_dep In CType(Me.Rpy_Element, RPOperation).dependencies
             If Is_Provider_Port_Ref(CType(rpy_dep, RPModelElement)) Then
-                Dim rpy_port As RPPort
+                Dim rpy_port As RPPort = Nothing
                 Try
                     rpy_port = CType(rpy_dep.dependsOn, RPPort)
                 Catch
-                    rpy_port = CType(rpy_dep.dependsOn.owner, RPPort)
+                    Try
+                        rpy_port = CType(rpy_dep.dependsOn.owner, RPPort)
+                    Catch
+                        rpy_port = Nothing
+                    End Try
                 End Try
-                Me.Nb_Provider_Port_Ref += 1
-                Me.Provider_Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_port.GUID)
+                If Not IsNothing(rpy_port) Then
+                    Me.Nb_Provider_Port_Ref += 1
+                    Me.Provider_Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_port.GUID)
+                End If
             ElseIf Is_Operation_Ref(CType(rpy_dep, RPModelElement)) Then
                 Me.Nb_Operation_Ref += 1
                 Me.Operation_Ref = Transform_Rpy_GUID_To_Guid(rpy_dep.dependsOn.GUID)
@@ -438,26 +406,33 @@ Public Class Operation_Realization
         If Me.Operation_Ref <> Guid.Empty Then
             Dim ope As SMM_Operation
             ope = CType(Me.Get_Element_By_Uuid(Me.Operation_Ref), SMM_Operation)
-            If ope.GetType = GetType(Component_Operation) Then
-                If Me.Provider_Port_Ref <> Guid.Empty Then
-                    Me.Add_Consistency_Check_Error_Item(report,
-                        "OPREAL_2",
-                        "Realize a Component_Operation : shall not be linked to a Port.")
-                End If
-            ElseIf ope.GetType = GetType(Synchronous_Operation) Or
-                    ope.GetType = GetType(Asynchronous_Operation) Then
-                If Me.Provider_Port_Ref = Guid.Empty Then
-                    Me.Add_Consistency_Check_Error_Item(report,
-                        "OPREAL_3",
-                        "Shall not be linked to a Provider_Port.")
+            If Not IsNothing(ope) Then
+                If ope.GetType = GetType(Component_Operation) Then
+                    If Me.Provider_Port_Ref <> Guid.Empty Then
+                        Me.Add_Consistency_Check_Error_Item(report,
+                            "OPREAL_2",
+                            "Realize a Component_Operation : shall not be linked to a Port.")
+                    End If
+                ElseIf ope.GetType = GetType(Synchronous_Operation) Or
+                        ope.GetType = GetType(Asynchronous_Operation) Then
+                    If Me.Provider_Port_Ref = Guid.Empty Then
+                        Me.Add_Consistency_Check_Error_Item(report,
+                            "OPREAL_3",
+                            "Shall not be linked to a Provider_Port.")
+                    End If
+                Else
+                    If Me.Provider_Port_Ref = Guid.Empty Then
+                        Me.Add_Consistency_Check_Error_Item(report,
+                            "OPREAL_4",
+                            "Shall reference a Component_Operation " & _
+                            "or a Synchronous_Operation or a Asynchronous_Operation.")
+                    End If
                 End If
             Else
-                If Me.Provider_Port_Ref = Guid.Empty Then
-                    Me.Add_Consistency_Check_Error_Item(report,
-                        "OPREAL_4",
-                        "Shall reference a Component_Operation " & _
-                        "or a Synchronous_Operation or a Asynchronous_Operation.")
-                End If
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "OPREAL_4",
+                    "Shall reference a Component_Operation " & _
+                    "or a Synchronous_Operation or a Asynchronous_Operation.")
             End If
         End If
 

@@ -27,7 +27,7 @@ Public MustInherit Class Operation_With_Arguments
 
     Inherits SMM_Operation
 
-    Public Arguments As List(Of Operation_Argument)
+    Public Arguments As New List(Of Operation_Argument)
 
 
     '----------------------------------------------------------------------------------------------'
@@ -35,9 +35,7 @@ Public MustInherit Class Operation_With_Arguments
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.Arguments) Then
-                children_list.AddRange(Me.Arguments)
-            End If
+            children_list.AddRange(Me.Arguments)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -47,20 +45,12 @@ Public MustInherit Class Operation_With_Arguments
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
-
-        Me.Arguments = New List(Of Operation_Argument)
-
         Dim rpy_arg As RPArgument
         For Each rpy_arg In CType(Me.Rpy_Element, RPOperation).arguments
             Dim argument As Operation_Argument = New Operation_Argument
             Me.Arguments.Add(argument)
             argument.Import_From_Rhapsody_Model(Me, CType(rpy_arg, RPModelElement))
         Next
-
-        If Me.Arguments.Count = 0 Then
-            Me.Arguments = Nothing
-        End If
-
     End Sub
 
 End Class

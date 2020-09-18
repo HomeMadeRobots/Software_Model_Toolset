@@ -8,7 +8,7 @@ Public Class Implementation_File
     Public File_Name As String = ""
     Public Language As E_LANGUAGE = E_LANGUAGE.C
     <XmlArrayItem("Implemented_Element")>
-    Public Implemented_Elements As List(Of Guid)
+    Public Implemented_Elements As New List(Of Guid)
 
     Public Enum E_LANGUAGE
         ASM
@@ -70,7 +70,6 @@ Public Class Implementation_File
         End If
 
         ' Get Implemented_Elements
-        Me.Implemented_Elements = New List(Of Guid)
         Dim rpy_dep As RPDependency
         Dim rpy_elmt_owning_dep As RPModelElement
         rpy_elmt_owning_dep = CType(CType(Me.Rpy_Element, RPModule).otherClass, RPModelElement)
@@ -84,9 +83,6 @@ Public Class Implementation_File
                 Me.Implemented_Elements.Add(ref_elmt_guid)
             End If
         Next
-        If Me.Implemented_Elements.Count = 0 Then
-            Me.Implemented_Elements = Nothing
-        End If
 
     End Sub
 

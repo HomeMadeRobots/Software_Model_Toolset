@@ -4,8 +4,8 @@ Public Class Root_Software_Composition
 
     Inherits SMM_Class
 
-    Public Component_Prototypes As List(Of Component_Prototype)
-    Public Assembly_Connectors As List(Of Assembly_Connector)
+    Public Component_Prototypes As New List(Of Component_Prototype)
+    Public Assembly_Connectors As New List(Of Assembly_Connector)
 
     Private Nb_Conn_By_PPort_By_Component As New Dictionary(Of Guid, Dictionary(Of Guid, Integer))
     Private Nb_Conn_By_RPort_By_Component As New Dictionary(Of Guid, Dictionary(Of Guid, Integer))
@@ -15,12 +15,8 @@ Public Class Root_Software_Composition
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-            If Not IsNothing(Me.Component_Prototypes) Then
-                children_list.AddRange(Me.Component_Prototypes)
-            End If
-            If Not IsNothing(Me.Assembly_Connectors) Then
-                children_list.AddRange(Me.Assembly_Connectors)
-            End If
+            children_list.AddRange(Me.Component_Prototypes)
+            children_list.AddRange(Me.Assembly_Connectors)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -31,10 +27,7 @@ Public Class Root_Software_Composition
     ' Methods for model import from Rhapsody
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
-        Me.Component_Prototypes = New List(Of Component_Prototype)
-
         Dim rpy_component As RPInstance
-
         For Each rpy_component In CType(Me.Rpy_Element, RPClass).relations
             If Is_Component_Prototype(CType(rpy_component, RPModelElement)) Then
                 Dim component As New Component_Prototype
@@ -43,8 +36,6 @@ Public Class Root_Software_Composition
                 component.Set_Owner(Me)
             End If
         Next
-
-        Me.Assembly_Connectors = New List(Of Assembly_Connector)
 
         Dim rpy_link As RPLink
         For Each rpy_link In CType(Me.Rpy_Element, RPClass).links
@@ -160,15 +151,13 @@ Public Class Root_Software_Composition
     Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
             Me.Needed_Elements = New List(Of SMM_Classifier)
-            If Not IsNothing(Me.Component_Prototypes) Then
-                For Each swc In Me.Component_Prototypes
-                    Dim swct As Component_Type
-                    swct = CType(Me.Get_Element_By_Uuid(swc.Type_Ref), Component_Type)
-                    If Not Me.Needed_Elements.Contains(swct) Then
-                        Me.Needed_Elements.Add(swct)
-                    End If
-                Next
-            End If
+            For Each swc In Me.Component_Prototypes
+                Dim swct As Component_Type
+                swct = CType(Me.Get_Element_By_Uuid(swc.Type_Ref), Component_Type)
+                If Not Me.Needed_Elements.Contains(swct) Then
+                    Me.Needed_Elements.Add(swct)
+                End If
+            Next
         End If
         Return Me.Needed_Elements
     End Function
@@ -226,33 +215,29 @@ Public Class Component_Prototype
             Dim referenced_swct As Component_Type
             referenced_swct = CType(Me.Get_Element_By_Uuid(Me.Type_Ref), Component_Type)
 
-            If Not IsNothing(referenced_swct.Provider_Ports) Then
-                For Each port In referenced_swct.Provider_Ports
-                    nb_conn = CType(Me.Owner, Root_Software_Composition). _
-                                Get_PPort_Nb_Connection(Me.UUID, port.UUID)
-                    If nb_conn = 0 Then
-                        Me.Add_Consistency_Check_Information_Item(report,
-                            "SWC_3",
-                            "Provider_Port " & port.Name & " not connected.")
-                    End If
-                Next
-            End If
+            For Each port In referenced_swct.Provider_Ports
+                nb_conn = CType(Me.Owner, Root_Software_Composition). _
+                            Get_PPort_Nb_Connection(Me.UUID, port.UUID)
+                If nb_conn = 0 Then
+                    Me.Add_Consistency_Check_Information_Item(report,
+                        "SWC_3",
+                        "Provider_Port " & port.Name & " not connected.")
+                End If
+            Next
 
-            If Not IsNothing(referenced_swct.Requirer_Ports) Then
-                For Each port In referenced_swct.Requirer_Ports
-                    nb_conn = CType(Me.Owner, Root_Software_Composition). _
-                                Get_RPort_Nb_Connection(Me.UUID, port.UUID)
-                    If nb_conn = 0 Then
-                        Me.Add_Consistency_Check_Error_Item(report,
-                            "SWC_2",
-                            "Requirer_Port " & port.Name & " shall be connected.")
-                    ElseIf nb_conn > 1 Then
-                        Me.Add_Consistency_Check_Error_Item(report,
-                            "SWC_2",
-                            "Requirer_Port " & port.Name & " shall be connected to only one port.")
-                    End If
-                Next
-            End If
+            For Each port In referenced_swct.Requirer_Ports
+                nb_conn = CType(Me.Owner, Root_Software_Composition). _
+                            Get_RPort_Nb_Connection(Me.UUID, port.UUID)
+                If nb_conn = 0 Then
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "SWC_2",
+                        "Requirer_Port " & port.Name & " shall be connected.")
+                ElseIf nb_conn > 1 Then
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "SWC_2",
+                        "Requirer_Port " & port.Name & " shall be connected to only one port.")
+                End If
+            Next
 
         End If
 

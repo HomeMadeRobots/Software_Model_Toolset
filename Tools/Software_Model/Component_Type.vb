@@ -6,28 +6,19 @@ Public Class Component_Type
 
     Inherits SMM_Class
 
-    Public Component_Operations As List(Of Component_Operation)
+    Public Component_Operations As New List(Of Component_Operation)
     <XmlArrayItem("Configuration")>
-    Public Configurations As List(Of Configuration_Parameter)
-    Public Provider_Ports As List(Of Provider_Port)
-    Public Requirer_Ports As List(Of Requirer_Port)
+    Public Configurations As New List(Of Configuration_Parameter)
+    Public Provider_Ports As New List(Of Provider_Port)
+    Public Requirer_Ports As New List(Of Requirer_Port)
 
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
-
-            If Not IsNothing(Me.Provider_Ports) Then
-                children_list.AddRange(Me.Provider_Ports)
-            End If
-            If Not IsNothing(Me.Requirer_Ports) Then
-                children_list.AddRange(Me.Requirer_Ports)
-            End If
-            If Not IsNothing(Me.Component_Operations) Then
-                children_list.AddRange(Me.Component_Operations)
-            End If
-            If Not IsNothing(Me.Configurations) Then
-                children_list.AddRange(Me.Configurations)
-            End If
+            children_list.AddRange(Me.Provider_Ports)
+            children_list.AddRange(Me.Requirer_Ports)
+            children_list.AddRange(Me.Component_Operations)
+            children_list.AddRange(Me.Configurations)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -35,8 +26,6 @@ Public Class Component_Type
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
-        Me.Provider_Ports = New List(Of Provider_Port)
-        Me.Requirer_Ports = New List(Of Requirer_Port)
         Dim rpy_port As RPPort
         For Each rpy_port In CType(Me.Rpy_Element, RPClass).ports
             If Is_Provider_Port(CType(rpy_port, RPModelElement)) Then
@@ -49,14 +38,7 @@ Public Class Component_Type
                 rport.Import_From_Rhapsody_Model(Me, CType(rpy_port, RPModelElement))
             End If
         Next
-        If Me.Provider_Ports.Count = 0 Then
-            Me.Provider_Ports = Nothing
-        End If
-        If Me.Requirer_Ports.Count = 0 Then
-            Me.Requirer_Ports = Nothing
-        End If
 
-        Me.Component_Operations = New List(Of Component_Operation)
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             If Is_Component_Operation(CType(rpy_ope, RPModelElement)) Then
@@ -65,12 +47,8 @@ Public Class Component_Type
                 ope.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             End If
         Next
-        If Me.Component_Operations.Count = 0 Then
-            Me.Component_Operations = Nothing
-        End If
 
-        Me.Configurations = New List(Of Configuration_Parameter)
-         Dim rpy_attribute As RPAttribute
+        Dim rpy_attribute As RPAttribute
         For Each rpy_attribute In CType(Me.Rpy_Element, RPClass).attributes
             If Is_Configuration_Parameter(CType(rpy_attribute, RPModelElement)) Then
                 Dim conf As Configuration_Parameter = New Configuration_Parameter
@@ -78,9 +56,6 @@ Public Class Component_Type
                 conf.Import_From_Rhapsody_Model(Me, CType(rpy_attribute, RPModelElement))
             End If
         Next
-        If Me.Configurations.Count = 0 Then
-            Me.Configurations = Nothing
-        End If
 
     End Sub
 
@@ -96,13 +71,11 @@ Public Class Component_Type
     ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
-
-        If IsNothing(Me.Provider_Ports) And IsNothing(Me.Requirer_Ports) Then
+        If Me.Provider_Ports.Count = 0 And Me.Requirer_Ports.Count = 0 Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "SWCT_1",
                 "Shall aggregate at least one Port.")
         End If
-
     End Sub
 
 
@@ -112,37 +85,31 @@ Public Class Component_Type
         If IsNothing(Me.Needed_Elements) Then
             Me.Needed_Elements = New List(Of SMM_Classifier)
 
-            If Not IsNothing(Me.Provider_Ports) Then
-                For Each port In Me.Provider_Ports
-                    Dim sw_if As Software_Interface
-                    sw_if = CType(Me.Get_Element_By_Uuid(port.Contract_Ref), Software_Interface)
-                    If Not Me.Needed_Elements.Contains(sw_if) Then
-                        Me.Needed_Elements.Add(sw_if)
-                    End If
-                Next
-            End If
+            For Each port In Me.Provider_Ports
+                Dim sw_if As Software_Interface
+                sw_if = CType(Me.Get_Element_By_Uuid(port.Contract_Ref), Software_Interface)
+                If Not Me.Needed_Elements.Contains(sw_if) Then
+                    Me.Needed_Elements.Add(sw_if)
+                End If
+            Next
 
-            If Not IsNothing(Me.Requirer_Ports) Then
-                For Each port In Me.Requirer_Ports
-                    Dim sw_if As Software_Interface
-                    sw_if = CType(Me.Get_Element_By_Uuid(port.Contract_Ref), Software_Interface)
-                    If Not Me.Needed_Elements.Contains(sw_if) Then
-                        Me.Needed_Elements.Add(sw_if)
-                    End If
-                Next
-            End If
+            For Each port In Me.Requirer_Ports
+                Dim sw_if As Software_Interface
+                sw_if = CType(Me.Get_Element_By_Uuid(port.Contract_Ref), Software_Interface)
+                If Not Me.Needed_Elements.Contains(sw_if) Then
+                    Me.Needed_Elements.Add(sw_if)
+                End If
+            Next
 
-            If Not IsNothing(Me.Configurations) Then
-                For Each conf In Me.Configurations
-                    Dim data_type As Data_Type
-                    data_type = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
-                    If Not data_type.Is_Basic_Type Then
-                        If Not Me.Needed_Elements.Contains(data_type) Then
-                            Me.Needed_Elements.Add(data_type)
-                        End If
+            For Each conf In Me.Configurations
+                Dim data_type As Data_Type
+                data_type = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
+                If Not data_type.Is_Basic_Type Then
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
                     End If
-                Next
-            End If
+                End If
+            Next
 
         End If
         Return Me.Needed_Elements
@@ -154,15 +121,13 @@ Public Class Component_Type
             Dim compo_list As List(Of Root_Software_Composition)
             compo_list = Me.Container.Get_All_Compositions
             For Each compo In compo_list
-                If Not IsNothing(compo.Component_Prototypes) Then
-                    For Each swc In compo.Component_Prototypes
-                        If swc.Type_Ref = Me.UUID Then
-                            If Not Me.Dependent_Elements.Contains(compo) Then
-                                Me.Dependent_Elements.Add(compo)
-                            End If
+                For Each swc In compo.Component_Prototypes
+                    If swc.Type_Ref = Me.UUID Then
+                        If Not Me.Dependent_Elements.Contains(compo) Then
+                            Me.Dependent_Elements.Add(compo)
                         End If
-                    Next
-                End If
+                    End If
+                Next
             Next
         End If
         Return Me.Dependent_Elements
@@ -170,13 +135,11 @@ Public Class Component_Type
 
     Public Overrides Function Compute_WMC() As Double
         If Me.Weighted_Methods_Per_Class = 0 Then
-            If Not IsNothing(Me.Provider_Ports) Then
-                For Each pport In Me.Provider_Ports
-                    Dim sw_if As Software_Interface
-                    sw_if = CType(Me.Get_Element_By_Uuid(pport.Contract_Ref), Software_Interface)
-                    Me.Weighted_Methods_Per_Class += sw_if.Compute_WMC
-                Next
-            End If
+            For Each pport In Me.Provider_Ports
+                Dim sw_if As Software_Interface
+                sw_if = CType(Me.Get_Element_By_Uuid(pport.Contract_Ref), Software_Interface)
+                Me.Weighted_Methods_Per_Class += sw_if.Compute_WMC
+            Next
         End If
         Return Me.Weighted_Methods_Per_Class
     End Function
