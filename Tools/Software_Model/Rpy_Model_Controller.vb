@@ -211,7 +211,7 @@ Public Class Rpy_Model_Controller
         End If
 
         ' Display Result to output window
-        Me.Write_Csl_Line("Export end.")
+        Me.Write_Csl_Line("Check end.")
         chrono.Stop()
         Me.Write_Csl(Get_Elapsed_Time(chrono))
 
