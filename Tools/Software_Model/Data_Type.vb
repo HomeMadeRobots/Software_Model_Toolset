@@ -199,6 +199,10 @@ Public MustInherit Class Basic_Type
         Me.Top_Package = pkg
     End Sub
 
+    Public Sub Set_Rpy_Element(rpy_type As RPModelElement)
+        Me.Rpy_Element = rpy_type
+    End Sub
+
 End Class
 
 Public Class Basic_Integer_Type

@@ -38,6 +38,10 @@ Public MustInherit Class Software_Element
         End If
     End Function
 
+    Public Function Get_Rpy_Element() As RPModelElement
+        Return Me.Rpy_Element
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody

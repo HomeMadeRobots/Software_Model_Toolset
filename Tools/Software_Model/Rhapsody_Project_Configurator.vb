@@ -30,7 +30,9 @@ Public Class Rhapsody_Project_Configurator
         {"Generate diagram", "Generate_Component_Type_Diagram", "Component_Type"},
         {"Display GUID", "Display_GUID", "All"},
         {"Modify GUID", "Modify_GUID", "All"},
-        {"Configure", "Configure", "Project"}}
+        {"Configure", "Configure", "Project"},
+        {"Update realizations", "Update_Realizations", "Component_Design"},
+        {"Create Component_Design model", "Create_Component_Design_Model", "Component_Type"}}
 
     Public Sub New(rpy_proj As RPProject)
         Me.Rpy_Proj = rpy_proj
@@ -45,8 +47,8 @@ Public Class Rhapsody_Project_Configurator
         Dim mdl_directory As String = mdl_unit.currentDirectory
 
         Dim profiles_dir As String = toolset_path & "\Rhapsody_Profiles"
-        Dim relative_profile_dir As String
-        relative_profile_dir = "..\..\" & Make_Relative_Path(mdl_directory, profiles_dir)
+        Dim relative_profile_dir As String = "..\..\"
+        relative_profile_dir &= Rpy_Controller.Make_Relative_Path(mdl_directory, profiles_dir)
         status = E_Profile_Configuration_Status.CONFIGURATION_OK
         For Each profile In Profiles_List
             Dim rpy_unit As RPUnit
@@ -72,8 +74,8 @@ Public Class Rhapsody_Project_Configurator
         Dim mdl_directory As String = mdl_unit.currentDirectory
 
         Dim tool_dir As String = toolset_path & "\Tools"
-        Dim relative_tool_dir As String
-        relative_tool_dir = "..\" & Make_Relative_Path(mdl_directory, tool_dir) & _
+        Dim relative_tool_dir As String = "..\"
+        relative_tool_dir &= Rpy_Controller.Make_Relative_Path(mdl_directory, tool_dir) & _
                             "\Software_Model\bin\Release\Software_Model.exe"
 
         ' Create helper file
@@ -142,24 +144,5 @@ Public Class Rhapsody_Project_Configurator
             "General.Model.CommonTypes",
             "Software_Data_Type_Metamodel::Stereotypes")
     End Sub
-
-    Private Shared Function Make_Relative_Path(from_path As String, to_path As String) As String
-        Dim from_uri As Uri
-        Dim to_uri As Uri
-        Dim relative_path As String = to_path
-        from_uri = New Uri(from_path)
-        to_uri = New Uri(to_path)
-        If from_uri.Scheme = to_uri.Scheme Then
-            Dim relative_uri As Uri
-            relative_uri = from_uri.MakeRelativeUri(to_uri)
-            relative_path = Uri.UnescapeDataString(relative_uri.ToString())
-            If to_uri.Scheme.Equals("file", StringComparison.InvariantCultureIgnoreCase) Then
-                relative_path = relative_path.Replace(
-                                Path.AltDirectorySeparatorChar,
-                                Path.DirectorySeparatorChar)
-            End If
-        End If
-        Return relative_path
-    End Function
 
 End Class

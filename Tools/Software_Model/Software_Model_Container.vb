@@ -185,24 +185,28 @@ Public Class Software_Model_Container
 
         ' Add Basic_Types
         Dim type As Basic_Type
-        Dim basic_type_idx As Integer
+        Dim rpy_type As RPModelElement
         ' Treat Basic_Integer_Types
         Dim nb_int_types As Integer = Basic_Integer_Type_Name_List.Count
-        For basic_type_idx = 0 To nb_int_types - 1
+        For type_idx = 0 To nb_int_types - 1
             type = New Basic_Integer_Type
-            type.Name = Basic_Integer_Type_Name_List(basic_type_idx)
+            type.Name = Basic_Integer_Type_Name_List(type_idx)
             type.Set_Top_Package(basic_types_pkg)
-            Guid.TryParse(Basic_Integer_Type_Uuid_List(basic_type_idx), type.UUID)
+            rpy_type = Me.Find_In_Rpy_Project("GUID " & Basic_Integer_Type_Uuid_List(type_idx))
+            type.Set_Rpy_Element(rpy_type)
+            Guid.TryParse(Basic_Integer_Type_Uuid_List(type_idx), type.UUID)
             basic_types_pkg.Data_Types.Add(type)
             Me.Add_Element(type)
         Next
         ' Treat Basic_Floating_Point_Types
         Dim nb_fp_types As Integer = Basic_Floating_Type_Name_List.Count
-        For basic_type_idx = 0 To nb_fp_types - 1
+        For type_idx = 0 To nb_fp_types - 1
             type = New Basic_Floating_Point_Type
-            type.Name = Basic_Floating_Type_Name_List(basic_type_idx)
+            type.Name = Basic_Floating_Type_Name_List(type_idx)
             type.Set_Top_Package(basic_types_pkg)
-            Guid.TryParse(Basic_Floating_Type_Uuid_List(basic_type_idx), type.UUID)
+            rpy_type = Me.Find_In_Rpy_Project("GUID " & Basic_Integer_Type_Uuid_List(type_idx))
+            type.Set_Rpy_Element(rpy_type)
+            Guid.TryParse(Basic_Floating_Type_Uuid_List(type_idx), type.UUID)
             basic_types_pkg.Data_Types.Add(type)
             Me.Add_Element(type)
         Next
@@ -210,6 +214,8 @@ Public Class Software_Model_Container
         type = New Basic_Boolean_Type
         type.Name = "boolean"
         type.Set_Top_Package(basic_types_pkg)
+        rpy_type = Me.Find_In_Rpy_Project("GUID 5df8e979-be4c-4790-87a7-f8ee053c4162")
+        type.Set_Rpy_Element(rpy_type)
         Guid.TryParse("5df8e979-be4c-4790-87a7-f8ee053c4162", type.UUID)
         basic_types_pkg.Data_Types.Add(type)
         Me.Add_Element(type)
@@ -217,6 +223,8 @@ Public Class Software_Model_Container
         type = New Basic_Integer_Array_Type
         type.Name = "uint8_array"
         type.Set_Top_Package(basic_types_pkg)
+        rpy_type = Me.Find_In_Rpy_Project("GUID b86a2bc4-2c3f-4cff-9217-4a07af95fdd2")
+        type.Set_Rpy_Element(rpy_type)
         Guid.TryParse("b86a2bc4-2c3f-4cff-9217-4a07af95fdd2", type.UUID)
         basic_types_pkg.Data_Types.Add(type)
         Me.Add_Element(type)
@@ -224,6 +232,8 @@ Public Class Software_Model_Container
         type = New Basic_Character_Type
         type.Name = "character"
         type.Set_Top_Package(basic_types_pkg)
+        rpy_type = Me.Find_In_Rpy_Project("GUID 0b72335d-1ae5-4182-a916-c731838ed0b7")
+        type.Set_Rpy_Element(rpy_type)
         Guid.TryParse("0b72335d-1ae5-4182-a916-c731838ed0b7", type.UUID)
         basic_types_pkg.Data_Types.Add(type)
         Me.Add_Element(type)
@@ -231,6 +241,8 @@ Public Class Software_Model_Container
         type = New Basic_Character_Type
         type.Name = "characters_string"
         type.Set_Top_Package(basic_types_pkg)
+        rpy_type = Me.Find_In_Rpy_Project("GUID 9b2c2f9e-c662-4494-a932-00581b21d3bb")
+        type.Set_Rpy_Element(rpy_type)
         Guid.TryParse("9b2c2f9e-c662-4494-a932-00581b21d3bb", type.UUID)
         basic_types_pkg.Data_Types.Add(type)
         Me.Add_Element(type)

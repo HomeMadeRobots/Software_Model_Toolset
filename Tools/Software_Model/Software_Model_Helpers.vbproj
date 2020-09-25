@@ -71,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Component_Design.vb" />
+    <Compile Include="Component_Design_Model_Creation_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Component_Type.vb" />
     <Compile Include="Configuration_Parameter.vb" />
     <Compile Include="Consistency_Check_Report.vb" />
@@ -94,6 +97,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Rpy_Component_Design_Controller.vb" />
     <Compile Include="SMM_Operation.vb" />
     <Compile Include="Rhapsody_Project_Configuration_Form.vb">
       <SubType>Form</SubType>

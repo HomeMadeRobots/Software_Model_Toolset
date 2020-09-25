@@ -72,6 +72,14 @@ Module Software_Model_Helpers
                     Dim prj_ctrl As New Rpy_Project_Controller
                     prj_ctrl.Open_Configuration_View()
 
+                Case "Update_Realizations"
+                    Dim prj_ctrl As New Rpy_Component_Design_Controller
+                    prj_ctrl.Update_Realizations()
+
+                Case "Create_Component_Design_Model"
+                    Dim prj_ctrl As New Rpy_Component_Design_Controller
+                    prj_ctrl.Open_Component_Design_Model_Creation_View()
+
 
             End Select
         Catch ex As Exception
