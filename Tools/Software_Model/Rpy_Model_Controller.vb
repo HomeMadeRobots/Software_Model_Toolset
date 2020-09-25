@@ -173,6 +173,27 @@ Public Class Rpy_Model_Controller
             ' Create string of the date for created csv file
             Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
 
+            ' Get top level packages to check
+            Dim user_choices_file As String
+            user_choices_file = "Check_" & rpy_sw_mdl.name & "_Pkg_Choice"
+            Dim previous_pkg_selection_choices As Dictionary(Of String, String)
+            previous_pkg_selection_choices = Rpy_Controller.Load_User_Choices(user_choices_file)
+
+            Dim pkg_name_list As List(Of String)
+            pkg_name_list = Me.Get_Software_Package_Name_List()
+
+            Dim selection_form As New Package_Selection_Form(
+                pkg_name_list,
+                previous_pkg_selection_choices)
+            selection_form.ShowDialog()
+
+            Dim selected_pkg_name_list As New List(Of String)
+            selected_pkg_name_list = selection_form.Get_Selected_Package_Name_List()
+
+            Dim new_pkg_selection_choices As Dictionary(Of String, String)
+            new_pkg_selection_choices = selection_form.Get_Package_Selection_Choices()
+            Rpy_Controller.Save_User_Choices(user_choices_file, new_pkg_selection_choices)
+
             ' Get model from Rhapsody
             Me.Write_Csl("Get model from Rhapsody...")
             Me.Model = New Software_Model_Container
@@ -181,7 +202,7 @@ Public Class Rpy_Model_Controller
 
             ' Check model
             Me.Write_Csl("Check model...")
-            Me.Model.Check_Consistency()
+            Me.Model.Check_Consistency(selected_pkg_name_list)
             Me.Write_Csl_Line(" done.")
 
             ' Create report

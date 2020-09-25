@@ -27,6 +27,18 @@ Public MustInherit Class Rpy_Controller
         Return rpy_sw_mdl
     End Function
 
+    Protected Function Get_Software_Package_Name_List() As List(Of String)
+        Dim pkg_name_list As New List(Of String)
+        Dim rpy_proj As RPProject = Me.Rhapsody_App.activeProject
+        Dim rpy_pkg As RPPackage
+        For Each rpy_pkg In rpy_proj.packages
+            If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
+                pkg_name_list.Add(rpy_pkg.name)
+            End If
+        Next
+        Return pkg_name_list
+    End Function
+
     Protected Shared Function Select_File(title As String, filter As String) As String
         Dim file_path As String = ""
         Dim dialog_box As OpenFileDialog

@@ -251,7 +251,7 @@ Public Class Software_Model_Container
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
         Dim rpy_pkg As RPPackage
-        For Each rpy_pkg In CType(Me.Rpy_Element, RPPackage).packages
+        For Each rpy_pkg In CType(Me.Rpy_Element, RPProject).packages
             If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
                 Dim pkg As Top_Level_Package = New Top_Level_Package
                 Me.Packages.Add(pkg)
@@ -386,6 +386,25 @@ Public Class Software_Model_Container
         {"Path", "Meta-class", "Rule ID", "Criticality", "Message"}
         Me.Consistency_Report = New Consistency_Check_Report(attr_list)
         Me.Check_Consistency(Me.Consistency_Report)
+    End Sub
+
+    Public Overloads Sub Check_Consistency(pkg_name_list As List(Of String))
+        Dim attr_list As New List(Of String) From
+        {"Path", "Meta-class", "Rule ID", "Criticality", "Message"}
+        Me.Consistency_Report = New Consistency_Check_Report(attr_list)
+
+        Me.Check_Own_Consistency(Me.Consistency_Report)
+
+        For Each pkg In Me.Packages
+            If pkg_name_list.Contains(pkg.Name) Then
+                pkg.Check_Consistency(Me.Consistency_Report)
+            Else
+                pkg.Add_Consistency_Check_Warning_Item(Me.Consistency_Report,
+                "-",
+                "Not checked.")
+            End If
+        Next
+
     End Sub
 
     Public Sub Generate_Consistency_Report(report_file_stream As StreamWriter)

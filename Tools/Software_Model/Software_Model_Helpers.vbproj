@@ -97,6 +97,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Package_Selection_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Rpy_Component_Design_Controller.vb" />
     <Compile Include="SMM_Operation.vb" />
     <Compile Include="Rhapsody_Project_Configuration_Form.vb">
