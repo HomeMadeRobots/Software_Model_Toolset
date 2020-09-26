@@ -523,8 +523,11 @@ Public Class Physical_Data_Type
     Inherits Data_Type_Base_Typed
 
     Public Unit As String
-    Public Resolution As String
-    Public Offset As String
+    Public Resolution As Decimal
+    Public Offset As Decimal
+
+    Private Is_Resol_Decimal As Boolean = False
+    Private Is_Offset_Decimal As Boolean = False
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -541,29 +544,19 @@ Public Class Physical_Data_Type
         tag = CType(Me.Rpy_Element, RPType).getTag("Unit")
         Me.Unit = tag.value
 
-        Dim dummy As Decimal = 0
         tag = CType(Me.Rpy_Element, RPType).getTag("Resolution")
-        Me.Resolution = tag.value
-        Decimal.TryParse(
-            Me.Resolution,
+        Me.Is_Resol_Decimal = Decimal.TryParse(
+            tag.value.Replace(",", "."),
             NumberStyles.Any, _
-            CultureInfo.InvariantCulture, _
-            dummy)
-        If dummy = 0 Then
-            Me.Resolution = Nothing
-        End If
+            CultureInfo.GetCultureInfo("en-US"), _
+            Me.Resolution)
 
         tag = CType(Me.Rpy_Element, RPType).getTag("Offset")
-        Me.Offset = tag.value
-        Dim is_decimal As Boolean
-        is_decimal = Decimal.TryParse(
-            Me.Offset,
+        Me.Is_Offset_Decimal = Decimal.TryParse(
+            tag.value.Replace(",", "."),
             NumberStyles.Any,
-            CultureInfo.InvariantCulture,
-            dummy)
-        If is_decimal = False Then
-            Me.Offset = Nothing
-        End If
+            CultureInfo.GetCultureInfo("en-US"),
+            Me.Offset)
 
     End Sub
 
@@ -590,18 +583,20 @@ Public Class Physical_Data_Type
         End If
 
         tag = rpy_type.getTag("Resolution")
-        If tag.value <> Me.Resolution Then
+        Dim resol_str As String = Me.Resolution.ToString.Replace(",", ".")
+        If tag.value.Replace(",", ".") <> resol_str Then
             rpy_type.getSaveUnit.setReadOnly(0)
-            rpy_type.setTagValue(tag, Me.Resolution)
+            rpy_type.setTagValue(tag, resol_str)
             Me.Add_Export_Information_Item(report,
                 Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
                 "Merge Resolution.")
         End If
 
         tag = rpy_type.getTag("Offset")
-        If tag.value <> Me.Offset Then
+        Dim offset_str As String = Me.Offset.ToString.Replace(",", ".")
+        If tag.value.Replace(",", ".") <> offset_str Then
             rpy_type.getSaveUnit.setReadOnly(0)
-            rpy_type.setTagValue(tag, Me.Offset)
+            rpy_type.setTagValue(tag, offset_str)
             Me.Add_Export_Information_Item(report,
                 Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
                 "Merge Offset.")
@@ -618,10 +613,10 @@ Public Class Physical_Data_Type
         rpy_type.setTagValue(tag, Me.Unit)
 
         tag = rpy_type.getTag("Resolution")
-        rpy_type.setTagValue(tag, Me.Resolution)
+        rpy_type.setTagValue(tag, Me.Resolution.ToString)
 
         tag = rpy_type.getTag("Offset")
-        rpy_type.setTagValue(tag, Me.Offset)
+        rpy_type.setTagValue(tag, Me.Offset.ToString)
     End Sub
 
 
@@ -636,16 +631,15 @@ Public Class Physical_Data_Type
                 "Unit shall be set.")
         End If
 
-        If IsNothing(Me.Resolution) Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "PHY_1",
-                "Resolution shall be set to a non-null decimal value.")
+        If Me.Is_Resol_Decimal = False Or Me.Resolution <= 0 Then
+            Me.Add_Consistency_Check_Error_Item(report, "PHY_1",
+                "Resolution shall be a positive decimal value.")
         End If
 
-        If IsNothing(Me.Offset) Then
+        If Me.Is_Offset_Decimal = False Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "PHY_4",
-                "Offset shall be set to a numerical value.")
+                "Offset shall be a decimal value.")
         End If
 
         Dim referenced_type As Data_Type
@@ -808,6 +802,7 @@ Public Class Structured_Data_Type_Field
                         Me.Add_Consistency_Check_Warning_Item(report,
                         "STRUC_3", _
                         "Shall not reference its owner.")
+                        Exit For
                     End If
                 Next
             End If
