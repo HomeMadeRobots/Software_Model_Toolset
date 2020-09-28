@@ -142,7 +142,7 @@ Public Class Rhapsody_Project_Configurator
     Public Sub Configure_Accessible_Types()
         Me.Rpy_Proj.setPropertyValue(
             "General.Model.CommonTypes",
-            "Software_Data_Type_Metamodel::Stereotypes")
+            "Software_Data_Type_Metamodel::Basic_Data_Types")
     End Sub
 
 End Class
