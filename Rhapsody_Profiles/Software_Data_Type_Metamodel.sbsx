@@ -11,21 +11,22 @@
 			<_id type="a">GUID fb48d6a1-4193-4abc-a7e4-2e98bfe4df96</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Data_Type_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.16.2020::16:12:39</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.28.2020::13:39:51</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Data_Type_Metamodel profile defines meta-classes allowing to model any kind of data types used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.16.2020::16:12:39</_modifiedTime>
-			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">9.16.2020::16:12:39</weakCGTime>
+			<_modifiedTime type="a">9.28.2020::13:39:51</_modifiedTime>
+			<_lastID type="a">6</_lastID>
+			<weakCGTime type="a">9.28.2020::13:39:51</weakCGTime>
 			<strongCGTime type="a">8.14.2019::9:19:12</strongCGTime>
 			<_defaultComposite type="s">GUID e1a7b393-5e2c-474c-bdbc-ce062cebc552</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">6.20.2018::15:3:6</_configurationRelatedTime>
+			<_configurationRelatedTime type="a">9.28.2020::13:31:20</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 54ecf3c4-171e-4cc8-ab2e-76ed8a126266</value>
 				<value>GUID aacddf34-804b-419c-8593-e1557c6452f1</value>
+				<value>GUID b1a2ce7a-aefb-418e-924e-fdb21131d1ff</value>
 				<value>GUID e1a7b393-5e2c-474c-bdbc-ce062cebc552</value>
 			</AggregatesList>
 		</IProfile>
@@ -33,33 +34,23 @@
 			<_id type="a">GUID 54ecf3c4-171e-4cc8-ab2e-76ed8a126266</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::9:11:1</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::9:11:1</_modifiedTime>
-			<_lastID type="a">21</_lastID>
-			<weakCGTime type="a">9.3.2020::9:11:1</weakCGTime>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_lastID type="a">23</_lastID>
+			<weakCGTime type="a">9.28.2020::13:37:36</weakCGTime>
 			<strongCGTime type="a">6.21.2018::9:54:10</strongCGTime>
 			<_defaultComposite type="s">GUID dff3b461-1a92-4f06-a501-6e103605318f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<Types type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Types>
 			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID e059166f-c470-4144-ae7d-af8a82db546f</value>
 				<value>GUID 1a975650-21c7-4a3e-bdf1-c167b2560040</value>
 				<value>GUID dff3b461-1a92-4f06-a501-6e103605318f</value>
-				<value>GUID 5df8e979-be4c-4790-87a7-f8ee053c4162</value>
-				<value>GUID 058963e7-375f-4f57-aceb-5a2f36b75490</value>
-				<value>GUID 0d6a9487-2e1a-4d71-8dcb-52824fa8170d</value>
-				<value>GUID 3f1b684a-51d5-4374-a479-56bd195faa9e</value>
-				<value>GUID e6f0bcaa-8b2b-43b6-b1e5-553b4a3f74d0</value>
-				<value>GUID ebb36a0f-a588-4dc2-b4ff-03b59b7f0451</value>
-				<value>GUID 874ecc76-8567-4d26-babc-0a38a4c8e1df</value>
-				<value>GUID f49b3ace-96bc-463c-8444-5436f4a801f1</value>
-				<value>GUID 417d1937-91ff-4bc6-ad20-46b03d49d6b5</value>
-				<value>GUID 1045feea-03f6-4690-a89c-33134ec24f54</value>
-				<value>GUID d74c7bfa-9e57-443f-ab99-96ab3cdcce0b</value>
-				<value>GUID 9b2c2f9e-c662-4494-a932-00581b21d3bb</value>
-				<value>GUID 0b72335d-1ae5-4182-a916-c731838ed0b7</value>
-				<value>GUID b86a2bc4-2c3f-4cff-9217-4a07af95fdd2</value>
-				<value>GUID 16187095-9c50-4383-b8ab-e9c46e506de3</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IStereotype type="e">
@@ -78,7 +69,13 @@
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">1</size>
+												<size type="a">2</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Empty</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">Owners</_Name>
 													<_Value type="a">Software_Package</_Value>
@@ -98,7 +95,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::9:10:53</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.28.2020::13:5:20</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_textRTF type="a">{\rtf1\fbidis\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}%0D
 \viewkind4\uc1\pard\ltrpar\sa160\sl252\slmult1\qj\lang1033\f0\fs24 Data_Type is introduced to classify data in order to specify which type of value it has and what type of mathematical, relational or logical operation can be applied to it.\par%0D
@@ -107,7 +104,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 </_textRTF>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.3.2020::9:10:53</_modifiedTime>
+			<_modifiedTime type="a">9.28.2020::13:5:20</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -128,7 +125,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Model_Element</_hname>
 					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
 				</INObjectHandle>
@@ -335,312 +332,37 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 		</IClass>
-		<IType type="e">
-			<_id type="a">GUID 5df8e979-be4c-4790-87a7-f8ee053c4162</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">boolean</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.4.2018::9:53:30</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.4.2018::9:53:30</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID 058963e7-375f-4f57-aceb-5a2f36b75490</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">uint8</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.4.2018::9:53:30</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.4.2018::9:53:30</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID 0d6a9487-2e1a-4d71-8dcb-52824fa8170d</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">uint16</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.4.2018::9:53:30</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.4.2018::9:53:30</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID 3f1b684a-51d5-4374-a479-56bd195faa9e</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">uint32</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.4.2018::9:53:30</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.4.2018::9:53:30</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID e6f0bcaa-8b2b-43b6-b1e5-553b4a3f74d0</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">sint8</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.4.2018::9:53:30</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.4.2018::9:53:30</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID ebb36a0f-a588-4dc2-b4ff-03b59b7f0451</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">sint16</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.4.2018::9:53:30</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.4.2018::9:53:30</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID 874ecc76-8567-4d26-babc-0a38a4c8e1df</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">sint32</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.4.2018::9:53:30</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.4.2018::9:53:30</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID f49b3ace-96bc-463c-8444-5436f4a801f1</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">uint64</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.21.2019::9:1:40</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.21.2019::9:1:40</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID 417d1937-91ff-4bc6-ad20-46b03d49d6b5</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">sint64</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.21.2019::9:1:34</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.21.2019::9:1:34</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID 1045feea-03f6-4690-a89c-33134ec24f54</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">fp32</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.21.2019::9:2:20</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.21.2019::9:2:20</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID d74c7bfa-9e57-443f-ab99-96ab3cdcce0b</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">fp64</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">5.21.2019::9:2:45</_modifiedTimeWeak>
-			<_modifiedTime type="a">5.21.2019::9:2:45</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID 9b2c2f9e-c662-4494-a932-00581b21d3bb</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">characters_string</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.28.2019::10:51:9</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.28.2019::10:51:9</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID 0b72335d-1ae5-4182-a916-c731838ed0b7</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">character</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">10.28.2019::10:51:1</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.28.2019::10:51:1</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<IType type="e">
-			<_id type="a">GUID b86a2bc4-2c3f-4cff-9217-4a07af95fdd2</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">uint8_array</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">8.3.2020::11:41:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">8.3.2020::11:41:57</_modifiedTime>
-			<_kind type="a">Language</_kind>
-		</IType>
-		<ITableInstance type="e">
-			<_id type="a">GUID 16187095-9c50-4383-b8ab-e9c46e506de3</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">Data_Type</_name>
-			<_modifiedTimeWeak type="a">7.25.2019::12:0:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.25.2019::12:0:54</_modifiedTime>
-			<LayoutHandle type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">ITableLayout</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
-					<_hname type="a">SWMM_table_view</_hname>
-					<_hid type="a">GUID f8b296e4-3321-4b2e-b4c5-89fe01cf3784</_hid>
-				</IHandle>
-			</LayoutHandle>
-			<ScopeHandles type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">ISubsystem</_hm2Class>
-							<_hid type="a">GUID 54ecf3c4-171e-4cc8-ab2e-76ed8a126266</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</ScopeHandles>
-		</ITableInstance>
 		<ISubsystem type="e">
 			<_id type="a">GUID aacddf34-804b-419c-8593-e1557c6452f1</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">9.16.2020::16:12:39</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.16.2020::16:12:39</_modifiedTime>
-			<_lastID type="a">17</_lastID>
-			<weakCGTime type="a">9.16.2020::16:12:39</weakCGTime>
-			<strongCGTime type="a">6.21.2018::9:54:10</strongCGTime>
+			<_name type="a">Data_Type_Metamodel_Description</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::13:39:51</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:39:51</_modifiedTime>
+			<_lastID type="a">37</_lastID>
+			<weakCGTime type="a">9.28.2020::13:39:51</weakCGTime>
+			<strongCGTime type="a">9.28.2020::13:1:20</strongCGTime>
 			<_defaultComposite type="s">GUID 5589414c-eac2-4252-8a39-9b48b514233d</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
+				<value>GUID 8390df9b-0634-45c0-9b3f-c1a232e9e231</value>
+				<value>GUID 2674ffe0-fde1-444b-9dad-e926ee63ee04</value>
+				<value>GUID bf9297d9-ec51-434a-9ab5-998bb1f932af</value>
+				<value>GUID fbb975b2-3795-4bc1-9962-72924e12e0ec</value>
+				<value>GUID 7f8be680-9523-4fbf-bc39-c4d9c13f51ef</value>
+				<value>GUID 5556c9ad-3836-497b-a609-83cfc01cf8ac</value>
+				<value>GUID a0d33eec-0a86-4912-8547-c2c1deb68b87</value>
+				<value>GUID bf9f7862-1ffb-473d-a2cc-4938fb2f2747</value>
+				<value>GUID cd8e4768-cc28-4878-b7c2-b015e67bc246</value>
+				<value>GUID 9af3c3de-c91d-4022-8c7d-b1874407cd5a</value>
+				<value>GUID 111f49ba-3a29-45a5-bf6f-ea35253c3c79</value>
+				<value>GUID 72772dbf-093c-41ca-b260-51b36e02fded</value>
+				<value>GUID 24aa5c4b-434d-4617-b6e3-aabf0e32fd85</value>
+				<value>GUID cc2719b0-68fc-4a93-8760-9bdce8620487</value>
+				<value>GUID 149bd5ce-f170-4008-8fe0-2031ac5773ca</value>
+				<value>GUID d10f9747-266d-47a9-80a3-4e9798101dc7</value>
+				<value>GUID 50c8d157-f40d-4739-b8ae-9c3847155a32</value>
+				<value>GUID cc4d20b5-3291-4a82-8c85-9b6ed99c89e9</value>
 				<value>GUID 56c5783b-abc1-42e8-9d5e-ed421f4e9a22</value>
 				<value>GUID f8970927-14a7-456f-868b-864e9e953b6b</value>
 				<value>GUID 58ed9702-5180-4ab5-b699-84215ffa9d62</value>
@@ -660,8 +382,1180 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<value>GUID 3623761a-9c3e-4925-b8c8-1990b96687cc</value>
 				<value>GUID eb011042-e77d-49a9-b1b8-8fc5ba2ae494</value>
 				<value>GUID 30306c13-2efb-4e27-93f1-ccfdb732aefb</value>
+				<value>GUID 16187095-9c50-4383-b8ab-e9c46e506de3</value>
+				<value>GUID 579d66e7-18f3-46e6-b938-bf8b7fdcf3e6</value>
 			</AggregatesList>
 		</ISubsystem>
+		<IRequirement type="e">
+			<_id type="a">GUID 8390df9b-0634-45c0-9b3f-c1a232e9e231</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ENUM_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:21:29</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:21:29</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 An Enumerated_Data_Type shall aggregate at least one Enumerated_Data_Type_Enumeral.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ENUM_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID cc6c435c-d77f-4dd8-b760-931fba0b4819</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID cc6c435c-d77f-4dd8-b760-931fba0b4819</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:21:29</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:21:29</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID faee6d8d-5763-4044-a679-ff43a5dab3ec</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID faee6d8d-5763-4044-a679-ff43a5dab3ec</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:21:29</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:21:29</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 2674ffe0-fde1-444b-9dad-e926ee63ee04</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ENUM_2</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:22:41</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:22:41</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 An Enumerated_Data_Type should aggregate at least two Enumerated_Data_Type_Enumeral.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ENUM_2</reqID>
+			<AggregatesList type="e">
+				<value>GUID 4f85ad4f-e111-4f2b-bb79-d983073eb88b</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 4f85ad4f-e111-4f2b-bb79-d983073eb88b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:22:41</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:22:41</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 2da9a1e6-00e4-470c-90c4-cf51b1440c60</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 2da9a1e6-00e4-470c-90c4-cf51b1440c60</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:22:41</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:22:41</_modifiedTime>
+			<_value type="a">Warning</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID bf9297d9-ec51-434a-9ab5-998bb1f932af</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ENUM_3</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:32:21</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:32:21</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 If at least one Enumerated_Data_Type_Enumeral of an Enumerated_Data_Type has a Value, all the Enumerated_Data_Type_Enumerals of this Enumerated_Data_Type shall have a Value.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ENUM_3</reqID>
+			<AggregatesList type="e">
+				<value>GUID 31fed5f3-3e61-4ecd-8eaa-26795f753f19</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 31fed5f3-3e61-4ecd-8eaa-26795f753f19</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:32:21</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:32:21</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 522eb387-ff8a-4f37-bd14-a5d0182aae53</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 522eb387-ff8a-4f37-bd14-a5d0182aae53</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:32:21</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:32:21</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID fbb975b2-3795-4bc1-9962-72924e12e0ec</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ENUM_4</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:32:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:32:57</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 If not empty, the Value of an Enumerated_Data_Type_Enumeral shall be a positive integer.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ENUM_4</reqID>
+			<AggregatesList type="e">
+				<value>GUID 51317a6d-6ab3-415f-88a4-b44a2bd31d7a</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 51317a6d-6ab3-415f-88a4-b44a2bd31d7a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:32:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:32:47</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID f35788e4-08e2-42dd-a3c9-b73625c2abae</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID f35788e4-08e2-42dd-a3c9-b73625c2abae</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:32:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:32:47</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 7f8be680-9523-4fbf-bc39-c4d9c13f51ef</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ENUM_5</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:33:27</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:33:27</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 If not empty, the Value of an Enumerated_Data_Type_Enumeral shall be unique among the Value of the Enumerated_Data_Type_Enumerals of a given Enumerated_Data_Type.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ENUM_5</reqID>
+			<AggregatesList type="e">
+				<value>GUID 5d5a2e07-5567-4387-9163-2a96beed78cc</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 5d5a2e07-5567-4387-9163-2a96beed78cc</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:33:27</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:33:27</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 43530fe4-8906-414b-824e-40925a12934d</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 43530fe4-8906-414b-824e-40925a12934d</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:33:27</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:33:27</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 5556c9ad-3836-497b-a609-83cfc01cf8ac</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ENUM_6</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:33:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:33:57</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 The Description of an Enumerated_Data_Type_Enumeral shall be fulfilled.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ENUM_6</reqID>
+			<AggregatesList type="e">
+				<value>GUID a48e23cc-b2a6-4a07-95c3-e15a85fbaec5</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID a48e23cc-b2a6-4a07-95c3-e15a85fbaec5</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:33:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:33:47</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 44aed21f-eb60-41bd-be37-2badb6aecd6c</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 44aed21f-eb60-41bd-be37-2badb6aecd6c</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:33:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:33:47</_modifiedTime>
+			<_value type="a">Information</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID a0d33eec-0a86-4912-8547-c2c1deb68b87</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ENUM_7</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:34:29</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:34:29</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 The Name of an Enumerated_Data_Type_Enumeral is a string of characters. Allowed characters are a to z, A to Z, 0 to 9 and underscore. It shall begin with a letter.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ENUM_7</reqID>
+			<AggregatesList type="e">
+				<value>GUID 63147723-f62d-4221-a55a-722c022c51b4</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 63147723-f62d-4221-a55a-722c022c51b4</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:34:29</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:34:29</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 10140333-57a3-442e-a5d8-8b123f78cfdc</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 10140333-57a3-442e-a5d8-8b123f78cfdc</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:34:29</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:34:29</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID bf9f7862-1ffb-473d-a2cc-4938fb2f2747</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ARR_2</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:36:2</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:36:2</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 The Multiplicity of an Array_Data_Type should be greater than 1.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ARR_2</reqID>
+			<AggregatesList type="e">
+				<value>GUID 92863939-abcb-4360-878b-5183145c68bd</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 92863939-abcb-4360-878b-5183145c68bd</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:35:53</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:35:53</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 4a4621ac-fd6a-4b09-99ce-971166ce1ec6</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 4a4621ac-fd6a-4b09-99ce-971166ce1ec6</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:35:53</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:35:53</_modifiedTime>
+			<_value type="a">Warning</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID cd8e4768-cc28-4878-b7c2-b015e67bc246</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ARR_3</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:36:43</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:36:43</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 An Array_Data_Type shall not reference itself.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ARR_3</reqID>
+			<AggregatesList type="e">
+				<value>GUID e439c1d9-28c6-4946-b4c0-a7d19b4ce955</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID e439c1d9-28c6-4946-b4c0-a7d19b4ce955</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:36:25</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:36:25</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID cb042e56-8a13-496e-9715-0104e41fd928</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID cb042e56-8a13-496e-9715-0104e41fd928</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:36:25</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:36:25</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 9af3c3de-c91d-4022-8c7d-b1874407cd5a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PHY_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:38:5</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:38:5</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 The Resolution of a Physical_Data_Type shall be set to a non-null decimal value.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PHY_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID 7d4f5a9c-70b2-4ef8-a22c-eb99c5561407</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 7d4f5a9c-70b2-4ef8-a22c-eb99c5561407</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:38:5</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:38:5</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 5bdf8739-eaae-41c1-bd90-20f820cef366</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 5bdf8739-eaae-41c1-bd90-20f820cef366</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:38:5</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:38:5</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 111f49ba-3a29-45a5-bf6f-ea35253c3c79</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PHY_2</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:38:17</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:38:17</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 The Unit of a Physical_Data_Type shall be set.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PHY_2</reqID>
+			<AggregatesList type="e">
+				<value>GUID 8672f8c4-64b5-4871-a9d1-6a2cb879db09</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 8672f8c4-64b5-4871-a9d1-6a2cb879db09</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:38:9</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:38:9</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 33ac59b7-1747-4d0a-82df-dfab52017e1c</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 33ac59b7-1747-4d0a-82df-dfab52017e1c</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:38:9</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:38:9</_modifiedTime>
+			<_value type="a">Warning</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 72772dbf-093c-41ca-b260-51b36e02fded</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PHY_3</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:38:49</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:38:49</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 The Base_Data_Type_Ref of a Physical_Data_Type shall be a Basic_Integer_Type.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PHY_3</reqID>
+			<AggregatesList type="e">
+				<value>GUID d07a0129-2901-47f0-9298-68a9e9d4b2ce</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID d07a0129-2901-47f0-9298-68a9e9d4b2ce</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:38:44</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:38:44</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID b65c67e5-e971-4fbc-ad05-4ef3cf9925e8</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID b65c67e5-e971-4fbc-ad05-4ef3cf9925e8</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:38:44</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:38:44</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 24aa5c4b-434d-4617-b6e3-aabf0e32fd85</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PHY_4</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:39:53</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:39:53</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 The Offset of a Physical_Data_Type shall be set to a decimal value.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PHY_4</reqID>
+			<AggregatesList type="e">
+				<value>GUID 2b00972e-ab8f-474d-bb19-a8a168b4c9d3</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 2b00972e-ab8f-474d-bb19-a8a168b4c9d3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:39:30</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:39:30</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 896731e0-e8d5-40fd-857b-7ea169d492a8</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 896731e0-e8d5-40fd-857b-7ea169d492a8</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:39:30</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:39:30</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID cc2719b0-68fc-4a93-8760-9bdce8620487</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_STRUC_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:46:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:46:56</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Structured_Data_Type shall aggregate at least one Structured_Data_Type_Field.\par%0D
+}%0D
+</_body>
+			<reqID type="a">STRUC_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID 549486b2-a6f4-45a9-ab9e-d7b8465de0ce</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 549486b2-a6f4-45a9-ab9e-d7b8465de0ce</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:46:6</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:46:6</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID fc311ac6-e664-44d4-aabb-b4bbcef94973</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID fc311ac6-e664-44d4-aabb-b4bbcef94973</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:46:6</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:46:6</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 149bd5ce-f170-4008-8fe0-2031ac5773ca</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_STRUC_2</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:46:22</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:46:22</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Structured_Data_Type should aggregate at least two Structured_Data_Type_Fields.\par%0D
+}%0D
+</_body>
+			<reqID type="a">STRUC_2</reqID>
+			<AggregatesList type="e">
+				<value>GUID 8875f0ef-fbe0-4cc5-acff-303164e32183</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 8875f0ef-fbe0-4cc5-acff-303164e32183</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:46:11</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:46:11</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 83bfb7c1-8da4-41b3-9440-9a2c5cb93e57</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 83bfb7c1-8da4-41b3-9440-9a2c5cb93e57</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:46:11</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:46:11</_modifiedTime>
+			<_value type="a">Warning</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID d10f9747-266d-47a9-80a3-4e9798101dc7</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_STRUC_3</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:46:41</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:46:41</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Structured_Data_Type_Field shall not reference its owner.\par%0D
+}%0D
+</_body>
+			<reqID type="a">STRUC_3</reqID>
+			<AggregatesList type="e">
+				<value>GUID f57b7f50-a59e-4bf3-b7c8-590b6e5acfac</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID f57b7f50-a59e-4bf3-b7c8-590b6e5acfac</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:46:41</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:46:41</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID b47d7a10-4263-4b4a-91d1-604622285110</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID b47d7a10-4263-4b4a-91d1-604622285110</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:46:41</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:46:41</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 50c8d157-f40d-4739-b8ae-9c3847155a32</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_TYP_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::12:52:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:52:12</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Software_Element that have the Base_Data_Type_Ref attribute shall reference a Data_Type.\par%0D
+}%0D
+</_body>
+			<reqID type="a">TYP_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID c71188e2-b6ed-404a-97d2-8c622104fa49</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID c71188e2-b6ed-404a-97d2-8c622104fa49</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:52:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:52:12</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 62dfe818-3687-49a3-b3ad-44c3ba920e04</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 62dfe818-3687-49a3-b3ad-44c3ba920e04</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:52:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:52:12</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID cc4d20b5-3291-4a82-8c85-9b6ed99c89e9</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ARR_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:39:21</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:39:21</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 The Multiplicity of an Array_Data_Type shall be a strictly positive integer value.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ARR_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID c56ca75a-e478-4a29-b407-fd8109b6a10f</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID c56ca75a-e478-4a29-b407-fd8109b6a10f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:35:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:35:36</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 17550f57-20c6-4e0f-b14b-dfb2c04feaf6</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 17550f57-20c6-4e0f-b14b-dfb2c04feaf6</_id>
+			<_modifiedTimeWeak type="a">9.28.2020::12:35:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:35:36</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
 		<IDiagram type="e">
 			<_id type="a">GUID 56c5783b-abc1-42e8-9d5e-ed421f4e9a22</_id>
 			<_myState type="a">8192</_myState>
@@ -846,7 +1740,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hname type="a">SWMM_Description_Diagram</_hname>
 							<_hid type="a">GUID 5b67ad94-8b31-498e-8a7b-06873a6db04f</_hid>
 						</IHandle>
@@ -854,8 +1748,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::14:27:16</_modifiedTime>
-			<_lastModifiedTime type="a">9.3.2020::14:27:16</_lastModifiedTime>
+			<_modifiedTime type="a">9.28.2020::12:21:32</_modifiedTime>
+			<_lastModifiedTime type="a">9.28.2020::12:21:32</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -1190,8 +2084,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Name</_hname>
 							<_hid type="a">GUID 5b570ec3-77b8-4d1b-ab55-7a5ab9a44922</_hid>
 						</IHandle>
@@ -1200,8 +2094,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">UUID</_hname>
 							<_hid type="a">GUID 7605bd74-6af2-4c83-8c63-611092ebdf15</_hid>
 						</IHandle>
@@ -1210,8 +2104,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Description</_hname>
 							<_hid type="a">GUID bd8623ef-3c2e-4135-bd93-c2e067a2c59c</_hid>
 						</IHandle>
@@ -1304,7 +2198,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Software_Package</_hname>
 					<_hid type="a">GUID d9a7f792-0ec3-449f-ab82-93b731e161e1</_hid>
 				</IHandle>
@@ -1386,8 +2280,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Name</_hname>
 							<_hid type="a">GUID 5b570ec3-77b8-4d1b-ab55-7a5ab9a44922</_hid>
 						</IHandle>
@@ -1396,8 +2290,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">UUID</_hname>
 							<_hid type="a">GUID 7605bd74-6af2-4c83-8c63-611092ebdf15</_hid>
 						</IHandle>
@@ -1406,8 +2300,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Model_Element</_hclass>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Description</_hname>
 							<_hid type="a">GUID bd8623ef-3c2e-4135-bd93-c2e067a2c59c</_hid>
 						</IHandle>
@@ -1489,7 +2383,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<IHandle type="e">
 					<_hm2Class type="a">IAssociationEnd</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hclass type="a">Software_Package</_hclass>
 					<_hname type="a">Data_Types</_hname>
 					<_hid type="a">GUID 0e22a1b2-feda-4544-a06a-5a76b08db870</_hid>
@@ -1876,7 +2770,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hname type="a">SWMM_Description_Diagram</_hname>
 							<_hid type="a">GUID 5b67ad94-8b31-498e-8a7b-06873a6db04f</_hid>
 						</IHandle>
@@ -1884,8 +2778,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.4.2020::6:23:12</_modifiedTime>
-			<_lastModifiedTime type="a">9.4.2020::6:23:12</_lastModifiedTime>
+			<_modifiedTime type="a">9.28.2020::12:21:32</_modifiedTime>
+			<_lastModifiedTime type="a">9.28.2020::12:21:32</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -3072,7 +3966,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hname type="a">SWMM_Description_Diagram</_hname>
 							<_hid type="a">GUID 5b67ad94-8b31-498e-8a7b-06873a6db04f</_hid>
 						</IHandle>
@@ -3080,8 +3974,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::14:22:3</_modifiedTime>
-			<_lastModifiedTime type="a">9.3.2020::14:22:3</_lastModifiedTime>
+			<_modifiedTime type="a">9.28.2020::13:38:26</_modifiedTime>
+			<_lastModifiedTime type="a">9.28.2020::13:38:26</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -3124,7 +4018,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</m_name>
 			<m_drawBehavior type="a">0</m_drawBehavior>
 			<m_bIsPreferencesInitialized type="a">0</m_bIsPreferencesInitialized>
-			<elementList type="a">7</elementList>
+			<elementList type="a">6</elementList>
 			
 			<m_access type="a">'Z'</m_access>
 			<m_modified type="a">'N'</m_modified>
@@ -3142,7 +4036,6 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<value>GUID 5a594c74-e3fc-4e31-b404-15bdb85ce6be</value>
 				<value>GUID a7764b12-e8e0-43b9-a515-cb3e11b8c43f</value>
 				<value>GUID 956f7d5d-0b4c-45cb-a220-9f1c5f5849c0</value>
-				<value>GUID d820a568-eeee-40cf-96b6-db7f42185968</value>
 				<value>GUID 9f5d75cb-8405-410d-b71c-5539592d51d4</value>
 			</AggregatesList>
 		</CGIClassChart>
@@ -3552,17 +4445,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_AdditionalLabel>
-			<m_pImageViewData type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID d820a568-eeee-40cf-96b6-db7f42185968</_hid>
-				</IHandle>
-			</m_pImageViewData>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACEd820a568-eeee-40cf-96b6-db7f42185968.ico&gt;
+			<frameset type="a">&lt;frameset rows=100%25&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -3890,37 +4776,6 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<m_ShowStereotype type="a">1</m_ShowStereotype>
 		</CGIInheritance>
 		<CGIImageData type="e">
-			<_id type="a">GUID d820a568-eeee-40cf-96b6-db7f42185968</_id>
-			<m_type type="a">0</m_type>
-			<m_pModelObject type="r">
-				<IHandle type="e">
-				</IHandle>
-			</m_pModelObject>
-			<m_pParent type="s">GUID 79ec3eb1-27bf-4fab-a352-ed3cbf89db5d</m_pParent>
-			<m_name type="p">
-				<CGIText type="e">
-					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
-					<m_color type="p">
-						<IColor type="e">
-							<m_fgColor type="a">0</m_fgColor>
-							<m_bgColor type="a">0</m_bgColor>
-							<m_bgFlag type="a">0</m_bgFlag>
-						</IColor>
-					</m_color>
-					<m_position type="a">1 0 0  </m_position>
-					<m_nIdent type="a">0</m_nIdent>
-					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
-					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
-				</CGIText>
-			</m_name>
-			<m_drawBehavior type="a">4096</m_drawBehavior>
-			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
-			<m_dataSize type="a">879</m_dataSize>
-			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az5ce7c8b4Ze7c8b4z35ebd2c1Zd59874Zd59874Zebd1c1z2dedd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z25efd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd3926dZefd8cbz1dedd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z15ebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz09fez03e7c6b2Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf6e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez03fez03e7c6b1Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf5e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez0bebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz15edd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z1defd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd2926dZefd8cbz25edd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z2debd2c1Zd59874Zd59874Zebd1c1z35e7c8b4Ze7c8b4z5dg40</m_data>
-			<m_srcFile type="a">..\icons\data_type.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.20.2020::11:50:24</m_fileModifiedTime>
-		</CGIImageData>
-		<CGIImageData type="e">
 			<_id type="a">GUID 9f5d75cb-8405-410d-b71c-5539592d51d4</_id>
 			<m_type type="a">0</m_type>
 			<m_pModelObject type="r">
@@ -4102,7 +4957,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hname type="a">SWMM_Description_Diagram</_hname>
 							<_hid type="a">GUID 5b67ad94-8b31-498e-8a7b-06873a6db04f</_hid>
 						</IHandle>
@@ -4110,8 +4965,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::14:22:3</_modifiedTime>
-			<_lastModifiedTime type="a">9.3.2020::14:22:3</_lastModifiedTime>
+			<_modifiedTime type="a">9.28.2020::12:21:32</_modifiedTime>
+			<_lastModifiedTime type="a">9.28.2020::12:21:32</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -5318,7 +6173,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hname type="a">SWMM_Description_Diagram</_hname>
 							<_hid type="a">GUID 5b67ad94-8b31-498e-8a7b-06873a6db04f</_hid>
 						</IHandle>
@@ -5326,8 +6181,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.4.2020::6:23:2</_modifiedTime>
-			<_lastModifiedTime type="a">9.4.2020::6:23:2</_lastModifiedTime>
+			<_modifiedTime type="a">9.28.2020::12:21:32</_modifiedTime>
+			<_lastModifiedTime type="a">9.28.2020::12:21:32</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -6606,7 +7461,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Software_Element</_hname>
 					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
 				</IHandle>
@@ -7017,7 +7872,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hname type="a">SWMM_Description_Diagram</_hname>
 							<_hid type="a">GUID 5b67ad94-8b31-498e-8a7b-06873a6db04f</_hid>
 						</IHandle>
@@ -7025,8 +7880,8 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.4.2020::7:11:53</_modifiedTime>
-			<_lastModifiedTime type="a">9.4.2020::7:11:53</_lastModifiedTime>
+			<_modifiedTime type="a">9.28.2020::13:38:26</_modifiedTime>
+			<_lastModifiedTime type="a">9.28.2020::13:38:26</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -8441,17 +9296,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_AdditionalLabel>
-			<m_pImageViewData type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">OMGEElement</_hm2Class>
-					<_hid type="a">GUID 221d26a9-3a12-47d5-999f-b95c17bd470d</_hid>
-				</IHandle>
-			</m_pImageViewData>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACE221d26a9-3a12-47d5-999f-b95c17bd470d.ico&gt;
+			<frameset type="a">&lt;frameset rows=100%25&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -9300,7 +10148,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Name</_hname>
 							<_hid type="a">GUID 5b570ec3-77b8-4d1b-ab55-7a5ab9a44922</_hid>
@@ -9310,7 +10158,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">UUID</_hname>
 							<_hid type="a">GUID 7605bd74-6af2-4c83-8c63-611092ebdf15</_hid>
@@ -9320,7 +10168,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Description</_hname>
 							<_hid type="a">GUID bd8623ef-3c2e-4135-bd93-c2e067a2c59c</_hid>
@@ -10485,7 +11333,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Software_Package</_hname>
 					<_hid type="a">GUID d9a7f792-0ec3-449f-ab82-93b731e161e1</_hid>
 				</IHandle>
@@ -10567,7 +11415,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Name</_hname>
 							<_hid type="a">GUID 5b570ec3-77b8-4d1b-ab55-7a5ab9a44922</_hid>
@@ -10577,7 +11425,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">UUID</_hname>
 							<_hid type="a">GUID 7605bd74-6af2-4c83-8c63-611092ebdf15</_hid>
@@ -10587,7 +11435,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 						<IHandle type="e">
 							<_hm2Class type="a">IAttribute</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 							<_hclass type="a">Software_Element</_hclass>
 							<_hname type="a">Description</_hname>
 							<_hid type="a">GUID bd8623ef-3c2e-4135-bd93-c2e067a2c59c</_hid>
@@ -10639,7 +11487,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<IHandle type="e">
 					<_hm2Class type="a">IAssociationEnd</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hclass type="a">Software_Package</_hclass>
 					<_hname type="a">Data_Types</_hname>
 					<_hid type="a">GUID 0e22a1b2-feda-4544-a06a-5a76b08db870</_hid>
@@ -11331,7 +12179,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Software_Element</_hname>
 					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
 				</INObjectHandle>
@@ -11470,10 +12318,15 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Array_Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.24.2019::8:50:50</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.24.2019::8:50:50</_modifiedTime>
+			<Annotations type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</Annotations>
+			<_modifiedTimeWeak type="a">9.28.2020::13:39:21</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:39:21</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.24.2019::8:50:50</weakCGTime>
+			<weakCGTime type="a">9.28.2020::13:39:21</weakCGTime>
 			<strongCGTime type="a">7.25.2019::12:24:50</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11481,11 +12334,91 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 			<AggregatesList type="e">
+				<value>GUID d25b0349-cfd2-45ad-88cf-a12e9f7f5825</value>
+				<value>GUID a50c37c7-67cd-4244-a2c9-3a9ba886b1f0</value>
+				<value>GUID b4708df8-a3ea-4fb7-9544-7a629e8cb79a</value>
+				<value>GUID 9a16e0f8-74bf-442c-83c0-b3f35cd06d79</value>
 				<value>GUID 2469164f-1d68-4e3c-9bb2-4c82cbbe22ae</value>
 				<value>GUID 81b7af3e-a543-4af4-a51b-e58d20187492</value>
 				<value>GUID 3c3fb5d0-0344-4a99-9ae7-95f55c782c86</value>
 			</AggregatesList>
 		</IClass>
+		<IDependency type="e">
+			<_id type="a">GUID d25b0349-cfd2-45ad-88cf-a12e9f7f5825</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ARR_1</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:53:22</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:53:22</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID cc4d20b5-3291-4a82-8c85-9b6ed99c89e9</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 407d31ec-18b4-4e4c-9d55-475cf909284f</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID a50c37c7-67cd-4244-a2c9-3a9ba886b1f0</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ARR_2</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:53:30</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:53:30</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID bf9f7862-1ffb-473d-a2cc-4938fb2f2747</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 407d31ec-18b4-4e4c-9d55-475cf909284f</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID b4708df8-a3ea-4fb7-9544-7a629e8cb79a</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ARR_3</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:53:38</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:53:38</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID cd8e4768-cc28-4878-b7c2-b015e67bc246</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 407d31ec-18b4-4e4c-9d55-475cf909284f</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 9a16e0f8-74bf-442c-83c0-b3f35cd06d79</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_TYP_1</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:53:49</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:53:49</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 50c8d157-f40d-4739-b8ae-9c3847155a32</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 407d31ec-18b4-4e4c-9d55-475cf909284f</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
 		<IAttribute type="e">
 			<_id type="a">GUID 2469164f-1d68-4e3c-9bb2-4c82cbbe22ae</_id>
 			<_myState type="a">8192</_myState>
@@ -11582,10 +12515,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.24.2019::8:50:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.24.2019::8:50:0</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.28.2020::12:57:53</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:57:53</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">9.24.2019::8:50:0</weakCGTime>
+			<weakCGTime type="a">9.28.2020::12:57:53</weakCGTime>
 			<strongCGTime type="a">7.25.2019::13:18:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11605,14 +12538,15 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_myState type="a">8192</_myState>
 			<_name type="a">Unit</_name>
 			<_displayName type="a">Unit:String</_displayName>
-			<_modifiedTimeWeak type="a">7.25.2019::13:22:31</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.25.2019::13:22:31</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.28.2020::12:57:53</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:57:53</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
-					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
-					<_hname type="a">RhpString</_hname>
-					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Characters_String</_hname>
+					<_hid type="a">GUID e42f3d42-de5c-4bed-9f6c-fae9bef9cb6a</_hid>
 				</IHandle>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
@@ -11812,7 +12746,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Software_Element</_hname>
 					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
 				</INObjectHandle>
@@ -11884,10 +12818,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_id type="a">GUID da7d6728-aad2-4eee-8870-a037d8c3a56f</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Enumerated_Data_Type_Enumeral</_name>
-			<_modifiedTimeWeak type="a">9.4.2020::6:23:12</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.4.2020::6:23:12</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.28.2020::12:57:34</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:57:34</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.4.2020::6:23:12</weakCGTime>
+			<weakCGTime type="a">9.28.2020::12:57:34</weakCGTime>
 			<strongCGTime type="a">7.25.2019::12:3:32</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11905,14 +12839,15 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_myState type="a">8192</_myState>
 			<_name type="a">Name</_name>
 			<_displayName type="a">Name:String</_displayName>
-			<_modifiedTimeWeak type="a">7.25.2019::12:11:7</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.25.2019::12:11:7</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.28.2020::12:57:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:57:28</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
-					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
-					<_hname type="a">RhpString</_hname>
-					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Characters_String</_hname>
+					<_hid type="a">GUID e42f3d42-de5c-4bed-9f6c-fae9bef9cb6a</_hid>
 				</IHandle>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
@@ -11926,14 +12861,15 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_myState type="a">8192</_myState>
 			<_name type="a">Description</_name>
 			<_displayName type="a">Description:String</_displayName>
-			<_modifiedTimeWeak type="a">7.25.2019::12:11:34</_modifiedTimeWeak>
-			<_modifiedTime type="a">7.25.2019::12:11:34</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.28.2020::12:57:34</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:57:34</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IType</_hm2Class>
-					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
-					<_hname type="a">RhpString</_hname>
-					<_hid type="a">GUID ae5e3720-4e3e-40f1-9346-9a8b4e501f35</_hid>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Characters_String</_hname>
+					<_hid type="a">GUID e42f3d42-de5c-4bed-9f6c-fae9bef9cb6a</_hid>
 				</IHandle>
 			</_typeOf>
 			<_isOrdered type="a">0</_isOrdered>
@@ -12121,6 +13057,383 @@ fp64</_text>
 			<_inheritanceType type="a">iPublic</_inheritanceType>
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
+		<ITableInstance type="e">
+			<_id type="a">GUID 16187095-9c50-4383-b8ab-e9c46e506de3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Data_Type_Stereotypes</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::13:39:51</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:39:51</_modifiedTime>
+			<LayoutHandle type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">SWMM_Stereotypes_table_layout</_hname>
+					<_hid type="a">GUID f8b296e4-3321-4b2e-b4c5-89fe01cf3784</_hid>
+				</IHandle>
+			</LayoutHandle>
+			<ScopeHandles type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hid type="a">GUID 54ecf3c4-171e-4cc8-ab2e-76ed8a126266</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</ScopeHandles>
+		</ITableInstance>
+		<ITableInstance type="e">
+			<_id type="a">GUID 579d66e7-18f3-46e6-b938-bf8b7fdcf3e6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Data_Type_Metaclasses</_name>
+			<_modifiedTimeWeak type="a">9.28.2020::12:55:43</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::12:55:43</_modifiedTime>
+			<LayoutHandle type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">SWMM_Metaclasses_table_layout</_hname>
+					<_hid type="a">GUID 4bb158bf-dc41-4550-86bf-a724c4006fea</_hid>
+				</IHandle>
+			</LayoutHandle>
+			<ScopeHandles type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hid type="a">GUID aacddf34-804b-419c-8593-e1557c6452f1</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</ScopeHandles>
+		</ITableInstance>
+		<ISubsystem type="e">
+			<_id type="a">GUID b1a2ce7a-aefb-418e-924e-fdb21131d1ff</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Basic_Data_Types</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
+							<_hname type="a">Software_Package</_hname>
+							<_hid type="a">GUID afb0e42d-a399-4819-bb39-46f0fd0f0fbf</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<weakCGTime type="a">9.28.2020::13:37:36</weakCGTime>
+			<strongCGTime type="a">9.28.2020::13:37:29</strongCGTime>
+			<_defaultComposite type="s">GUID 2b9b96a0-3ad9-48b3-b5fb-b0f5981164e3</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.1.1970::1:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 2b9b96a0-3ad9-48b3-b5fb-b0f5981164e3</value>
+				<value>GUID 5df8e979-be4c-4790-87a7-f8ee053c4162</value>
+				<value>GUID 0b72335d-1ae5-4182-a916-c731838ed0b7</value>
+				<value>GUID 9b2c2f9e-c662-4494-a932-00581b21d3bb</value>
+				<value>GUID 1045feea-03f6-4690-a89c-33134ec24f54</value>
+				<value>GUID d74c7bfa-9e57-443f-ab99-96ab3cdcce0b</value>
+				<value>GUID ebb36a0f-a588-4dc2-b4ff-03b59b7f0451</value>
+				<value>GUID 874ecc76-8567-4d26-babc-0a38a4c8e1df</value>
+				<value>GUID 417d1937-91ff-4bc6-ad20-46b03d49d6b5</value>
+				<value>GUID e6f0bcaa-8b2b-43b6-b1e5-553b4a3f74d0</value>
+				<value>GUID 0d6a9487-2e1a-4d71-8dcb-52824fa8170d</value>
+				<value>GUID 3f1b684a-51d5-4374-a479-56bd195faa9e</value>
+				<value>GUID f49b3ace-96bc-463c-8444-5436f4a801f1</value>
+				<value>GUID 058963e7-375f-4f57-aceb-5a2f36b75490</value>
+				<value>GUID b86a2bc4-2c3f-4cff-9217-4a07af95fdd2</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID 2b9b96a0-3ad9-48b3-b5fb-b0f5981164e3</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IType type="e">
+			<_id type="a">GUID 5df8e979-be4c-4790-87a7-f8ee053c4162</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">boolean</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID 0b72335d-1ae5-4182-a916-c731838ed0b7</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">character</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID 9b2c2f9e-c662-4494-a932-00581b21d3bb</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">characters_string</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID 1045feea-03f6-4690-a89c-33134ec24f54</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">fp32</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID d74c7bfa-9e57-443f-ab99-96ab3cdcce0b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">fp64</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID ebb36a0f-a588-4dc2-b4ff-03b59b7f0451</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">sint16</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID 874ecc76-8567-4d26-babc-0a38a4c8e1df</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">sint32</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID 417d1937-91ff-4bc6-ad20-46b03d49d6b5</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">sint64</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID e6f0bcaa-8b2b-43b6-b1e5-553b4a3f74d0</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">sint8</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID 0d6a9487-2e1a-4d71-8dcb-52824fa8170d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">uint16</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID 3f1b684a-51d5-4374-a479-56bd195faa9e</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">uint32</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID f49b3ace-96bc-463c-8444-5436f4a801f1</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">uint64</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID 058963e7-375f-4f57-aceb-5a2f36b75490</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">uint8</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
+		<IType type="e">
+			<_id type="a">GUID b86a2bc4-2c3f-4cff-9217-4a07af95fdd2</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">uint8_array</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID e059166f-c470-4144-ae7d-af8a82db546f</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_kind type="a">Language</_kind>
+		</IType>
 		<IClass type="e">
 			<_id type="a">GUID e1a7b393-5e2c-474c-bdbc-ce062cebc552</_id>
 			<_myState type="a">40960</_myState>
