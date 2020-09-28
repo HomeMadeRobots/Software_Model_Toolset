@@ -317,7 +317,7 @@ Public Class Enumerated_Data_Type
                 "Shall aggregate at least one Enumerated_Data_Type_Enumeral.")
         Else
             If Me.Enumerals.Count = 1 Then
-                Me.Add_Consistency_Check_Error_Item(report,
+                Me.Add_Consistency_Check_Warning_Item(report,
                 "ENUM_2",
                 "Should aggregate at least two Enumerated_Data_Type_Enumeral.")
             End If
