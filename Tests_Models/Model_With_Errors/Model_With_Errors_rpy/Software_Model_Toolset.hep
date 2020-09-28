@@ -1,0 +1,108 @@
+[Helpers]
+numberOfElements=15
+
+name1=SMT - Export to XML
+command1=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments1=Export
+isVisible1=1
+applicableTo1=Project
+isPluginCommand1=0
+
+name2=SMT - Merge from XML
+command2=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments2=Merge
+isVisible2=1
+applicableTo2=Project
+isPluginCommand2=0
+
+name3=SMT - Check
+command3=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments3=Check
+isVisible3=1
+applicableTo3=Project
+isPluginCommand3=0
+
+name4=SMT - Compute PSWA metrics
+command4=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments4=Compute_Rpy_Soft_Model_PSWA_Metrics
+isVisible4=1
+applicableTo4=Project
+isPluginCommand4=0
+
+name5=SMT - Generate All
+command5=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments5=Generate_All
+isVisible5=1
+applicableTo5=Project
+isPluginCommand5=0
+
+name6=SMT - Remove empty packages All
+command6=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments6=Remove_Empty_Packages
+isVisible6=1
+applicableTo6=Project
+isPluginCommand6=0
+
+name7=SMT - Rename Connectors
+command7=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments7=Rename_Connectors
+isVisible7=1
+applicableTo7=Root_Software_Composition, Component_Design
+isPluginCommand7=0
+
+name8=SMT - Navigate to source
+command8=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments8=Navigate_To_Connector_Source
+isVisible8=1
+applicableTo8=Connector_Prototype
+isPluginCommand8=0
+
+name9=SMT - Navigate to destination
+command9=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments9=Navigate_To_Connector_Destination
+isVisible9=1
+applicableTo9=Connector_Prototype
+isPluginCommand9=0
+
+name10=SMT - Generate diagram
+command10=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments10=Generate_Component_Type_Diagram
+isVisible10=1
+applicableTo10=Component_Type
+isPluginCommand10=0
+
+name11=SMT - Display GUID
+command11=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments11=Display_GUID
+isVisible11=1
+applicableTo11=All
+isPluginCommand11=0
+
+name12=SMT - Modify GUID
+command12=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments12=Modify_GUID
+isVisible12=1
+applicableTo12=All
+isPluginCommand12=0
+
+name13=SMT - Configure
+command13=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments13=Configure
+isVisible13=1
+applicableTo13=Project
+isPluginCommand13=0
+
+name14=SMT - Update realizations
+command14=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments14=Update_Realizations
+isVisible14=1
+applicableTo14=Component_Design
+isPluginCommand14=0
+
+name15=SMT - Create Component_Design model
+command15=..\..\Tools\Software_Model\bin\Release\Software_Model.exe
+arguments15=Create_Component_Design_Model
+isVisible15=1
+applicableTo15=Component_Type
+isPluginCommand15=0
+
