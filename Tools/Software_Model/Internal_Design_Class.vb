@@ -227,14 +227,14 @@ Public Class Internal_Design_Class
         If Me.Nb_Base_Class_Ref > 1 Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "CLASS_1",
-                "Shall generalize at most 1 class.")
+                "Shall specialize at most 1 class.")
         End If
 
         If Me.Nb_Base_Class_Ref <> 0 Then
             If Me.Base_Class_Ref = Guid.Empty Then
                 Me.Add_Consistency_Check_Error_Item(report,
                     "CLASS_2",
-                    "Shall generalize a Software_Class.")
+                    "Shall specialize a Software_Class.")
             End If
         End If
 
