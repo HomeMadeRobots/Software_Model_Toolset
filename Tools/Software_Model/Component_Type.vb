@@ -187,8 +187,7 @@ Public MustInherit Class Port
         MyBase.Check_Own_Consistency(report)
 
         If Me.Nb_Contracts <> 1 Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "PORT_1",
+            Me.Add_Consistency_Check_Error_Item(report, "PORT_1",
                 "Shall have one and only one contract.")
         End If
 
@@ -267,6 +266,55 @@ Public Class Provider_Port
         End If
     End Sub
 
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        ' Do not call MyBase.Check_Own_Consistency
+        ' Me.Nb_Contracts can be <> 1 but still OK if there is interfaces specialization.
+
+        If Me.Contract_Ref <> Guid.Empty Then
+            If CType(Me.Rpy_Element, RPPort).providedInterfaces.Count > 1 Then
+                Dim rpy_interface_list As RPCollection
+                rpy_interface_list = CType(Me.Rpy_Element, RPPort).providedInterfaces
+                Dim interface_index As Integer = 2
+                Dim child_interface As Software_Interface
+                child_interface = CType(Me.Get_Element_By_Uuid(Me.Contract_Ref), Software_Interface)
+
+                If child_interface.GetType() = GetType(Client_Server_Interface) Then
+                    Dim child_csif As Client_Server_Interface
+                    child_csif = CType(child_interface, Client_Server_Interface)
+                    For interface_index = 2 To rpy_interface_list.Count
+                        Dim rpy_current_if As RPModelElement
+                        rpy_current_if = CType(rpy_interface_list.Item(interface_index), 
+                                        RPModelElement)
+                        Dim current_if_UUID As Guid
+                        current_if_UUID = Transform_Rpy_GUID_To_Guid(rpy_current_if.GUID)
+                        If current_if_UUID <> child_csif.Base_Interface_Ref Then
+                            Me.Add_Consistency_Check_Error_Item(report, "PORT_1",
+                                "Shall have one and only one contract.")
+                            Exit For
+                        End If
+                        child_interface = CType(Me.Get_Element_By_Uuid(current_if_UUID),  _
+                                            Software_Interface)
+                        interface_index += 1
+                    Next
+
+                Else
+                    ' Only Client_Server_Interface can aggregate generalization and can potentially
+                    ' lead to multiple contract on provider ports.
+                    Me.Add_Consistency_Check_Error_Item(report, "PORT_1",
+                        "Shall have one and only one contract.")
+                End If
+
+            End If
+        Else
+            Me.Add_Consistency_Check_Error_Item(report, "PORT_1",
+                "Shall have one and only one contract.")
+        End If
+
+    End Sub
 End Class
 
 
