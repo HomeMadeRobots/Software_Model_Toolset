@@ -207,7 +207,6 @@ Public Class Software_Model_Container
         For type_idx = 0 To nb_int_types - 1
             type = New Basic_Integer_Type
             type.Name = Basic_Integer_Type_Name_List(type_idx)
-            type.Set_Top_Package(basic_types_pkg)
             rpy_type = Me.Find_In_Rpy_Project("GUID " & Basic_Integer_Type_Uuid_List(type_idx))
             type.Set_Rpy_Element(rpy_type)
             Guid.TryParse(Basic_Integer_Type_Uuid_List(type_idx), type.UUID)
@@ -219,7 +218,6 @@ Public Class Software_Model_Container
         For type_idx = 0 To nb_fp_types - 1
             type = New Basic_Floating_Point_Type
             type.Name = Basic_Floating_Type_Name_List(type_idx)
-            type.Set_Top_Package(basic_types_pkg)
             rpy_type = Me.Find_In_Rpy_Project("GUID " & Basic_Integer_Type_Uuid_List(type_idx))
             type.Set_Rpy_Element(rpy_type)
             Guid.TryParse(Basic_Floating_Type_Uuid_List(type_idx), type.UUID)
@@ -229,7 +227,6 @@ Public Class Software_Model_Container
         ' Treat Basic_Boolean_Type
         type = New Basic_Boolean_Type
         type.Name = "boolean"
-        type.Set_Top_Package(basic_types_pkg)
         rpy_type = Me.Find_In_Rpy_Project("GUID 5df8e979-be4c-4790-87a7-f8ee053c4162")
         type.Set_Rpy_Element(rpy_type)
         Guid.TryParse("5df8e979-be4c-4790-87a7-f8ee053c4162", type.UUID)
@@ -238,7 +235,6 @@ Public Class Software_Model_Container
         ' Treat Basic_Integer_Array_Types
         type = New Basic_Integer_Array_Type
         type.Name = "uint8_array"
-        type.Set_Top_Package(basic_types_pkg)
         rpy_type = Me.Find_In_Rpy_Project("GUID b86a2bc4-2c3f-4cff-9217-4a07af95fdd2")
         type.Set_Rpy_Element(rpy_type)
         Guid.TryParse("b86a2bc4-2c3f-4cff-9217-4a07af95fdd2", type.UUID)
@@ -247,7 +243,6 @@ Public Class Software_Model_Container
         ' Treat character
         type = New Basic_Character_Type
         type.Name = "character"
-        type.Set_Top_Package(basic_types_pkg)
         rpy_type = Me.Find_In_Rpy_Project("GUID 0b72335d-1ae5-4182-a916-c731838ed0b7")
         type.Set_Rpy_Element(rpy_type)
         Guid.TryParse("0b72335d-1ae5-4182-a916-c731838ed0b7", type.UUID)
@@ -256,7 +251,6 @@ Public Class Software_Model_Container
         ' Treat characters_string
         type = New Basic_Character_Type
         type.Name = "characters_string"
-        type.Set_Top_Package(basic_types_pkg)
         rpy_type = Me.Find_In_Rpy_Project("GUID 9b2c2f9e-c662-4494-a932-00581b21d3bb")
         type.Set_Rpy_Element(rpy_type)
         Guid.TryParse("9b2c2f9e-c662-4494-a932-00581b21d3bb", type.UUID)

@@ -332,8 +332,6 @@ End Class
 Public MustInherit Class SMM_Classifier
     Inherits Software_Element
 
-    Protected Top_Package As Top_Level_Package = Nothing
-
     Protected Needed_Elements As List(Of SMM_Classifier) = Nothing
     Protected Dependent_Elements As List(Of SMM_Classifier) = Nothing
 

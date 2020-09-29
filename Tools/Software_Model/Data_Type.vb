@@ -195,10 +195,6 @@ Public MustInherit Class Basic_Type
         Return Nothing
     End Function
 
-    Public Sub Set_Top_Package(pkg As Top_Level_Package)
-        Me.Top_Package = pkg
-    End Sub
-
     Public Sub Set_Rpy_Element(rpy_type As RPModelElement)
         Me.Rpy_Element = rpy_type
     End Sub
