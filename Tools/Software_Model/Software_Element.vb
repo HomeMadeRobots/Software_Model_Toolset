@@ -369,7 +369,33 @@ End Class
 Public MustInherit Class SMM_Class
     Inherits SMM_Classifier
 
+    Public Base_Class_Ref As Guid = Guid.Empty 'Optional, not all SMM_Class can be specialized
+    Protected Nb_Base_Class_Ref As Integer = 0
+
     Protected Weighted_Methods_Per_Class As Double = 0
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected MustOverride Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean
+
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+        Dim rpy_gen As RPGeneralization
+        For Each rpy_gen In CType(Me.Rpy_Element, RPClass).generalizations
+            Dim referenced_rpy_elmt_guid As String
+            referenced_rpy_elmt_guid = rpy_gen.baseClass.GUID
+            Dim ref_elmt_guid As Guid
+            ref_elmt_guid = Transform_Rpy_GUID_To_Guid(referenced_rpy_elmt_guid)
+            Dim referenced_rpy_elmt As RPModelElement
+            referenced_rpy_elmt = Me.Find_In_Rpy_Project(referenced_rpy_elmt_guid)
+            If Me.Is_My_Metaclass(referenced_rpy_elmt) Then
+                Me.Base_Class_Ref = ref_elmt_guid
+            End If
+            Me.Nb_Base_Class_Ref += 1
+        Next
+    End Sub
+
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
@@ -382,9 +408,127 @@ Public MustInherit Class SMM_Class
         Return CType(rpy_parent_pkg.addClass(Me.Name), RPModelElement)
     End Function
 
+    Public Function Is_Exportable(any_rpy_elmt As RPModelElement) As Boolean
+        If Me.Base_Class_Ref = Guid.Empty Then
+            Return True
+        End If
+        Dim referenced_rpy_class As RPClass
+        Dim rpy_proj As RPProject = CType(any_rpy_elmt.project, RPProject)
+        Dim base_class_guid As String = Transform_Guid_To_Rpy_GUID(Me.Base_Class_Ref)
+        referenced_rpy_class = CType(rpy_proj.findElementByGUID(base_class_guid), RPClass)
+        If Not IsNothing(referenced_rpy_class) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+
+        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
+
+        ' Merge Base_Class_Ref
+        Dim rpy_gen As RPGeneralization = Nothing
+        Dim reference_found As Boolean = False
+        If Me.Base_Class_Ref <> Guid.Empty Then
+            Dim referenced_rpy_class_guid As String
+            referenced_rpy_class_guid = Transform_Guid_To_Rpy_GUID(Me.Base_Class_Ref)
+            For Each rpy_gen In rpy_class.generalizations
+                Dim current_rpy_class As RPClass = CType(rpy_gen.baseClass, RPClass)
+                If current_rpy_class.GUID = referenced_rpy_class_guid Then
+                    ' No change
+                    reference_found = True
+                End If
+            Next
+            If reference_found = False Then
+                Dim referenced_rpy_class As RPClass
+                referenced_rpy_class = CType(Find_In_Rpy_Project(Me.Base_Class_Ref), RPClass)
+                If IsNothing(referenced_rpy_class) Then
+                    Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Base_Class not found : " & Me.Base_Class_Ref.ToString & ".")
+                Else
+                    rpy_class.addGeneralization(CType(referenced_rpy_class, RPClassifier))
+                End If
+            End If
+        End If
+    End Sub
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(
+        rpy_elmt As RPModelElement,
+        report As Report)
+
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+
+        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
+
+        Dim referenced_rpy_class As RPClass
+        If Me.Base_Class_Ref <> Guid.Empty Then
+            referenced_rpy_class = CType(Find_In_Rpy_Project(Me.Base_Class_Ref), RPClass)
+            If IsNothing(referenced_rpy_class) Then
+                Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Base_Class not found : " & Me.Base_Class_Ref.ToString & ".")
+            Else
+                rpy_class.addGeneralization(CType(referenced_rpy_class, RPClassifier))
+            End If
+        End If
+
+    End Sub
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        If Me.Nb_Base_Class_Ref > 1 Then
+            Me.Add_Consistency_Check_Error_Item(report,
+                "CLASS_1",
+                "Shall specialize at most 1 class.")
+        End If
+
+        If Me.Nb_Base_Class_Ref <> 0 Then
+            If Me.Base_Class_Ref = Guid.Empty Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "CLASS_2",
+                    "Shall specialize a class of its own meta-class.")
+            End If
+        End If
+
+    End Sub
+
+
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
     Public MustOverride Function Compute_WMC() As Double
+
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
+        If IsNothing(Me.Needed_Elements) Then
+            Me.Needed_Elements = New List(Of SMM_Classifier)
+            If Me.Base_Class_Ref <> Guid.Empty Then
+                Dim base_class As SMM_Class
+                base_class = CType(Me.Get_Element_By_Uuid(Me.Base_Class_Ref), SMM_Class)
+                Me.Needed_Elements.Add(base_class)
+            End If
+        End If
+        Return Me.Needed_Elements
+    End Function
+
+    Public Overrides Function Find_Dependent_Elements() As List(Of SMM_Classifier)
+        If IsNothing(Me.Dependent_Elements) Then
+            Me.Dependent_Elements = New List(Of SMM_Classifier)
+
+            Dim class_list As List(Of SMM_Class)
+            class_list = Me.Container.Get_All_Specializable_Class
+            For Each elmt In class_list
+                If elmt.Base_Class_Ref = Me.UUID Then
+                    Me.Dependent_Elements.Add(elmt)
+                End If
+            Next
+        End If
+        Return Me.Dependent_Elements
+    End Function
 
 End Class
 

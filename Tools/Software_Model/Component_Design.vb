@@ -181,6 +181,10 @@ Public Class Component_Design
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
+    Protected Overrides Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean
+        Return Is_Component_Design(rpy_element)
+    End Function
+
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
         MyBase.Import_Children_From_Rhapsody_Model()
         Dim rpy_elmt As RPModelElement
@@ -229,6 +233,9 @@ Public Class Component_Design
 
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
         MyBase.Get_Own_Data_From_Rhapsody_Model()
+
+        ' Ignore generalizations (not stereotyped) added to a Component_Design
+        Me.Nb_Base_Class_Ref = 0 ' Has been set to 1 by SMM_Class
 
         ' Get Component_Type_Ref
         Dim rpy_gen As RPGeneralization

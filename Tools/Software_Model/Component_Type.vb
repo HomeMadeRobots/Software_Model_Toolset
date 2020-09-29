@@ -12,6 +12,8 @@ Public Class Component_Type
     Public Provider_Ports As New List(Of Provider_Port)
     Public Requirer_Ports As New List(Of Requirer_Port)
 
+    '----------------------------------------------------------------------------------------------'
+    ' General methods
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
@@ -22,6 +24,13 @@ Public Class Component_Type
             Me.Children = children_list
         End If
         Return Me.Children
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean
+        Return Is_Component_Type(rpy_element)
     End Function
 
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
@@ -83,7 +92,7 @@ Public Class Component_Type
     ' Methods for metrics computation
     Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
-            Me.Needed_Elements = New List(Of SMM_Classifier)
+            Me.Needed_Elements = MyBase.Find_Needed_Elements()
 
             For Each port In Me.Provider_Ports
                 Dim sw_if As Software_Interface
@@ -117,7 +126,7 @@ Public Class Component_Type
 
     Public Overrides Function Find_Dependent_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Dependent_Elements) Then
-            Me.Dependent_Elements = New List(Of SMM_Classifier)
+            Me.Dependent_Elements = MyBase.Find_Dependent_Elements()
             Dim compo_list As List(Of Root_Software_Composition)
             compo_list = Me.Container.Get_All_Compositions
             For Each compo In compo_list
@@ -267,7 +276,6 @@ Public Class Provider_Port
     End Sub
 
 
-
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
@@ -291,7 +299,7 @@ Public Class Provider_Port
                                         RPModelElement)
                         Dim current_if_UUID As Guid
                         current_if_UUID = Transform_Rpy_GUID_To_Guid(rpy_current_if.GUID)
-                        If current_if_UUID <> child_csif.Base_Interface_Ref Then
+                        If current_if_UUID <> child_csif.Base_Class_Ref Then
                             Me.Add_Consistency_Check_Error_Item(report, "PORT_1",
                                 "Shall have one and only one contract.")
                             Exit For
@@ -315,6 +323,7 @@ Public Class Provider_Port
         End If
 
     End Sub
+
 End Class
 
 

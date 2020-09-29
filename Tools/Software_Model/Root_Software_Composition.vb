@@ -25,6 +25,17 @@ Public Class Root_Software_Composition
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+        ' Ignore generalizations added to a Root_Software_Composition
+        Me.Nb_Base_Class_Ref = 0 ' Could have been set to 1 by SMM_Class
+    End Sub
+
+
+    Protected Overrides Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean
+        Return Is_Root_Software_Composition(rpy_element)
+    End Function
+
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
 
         Dim rpy_component As RPInstance

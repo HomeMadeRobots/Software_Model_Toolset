@@ -6,7 +6,6 @@ Public Class Internal_Design_Class
 
     Inherits SDD_Class
 
-    Public Base_Class_Ref As Guid
     <XmlArrayItem("Configuration")>
     Public Configurations As New List(Of Configuration_Parameter)
     Public Public_Operations As New List(Of Public_Operation)
@@ -15,7 +14,6 @@ Public Class Internal_Design_Class
     <XmlArrayItem("Needed_Interface")>
     Public Needed_Interfaces As New List(Of Guid)
 
-    Private Nb_Base_Class_Ref As Integer = 0
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -33,6 +31,10 @@ Public Class Internal_Design_Class
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
+    Protected Overrides Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean
+        Return Is_Internal_Design_Class(rpy_element)
+    End Function
+
     Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
         MyBase.Get_Own_Data_From_Rhapsody_Model()
 
@@ -44,13 +46,6 @@ Public Class Internal_Design_Class
             ref_elmt_guid = Transform_Rpy_GUID_To_Guid(referenced_rpy_elmt_guid)
             If Is_Realized_Interface(CType(rpy_gen, RPModelElement)) Then
                 Me.Realized_Interfaces.Add(ref_elmt_guid)
-            Else
-                Dim referenced_rpy_elmt As RPModelElement
-                referenced_rpy_elmt = Me.Find_In_Rpy_Project(referenced_rpy_elmt_guid)
-                If Is_Internal_Design_Class(referenced_rpy_elmt) Then
-                    Me.Base_Class_Ref = ref_elmt_guid
-                End If
-                Nb_Base_Class_Ref += 1
             End If
         Next
 
@@ -95,56 +90,16 @@ Public Class Internal_Design_Class
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
-    Function Is_Exportable(any_rpy_elmt As RPModelElement) As Boolean
-        If Me.Base_Class_Ref = Guid.Empty Then
-            Return True
-        End If
-        Dim referenced_rpy_class As RPClass
-        Dim rpy_proj As RPProject = CType(any_rpy_elmt.project, RPProject)
-        Dim base_class_guid As String = Transform_Guid_To_Rpy_GUID(Me.Base_Class_Ref)
-        referenced_rpy_class = CType(rpy_proj.findElementByGUID(base_class_guid), RPClass)
-        If Not IsNothing(referenced_rpy_class) Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
-
     Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
-
-        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
-
-        ' Merge Base_Class_Ref
-        Dim rpy_gen As RPGeneralization = Nothing
-        Dim reference_found As Boolean = False
-        If Me.Base_Class_Ref <> Guid.Empty Then
-            Dim referenced_rpy_class_guid As String
-            referenced_rpy_class_guid = Transform_Guid_To_Rpy_GUID(Me.Base_Class_Ref)
-            For Each rpy_gen In rpy_class.generalizations
-                Dim current_rpy_class As RPClass = CType(rpy_gen.baseClass, RPClass)
-                If current_rpy_class.GUID = referenced_rpy_class_guid Then
-                    ' No change
-                    reference_found = True
-                End If
-            Next
-            If reference_found = False Then
-                Dim referenced_rpy_class As RPClass
-                referenced_rpy_class = CType(Find_In_Rpy_Project(Me.Base_Class_Ref), RPClass)
-                If IsNothing(referenced_rpy_class) Then
-                    Me.Add_Export_Error_Item(report,
-                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                    "Base_Class not found : " & Me.Base_Class_Ref.ToString & ".")
-                Else
-                    rpy_class.addGeneralization(CType(referenced_rpy_class, RPClassifier))
-                End If
-            End If
-        End If
 
         Merge_Dependencies(report, "Needed_Interface", Me.Needed_Interfaces,
             AddressOf Is_Needed_Interface)
 
         ' Merge Realized_Interfaces
+        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
+        Dim reference_found As Boolean = False
+        Dim rpy_gen As RPGeneralization = Nothing
         For Each id In Me.Realized_Interfaces
             reference_found = False
             Dim rpy_if_guid As String = Transform_Guid_To_Rpy_GUID(id)
@@ -186,22 +141,9 @@ Public Class Internal_Design_Class
 
         MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
 
-        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
-
-        Dim referenced_rpy_class As RPClass
-        If Me.Base_Class_Ref <> Guid.Empty Then
-            referenced_rpy_class = CType(Find_In_Rpy_Project(Me.Base_Class_Ref), RPClass)
-            If IsNothing(referenced_rpy_class) Then
-                Me.Add_Export_Error_Item(report,
-                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                "Base_Class not found : " & Me.Base_Class_Ref.ToString & ".")
-            Else
-                rpy_class.addGeneralization(CType(referenced_rpy_class, RPClassifier))
-            End If
-        End If
-
         Me.Set_Dependencies(report, "Needed_Interface", Me.Needed_Interfaces)
 
+        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
         For Each elmt_ref In Me.Realized_Interfaces
             Dim ref_rpy_elemt As RPModelElement = Me.Find_In_Rpy_Project(elmt_ref)
             If Not IsNothing(ref_rpy_elemt) Then
@@ -221,28 +163,10 @@ Public Class Internal_Design_Class
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
-    Protected Overrides Sub Check_Own_Consistency(report As Report)
-        MyBase.Check_Own_Consistency(report)
-
-        If Me.Nb_Base_Class_Ref > 1 Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "CLASS_1",
-                "Shall specialize at most 1 class.")
-        End If
-
-        If Me.Nb_Base_Class_Ref <> 0 Then
-            If Me.Base_Class_Ref = Guid.Empty Then
-                Me.Add_Consistency_Check_Error_Item(report,
-                    "CLASS_2",
-                    "Shall specialize a Software_Class.")
-            End If
-        End If
-
-    End Sub
 
 
     '----------------------------------------------------------------------------------------------'
-    ' Methods for metrics computation (not yet implemented for Software_Class)
+    ' Methods for metrics computation (not yet implemented for Internal_Design_Class)
 
 End Class
 

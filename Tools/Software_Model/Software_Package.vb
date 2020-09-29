@@ -246,13 +246,19 @@ Public Class Software_Package
         Next
     End Sub
 
-    Public Sub Export_Component_Types_To_Rhapsody(report As Report)
+    Public Sub Export_Component_Types_To_Rhapsody(
+        ByRef exported_swct_list As List(Of Component_Type),
+        report As Report,
+        force As Boolean)
         For Each swct In Me.Component_Types
-            swct.Export_To_Rhapsody(Me.Rpy_Element, report)
+            If force = True Or
+                swct.Is_Exportable(Me.Rpy_Element) = True Then
+                swct.Export_To_Rhapsody(Me.Rpy_Element, report)
+                exported_swct_list.Add(swct)
+            End If
         Next
-
         For Each pkg In Me.Packages
-            pkg.Export_Component_Types_To_Rhapsody(report)
+            pkg.Export_Component_Types_To_Rhapsody(exported_swct_list, report, force)
         Next
     End Sub
 

@@ -38,6 +38,7 @@ Public Class Software_Model_Container
     Private Component_Types_List As List(Of Component_Type) = Nothing
     Private Compositions_List As List(Of Root_Software_Composition) = Nothing
     Private Software_Classes_List As List(Of Internal_Design_Class) = Nothing
+    Private Specializable_Class_List As List(Of SMM_Class) = Nothing
 
     Private Nb_Interfaces_Series As Data_Series
     Private Nb_Component_Types_Series As Data_Series
@@ -134,6 +135,21 @@ Public Class Software_Model_Container
             Next
         End If
         Return Me.Software_Classes_List
+    End Function
+
+    Public Function Get_All_Specializable_Class() As List(Of SMM_Class)
+        If IsNothing(Me.Specializable_Class_List) Then
+            Me.Specializable_Class_List = New List(Of SMM_Class)
+            For Each top_pkg In Me.Packages
+                Dim all_pkg_list As List(Of Software_Package) = top_pkg.Get_All_Packages
+                For Each pkg In all_pkg_list
+                    Me.Specializable_Class_List.AddRange(pkg.Component_Types)
+                    Me.Specializable_Class_List.AddRange(pkg.Software_Interfaces)
+                    Me.Specializable_Class_List.AddRange(pkg.Classes)
+                Next
+            Next
+        End If
+        Return Me.Specializable_Class_List
     End Function
 
 
@@ -350,9 +366,27 @@ Public Class Software_Model_Container
         End While
 
         ' Export Component_Types
-        For Each pkg In Me.Packages
-            pkg.Export_Component_Types_To_Rhapsody(Me.Import_Report)
-        Next
+        Dim swct_list As New List(Of Component_Type)
+        swct_list = Me.Get_All_Component_Types()
+        Dim exported_swct_list As New List(Of Component_Type)
+        round_counter = 0
+        force_export = False
+        While swct_list.Count <> 0
+            For Each pkg In Me.Packages
+                pkg.Export_Component_Types_To_Rhapsody(
+                    exported_swct_list,
+                    Me.Import_Report,
+                    force_export)
+            Next
+            For Each exp_swct In exported_swct_list
+                swct_list.Remove(exp_swct)
+            Next
+            exported_swct_list.Clear()
+            round_counter += 1
+            If round_counter >= 5 Then
+                force_export = True
+            End If
+        End While
 
         ' Export Compositions
         For Each pkg In Me.Packages
