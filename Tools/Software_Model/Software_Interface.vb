@@ -30,6 +30,10 @@ Public MustInherit Class Software_Interface
         Return Me.Dependent_Elements
     End Function
 
+    Public Overridable Function Is_Exportable(any_rpy_elmt As RPModelElement) As Boolean
+        Return True
+    End Function
+
 End Class
 
 
@@ -41,7 +45,9 @@ Public Class Client_Server_Interface
      XmlArrayItemAttribute(GetType(Asynchronous_Operation)), _
      XmlArray("Operations")>
     Public Operations As New List(Of Operation_With_Arguments)
+    Public Base_Interface_Ref As Guid = Guid.Empty
 
+    Private Nb_Base_Interface_Ref As Integer = 0
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -57,6 +63,23 @@ Public Class Client_Server_Interface
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+        Dim rpy_gen As RPGeneralization
+        For Each rpy_gen In CType(Me.Rpy_Element, RPClass).generalizations
+            Dim referenced_rpy_elmt_guid As String
+            referenced_rpy_elmt_guid = rpy_gen.baseClass.GUID
+            Dim ref_elmt_guid As Guid
+            ref_elmt_guid = Transform_Rpy_GUID_To_Guid(referenced_rpy_elmt_guid)
+            Dim referenced_rpy_elmt As RPModelElement
+            referenced_rpy_elmt = Me.Find_In_Rpy_Project(referenced_rpy_elmt_guid)
+            If Is_Client_Server_Interface(referenced_rpy_elmt) Then
+                Me.Base_Interface_Ref = ref_elmt_guid
+            End If
+            Me.Nb_Base_Interface_Ref += 1
+        Next
+    End Sub
+
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
@@ -75,8 +98,76 @@ Public Class Client_Server_Interface
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
+    Public Overrides Function Is_Exportable(any_rpy_elmt As RPModelElement) As Boolean
+        If Me.Base_Interface_Ref = Guid.Empty Then
+            Return True
+        End If
+        Dim referenced_rpy_class As RPClass
+        Dim rpy_proj As RPProject = CType(any_rpy_elmt.project, RPProject)
+        Dim base_class_guid As String = Transform_Guid_To_Rpy_GUID(Me.Base_Interface_Ref)
+        referenced_rpy_class = CType(rpy_proj.findElementByGUID(base_class_guid), RPClass)
+        If Not IsNothing(referenced_rpy_class) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+
+        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
+
+        ' Merge Base_Interface_Ref
+        Dim rpy_gen As RPGeneralization = Nothing
+        Dim reference_found As Boolean = False
+        If Me.Base_Interface_Ref <> Guid.Empty Then
+            Dim referenced_rpy_class_guid As String
+            referenced_rpy_class_guid = Transform_Guid_To_Rpy_GUID(Me.Base_Interface_Ref)
+            For Each rpy_gen In rpy_class.generalizations
+                Dim current_rpy_class As RPClass = CType(rpy_gen.baseClass, RPClass)
+                If current_rpy_class.GUID = referenced_rpy_class_guid Then
+                    ' No change
+                    reference_found = True
+                End If
+            Next
+            If reference_found = False Then
+                Dim referenced_rpy_class As RPClass
+                referenced_rpy_class = CType(Find_In_Rpy_Project(Me.Base_Interface_Ref), RPClass)
+                If IsNothing(referenced_rpy_class) Then
+                    Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Base_Interface not found : " & Me.Base_Interface_Ref.ToString & ".")
+                Else
+                    rpy_class.addGeneralization(CType(referenced_rpy_class, RPClassifier))
+                End If
+            End If
+        End If
+    End Sub
+
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Client_Server_Interface", "Class")
+    End Sub
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(
+        rpy_elmt As RPModelElement,
+        report As Report)
+
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+
+        Dim rpy_class As RPClass = CType(Me.Rpy_Element, RPClass)
+
+        Dim referenced_rpy_class As RPClass
+        If Me.Base_Interface_Ref <> Guid.Empty Then
+            referenced_rpy_class = CType(Find_In_Rpy_Project(Me.Base_Interface_Ref), RPClass)
+            If IsNothing(referenced_rpy_class) Then
+                Me.Add_Export_Error_Item(report,
+                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                "Base_Interface not found : " & Me.Base_Interface_Ref.ToString & ".")
+            Else
+                rpy_class.addGeneralization(CType(referenced_rpy_class, RPClassifier))
+            End If
+        End If
     End Sub
 
 
@@ -89,6 +180,20 @@ Public Class Client_Server_Interface
             Me.Add_Consistency_Check_Error_Item(report,
                 "CSIF_1",
                 "Shall provide at least one operation.")
+        End If
+
+        If Me.Nb_Base_Interface_Ref > 1 Then
+            Me.Add_Consistency_Check_Error_Item(report,
+                "CSIF_2",
+                "Shall specialize at most 1 Client_Server_Interface.")
+        End If
+
+        If Me.Nb_Base_Interface_Ref <> 0 Then
+            If Me.Base_Interface_Ref = Guid.Empty Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "CSIF_3",
+                    "Shall specialize a Client_Server_Interface.")
+            End If
         End If
 
     End Sub
@@ -110,8 +215,31 @@ Public Class Client_Server_Interface
                     End If
                 Next
             Next
+            If Me.Base_Interface_Ref = Guid.Empty Then
+                Dim base_csif As Client_Server_Interface
+                base_csif = CType(Me.Get_Element_By_Uuid(Me.Base_Interface_Ref), 
+                            Client_Server_Interface)
+                Me.Needed_Elements.Add(base_csif)
+            End If
         End If
         Return Me.Needed_Elements
+    End Function
+
+    Public Overrides Function Find_Dependent_Elements() As List(Of SMM_Classifier)
+        If IsNothing(Me.Dependent_Elements) Then
+            Me.Dependent_Elements = MyBase.Find_Dependent_Elements()
+
+            Dim if_list As List(Of Software_Interface)
+            if_list = Me.Container.Get_All_Interfaces
+            For Each sw_if In if_list
+                If sw_if.GetType = GetType(Client_Server_Interface) Then
+                    If CType(sw_if, Client_Server_Interface).Base_Interface_Ref = Me.UUID Then
+                        Me.Dependent_Elements.Add(sw_if)
+                    End If
+                End If
+            Next
+        End If
+        Return Me.Dependent_Elements
     End Function
 
     Public Overrides Function Compute_WMC() As Double

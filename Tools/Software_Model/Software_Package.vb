@@ -230,13 +230,19 @@ Public Class Software_Package
         Next
     End Sub
 
-    Public Sub Export_Interfaces_To_Rhapsody(report As Report)
+    Public Sub Export_Interfaces_To_Rhapsody(
+        ByRef exported_if_list As List(Of Software_Interface),
+        report As Report,
+        force As Boolean)
         For Each sw_if In Me.Software_Interfaces
-            sw_if.Export_To_Rhapsody(Me.Rpy_Element, report)
+            If force = True Or
+                sw_if.Is_Exportable(Me.Rpy_Element) = True Then
+                sw_if.Export_To_Rhapsody(Me.Rpy_Element, report)
+                exported_if_list.Add(sw_if)
+            End If
         Next
-
         For Each pkg In Me.Packages
-            pkg.Export_Interfaces_To_Rhapsody(report)
+            pkg.Export_Interfaces_To_Rhapsody(exported_if_list, report, force)
         Next
     End Sub
 

@@ -319,6 +319,7 @@ Public Class Software_Model_Container
             For Each exp_dt In exported_dt_list
                 dt_list.Remove(exp_dt)
             Next
+            exported_dt_list.Clear()
             round_counter += 1
             If round_counter >= 5 Then
                 force_export = True
@@ -326,9 +327,27 @@ Public Class Software_Model_Container
         End While
 
         ' Export Interfaces
-        For Each pkg In Me.Packages
-            pkg.Export_Interfaces_To_Rhapsody(Me.Import_Report)
-        Next
+        Dim if_list As New List(Of Software_Interface)
+        if_list = Me.Get_All_Interfaces
+        Dim exported_if_list As New List(Of Software_Interface)
+        round_counter = 0
+        force_export = False
+        While if_list.Count <> 0
+            For Each pkg In Me.Packages
+                pkg.Export_Interfaces_To_Rhapsody(
+                    exported_if_list,
+                    Me.Import_Report,
+                    force_export)
+            Next
+            For Each exp_if In exported_if_list
+                if_list.Remove(exp_if)
+            Next
+            exported_if_list.Clear()
+            round_counter += 1
+            If round_counter >= 5 Then
+                force_export = True
+            End If
+        End While
 
         ' Export Component_Types
         For Each pkg In Me.Packages
@@ -356,6 +375,7 @@ Public Class Software_Model_Container
             For Each exp_class In exported_sdd_classes_list
                 sdd_classes_list.Remove(exp_class)
             Next
+            exported_sdd_classes_list.Clear()
             round_counter += 1
             If round_counter >= 5 Then
                 force_export = True
