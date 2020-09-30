@@ -114,7 +114,16 @@ Public MustInherit Class Data_Type_Base_Typed
     Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
         Dim rpy_type As RPType = CType(rpy_element, RPType)
-        If rpy_type.typedefBaseType.GUID <> Transform_Guid_To_Rpy_GUID(Me.Base_Data_Type_Ref) Then
+
+        Dim merge_needed As Boolean = False
+        If IsNothing(rpy_type.typedefBaseType) Then
+            merge_needed = True
+        ElseIf rpy_type.typedefBaseType.GUID <>
+                Transform_Guid_To_Rpy_GUID(Me.Base_Data_Type_Ref) Then
+            merge_needed = True
+        End If
+
+        If merge_needed = True Then
             rpy_type.getSaveUnit.setReadOnly(0)
             Dim referenced_rpy_type As RPType
             referenced_rpy_type = CType(Me.Find_In_Rpy_Project(Me.Base_Data_Type_Ref), RPType)
@@ -128,7 +137,6 @@ Public MustInherit Class Data_Type_Base_Typed
                     Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
                     "Merge Base_Data_Type.")
             End If
-
         End If
     End Sub
 
