@@ -43,20 +43,21 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.29.2020::9:16:45</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.30.2020::14:4:29</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.29.2020::9:24:34</_modifiedTime>
+			<_modifiedTime type="a">9.30.2020::14:4:29</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">9.29.2020::9:16:45</weakCGTime>
+			<weakCGTime type="a">9.30.2020::14:4:29</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">9.17.2019::13:50:18</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 2fa76a8a-3a37-423d-82f8-cb10371b657b</value>
+				<value>GUID e7cfdec5-4b56-48d6-b81c-e078cb8c8158</value>
 				<value>GUID d805ef58-dd19-4ea6-ad1f-99a12cea99b4</value>
 				<value>GUID cb071234-229f-4e53-945f-4b65413c0797</value>
 			</AggregatesList>
@@ -65,10 +66,10 @@
 			<_id type="a">GUID 2fa76a8a-3a37-423d-82f8-cb10371b657b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.29.2020::9:9:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.29.2020::9:9:0</_modifiedTime>
-			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">9.29.2020::9:9:0</weakCGTime>
+			<_modifiedTimeWeak type="a">9.30.2020::10:31:31</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.30.2020::10:31:31</_modifiedTime>
+			<_lastID type="a">7</_lastID>
+			<weakCGTime type="a">9.30.2020::10:31:31</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:29</strongCGTime>
 			<_defaultComposite type="s">GUID a7891663-41f3-4945-8795-f855279ddba9</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -80,6 +81,7 @@
 				<value>GUID 7bc8635c-da90-40ea-a26e-76ec5b649cf9</value>
 				<value>GUID a7891663-41f3-4945-8795-f855279ddba9</value>
 				<value>GUID bb6f5131-8458-4c15-a0cd-09f9c89d8f7b</value>
+				<value>GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</value>
 			</AggregatesList>
 		</ISubsystem>
 		<ISubsystem type="e">
@@ -845,10 +847,10 @@ Has a data type.</_text>
 			<_id type="a">GUID e101f2b2-e3e3-4072-aed0-69558baa8af2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">9.29.2020::9:9:36</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.29.2020::9:9:36</_modifiedTime>
-			<_lastID type="a">8</_lastID>
-			<weakCGTime type="a">9.29.2020::9:9:36</weakCGTime>
+			<_modifiedTimeWeak type="a">9.30.2020::10:31:31</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.30.2020::10:31:31</_modifiedTime>
+			<_lastID type="a">9</_lastID>
+			<weakCGTime type="a">9.30.2020::10:31:31</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:12:18</strongCGTime>
 			<_defaultComposite type="s">GUID 12866dc4-80e5-4782-9816-e02688faaa87</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -857,6 +859,7 @@ Has a data type.</_text>
 				<value>GUID 9f000df0-3104-4bba-93b4-e2b6a64d3833</value>
 				<value>GUID 43e5b673-6ae5-4daa-bc4a-d98f20fdda4d</value>
 				<value>GUID 7444794b-65c8-474c-aeb7-0eb0afcdae66</value>
+				<value>GUID 585f15bd-1f35-404f-8e57-1aa4bee9e1a5</value>
 				<value>GUID 12866dc4-80e5-4782-9816-e02688faaa87</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -943,7 +946,7 @@ Has a data type.</_text>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Requirer_Port, Provider_Port, Component_Operation, Configuration_Parameter, Statechart, Generalization</_Value>
+													<_Value type="a">Requirer_Port, Provider_Port, Component_Operation, Configuration_Parameter, Component_Type_Part, Connector_Prototype, Statechart, Generalization</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1022,13 +1025,13 @@ Has a data type.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">9.29.2020::9:9:36</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.30.2020::9:9:21</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model an independent software component.%0D
 </_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.29.2020::9:9:36</_modifiedTime>
+			<_modifiedTime type="a">9.30.2020::9:9:21</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -1061,10 +1064,10 @@ Has a data type.</_text>
 			<_id type="a">GUID 43e5b673-6ae5-4daa-bc4a-d98f20fdda4d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Operations</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:39:8</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::20:39:8</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.30.2020::10:31:31</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.30.2020::10:31:31</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">9.6.2020::20:39:8</weakCGTime>
+			<weakCGTime type="a">9.30.2020::10:31:31</weakCGTime>
 			<strongCGTime type="a">5.10.2019::12:18:40</strongCGTime>
 			<_defaultComposite type="s">GUID 4cbe604f-9d17-4bb7-8dfa-273fbd6b4db2</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1144,7 +1147,13 @@ Has a data type.</_text>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Operation_Delegation</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
 													<_Value type="a">./icons/black_cross.ico</_Value>
@@ -1182,13 +1191,13 @@ Has a data type.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Operation</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:39:8</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.30.2020::10:31:31</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model an operation cyclically called by the operating system.%0D
 Has a &quot;Period&quot; expressed in second.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.6.2020::20:39:8</_modifiedTime>
+			<_modifiedTime type="a">9.30.2020::10:31:31</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -1438,6 +1447,89 @@ Has a contract : the dependent interface.</_text>
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 		</IClass>
+		<IStereotype type="e">
+			<_id type="a">GUID 585f15bd-1f35-404f-8e57-1aa4bee9e1a5</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">4</size>
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">./icons/grey_object_with_ports.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">./icons/grey_object_with_ports.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DrawingToolIcon</_Name>
+													<_Value type="a">./icons/grey_object_with_ports.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Owners</_Name>
+													<_Value type="a">Component_Type</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Component_Type_Part</_name>
+			<_modifiedTimeWeak type="a">9.30.2020::9:19:6</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.30.2020::9:19:6</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Object</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+			<AggregatesList type="e">
+				<value>GUID 5f0cfb40-05b6-43e0-9e67-db56b6b2db13</value>
+			</AggregatesList>
+		</IStereotype>
+		<IGeneralization type="e">
+			<_id type="a">GUID 5f0cfb40-05b6-43e0-9e67-db56b6b2db13</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IStereotype</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
+					<_hname type="a">Model_Element</_hname>
+					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
 		<IClass type="e">
 			<_id type="a">GUID 12866dc4-80e5-4782-9816-e02688faaa87</_id>
 			<_myState type="a">40960</_myState>
@@ -1750,10 +1842,10 @@ Has a contract : the dependent interface.</_text>
 			<_id type="a">GUID 7bc8635c-da90-40ea-a26e-76ec5b649cf9</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">9.18.2020::6:48:3</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.18.2020::6:48:3</_modifiedTime>
+			<_modifiedTimeWeak type="a">9.30.2020::9:19:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.30.2020::9:19:56</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.18.2020::6:48:3</weakCGTime>
+			<weakCGTime type="a">9.30.2020::9:19:56</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 4456ecac-9846-4117-95af-8d8693ef17fd</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1807,7 +1899,7 @@ Has a contract : the dependent interface.</_text>
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Requirer_Port, Provider_Port, Component_Operation, Configuration_Parameter, Generalization, Root_Software_Composition, Component_Prototype, Connector_Prototype</_Value>
+													<_Value type="a">Data_Type, Physical_Data_Type, Client_Server_Interface, Event_Interface, Component_Type, Requirer_Port, Provider_Port, Component_Type_Part, Component_Operation, Configuration_Parameter, Generalization, Root_Software_Composition, Component_Prototype, Connector_Prototype</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -1902,7 +1994,7 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">PSWA_Diagram</_name>
-			<_modifiedTimeWeak type="a">9.18.2020::6:48:3</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">9.30.2020::9:19:56</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_textRTF type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 {\colortbl ;\red0\green0\blue0;}%0D
@@ -1914,7 +2006,7 @@ Allows to design classic class diagram for SDD.\par%0D
 </_textRTF>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.18.2020::6:48:3</_modifiedTime>
+			<_modifiedTime type="a">9.30.2020::9:19:56</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2175,6 +2267,313 @@ Allows to design classic class diagram for SDD.\par%0D
 				</IRPYRawContainer>
 			</DataColumns>
 		</ITableLayout>
+		<ITableLayout type="e">
+			<_id type="a">GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">TableHeaderMenuAlignment</_Name>
+													<_Value type="a">Right</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Left,Right</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">CollapseFirstColumn</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextPattern</_Name>
+													<_Value type="a">{pkg}Software_Package,{ev}Event_Interface,{arg}Event_Argument</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextTableColumnNameFormat</_Name>
+													<_Value type="a">$(Property) in $(Context)</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">EnableCriteriaCheck</_Name>
+													<_Value type="a">False</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">QueryContextPattern</_Name>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableView</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ChangeSelectionOnEnterTo</_Name>
+													<_Value type="a">down</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">left, right, up, down</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Event_Interface_Layout</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::13:59:13</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::13:59:13</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Event_Interface</TableDataDefinitionName>
+						<_DataType type="a">1852138323</_DataType>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<DataColumns type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">5</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Name in ev</_columnName>
+						<_contextPatternLabel type="a">ev</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Description</TableDataDefinitionName>
+						<_columnName type="a">Description in ev</_columnName>
+						<_contextPatternLabel type="a">ev</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Name in arg</_columnName>
+						<_contextPatternLabel type="a">arg</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Description</TableDataDefinitionName>
+						<_columnName type="a">Description in arg</_columnName>
+						<_contextPatternLabel type="a">arg</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Classifier</TableDataDefinitionName>
+						<_columnName type="a">Classifier in arg</_columnName>
+						<_contextPatternLabel type="a">arg</_contextPatternLabel>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</DataColumns>
+		</ITableLayout>
+		<IStereotype type="e">
+			<_id type="a">GUID e7cfdec5-4b56-48d6-b81c-e078cb8c8158</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">Owners</_Name>
+													<_Value type="a">Component_Operation</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Sources</_Name>
+													<_Value type="a">Component_Operation</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Targets</_Name>
+													<_Value type="a">Component_Type_Part</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Operation_Delegation</_name>
+			<_modifiedTimeWeak type="a">9.30.2020::14:4:29</_modifiedTimeWeak>
+			<_description type="p"><IDescription type="e">
+				<_text type="a">Allows to associate a software_composite_operation to the operations of the instances composing the composite software unit the software_composite_operation belongs to.%0D
+All the associated operations shall be of the same kind.%0D
+Has a Priority, it is a positive integer indicating which child operation of a software_composite_operation shall be call first (lower Priority values are caled first).</_text>
+			</IDescription>
+			</_description>
+			<_modifiedTime type="a">9.30.2020::14:4:29</_modifiedTime>
+			<_lastID type="a">4</_lastID>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					<value>Dependency</value>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<_newTerm type="a">1</_newTerm>
+			<AggregatesList type="e">
+				<value>GUID c8b6e70e-5aca-422e-b8de-970a6298a8a1</value>
+				<value>GUID 9a5d3d31-286f-4f66-819b-7c09280b09e4</value>
+			</AggregatesList>
+		</IStereotype>
+		<ITag type="e">
+			<_id type="a">GUID c8b6e70e-5aca-422e-b8de-970a6298a8a1</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Priority</_name>
+			<_modifiedTimeWeak type="a">9.30.2020::14:4:29</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.30.2020::14:4:29</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hsubsystem type="a">PredefinedTypes</_hsubsystem>
+					<_hname type="a">RhpInteger</_hname>
+					<_hid type="a">GUID 9503fd72-4374-4a1d-9a70-b60508d8f583</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+		</ITag>
+		<ITag type="e">
+			<_id type="a">GUID 9a5d3d31-286f-4f66-819b-7c09280b09e4</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Component_Type_Operation_Ref</_name>
+			<_modifiedTimeWeak type="a">9.30.2020::10:32:44</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.30.2020::10:32:44</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IStereotype</_hm2Class>
+					<_hid type="a">GUID 03e6f281-8593-48b0-a435-0fc8687783f6</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+		</ITag>
 		<ISubsystem type="e">
 			<_id type="a">GUID d805ef58-dd19-4ea6-ad1f-99a12cea99b4</_id>
 			<_myState type="a">8192</_myState>

@@ -1,0 +1,129 @@
+﻿Imports rhapsody2
+Imports System.Globalization
+
+
+Public Class Operation_Delegation
+    Inherits Software_Element
+
+    Public Part_Ref As Guid
+    Public Component_Type_Operation_Ref As Guid
+    Public Priority As UInteger
+
+    Private Rpy_Part As RPInstance
+    Private Is_Priority_UInteger As Boolean = False
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+
+        ' Get Part_Ref
+        Dim rpy_part As RPInstance
+        rpy_part = CType(CType(Me.Rpy_Element, RPDependency).dependsOn, RPInstance)
+        Me.Part_Ref = Transform_Rpy_GUID_To_Guid(rpy_part.GUID)
+
+        Dim tag As RPTag
+
+        ' Get Priority
+        tag = Me.Rpy_Element.getTag("Priority")
+        If Not IsNothing(tag) Then
+            Me.Is_Priority_UInteger = UInteger.TryParse(
+                tag.value,
+                NumberStyles.Any, _
+                CultureInfo.GetCultureInfo("en-US"), _
+                Me.Priority)
+        End If
+
+        ' Get Component_Type_Operation_Ref
+        tag = Me.Rpy_Element.getTag("Component_Type_Operation_Ref")
+        If Not IsNothing(tag) Then
+            If IsNothing(rpy_part.ObjectAsObjectType) Then
+                Dim rpy_base_class As RPClass
+                rpy_base_class = CType(rpy_part.otherClass, RPClass)
+                If Not IsNothing(rpy_base_class) Then
+                    Dim rpy_ope As RPModelElement
+                    rpy_ope = rpy_base_class.findNestedElement(tag.value, "Operation")
+                    If Not IsNothing(rpy_ope) Then
+                        Me.Component_Type_Operation_Ref = Transform_Rpy_GUID_To_Guid(rpy_ope.GUID)
+                    End If
+                End If
+            End If
+        End If
+
+    End Sub
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Dependency"
+    End Function
+
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+
+        Dim tag As RPTag = rpy_element.getTag("Priority")
+        If Not IsNothing(tag) Then
+            If Me.Priority.ToString <> tag.value Then
+                rpy_element.getSaveUnit.setReadOnly(0)
+                rpy_element.setTagValue(tag, Me.Priority.ToString)
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Merge Priority.")
+            End If
+        End If
+    End Sub
+
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_dep As RPDependency = Nothing
+        Dim rpy_parent_ope As RPOperation = CType(rpy_parent, RPOperation)
+
+        ' Dirty trick to be able to call Find_In_Rpy_Project before really assigning Rpy_Element
+        Me.Rpy_Element = rpy_parent
+
+        Me.Rpy_Part = CType(Me.Find_In_Rpy_Project(Me.Part_Ref), RPInstance)
+        If Not IsNothing(Me.Rpy_Part) Then
+            rpy_dep = rpy_parent_ope.addDependencyTo(CType(Me.Rpy_Part, RPModelElement))
+        End If
+
+        Return CType(rpy_dep, RPModelElement)
+    End Function
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        If Not IsNothing(rpy_elmt) Then
+            MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+
+            rpy_elmt.name = Me.Name
+
+            Dim tag As RPTag
+
+            tag = rpy_elmt.getTag("Priority")
+            If Not IsNothing(tag) Then
+                rpy_elmt.setTagValue(tag, Me.Priority.ToString)
+            End If
+
+            tag = Me.Rpy_Element.getTag("Component_Type_Operation_Ref")
+            If Not IsNothing(tag) Then
+                Dim referenced_op_name As String
+                referenced_op_name = Me.Find_In_Rpy_Project(Me.Component_Type_Operation_Ref).name
+                rpy_elmt.setTagValue(tag, referenced_op_name)
+            End If
+
+        Else
+            If IsNothing(Me.Rpy_Part) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Part not found : " & Me.Part_Ref.ToString & ".")
+            End If
+        End If
+    End Sub
+
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Operation_Delegation", "Dependency")
+    End Sub
+
+End Class

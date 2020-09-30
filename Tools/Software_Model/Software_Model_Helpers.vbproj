@@ -97,6 +97,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Operation_Delegation.vb" />
     <Compile Include="Package_Selection_Form.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +110,7 @@
     <Compile Include="Rpy_Project_Controller.vb" />
     <Compile Include="Internal_Design_Class.vb" />
     <Compile Include="SDD_Class.vb" />
+    <Compile Include="Software_Connector.vb" />
     <Compile Include="Software_Package.vb" />
     <Compile Include="Report.vb" />
     <Compile Include="Root_Software_Composition.vb" />

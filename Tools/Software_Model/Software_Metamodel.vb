@@ -66,6 +66,9 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 99befb32-f0c3-413e-9f84-63c4ee447063")
     End Function
 
+    Public Function Is_Operation_Delegation(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID e7cfdec5-4b56-48d6-b81c-e078cb8c8158")
+    End Function
 
     '----------------------------------------------------------------------------------------------'
     ' Data_Types
@@ -120,6 +123,10 @@ Module Software_Metamodel
 
     Public Function Is_Component_Operation(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID 03e6f281-8593-48b0-a435-0fc8687783f6")
+    End Function
+
+    Public Function Is_Component_Type_Part(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 585f15bd-1f35-404f-8e57-1aa4bee9e1a5")
     End Function
 
 
