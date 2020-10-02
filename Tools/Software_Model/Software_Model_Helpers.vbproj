@@ -97,7 +97,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Operation_Delegation.vb" />
+    <Compile Include="OS_Operation.vb" />
     <Compile Include="Package_Selection_Form.vb">
       <SubType>Form</SubType>
     </Compile>

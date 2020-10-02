@@ -6,6 +6,7 @@ Public Class Root_Software_Composition
 
     Public Component_Prototypes As New List(Of Component_Prototype)
     Public Assembly_Connectors As New List(Of Assembly_Connector)
+    Public Tasks As New List(Of OS_Task)
 
     Private Nb_Conn_By_PPort_By_Component As New Dictionary(Of Guid, Dictionary(Of Guid, Integer))
     Private Nb_Conn_By_RPort_By_Component As New Dictionary(Of Guid, Dictionary(Of Guid, Integer))
@@ -17,6 +18,7 @@ Public Class Root_Software_Composition
             Dim children_list As New List(Of Software_Element)
             children_list.AddRange(Me.Component_Prototypes)
             children_list.AddRange(Me.Assembly_Connectors)
+            children_list.AddRange(Me.Tasks)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -54,6 +56,15 @@ Public Class Root_Software_Composition
                 Dim connector As New Assembly_Connector
                 Me.Assembly_Connectors.Add(connector)
                 connector.Import_From_Rhapsody_Model(Me, CType(rpy_link, RPModelElement))
+            End If
+        Next
+
+        Dim rpy_ope As RPOperation
+        For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
+            If Is_OS_Task(CType(rpy_ope, RPModelElement)) Then
+                Dim ope As OS_Task = New OS_Task
+                Me.Tasks.Add(ope)
+                ope.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             End If
         Next
 
@@ -252,6 +263,19 @@ Public Class Component_Prototype
 
         End If
 
+    End Sub
+
+End Class
+
+
+Public Class OS_Task
+
+    Inherits OS_Operation
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("OS_Task", "Operation")
     End Sub
 
 End Class

@@ -441,33 +441,7 @@ End Class
 
 Public Class Component_Operation
 
-    Inherits SMM_Operation
-    Public Delegations As New List(Of Operation_Delegation)
-
-    '----------------------------------------------------------------------------------------------'
-    ' General methods 
-    Public Overrides Function Get_Children() As List(Of Software_Element)
-        If IsNothing(Me.Children) Then
-            Dim children_list As New List(Of Software_Element)
-            children_list.AddRange(Me.Delegations)
-            Me.Children = children_list
-        End If
-        Return Me.Children
-    End Function
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for model import from Rhapsody
-    Protected Overrides Sub Import_Children_From_Rhapsody_Model()
-        MyBase.Import_Children_From_Rhapsody_Model()
-        Dim rpy_dep As RPModelElement
-        For Each rpy_dep In CType(Me.Rpy_Element, RPOperation).dependencies
-            If Is_Operation_Delegation(rpy_dep) Then
-                Dim ope_delegation As Operation_Delegation = New Operation_Delegation
-                Me.Delegations.Add(ope_delegation)
-                ope_delegation.Import_From_Rhapsody_Model(Me, rpy_dep)
-            End If
-        Next
-    End Sub
+    Inherits OS_Operation
 
 
     '----------------------------------------------------------------------------------------------'

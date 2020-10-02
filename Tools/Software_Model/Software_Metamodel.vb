@@ -140,6 +140,10 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 9ab1904a-0588-4eac-9f37-c6224bbd3de7")
     End Function
 
+    Public Function Is_OS_Task(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID e4ca771f-e5e8-4770-97a8-5197730fb880")
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Component_Design
