@@ -11,14 +11,14 @@
 			<_id type="a">GUID e6dd7000-5327-4839-ad4b-6da8f8351563</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Detailed_Design_Metamodel</_name>
-			<_modifiedTimeWeak type="a">9.18.2020::6:48:39</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.2.2020::7:39:18</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Component_Design_Metamodel profile defines meta-classes allowing to model any design pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.18.2020::6:48:39</_modifiedTime>
+			<_modifiedTime type="a">10.2.2020::7:39:18</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">9.18.2020::6:48:39</weakCGTime>
+			<weakCGTime type="a">10.2.2020::7:39:18</weakCGTime>
 			<strongCGTime type="a">10.25.2019::13:35:24</strongCGTime>
 			<_defaultComposite type="s">GUID f61c1e09-4b38-4294-ba41-f87637329589</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 9c4f06ad-7647-4018-8692-8c6ae32b4d1b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.18.2020::6:48:39</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.18.2020::6:48:39</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:39:18</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:39:18</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">9.18.2020::6:48:39</weakCGTime>
+			<weakCGTime type="a">10.2.2020::7:39:18</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:18</strongCGTime>
 			<_defaultComposite type="s">GUID 1c3659ae-c124-4218-83bf-cc594f2a034c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -54,10 +54,10 @@
 			<_id type="a">GUID bc1d51e4-d1f5-4009-9809-324aa67b2197</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">9.18.2020::6:48:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.18.2020::6:48:54</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:38:18</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:38:18</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">9.18.2020::6:48:54</weakCGTime>
+			<weakCGTime type="a">10.2.2020::7:38:18</weakCGTime>
 			<strongCGTime type="a">1.11.2019::10:44:50</strongCGTime>
 			<_defaultComposite type="s">GUID a7b8aca8-98fe-49b3-9ca3-777d5cfacb2b</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -87,7 +87,7 @@
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, Event_Interface, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Event_Reception, Internal_Design_Object, Connector_Prototype, Sent_Event, Received_Event</_Value>
+													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, Event_Interface, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Callback_Realization, Event_Reception, Internal_Design_Object, Connector_Prototype, Sent_Event, Received_Event</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -164,8 +164,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Design_Diagram</_name>
-			<_modifiedTimeWeak type="a">9.18.2020::6:48:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.18.2020::6:48:54</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:38:18</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:38:18</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -313,10 +313,10 @@
 			<_id type="a">GUID 12048228-d7eb-47c2-9016-90250609be6c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.18.2020::6:48:39</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.18.2020::6:48:39</_modifiedTime>
-			<_lastID type="a">9</_lastID>
-			<weakCGTime type="a">9.18.2020::6:48:39</weakCGTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:39:35</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:39:35</_modifiedTime>
+			<_lastID type="a">10</_lastID>
+			<weakCGTime type="a">10.2.2020::7:39:35</weakCGTime>
 			<strongCGTime type="a">11.30.2018::9:38:46</strongCGTime>
 			<_defaultComposite type="s">GUID 100f872a-a62e-4cfc-a3c8-ef5346429906</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -330,6 +330,7 @@
 				<value>GUID a9743e19-c009-49cd-a592-1e4f0eb1be92</value>
 				<value>GUID 3c9476aa-db4c-4a17-9581-c47651b0862a</value>
 				<value>GUID 7318acee-3a17-4e05-959f-405011302abe</value>
+				<value>GUID 6906ea4f-d16f-41ee-b27e-ee87bb0fbbb2</value>
 				<value>GUID 100f872a-a62e-4cfc-a3c8-ef5346429906</value>
 			</AggregatesList>
 		</ISubsystem>
@@ -401,7 +402,7 @@
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Component_Type_Ref, Internal_Design_Object, Connector_Prototype, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Event_Reception, Sent_Event, Received_Event, Statechart</_Value>
+													<_Value type="a">Component_Type_Ref, Internal_Design_Object, Connector_Prototype, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Callback_Realization, Event_Reception, Sent_Event, Received_Event, Statechart</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -466,8 +467,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.18.2020::6:48:39</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.18.2020::6:48:39</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:37:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:37:57</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -488,7 +489,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Model_Element</_hname>
 					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
 				</INObjectHandle>
@@ -635,7 +636,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 5b11666f-afe9-4354-b1b6-31cfebc83170</_hid>
 				</INObjectHandle>
@@ -724,7 +725,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 5b11666f-afe9-4354-b1b6-31cfebc83170</_hid>
 				</INObjectHandle>
@@ -751,13 +752,13 @@
 												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">Owners</_Name>
-													<_Value type="a">Operation_Realization</_Value>
+													<_Value type="a">Operation_Realization, Callback_Realization</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">Sources</_Name>
-													<_Value type="a">Operation_Realization</_Value>
+													<_Value type="a">Operation_Realization, Callback_Realization</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -780,8 +781,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Operation_Ref</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:32:10</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::20:32:10</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:39:35</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:39:35</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -867,13 +868,13 @@
 												<size type="a">3</size>
 												<IProperty type="e">
 													<_Name type="a">Owners</_Name>
-													<_Value type="a">Event_Reception_Realization</_Value>
+													<_Value type="a">Event_Reception_Realization, Callback_Realization</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
 												<IProperty type="e">
 													<_Name type="a">Sources</_Name>
-													<_Value type="a">Event_Reception_Realization</_Value>
+													<_Value type="a">Event_Reception_Realization, Callback_Realization</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -896,8 +897,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Requirer_Port_Ref</_name>
-			<_modifiedTimeWeak type="a">9.10.2020::8:1:27</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.10.2020::8:1:27</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:39:23</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:39:23</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1055,9 +1056,96 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Model_Element</_hname>
 					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IStereotype type="e">
+			<_id type="a">GUID 6906ea4f-d16f-41ee-b27e-ee87bb0fbbb2</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">1</size>
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Stereotype</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">ActivityDiagram, Operation_Ref, Requirer_Port_Ref</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserGroupIcon</_Name>
+													<_Value type="a">./icons/black_cross.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">BrowserIcon</_Name>
+													<_Value type="a">./icons/black_cross.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">DrawingToolIcon</_Name>
+													<_Value type="a">./icons/black_cross.ico</_Value>
+													<_Type type="a">File</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">Owners</_Name>
+													<_Value type="a">Component_Design</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Callback_Realization</_name>
+			<_modifiedTimeWeak type="a">10.2.2020::7:37:22</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:37:22</_modifiedTime>
+			<_m2Classes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</_m2Classes>
+			<AggregatesList type="e">
+				<value>GUID e3ba44e1-3224-4c28-b8e2-60670b71aec6</value>
+			</AggregatesList>
+		</IStereotype>
+		<IGeneralization type="e">
+			<_id type="a">GUID e3ba44e1-3224-4c28-b8e2-60670b71aec6</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IStereotype</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
+					<_hname type="a">SMM_Operation</_hname>
+					<_hid type="a">GUID b5fca458-ca0a-4261-bfd9-48d5e148b046</_hid>
 				</INObjectHandle>
 			</_dependsOn>
 			<_inheritanceType type="a">iPublic</_inheritanceType>
@@ -1254,7 +1342,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Model_Element</_hname>
 					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
 				</INObjectHandle>
@@ -1344,7 +1432,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 5b11666f-afe9-4354-b1b6-31cfebc83170</_hid>
 				</INObjectHandle>
@@ -1815,7 +1903,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 5b11666f-afe9-4354-b1b6-31cfebc83170</_hid>
 				</INObjectHandle>
@@ -1898,7 +1986,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Model_Element</_hname>
 					<_hid type="a">GUID 54665762-3dd0-40ec-82b2-29a2439a71d8</_hid>
 				</INObjectHandle>
@@ -1981,7 +2069,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Common_Stereotypes</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 5b11666f-afe9-4354-b1b6-31cfebc83170</_hid>
 				</INObjectHandle>
@@ -2027,8 +2115,8 @@
 				<IHandle type="e">
 					<_hm2Class type="a">ITableLayout</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Stereotypes</_hsubsystem>
-					<_hname type="a">SWMM_table_view</_hname>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Layout_SWMM_Stereotypes</_hname>
 					<_hid type="a">GUID f8b296e4-3321-4b2e-b4c5-89fe01cf3784</_hid>
 				</IHandle>
 			</LayoutHandle>
@@ -2048,10 +2136,10 @@
 			<_id type="a">GUID 538bd72c-6cc0-4c8b-ac43-1bab68856a49</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::18:46:29</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:46:29</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:37:26</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:37:26</_modifiedTime>
 			<_lastID type="a">30</_lastID>
-			<weakCGTime type="a">9.17.2020::18:46:29</weakCGTime>
+			<weakCGTime type="a">10.2.2020::7:37:26</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:6</strongCGTime>
 			<_defaultComposite type="s">GUID 59d0682b-2dcd-4778-adc3-0947b890e75e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2067,10 +2155,10 @@
 			<_id type="a">GUID f7a7144b-a29e-4dd6-99e5-4bac84eca03d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::18:46:55</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:46:55</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:37:26</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:37:26</_modifiedTime>
 			<_lastID type="a">11</_lastID>
-			<weakCGTime type="a">9.17.2020::18:46:55</weakCGTime>
+			<weakCGTime type="a">10.2.2020::7:37:26</weakCGTime>
 			<strongCGTime type="a">11.30.2018::10:10:24</strongCGTime>
 			<_defaultComposite type="s">GUID f1c4f7f1-d84b-4508-b1c4-d3264aad0292</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2380,7 +2468,7 @@
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
 							<_hname type="a">SWMM_Description_Diagram</_hname>
 							<_hid type="a">GUID 5b67ad94-8b31-498e-8a7b-06873a6db04f</_hid>
 						</IHandle>
@@ -2388,8 +2476,8 @@
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:47:46</_modifiedTime>
-			<_lastModifiedTime type="a">9.17.2020::18:47:46</_lastModifiedTime>
+			<_modifiedTime type="a">10.2.2020::7:37:26</_modifiedTime>
+			<_lastModifiedTime type="a">10.2.2020::7:37:26</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -8255,7 +8343,7 @@
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Operation</_hname>
 					<_hid type="a">GUID 8b85d1b2-34c0-444c-bd21-f6d7f50054dc</_hid>
 				</IHandle>
@@ -9663,7 +9751,7 @@
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Software_Data_Type_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Software_Data_Type_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Software_Data_Type_Metamodel::Data_Type_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Data_Type</_hname>
 					<_hid type="a">GUID 55241a3a-b274-454e-8440-39c0d234a140</_hid>
 				</IHandle>
@@ -10283,7 +10371,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Software_Element</_hname>
 					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
 				</INObjectHandle>
@@ -10564,7 +10652,7 @@
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Software_Element</_hname>
 					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
 				</INObjectHandle>
@@ -10829,7 +10917,7 @@
 				<IClassifierHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Operation</_hname>
 					<_hid type="a">GUID 8b85d1b2-34c0-444c-bd21-f6d7f50054dc</_hid>
 				</IClassifierHandle>
@@ -10912,7 +11000,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 2d20ab1c-6fb7-46c5-9add-ce13c04378f3</_hid>
 				</INObjectHandle>
@@ -10947,10 +11035,10 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 			<_id type="a">GUID 9c24e27d-1208-4da1-81a3-ed9eeb81d328</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Internal_Design_Class</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::18:47:46</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:47:46</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.2.2020::7:37:26</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.2.2020::7:37:26</_modifiedTime>
 			<_lastID type="a">12</_lastID>
-			<weakCGTime type="a">9.17.2020::18:47:46</weakCGTime>
+			<weakCGTime type="a">10.2.2020::7:37:26</weakCGTime>
 			<strongCGTime type="a">9.17.2020::11:2:47</strongCGTime>
 			<_defaultComposite type="s">GUID 3ff0fc08-d575-4b69-ac19-faea3d80461a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11197,7 +11285,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 						<IHandle type="e">
 							<_hm2Class type="a">IStereotype</_hm2Class>
 							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
 							<_hname type="a">SWMM_Description_Diagram</_hname>
 							<_hid type="a">GUID 5b67ad94-8b31-498e-8a7b-06873a6db04f</_hid>
 						</IHandle>
@@ -11205,8 +11293,8 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::18:47:46</_modifiedTime>
-			<_lastModifiedTime type="a">9.17.2020::18:47:46</_lastModifiedTime>
+			<_modifiedTime type="a">10.2.2020::7:37:26</_modifiedTime>
+			<_lastModifiedTime type="a">10.2.2020::7:37:26</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12558,7 +12646,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Software_Data_Type_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Software_Data_Type_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Software_Data_Type_Metamodel::Data_Type_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Data_Type</_hname>
 					<_hid type="a">GUID 55241a3a-b274-454e-8440-39c0d234a140</_hid>
 				</IHandle>
@@ -12732,7 +12820,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 2d20ab1c-6fb7-46c5-9add-ce13c04378f3</_hid>
 				</IHandle>
@@ -14424,7 +14512,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<IHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Configuration_Parameter</_hname>
 					<_hid type="a">GUID 35b55716-2abb-43c0-9710-9054c17be25a</_hid>
 				</IHandle>
@@ -14540,7 +14628,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<IHandle type="e">
 					<_hm2Class type="a">IAssociationEnd</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hclass type="a">Configuration_Parameter</_hclass>
 					<_hname type="a">Base_Data_Type_Ref</_hname>
 					<_hid type="a">GUID c00a8f18-d833-4538-9e36-6aa433bca27d</_hid>
@@ -15683,7 +15771,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">CD_Software_Packages_SDD_Children</_hname>
 					<_hid type="a">GUID 20aabdf7-e5f6-475c-b513-86c4efaeb722</_hid>
 				</IHandle>
@@ -15718,7 +15806,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Software_Element</_hname>
 					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
 				</INObjectHandle>
@@ -15817,7 +15905,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<IClassifierHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Configuration_Parameter</_hname>
 					<_hid type="a">GUID 35b55716-2abb-43c0-9710-9054c17be25a</_hid>
 				</IClassifierHandle>
@@ -15998,7 +16086,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 2d20ab1c-6fb7-46c5-9add-ce13c04378f3</_hid>
 				</INObjectHandle>
@@ -16101,7 +16189,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 2d20ab1c-6fb7-46c5-9add-ce13c04378f3</_hid>
 				</INObjectHandle>
@@ -16175,7 +16263,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<IClassifierHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Software_Data_Type_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Software_Data_Type_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Software_Data_Type_Metamodel::Data_Type_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Data_Type</_hname>
 					<_hid type="a">GUID 55241a3a-b274-454e-8440-39c0d234a140</_hid>
 				</IClassifierHandle>
@@ -16250,7 +16338,7 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IClass</_hm2Class>
 					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Metamodel_Description</_hsubsystem>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Operation_With_Arguments</_hname>
 					<_hid type="a">GUID 2d20ab1c-6fb7-46c5-9add-ce13c04378f3</_hid>
 				</INObjectHandle>

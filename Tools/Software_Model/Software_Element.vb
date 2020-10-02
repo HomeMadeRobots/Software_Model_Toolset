@@ -235,6 +235,24 @@ Public MustInherit Class Software_Element
         Next
     End Sub
 
+    Protected Sub Merge_Dependency(
+        report As Report,
+        stereotype_str As String,
+        element As Guid,
+        is_of_stereotype As Func(Of RPModelElement, Boolean))
+
+        Dim temp_list As New List(Of Guid)
+        temp_list.Add(element)
+        Me.Merge_Dependencies(report, stereotype_str, temp_list, is_of_stereotype)
+
+    End Sub
+
+    Protected Sub Set_Dependency(report As Report, stereotype_str As String, element As Guid)
+        Dim temp_list As New List(Of Guid)
+        temp_list.Add(element)
+        Me.Set_Dependencies(report, stereotype_str, temp_list)
+    End Sub
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model

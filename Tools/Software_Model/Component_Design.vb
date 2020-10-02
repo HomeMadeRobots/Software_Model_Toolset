@@ -9,6 +9,7 @@ Public Class Component_Design
     Public Component_Type_Ref As Guid = Guid.Empty
     Public Operation_Realizations As New List(Of Operation_Realization)
     Public Event_Reception_Realizations As New List(Of Event_Reception_Realization)
+    Public Callback_Realizations As New List(Of Callback_Realization)
     <XmlArrayItem("Part")>
     Public Parts As New List(Of Internal_Design_Object)
     Public Object_Connectors As New List(Of Object_Connector)
@@ -25,6 +26,7 @@ Public Class Component_Design
             children_list = MyBase.Get_Children
             children_list.AddRange(Me.Operation_Realizations)
             children_list.AddRange(Me.Event_Reception_Realizations)
+            children_list.AddRange(Me.Callback_Realizations)
             children_list.AddRange(Me.Parts)
             children_list.AddRange(Me.Object_Connectors)
             children_list.AddRange(Me.Delegation_Connectors)
@@ -200,6 +202,10 @@ Public Class Component_Design
                 Dim ev_recep_rea As Event_Reception_Realization = New Event_Reception_Realization
                 Me.Event_Reception_Realizations.Add(ev_recep_rea)
                 ev_recep_rea.Import_From_Rhapsody_Model(Me, rpy_elmt)
+            ElseIf Is_Callback_Realization(rpy_elmt) Then
+                Dim clbk_rea As Callback_Realization = New Callback_Realization
+                Me.Callback_Realizations.Add(clbk_rea)
+                clbk_rea.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
 
@@ -831,6 +837,72 @@ Public Class Event_Reception_Realization
                 End If
             End If
         End If
+    End Sub
+
+End Class
+
+
+Public Class Callback_Realization
+
+    Inherits SMM_Operation
+
+
+    Public Requirer_Port_Ref As Guid = Guid.Empty
+    Public Operation_Ref As Guid = Guid.Empty
+
+    Private Nb_Requirer_Port_Ref As Integer = 0
+    Private Nb_Operation_Ref As Integer = 0
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+
+        Dim rpy_dep As RPDependency
+        For Each rpy_dep In CType(Me.Rpy_Element, RPOperation).dependencies
+            If Is_Requirer_Port_Ref(CType(rpy_dep, RPModelElement)) Then
+                Dim rpy_port As RPPort = Nothing
+                Try
+                    rpy_port = CType(rpy_dep.dependsOn, RPPort)
+                Catch
+                    Try
+                        rpy_port = CType(rpy_dep.dependsOn.owner, RPPort)
+                    Catch
+                        rpy_port = Nothing
+                    End Try
+                End Try
+                If Not IsNothing(rpy_port) Then
+                    Me.Nb_Requirer_Port_Ref += 1
+                    Me.Requirer_Port_Ref = Transform_Rpy_GUID_To_Guid(rpy_port.GUID)
+                End If
+            ElseIf Is_Operation_Ref(CType(rpy_dep, RPModelElement)) Then
+                Me.Nb_Operation_Ref += 1
+                Me.Operation_Ref = Transform_Rpy_GUID_To_Guid(rpy_dep.dependsOn.GUID)
+            End If
+        Next
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+        Me.Merge_Dependency(report, "Operation_Ref", Me.Operation_Ref, AddressOf Is_Operation_Ref)
+        Me.Merge_Dependency(report, "Requirer_Port_Ref", Me.Requirer_Port_Ref,
+            AddressOf Is_Requirer_Port_Ref)
+    End Sub
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(
+        rpy_elmt As RPModelElement,
+        report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        Me.Set_Dependency(report, "Operation_Ref", Me.Operation_Ref)
+        Me.Set_Dependency(report, "Requirer_Port_Ref", Me.Requirer_Port_Ref)
+    End Sub
+
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Callback_Realization", "Operation")
     End Sub
 
 End Class

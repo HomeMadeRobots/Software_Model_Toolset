@@ -179,6 +179,11 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 7318acee-3a17-4e05-959f-405011302abe")
     End Function
 
+    Public Function Is_Callback_Realization(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 6906ea4f-d16f-41ee-b27e-ee87bb0fbbb2")
+    End Function
+
+
 
     '----------------------------------------------------------------------------------------------'
     ' Software_Class
