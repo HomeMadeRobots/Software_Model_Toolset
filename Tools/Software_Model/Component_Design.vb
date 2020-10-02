@@ -35,13 +35,14 @@ Public Class Component_Design
         Return Me.Children
     End Function
 
-    Public Sub Add_Missing_Realizations()
+    Public Function Add_Missing_Realizations() As List(Of String)
+        Dim added_real_name_list As New List(Of String)
         ' Get the designed Component_Type
         Dim swct As Component_Type = Nothing
         swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), 
                 Component_Type)
         If IsNothing(swct) Then
-            Exit Sub
+            Return added_real_name_list
         End If
 
         ' Get Rhapsody component design
@@ -49,6 +50,11 @@ Public Class Component_Design
 
         Dim contract As Software_Element
         Dim is_realized As Boolean = False
+        Dim new_realization_name As String
+        Dim rpy_op As RPOperation
+        Dim rpy_act_diagram As RPFlowchart
+        Dim rpy_dep As RPDependency
+        Dim rpy_pin As RPPin
 
         ' Add missing client_server operation realization
         For Each pport In swct.Provider_Ports
@@ -65,27 +71,21 @@ Public Class Component_Design
                         End If
                     Next
                     If is_realized = False Then
-                        Dim rpy_op As RPOperation
-                        rpy_op = rpy_swct_design.addOperation(pport.Name & "__" & op.Name)
+                        new_realization_name = pport.Name & "__" & op.Name
+                        rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
+                        added_real_name_list.Add(new_realization_name)
                         rpy_op.addStereotype("Operation_Realization", "Operation")
 
-                        Dim rpy_dep As RPDependency
                         rpy_dep = rpy_op.addDependencyTo(op.Get_Rpy_Element)
                         rpy_dep.addStereotype("Operation_Ref", "Dependency")
 
                         rpy_dep = rpy_op.addDependencyTo(pport.Get_Rpy_Element)
                         rpy_dep.addStereotype("Provider_Port_Ref", "Dependency")
 
-                        Dim rpy_act_diagram As RPFlowchart
-                        rpy_act_diagram = rpy_op.addActivityDiagram()
-                        rpy_act_diagram.name = pport.Name & "." & op.Name
-                        rpy_act_diagram.createGraphics()
-                        rpy_act_diagram.setShowDiagramFrame(1)
-
                         Dim arg As Operation_Argument
                         Dim pin_pos As Integer = 0
                         For Each arg In op.Arguments
-                            Dim rpy_pin As RPPin
+
                             rpy_pin = rpy_act_diagram.addActivityParameter(arg.Name)
 
                             If arg.Stream = Operation_Argument.E_STREAM.INPUT Then
@@ -119,29 +119,19 @@ Public Class Component_Design
                     End If
                 Next
                 If is_realized = False Then
-                    Dim rpy_op As RPOperation
-                    rpy_op = rpy_swct_design.addOperation(rport.Name)
+                    new_realization_name = rport.Name
+                    rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
+                    added_real_name_list.Add(new_realization_name)
                     rpy_op.addStereotype("Event_Reception_Realization", "Operation")
 
-                    Dim rpy_dep As RPDependency
                     rpy_dep = rpy_op.addDependencyTo(rport.Get_Rpy_Element)
                     rpy_dep.addStereotype("Requirer_Port_Ref", "Dependency")
-
-
-                    Dim rpy_act_diagram As RPFlowchart
-                    rpy_act_diagram = rpy_op.addActivityDiagram()
-                    rpy_act_diagram.name = rport.Name
-                    rpy_act_diagram.createGraphics()
-                    rpy_act_diagram.setShowDiagramFrame(1)
 
                     Dim arg As Event_Argument
                     Dim pin_pos As Integer = 0
                     For Each arg In ev_if.Arguments
-                        Dim rpy_pin As RPPin
                         rpy_pin = rpy_act_diagram.addActivityParameter(arg.Name)
-
                         rpy_pin.pinDirection = "In"
-
                         Dim arg_type As Software_Element
                         arg_type = Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref)
                         Dim rpy_arg_type As RPType
@@ -162,23 +152,65 @@ Public Class Component_Design
                 End If
             Next
             If is_realized = False Then
-                Dim rpy_op As RPOperation
-                rpy_op = rpy_swct_design.addOperation(op.Name)
+                new_realization_name = op.Name
+                rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
+                added_real_name_list.Add(new_realization_name)
                 rpy_op.addStereotype("Operation_Realization", "Operation")
 
-                Dim rpy_dep As RPDependency
                 rpy_dep = rpy_op.addDependencyTo(op.Get_Rpy_Element)
                 rpy_dep.addStereotype("Operation_Ref", "Dependency")
-
-
-                Dim rpy_act_diagram As RPFlowchart
-                rpy_act_diagram = rpy_op.addActivityDiagram()
-                rpy_act_diagram.name = op.Name
-                rpy_act_diagram.createGraphics()
-                rpy_act_diagram.setShowDiagramFrame(1)
             End If
         Next
-    End Sub
+
+        ' Add missing Callback realization
+        For Each rport In swct.Requirer_Ports
+            contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
+            If GetType(Client_Server_Interface) = contract.GetType Then
+                Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
+                Dim op As Operation_With_Arguments
+                For Each op In cs_if.Operations
+                    If GetType(Asynchronous_Operation) = op.GetType Then
+                        is_realized = False
+                        For Each realized_clbk In Me.Callback_Realizations
+                            If realized_clbk.Operation_Ref = op.UUID _
+                                And realized_clbk.Requirer_Port_Ref = rport.UUID Then
+                                is_realized = True
+                                Exit For
+                            End If
+                        Next
+                        If is_realized = False Then
+                            new_realization_name = "Callback__" & rport.Name & "__" & op.Name
+                            rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
+                            added_real_name_list.Add(new_realization_name)
+                            rpy_op.addStereotype("Callback_Realization", "Operation")
+
+                            rpy_dep = rpy_op.addDependencyTo(op.Get_Rpy_Element)
+                            rpy_dep.addStereotype("Operation_Ref", "Dependency")
+
+                            rpy_dep = rpy_op.addDependencyTo(rport.Get_Rpy_Element)
+                            rpy_dep.addStereotype("Requirer_Port_Ref", "Dependency")
+                        End If
+                    End If
+                Next
+            End If
+        Next
+
+        Return added_real_name_list
+
+    End Function
+
+    Private Function Add_Rpy_Realization(
+            ByVal rpy_op_name As String,
+            ByRef rpy_act_diagram As RPFlowchart) As RPOperation
+        Dim rpy_swct_design As RPClass = CType(Me.Rpy_Element, RPClass)
+        Dim rpy_op As RPOperation
+        rpy_op = rpy_swct_design.addOperation(rpy_op_name)
+        rpy_act_diagram = rpy_op.addActivityDiagram()
+        rpy_act_diagram.name = "AD_" & rpy_op_name
+        rpy_act_diagram.createGraphics()
+        rpy_act_diagram.setShowDiagramFrame(1)
+        Return rpy_op
+    End Function
 
 
     '----------------------------------------------------------------------------------------------'

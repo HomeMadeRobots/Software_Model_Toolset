@@ -166,7 +166,16 @@ Public Class Rpy_Component_Design_Controller
             Dim swct_design As Component_Design
             swct_design = CType(Me.Model.Get_Element_By_Uuid(swct_design_uuid), Component_Design)
 
-            swct_design.Add_Missing_Realizations()
+            Me.Write_Csl_Line("Add missing realizations...")
+            Dim added_realization_name_list As List(Of String)
+            added_realization_name_list = swct_design.Add_Missing_Realizations()
+            If added_realization_name_list.count = 0 Then
+                Me.Write_Csl_Line("    Nothing to add.")
+            End If
+            For Each real_name In added_realization_name_list
+                Me.Write_Csl_Line("    " & real_name)
+            Next
+            Me.Write_Csl_Line("done.")
 
         Else
             Me.Write_Csl_Line("A Component_Design shall be selected.")
