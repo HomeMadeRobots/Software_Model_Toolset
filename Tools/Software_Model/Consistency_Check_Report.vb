@@ -13,17 +13,11 @@ Public Class Consistency_Check_Report
         Dim nb_attribute As Integer = item_attribute_name_list.Count
         Dim item As Report_Item
         For Each item In Me.Report_Items_List
-            Dim kind As String = item.Get_Item_Attribute_Value(2)
-            Dim rule_id As String = item.Get_Item_Attribute_Value(3)
-            If kind = "Assembly_Connector" And rule_id = "ELMT_5" Then
-                ' filter
-            Else
-                Dim attribute_idx As Integer
-                For attribute_idx = 1 To nb_attribute
-                    report_file_stream.Write(item.Get_Item_Attribute_Value(attribute_idx) & ";")
-                Next
-                report_file_stream.WriteLine()
-            End If
+            Dim attribute_idx As Integer
+            For attribute_idx = 1 To nb_attribute
+                report_file_stream.Write(item.Get_Item_Attribute_Value(attribute_idx) & ";")
+            Next
+            report_file_stream.WriteLine()
         Next
     End Sub
 

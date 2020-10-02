@@ -24,6 +24,15 @@ Public MustInherit Class Software_Connector
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        ' Do not call MyBase.Check_Own_Consistency to avoid to rise rule Elemt_5 for connector.
+
+        If Not Is_Symbol_Valid(Me.Name) Then
+            Me.Add_Consistency_Check_Error_Item(report, "ELMT_2",
+                "Invalid symbol, expression shall match ^[a-zA-Z][a-zA-Z0-9_]+$.")
+        End If
+       
+    End Sub
 
 End Class
 
