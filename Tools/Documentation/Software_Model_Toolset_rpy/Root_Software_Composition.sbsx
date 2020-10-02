@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835649</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 3ef00169-86e8-42aa-a31b-3bab1b7bf0e3</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Root_Software_Composition</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::12:1:8</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::12:1:8</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">9.29.2020::12:1:8</weakCGTime>
+			<strongCGTime type="a">9.29.2020::12:1:3</strongCGTime>
+			<_defaultComposite type="s">GUID 91d43b1a-5528-4f96-9098-d17bb4487d6c</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.1.1970::1:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 91d43b1a-5528-4f96-9098-d17bb4487d6c</value>
+				<value>GUID 2c25dc8a-06da-4766-a792-8c97c5f0f89d</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID 91d43b1a-5528-4f96-9098-d17bb4487d6c</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 2c25dc8a-06da-4766-a792-8c97c5f0f89d</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Root_Software_Composition</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::12:1:24</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hname type="a">CD_Overwiew</_hname>
+					<_hid type="a">GUID 7c0a0881-7dca-4bae-8048-a1e4fff58cfa</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">9.29.2020::12:1:24</_modifiedTime>
+			<weakCGTime type="a">9.29.2020::12:1:24</weakCGTime>
+			<strongCGTime type="a">9.29.2020::12:1:9</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 585139ac-8b82-4ad3-9865-5d9d4c700d23</value>
+			</AggregatesList>
+		</IClass>
+		<IGeneralization type="e">
+			<_id type="a">GUID 585139ac-8b82-4ad3-9865-5d9d4c700d23</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\Software_Element.sbsx</_hfilename>
+					<_hsubsystem type="a">Software_Element</_hsubsystem>
+					<_hname type="a">SMM_Class</_hname>
+					<_hid type="a">GUID 8ca6af3b-00b0-4dea-8228-130a43489b03</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+

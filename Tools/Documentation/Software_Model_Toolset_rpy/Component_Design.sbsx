@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RhapsodyArchive>
+	<MagicNumber></MagicNumber>
+	<CODE-PAGE>1252</CODE-PAGE>
+	<version>100.831.0</version>
+	<lang>C++</lang>
+	<BuildNo>9835649</BuildNo>
+	
+	<RHAPSODY-MODEL>
+	<ISubsystem type="e">
+			<_id type="a">GUID 548b0be2-1324-4024-9b1a-d32a69f3d990</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Component_Design</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::11:29:25</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::11:29:25</_modifiedTime>
+			<_lastID type="a">6</_lastID>
+			<weakCGTime type="a">9.29.2020::11:29:25</weakCGTime>
+			<strongCGTime type="a">9.29.2020::11:27:48</strongCGTime>
+			<_defaultComposite type="s">GUID e20e253a-1d9a-4bae-871a-43a899442f96</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.1.1970::1:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID e20e253a-1d9a-4bae-871a-43a899442f96</value>
+				<value>GUID 6d1ada5f-e75b-4e14-a991-7f206c25825a</value>
+				<value>GUID 10eb6c45-0d40-4e38-8aba-852bc8920e93</value>
+				<value>GUID c6d8989a-d753-48b2-8194-ade9519133fc</value>
+				<value>GUID 35984bec-6a55-4cf7-96c9-171fba113388</value>
+				<value>GUID 868f1b3f-2745-4f04-864a-584fe0df9efe</value>
+				<value>GUID 42ffaf74-9ed3-41de-8def-eecf89e857df</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IClass type="e">
+			<_id type="a">GUID e20e253a-1d9a-4bae-871a-43a899442f96</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
+			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 6d1ada5f-e75b-4e14-a991-7f206c25825a</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Component_Design</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::11:28:29</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hname type="a">CD_Overwiew</_hname>
+					<_hid type="a">GUID 7c0a0881-7dca-4bae-8048-a1e4fff58cfa</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">9.29.2020::11:28:29</_modifiedTime>
+			<_lastID type="a">1</_lastID>
+			<weakCGTime type="a">9.29.2020::11:28:29</weakCGTime>
+			<strongCGTime type="a">9.29.2020::11:27:59</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 8ac4c89b-6032-4988-9a6b-8e49827e6189</value>
+				<value>GUID ed09668f-b9e9-48e5-99cf-0c210e45e60d</value>
+			</AggregatesList>
+		</IClass>
+		<IAttribute type="e">
+			<_id type="a">GUID 8ac4c89b-6032-4988-9a6b-8e49827e6189</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Component_Type_Ref</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::11:28:13</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::11:28:13</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\VB.sbsx</_hfilename>
+					<_hsubsystem type="a">VB</_hsubsystem>
+					<_hname type="a">Guid</_hname>
+					<_hid type="a">GUID 57ffe45d-fa88-48e7-b12f-7196a9c07413</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_protection type="a">iPublic</_protection>
+			<_static type="a">0</_static>
+			<_isReferenceAttr type="a">0</_isReferenceAttr>
+			<_isConstant type="a">0</_isConstant>
+		</IAttribute>
+		<IGeneralization type="e">
+			<_id type="a">GUID ed09668f-b9e9-48e5-99cf-0c210e45e60d</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.1.1970::1:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\SDD_Class.sbsx</_hfilename>
+					<_hsubsystem type="a">SDD_Class</_hsubsystem>
+					<_hname type="a">SDD_Class</_hname>
+					<_hid type="a">GUID 08277fb2-1582-45b8-afc7-e52ebb265ea5</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 10eb6c45-0d40-4e38-8aba-852bc8920e93</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Operation_Realization</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::11:28:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::11:28:48</_modifiedTime>
+			<weakCGTime type="a">9.29.2020::11:28:48</weakCGTime>
+			<strongCGTime type="a">9.29.2020::11:28:48</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID c6d8989a-d753-48b2-8194-ade9519133fc</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Event_Reception_Realization</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::11:28:58</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::11:28:58</_modifiedTime>
+			<weakCGTime type="a">9.29.2020::11:28:58</weakCGTime>
+			<strongCGTime type="a">9.29.2020::11:28:58</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 35984bec-6a55-4cf7-96c9-171fba113388</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Internal_Design_Object</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::11:29:8</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::11:29:8</_modifiedTime>
+			<weakCGTime type="a">9.29.2020::11:29:8</weakCGTime>
+			<strongCGTime type="a">9.29.2020::11:29:8</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 868f1b3f-2745-4f04-864a-584fe0df9efe</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Object_Connector</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::11:29:18</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::11:29:18</_modifiedTime>
+			<weakCGTime type="a">9.29.2020::11:29:18</weakCGTime>
+			<strongCGTime type="a">9.29.2020::11:29:18</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 42ffaf74-9ed3-41de-8def-eecf89e857df</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Object_Delegation_Connector</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::11:29:26</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::11:29:26</_modifiedTime>
+			<weakCGTime type="a">9.29.2020::11:29:26</weakCGTime>
+			<strongCGTime type="a">9.29.2020::11:29:26</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		
+	</RHAPSODY-MODEL>
+	<OslcLinks type="c">
+		<IRPYRawContainer type="e">
+			<size type="a">0</size>
+		</IRPYRawContainer>
+	</OslcLinks>
+
+<INCLUDES-RHAPSODY-INDEX>false</INCLUDES-RHAPSODY-INDEX>
+</RhapsodyArchive>
+
