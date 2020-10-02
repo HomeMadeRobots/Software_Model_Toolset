@@ -414,78 +414,11 @@ Public Class Operation_Realization
     ' Methods for models merge
     Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
-
-        Dim rpy_dep_list As New List(Of RPDependency)
-        Dim rpy_dep As RPDependency = Nothing
-
-        ' Merge Provider_Port_Ref (if exists)
         If Me.Provider_Port_Ref <> Guid.Empty Then
-            ' Get the list of current Provider_Port references
-            For Each rpy_dep In rpy_element.dependencies
-                If Is_Provider_Port_Ref(CType(rpy_dep, RPModelElement)) Then
-                    rpy_dep_list.Add(rpy_dep)
-                End If
-            Next
-            ' Check Requirer_Port references
-            If rpy_dep_list.Count = 0 Then
-                ' There is no Requirer_Port references
-                ' Create one.
-                Me.Set_Provider_Port_Ref(rpy_element, report, True)
-            Else
-                Dim reference_found As Boolean = False
-                Dim referenced_rpy_port_guid As String
-                referenced_rpy_port_guid = Transform_Guid_To_Rpy_GUID(Me.Provider_Port_Ref)
-                For Each rpy_dep In rpy_dep_list
-                    Dim current_rpy_port As RPPort
-                    Try
-                        current_rpy_port = CType(rpy_dep.dependsOn, RPPort)
-                    Catch
-                        current_rpy_port = CType(rpy_dep.dependsOn.owner, RPPort)
-                    End Try
-                    If current_rpy_port.GUID = referenced_rpy_port_guid Then
-                        ' No change
-                        reference_found = True
-                        Exit For
-                    End If
-                Next
-                If reference_found = False Then
-                    Me.Set_Provider_Port_Ref(rpy_element, report, True)
-                End If
-            End If
+            Me.Merge_Dependency(report, "Provider_Port_Ref", Me.Provider_Port_Ref, _
+                AddressOf Is_Provider_Port_Ref)
         End If
-
-        ' Merge Operation_Ref
-        rpy_dep_list.Clear()
-        For Each rpy_dep In rpy_element.dependencies
-            If Is_Operation_Ref(CType(rpy_dep, RPModelElement)) Then
-                rpy_dep_list.Add(rpy_dep)
-            End If
-        Next
-        If rpy_dep_list.Count = 0 Then
-            ' There is no Operation references
-            ' Create one.
-            Me.Set_Operation_Ref(rpy_element, report, True)
-        Else
-            Dim reference_found As Boolean = False
-            Dim referenced_rpy_op_guid As String
-            referenced_rpy_op_guid = Transform_Guid_To_Rpy_GUID(Me.Operation_Ref)
-            For Each rpy_dep In rpy_dep_list
-                Dim current_rpy_op As RPOperation
-                Try
-                    current_rpy_op = CType(rpy_dep.dependsOn, RPOperation)
-                Catch
-                    current_rpy_op = CType(rpy_dep.dependsOn.owner, RPOperation)
-                End Try
-                If current_rpy_op.GUID = referenced_rpy_op_guid Then
-                    ' No change
-                    reference_found = True
-                    Exit For
-                End If
-            Next
-            If reference_found = False Then
-                Me.Set_Operation_Ref(rpy_element, report, True)
-            End If
-        End If
+        Me.Merge_Dependency(report, "Operation_Ref", Me.Operation_Ref, AddressOf Is_Operation_Ref)
     End Sub
 
     Protected Overrides Sub Set_Stereotype()
@@ -495,58 +428,9 @@ Public Class Operation_Realization
     Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
         MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
         If Me.Provider_Port_Ref <> Guid.Empty Then
-            Me.Set_Provider_Port_Ref(rpy_elmt, report, False)
+            Me.Set_Dependency(report, "Provider_Port_Ref", Me.Provider_Port_Ref)
         End If
-        Me.Set_Operation_Ref(rpy_elmt, report, False)
-    End Sub
-
-    Private Sub Set_Provider_Port_Ref(
-        rpy_elmt As RPModelElement,
-        report As Report,
-        is_merge As Boolean)
-
-        Dim rpy_port As RPModelElement = Me.Find_In_Rpy_Project(Me.Provider_Port_Ref)
-        If Not IsNothing(rpy_port) Then
-            Dim rpy_dep As RPDependency
-            rpy_dep = rpy_elmt.addDependencyTo(rpy_port)
-            rpy_dep.addStereotype("Provider_Port_Ref", "Dependency")
-            If is_merge = True Then
-                Me.Add_Export_Information_Item(report,
-                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                    "Merge Provider_Port_Ref.")
-            End If
-        Else
-            Me.Add_Export_Error_Item(report,
-                Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                "Referenced Provider_Port not not found : " &
-                Me.Provider_Port_Ref.ToString & ".")
-        End If
-
-    End Sub
-
-    Private Sub Set_Operation_Ref(
-        rpy_elmt As RPModelElement,
-        report As Report,
-        is_merge As Boolean)
-
-        If Me.Operation_Ref <> Guid.Empty Then
-            Dim rpy_op As RPModelElement = Me.Find_In_Rpy_Project(Me.Operation_Ref)
-            If Not IsNothing(rpy_op) Then
-                Dim rpy_dep As RPDependency
-                rpy_dep = rpy_elmt.addDependencyTo(rpy_op)
-                rpy_dep.addStereotype("Operation_Ref", "Dependency")
-                If is_merge = True Then
-                    Me.Add_Export_Information_Item(report,
-                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                        "Merge Operation_Ref.")
-                End If
-            Else
-                Me.Add_Export_Error_Item(report,
-                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                    "Referenced Operation not not found : " &
-                    Me.Operation_Ref.ToString & ".")
-            End If
-        End If
+        Me.Set_Dependency(report, "Operation_Ref", Me.Operation_Ref)
     End Sub
 
 
@@ -723,42 +607,8 @@ Public Class Event_Reception_Realization
     ' Methods for models merge
     Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
         MyBase.Merge_Rpy_Element(rpy_element, report)
-
-        ' Merge Requirer_Port_Ref
-        ' Get the list of current Requirer_Port references
-        Dim rpy_dep_list As New List(Of RPDependency)
-        Dim rpy_dep As RPDependency = Nothing
-        For Each rpy_dep In rpy_element.dependencies
-            If Is_Requirer_Port_Ref(CType(rpy_dep, RPModelElement)) Then
-                rpy_dep_list.Add(rpy_dep)
-            End If
-        Next
-        ' Check Requirer_Port references
-        If rpy_dep_list.Count = 0 Then
-            ' There is no Requirer_Port references
-            ' Create one.
-            Me.Set_Requirer_Port_Ref(rpy_element, report, True)
-        Else
-            Dim reference_found As Boolean = False
-            Dim referenced_rpy_port_guid As String
-            referenced_rpy_port_guid = Transform_Guid_To_Rpy_GUID(Me.Requirer_Port_Ref)
-            For Each rpy_dep In rpy_dep_list
-                Dim current_rpy_port As RPPort
-                Try
-                    current_rpy_port = CType(rpy_dep.dependsOn, RPPort)
-                Catch
-                    current_rpy_port = CType(rpy_dep.dependsOn.owner, RPPort)
-                End Try
-                If current_rpy_port.GUID = referenced_rpy_port_guid Then
-                    ' No change
-                    reference_found = True
-                    Exit For
-                End If
-            Next
-            If reference_found = False Then
-                Me.Set_Requirer_Port_Ref(rpy_element, report, True)
-            End If
-        End If
+        Me.Merge_Dependency(report, "Requirer_Port_Ref", Me.Requirer_Port_Ref, _
+            AddressOf Is_Requirer_Port_Ref)
     End Sub
 
     Protected Overrides Sub Set_Stereotype()
@@ -767,33 +617,7 @@ Public Class Event_Reception_Realization
 
     Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
         MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
-        Set_Requirer_Port_Ref(rpy_elmt, report, False)
-    End Sub
-
-    Private Sub Set_Requirer_Port_Ref(
-        rpy_elmt As RPModelElement,
-        report As Report,
-        is_merge As Boolean)
-
-        If Me.Requirer_Port_Ref <> Guid.Empty Then
-            Dim rpy_port As RPModelElement = Me.Find_In_Rpy_Project(Me.Requirer_Port_Ref)
-            If Not IsNothing(rpy_port) Then
-                Dim rpy_dep As RPDependency
-                rpy_dep = rpy_elmt.addDependencyTo(rpy_port)
-                rpy_dep.addStereotype("Requirer_Port_Ref", "Dependency")
-                If is_merge = True Then
-                    Me.Add_Export_Information_Item(report,
-                        Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
-                        "Merge Requirer_Port_Ref.")
-                End If
-            Else
-                Me.Add_Export_Error_Item(report,
-                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
-                    "Referenced Requirer_Port not not found : " &
-                    Me.Requirer_Port_Ref.ToString & ".")
-            End If
-        End If
-
+        Me.Set_Dependency(report, "Requirer_Port_Ref", Me.Requirer_Port_Ref)
     End Sub
 
 

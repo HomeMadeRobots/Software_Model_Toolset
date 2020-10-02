@@ -180,6 +180,8 @@ Public MustInherit Class Software_Element
         report.Add_Report_Item(item)
     End Sub
 
+    ' 4 useful methods to merge or set dependencies, i.e. Public attributes (As Guid or 
+    ' As List(of Guid) ) of any class  that are modeled on Rhapsody using a dependency link.
     Protected Sub Merge_Dependencies(
         report As Report,
         stereotype_str As String,
@@ -191,17 +193,32 @@ Public MustInherit Class Software_Element
 
         For Each id In element_list
             ref_found = False
-            Dim rpy_if_guid As String = Transform_Guid_To_Rpy_GUID(id)
+            Dim rpy_element_guid As String = Transform_Guid_To_Rpy_GUID(id)
             For Each rpy_dep In Me.Rpy_Element.dependencies
                 If is_of_stereotype(CType(rpy_dep, RPModelElement)) Then
-                    If rpy_dep.dependsOn.GUID = rpy_if_guid Then
+                    Dim rpy_dep_elmt As RPModelElement
+                    rpy_dep_elmt = rpy_dep.dependsOn
+                    If rpy_dep_elmt.GUID = rpy_element_guid Then
                         ref_found = True
                         Exit For
+                    Else
+                        ' test only for RPPort
+                        rpy_dep_elmt = rpy_dep.dependsOn.owner
+                        Dim rpy_port_dep_elmnt As RPPort
+                        Try
+                            rpy_port_dep_elmnt = CType(rpy_dep_elmt, RPPort)
+                            If rpy_dep_elmt.GUID = rpy_element_guid Then
+                                ref_found = True
+                                Exit For
+                            End If
+                        Catch
+                            ' nothing
+                        End Try
                     End If
                 End If
             Next
             If ref_found = False Then
-                Dim rpy_if As RPModelElement = Me.Find_In_Rpy_Project(rpy_if_guid)
+                Dim rpy_if As RPModelElement = Me.Find_In_Rpy_Project(rpy_element_guid)
                 If IsNothing(rpy_if) Then
                     Me.Add_Export_Error_Item(report,
                         Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
