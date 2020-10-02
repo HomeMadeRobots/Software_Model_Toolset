@@ -494,11 +494,11 @@ Public Class Software_Model_Container
             Me.Distance_Series.Add_Value(pkg.Get_Distance)
         Next
 
-        For Each swct In Me.Component_Types_List
+        For Each swct In Me.Get_All_Component_Types
             Me.Component_Type_WMC_Series.Add_Value(swct.Compute_WMC)
         Next
 
-        For Each sw_if In Me.Interfaces_List
+        For Each sw_if In Me.Get_All_Interfaces
             Me.Interfaces_WMC_Series.Add_Value(sw_if.Compute_WMC)
         Next
 
