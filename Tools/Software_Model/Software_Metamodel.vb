@@ -121,7 +121,7 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 220d63ab-1b03-4cbb-83e1-4160a66b0389")
     End Function
 
-    Public Function Is_Component_Operation(ByVal model_element As RPModelElement) As Boolean
+    Public Function Is_OS_Operation(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID 03e6f281-8593-48b0-a435-0fc8687783f6")
     End Function
 
@@ -183,6 +183,17 @@ Module Software_Metamodel
         Return Is_Element_Of_Sterotype(model_element, "GUID 6906ea4f-d16f-41ee-b27e-ee87bb0fbbb2")
     End Function
 
+    Public Function Is_Asynchronous_Operation_Ref(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 13fe3793-e4b9-4d17-943c-95086ec0d82f")
+    End Function
+
+    Public Function Is_OS_Operation_Realization(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID 7b643216-acd0-469f-93ee-d2719e8f1dcf")
+    End Function
+
+    Public Function Is_OS_Operation_Ref(ByVal model_element As RPModelElement) As Boolean
+        Return Is_Element_Of_Sterotype(model_element, "GUID f1857119-9a2b-494f-96f5-8cf47bdb1daa")
+    End Function
 
 
     '----------------------------------------------------------------------------------------------'

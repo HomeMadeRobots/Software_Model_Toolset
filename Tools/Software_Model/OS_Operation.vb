@@ -1,7 +1,7 @@
 ﻿Imports rhapsody2
 Imports System.Globalization
 
-Public MustInherit Class OS_Operation
+Public MustInherit Class Delegable_Operation
 
     Inherits SMM_Operation
     Public Delegations As New List(Of Operation_Delegation)

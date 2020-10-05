@@ -7,6 +7,7 @@ Public Class Component_Design
     Inherits SDD_Class
 
     Public Component_Type_Ref As Guid = Guid.Empty
+    Public OS_Operation_Realizations As New List(Of OS_Operation_Realization)
     Public Operation_Realizations As New List(Of Operation_Realization)
     Public Event_Reception_Realizations As New List(Of Event_Reception_Realization)
     Public Callback_Realizations As New List(Of Callback_Realization)
@@ -24,6 +25,7 @@ Public Class Component_Design
         If IsNothing(Me.Children) Then
             Dim children_list As List(Of Software_Element)
             children_list = MyBase.Get_Children
+            children_list.AddRange(Me.OS_Operation_Realizations)
             children_list.AddRange(Me.Operation_Realizations)
             children_list.AddRange(Me.Event_Reception_Realizations)
             children_list.AddRange(Me.Callback_Realizations)
@@ -37,163 +39,163 @@ Public Class Component_Design
 
     Public Function Add_Missing_Realizations() As List(Of String)
         Dim added_real_name_list As New List(Of String)
-        ' Get the designed Component_Type
-        Dim swct As Component_Type = Nothing
-        swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), 
-                Component_Type)
-        If IsNothing(swct) Then
-            Return added_real_name_list
-        End If
+    '    ' Get the designed Component_Type
+    '    Dim swct As Component_Type = Nothing
+    '    swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), 
+    '            Component_Type)
+    '    If IsNothing(swct) Then
+    '        Return added_real_name_list
+    '    End If
 
-        ' Get Rhapsody component design
-        Dim rpy_swct_design As RPClass = CType(Me.Rpy_Element, RPClass)
+    '    ' Get Rhapsody component design
+    '    Dim rpy_swct_design As RPClass = CType(Me.Rpy_Element, RPClass)
 
-        Dim contract As Software_Element
-        Dim is_realized As Boolean = False
-        Dim new_realization_name As String
-        Dim rpy_op As RPOperation
-        Dim rpy_act_diagram As RPFlowchart
-        Dim rpy_dep As RPDependency
-        Dim rpy_pin As RPPin
+    '    Dim contract As Software_Element
+    '    Dim is_realized As Boolean = False
+    '    Dim new_realization_name As String
+    '    Dim rpy_op As RPOperation
+    '    Dim rpy_act_diagram As RPFlowchart = Nothing
+    '    Dim rpy_dep As RPDependency
+    '    Dim rpy_pin As RPPin
 
-        ' Add missing client_server operation realization
-        For Each pport In swct.Provider_Ports
-            contract = Me.Get_Element_By_Uuid(pport.Contract_Ref)
-            If GetType(Client_Server_Interface) = contract.GetType Then
-                Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
-                Dim op As Operation_With_Arguments
-                For Each op In cs_if.Operations
-                    is_realized = False
-                    For Each realized_op In Me.Operation_Realizations
-                        If realized_op.Operation_Ref = op.UUID Then
-                            is_realized = True
-                            Exit For
-                        End If
-                    Next
-                    If is_realized = False Then
-                        new_realization_name = pport.Name & "__" & op.Name
-                        rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
-                        added_real_name_list.Add(new_realization_name)
-                        rpy_op.addStereotype("Operation_Realization", "Operation")
+    '    ' Add missing client_server operation realization
+    '    For Each pport In swct.Provider_Ports
+    '        contract = Me.Get_Element_By_Uuid(pport.Contract_Ref)
+    '        If GetType(Client_Server_Interface) = contract.GetType Then
+    '            Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
+    '            Dim op As Operation_With_Arguments
+    '            For Each op In cs_if.Operations
+    '                is_realized = False
+    '                For Each realized_op In Me.Operation_Realizations
+    '                    If realized_op.Operation_Ref = op.UUID Then
+    '                        is_realized = True
+    '                        Exit For
+    '                    End If
+    '                Next
+    '                If is_realized = False Then
+    '                    new_realization_name = pport.Name & "__" & op.Name
+    '                    rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
+    '                    added_real_name_list.Add(new_realization_name)
+    '                    rpy_op.addStereotype("Operation_Realization", "Operation")
 
-                        rpy_dep = rpy_op.addDependencyTo(op.Get_Rpy_Element)
-                        rpy_dep.addStereotype("Operation_Ref", "Dependency")
+    '                    rpy_dep = rpy_op.addDependencyTo(op.Get_Rpy_Element)
+    '                    rpy_dep.addStereotype("Operation_Ref", "Dependency")
 
-                        rpy_dep = rpy_op.addDependencyTo(pport.Get_Rpy_Element)
-                        rpy_dep.addStereotype("Provider_Port_Ref", "Dependency")
+    '                    rpy_dep = rpy_op.addDependencyTo(pport.Get_Rpy_Element)
+    '                    rpy_dep.addStereotype("Provider_Port_Ref", "Dependency")
 
-                        Dim arg As Operation_Argument
-                        Dim pin_pos As Integer = 0
-                        For Each arg In op.Arguments
+    '                    Dim arg As Operation_Argument
+    '                    Dim pin_pos As Integer = 0
+    '                    For Each arg In op.Arguments
 
-                            rpy_pin = rpy_act_diagram.addActivityParameter(arg.Name)
+    '                        rpy_pin = rpy_act_diagram.addActivityParameter(arg.Name)
 
-                            If arg.Stream = Operation_Argument.E_STREAM.INPUT Then
-                                rpy_pin.pinDirection = "In"
-                            ElseIf arg.Stream = Operation_Argument.E_STREAM.OUTPUT Then
-                                rpy_pin.pinDirection = "Out"
-                            End If
+    '                        If arg.Stream = Operation_Argument.E_STREAM.INPUT Then
+    '                            rpy_pin.pinDirection = "In"
+    '                        ElseIf arg.Stream = Operation_Argument.E_STREAM.OUTPUT Then
+    '                            rpy_pin.pinDirection = "Out"
+    '                        End If
 
-                            Dim arg_type As Software_Element
-                            arg_type = Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref)
-                            Dim rpy_arg_type As RPType
-                            rpy_arg_type = CType(arg_type.Get_Rpy_Element, RPType)
-                            rpy_pin.pinType = CType(rpy_arg_type, RPClassifier)
-                        Next
+    '                        Dim arg_type As Software_Element
+    '                        arg_type = Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref)
+    '                        Dim rpy_arg_type As RPType
+    '                        rpy_arg_type = CType(arg_type.Get_Rpy_Element, RPType)
+    '                        rpy_pin.pinType = CType(rpy_arg_type, RPClassifier)
+    '                    Next
 
-                    End If
-                Next
-            End If
-        Next
+    '                End If
+    '            Next
+    '        End If
+    '    Next
 
-        ' Add missing event reception realization
-        For Each rport In swct.Requirer_Ports
-            contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
-            If GetType(Event_Interface) = contract.GetType Then
-                Dim ev_if As Event_Interface = CType(contract, Event_Interface)
-                is_realized = False
-                For Each realized_ev In Me.Event_Reception_Realizations
-                    If realized_ev.Requirer_Port_Ref = rport.UUID Then
-                        is_realized = True
-                        Exit For
-                    End If
-                Next
-                If is_realized = False Then
-                    new_realization_name = rport.Name
-                    rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
-                    added_real_name_list.Add(new_realization_name)
-                    rpy_op.addStereotype("Event_Reception_Realization", "Operation")
+    '    ' Add missing event reception realization
+    '    For Each rport In swct.Requirer_Ports
+    '        contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
+    '        If GetType(Event_Interface) = contract.GetType Then
+    '            Dim ev_if As Event_Interface = CType(contract, Event_Interface)
+    '            is_realized = False
+    '            For Each realized_ev In Me.Event_Reception_Realizations
+    '                If realized_ev.Requirer_Port_Ref = rport.UUID Then
+    '                    is_realized = True
+    '                    Exit For
+    '                End If
+    '            Next
+    '            If is_realized = False Then
+    '                new_realization_name = rport.Name
+    '                rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
+    '                added_real_name_list.Add(new_realization_name)
+    '                rpy_op.addStereotype("Event_Reception_Realization", "Operation")
 
-                    rpy_dep = rpy_op.addDependencyTo(rport.Get_Rpy_Element)
-                    rpy_dep.addStereotype("Requirer_Port_Ref", "Dependency")
+    '                rpy_dep = rpy_op.addDependencyTo(rport.Get_Rpy_Element)
+    '                rpy_dep.addStereotype("Requirer_Port_Ref", "Dependency")
 
-                    Dim arg As Event_Argument
-                    Dim pin_pos As Integer = 0
-                    For Each arg In ev_if.Arguments
-                        rpy_pin = rpy_act_diagram.addActivityParameter(arg.Name)
-                        rpy_pin.pinDirection = "In"
-                        Dim arg_type As Software_Element
-                        arg_type = Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref)
-                        Dim rpy_arg_type As RPType
-                        rpy_arg_type = CType(arg_type.Get_Rpy_Element, RPType)
-                        rpy_pin.pinType = CType(rpy_arg_type, RPClassifier)
-                    Next
-                End If
-            End If
-        Next
+    '                Dim arg As Event_Argument
+    '                Dim pin_pos As Integer = 0
+    '                For Each arg In ev_if.Arguments
+    '                    rpy_pin = rpy_act_diagram.addActivityParameter(arg.Name)
+    '                    rpy_pin.pinDirection = "In"
+    '                    Dim arg_type As Software_Element
+    '                    arg_type = Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref)
+    '                    Dim rpy_arg_type As RPType
+    '                    rpy_arg_type = CType(arg_type.Get_Rpy_Element, RPType)
+    '                    rpy_pin.pinType = CType(rpy_arg_type, RPClassifier)
+    '                Next
+    '            End If
+    '        End If
+    '    Next
 
-        ' Add missing component_type operation realization
-        For Each op In swct.Component_Operations
-            is_realized = False
-            For Each realized_op In Me.Operation_Realizations
-                If realized_op.Operation_Ref = op.UUID Then
-                    is_realized = True
-                    Exit For
-                End If
-            Next
-            If is_realized = False Then
-                new_realization_name = op.Name
-                rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
-                added_real_name_list.Add(new_realization_name)
-                rpy_op.addStereotype("Operation_Realization", "Operation")
+    '    ' Add missing component_type operation realization
+    '    For Each op In swct.OS_Operations
+    '        is_realized = False
+    '        For Each realized_op In Me.Operation_Realizations
+    '            If realized_op.Operation_Ref = op.UUID Then
+    '                is_realized = True
+    '                Exit For
+    '            End If
+    '        Next
+    '        If is_realized = False Then
+    '            new_realization_name = op.Name
+    '            rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
+    '            added_real_name_list.Add(new_realization_name)
+    '            rpy_op.addStereotype("Operation_Realization", "Operation")
 
-                rpy_dep = rpy_op.addDependencyTo(op.Get_Rpy_Element)
-                rpy_dep.addStereotype("Operation_Ref", "Dependency")
-            End If
-        Next
+    '            rpy_dep = rpy_op.addDependencyTo(op.Get_Rpy_Element)
+    '            rpy_dep.addStereotype("Operation_Ref", "Dependency")
+    '        End If
+    '    Next
 
-        ' Add missing Callback realization
-        For Each rport In swct.Requirer_Ports
-            contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
-            If GetType(Client_Server_Interface) = contract.GetType Then
-                Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
-                Dim op As Operation_With_Arguments
-                For Each op In cs_if.Operations
-                    If GetType(Asynchronous_Operation) = op.GetType Then
-                        is_realized = False
-                        For Each realized_clbk In Me.Callback_Realizations
-                            If realized_clbk.Operation_Ref = op.UUID _
-                                And realized_clbk.Requirer_Port_Ref = rport.UUID Then
-                                is_realized = True
-                                Exit For
-                            End If
-                        Next
-                        If is_realized = False Then
-                            new_realization_name = "Callback__" & rport.Name & "__" & op.Name
-                            rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
-                            added_real_name_list.Add(new_realization_name)
-                            rpy_op.addStereotype("Callback_Realization", "Operation")
+    '    ' Add missing Callback realization
+    '    For Each rport In swct.Requirer_Ports
+    '        contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
+    '        If GetType(Client_Server_Interface) = contract.GetType Then
+    '            Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
+    '            Dim op As Operation_With_Arguments
+    '            For Each op In cs_if.Operations
+    '                If GetType(Asynchronous_Operation) = op.GetType Then
+    '                    is_realized = False
+    '                    For Each realized_clbk In Me.Callback_Realizations
+    '                        If realized_clbk.Operation_Ref = op.UUID _
+    '                            And realized_clbk.Requirer_Port_Ref = rport.UUID Then
+    '                            is_realized = True
+    '                            Exit For
+    '                        End If
+    '                    Next
+    '                    If is_realized = False Then
+    '                        new_realization_name = "Callback__" & rport.Name & "__" & op.Name
+    '                        rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
+    '                        added_real_name_list.Add(new_realization_name)
+    '                        rpy_op.addStereotype("Callback_Realization", "Operation")
 
-                            rpy_dep = rpy_op.addDependencyTo(op.Get_Rpy_Element)
-                            rpy_dep.addStereotype("Operation_Ref", "Dependency")
+    '                        rpy_dep = rpy_op.addDependencyTo(op.Get_Rpy_Element)
+    '                        rpy_dep.addStereotype("Operation_Ref", "Dependency")
 
-                            rpy_dep = rpy_op.addDependencyTo(rport.Get_Rpy_Element)
-                            rpy_dep.addStereotype("Requirer_Port_Ref", "Dependency")
-                        End If
-                    End If
-                Next
-            End If
-        Next
+    '                        rpy_dep = rpy_op.addDependencyTo(rport.Get_Rpy_Element)
+    '                        rpy_dep.addStereotype("Requirer_Port_Ref", "Dependency")
+    '                    End If
+    '                End If
+    '            Next
+    '        End If
+    '    Next
 
         Return added_real_name_list
 
@@ -230,6 +232,10 @@ Public Class Component_Design
                 Dim op_rea As Operation_Realization = New Operation_Realization
                 Me.Operation_Realizations.Add(op_rea)
                 op_rea.Import_From_Rhapsody_Model(Me, rpy_elmt)
+            ElseIf Is_OS_Operation_Realization(rpy_elmt) Then
+                Dim os_op_rea As OS_Operation_Realization = New OS_Operation_Realization
+                Me.OS_Operation_Realizations.Add(os_op_rea)
+                os_op_rea.Import_From_Rhapsody_Model(Me, rpy_elmt)
             ElseIf Is_Event_Reception_Realization(rpy_elmt) Then
                 Dim ev_recep_rea As Event_Reception_Realization = New Event_Reception_Realization
                 Me.Event_Reception_Realizations.Add(ev_recep_rea)
@@ -378,18 +384,32 @@ Public Class Component_Design
         If Me.Nb_Component_Type_Ref <> 1 Or Me.Nb_Invalid_Component_Type_Ref > 0 Then
             Me.Add_Consistency_Check_Error_Item(report,
                 "SWCD_1",
-                "Shall be associated to one and only one atomic Component_Type.")
+                "Shall be associated to one and only one Component_Type.")
         End If
 
         ' Check the references of the realized operations
         If Me.Component_Type_Ref <> Guid.Empty Then
             Dim swct As Component_Type
             swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), Component_Type)
+
+            If swct.Is_Composite_Component_Type Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "SWCD_2",
+                    "Shall be associated to an atomic Component_Type.")
+                Exit Sub
+            End If
+
+            For Each os_op_real In Me.OS_Operation_Realizations
+                os_op_real.Check_Referenced_Elements(report, swct)
+            Next
             For Each op_real In Me.Operation_Realizations
                 op_real.Check_Referenced_Elements(report, swct)
             Next
             For Each ev_recep_real In Me.Event_Reception_Realizations
                 ev_recep_real.Check_Referenced_Elements(report, swct)
+            Next
+            For Each clbk_real In Me.Callback_Realizations
+                clbk_real.Check_Referenced_Elements(report, swct)
             Next
         End If
     End Sub
@@ -397,6 +417,76 @@ Public Class Component_Design
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
+
+End Class
+
+
+Public Class OS_Operation_Realization
+    Inherits SMM_Operation
+
+    Public OS_Operation_Ref As Guid = Guid.Empty
+
+    Private Nb_OS_Operation_Ref As Integer
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+
+        Dim rpy_dep As RPDependency
+        For Each rpy_dep In CType(Me.Rpy_Element, RPOperation).dependencies
+            If Is_OS_Operation_Ref(CType(rpy_dep, RPModelElement)) Then
+                Me.Nb_OS_Operation_Ref += 1
+                Me.OS_Operation_Ref = Transform_Rpy_GUID_To_Guid(rpy_dep.dependsOn.GUID)
+            End If
+        Next
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        MyBase.Merge_Rpy_Element(rpy_element, report)
+        Me.Merge_Dependency(report, "Operation_Ref", Me.OS_Operation_Ref,
+            AddressOf Is_Operation_Ref)
+    End Sub
+
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("OS_Operation_Realization", "Operation")
+    End Sub
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        Me.Set_Dependency(report, "OS_Operation_Ref", Me.OS_Operation_Ref)
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+        If Me.Nb_OS_Operation_Ref <> 1 Then
+            Me.Add_Consistency_Check_Error_Item(report, "OSOPREAL_1",
+                "Shall reference one and only one Operation.")
+        End If
+    End Sub
+
+    Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
+        If Me.OS_Operation_Ref <> Guid.Empty Then
+            Dim reference_allowed As Boolean = False
+            Dim op As OS_Operation = Nothing
+            For Each op In swct.OS_Operations
+                If op.UUID = Me.OS_Operation_Ref Then
+                    reference_allowed = True
+                    Exit For
+                End If
+            Next
+            If reference_allowed = False Then
+                Me.Add_Consistency_Check_Error_Item(report, "OSOPREAL_2",
+                    "The referenced OS_Operation shall belong to the implemented Component_Type.")
+            End If
+        End If
+    End Sub
 
 End Class
 
@@ -472,128 +562,62 @@ Public Class Operation_Realization
         MyBase.Check_Own_Consistency(report)
 
         If Me.Nb_Operation_Ref <> 1 Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "OPREAL_1",
+            Me.Add_Consistency_Check_Error_Item(report, "OPREAL_1",
                 "Shall reference one and only one Operation.")
         End If
 
-        If Me.Operation_Ref <> Guid.Empty Then
-            Dim ope As SMM_Operation
-            ope = CType(Me.Get_Element_By_Uuid(Me.Operation_Ref), SMM_Operation)
-            If Not IsNothing(ope) Then
-                If ope.GetType = GetType(Component_Operation) Then
-                    If Me.Provider_Port_Ref <> Guid.Empty Then
-                        Me.Add_Consistency_Check_Error_Item(report,
-                            "OPREAL_2",
-                            "Realize a Component_Operation : shall not be linked to a Port.")
-                    End If
-                ElseIf ope.GetType = GetType(Synchronous_Operation) Or
-                        ope.GetType = GetType(Asynchronous_Operation) Then
-                    If Me.Provider_Port_Ref = Guid.Empty Then
-                        Me.Add_Consistency_Check_Error_Item(report,
-                            "OPREAL_3",
-                            "Shall not be linked to a Provider_Port.")
-                    End If
-                Else
-                    If Me.Provider_Port_Ref = Guid.Empty Then
-                        Me.Add_Consistency_Check_Error_Item(report,
-                            "OPREAL_4",
-                            "Shall reference a Component_Operation " & _
-                            "or a Synchronous_Operation or a Asynchronous_Operation.")
-                    End If
-                End If
-            Else
-                Me.Add_Consistency_Check_Error_Item(report,
-                    "OPREAL_4",
-                    "Shall reference a Component_Operation " & _
-                    "or a Synchronous_Operation or a Asynchronous_Operation.")
+        If Me.Nb_Provider_Port_Ref <> 1 Then
+            Me.Add_Consistency_Check_Error_Item(report, "OPREAL_2",
+                "Shall reference one and only one Provider_Port.")
+        End If
+
+        Dim referenced_port As Provider_Port = Nothing
+        Dim sw_if As Software_Interface = Nothing
+        referenced_port = CType(Me.Get_Element_By_Uuid(Me.Provider_Port_Ref), Provider_Port)
+        If Not IsNothing(referenced_port) Then
+            sw_if = CType(Me.Get_Element_By_Uuid(referenced_port.Contract_Ref), Software_Interface)
+        End If
+
+        If Not IsNothing(sw_if) Then
+            If sw_if.GetType <> GetType(Client_Server_Interface) Then
+                Me.Add_Consistency_Check_Error_Item(report, "OPREAL_4",
+                    "The referenced Provider_Port shall reference a Client_Server_Interface.")
             End If
         End If
 
-        If Me.Nb_Provider_Port_Ref > 1 Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "OPREAL_1",
-                "Shall reference only one Provider_Port.")
+        If Me.Operation_Ref <> Guid.Empty And Not IsNothing(sw_if) Then
+            Dim reference_allowed As Boolean = False
+            Dim cs_if As Client_Server_Interface = CType(sw_if, Client_Server_Interface)
+            Dim ope As SMM_Operation
+            For Each ope In cs_if.Operations
+                If ope.UUID = Me.Operation_Ref Then
+                    reference_allowed = True
+                    Exit For
+                End If
+            Next
+            If reference_allowed = False Then
+                Me.Add_Consistency_Check_Error_Item(report, "OPREAL_5",
+                    "The referenced Operation shall belong to the " & _
+                    "Client_Server_Interface of the referenced Provider_Port.")
+            End If
         End If
+
     End Sub
 
     Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
-        If Me.Operation_Ref = Guid.Empty Then
-            Exit Sub
-        End If
-
-        Dim referenced_ope As SMM_Operation
-        referenced_ope = CType(Me.Get_Element_By_Uuid(Me.Operation_Ref), SMM_Operation)
-
-        Dim reference_allowed As Boolean = False
-
-        If referenced_ope.GetType = GetType(Component_Operation) Then
-            Dim ope As Component_Operation = Nothing
-            For Each ope In swct.Component_Operations
-                If ope.UUID = referenced_ope.UUID Then
-                    reference_allowed = True
-                    Exit For
-                End If
-            Next
-            If reference_allowed = False Then
-                Me.Add_Consistency_Check_Error_Item(report,
-                    "OPREAL_5",
-                    "The referenced Operation shall belong to the implemented Component_Type.")
-            End If
-        ElseIf referenced_ope.GetType = GetType(Synchronous_Operation) Or
-                referenced_ope.GetType = GetType(Asynchronous_Operation) Then
-
-            If Me.Provider_Port_Ref = Guid.Empty Then
-                Exit Sub
-            End If
-
-            Dim referenced_port As Provider_Port
-            referenced_port = CType(Me.Get_Element_By_Uuid(Me.Provider_Port_Ref), Provider_Port)
-
+        If Me.Provider_Port_Ref <> Guid.Empty Then
+            Dim reference_allowed As Boolean = False
             Dim port As Provider_Port = Nothing
             For Each port In swct.Provider_Ports
-                If port.UUID = referenced_port.UUID Then
+                If port.UUID = Me.Provider_Port_Ref Then
                     reference_allowed = True
                     Exit For
                 End If
             Next
             If reference_allowed = False Then
-                Me.Add_Consistency_Check_Error_Item(report,
-                    "OPREAL_6",
+                Me.Add_Consistency_Check_Error_Item(report, "OPREAL_3",
                     "The referenced Provider_Port shall belong to the implemented Component_Type.")
             End If
-
-            ' Check the interface of the referenced Provider_Port.
-            Dim sw_if As Software_Interface
-            sw_if = CType(Me.Get_Element_By_Uuid(referenced_port.Contract_Ref), Software_Interface)
-            If Not IsNothing(sw_if) Then
-
-                If sw_if.GetType <> GetType(Client_Server_Interface) Then
-                    Me.Add_Consistency_Check_Error_Item(report,
-                        "OPREAL_7",
-                        "The contract of the referenced Provider_Port shall " & _
-                        "be a Client_Server_Interface.")
-                Else
-                    ' Check if the referenced Operation belong to the interface of the 
-                    ' referenced Provider_Port.
-                    reference_allowed = False
-                    Dim cs_if As Client_Server_Interface = CType(sw_if, Client_Server_Interface)
-                    Dim ope As SMM_Operation
-                    For Each ope In cs_if.Operations
-                        If ope.UUID = referenced_ope.UUID Then
-                            reference_allowed = True
-                            Exit For
-                        End If
-                    Next
-                    If reference_allowed = False Then
-                        Me.Add_Consistency_Check_Error_Item(report,
-                            "OPREAL_8",
-                            "The referenced Operation shall belong to the " & _
-                            "Client_Server_Interface of the referenced Provider_Port.")
-                    End If
-                End If
-            End If
-
         End If
     End Sub
 
@@ -605,11 +629,6 @@ Public Class Event_Reception_Realization
     Inherits Operation_With_Arguments
 
     Public Requirer_Port_Ref As Guid = Guid.Empty
-    ' Warning : 
-    ' if the dependency link is created from the model, use rpy_dep.dependsOn.owner to get the 
-    ' referenced port.
-    ' if the dependency link is created from the by the tool (merge), use rpy_dep.dependsOn to get 
-    ' referenced port.
 
     Private Nb_Requirer_Port_Ref As Integer
 
@@ -662,35 +681,35 @@ Public Class Event_Reception_Realization
                 "EVREAL_1",
                 "Shall reference one and only one Required_Port.")
         End If
+
+        Dim referenced_port As Requirer_Port = Nothing
+        Dim sw_if As Software_Interface = Nothing
+        referenced_port = CType(Me.Get_Element_By_Uuid(Me.Requirer_Port_Ref), Requirer_Port)
+        If Not IsNothing(referenced_port) Then
+            sw_if = CType(Me.Get_Element_By_Uuid(referenced_port.Contract_Ref), Software_Interface)
+        End If
+
+        If Not IsNothing(sw_if) Then
+            If sw_if.GetType <> GetType(Event_Interface) Then
+                Me.Add_Consistency_Check_Error_Item(report, "EVREAL_3",
+                    "The referenced Requirer_Port shall reference a Event_Interface.")
+            End If
+        End If
     End Sub
 
     Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
-        Dim reference_allowed As Boolean = False
-        Dim referenced_req_port As Requirer_Port
-        referenced_req_port = CType(Me.Get_Element_By_Uuid(Me.Requirer_Port_Ref), Requirer_Port)
-        If IsNothing(referenced_req_port) Then
-            Exit Sub
-        End If
-        Dim req_port As Requirer_Port = Nothing
-        For Each req_port In swct.Requirer_Ports
-            If req_port.UUID = referenced_req_port.UUID Then
-                reference_allowed = True
-                Exit For
-            End If
-        Next
-        If reference_allowed = False Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "EVREAL_2",
-                "The referenced Required_Port shall belong to the implemented Component_Type.")
-        Else
-            Dim sw_if As Software_Interface
-            sw_if = CType(Me.Get_Element_By_Uuid(req_port.Contract_Ref), Software_Interface)
-            If Not IsNothing(sw_if) Then
-                If sw_if.GetType <> GetType(Event_Interface) Then
-                    Me.Add_Consistency_Check_Error_Item(report,
-                        "EVREAL_3",
-                        "The contract of the referenced Required_Port shall be an Event_Interface.")
+        If Me.Requirer_Port_Ref <> Guid.Empty Then
+            Dim reference_allowed As Boolean = False
+            Dim port As Requirer_Port = Nothing
+            For Each port In swct.Requirer_Ports
+                If port.UUID = Me.Requirer_Port_Ref Then
+                    reference_allowed = True
+                    Exit For
                 End If
+            Next
+            If reference_allowed = False Then
+                Me.Add_Consistency_Check_Error_Item(report, "EVREAL_2",
+                    "The referenced Requirer_Port shall belong to the implemented Component_Type.")
             End If
         End If
     End Sub
@@ -759,6 +778,72 @@ Public Class Callback_Realization
 
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Callback_Realization", "Operation")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        If Me.Nb_Operation_Ref <> 1 Then
+            Me.Add_Consistency_Check_Error_Item(report, "CLBKREAL_1",
+                "Shall reference one and only one Asynchronous_Operation.")
+        End If
+
+        If Me.Nb_Requirer_Port_Ref <> 1 Then
+            Me.Add_Consistency_Check_Error_Item(report, "CLBKREAL_2",
+                "Shall reference one and only one Requirer_Port.")
+        End If
+
+        Dim referenced_port As Requirer_Port = Nothing
+        Dim sw_if As Software_Interface = Nothing
+        referenced_port = CType(Me.Get_Element_By_Uuid(Me.Requirer_Port_Ref), Requirer_Port)
+        If Not IsNothing(referenced_port) Then
+            sw_if = CType(Me.Get_Element_By_Uuid(referenced_port.Contract_Ref), Software_Interface)
+        End If
+
+        If Not IsNothing(sw_if) Then
+            If sw_if.GetType <> GetType(Client_Server_Interface) Then
+                Me.Add_Consistency_Check_Error_Item(report, "CLBKREAL_4",
+                    "The referenced Requirer_Port shall reference a Client_Server_Interface.")
+            End If
+        End If
+
+        If Me.Operation_Ref <> Guid.Empty And Not IsNothing(sw_if) Then
+            Dim reference_allowed As Boolean = False
+            Dim cs_if As Client_Server_Interface = CType(sw_if, Client_Server_Interface)
+            Dim ope As SMM_Operation
+            For Each ope In cs_if.Operations
+                If ope.UUID = Me.Operation_Ref Then
+                    reference_allowed = True
+                    Exit For
+                End If
+            Next
+            If reference_allowed = False Then
+                Me.Add_Consistency_Check_Error_Item(report, "CLBKREAL_5",
+                    "The referenced Asynchronous_Operation shall belong to the " & _
+                    "Client_Server_Interface of the referenced Requirer_Port.")
+            End If
+        End If
+
+    End Sub
+
+    Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
+        If Me.Requirer_Port_Ref <> Guid.Empty Then
+            Dim reference_allowed As Boolean = False
+            Dim port As Requirer_Port = Nothing
+            For Each port In swct.Requirer_Ports
+                If port.UUID = Me.Requirer_Port_Ref Then
+                    reference_allowed = True
+                    Exit For
+                End If
+            Next
+            If reference_allowed = False Then
+                Me.Add_Consistency_Check_Error_Item(report, "CLBKREAL_3",
+                    "The referenced Requirer_Port shall belong to the implemented Component_Type.")
+            End If
+        End If
     End Sub
 
 End Class

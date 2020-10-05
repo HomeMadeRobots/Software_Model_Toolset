@@ -270,7 +270,7 @@ End Class
 
 Public Class OS_Task
 
-    Inherits OS_Operation
+    Inherits Delegable_Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge

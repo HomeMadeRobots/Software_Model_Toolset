@@ -6,7 +6,7 @@ Public Class Component_Type
 
     Inherits SMM_Class
 
-    Public Component_Operations As New List(Of Component_Operation)
+    Public OS_Operations As New List(Of OS_Operation)
     <XmlArrayItem("Configuration")>
     Public Configurations As New List(Of Configuration_Parameter)
     Public Provider_Ports As New List(Of Provider_Port)
@@ -28,7 +28,7 @@ Public Class Component_Type
             children_list.AddRange(Me.Parts)
 
             ' Shall be added after Parts and Ports to ensure merge
-            children_list.AddRange(Me.Component_Operations)
+            children_list.AddRange(Me.OS_Operations)
             children_list.AddRange(Me.Assembly_Connectors)
             children_list.AddRange(Me.Delegation_Connectors)
             Me.Children = children_list
@@ -36,6 +36,9 @@ Public Class Component_Type
         Return Me.Children
     End Function
 
+    Public Function Is_Composite_Component_Type() As Boolean
+        Return Me.Is_Composite
+    End Function
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -60,9 +63,9 @@ Public Class Component_Type
 
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
-            If Is_Component_Operation(CType(rpy_ope, RPModelElement)) Then
-                Dim ope As Component_Operation = New Component_Operation
-                Me.Component_Operations.Add(ope)
+            If Is_OS_Operation(CType(rpy_ope, RPModelElement)) Then
+                Dim ope As OS_Operation = New OS_Operation
+                Me.OS_Operations.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             End If
         Next
@@ -439,9 +442,9 @@ Public Class Requirer_Port
 End Class
 
 
-Public Class Component_Operation
+Public Class OS_Operation
 
-    Inherits OS_Operation
+    Inherits Delegable_Operation
 
 
     '----------------------------------------------------------------------------------------------'
