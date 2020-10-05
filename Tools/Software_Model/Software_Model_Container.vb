@@ -430,16 +430,12 @@ Public Class Software_Model_Container
     '----------------------------------------------------------------------------------------------'
     ' Methods for model check
     Public Overloads Sub Check_Consistency()
-        Dim attr_list As New List(Of String) From
-        {"Path", "Meta-class", "Rule ID", "Criticality", "Message"}
-        Me.Consistency_Report = New Consistency_Check_Report(attr_list)
+        Me.Consistency_Report = New Consistency_Check_Report()
         Me.Check_Consistency(Me.Consistency_Report)
     End Sub
 
     Public Overloads Sub Check_Consistency(pkg_name_list As List(Of String))
-        Dim attr_list As New List(Of String) From
-        {"Path", "Meta-class", "Rule ID", "Criticality", "Message"}
-        Me.Consistency_Report = New Consistency_Check_Report(attr_list)
+        Me.Consistency_Report = New Consistency_Check_Report()
 
         Me.Check_Own_Consistency(Me.Consistency_Report)
 
@@ -466,6 +462,29 @@ Public Class Software_Model_Container
             Return False
         End If
     End Function
+
+    Public Sub Merge_Report_Analysis(prev_report As Consistency_Check_Report)
+        For Each prev_item In prev_report.Get_Items
+            Dim prev_analysis As String
+            prev_analysis = CType(prev_item, Consistency_Check_Report_Item).Get_Analysis()
+            If prev_analysis <> "" Then
+                Dim prev_path = CType(prev_item, Consistency_Check_Report_Item).Get_Path()
+                For Each item In Me.Consistency_Report.Get_Items
+                    Dim current_path As String
+                    current_path = CType(item, Consistency_Check_Report_Item).Get_Path()
+                    If current_path = prev_path Then
+                        Dim prev_message = prev_item.Get_Message()
+                        Dim current_message As String
+                        current_message = item.Get_Message()
+                        If prev_message = current_message Then
+                            CType(item, Consistency_Check_Report_Item).Set_Analysis(prev_analysis)
+                            Exit For
+                        End If
+                    End If
+                Next
+            End If
+        Next
+    End Sub
 
 
     '----------------------------------------------------------------------------------------------'

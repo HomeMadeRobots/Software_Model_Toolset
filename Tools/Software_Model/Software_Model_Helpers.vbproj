@@ -76,6 +76,9 @@
     </Compile>
     <Compile Include="Component_Type.vb" />
     <Compile Include="Configuration_Parameter.vb" />
+    <Compile Include="Consistency_Check_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Consistency_Check_Report.vb" />
     <Compile Include="Data_Series.vb" />
     <Compile Include="Data_Type.vb" />

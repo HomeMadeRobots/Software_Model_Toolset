@@ -1,25 +1,37 @@
 ﻿Imports System.IO
+Imports Microsoft.VisualBasic.FileIO
 
 Public Class Consistency_Check_Report
     Inherits Report
 
-    Public Sub New(item_list As List(Of String))
-        MyBase.New(item_list)
+    Shared Attr_List As New List(Of String) From _
+        {"Path", "Meta-class", "Rule ID", "Criticality", "Message", "Warning analysis"}
+
+    Public Sub New()
+        MyBase.New(Consistency_Check_Report.Attr_List)
     End Sub
 
-    Protected Overrides Sub Write_Content(report_file_stream As StreamWriter)
-        Dim item_attribute_name_list As List(Of String)
-        item_attribute_name_list = Consistency_Check_Report_Item.Get_Item_Attribute_Name_List
-        Dim nb_attribute As Integer = item_attribute_name_list.Count
-        Dim item As Report_Item
-        For Each item In Me.Report_Items_List
-            Dim attribute_idx As Integer
-            For attribute_idx = 1 To nb_attribute
-                report_file_stream.Write(item.Get_Item_Attribute_Value(attribute_idx) & ";")
-            Next
-            report_file_stream.WriteLine()
-        Next
-    End Sub
+    Public Function Load(report_full_path As String) As Boolean
+        Dim is_valid As Boolean = True
+        If File.Exists(report_full_path) Then
+            Dim csv_reader As New TextFieldParser(report_full_path)
+            csv_reader.SetDelimiters(";")
+            Dim current_row As String()
+            While Not csv_reader.EndOfData
+                Try
+                    current_row = csv_reader.ReadFields()
+                    Dim new_item As New Consistency_Check_Report_Item(current_row)
+                    Me.Add_Report_Item(new_item)
+                Catch ex As MalformedLineException
+                    is_valid = False
+                End Try
+            End While
+        Else
+            is_valid = False
+        End If
+
+        Return is_valid
+    End Function
 
 End Class
 
@@ -31,6 +43,7 @@ Public Class Consistency_Check_Report_Item
     Private Rpy_Element_Path As String
     Private Rule_Id As String
     Private Sw_Element_Type As Type
+    Private Analysis As String
 
     Public Sub New(
         sw_element As Software_Element,
@@ -46,6 +59,12 @@ Public Class Consistency_Check_Report_Item
 
     End Sub
 
+    Public Sub New(field As String())
+        Me.Rpy_Element_Path = field(0)
+        Me.Message = field(4)
+        Me.Analysis = field(5)
+    End Sub
+
     Public Overrides Function Get_Item_Attribute_Value(attribute_idx As Integer) As String
         Select Case attribute_idx
             Case 1
@@ -58,9 +77,22 @@ Public Class Consistency_Check_Report_Item
                 Return Me.Get_Criticality_String
             Case 5
                 Return Me.Message
+            Case 6
+                Return Me.Analysis
             Case Else
                 Return ""
         End Select
     End Function
 
+    Public Function Get_Path() As String
+        Return Me.Rpy_Element_Path
+    End Function
+
+    Public Function Get_Analysis() As String
+        Return Me.Analysis
+    End Function
+
+    Public Sub Set_Analysis(analysis_str As String)
+        Me.Analysis = analysis_str
+    End Sub
 End Class

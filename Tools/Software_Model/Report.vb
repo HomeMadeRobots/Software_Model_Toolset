@@ -54,6 +54,9 @@ Public Class Report
         Return Me.Nb_Error
     End Function
 
+    Public Function Get_Items() As List(Of Report_Item)
+        Return Me.Report_Items_List
+    End Function
 End Class
 
 
@@ -62,7 +65,6 @@ Public MustInherit Class Report_Item
     Protected Shared Attribute_Name_List As List(Of String)
     Protected Criticality As Item_Criticality = Item_Criticality.CRITICALITY_INFORMATION
     Protected Message As String
-    Protected Analysis As String
 
     Public Enum Item_Criticality
         CRITICALITY_ERROR
@@ -95,6 +97,10 @@ Public MustInherit Class Report_Item
         Case Else
             Return ""
         End Select
+    End Function
+
+    Public Function Get_Message() As String
+        Return Me.Message
     End Function
 
 End Class
