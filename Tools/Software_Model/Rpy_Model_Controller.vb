@@ -173,26 +173,56 @@ Public Class Rpy_Model_Controller
             ' Create string of the date for created csv file
             Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
 
-            ' Get top level packages to check
-            Dim user_choices_file As String
-            user_choices_file = "Check_" & rpy_sw_mdl.name & "_Pkg_Choice"
-            Dim previous_pkg_selection_choices As Dictionary(Of String, String)
-            previous_pkg_selection_choices = Rpy_Controller.Load_User_Choices(user_choices_file)
+            ' Get check options (display dialog form)
+            Me.Write_Csl("Get check options...")
+            Dim pkg_sel_user_choices_file As String
+            pkg_sel_user_choices_file = "Check_" & rpy_sw_mdl.name & "_Pkg_Choice"
+            Dim prev_pkg_selection_choices As Dictionary(Of String, String)
+            prev_pkg_selection_choices = Rpy_Controller.Load_User_Choices(pkg_sel_user_choices_file)
+
+            Dim report_to_merge_user_choices_file = "Check_" & rpy_sw_mdl.name & "_Prev_Report"
+            Dim prev_report_choices As Dictionary(Of String, String)
+            prev_report_choices = Rpy_Controller.Load_User_Choices(report_to_merge_user_choices_file)
+            Dim previous_report_path As String = ""
+            If prev_report_choices.ContainsKey("Report_Full_Path") Then
+                previous_report_path = prev_report_choices("Report_Full_Path")
+            End If
+            Dim use_previous_report As Boolean = False
+            If prev_report_choices.ContainsKey("Merge_Report_Analysis") Then
+                use_previous_report = CBool(prev_report_choices("Merge_Report_Analysis"))
+            End If
 
             Dim pkg_name_list As List(Of String)
             pkg_name_list = Me.Get_Software_Package_Name_List()
 
-            Dim selection_form As New Package_Selection_Form(
+            Dim selection_result As DialogResult
+            Dim selection_form As New Consistency_Check_Form(
                 pkg_name_list,
-                previous_pkg_selection_choices)
-            selection_form.ShowDialog()
+                prev_pkg_selection_choices,
+                use_previous_report,
+                previous_report_path)
+            selection_result = selection_form.ShowDialog()
+            If selection_result <> DialogResult.OK Then
+                Me.Write_Csl_Line(" aborted.")
+                Me.Write_Csl_Line("Check end.")
+                Exit Sub
+            End If
 
-            Dim selected_pkg_name_list As New List(Of String)
-            selected_pkg_name_list = selection_form.Get_Selected_Package_Name_List()
-
+            ' Save check options
             Dim new_pkg_selection_choices As Dictionary(Of String, String)
             new_pkg_selection_choices = selection_form.Get_Package_Selection_Choices()
-            Rpy_Controller.Save_User_Choices(user_choices_file, new_pkg_selection_choices)
+            Rpy_Controller.Save_User_Choices(pkg_sel_user_choices_file, new_pkg_selection_choices)
+            Me.Write_Csl_Line(" done.")
+
+            Dim new_report_to_merge_choice As New Dictionary(Of String, String)
+            new_report_to_merge_choice.Add(
+                "Report_Full_Path",
+                selection_form.Get_Previous_Report_Path)
+            new_report_to_merge_choice.Add(
+                "Merge_Report_Analysis",
+                selection_form.Is_Merge_Requested().ToString)
+            Rpy_Controller.Save_User_Choices(report_to_merge_user_choices_file,
+                new_report_to_merge_choice)
 
             ' Get model from Rhapsody
             Me.Write_Csl("Get model from Rhapsody...")
@@ -201,9 +231,26 @@ Public Class Rpy_Model_Controller
             Me.Write_Csl_Line(" done.")
 
             ' Check model
+            Dim selected_pkg_name_list As New List(Of String)
+            selected_pkg_name_list = selection_form.Get_Selected_Package_Name_List()
             Me.Write_Csl("Check model...")
             Me.Model.Check_Consistency(selected_pkg_name_list)
             Me.Write_Csl_Line(" done.")
+
+            ' Merge warnings analysis
+            If selection_form.Is_Merge_Requested = True Then
+                Me.Write_Csl("Merge warnings analysis...")
+                Dim prev_report As New Consistency_Check_Report
+                Dim is_prev_report_valid As Boolean
+                is_prev_report_valid = prev_report.Load(selection_form.Get_Previous_Report_Path)
+                If is_prev_report_valid = True Then
+                    Me.Model.Merge_Report_Analysis(prev_report)
+                    Me.Write_Csl_Line(" done.")
+                Else
+                    Me.Write_Csl_Line(" previous report is invalid !")
+                End If
+            End If
+
 
             ' Create report
             ' Select csv file directory
