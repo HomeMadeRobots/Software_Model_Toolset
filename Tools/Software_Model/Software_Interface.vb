@@ -55,7 +55,7 @@ Public Class Client_Server_Interface
 
     Public Function Is_My_Operation(operation_uuid As Guid) As Boolean
         Dim got_it As Boolean = False
-        For Each ope In Me.Operations
+        For Each ope In Me.Get_All_Operations()
             If ope.UUID = operation_uuid Then
                 got_it = True
                 Exit For

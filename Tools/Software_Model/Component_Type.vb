@@ -42,7 +42,7 @@ Public Class Component_Type
 
     Public Function Is_My_Provider_Port(port_uuid As Guid) As Boolean
         Dim got_it As Boolean = False
-        For Each port In Me.Provider_Ports
+        For Each port In Me.Get_All_Provider_Ports()
             If port.UUID = port_uuid Then
                 got_it = True
                 Exit For
@@ -53,7 +53,7 @@ Public Class Component_Type
 
     Public Function Is_My_Requirer_Port(port_uuid As Guid) As Boolean
         Dim got_it As Boolean = False
-        For Each port In Me.Requirer_Ports
+        For Each port In Me.Get_All_Requirer_Ports()
             If port.UUID = port_uuid Then
                 got_it = True
                 Exit For
@@ -64,7 +64,7 @@ Public Class Component_Type
 
     Public Function Is_My_OS_Operation(op_uuid As Guid) As Boolean
         Dim got_it As Boolean = False
-        For Each op In Me.OS_Operations
+        For Each op In Me.Get_All_OS_Operations()
             If op.UUID = op_uuid Then
                 got_it = True
                 Exit For
