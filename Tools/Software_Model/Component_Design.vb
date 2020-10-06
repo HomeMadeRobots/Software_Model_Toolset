@@ -54,7 +54,6 @@ Public Class Component_Design
         Dim rpy_swct_design As RPClass = CType(Me.Rpy_Element, RPClass)
 
         Dim contract As Software_Element
-        Dim is_realized As Boolean = False
         Dim new_realization_name As String
         Dim rpy_op As RPOperation
         Dim rpy_act_diagram As RPFlowchart = Nothing
@@ -68,14 +67,7 @@ Public Class Component_Design
                 Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
                 Dim op As Operation_With_Arguments
                 For Each op In cs_if.Get_All_Operations()
-                    is_realized = False
-                    For Each realized_op In Me.Operation_Realizations
-                        If realized_op.Operation_Ref = op.UUID Then
-                            is_realized = True
-                            Exit For
-                        End If
-                    Next
-                    If is_realized = False Then
+                    If Me.Is_Operation_Realized(op.UUID, pport.UUID) = False Then
                         new_realization_name = pport.Name & "__" & op.Name
                         rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
                         added_real_name_list.Add(new_realization_name)
@@ -115,15 +107,7 @@ Public Class Component_Design
         For Each rport In swct.Get_All_Requirer_Ports
             contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
             If GetType(Event_Interface) = contract.GetType Then
-                Dim ev_if As Event_Interface = CType(contract, Event_Interface)
-                is_realized = False
-                For Each realized_ev In Me.Event_Reception_Realizations
-                    If realized_ev.Requirer_Port_Ref = rport.UUID Then
-                        is_realized = True
-                        Exit For
-                    End If
-                Next
-                If is_realized = False Then
+                If Me.Is_Event_Reception_Realized(rport.UUID) = False Then
                     new_realization_name = rport.Name
                     rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
                     added_real_name_list.Add(new_realization_name)
@@ -132,6 +116,7 @@ Public Class Component_Design
                     rpy_dep = rpy_op.addDependencyTo(rport.Get_Rpy_Element)
                     rpy_dep.addStereotype("Requirer_Port_Ref", "Dependency")
 
+                    Dim ev_if As Event_Interface = CType(contract, Event_Interface)
                     Dim arg As Event_Argument
                     Dim pin_pos As Integer = 0
                     For Each arg In ev_if.Arguments
@@ -149,14 +134,7 @@ Public Class Component_Design
 
         ' Add missing OS_Operation realization
         For Each op In swct.Get_All_OS_Operations
-            is_realized = False
-            For Each realized_op In Me.OS_Operation_Realizations
-                If realized_op.OS_Operation_Ref = op.UUID Then
-                    is_realized = True
-                    Exit For
-                End If
-            Next
-            If is_realized = False Then
+            If Me.Is_OS_Operation_Realized(op.UUID) = False Then
                 new_realization_name = op.Name
                 rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
                 added_real_name_list.Add(new_realization_name)
@@ -175,15 +153,7 @@ Public Class Component_Design
                 Dim op As Operation_With_Arguments
                 For Each op In cs_if.Get_All_Operations()
                     If GetType(Asynchronous_Operation) = op.GetType Then
-                        is_realized = False
-                        For Each realized_clbk In Me.Callback_Realizations
-                            If realized_clbk.Asynchronous_Operation_Ref = op.UUID _
-                                And realized_clbk.Requirer_Port_Ref = rport.UUID Then
-                                is_realized = True
-                                Exit For
-                            End If
-                        Next
-                        If is_realized = False Then
+                        If Me.Is_Callback_Realized(op.UUID, rport.UUID) = False Then
                             new_realization_name = "Callback__" & rport.Name & "__" & op.Name
                             rpy_op = Add_Rpy_Realization(new_realization_name, rpy_act_diagram)
                             added_real_name_list.Add(new_realization_name)
@@ -216,6 +186,52 @@ Public Class Component_Design
         rpy_act_diagram.createGraphics()
         rpy_act_diagram.setShowDiagramFrame(1)
         Return rpy_op
+    End Function
+
+    Private Function Is_OS_Operation_Realized(op_uuid As Guid) As Boolean
+        Dim is_realized As Boolean = False
+        For Each realized_op In Me.OS_Operation_Realizations
+            If realized_op.OS_Operation_Ref = op_uuid Then
+                is_realized = True
+                Exit For
+            End If
+        Next
+        Return is_realized
+    End Function
+
+    Private Function Is_Operation_Realized(op_uuid As Guid, port_uuid As Guid) As Boolean
+        Dim is_realized As Boolean = False
+        For Each realized_op In Me.Operation_Realizations
+            If realized_op.Operation_Ref = op_uuid _
+                And realized_op.Provider_Port_Ref = port_uuid Then
+                is_realized = True
+                Exit For
+            End If
+        Next
+        Return is_realized
+    End Function
+
+    Private Function Is_Event_Reception_Realized(rport_uuid As Guid) As Boolean
+        Dim is_realized As Boolean = False
+        For Each realized_ev In Me.Event_Reception_Realizations
+            If realized_ev.Requirer_Port_Ref = rport_uuid Then
+                is_realized = True
+                Exit For
+            End If
+        Next
+        Return is_realized
+    End Function
+
+    Private Function Is_Callback_Realized(op_uuid As Guid, rport_uuid As Guid) As Boolean
+        Dim is_realized As Boolean = False
+        For Each realized_clbk In Me.Callback_Realizations
+            If realized_clbk.Asynchronous_Operation_Ref = op_uuid _
+                And realized_clbk.Requirer_Port_Ref = rport_uuid Then
+                is_realized = True
+                Exit For
+            End If
+        Next
+        Return is_realized
     End Function
 
 
@@ -417,7 +433,6 @@ Public Class Component_Design
 
             ' Detect missing realizations
             Dim contract As Software_Element
-            Dim is_realized As Boolean = False
             ' Detect missing client-server operation realizations
             For Each pport In swct.Get_All_Provider_Ports()
                 contract = Me.Get_Element_By_Uuid(pport.Contract_Ref)
@@ -425,14 +440,7 @@ Public Class Component_Design
                     Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
                     Dim op As Operation_With_Arguments
                     For Each op In cs_if.Get_All_Operations()
-                        is_realized = False
-                        For Each realized_op In Me.Operation_Realizations
-                            If realized_op.Operation_Ref = op.UUID Then
-                                is_realized = True
-                                Exit For
-                            End If
-                        Next
-                        If is_realized = False Then
+                        If Me.Is_Operation_Realized(op.UUID, pport.UUID) = False Then
                             Me.Add_Consistency_Check_Error_Item(report, "SWCD_4",
                                 "Shall realize " &
                                 pport.Name & ":" & cs_if.Name & "." & op.Name & ".")
@@ -445,37 +453,22 @@ Public Class Component_Design
             For Each rport In swct.Get_All_Requirer_Ports
                 contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
                 If GetType(Event_Interface) = contract.GetType Then
-                    Dim ev_if As Event_Interface = CType(contract, Event_Interface)
-                    is_realized = False
-                    For Each realized_ev In Me.Event_Reception_Realizations
-                        If realized_ev.Requirer_Port_Ref = rport.UUID Then
-                            is_realized = True
-                            Exit For
-                        End If
-                    Next
-                    If is_realized = False Then
+                    If Me.Is_Event_Reception_Realized(rport.UUID) = False Then
                         Me.Add_Consistency_Check_Error_Item(report, "SWCD_5",
-                            "Shall realize " & rport.Name & ":" & ev_if.Name & ".")
+                            "Shall realize " & rport.Name & ":" & contract.Name & ".")
                     End If
                 End If
             Next
 
-            ' Add missing OS_Operation realization
+            ' Detect missing OS_Operation realizations
             For Each op In swct.Get_All_OS_Operations
-                is_realized = False
-                For Each realized_op In Me.OS_Operation_Realizations
-                    If realized_op.OS_Operation_Ref = op.UUID Then
-                        is_realized = True
-                        Exit For
-                    End If
-                Next
-                If is_realized = False Then
+                If Me.Is_OS_Operation_Realized(op.UUID) = False Then
                     Me.Add_Consistency_Check_Error_Item(report, "SWCD_3",
                         "Shall realize " & op.Name & ".")
                 End If
             Next
 
-            ' Add missing Callback realization
+            ' Detect missing Callback realizations
             For Each rport In swct.Get_All_Requirer_Ports
                 contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
                 If GetType(Client_Server_Interface) = contract.GetType Then
@@ -483,15 +476,7 @@ Public Class Component_Design
                     Dim op As Operation_With_Arguments
                     For Each op In cs_if.Get_All_Operations()
                         If GetType(Asynchronous_Operation) = op.GetType Then
-                            is_realized = False
-                            For Each realized_clbk In Me.Callback_Realizations
-                                If realized_clbk.Asynchronous_Operation_Ref = op.UUID _
-                                    And realized_clbk.Requirer_Port_Ref = rport.UUID Then
-                                    is_realized = True
-                                    Exit For
-                                End If
-                            Next
-                            If is_realized = False Then
+                            If Me.Is_Callback_Realized(op.UUID, rport.UUID) = False Then
                                 Me.Add_Consistency_Check_Error_Item(report, "SWCD_6",
                                     "Shall realize callback of " &
                                     rport.Name & ":" & cs_if.Name & "." & op.Name & ".")
