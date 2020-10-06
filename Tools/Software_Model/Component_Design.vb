@@ -386,36 +386,123 @@ Public Class Component_Design
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
         If Me.Nb_Component_Type_Ref <> 1 Or Me.Nb_Invalid_Component_Type_Ref > 0 Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "SWCD_1",
+            Me.Add_Consistency_Check_Error_Item(report, "SWCD_1",
                 "Shall be associated to one and only one Component_Type.")
         End If
 
-        ' Check the references of the realized operations
+        ' Check the references (to the children of the Component_Type) of the realized operations
         If Me.Component_Type_Ref <> Guid.Empty Then
             Dim swct As Component_Type
             swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), Component_Type)
 
             If swct.Is_Composite_Component_Type Then
-                Me.Add_Consistency_Check_Error_Item(report,
-                    "SWCD_2",
+                Me.Add_Consistency_Check_Error_Item(report, "SWCD_2",
                     "Shall be associated to an atomic Component_Type.")
                 Exit Sub
             End If
 
             For Each os_op_real In Me.OS_Operation_Realizations
-                os_op_real.Check_Referenced_Elements(report, swct)
+                os_op_real.Check_Referenced_OS_Operation(report, swct)
             Next
             For Each op_real In Me.Operation_Realizations
-                op_real.Check_Referenced_Elements(report, swct)
+                op_real.Check_Referenced_Provider_Port(report, swct)
             Next
             For Each ev_recep_real In Me.Event_Reception_Realizations
-                ev_recep_real.Check_Referenced_Elements(report, swct)
+                ev_recep_real.Check_Referenced_Requirer_Port(report, swct)
             Next
             For Each clbk_real In Me.Callback_Realizations
-                clbk_real.Check_Referenced_Elements(report, swct)
+                clbk_real.Check_Referenced_Requirer_Port(report, swct)
             Next
+
+
+            ' Detect missing realizations
+            Dim contract As Software_Element
+            Dim is_realized As Boolean = False
+            ' Detect missing client-server operation realizations
+            For Each pport In swct.Get_All_Provider_Ports()
+                contract = Me.Get_Element_By_Uuid(pport.Contract_Ref)
+                If GetType(Client_Server_Interface) = contract.GetType Then
+                    Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
+                    Dim op As Operation_With_Arguments
+                    For Each op In cs_if.Get_All_Operations()
+                        is_realized = False
+                        For Each realized_op In Me.Operation_Realizations
+                            If realized_op.Operation_Ref = op.UUID Then
+                                is_realized = True
+                                Exit For
+                            End If
+                        Next
+                        If is_realized = False Then
+                            Me.Add_Consistency_Check_Error_Item(report, "SWCD_4",
+                                "Shall realize " &
+                                pport.Name & ":" & cs_if.Name & "." & op.Name & ".")
+                        End If
+                    Next
+                End If
+            Next
+
+            ' Detect missing event reception realizations
+            For Each rport In swct.Get_All_Requirer_Ports
+                contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
+                If GetType(Event_Interface) = contract.GetType Then
+                    Dim ev_if As Event_Interface = CType(contract, Event_Interface)
+                    is_realized = False
+                    For Each realized_ev In Me.Event_Reception_Realizations
+                        If realized_ev.Requirer_Port_Ref = rport.UUID Then
+                            is_realized = True
+                            Exit For
+                        End If
+                    Next
+                    If is_realized = False Then
+                        Me.Add_Consistency_Check_Error_Item(report, "SWCD_5",
+                            "Shall realize " & rport.Name & ":" & ev_if.Name & ".")
+                    End If
+                End If
+            Next
+
+            ' Add missing OS_Operation realization
+            For Each op In swct.Get_All_OS_Operations
+                is_realized = False
+                For Each realized_op In Me.OS_Operation_Realizations
+                    If realized_op.OS_Operation_Ref = op.UUID Then
+                        is_realized = True
+                        Exit For
+                    End If
+                Next
+                If is_realized = False Then
+                    Me.Add_Consistency_Check_Error_Item(report, "SWCD_3",
+                        "Shall realize " & op.Name & ".")
+                End If
+            Next
+
+            ' Add missing Callback realization
+            For Each rport In swct.Get_All_Requirer_Ports
+                contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
+                If GetType(Client_Server_Interface) = contract.GetType Then
+                    Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
+                    Dim op As Operation_With_Arguments
+                    For Each op In cs_if.Get_All_Operations()
+                        If GetType(Asynchronous_Operation) = op.GetType Then
+                            is_realized = False
+                            For Each realized_clbk In Me.Callback_Realizations
+                                If realized_clbk.Asynchronous_Operation_Ref = op.UUID _
+                                    And realized_clbk.Requirer_Port_Ref = rport.UUID Then
+                                    is_realized = True
+                                    Exit For
+                                End If
+                            Next
+                            If is_realized = False Then
+                                Me.Add_Consistency_Check_Error_Item(report, "SWCD_6",
+                                    "Shall realize callback of " &
+                                    rport.Name & ":" & cs_if.Name & "." & op.Name & ".")
+                            End If
+                        End If
+                    Next
+                End If
+            Next
+
         End If
+
     End Sub
 
 
@@ -475,7 +562,7 @@ Public Class OS_Operation_Realization
         End If
     End Sub
 
-    Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
+    Public Sub Check_Referenced_OS_Operation(report As Report, swct As Component_Type)
         If Me.OS_Operation_Ref <> Guid.Empty Then
             If swct.Is_My_OS_Operation(Me.OS_Operation_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "OSOPREAL_2",
@@ -592,7 +679,7 @@ Public Class Operation_Realization
 
     End Sub
 
-    Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
+    Public Sub Check_Referenced_Provider_Port(report As Report, swct As Component_Type)
         If Me.Provider_Port_Ref <> Guid.Empty Then
             If swct.Is_My_Provider_Port(Me.Provider_Port_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "OPREAL_3",
@@ -677,7 +764,7 @@ Public Class Event_Reception_Realization
         End If
     End Sub
 
-    Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
+    Public Sub Check_Referenced_Requirer_Port(report As Report, swct As Component_Type)
         If Me.Requirer_Port_Ref <> Guid.Empty Then
             If swct.Is_My_Requirer_Port(Me.Requirer_Port_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "EVREAL_2",
@@ -794,7 +881,7 @@ Public Class Callback_Realization
 
     End Sub
 
-    Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
+    Public Sub Check_Referenced_Requirer_Port(report As Report, swct As Component_Type)
         If Me.Requirer_Port_Ref <> Guid.Empty Then
             If swct.Is_My_Requirer_Port(Me.Requirer_Port_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "CLBKREAL_3",
