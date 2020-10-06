@@ -82,22 +82,14 @@ Public Class Component_Design
                         Dim arg As Operation_Argument
                         Dim pin_pos As Integer = 0
                         For Each arg In op.Arguments
-
                             rpy_pin = rpy_act_diagram.addActivityParameter(arg.Name)
-
                             If arg.Stream = Operation_Argument.E_STREAM.INPUT Then
                                 rpy_pin.pinDirection = "In"
                             ElseIf arg.Stream = Operation_Argument.E_STREAM.OUTPUT Then
                                 rpy_pin.pinDirection = "Out"
                             End If
-
-                            Dim arg_type As Software_Element
-                            arg_type = Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref)
-                            Dim rpy_arg_type As RPType
-                            rpy_arg_type = CType(arg_type.Get_Rpy_Element, RPType)
-                            rpy_pin.pinType = CType(rpy_arg_type, RPClassifier)
+                            Me.Set_Pin_Type(rpy_pin, arg.Base_Data_Type_Ref)
                         Next
-
                     End If
                 Next
             End If
@@ -122,11 +114,7 @@ Public Class Component_Design
                     For Each arg In ev_if.Arguments
                         rpy_pin = rpy_act_diagram.addActivityParameter(arg.Name)
                         rpy_pin.pinDirection = "In"
-                        Dim arg_type As Software_Element
-                        arg_type = Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref)
-                        Dim rpy_arg_type As RPType
-                        rpy_arg_type = CType(arg_type.Get_Rpy_Element, RPType)
-                        rpy_pin.pinType = CType(rpy_arg_type, RPClassifier)
+                        Me.Set_Pin_Type(rpy_pin, arg.Base_Data_Type_Ref)
                     Next
                 End If
             End If
@@ -234,6 +222,13 @@ Public Class Component_Design
         Return is_realized
     End Function
 
+    Private Sub Set_Pin_Type(ByRef rpy_pin As RPPin, type_uuid As Guid)
+        Dim arg_type As Software_Element
+        arg_type = Me.Get_Element_By_Uuid(type_uuid)
+        Dim rpy_arg_type As RPType
+        rpy_arg_type = CType(arg_type.Get_Rpy_Element, RPType)
+        rpy_pin.pinType = CType(rpy_arg_type, RPClassifier)
+    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
