@@ -38,7 +38,7 @@ Public Class Operation_Delegation
     Inherits Software_Element
 
     Public Part_Ref As Guid
-    Public Component_Type_Operation_Ref As Guid
+    Public OS_Operation_Ref As Guid
     Public Priority As UInteger
 
     Private Rpy_Part As RPInstance
@@ -71,8 +71,8 @@ Public Class Operation_Delegation
                 Me.Priority)
         End If
 
-        ' Get Component_Type_Operation_Ref
-        tag = Me.Rpy_Element.getTag("Component_Type_Operation_Ref")
+        ' Get OS_Operation_Ref
+        tag = Me.Rpy_Element.getTag("OS_Operation_Ref")
         If Not IsNothing(tag) Then
             If IsNothing(rpy_part.ObjectAsObjectType) Then
                 Dim rpy_base_class As RPClass
@@ -81,7 +81,7 @@ Public Class Operation_Delegation
                     Dim rpy_ope As RPModelElement
                     rpy_ope = rpy_base_class.findNestedElement(tag.value, "Operation")
                     If Not IsNothing(rpy_ope) Then
-                        Me.Component_Type_Operation_Ref = Transform_Rpy_GUID_To_Guid(rpy_ope.GUID)
+                        Me.OS_Operation_Ref = Transform_Rpy_GUID_To_Guid(rpy_ope.GUID)
                     End If
                 End If
             End If
@@ -138,10 +138,10 @@ Public Class Operation_Delegation
                 rpy_elmt.setTagValue(tag, Me.Priority.ToString)
             End If
 
-            tag = Me.Rpy_Element.getTag("Component_Type_Operation_Ref")
+            tag = Me.Rpy_Element.getTag("OS_Operation_Ref")
             If Not IsNothing(tag) Then
                 Dim referenced_op_name As String
-                referenced_op_name = Me.Find_In_Rpy_Project(Me.Component_Type_Operation_Ref).name
+                referenced_op_name = Me.Find_In_Rpy_Project(Me.OS_Operation_Ref).name
                 rpy_elmt.setTagValue(tag, referenced_op_name)
             End If
 
