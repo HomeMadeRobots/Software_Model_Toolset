@@ -73,6 +73,57 @@ Public Class Component_Type
         Return got_it
     End Function
 
+    Public Function Get_All_Provider_Ports() As List(Of Provider_Port)
+        Dim all_pports As New List(Of Provider_Port)
+        all_pports.AddRange(Me.Provider_Ports)
+        Dim base_ref As Guid = Me.Base_Class_Ref
+        While base_ref <> Guid.Empty
+            Dim base_swct As Component_Type
+            base_swct = CType(Me.Get_Element_By_Uuid(base_ref), Component_Type)
+            If Not IsNothing(base_swct) Then
+                all_pports.AddRange(base_swct.Provider_Ports)
+                base_ref = base_swct.Base_Class_Ref
+            Else
+                Exit While
+            End If
+        End While
+        Return all_pports
+    End Function
+
+    Public Function Get_All_Requirer_Ports() As List(Of Requirer_Port)
+        Dim all_rports As New List(Of Requirer_Port)
+        all_rports.AddRange(Me.Requirer_Ports)
+        Dim base_ref As Guid = Me.Base_Class_Ref
+        While base_ref <> Guid.Empty
+            Dim base_swct As Component_Type
+            base_swct = CType(Me.Get_Element_By_Uuid(base_ref), Component_Type)
+            If Not IsNothing(base_swct) Then
+                all_rports.AddRange(base_swct.Requirer_Ports)
+                base_ref = base_swct.Base_Class_Ref
+            Else
+                Exit While
+            End If
+        End While
+        Return all_rports
+    End Function
+
+    Public Function Get_All_OS_Operations() As List(Of OS_Operation)
+        Dim all_os_op As New List(Of OS_Operation)
+        all_os_op.AddRange(Me.OS_Operations)
+        Dim base_ref As Guid = Me.Base_Class_Ref
+        While base_ref <> Guid.Empty
+            Dim base_swct As Component_Type
+            base_swct = CType(Me.Get_Element_By_Uuid(base_ref), Component_Type)
+            If Not IsNothing(base_swct) Then
+                all_os_op.AddRange(base_swct.OS_Operations)
+                base_ref = base_swct.Base_Class_Ref
+            Else
+                Exit While
+            End If
+        End While
+        Return all_os_op
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody

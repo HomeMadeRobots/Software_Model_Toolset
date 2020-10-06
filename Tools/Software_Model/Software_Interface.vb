@@ -64,6 +64,24 @@ Public Class Client_Server_Interface
         Return got_it
     End Function
 
+    ' Returns all the operations defined by an interface including the inherited operations.
+    Public Function Get_All_Operations() As List(Of Operation_With_Arguments)
+        Dim all_operations As New List(Of Operation_With_Arguments)
+        all_operations.AddRange(Me.Operations)
+        Dim base_ref As Guid = Me.Base_Class_Ref
+        While base_ref <> Guid.Empty
+            Dim base_cs_if As Client_Server_Interface
+            base_cs_if = CType(Me.Get_Element_By_Uuid(base_ref), Client_Server_Interface)
+            If Not IsNothing(base_cs_if) Then
+                all_operations.AddRange(base_cs_if.Operations)
+                base_ref = base_cs_if.Base_Class_Ref
+            Else
+                Exit While
+            End If
+        End While
+        Return all_operations
+    End Function
+
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected Overrides Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean

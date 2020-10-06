@@ -62,12 +62,12 @@ Public Class Component_Design
         Dim rpy_pin As RPPin
 
         ' Add missing client_server operation realization
-        For Each pport In swct.Provider_Ports
+        For Each pport In swct.Get_All_Provider_Ports()
             contract = Me.Get_Element_By_Uuid(pport.Contract_Ref)
             If GetType(Client_Server_Interface) = contract.GetType Then
                 Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
                 Dim op As Operation_With_Arguments
-                For Each op In cs_if.Operations
+                For Each op In cs_if.Get_All_Operations()
                     is_realized = False
                     For Each realized_op In Me.Operation_Realizations
                         If realized_op.Operation_Ref = op.UUID Then
@@ -112,7 +112,7 @@ Public Class Component_Design
         Next
 
         ' Add missing event reception realization
-        For Each rport In swct.Requirer_Ports
+        For Each rport In swct.Get_All_Requirer_Ports
             contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
             If GetType(Event_Interface) = contract.GetType Then
                 Dim ev_if As Event_Interface = CType(contract, Event_Interface)
@@ -148,7 +148,7 @@ Public Class Component_Design
         Next
 
         ' Add missing OS_Operation realization
-        For Each op In swct.OS_Operations
+        For Each op In swct.Get_All_OS_Operations
             is_realized = False
             For Each realized_op In Me.OS_Operation_Realizations
                 If realized_op.OS_Operation_Ref = op.UUID Then
@@ -168,12 +168,12 @@ Public Class Component_Design
         Next
 
         ' Add missing Callback realization
-        For Each rport In swct.Requirer_Ports
+        For Each rport In swct.Get_All_Requirer_Ports
             contract = Me.Get_Element_By_Uuid(rport.Contract_Ref)
             If GetType(Client_Server_Interface) = contract.GetType Then
                 Dim cs_if As Client_Server_Interface = CType(contract, Client_Server_Interface)
                 Dim op As Operation_With_Arguments
-                For Each op In cs_if.Operations
+                For Each op In cs_if.Get_All_Operations()
                     If GetType(Asynchronous_Operation) = op.GetType Then
                         is_realized = False
                         For Each realized_clbk In Me.Callback_Realizations
