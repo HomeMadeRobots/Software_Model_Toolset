@@ -26,7 +26,7 @@ Public Class Rpy_Connector_Controller
             Exit Sub
         End If
 
-        ' Check all Assembly_Connector within the composition
+        ' Check all Connector_Prototype within the composition
         Dim rpy_link As RPLink
         Dim link_new_name As String
         For Each rpy_link In rpy_class.links
@@ -46,13 +46,6 @@ Public Class Rpy_Connector_Controller
                     End If
                 ElseIf Object_Connector.Is_Object_Connector(rpy_link) Then
                     link_new_name = Object_Connector.Compute_Automatic_Name(rpy_link)
-                    If rpy_link.name <> link_new_name Then
-                        Me.Write_Csl_Line("Rename " & rpy_link.name &
-                            " as " & link_new_name)
-                        rpy_link.name = link_new_name
-                    End If
-                ElseIf Object_Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
-                    link_new_name = Object_Delegation_Connector.Compute_Automatic_Name(rpy_link)
                     If rpy_link.name <> link_new_name Then
                         Me.Write_Csl_Line("Rename " & rpy_link.name &
                             " as " & link_new_name)
@@ -81,11 +74,6 @@ Public Class Rpy_Connector_Controller
                 Dim r_swc As RPInstance = Nothing
                 Assembly_Connector.Get_Connector_Info(rpy_link, p_port, r_port, p_swc, r_swc)
                 p_port.locateInBrowser()
-            ElseIf Object_Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
-                Dim port As RPPort = Nothing
-                Dim obj As RPInstance = Nothing
-                Object_Delegation_Connector.Get_Connector_Info(rpy_link, port, obj)
-                obj.locateInBrowser()
             ElseIf Object_Connector.Is_Object_Connector(rpy_link) Then
                 Dim obj_to As RPInstance = Nothing
                 Dim obj_from As RPInstance = Nothing
@@ -108,16 +96,11 @@ Public Class Rpy_Connector_Controller
                 Dim r_swc As RPInstance = Nothing
                 Assembly_Connector.Get_Connector_Info(rpy_link, p_port, r_port, p_swc, r_swc)
                 r_port.locateInBrowser()
-            ElseIf Object_Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
-                Dim port As RPPort = Nothing
-                Dim obj As RPInstance = Nothing
-                Object_Delegation_Connector.Get_Connector_Info(rpy_link, port, obj)
-                port.locateInBrowser()
             ElseIf Object_Connector.Is_Object_Connector(rpy_link) Then
                 Dim obj_to As RPInstance = Nothing
                 Dim obj_from As RPInstance = Nothing
                 Object_Connector.Get_Connector_Info(rpy_link, obj_from, obj_to)
-                obj_from.locateInBrowser()
+                obj_to.locateInBrowser()
             End If
         End If
     End Sub
