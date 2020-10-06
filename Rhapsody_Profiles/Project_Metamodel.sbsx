@@ -11,14 +11,14 @@
 			<_id type="a">GUID 8bd5e492-f817-4ae3-bbe5-45e3bd35c53b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Project_Metamodel</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:18:47</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:56:16</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Structure_Metamodel profile defines common elements used by the other profiles of software meta-model.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.5.2020::14:19:38</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:56:16</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">10.5.2020::14:18:47</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:56:16</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID 81b20c47-0170-4a3f-8aef-091534e9641f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 29a0f24c-c828-476b-8466-2726475052f4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Common_Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.28.2020::13:32:44</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::13:32:44</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::14:0:24</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::14:0:24</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.28.2020::13:32:44</weakCGTime>
+			<weakCGTime type="a">10.6.2020::14:0:24</weakCGTime>
 			<strongCGTime type="a">9.28.2020::13:1:43</strongCGTime>
 			<_defaultComposite type="s">GUID efd5a87b-0e6f-4a8a-820f-9dd3252203e7</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -348,12 +348,12 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Configuration_Parameter</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:6:17</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:56:36</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model a constant attribute set at Component_Prototype creation of a Component_Type.</_text>
+				<_text type="a">Allows to model a constant attribute set at Component_Prototype or Internal_Design_Object creation.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.17.2020::11:6:17</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:56:36</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -451,16 +451,17 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Connector_Prototype</_name>
-			<_modifiedTimeWeak type="a">9.18.2020::6:46:59</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::14:0:24</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model links betwen :%0D
-    - connection points (ports) of instances of software units;%0D
-    - a signal and a connection point (port) of an instance of a software unit;%0D
-    - a connection point of an instance of a software unit and a connection point of its composite software unit.%0D
+				<_text type="a">Allows to model links between :%0D
+    - Ports of instances of Component_Types ;%0D
+    - Ports of Component_Type_Parts and Ports of their composite Component_Types ;%0D
+    - Ports of a Compoent_Design and its Internal_Design_Objects ;%0D
+    - Internal_Design_Objects.%0D
 </_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.18.2020::6:46:59</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::14:0:24</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -503,11 +504,11 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 33e89129-d52e-4c81-8ace-f9b9ec5cf010</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Project_Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:18:47</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:18:47</_modifiedTime>
-			<_lastID type="a">22</_lastID>
-			<weakCGTime type="a">10.5.2020::14:18:47</weakCGTime>
-			<strongCGTime type="a">9.28.2020::13:1:51</strongCGTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:26:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:26:57</_modifiedTime>
+			<_lastID type="a">24</_lastID>
+			<weakCGTime type="a">10.6.2020::13:26:57</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_defaultComposite type="s">GUID 6577669f-22fc-4683-a0ca-efa1c9825a2c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">9.17.2020::6:56:38</_configurationRelatedTime>
@@ -518,6 +519,8 @@ It gathers cohesive software elements.</_text>
 				<value>GUID 2efd3226-8aad-431d-a0c9-048ac35dc4ac</value>
 				<value>GUID f78737b8-1e6f-4346-9b7c-9efcf4b8a404</value>
 				<value>GUID 1a23800d-80aa-4e55-a2a6-b23c658ae545</value>
+				<value>GUID d133b4ff-f0fd-4eba-b94e-5e40378a8f00</value>
+				<value>GUID 4049352e-5617-47da-97ba-05a8a3ba29fa</value>
 				<value>GUID 133304e0-b714-43e9-a14e-c075c3beb445</value>
 				<value>GUID 69c163c6-a1f3-4bba-90fd-f7fcb8d8fee4</value>
 				<value>GUID 45c08f00-5bdc-4be2-b378-0328d823b980</value>
@@ -556,7 +559,7 @@ It gathers cohesive software elements.</_text>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.30.2020::15:13:8</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The name of an element will be used to create the symbol of the corresponding implementation element. This symbol cannot be empty.</_text>
 			</IDescription>
@@ -615,7 +618,7 @@ It gathers cohesive software elements.</_text>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.30.2020::15:11:52</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">To comply with most of programming language allowed symbols.</_text>
 			</IDescription>
@@ -674,7 +677,7 @@ It gathers cohesive software elements.</_text>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.30.2020::15:11:14</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">All the model relationships are based on elements UUID. So this is a mandatory attribute.</_text>
 			</IDescription>
@@ -733,7 +736,7 @@ It gathers cohesive software elements.</_text>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.28.2020::9:58:39</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.28.2020::9:58:39</_modifiedTime>
 			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 \viewkind4\uc1\pard\fs20 The UUID of a Software_Element shall follow the universally unique identifier definition within ISO/IEC 9834-8:2008.\par%0D
@@ -788,7 +791,7 @@ It gathers cohesive software elements.</_text>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.28.2020::9:59:15</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.28.2020::9:59:15</_modifiedTime>
 			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 \viewkind4\uc1\pard\fs20 The Description of a Software_Element shall be fulfilled.\par%0D
@@ -843,7 +846,7 @@ It gathers cohesive software elements.</_text>
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.28.2020::10:1:16</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.28.2020::10:1:16</_modifiedTime>
 			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 \viewkind4\uc1\pard\fs20 The Children of a given Software_Element shall have a different Name.\par%0D
@@ -881,6 +884,116 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 609e8aa3-4a92-45db-b6d2-a40464c6c603</_id>
 			<_modifiedTimeWeak type="a">9.28.2020::9:59:43</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.28.2020::9:59:43</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID d133b4ff-f0fd-4eba-b94e-5e40378a8f00</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_CLASS_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">10.6.2020::13:25:19</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:25:19</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A class shall specialize at most 1 other class.\par%0D
+}%0D
+</_body>
+			<reqID type="a">CLASS_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID b3d4af57-e854-4479-95b6-70615d5f7988</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID b3d4af57-e854-4479-95b6-70615d5f7988</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">10.6.2020::13:24:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:24:47</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 6ad303ba-72f6-4fe5-9a2a-6aa3d1be1d91</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 6ad303ba-72f6-4fe5-9a2a-6aa3d1be1d91</_id>
+			<_modifiedTimeWeak type="a">10.6.2020::13:24:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:24:47</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 4049352e-5617-47da-97ba-05a8a3ba29fa</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_CLASS_2</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">10.6.2020::13:26:9</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:26:9</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A class shall specialize a class of its own meta-class.\par%0D
+}%0D
+</_body>
+			<reqID type="a">CLASS_2</reqID>
+			<AggregatesList type="e">
+				<value>GUID 32372c87-6bf4-41b7-bbb3-672a1344f2dc</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 32372c87-6bf4-41b7-bbb3-672a1344f2dc</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">10.6.2020::13:25:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:25:39</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 95576cba-236b-4e95-95ba-d2d83e91096b</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 95576cba-236b-4e95-95ba-d2d83e91096b</_id>
+			<_modifiedTimeWeak type="a">10.6.2020::13:25:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:25:39</_modifiedTime>
 			<_value type="a">Error</_value>
 		</ILiteralSpecification>
 		<IDiagram type="e">
@@ -2777,8 +2890,8 @@ It gathers cohesive software elements.</_text>
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::12:34:4</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::12:34:4</_lastModifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:27:28</_modifiedTime>
+			<_lastModifiedTime type="a">10.6.2020::13:27:28</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -5322,8 +5435,8 @@ It gathers cohesive software elements.</_text>
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:18:59</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::14:18:59</_lastModifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:27:3</_modifiedTime>
+			<_lastModifiedTime type="a">10.6.2020::13:27:3</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -10557,10 +10670,10 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 2719fc8f-4da1-4e83-af5a-a29f49359334</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description_Utilities</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::9:2:11</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.1.2020::9:2:11</_modifiedTime>
-			<weakCGTime type="a">10.1.2020::9:2:11</weakCGTime>
-			<strongCGTime type="a">10.1.2020::9:2:11</strongCGTime>
+			<_modifiedTimeWeak type="a">10.6.2020::12:12:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::12:12:33</_modifiedTime>
+			<weakCGTime type="a">10.6.2020::12:12:33</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_defaultComposite type="s">GUID 625c01d7-151f-46e6-bbb9-41c3ecaa0f97</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
@@ -10591,7 +10704,7 @@ It gathers cohesive software elements.</_text>
 										<_Name type="a">Aggregation</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">6</size>
+												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">ShowName</_Name>
 													<_Value type="a">None</_Value>
@@ -10619,12 +10732,6 @@ It gathers cohesive software elements.</_text>
 												
 												<IProperty type="e">
 													<_Name type="a">ShowTargetQualifier</_Name>
-													<_Value type="a">False</_Value>
-													<_Type type="a">Bool</_Type>
-												</IProperty>
-												
-												<IProperty type="e">
-													<_Name type="a">ShowTargetRole</_Name>
 													<_Value type="a">False</_Value>
 													<_Type type="a">Bool</_Type>
 												</IProperty>
@@ -10774,8 +10881,8 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">SWMM_Description_Diagram</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:3:28</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.1.2020::6:3:28</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::12:12:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::12:12:33</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -10788,7 +10895,7 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">SWMM_Rule</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:3:29</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:3:29</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
@@ -10820,10 +10927,10 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 625c01d7-151f-46e6-bbb9-41c3ecaa0f97</_id>
 			<_myState type="a">40960</_myState>
 			<_name type="a">TopLevel</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
-			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<weakCGTime type="a">10.6.2020::12:11:38</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -10834,7 +10941,7 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Criticality_Type</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:3:29</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:3:29</_modifiedTime>
 			<_lastID type="a">3</_lastID>
 			<_kind type="a">Enumeration</_kind>
@@ -10962,7 +11069,7 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Layout_Rules_By_Metaclass</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:4:12</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:4:12</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -11036,7 +11143,6 @@ It gathers cohesive software elements.</_text>
 					
 				</IRPYRawContainer>
 			</DataColumns>
-			<m_CollapseFirstColumn type="a">1</m_CollapseFirstColumn>
 			<TableFromElementTypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -11172,7 +11278,7 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Layout_Rules</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:3:41</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:3:41</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -11433,7 +11539,7 @@ return attributes_list_str;&lt;/CODE&gt;
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Layout_SWMM_Metaclasses</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:3:41</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:3:41</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -11756,7 +11862,7 @@ return apply_on;&lt;/CODE&gt;
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Layout_SWMM_Stereotypes</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:3:41</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:3:41</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
@@ -11878,10 +11984,10 @@ return apply_on;&lt;/CODE&gt;
 			<_id type="a">GUID 6577669f-22fc-4683-a0ca-efa1c9825a2c</_id>
 			<_myState type="a">40960</_myState>
 			<_name type="a">TopLevel</_name>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
-			<weakCGTime type="a">1.2.1990::0:0:0</weakCGTime>
-			<strongCGTime type="a">1.2.1990::0:0:0</strongCGTime>
+			<weakCGTime type="a">10.6.2020::12:11:38</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -11924,20 +12030,20 @@ return apply_on;&lt;/CODE&gt;
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Software_Element</_name>
-			<_modifiedTimeWeak type="a">9.30.2020::15:13:8</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hfilename type="a">.\Software_Detailed_Design_Metamodel.sbsx</_hfilename>
 					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::Internal_Design_Class</_hsubsystem>
-					<_hname type="a">CD_Internal_Design_Class</_hname>
+					<_hname type="a">CD_Internal_Design_Class_Overview</_hname>
 					<_hid type="a">GUID 02fb6493-0a09-449d-b325-b2f9b243658c</_hid>
 				</IHandle>
 			</_theMainDiagram>
 			<_modifiedTime type="a">9.30.2020::15:13:8</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">9.30.2020::15:13:8</weakCGTime>
-			<strongCGTime type="a">9.3.2020::13:53:46</strongCGTime>
+			<weakCGTime type="a">10.6.2020::12:11:38</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12139,7 +12245,7 @@ return apply_on;&lt;/CODE&gt;
 			<_id type="a">GUID c6e9f278-c887-43cb-aef1-d1134b6736e4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">project</_name>
-			<_modifiedTimeWeak type="a">9.30.2020::17:45:9</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -12147,8 +12253,8 @@ return apply_on;&lt;/CODE&gt;
 				</IHandle>
 			</_theMainDiagram>
 			<_modifiedTime type="a">9.30.2020::17:45:9</_modifiedTime>
-			<weakCGTime type="a">9.30.2020::17:45:9</weakCGTime>
-			<strongCGTime type="a">6.21.2018::7:58:2</strongCGTime>
+			<weakCGTime type="a">10.6.2020::12:11:38</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12222,7 +12328,7 @@ return apply_on;&lt;/CODE&gt;
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Software_Package</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::12:19:47</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -12238,8 +12344,8 @@ It gathers cohesive software elements.</_text>
 			</IDescription>
 			</_description>
 			<_modifiedTime type="a">10.5.2020::12:19:47</_modifiedTime>
-			<weakCGTime type="a">10.5.2020::12:19:47</weakCGTime>
-			<strongCGTime type="a">10.5.2020::12:19:47</strongCGTime>
+			<weakCGTime type="a">10.6.2020::12:11:38</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12478,7 +12584,7 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 2d20ab1c-6fb7-46c5-9add-ce13c04378f3</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Operation_With_Arguments</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::17:53:48</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -12490,8 +12596,8 @@ It gathers cohesive software elements.</_text>
 			</IDescription>
 			</_description>
 			<_modifiedTime type="a">9.6.2020::17:53:48</_modifiedTime>
-			<weakCGTime type="a">9.6.2020::17:53:48</weakCGTime>
-			<strongCGTime type="a">9.6.2020::17:53:40</strongCGTime>
+			<weakCGTime type="a">10.6.2020::12:11:38</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12539,7 +12645,7 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 4e3d7e33-6cc1-4806-85a1-99bb7983d347</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Operation_Argument</_name>
-			<_modifiedTimeWeak type="a">9.4.2020::11:3:6</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -12551,8 +12657,8 @@ It gathers cohesive software elements.</_text>
 			</_theMainDiagram>
 			<_modifiedTime type="a">9.4.2020::11:3:6</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.4.2020::11:3:6</weakCGTime>
-			<strongCGTime type="a">9.4.2020::11:3:6</strongCGTime>
+			<weakCGTime type="a">10.6.2020::12:11:38</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12625,7 +12731,7 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 8b85d1b2-34c0-444c-bd21-f6d7f50054dc</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Operation</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::17:55:17</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -12637,8 +12743,8 @@ It gathers cohesive software elements.</_text>
 			</IDescription>
 			</_description>
 			<_modifiedTime type="a">9.6.2020::17:55:17</_modifiedTime>
-			<weakCGTime type="a">9.6.2020::17:55:17</weakCGTime>
-			<strongCGTime type="a">9.6.2020::17:53:48</strongCGTime>
+			<weakCGTime type="a">10.6.2020::12:11:38</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12697,7 +12803,7 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Configuration_Parameter</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::6:54:34</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -12709,8 +12815,8 @@ It gathers cohesive software elements.</_text>
 			</_theMainDiagram>
 			<_modifiedTime type="a">9.17.2020::6:54:34</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">9.17.2020::6:54:34</weakCGTime>
-			<strongCGTime type="a">9.17.2020::6:54:34</strongCGTime>
+			<weakCGTime type="a">10.6.2020::12:11:38</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12788,7 +12894,7 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 6f880818-4cf2-4ab7-bdc8-3241c5e5d2b8</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Guid</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::13:35:18</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">9.3.2020::13:35:18</_modifiedTime>
 			<_kind type="a">Language</_kind>
 		</IType>
@@ -12796,7 +12902,7 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID f305031f-1693-4963-b6c7-51265d773a86</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">View_Common_Metaclasses</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:1:24</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:1:24</_modifiedTime>
 			<LayoutHandle type="r">
 				<IHandle type="e">
@@ -12852,7 +12958,7 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">View_Common_Rules</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:0:57</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:0:57</_modifiedTime>
 			<LayoutHandle type="r">
 				<IHandle type="e">
@@ -12908,7 +13014,7 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">View_All_Rules_By_Metaclass</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:2:16</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:2:16</_modifiedTime>
 			<LayoutHandle type="r">
 				<IHandle type="e">
@@ -12968,7 +13074,7 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 001f88a4-3e08-45b4-94e4-2b68bbf9043c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">View_Common_Stereotypes</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::6:5:32</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.1.2020::6:5:32</_modifiedTime>
 			<LayoutHandle type="r">
 				<IHandle type="e">

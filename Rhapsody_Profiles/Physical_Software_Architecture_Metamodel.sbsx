@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:30:45</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:52:6</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.5.2020::14:30:45</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:54:16</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">10.5.2020::14:30:45</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:52:6</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -66,10 +66,10 @@
 			<_id type="a">GUID 2fa76a8a-3a37-423d-82f8-cb10371b657b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:30:49</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:30:49</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:52:6</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:52:6</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">10.5.2020::14:30:49</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:52:6</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:29</strongCGTime>
 			<_defaultComposite type="s">GUID a7891663-41f3-4945-8795-f855279ddba9</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -87,10 +87,10 @@
 			<_id type="a">GUID b01a7485-2872-40b7-8b0f-3761dbef895c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Interfaces</_name>
-			<_modifiedTimeWeak type="a">9.29.2020::8:27:6</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.29.2020::8:27:6</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:55:10</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:55:10</_modifiedTime>
 			<_lastID type="a">10</_lastID>
-			<weakCGTime type="a">9.29.2020::8:27:6</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:55:10</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 3c82a337-1e56-4ed7-b917-2fdd55e2b50e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -264,13 +264,13 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Client_Server_Interface</_name>
-			<_modifiedTimeWeak type="a">9.29.2020::8:27:6</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:52:30</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model information exchanged between software components (Component_Type) through their ports by formally describing the provided operations.%0D
+				<_text type="a">Allows to model information exchanged between Component_Types through their ports by formally describing the provided operations.%0D
 A Client_Server_Interface can specialize an other Client_Server_Interface.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.29.2020::8:27:6</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:52:30</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -338,7 +338,13 @@ A Client_Server_Interface can specialize an other Client_Server_Interface.</_tex
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Argument</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
 													<_Value type="a">./icons/green_cross.ico</_Value>
@@ -414,13 +420,13 @@ A Client_Server_Interface can specialize an other Client_Server_Interface.</_tex
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Synchronous_Operation</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:36:55</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.5.2020::20:38:38</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">Allows to model a synchronous operation belonging to a Client_Server_Interface.%0D
 Can aggregates Operation_Argument.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.6.2020::20:36:55</_modifiedTime>
+			<_modifiedTime type="a">10.5.2020::20:38:38</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -488,7 +494,13 @@ Can aggregates Operation_Argument.</_text>
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">Aggregates</_Name>
+													<_Value type="a">Argument</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
 													<_Value type="a">./icons/dark_green_cross.ico</_Value>
@@ -526,13 +538,13 @@ Can aggregates Operation_Argument.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Asynchronous_Operation</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::20:36:30</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:52:6</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model a asynchronous operation belonging to a services_interface.%0D
-Can aggregates software_operation_argument.</_text>
+				<_text type="a">Allows to model a asynchronous operation belonging to a Client_Server_Interface.%0D
+Can aggregates Operation_Argument.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.6.2020::20:36:30</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:52:6</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -603,7 +615,7 @@ Can aggregates software_operation_argument.</_text>
 												<size type="a">5</size>
 												<IProperty type="e">
 													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Event_Argument, Inheritance_Link</_Value>
+													<_Value type="a">Event_Argument</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -682,13 +694,12 @@ Can aggregates software_operation_argument.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Event_Interface</_name>
-			<_modifiedTimeWeak type="a">1.27.2020::13:5:57</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:55:10</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model information exchanged between software units (sw_atomic_component_type and sw_composite_component_type) throug their ports by formally describing the broadcasted event.%0D
-An event_interface can inherit from an other event_interface.</_text>
+				<_text type="a">Allows to model information exchanged between Component_Types through their ports by formally describing the broadcasted event.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">1.27.2020::13:5:57</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:55:10</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -846,10 +857,10 @@ Has a data type.</_text>
 			<_id type="a">GUID e101f2b2-e3e3-4072-aed0-69558baa8af2</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:31:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:31:54</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:53:49</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:53:49</_modifiedTime>
 			<_lastID type="a">9</_lastID>
-			<weakCGTime type="a">10.5.2020::14:31:54</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:53:49</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:12:18</strongCGTime>
 			<_defaultComposite type="s">GUID 12866dc4-80e5-4782-9816-e02688faaa87</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1063,10 +1074,10 @@ Has a data type.</_text>
 			<_id type="a">GUID 43e5b673-6ae5-4daa-bc4a-d98f20fdda4d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Operations</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:31:23</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:31:23</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:28:45</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:28:45</_modifiedTime>
 			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">10.5.2020::14:31:23</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:28:45</weakCGTime>
 			<strongCGTime type="a">5.10.2019::12:18:40</strongCGTime>
 			<_defaultComposite type="s">GUID 4cbe604f-9d17-4bb7-8dfa-273fbd6b4db2</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1190,13 +1201,12 @@ Has a data type.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">OS_Operation</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:31:23</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:28:45</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model an operation cyclically called by the operating system.%0D
-Has a &quot;Period&quot; expressed in second.</_text>
+				<_text type="a">Allows to model an operation that can be called by the operating system.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.5.2020::14:31:23</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:28:45</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -1243,9 +1253,9 @@ Has a &quot;Period&quot; expressed in second.</_text>
 			<_id type="a">GUID 7444794b-65c8-474c-aeb7-0eb0afcdae66</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Ports</_name>
-			<_modifiedTimeWeak type="a">10.24.2019::9:45:31</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.24.2019::9:45:31</_modifiedTime>
-			<weakCGTime type="a">10.24.2019::9:45:31</weakCGTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:32:10</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:32:10</_modifiedTime>
+			<weakCGTime type="a">10.6.2020::13:32:10</weakCGTime>
 			<strongCGTime type="a">5.10.2019::12:19:20</strongCGTime>
 			<_defaultComposite type="s">GUID 5c2bf121-78bf-4fc1-9f27-577aca1b8691</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1310,13 +1320,13 @@ Has a &quot;Period&quot; expressed in second.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Provider_Port</_name>
-			<_modifiedTimeWeak type="a">10.24.2019::9:45:31</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:32:10</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model a connection point of a software unit that realizes a given interface through this connection point.%0D
+				<_text type="a">Allows to model a connection point of a software component that realizes a given interface through this connection point.%0D
 Has a contract : the realized interface.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.24.2019::9:45:31</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:32:10</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1398,13 +1408,13 @@ Has a contract : the realized interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Requirer_Port</_name>
-			<_modifiedTimeWeak type="a">10.24.2019::9:45:31</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:31:29</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model a connection point of a software unit that depends on a given interface through this connection point.%0D
+				<_text type="a">Allows to model a connection point of a software component that depends on a given interface through this connection point.%0D
 Has a contract : the dependent interface.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.24.2019::9:45:31</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:31:29</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1500,8 +1510,12 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Type_Part</_name>
-			<_modifiedTimeWeak type="a">9.30.2020::9:19:6</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.30.2020::9:19:6</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:53:49</_modifiedTimeWeak>
+			<_description type="p"><IDescription type="e">
+				<_text type="a">Allows to model an instance of a Component_Type within a composite Component_Type.</_text>
+			</IDescription>
+			</_description>
+			<_modifiedTime type="a">10.6.2020::13:53:49</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1547,10 +1561,10 @@ Has a contract : the dependent interface.</_text>
 			<_id type="a">GUID 7022ddb7-be5e-48a4-b7ad-4fbaf99a811c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Composition</_name>
-			<_modifiedTimeWeak type="a">10.2.2020::6:53:3</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.2.2020::6:53:3</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:53:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:53:33</_modifiedTime>
 			<_lastID type="a">8</_lastID>
-			<weakCGTime type="a">10.2.2020::6:53:3</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:53:33</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 807477f8-c48c-4107-a18f-cb25af308f07</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -1790,12 +1804,12 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Prototype</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::7:6:28</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:53:33</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to model an instance of a software unit within a composite software unit (sw_composite_component_type) or a whole software (software_composition).</_text>
+				<_text type="a">Allows to model an instance of a Component_Type within a Root_Software_Composition.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.17.2020::7:6:28</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:53:33</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -1884,8 +1898,12 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">OS_Task</_name>
-			<_modifiedTimeWeak type="a">10.2.2020::6:51:10</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.2.2020::6:51:10</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:29:16</_modifiedTimeWeak>
+			<_description type="p"><IDescription type="e">
+				<_text type="a">Allows to model a task of the operating system.</_text>
+			</IDescription>
+			</_description>
+			<_modifiedTime type="a">10.6.2020::13:29:16</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1931,10 +1949,10 @@ Has a contract : the dependent interface.</_text>
 			<_id type="a">GUID 7bc8635c-da90-40ea-a26e-76ec5b649cf9</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:31:40</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:31:40</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:31:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:31:56</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">10.5.2020::14:31:40</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:31:56</weakCGTime>
 			<strongCGTime type="a">5.14.2018::9:24:25</strongCGTime>
 			<_defaultComposite type="s">GUID 4456ecac-9846-4117-95af-8d8693ef17fd</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2010,7 +2028,7 @@ Has a contract : the dependent interface.</_text>
 							<_Name type="a">ObjectModelGe</_Name>
 							<Metaclasses type="c">
 								<IRPYRawContainer type="e">
-									<size type="a">2</size>
+									<size type="a">3</size>
 									<IPropertyMetaclass type="e">
 										<_Name type="a">Object</_Name>
 										<Properties type="c">
@@ -2074,6 +2092,21 @@ Has a contract : the dependent interface.</_text>
 										</Properties>
 									</IPropertyMetaclass>
 									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Type</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">Compartments</_Name>
+													<_Value type="a">Description, EnumerationLiteral</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
 								</IRPYRawContainer>
 							</Metaclasses>
 						</IPropertySubject>
@@ -2083,19 +2116,18 @@ Has a contract : the dependent interface.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">PSWA_Diagram</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:31:40</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:31:56</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_textRTF type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 {\colortbl ;\red0\green0\blue0;}%0D
 \viewkind4\uc1\pard\fs20 Apply to class diagrams.\par%0D
-Allows to design \cf1\lang1033\kerning24 data types, interfaces, software component types.\par%0D
-Allows to design classic class diagram for SDD.\par%0D
+Allows to design \cf1\lang1033\kerning24 data types, interfaces, software component types, compositions.\par%0D
 \cf0\lang1036\kerning0\par%0D
 }%0D
 </_textRTF>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.5.2020::14:31:40</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:31:56</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2166,14 +2198,14 @@ Allows to design classic class diagram for SDD.\par%0D
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Operation_Delegation</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:30:49</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:40:19</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
-				<_text type="a">Allows to associate a software_composite_operation to the operations of the instances composing the composite software unit the software_composite_operation belongs to.%0D
-All the associated operations shall be of the same kind.%0D
-Has a Priority, it is a positive integer indicating which child operation of a software_composite_operation shall be call first (lower Priority values are caled first).</_text>
+				<_text type="a">Allows to associate an OS_Operation of a composite Component_Type to the OS_Operation of its parts.%0D
+Allows to associate an OS_Task of a Root_Software_Composition to the OS_Operation of its parts.%0D
+Has a Priority, it is a positive integer indicating which child operation shall be call first (lower Priority values are called first).</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.5.2020::14:30:49</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:40:19</_modifiedTime>
 			<_lastID type="a">4</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -2206,9 +2238,9 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 		<ITag type="e">
 			<_id type="a">GUID 9a5d3d31-286f-4f66-819b-7c09280b09e4</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">Component_Type_Operation_Ref</_name>
-			<_modifiedTimeWeak type="a">9.30.2020::10:32:44</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.30.2020::10:32:44</_modifiedTime>
+			<_name type="a">OS_Operation_Ref</_name>
+			<_modifiedTimeWeak type="a">10.6.2020::13:40:19</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:40:19</_modifiedTime>
 			<_typeOf type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IStereotype</_hm2Class>
@@ -2235,10 +2267,10 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 			<_id type="a">GUID d805ef58-dd19-4ea6-ad1f-99a12cea99b4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:29:49</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:29:49</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:27:22</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:27:22</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">10.5.2020::14:29:49</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:27:22</weakCGTime>
 			<strongCGTime type="a">5.14.2018::8:35:23</strongCGTime>
 			<_defaultComposite type="s">GUID 4237a6eb-f20a-485c-b0bf-134376eacf45</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2255,10 +2287,10 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 			<_id type="a">GUID 8345b3ad-0c66-47ce-b21f-928839b7e66c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Interfaces</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:14:6</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:14:6</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::12:3:21</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::12:3:21</_modifiedTime>
 			<_lastID type="a">11</_lastID>
-			<weakCGTime type="a">10.5.2020::14:14:6</weakCGTime>
+			<weakCGTime type="a">10.6.2020::12:3:21</weakCGTime>
 			<strongCGTime type="a">6.20.2018::15:27:50</strongCGTime>
 			<_defaultComposite type="s">GUID 6305fdea-d709-416b-b7d2-f4858db77bc7</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -9565,10 +9597,19 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Event_Interface</_name>
-			<_modifiedTimeWeak type="a">9.6.2020::15:46:29</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.6.2020::15:46:29</_modifiedTime>
-			<weakCGTime type="a">9.6.2020::15:46:29</weakCGTime>
-			<strongCGTime type="a">9.6.2020::15:45:2</strongCGTime>
+			<_modifiedTimeWeak type="a">10.6.2020::12:3:51</_modifiedTimeWeak>
+			<_theMainDiagram type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IDiagram</_hm2Class>
+					<_hfilename type="a">.\Software_Detailed_Design_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Software_Detailed_Design_Metamodel::Metamodel_Description::Component_Design</_hsubsystem>
+					<_hname type="a">CD_Parts</_hname>
+					<_hid type="a">GUID 3297fee9-c5e9-45a4-8e15-ca6bcf468cef</_hid>
+				</IHandle>
+			</_theMainDiagram>
+			<_modifiedTime type="a">10.6.2020::12:3:51</_modifiedTime>
+			<weakCGTime type="a">10.6.2020::12:3:51</weakCGTime>
+			<strongCGTime type="a">10.6.2020::12:3:51</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -9736,10 +9777,10 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 			<_id type="a">GUID f28a6f03-2134-4631-860b-f7cf76664d78</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:29:49</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:29:49</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:27:22</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:27:22</_modifiedTime>
 			<_lastID type="a">23</_lastID>
-			<weakCGTime type="a">10.5.2020::14:29:49</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:27:22</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:0:12</strongCGTime>
 			<_defaultComposite type="s">GUID 157e4980-50b5-4091-987e-9c9729619a3d</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11679,8 +11720,8 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:30:1</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::14:30:1</_lastModifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:27:28</_modifiedTime>
+			<_lastModifiedTime type="a">10.6.2020::13:27:28</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -15235,16 +15276,16 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:30:1</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.6.2020::13:27:28</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hid type="a">GUID 4400a687-9169-49ac-84a9-d8dc1fcc537a</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">10.5.2020::14:30:1</_modifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:27:28</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">10.5.2020::14:30:1</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:27:28</weakCGTime>
 			<strongCGTime type="a">10.5.2020::12:18:20</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -15253,6 +15294,8 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 			<_classModifier type="a">Unspecified</_classModifier>
 			<AggregatesList type="e">
 				<value>GUID 348e2972-4ca2-4c67-b001-f92b7e121124</value>
+				<value>GUID c4833ca0-e36a-4d94-b4cf-a785bd413eff</value>
+				<value>GUID 3990a851-c724-4699-872e-d788333cbdea</value>
 				<value>GUID afb40115-c607-4c7b-aefe-05baef6a185e</value>
 				<value>GUID 434976c4-d7c8-4240-b25c-cb14c5a48ae5</value>
 				<value>GUID e22ae95e-dd5c-4da6-88ef-465ec5fa8290</value>
@@ -15270,6 +15313,50 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 				<INObjectHandle type="e">
 					<_hm2Class type="a">IRequirement</_hm2Class>
 					<_hid type="a">GUID 0ce1560a-5d72-405d-95ce-d4eb89f30449</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 5c2516a7-2f69-4104-b74e-5c0e27257c84</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID c4833ca0-e36a-4d94-b4cf-a785bd413eff</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_CLASS_1</_name>
+			<_modifiedTimeWeak type="a">10.6.2020::13:27:22</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:27:22</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Rule_CLASS_1</_hname>
+					<_hid type="a">GUID d133b4ff-f0fd-4eba-b94e-5e40378a8f00</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 5c2516a7-2f69-4104-b74e-5c0e27257c84</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 3990a851-c724-4699-872e-d788333cbdea</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_CLASS_2</_name>
+			<_modifiedTimeWeak type="a">10.6.2020::13:27:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:27:28</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Rule_CLASS_2</_hname>
+					<_hid type="a">GUID 4049352e-5617-47da-97ba-05a8a3ba29fa</_hid>
 				</INObjectHandle>
 			</_dependsOn>
 			<_dependent type="r">
@@ -15459,10 +15546,10 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 			<_id type="a">GUID ddbd4b83-969d-4f5d-81bb-c7b52017df0d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Compositions</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::13:2:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::13:2:57</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.6.2020::13:27:22</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:27:22</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">10.5.2020::13:2:57</weakCGTime>
+			<weakCGTime type="a">10.6.2020::13:27:22</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:3:56</strongCGTime>
 			<_defaultComposite type="s">GUID ffab7b65-dabd-4c05-ab73-5f233604e4a5</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -15667,8 +15754,8 @@ Has a Priority, it is a positive integer indicating which child operation of a s
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::13:2:57</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::13:2:57</_lastModifiedTime>
+			<_modifiedTime type="a">10.6.2020::13:27:28</_modifiedTime>
+			<_lastModifiedTime type="a">10.6.2020::13:27:28</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
