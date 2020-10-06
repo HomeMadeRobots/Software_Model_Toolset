@@ -53,6 +53,16 @@ Public Class Client_Server_Interface
         Return Me.Children
     End Function
 
+    Public Function Is_My_Operation(operation_uuid As Guid) As Boolean
+        Dim got_it As Boolean = False
+        For Each ope In Me.Operations
+            If ope.UUID = operation_uuid Then
+                got_it = True
+                Exit For
+            End If
+        Next
+        Return got_it
+    End Function
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody

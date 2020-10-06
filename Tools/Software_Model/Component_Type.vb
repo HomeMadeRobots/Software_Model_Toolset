@@ -40,6 +40,40 @@ Public Class Component_Type
         Return Me.Is_Composite
     End Function
 
+    Public Function Is_My_Provider_Port(port_uuid As Guid) As Boolean
+        Dim got_it As Boolean = False
+        For Each port In Me.Provider_Ports
+            If port.UUID = port_uuid Then
+                got_it = True
+                Exit For
+            End If
+        Next
+        Return got_it
+    End Function
+
+    Public Function Is_My_Requirer_Port(port_uuid As Guid) As Boolean
+        Dim got_it As Boolean = False
+        For Each port In Me.Requirer_Ports
+            If port.UUID = port_uuid Then
+                got_it = True
+                Exit For
+            End If
+        Next
+        Return got_it
+    End Function
+
+    Public Function Is_My_OS_Operation(op_uuid As Guid) As Boolean
+        Dim got_it As Boolean = False
+        For Each op In Me.OS_Operations
+            If op.UUID = op_uuid Then
+                got_it = True
+                Exit For
+            End If
+        Next
+        Return got_it
+    End Function
+
+
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected Overrides Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean

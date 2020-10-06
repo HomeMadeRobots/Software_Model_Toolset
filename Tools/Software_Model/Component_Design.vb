@@ -477,15 +477,7 @@ Public Class OS_Operation_Realization
 
     Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
         If Me.OS_Operation_Ref <> Guid.Empty Then
-            Dim reference_allowed As Boolean = False
-            Dim op As OS_Operation = Nothing
-            For Each op In swct.OS_Operations
-                If op.UUID = Me.OS_Operation_Ref Then
-                    reference_allowed = True
-                    Exit For
-                End If
-            Next
-            If reference_allowed = False Then
+            If swct.Is_My_OS_Operation(Me.OS_Operation_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "OSOPREAL_2",
                     "The referenced OS_Operation shall belong to the implemented Component_Type.")
             End If
@@ -590,16 +582,8 @@ Public Class Operation_Realization
         End If
 
         If Me.Operation_Ref <> Guid.Empty And Not IsNothing(sw_if) Then
-            Dim reference_allowed As Boolean = False
             Dim cs_if As Client_Server_Interface = CType(sw_if, Client_Server_Interface)
-            Dim ope As SMM_Operation
-            For Each ope In cs_if.Operations
-                If ope.UUID = Me.Operation_Ref Then
-                    reference_allowed = True
-                    Exit For
-                End If
-            Next
-            If reference_allowed = False Then
+            If cs_if.Is_My_Operation(Me.Operation_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "OPREAL_5",
                     "The referenced Operation shall belong to the " & _
                     "Client_Server_Interface of the referenced Provider_Port.")
@@ -610,15 +594,7 @@ Public Class Operation_Realization
 
     Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
         If Me.Provider_Port_Ref <> Guid.Empty Then
-            Dim reference_allowed As Boolean = False
-            Dim port As Provider_Port = Nothing
-            For Each port In swct.Provider_Ports
-                If port.UUID = Me.Provider_Port_Ref Then
-                    reference_allowed = True
-                    Exit For
-                End If
-            Next
-            If reference_allowed = False Then
+            If swct.Is_My_Provider_Port(Me.Provider_Port_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "OPREAL_3",
                     "The referenced Provider_Port shall belong to the implemented Component_Type.")
             End If
@@ -703,15 +679,7 @@ Public Class Event_Reception_Realization
 
     Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
         If Me.Requirer_Port_Ref <> Guid.Empty Then
-            Dim reference_allowed As Boolean = False
-            Dim port As Requirer_Port = Nothing
-            For Each port In swct.Requirer_Ports
-                If port.UUID = Me.Requirer_Port_Ref Then
-                    reference_allowed = True
-                    Exit For
-                End If
-            Next
-            If reference_allowed = False Then
+            If swct.Is_My_Requirer_Port(Me.Requirer_Port_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "EVREAL_2",
                     "The referenced Requirer_Port shall belong to the implemented Component_Type.")
             End If
@@ -816,16 +784,8 @@ Public Class Callback_Realization
         End If
 
         If Me.Asynchronous_Operation_Ref <> Guid.Empty And Not IsNothing(sw_if) Then
-            Dim reference_allowed As Boolean = False
             Dim cs_if As Client_Server_Interface = CType(sw_if, Client_Server_Interface)
-            Dim ope As SMM_Operation
-            For Each ope In cs_if.Operations
-                If ope.UUID = Me.Asynchronous_Operation_Ref Then
-                    reference_allowed = True
-                    Exit For
-                End If
-            Next
-            If reference_allowed = False Then
+            If cs_if.Is_My_Operation(Me.Asynchronous_Operation_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "CLBKREAL_5",
                     "The referenced Asynchronous_Operation shall belong to the " & _
                     "Client_Server_Interface of the referenced Requirer_Port.")
@@ -836,15 +796,7 @@ Public Class Callback_Realization
 
     Public Sub Check_Referenced_Elements(report As Report, swct As Component_Type)
         If Me.Requirer_Port_Ref <> Guid.Empty Then
-            Dim reference_allowed As Boolean = False
-            Dim port As Requirer_Port = Nothing
-            For Each port In swct.Requirer_Ports
-                If port.UUID = Me.Requirer_Port_Ref Then
-                    reference_allowed = True
-                    Exit For
-                End If
-            Next
-            If reference_allowed = False Then
+            If swct.Is_My_Requirer_Port(Me.Requirer_Port_Ref) = False Then
                 Me.Add_Consistency_Check_Error_Item(report, "CLBKREAL_3",
                     "The referenced Requirer_Port shall belong to the implemented Component_Type.")
             End If
