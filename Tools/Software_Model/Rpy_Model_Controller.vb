@@ -326,19 +326,12 @@ Public Class Rpy_Model_Controller
                 If output_directory = "" Then
                     Me.Write_Csl_Line(" no directory selected.")
                 Else
-                    ' Open txt file
                     Me.Write_Csl("Create report file...")
-                    Dim file_name As String =
-                        rpy_sw_mdl.name & "_PSWA_Metrics_Report_" & date_str & ".txt"
+                    Dim file_name As String
+                    file_name = rpy_sw_mdl.name & "_PSWA_Metrics_Report_" & date_str & ".xlsx"
                     Dim file_path As String = output_directory & "\" & file_name
-
-                    Dim file_stream As New StreamWriter(file_path, False)
-
-                    Me.Model.Generate_PSWA_Metrics_Report(file_stream)
-
-                    file_stream.Close()
+                    Me.Model.Generate_PSWA_Metrics_Report(file_path)
                     Me.Write_Csl_Line(" done.")
-
                     Me.Write_Csl_Line("Metrics report file full path : " & file_path)
                 End If
             End If
@@ -431,11 +424,8 @@ Public Class Rpy_Model_Controller
                     file_name = rpy_sw_mdl.name & "_Metrics_Report_" & date_str & ".txt"
                     file_path = output_directory & "\" & file_name
 
-                    stream_writer = New StreamWriter(file_path, False)
+                    Me.Model.Generate_PSWA_Metrics_Report(file_path)
 
-                    Me.Model.Generate_PSWA_Metrics_Report(stream_writer)
-
-                    stream_writer.Close()
                     Me.Write_Csl_Line(" done.")
 
                     Me.Write_Csl_Line("Metrics report file full path : " & file_path)
