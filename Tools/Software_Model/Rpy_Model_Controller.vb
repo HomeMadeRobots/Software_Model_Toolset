@@ -273,6 +273,8 @@ Public Class Rpy_Model_Controller
                 Me.Write_Csl_Line(" done.")
 
                 Me.Write_Csl_Line("Consistency report file full path : " & file_path)
+
+                Process.Start(file_path)
             End If
 
 
