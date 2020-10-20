@@ -120,7 +120,7 @@
         Next
     End Sub
 
-    Private Sub Selection_Done() Handles OK_Button.Click
+    Protected Overridable Sub Selection_Done() Handles OK_Button.Click
         Me.DialogResult = Windows.Forms.DialogResult.OK
         Me.Close()
     End Sub

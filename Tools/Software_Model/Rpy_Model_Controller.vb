@@ -191,6 +191,10 @@ Public Class Rpy_Model_Controller
             If prev_report_choices.ContainsKey("Merge_Report_Analysis") Then
                 use_previous_report = CBool(prev_report_choices("Merge_Report_Analysis"))
             End If
+            Dim report_directory As String = ""
+            If prev_report_choices.ContainsKey("Report_Directory") Then
+                report_directory = prev_report_choices("Report_Directory")
+            End If
 
             Dim pkg_name_list As List(Of String)
             pkg_name_list = Me.Get_Software_Package_Name_List()
@@ -200,7 +204,8 @@ Public Class Rpy_Model_Controller
                 pkg_name_list,
                 prev_pkg_selection_choices,
                 use_previous_report,
-                previous_report_path)
+                previous_report_path,
+                report_directory)
             selection_result = selection_form.ShowDialog()
             If selection_result <> DialogResult.OK Then
                 Me.Write_Csl_Line(" aborted.")
@@ -217,10 +222,13 @@ Public Class Rpy_Model_Controller
             Dim new_report_to_merge_choice As New Dictionary(Of String, String)
             new_report_to_merge_choice.Add(
                 "Report_Full_Path",
-                selection_form.Get_Previous_Report_Path)
+                selection_form.Get_Previous_Report_Path())
             new_report_to_merge_choice.Add(
                 "Merge_Report_Analysis",
                 selection_form.Is_Merge_Requested().ToString)
+            new_report_to_merge_choice.Add(
+                "Report_Directory",
+                selection_form.Get_Report_Directory())
             Rpy_Controller.Save_User_Choices(report_to_merge_user_choices_file,
                 new_report_to_merge_choice)
 
@@ -251,32 +259,17 @@ Public Class Rpy_Model_Controller
                 End If
             End If
 
-
-            ' Create report
-            ' Select csv file directory
-            Dim output_directory As String
-            output_directory = Me.Select_Directory("model consistency report file")
-            If output_directory = "" Then
-                Me.Write_Csl_Line(" no directory selected.")
-            Else
-                ' Open csv file
-                Me.Write_Csl("Create report file...")
-                Dim file_name As String =
-                    rpy_sw_mdl.name & "_Consistency_Report_" & date_str & ".csv"
-                Dim file_path As String = output_directory & "\" & file_name
-
-                Dim file_stream As New StreamWriter(file_path, False)
-
-                Me.Model.Generate_Consistency_Report(file_stream)
-
-                file_stream.Close()
-                Me.Write_Csl_Line(" done.")
-
-                Me.Write_Csl_Line("Consistency report file full path : " & file_path)
-
-                Process.Start(file_path)
-            End If
-
+            ' Create, save and open report
+            Me.Write_Csl("Create report file...")
+            Dim file_name As String =
+                rpy_sw_mdl.name & "_Consistency_Report_" & date_str & ".csv"
+            Dim file_path As String = selection_form.Get_Report_Directory & "\" & file_name
+            Dim file_stream As New StreamWriter(file_path, False)
+            Me.Model.Generate_Consistency_Report(file_stream)
+            file_stream.Close()
+            Me.Write_Csl_Line(" done.")
+            Me.Write_Csl_Line("Consistency report file full path : " & file_path)
+            Process.Start(file_path)
 
         End If
 
