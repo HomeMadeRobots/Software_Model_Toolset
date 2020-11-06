@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::13:52:6</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">11.6.2020::15:2:24</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.6.2020::13:54:16</_modifiedTime>
+			<_modifiedTime type="a">11.6.2020::15:2:24</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">10.6.2020::13:52:6</weakCGTime>
+			<weakCGTime type="a">11.6.2020::15:2:24</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2267,10 +2267,10 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_id type="a">GUID d805ef58-dd19-4ea6-ad1f-99a12cea99b4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::13:27:22</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::13:27:22</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.6.2020::14:52:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">10.6.2020::13:27:22</weakCGTime>
+			<weakCGTime type="a">11.6.2020::14:52:57</weakCGTime>
 			<strongCGTime type="a">5.14.2018::8:35:23</strongCGTime>
 			<_defaultComposite type="s">GUID 4237a6eb-f20a-485c-b0bf-134376eacf45</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2287,10 +2287,10 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_id type="a">GUID 8345b3ad-0c66-47ce-b21f-928839b7e66c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Interfaces</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::12:3:21</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::12:3:21</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.6.2020::14:52:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
 			<_lastID type="a">11</_lastID>
-			<weakCGTime type="a">10.6.2020::12:3:21</weakCGTime>
+			<weakCGTime type="a">11.6.2020::14:52:57</weakCGTime>
 			<strongCGTime type="a">6.20.2018::15:27:50</strongCGTime>
 			<_defaultComposite type="s">GUID 6305fdea-d709-416b-b7d2-f4858db77bc7</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2791,8 +2791,8 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::13:2:57</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::13:2:57</_lastModifiedTime>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
+			<_lastModifiedTime type="a">11.6.2020::14:52:57</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -4742,8 +4742,8 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:19:38</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::14:19:38</_lastModifiedTime>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
+			<_lastModifiedTime type="a">11.6.2020::14:52:57</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -7634,8 +7634,8 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::13:2:57</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::13:2:57</_lastModifiedTime>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
+			<_lastModifiedTime type="a">11.6.2020::14:52:57</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -9777,10 +9777,10 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_id type="a">GUID f28a6f03-2134-4631-860b-f7cf76664d78</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::13:27:22</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::13:27:22</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.6.2020::14:52:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
 			<_lastID type="a">23</_lastID>
-			<weakCGTime type="a">10.6.2020::13:27:22</weakCGTime>
+			<weakCGTime type="a">11.6.2020::14:52:57</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:0:12</strongCGTime>
 			<_defaultComposite type="s">GUID 157e4980-50b5-4091-987e-9c9729619a3d</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -9863,10 +9863,10 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_id type="a">GUID 698eaaca-a093-489d-9ead-3c057defa948</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Ports</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:3:37</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:3:37</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.6.2020::14:52:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">10.5.2020::14:3:37</weakCGTime>
+			<weakCGTime type="a">11.6.2020::14:52:57</weakCGTime>
 			<strongCGTime type="a">5.9.2019::8:31:50</strongCGTime>
 			<_defaultComposite type="s">GUID 75359c93-b821-476c-bb13-8de38c00b10b</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -10037,8 +10037,8 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::13:2:57</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::13:2:57</_lastModifiedTime>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
+			<_lastModifiedTime type="a">11.6.2020::14:52:57</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -11720,8 +11720,8 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::13:27:28</_modifiedTime>
-			<_lastModifiedTime type="a">10.6.2020::13:27:28</_lastModifiedTime>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
+			<_lastModifiedTime type="a">11.6.2020::14:52:57</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -15546,10 +15546,10 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_id type="a">GUID ddbd4b83-969d-4f5d-81bb-c7b52017df0d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Compositions</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::13:27:22</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::13:27:22</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.6.2020::14:52:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">10.6.2020::13:27:22</weakCGTime>
+			<weakCGTime type="a">11.6.2020::14:52:57</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:3:56</strongCGTime>
 			<_defaultComposite type="s">GUID ffab7b65-dabd-4c05-ab73-5f233604e4a5</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -15754,8 +15754,8 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::13:27:28</_modifiedTime>
-			<_lastModifiedTime type="a">10.6.2020::13:27:28</_lastModifiedTime>
+			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
+			<_lastModifiedTime type="a">11.6.2020::14:52:57</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -19533,10 +19533,10 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_id type="a">GUID 54a300b7-6403-4837-8eea-363747755443</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Layouts</_name>
-			<_modifiedTimeWeak type="a">10.1.2020::10:17:54</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.1.2020::10:17:54</_modifiedTime>
-			<_lastID type="a">4</_lastID>
-			<weakCGTime type="a">10.1.2020::10:17:54</weakCGTime>
+			<_modifiedTimeWeak type="a">11.6.2020::15:2:59</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.6.2020::15:2:59</_modifiedTime>
+			<_lastID type="a">5</_lastID>
+			<weakCGTime type="a">11.6.2020::15:2:59</weakCGTime>
 			<strongCGTime type="a">10.1.2020::6:11:59</strongCGTime>
 			<_defaultComposite type="s">GUID 1879e9c9-b33f-4981-8e18-90bf59b8842b</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -19547,6 +19547,7 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				<value>GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</value>
 				<value>GUID 99c47b6d-6200-4e33-995a-314948c9643c</value>
 				<value>GUID 6bb7bcaa-f3e9-48c8-bbd6-0e7ff21f18b2</value>
+				<value>GUID c83ffca4-237a-42a7-ae46-c17ffbaedf3d</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IClass type="e">
@@ -19786,6 +19787,7 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 					
 				</IRPYRawContainer>
 			</DataColumns>
+			<m_CollapseFirstColumn type="a">1</m_CollapseFirstColumn>
 		</ITableLayout>
 		<ITableLayout type="e">
 			<_id type="a">GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</_id>
@@ -20605,6 +20607,205 @@ return dir_list;&lt;/CODE&gt;
 					
 				</IRPYRawContainer>
 			</DataColumns>
+		</ITableLayout>
+		<ITableLayout type="e">
+			<_id type="a">GUID c83ffca4-237a-42a7-ae46-c17ffbaedf3d</_id>
+			<_myState type="a">8192</_myState>
+			<_properties type="p"><IPropertyContainer type="e">
+				<Subjects type="c">
+					<IRPYRawContainer type="e">
+						<size type="a">2</size>
+						<IPropertySubject type="e">
+							<_Name type="a">General</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">1</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">Graphics</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">TableHeaderMenuAlignment</_Name>
+													<_Value type="a">Right</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">Left,Right</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+						<IPropertySubject type="e">
+							<_Name type="a">Model</_Name>
+							<Metaclasses type="c">
+								<IRPYRawContainer type="e">
+									<size type="a">2</size>
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableLayout</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">3</size>
+												<IProperty type="e">
+													<_Name type="a">CollapseFirstColumn</_Name>
+													<_Value type="a">True</_Value>
+													<_Type type="a">Bool</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextPattern</_Name>
+													<_Value type="a">{pkg}Software_Package*,{compo}Root_Software_Composition*,{task}OS_Task,{op}Operation_Delegation</_Value>
+													<_Type type="a">MultiLine</_Type>
+												</IProperty>
+												
+												<IProperty type="e">
+													<_Name type="a">ContextTableColumnNameFormat</_Name>
+													<_Value type="a">$(Property) in $(Context)</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+									<IPropertyMetaclass type="e">
+										<_Name type="a">TableView</_Name>
+										<Properties type="c">
+											<IRPYRawContainer type="e">
+												<size type="a">1</size>
+												<IProperty type="e">
+													<_Name type="a">ChangeSelectionOnEnterTo</_Name>
+													<_Value type="a">down</_Value>
+													<_Type type="a">Enum</_Type>
+													<_ExtraTypeInfo type="a">left, right, up, down</_ExtraTypeInfo>
+												</IProperty>
+												
+											</IRPYRawContainer>
+										</Properties>
+									</IPropertyMetaclass>
+									
+								</IRPYRawContainer>
+							</Metaclasses>
+						</IPropertySubject>
+						
+					</IRPYRawContainer>
+				</Subjects>
+			</IPropertyContainer>
+			</_properties>
+			<_name type="a">Tasks_Layout</_name>
+			<_modifiedTimeWeak type="a">11.6.2020::15:2:59</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.6.2020::15:2:59</_modifiedTime>
+			<TableElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</TableElementTypes>
+			<DataColumns type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">5</size>
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID c83ffca4-237a-42a7-ae46-c17ffbaedf3d</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Task name</_columnName>
+						<_contextPatternLabel type="a">task</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID c83ffca4-237a-42a7-ae46-c17ffbaedf3d</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Name</TableDataDefinitionName>
+						<_columnName type="a">Component_Prototype</_columnName>
+						<_contextPatternLabel type="a">op</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID c83ffca4-237a-42a7-ae46-c17ffbaedf3d</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITag</_hm2Class>
+								<_hid type="a">GUID 9a5d3d31-286f-4f66-819b-7c09280b09e4</_hid>
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">OS_Operation_Ref</TableDataDefinitionName>
+						<_DataType type="a">4</_DataType>
+						<_columnName type="a">Operation</_columnName>
+						<_contextPatternLabel type="a">op</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID c83ffca4-237a-42a7-ae46-c17ffbaedf3d</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Description</TableDataDefinitionName>
+						<_columnName type="a">Description</_columnName>
+						<_contextPatternLabel type="a">op</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID c83ffca4-237a-42a7-ae46-c17ffbaedf3d</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITag</_hm2Class>
+								<_hid type="a">GUID c8b6e70e-5aca-422e-b8de-970a6298a8a1</_hid>
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Priority</TableDataDefinitionName>
+						<_DataType type="a">4</_DataType>
+						<_columnName type="a">Priority</_columnName>
+						<_contextPatternLabel type="a">op</_contextPatternLabel>
+					</TableDataDefinition>
+					
+				</IRPYRawContainer>
+			</DataColumns>
+			<m_CollapseFirstColumn type="a">1</m_CollapseFirstColumn>
+			<TableFromElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</TableFromElementTypes>
+			<TableToElementTypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">0</size>
+				</IRPYRawContainer>
+			</TableToElementTypes>
 		</ITableLayout>
 		<IClass type="e">
 			<_id type="a">GUID cb071234-229f-4e53-945f-4b65413c0797</_id>
