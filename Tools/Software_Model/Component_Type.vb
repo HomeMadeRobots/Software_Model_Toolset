@@ -535,7 +535,7 @@ Public Class OS_Operation
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
-        Me.Rpy_Element.addStereotype("Component_Operation", "Operation")
+        Me.Rpy_Element.addStereotype("OS_Operation", "Operation")
     End Sub
 
 End Class
