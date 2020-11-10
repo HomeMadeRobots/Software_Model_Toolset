@@ -31,7 +31,7 @@ Module Software_Metamodel
 
     '----------------------------------------------------------------------------------------------'
     ' Structure
-    Public Function Is_PSWA_Package(ByVal model_element As RPModelElement) As Boolean
+    Public Function Is_Software_Package(ByVal model_element As RPModelElement) As Boolean
         Return Is_Element_Of_Sterotype(model_element, "GUID afb0e42d-a399-4819-bb39-46f0fd0f0fbf")
     End Function
 

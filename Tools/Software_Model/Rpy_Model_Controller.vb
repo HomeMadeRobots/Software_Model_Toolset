@@ -489,7 +489,7 @@ Public Class Rpy_Model_Controller
         If Not IsNothing(rpy_sw_mdl) Then
             Dim root_level_package As RPPackage
             For Each root_level_package In rpy_sw_mdl.packages
-                If Is_PSWA_Package(CType(root_level_package, RPModelElement)) Then
+                If Is_Software_Package(CType(root_level_package, RPModelElement)) Then
                     Software_Package.Remove_Empty_Packages(root_level_package)
                 End If
             Next

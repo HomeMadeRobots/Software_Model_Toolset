@@ -266,7 +266,7 @@ Public Class Software_Model_Container
     Protected Overrides Sub Import_Children_From_Rhapsody_Model()
         Dim rpy_pkg As RPPackage
         For Each rpy_pkg In CType(Me.Rpy_Element, RPProject).packages
-            If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
+            If Is_Software_Package(CType(rpy_pkg, RPModelElement)) Then
                 Dim pkg As Top_Level_Package = New Top_Level_Package
                 Me.Packages.Add(pkg)
                 pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))

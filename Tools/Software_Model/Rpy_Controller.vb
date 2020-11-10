@@ -32,7 +32,7 @@ Public MustInherit Class Rpy_Controller
         Dim rpy_proj As RPProject = Me.Rhapsody_App.activeProject
         Dim rpy_pkg As RPPackage
         For Each rpy_pkg In rpy_proj.packages
-            If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
+            If Is_Software_Package(CType(rpy_pkg, RPModelElement)) Then
                 pkg_name_list.Add(rpy_pkg.name)
             End If
         Next

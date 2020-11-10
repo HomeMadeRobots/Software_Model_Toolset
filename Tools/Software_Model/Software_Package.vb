@@ -82,7 +82,7 @@ Public Class Software_Package
 
         Dim rpy_pkg As RPPackage
         For Each rpy_pkg In CType(Me.Rpy_Element, RPPackage).packages
-            If Is_PSWA_Package(CType(rpy_pkg, RPModelElement)) Then
+            If Is_Software_Package(CType(rpy_pkg, RPModelElement)) Then
                 Dim pkg As Software_Package = New Software_Package
                 Me.Packages.Add(pkg)
                 pkg.Import_From_Rhapsody_Model(Me, CType(rpy_pkg, RPModelElement))
