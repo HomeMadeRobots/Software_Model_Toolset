@@ -360,6 +360,7 @@ Public Class Top_Level_Package
     Private Abstraction_Level As Double = 0
     Private Distance As Double
 
+    Private Dependency_Cycle As List(Of Top_Level_Package) ' first found
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -396,6 +397,10 @@ Public Class Top_Level_Package
     End Sub
 
     Public Sub Find_Needed_Elements()
+
+        If Not IsNothing(Me.Needed_Top_Packages_List) Then
+            Exit Sub
+        End If
 
         Me.Needed_Top_Packages_List = New List(Of Top_Level_Package)
         Me.Needed_Elements_List = New List(Of SMM_Classifier)
@@ -440,6 +445,10 @@ Public Class Top_Level_Package
 
     Public Sub Find_Dependent_Elements()
         ' Find_Needed_Elements shall be called first.
+
+        If Not IsNothing(Me.Dependent_Top_Packages_List) Then
+            Exit Sub
+        End If
 
         Me.Dependent_Top_Packages_List = New List(Of Top_Level_Package)
         Me.Dependent_Elements_List = New List(Of SMM_Classifier)
@@ -550,5 +559,56 @@ Public Class Top_Level_Package
     Public Function Get_Distance() As Double
         Return Me.Distance
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Public Sub Complete_Cyclic_Dependency_Path(
+        start_pkg_uuid As Guid,
+        ByRef start_pkg_cyclic_dep_list As List(Of List(Of Top_Level_Package)),
+        current_pkg_path As List(Of Top_Level_Package))
+        For Each pkg In Me.Needed_Top_Packages_List
+            If Not current_pkg_path.Contains(pkg) Then
+                Dim local_current_pkg_path As New List(Of Top_Level_Package)
+                local_current_pkg_path.AddRange(current_pkg_path)
+                local_current_pkg_path.Add(pkg)
+                If pkg.UUID = start_pkg_uuid Then
+                    ' Cyclic dependency found
+                    start_pkg_cyclic_dep_list.Add(local_current_pkg_path)
+                    ' Strore the first cycle found for Me
+                    If IsNothing(Me.Dependency_Cycle) Then
+                        Me.Dependency_Cycle = local_current_pkg_path
+                    End If
+                End If
+                pkg.Complete_Cyclic_Dependency_Path(
+                    start_pkg_uuid,
+                    start_pkg_cyclic_dep_list,
+                    local_current_pkg_path)
+            End If
+        Next
+    End Sub
+
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        If Not IsNothing(Me.Dependency_Cycle) Then
+            Dim pkg_path_str As String = Transform_Path_To_String(Me.Dependency_Cycle)
+            Me.Add_Consistency_Check_Warning_Item(report,
+                "PKG_2",
+                "Package involved in at least one dependency cycle : " & pkg_path_str & ".")
+        End If
+
+    End Sub
+
+    Public Shared Function Transform_Path_To_String(pkg_list As List(Of Top_Level_Package)) _
+        As String
+        Dim path_str As String = ""
+        For Each pkg In pkg_list
+           path_str &= pkg.Name & "->"
+        Next
+        path_str &= pkg_list.First.Name
+        Return path_str
+    End Function
+
 
 End Class

@@ -80,6 +80,9 @@ Module Software_Model_Helpers
                     Dim prj_ctrl As New Rpy_Component_Design_Controller
                     prj_ctrl.Open_Component_Design_Model_Creation_View()
 
+                Case "Find_Packages_Cyclic_Dependencies"
+                    Dim sw_mdl_ctrl As New Rpy_Model_Controller
+                    sw_mdl_ctrl.Find_Packages_Cyclic_Dependencies()
 
             End Select
         Catch ex As Exception

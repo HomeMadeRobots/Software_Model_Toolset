@@ -51,6 +51,8 @@ Public Class Software_Model_Container
     Private Component_Type_WMC_Series As Data_Series
     Private Interfaces_WMC_Series As Data_Series
 
+    Private Cyclic_Dependencies_List As List(Of List(Of Top_Level_Package)) = Nothing
+
     '----------------------------------------------------------------------------------------------'
     ' General methods 
     Public Sub Add_Element(software_element As Software_Element)
@@ -441,6 +443,8 @@ Public Class Software_Model_Container
 
         Me.Check_Own_Consistency(Me.Consistency_Report)
 
+        Me.Find_Cyclic_Dependencies()
+
         For Each pkg In Me.Packages
             If pkg_name_list.Contains(pkg.Name) Then
                 pkg.Check_Consistency(Me.Consistency_Report)
@@ -488,6 +492,28 @@ Public Class Software_Model_Container
         Next
     End Sub
 
+    Public Function Find_Cyclic_Dependencies() As List(Of List(Of Top_Level_Package))
+        If IsNothing(Me.Cyclic_Dependencies_List) Then
+
+            Me.Cyclic_Dependencies_List = New List(Of List(Of Top_Level_Package))
+
+            For Each pkg In Me.Packages
+                pkg.Find_Needed_Elements()
+            Next
+
+            For Each start_pkg In Me.Packages
+                Dim current_pkg_path As New List(Of Top_Level_Package)
+                Dim start_pkg_cyclic_dep_list As New List(Of List(Of Top_Level_Package))
+                start_pkg.Complete_Cyclic_Dependency_Path(
+                    start_pkg.UUID,
+                    start_pkg_cyclic_dep_list,
+                    current_pkg_path)
+                Me.Cyclic_Dependencies_List.AddRange(start_pkg_cyclic_dep_list)
+            Next
+
+        End If
+        Return Me.Cyclic_Dependencies_List
+    End Function
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation

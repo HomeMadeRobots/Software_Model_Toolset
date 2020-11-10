@@ -436,6 +436,41 @@ Public Class Rpy_Model_Controller
         Me.Write_Csl(Get_Elapsed_Time(chrono))
     End Sub
 
+    Public Sub Find_Packages_Cyclic_Dependencies()
+        ' Initialize output window and display start message
+        Dim chrono As New Stopwatch
+        chrono.Start()
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Find packages cyclic dependencies...")
+
+        ' Get selected element and check that it is a Rhapsody project
+        Dim rpy_sw_mdl As RPProject = Get_Rhapsody_Project()
+
+        If Not IsNothing(rpy_sw_mdl) Then
+            Me.Write_Csl("Get model from Rhapsody...")
+            Me.Model = New Software_Model_Container
+            Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
+            Me.Write_Csl_Line(" done.")
+
+
+            Dim dep_list As List(Of List(Of Top_Level_Package))
+            dep_list = Me.Model.Find_Cyclic_Dependencies()
+            If dep_list.Count = 0 Then
+                Me.Write_Csl_Line("No cyclic dependencies.")
+            Else
+                Me.Write_Csl_Line("Cyclic dependencies list :")
+                For Each pkg_list In dep_list
+                    Dim path_str As String = Top_Level_Package.Transform_Path_To_String(pkg_list)
+                    Me.Write_Csl_Line("   " & path_str)
+                Next
+            End If
+        End If
+
+        ' Display Result to output window
+        Me.Write_Csl_Line("Find packages cyclic dependencies end.")
+        chrono.Stop()
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
+    End Sub
 
     ' Remove empty packages from the Rhapsody model.
     ' A package is considered as empty if it aggregates only packages that recursively only 

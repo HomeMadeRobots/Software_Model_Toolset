@@ -32,7 +32,8 @@ Public Class Rhapsody_Project_Configurator
         {"Modify GUID", "Modify_GUID", "All"},
         {"Configure", "Configure", "Project"},
         {"Update realizations", "Update_Realizations", "Component_Design"},
-        {"Create Component_Design model", "Create_Component_Design_Model", "Component_Type"}}
+        {"Create Component_Design model", "Create_Component_Design_Model", "Component_Type"},
+        {"Findc cyclic dependencies", "Find_Packages_Cyclic_Dependencies", "Project"}}
 
     Public Sub New(rpy_proj As RPProject)
         Me.Rpy_Proj = rpy_proj
