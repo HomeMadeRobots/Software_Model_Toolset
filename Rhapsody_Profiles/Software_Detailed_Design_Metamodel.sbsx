@@ -11,14 +11,14 @@
 			<_id type="a">GUID e6dd7000-5327-4839-ad4b-6da8f8351563</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Detailed_Design_Metamodel</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::20:5:23</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.7.2020::11:44:10</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Component_Design_Metamodel profile defines meta-classes allowing to model any design pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.6.2020::20:5:23</_modifiedTime>
+			<_modifiedTime type="a">10.7.2020::11:44:10</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">10.6.2020::20:5:23</weakCGTime>
+			<weakCGTime type="a">10.7.2020::11:44:10</weakCGTime>
 			<strongCGTime type="a">10.25.2019::13:35:24</strongCGTime>
 			<_defaultComposite type="s">GUID f61c1e09-4b38-4294-ba41-f87637329589</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 9c4f06ad-7647-4018-8692-8c6ae32b4d1b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:53:34</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:53:34</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.7.2020::11:44:10</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.7.2020::11:44:10</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">10.5.2020::14:53:34</weakCGTime>
+			<weakCGTime type="a">10.7.2020::11:44:10</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:18</strongCGTime>
 			<_defaultComposite type="s">GUID 1c3659ae-c124-4218-83bf-cc594f2a034c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -54,10 +54,10 @@
 			<_id type="a">GUID bc1d51e4-d1f5-4009-9809-324aa67b2197</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">10.2.2020::7:38:18</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.2.2020::7:38:18</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.7.2020::11:44:10</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.7.2020::11:44:10</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">10.2.2020::7:38:18</weakCGTime>
+			<weakCGTime type="a">10.7.2020::11:44:10</weakCGTime>
 			<strongCGTime type="a">1.11.2019::10:44:50</strongCGTime>
 			<_defaultComposite type="s">GUID a7b8aca8-98fe-49b3-9ca3-777d5cfacb2b</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -87,7 +87,7 @@
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, Event_Interface, Variable_Attribute, Private_Operation, Operation_Realization, Event_Reception_Realization, Callback_Realization, Event_Reception, Internal_Design_Object, Connector_Prototype, Sent_Event, Received_Event</_Value>
+													<_Value type="a">Data_Type, Physical_Data_Type, Component_Design, Component_Type_Ref, Event_Interface, Variable_Attribute, Private_Operation, OS_Operation_Realization, Operation_Realization, Event_Reception_Realization, Callback_Realization, Event_Reception, Internal_Design_Object, Connector_Prototype, Sent_Event, Received_Event</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -164,8 +164,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Design_Diagram</_name>
-			<_modifiedTimeWeak type="a">10.2.2020::7:38:18</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.2.2020::7:38:18</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.7.2020::11:44:10</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.7.2020::11:44:10</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -2344,10 +2344,10 @@
 			<_id type="a">GUID 538bd72c-6cc0-4c8b-ac43-1bab68856a49</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::20:5:23</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::20:5:23</_modifiedTime>
-			<_lastID type="a">31</_lastID>
-			<weakCGTime type="a">10.6.2020::20:5:23</weakCGTime>
+			<_modifiedTimeWeak type="a">10.7.2020::11:25:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.7.2020::11:25:56</_modifiedTime>
+			<_lastID type="a">32</_lastID>
+			<weakCGTime type="a">10.7.2020::11:25:56</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:6</strongCGTime>
 			<_defaultComposite type="s">GUID 59d0682b-2dcd-4778-adc3-0947b890e75e</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2358,16 +2358,17 @@
 				<value>GUID 9ba8449a-7ff3-4c7c-8f4d-31f5e00bf8de</value>
 				<value>GUID 59d0682b-2dcd-4778-adc3-0947b890e75e</value>
 				<value>GUID 52b982f2-5d58-4e98-ad34-142ef30278bb</value>
+				<value>GUID e9c43839-77c3-43a9-b8e2-477c892746d4</value>
 			</AggregatesList>
 		</ISubsystem>
 		<ISubsystem type="e">
 			<_id type="a">GUID f7a7144b-a29e-4dd6-99e5-4bac84eca03d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::20:5:23</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::20:5:23</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.7.2020::11:25:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.7.2020::11:25:56</_modifiedTime>
 			<_lastID type="a">28</_lastID>
-			<weakCGTime type="a">10.6.2020::20:5:23</weakCGTime>
+			<weakCGTime type="a">10.7.2020::11:25:56</weakCGTime>
 			<strongCGTime type="a">11.30.2018::10:10:24</strongCGTime>
 			<_defaultComposite type="s">GUID f1c4f7f1-d84b-4508-b1c4-d3264aad0292</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -4135,8 +4136,8 @@
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::20:4:52</_modifiedTime>
-			<_lastModifiedTime type="a">10.6.2020::20:4:52</_lastModifiedTime>
+			<_modifiedTime type="a">10.7.2020::11:25:0</_modifiedTime>
+			<_lastModifiedTime type="a">10.7.2020::11:25:0</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -6187,7 +6188,7 @@
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=46%25,54%25&gt;
+			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
 &lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\purple_flash_in_square.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
@@ -6558,7 +6559,7 @@
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=51%25,49%25&gt;
+			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
 &lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_cross.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
@@ -12128,8 +12129,8 @@
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:18:59</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::14:18:59</_lastModifiedTime>
+			<_modifiedTime type="a">10.7.2020::11:25:0</_modifiedTime>
+			<_lastModifiedTime type="a">10.7.2020::11:25:0</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -13507,8 +13508,8 @@
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::11:33:5</_modifiedTime>
-			<_lastModifiedTime type="a">10.6.2020::11:33:5</_lastModifiedTime>
+			<_modifiedTime type="a">10.7.2020::11:25:0</_modifiedTime>
+			<_lastModifiedTime type="a">10.7.2020::11:25:0</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -14361,7 +14362,7 @@
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=49%25,51%25&gt;
+			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
 &lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_cross.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
@@ -14816,8 +14817,8 @@
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:28:48</_modifiedTime>
-			<_lastModifiedTime type="a">10.5.2020::14:28:48</_lastModifiedTime>
+			<_modifiedTime type="a">10.7.2020::11:25:0</_modifiedTime>
+			<_lastModifiedTime type="a">10.7.2020::11:25:0</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -16497,8 +16498,8 @@
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::12:8:45</_modifiedTime>
-			<_lastModifiedTime type="a">10.6.2020::12:8:45</_lastModifiedTime>
+			<_modifiedTime type="a">10.7.2020::11:25:0</_modifiedTime>
+			<_lastModifiedTime type="a">10.7.2020::11:25:0</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -18353,8 +18354,8 @@
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::20:5:34</_modifiedTime>
-			<_lastModifiedTime type="a">10.6.2020::20:5:34</_lastModifiedTime>
+			<_modifiedTime type="a">10.7.2020::11:25:0</_modifiedTime>
+			<_lastModifiedTime type="a">10.7.2020::11:25:0</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -22007,22 +22008,15 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Event_Reception_Realization</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:3:27</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">10.7.2020::11:25:56</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hid type="a">GUID 02fb6493-0a09-449d-b325-b2f9b243658c</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_description type="p"><IDescription type="e">
-				<_text type="a">%0D
-%0D
-%0D
-Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abstract, the class shall not aggregate the Event_Reception.</_text>
-			</IDescription>
-			</_description>
-			<_modifiedTime type="a">10.5.2020::14:3:27</_modifiedTime>
-			<weakCGTime type="a">10.5.2020::14:3:27</weakCGTime>
+			<_modifiedTime type="a">10.7.2020::11:25:56</_modifiedTime>
+			<weakCGTime type="a">10.7.2020::11:25:56</weakCGTime>
 			<strongCGTime type="a">10.5.2020::14:3:27</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -22509,10 +22503,10 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 			<_id type="a">GUID 9c24e27d-1208-4da1-81a3-ed9eeb81d328</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Internal_Design_Class</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::13:26:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::13:26:57</_modifiedTime>
+			<_modifiedTimeWeak type="a">10.7.2020::11:25:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.7.2020::11:25:0</_modifiedTime>
 			<_lastID type="a">12</_lastID>
-			<weakCGTime type="a">10.6.2020::13:26:57</weakCGTime>
+			<weakCGTime type="a">10.7.2020::11:25:0</weakCGTime>
 			<strongCGTime type="a">9.17.2020::11:2:47</strongCGTime>
 			<_defaultComposite type="s">GUID 3ff0fc08-d575-4b69-ac19-faea3d80461a</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -22767,8 +22761,8 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::12:9:35</_modifiedTime>
-			<_lastModifiedTime type="a">10.6.2020::12:9:35</_lastModifiedTime>
+			<_modifiedTime type="a">10.7.2020::11:25:0</_modifiedTime>
+			<_lastModifiedTime type="a">10.7.2020::11:25:0</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -26924,6 +26918,33 @@ Do not need &quot;Is_Abstract&quot; attribute. If the the event reception is abs
 					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
 					<_hname type="a">Layout_Rules_By_Metaclass</_hname>
 					<_hid type="a">GUID 7dee7e85-bedc-4fbe-992f-cbe95af58a67</_hid>
+				</IHandle>
+			</LayoutHandle>
+			<ScopeHandles type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hid type="a">GUID 538bd72c-6cc0-4c8b-ac43-1bab68856a49</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</ScopeHandles>
+		</ITableInstance>
+		<ITableInstance type="e">
+			<_id type="a">GUID e9c43839-77c3-43a9-b8e2-477c892746d4</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">View_Detailed_Design_Metaclasses</_name>
+			<_modifiedTimeWeak type="a">10.7.2020::11:24:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.7.2020::11:24:57</_modifiedTime>
+			<LayoutHandle type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Layout_SWMM_Metaclasses</_hname>
+					<_hid type="a">GUID 4bb158bf-dc41-4550-86bf-a724c4006fea</_hid>
 				</IHandle>
 			</LayoutHandle>
 			<ScopeHandles type="c">
