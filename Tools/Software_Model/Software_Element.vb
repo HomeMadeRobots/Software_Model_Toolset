@@ -407,6 +407,8 @@ Public MustInherit Class SMM_Class
     Public Base_Class_Ref As Guid = Guid.Empty 'Optional, not all SMM_Class can be specialized
     Protected Nb_Base_Class_Ref As Integer = 0
 
+    Protected All_Children As List(Of Software_Element) = Nothing
+
     Protected Weighted_Methods_Per_Class As Double = 0
 
     '----------------------------------------------------------------------------------------------'
@@ -430,6 +432,20 @@ Public MustInherit Class SMM_Class
         Next
     End Sub
 
+    Protected Function Get_Inherited_Children() As List(Of Software_Element)
+        If IsNothing(Me.All_Children) Then
+            Dim children_list As New List(Of Software_Element)
+            Dim base_ref As Guid = Me.Base_Class_Ref
+            While base_ref <> Guid.Empty
+                Dim base_elmt As SMM_Class
+                base_elmt = CType(Me.Get_Element_By_Uuid(base_ref), SMM_Class)
+                children_list.AddRange(base_elmt.Get_Children)
+                base_ref = base_elmt.Base_Class_Ref
+            End While
+            Me.All_Children = children_list
+        End If
+        Return Me.All_Children
+    End Function
 
 
     '----------------------------------------------------------------------------------------------'
@@ -531,8 +547,40 @@ Public MustInherit Class SMM_Class
             End If
         End If
 
+        Me.Check_Children_Name(report)
+        Me.Check_Children_Name_Against_Inherited(report)
+
     End Sub
 
+    Protected Overridable Sub Check_Children_Name_Against_Inherited(report As Report)
+        Dim inherited_children_name_list As New List(Of String)
+        For Each child In Me.Get_Inherited_Children
+            inherited_children_name_list.Add(child.Name)
+        Next
+        For Each child In Me.Get_Children
+            If inherited_children_name_list.Contains(child.Name) Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "CLASS_3",
+                    "Symbol '" & child.Name & "' is already used by a child of a base class.")
+            End If
+        Next
+    End Sub
+
+    Public Overridable Sub Check_Children_Name(report As Report)
+        ' Overridable because for some SMM_Class, it is interresting to skip it.
+        ' Indeed, Rhapsody ensure that child of the same metaclass have a different name.
+        Dim children_name_list As New List(Of String)
+        For Each child In Me.Get_Children
+            If children_name_list.Contains(child.Name) Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "ELMT_6",
+                    "Symbol '" & child.Name & "' (" & child.GetType.ToString.Split("."c).Last & _
+                    ") is already used by an other child.")
+            Else
+                children_name_list.Add(child.Name)
+            End If
+        Next
+    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
