@@ -223,25 +223,31 @@ Public Class Component_Type
             For Each port In Me.Provider_Ports
                 Dim sw_if As Software_Interface
                 sw_if = CType(Me.Get_Element_By_Uuid(port.Contract_Ref), Software_Interface)
-                If Not Me.Needed_Elements.Contains(sw_if) Then
-                    Me.Needed_Elements.Add(sw_if)
+                If Not IsNothing(sw_if) Then
+                    If Not Me.Needed_Elements.Contains(sw_if) Then
+                        Me.Needed_Elements.Add(sw_if)
+                    End If
                 End If
             Next
 
             For Each port In Me.Requirer_Ports
                 Dim sw_if As Software_Interface
                 sw_if = CType(Me.Get_Element_By_Uuid(port.Contract_Ref), Software_Interface)
-                If Not Me.Needed_Elements.Contains(sw_if) Then
-                    Me.Needed_Elements.Add(sw_if)
+                If Not IsNothing(sw_if) Then
+                    If Not Me.Needed_Elements.Contains(sw_if) Then
+                        Me.Needed_Elements.Add(sw_if)
+                    End If
                 End If
             Next
 
             For Each conf In Me.Configurations
                 Dim data_type As Data_Type
                 data_type = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
-                If Not data_type.Is_Basic_Type Then
-                    If Not Me.Needed_Elements.Contains(data_type) Then
-                        Me.Needed_Elements.Add(data_type)
+                If Not IsNothing(data_type) Then
+                    If Not data_type.Is_Basic_Type Then
+                        If Not Me.Needed_Elements.Contains(data_type) Then
+                            Me.Needed_Elements.Add(data_type)
+                        End If
                     End If
                 End If
             Next
