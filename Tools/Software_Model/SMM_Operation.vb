@@ -168,7 +168,7 @@ Public Class Operation_Argument
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
         If Me.Stream = E_STREAM.INVALID Then
-            Me.Add_Consistency_Check_Error_Item(report, "Arg_1",
+            Me.Add_Consistency_Check_Error_Item(report, "ARG_1",
                 "Stream shall be 'IN' or 'OUT'.")
         End If
     End Sub

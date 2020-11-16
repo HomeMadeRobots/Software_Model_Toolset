@@ -211,6 +211,19 @@ Public Class Component_Type
                 "SWCT_1",
                 "Shall aggregate at least one Port.")
         End If
+
+        If Me.Is_Composite = False Then
+            If Me.Configurations.Count <> 0 Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "SWCT_2",
+                    "Composite Component_Type cannot aggregate Configuration_Parameters.")
+            End If
+            If Me.Base_Class_Ref <> Guid.Empty Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "SWCT_3",
+                    "Composite Component_Type cannot inherit from an other Component_Type.")
+            End If
+        End If
     End Sub
 
 
