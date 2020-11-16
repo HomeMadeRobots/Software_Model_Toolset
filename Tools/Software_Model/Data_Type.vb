@@ -1,5 +1,6 @@
 ﻿Imports rhapsody2
 Imports System.Globalization
+Imports System.Text.RegularExpressions
 
 Public MustInherit Class Data_Type
 
@@ -78,6 +79,11 @@ Public MustInherit Class Data_Type
         End If
         Return Me.Dependent_Elements
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Public MustOverride Function Is_Value_Valid(value As String) As Boolean
 
 End Class
 
@@ -211,22 +217,160 @@ End Class
 
 Public Class Basic_Integer_Type
     Inherits Basic_Type
+
+    Public Enum E_Signedness_Type
+        SIGNED
+        UNSIGNED
+    End Enum
+
+    Private Size As Integer ' number of bytes
+    Private Signedness As E_Signedness_Type
+
+    Sub New(
+        symbol As String,
+        guid_str As String,
+        rpy_type As RPModelElement,
+        size As Integer,
+        signedness As E_Signedness_Type)
+        Me.Name = symbol
+        Guid.TryParse(guid_str, Me.UUID)
+        Me.Rpy_Element = rpy_type
+        Me.Size = size
+        Me.Signedness = signedness
+    End Sub
+
+    Public Overrides Function Is_Value_Valid(value As String) As Boolean
+        Dim is_valid As Boolean = False
+        Select Case Me.Signedness
+            Case E_Signedness_Type.SIGNED
+                Dim is_int As Boolean
+                Dim value_int As Int64
+                is_int = Int64.TryParse(
+                    value,
+                    NumberStyles.Integer,
+                    CultureInfo.InvariantCulture,
+                    value_int)
+                If is_int = True Then
+                    Select Case Me.Size
+                        Case 1
+                            If value_int >= -128 And value_int <= 127 Then
+                                is_valid = True
+                            End If
+                        Case 2
+                            If value_int >= -32768 And value_int <= 32767 Then
+                                is_valid = True
+                            End If
+                        Case 4
+                            If value_int >= -2147483648 And value_int <= 2147483647 Then
+                                is_valid = True
+                            End If
+                        Case 8
+                            is_valid = True
+                    End Select
+                End If
+            Case E_Signedness_Type.UNSIGNED
+                Dim is_uint As Boolean
+                Dim value_uint As UInt64
+                is_uint = UInt64.TryParse(
+                    value,
+                    NumberStyles.Integer,
+                    CultureInfo.InvariantCulture,
+                    value_uint)
+                If is_uint = True Then
+                    Select Case Me.Size
+                        Case 1
+                            If value_uint <= 255 Then
+                                is_valid = True
+                            End If
+                        Case 2
+                            If value_uint <= 65535 Then
+                                is_valid = True
+                            End If
+                        Case 4
+                            If value_uint <= 4294967295 Then
+                                is_valid = True
+                            End If
+                        Case 8
+                            is_valid = True
+                    End Select
+                End If
+        End Select
+        Return is_valid
+    End Function
+
 End Class
 
 Public Class Basic_Floating_Point_Type
     Inherits Basic_Type
+
+    Public Overrides Function Is_Value_Valid(value As String) As Boolean
+        If Regex.IsMatch(value, "^[0-9]+[.|,][0-9]+$") Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
 End Class
 
 Public Class Basic_Boolean_Type
     Inherits Basic_Type
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Public Overrides Function Is_Value_Valid(value As String) As Boolean
+        If Regex.IsMatch(value, "^(true|false)$", RegexOptions.IgnoreCase) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
 End Class
 
 Public Class Basic_Integer_Array_Type
     Inherits Basic_Type
+
+    Private Basic_Integer_Type_Ref As Guid
+
+    Public Overrides Function Is_Value_Valid(value As String) As Boolean
+        Dim is_valid As Boolean = False
+        If Regex.IsMatch(value, "^\[[\d|\D]*\]$") Then
+            Dim values_list As String()
+            values_list = Split(value.Substring(1, value.Length - 2), " ")
+            If values_list.Count >= 2 Then
+                Dim all_valid As Boolean = True
+                Dim base_type As Data_Type
+                base_type = CType(Get_Element_By_Uuid(Me.Basic_Integer_Type_Ref), Data_Type)
+                For idx = 0 To values_list.Count - 1
+                    If base_type.Is_Value_Valid(values_list(idx)) = False Then
+                        all_valid = False
+                        Exit For
+                    End If
+                Next
+                is_valid = all_valid
+            End If
+        End If
+        Return is_valid
+    End Function
+
 End Class
 
 Public Class Basic_Character_Type
     Inherits Basic_Type
+
+    Private Size As Integer ' character number, 0 for infinite
+
+    Public Overrides Function Is_Value_Valid(value As String) As Boolean
+        Dim is_valid As Boolean = False
+        If Me.Size = 0 Then
+            is_valid = True
+        ElseIf value.Length <= Me.Size Then
+            is_valid = True
+        End If
+        Return is_valid
+    End Function
+
 End Class
 
 
@@ -377,6 +521,17 @@ Public Class Enumerated_Data_Type
 
     End Sub
 
+    Public Overrides Function Is_Value_Valid(data_value As String) As Boolean
+        Dim is_valid As Boolean = False
+        For Each current_enumeral In Me.Enumerals
+            If data_value = current_enumeral.Name Then
+                is_valid = True
+                Exit For
+            End If
+        Next
+        Return is_valid
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
@@ -506,6 +661,27 @@ Public Class Array_Data_Type
         End If
 
     End Sub
+
+    Public Overrides Function Is_Value_Valid(value As String) As Boolean
+        Dim is_valid As Boolean = False
+        If Regex.IsMatch(value, "^\[[\d|\D]*\]$") Then
+            Dim values_list As String()
+            values_list = Split(value.Substring(1, value.Length - 2), " ")
+            If values_list.Count = CDbl(Me.Multiplicity) Then
+                Dim all_valid As Boolean = True
+                Dim base_type As Data_Type
+                base_type = CType(Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+                For idx = 0 To values_list.Count - 1
+                    If base_type.Is_Value_Valid(values_list(idx)) = False Then
+                        all_valid = False
+                        Exit For
+                    End If
+                Next
+                is_valid = all_valid
+            End If
+        End If
+        Return is_valid
+    End Function
 
 
     '----------------------------------------------------------------------------------------------'
@@ -660,7 +836,30 @@ Public Class Physical_Data_Type
 
     End Sub
 
-'----------------------------------------------------------------------------------------------'
+    Public Overrides Function Is_Value_Valid(value As String) As Boolean
+        Dim is_valid As Boolean = False
+        Dim value_decimal As Decimal
+        Dim is_value_decimal As Boolean
+        is_value_decimal = Decimal.TryParse(
+            value.Replace(",", "."),
+            NumberStyles.Any, _
+            CultureInfo.GetCultureInfo("en-US"), _
+            value_decimal)
+        If is_value_decimal = True Then
+            Dim value_integer As Integer
+            value_integer = CInt((value_decimal - Me.Offset) / Me.Resolution)
+            Dim base_integer_type As Data_Type
+            base_integer_type = CType(Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+            If base_integer_type.Is_Value_Valid(value_integer.ToString) Then
+                is_valid = True
+            End If
+        End If
+
+        Return is_valid
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
     Public Overrides Function Get_Complexity() As Double
         Return 1.2
@@ -738,6 +937,29 @@ Public Class Structured_Data_Type
         End If
 
     End Sub
+
+    Public Overrides Function Is_Value_Valid(value As String) As Boolean
+        Dim is_valid As Boolean = False
+        If Regex.IsMatch(value, "^\{[\d|\D]*\}$") Then
+            Dim values_list As String()
+            values_list = Split(value.Substring(1, value.Length - 2), ";")
+            If values_list.Count = CDbl(Me.Fields.Count) Then
+                Dim all_valid As Boolean = True
+                For idx = 0 To values_list.Count - 1
+                    Dim field_type_uuid As Guid
+                    field_type_uuid = Me.Fields(idx).Base_Data_Type_Ref
+                    Dim field_type As Data_Type
+                    field_type = CType(Get_Element_By_Uuid(field_type_uuid), Data_Type)
+                    If field_type.Is_Value_Valid(values_list(idx)) = False Then
+                        all_valid = False
+                        Exit For
+                    End If
+                Next
+                is_valid = all_valid
+            End If
+        End If
+        Return is_valid
+    End Function
 
 
     '----------------------------------------------------------------------------------------------'
