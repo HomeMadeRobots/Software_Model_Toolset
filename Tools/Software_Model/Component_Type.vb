@@ -223,6 +223,52 @@ Public Class Component_Type
                     "SWCT_3",
                     "Composite Component_Type cannot inherit from an other Component_Type.")
             End If
+        Else ' Is_Composite = True
+            Dim nb_connection_by_port As New Dictionary(Of Port, Integer)
+
+            For Each deleg_connect In Me.Delegation_Connectors
+
+                ' Check connections legality
+                Dim part_port As Port
+                part_port = CType(Get_Element_By_Uuid(deleg_connect.Part_Port_Ref), Port)
+                Dim swct_port As Port
+                swct_port = CType(Get_Element_By_Uuid(deleg_connect.Component_Type_Port_Ref), Port)
+                If part_port.GetType <> swct_port.GetType Then
+                    swct_port.Add_Consistency_Check_Error_Item(report, "PORT_3",
+                        "Shall be delegated to a port of the same kind.")
+                End If
+                If part_port.Contract_Ref <> swct_port.Contract_Ref Then
+                    swct_port.Add_Consistency_Check_Error_Item(report, "PORT_4",
+                        "Shall be delegated to a port with the same contract.")
+                End If
+
+                ' Count the number of connections of the ports
+                If nb_connection_by_port.ContainsKey(swct_port) Then
+                    Dim nb_connection As Integer = nb_connection_by_port.Item(swct_port)
+                    nb_connection_by_port.Item(swct_port) = nb_connection + 1
+                Else
+                    nb_connection_by_port.Add(swct_port, 1)
+                End If
+
+            Next
+
+            ' Check the number of connections of the ports
+            For Each checked_port In Me.Provider_Ports
+                If nb_connection_by_port.ContainsKey(checked_port) Then
+                    If nb_connection_by_port(checked_port) <> 1 Then
+                        checked_port.Add_Consistency_Check_Error_Item(report, "PORT_5",
+                            "Shall be delegated to only one port.")
+                    End If
+                End If
+            Next
+            For Each checked_port In Me.Requirer_Ports
+                If nb_connection_by_port.ContainsKey(checked_port) Then
+                    If nb_connection_by_port(checked_port) = 0 Then
+                        checked_port.Add_Consistency_Check_Error_Item(report, "PORT_6",
+                            "Shall be delegated to at least one port.")
+                    End If
+                End If
+            Next
         End If
     End Sub
 
