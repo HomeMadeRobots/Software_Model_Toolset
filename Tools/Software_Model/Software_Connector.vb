@@ -197,6 +197,16 @@ Public Class Assembly_Connector
                 "CONN_1",
                 "Shall link two different components.")
         End If
+
+        Dim rport As Requirer_Port = CType(Get_Element_By_Uuid(Me.Requirer_Port_Ref), Requirer_Port)
+        Dim pport As Provider_Port = CType(Get_Element_By_Uuid(Me.Provider_Port_Ref), Provider_Port)
+        If Not (IsNothing(rport) And IsNothing(pport)) Then
+            If rport.Contract_Ref <> pport.Contract_Ref Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "TBD", "Linked ports do not refer to the same interface.")
+            End If
+        End If
+
     End Sub
 
 End Class

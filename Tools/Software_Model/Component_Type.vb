@@ -136,11 +136,11 @@ Public Class Component_Type
         Dim rpy_port As RPPort
         For Each rpy_port In CType(Me.Rpy_Element, RPClass).ports
             If Is_Provider_Port(CType(rpy_port, RPModelElement)) Then
-                Dim pport As Provider_Port = New Provider_Port
+                Dim pport As Provider_Port = New Provider_Port(Me)
                 Me.Provider_Ports.Add(pport)
                 pport.Import_From_Rhapsody_Model(Me, CType(rpy_port, RPModelElement))
             ElseIf Is_Requirer_Port(CType(rpy_port, RPModelElement)) Then
-                Dim rport As Requirer_Port = New Requirer_Port
+                Dim rport As Requirer_Port = New Requirer_Port(Me)
                 Me.Requirer_Ports.Add(rport)
                 rport.Import_From_Rhapsody_Model(Me, CType(rpy_port, RPModelElement))
             End If
@@ -180,7 +180,7 @@ Public Class Component_Type
                 If Is_Connector_Prototype(CType(rpy_link, RPModelElement)) Then
                     Dim connector As Software_Element
                     If Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
-                        connector = New Delegation_Connector
+                        connector = New Delegation_Connector(Me)
                         Me.Delegation_Connectors.Add(CType(connector, Delegation_Connector))
                         connector.Import_From_Rhapsody_Model(Me, CType(rpy_link, RPModelElement))
                     ElseIf Assembly_Connector.Is_Assembly_Connector(rpy_link) Then
@@ -224,51 +224,7 @@ Public Class Component_Type
                     "Composite Component_Type cannot inherit from an other Component_Type.")
             End If
         Else ' Is_Composite = True
-            Dim nb_connection_by_port As New Dictionary(Of Port, Integer)
 
-            For Each deleg_connect In Me.Delegation_Connectors
-
-                ' Check connections legality
-                Dim part_port As Port
-                part_port = CType(Get_Element_By_Uuid(deleg_connect.Part_Port_Ref), Port)
-                Dim swct_port As Port
-                swct_port = CType(Get_Element_By_Uuid(deleg_connect.Component_Type_Port_Ref), Port)
-                If part_port.GetType <> swct_port.GetType Then
-                    swct_port.Add_Consistency_Check_Error_Item(report, "PORT_3",
-                        "Shall be delegated to a port of the same kind.")
-                End If
-                If part_port.Contract_Ref <> swct_port.Contract_Ref Then
-                    swct_port.Add_Consistency_Check_Error_Item(report, "PORT_4",
-                        "Shall be delegated to a port with the same contract.")
-                End If
-
-                ' Count the number of connections of the ports
-                If nb_connection_by_port.ContainsKey(swct_port) Then
-                    Dim nb_connection As Integer = nb_connection_by_port.Item(swct_port)
-                    nb_connection_by_port.Item(swct_port) = nb_connection + 1
-                Else
-                    nb_connection_by_port.Add(swct_port, 1)
-                End If
-
-            Next
-
-            ' Check the number of connections of the ports
-            For Each checked_port In Me.Provider_Ports
-                If nb_connection_by_port.ContainsKey(checked_port) Then
-                    If nb_connection_by_port(checked_port) <> 1 Then
-                        checked_port.Add_Consistency_Check_Error_Item(report, "PORT_5",
-                            "Shall be delegated to only one port.")
-                    End If
-                End If
-            Next
-            For Each checked_port In Me.Requirer_Ports
-                If nb_connection_by_port.ContainsKey(checked_port) Then
-                    If nb_connection_by_port(checked_port) = 0 Then
-                        checked_port.Add_Consistency_Check_Error_Item(report, "PORT_6",
-                            "Shall be delegated to at least one port.")
-                    End If
-                End If
-            Next
         End If
     End Sub
 
@@ -354,6 +310,17 @@ Public MustInherit Class Port
     Public Contract_Ref As Guid = Nothing
 
     Protected Nb_Contracts As UInteger = 0
+    Protected Owner As Component_Type
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods
+    Public Sub New()
+
+    End Sub
+
+    Public Sub New(parent_swct As Component_Type)
+        Me.Owner = parent_swct
+    End Sub
 
 
     '----------------------------------------------------------------------------------------------'
@@ -393,12 +360,45 @@ Public MustInherit Class Port
 
     End Sub
 
+    Protected Function Get_Nb_Delegations_In_Composite() As Integer
+        Dim nb_delegation As Integer = 0
+        If Me.Owner.Is_Composite_Component_Type Then
+            Dim rpy_port As RPPort = CType(Me.Rpy_Element, RPPort)
+            Dim rpy_elmt As RPModelElement
+            For Each rpy_elmt In rpy_port.references
+                If Is_Connector_Prototype(rpy_elmt) Then
+                    Dim rpy_link As RPLink = CType(rpy_elmt, RPLink)
+                    If Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
+                        ' Check that this delegation belongs to my owner (composite Component_Type)
+                        Dim delegation As Delegation_Connector
+                        delegation = CType(Me.Get_Element_By_Rpy_Guid(rpy_link.GUID),  _
+                                        Delegation_Connector)
+                        If delegation.Is_Owned_By(Me.Owner.UUID) Then
+                            nb_delegation += 1
+                        End If
+                    End If
+                End If
+            Next
+        End If
+        Return nb_delegation
+    End Function
+
 End Class
 
 
 Public Class Provider_Port
 
     Inherits Port
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods
+    Public Sub New()
+    End Sub
+
+    Public Sub New(parent_swct As Component_Type)
+        MyBase.New(parent_swct)
+    End Sub
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -513,6 +513,13 @@ Public Class Provider_Port
                 "Shall have one and only one contract.")
         End If
 
+        If Me.Owner.Is_Composite_Component_Type Then
+            If Me.Get_Nb_Delegations_In_Composite = 0 Then
+                Me.Add_Consistency_Check_Error_Item(report, "PORT_2",
+                    "Shall be delegated to only one port.")
+            End If
+        End If
+
     End Sub
 
 End Class
@@ -521,6 +528,16 @@ End Class
 Public Class Requirer_Port
 
     Inherits Port
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods
+    Public Sub New()
+    End Sub
+
+    Public Sub New(parent_swct As Component_Type)
+        MyBase.New(parent_swct)
+    End Sub
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -589,6 +606,19 @@ Public Class Requirer_Port
         End If
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+        If Me.Owner.Is_Composite_Component_Type Then
+            If Me.Get_Nb_Delegations_In_Composite = 0 Then
+                Me.Add_Consistency_Check_Error_Item(report, "PORT_3",
+                    "Shall be delegated to at least one port.")
+            End If
+        End If
+    End Sub
+
 End Class
 
 
@@ -636,19 +666,109 @@ Public Class Component_Type_Part
     ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
+
+        Dim base_class As Software_Element = Nothing
+        ' Check base class ref
         If Not Me.Type_Ref.Equals(Guid.Empty) Then
-            Dim base_class As Software_Element
             base_class = Me.Get_Element_By_Uuid(Me.Type_Ref)
             If Not base_class.GetType = GetType(Component_Type) Then
                 Me.Add_Consistency_Check_Error_Item(report,
                     "PART_1", "Shall reference a Component_Type.")
+                Exit Sub
             Else
                 If base_class.UUID = Me.Owner.UUID Then
                     Me.Add_Consistency_Check_Error_Item(report,
-                    "PART_2", "Shall not reference its parent Component_Type.")
+                        "PART_2", "Shall not reference its parent Component_Type.")
+                    Exit Sub
                 End If
             End If
         End If
+
+        ' Check connections (delegation and assembly)
+        Dim nb_assembly_by_pport As New Dictionary(Of Guid, Integer)
+        Dim nb_assembly_by_rport As New Dictionary(Of Guid, Integer)
+        Dim nb_delegation_by_port As New Dictionary(Of Guid, Integer)
+        Dim rpy_obj As RPInstance
+        rpy_obj = CType(Me.Rpy_Element, RPInstance)
+        Dim rpy_elmt As RPModelElement
+        For Each rpy_elmt In rpy_obj.references
+            If Is_Connector_Prototype(rpy_elmt) Then
+                Dim rpy_link As RPLink = CType(rpy_elmt, RPLink)
+                If Assembly_Connector.Is_Assembly_Connector(rpy_link) Then
+                    Dim assembly As Assembly_Connector
+                    assembly = CType(Me.Get_Element_By_Rpy_Guid(rpy_link.GUID), Assembly_Connector)
+                    If assembly.Provider_Component_Ref = Me.UUID Then
+                        If nb_assembly_by_pport.ContainsKey(assembly.Provider_Port_Ref) Then
+                            nb_assembly_by_pport(assembly.Provider_Port_Ref) += 1
+                        Else
+                            nb_assembly_by_pport.Add(assembly.Provider_Port_Ref, 1)
+                        End If
+                    Else
+                        If nb_assembly_by_rport.ContainsKey(assembly.Requirer_Port_Ref) Then
+                            nb_assembly_by_rport(assembly.Requirer_Port_Ref) += 1
+                        Else
+                            nb_assembly_by_rport.Add(assembly.Requirer_Port_Ref, 1)
+                        End If
+                    End If
+                ElseIf Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
+                    Dim delegation As Delegation_Connector
+                    delegation = CType(Me.Get_Element_By_Rpy_Guid(rpy_link.GUID),  _
+                                    Delegation_Connector)
+                    If nb_delegation_by_port.ContainsKey(delegation.Part_Port_Ref) Then
+                        nb_delegation_by_port(delegation.Part_Port_Ref) += 1
+                    Else
+                        nb_delegation_by_port.Add(delegation.Part_Port_Ref, 1)
+                    End If
+                End If
+            End If
+        Next
+        Dim base_swct As Component_Type = CType(base_class, Component_Type)
+        For Each pport In base_swct.Provider_Ports
+            If nb_delegation_by_port.ContainsKey(pport.UUID) Then
+                If nb_delegation_by_port.Item(pport.UUID) <> 1 Then
+                    ' several delegation
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "TBD", "Provider_Port '" & pport.Name & "' delegated several time.")
+                End If
+            Else
+                ' no delegation
+                If Not nb_assembly_by_pport.ContainsKey(pport.UUID) Then
+                    ' no delegation, no assembly
+                    Me.Add_Consistency_Check_Information_Item(report,
+                        "TBD", "Provider_Port '" & pport.Name & "' not used.")
+                End If
+            End If
+        Next
+        For Each rport In base_swct.Requirer_Ports
+            If nb_delegation_by_port.ContainsKey(rport.UUID) Then
+                If nb_delegation_by_port.Item(rport.UUID) <> 1 Then
+                    ' several delegation
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "TBD", "Requirer_Port '" & rport.Name & "' delegated several time.")
+                Else
+                    ' one delegation
+                    If nb_assembly_by_rport.ContainsKey(rport.UUID) Then
+                        ' one delegation + n assembly
+                        Me.Add_Consistency_Check_Error_Item(report,
+                            "TBD", "Requirer_Port '" & rport.Name & "' delegated and assembled.")
+                    End If
+                End If
+            Else
+                ' No delegation
+                If Not nb_assembly_by_rport.ContainsKey(rport.UUID) Then
+                    ' no delegation, no assembly
+                    Me.Add_Consistency_Check_Error_Item(report,
+                        "TBD", "Requirer_Port '" & rport.Name & "' not used.")
+                Else
+                    If nb_assembly_by_rport.Item(rport.UUID) > 1 Then
+                        ' to many assembly
+                        Me.Add_Consistency_Check_Error_Item(report,
+                            "TBD", "Requirer_Port '" & rport.Name & "' assembled several time.")
+                    End If
+                End If
+            End If
+        Next
+
     End Sub
 
 End Class
@@ -662,14 +782,22 @@ Public Class Delegation_Connector
     Public Part_Port_Ref As Guid
     Public Component_Type_Port_Ref As Guid
 
+    Private Owner As Component_Type
+
     ' Used for model merge
     Private Rpy_Part As RPInstance = Nothing
     Private Rpy_Part_Port As RPPort = Nothing
     Private Rpy_Component_Type_Port As RPPort = Nothing
 
-
     '----------------------------------------------------------------------------------------------'
     ' General methods 
+    Public Sub New()
+    End Sub
+
+    Public Sub New(parent_swct As Component_Type)
+        Me.Owner = parent_swct
+    End Sub
+
     Public Shared Function Is_Delegation_Connector(rpy_link As RPLink) As Boolean
         ' case # 1                      case #2
         ' toPort = swc_port             fromPort = swc_port
@@ -803,5 +931,32 @@ Public Class Delegation_Connector
             End If
         End If
     End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        Dim part_port As Port = CType(Get_Element_By_Uuid(Me.Part_Port_Ref), Port)
+        Dim swct_port As Port = CType(Get_Element_By_Uuid(Me.Component_Type_Port_Ref), Port)
+        If part_port.GetType <> swct_port.GetType Then
+            Me.Add_Consistency_Check_Error_Item(report, "DELEG_1",
+                "Linked ports are not of the same kind.")
+        End If
+        If part_port.Contract_Ref <> swct_port.Contract_Ref Then
+            Me.Add_Consistency_Check_Error_Item(report, "DELEG_2",
+                "Linked ports do not refer to the same contract.")
+        End If
+
+    End Sub
+
+    Public Function Is_Owned_By(owner_uuid As Guid) As Boolean
+        If owner_uuid = Me.Owner.UUID Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
 End Class
