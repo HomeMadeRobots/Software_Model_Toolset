@@ -167,7 +167,7 @@ Public Class Component_Type
         Dim rpy_object As RPInstance
         For Each rpy_object In CType(Me.Rpy_Element, RPClass).relations
             If Is_Component_Type_Part(CType(rpy_object, RPModelElement)) Then
-                Dim part As Component_Type_Part = New Component_Type_Part
+                Dim part As Component_Type_Part = New Component_Type_Part(Me)
                 Me.Parts.Add(part)
                 part.Import_From_Rhapsody_Model(Me, CType(rpy_object, RPModelElement))
                 Me.Is_Composite = True
@@ -609,9 +609,17 @@ End Class
 Public Class Component_Type_Part
     Inherits SMM_Object
 
+    Private Owner As Component_Type
+
     '----------------------------------------------------------------------------------------------'
     ' General methods
+    Public Sub New()
+        ' For serialization
+    End Sub
 
+    Public Sub New(parent_swct As Component_Type)
+        Me.Owner = parent_swct
+    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -626,6 +634,22 @@ Public Class Component_Type_Part
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+        If Not Me.Type_Ref.Equals(Guid.Empty) Then
+            Dim base_class As Software_Element
+            base_class = Me.Get_Element_By_Uuid(Me.Type_Ref)
+            If Not base_class.GetType = GetType(Component_Type) Then
+                Me.Add_Consistency_Check_Error_Item(report,
+                    "PART_1", "Shall reference a Component_Type.")
+            Else
+                If base_class.UUID = Me.Owner.UUID Then
+                    Me.Add_Consistency_Check_Error_Item(report,
+                    "PART_2", "Shall not reference its parent Component_Type.")
+                End If
+            End If
+        End If
+    End Sub
 
 End Class
 
