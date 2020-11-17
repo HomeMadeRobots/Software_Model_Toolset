@@ -20,6 +20,14 @@ Public MustInherit Class Software_Element
         Return Me.Container.Get_Element(element_uuid)
     End Function
 
+    Public Function Get_Element_By_Rpy_Guid(element_guid_str As String) As Software_Element
+        ' Shall not be used for merge
+        ' Shall be used only after Rpy model import (for check or metric computation)
+        Dim element_uuid As Guid
+        element_uuid = Transform_Rpy_GUID_To_Guid(element_guid_str)
+        Return Me.Container.Get_Element(element_uuid)
+    End Function
+
     Public Shared Function Is_Symbol_Valid(symbol As String) As Boolean
         Dim result As Boolean = False
         If Regex.IsMatch(symbol, "^[a-zA-Z][a-zA-Z0-9_]+$") Then
