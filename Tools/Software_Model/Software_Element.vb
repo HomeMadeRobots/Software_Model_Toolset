@@ -746,6 +746,23 @@ Public MustInherit Class Attribute_Software_Element
         CType(rpy_elmt, RPAttribute).defaultValue = Me.Default_Value
     End Sub
 
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+        Dim attr_type As Data_Type
+        attr_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        If IsNothing(Me.Default_Value) Then
+            Me.Add_Consistency_Check_Error_Item(report, "ATTR_1", "Default value is empty.")
+        Else
+            If Not attr_type.Is_Value_Valid(Me.Default_Value) Then
+                Me.Add_Consistency_Check_Error_Item(report, "ATTR_2",
+                    "Invalid default value (" & Me.Default_Value.Replace(";", ",") & _
+                    ") for type " & attr_type.Name & ".")
+            End If
+        End If
+    End Sub
+
 End Class
 
 
