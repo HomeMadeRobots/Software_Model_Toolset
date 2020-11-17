@@ -11,14 +11,14 @@
 			<_id type="a">GUID fb48d6a1-4193-4abc-a7e4-2e98bfe4df96</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Data_Type_Metamodel</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::12:24:9</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">11.17.2020::9:49:34</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Data_Type_Metamodel profile defines meta-classes allowing to model any kind of data types used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.5.2020::12:24:9</_modifiedTime>
+			<_modifiedTime type="a">11.17.2020::9:49:34</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">10.5.2020::12:24:9</weakCGTime>
+			<weakCGTime type="a">11.17.2020::9:49:34</weakCGTime>
 			<strongCGTime type="a">8.14.2019::9:19:12</strongCGTime>
 			<_defaultComposite type="s">GUID e1a7b393-5e2c-474c-bdbc-ce062cebc552</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -34,10 +34,10 @@
 			<_id type="a">GUID 54ecf3c4-171e-4cc8-ab2e-76ed8a126266</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">9.28.2020::13:37:36</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::13:37:36</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.17.2020::9:49:34</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.17.2020::9:49:34</_modifiedTime>
 			<_lastID type="a">23</_lastID>
-			<weakCGTime type="a">9.28.2020::13:37:36</weakCGTime>
+			<weakCGTime type="a">11.17.2020::9:49:34</weakCGTime>
 			<strongCGTime type="a">6.21.2018::9:54:10</strongCGTime>
 			<_defaultComposite type="s">GUID dff3b461-1a92-4f06-a501-6e103605318f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -64,13 +64,7 @@
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">2</size>
-												<IProperty type="e">
-													<_Name type="a">Aggregates</_Name>
-													<_Value type="a">Empty</_Value>
-													<_Type type="a">String</_Type>
-												</IProperty>
-												
+												<size type="a">1</size>
 												<IProperty type="e">
 													<_Name type="a">Owners</_Name>
 													<_Value type="a">Software_Package</_Value>
@@ -90,7 +84,7 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.28.2020::13:5:20</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">11.17.2020::9:49:34</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_textRTF type="a">{\rtf1\fbidis\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\fnil\fcharset0 Arial;}}%0D
 \viewkind4\uc1\pard\ltrpar\sa160\sl252\slmult1\qj\lang1033\f0\fs24 Data_Type is introduced to classify data in order to specify which type of value it has and what type of mathematical, relational or logical operation can be applied to it.\par%0D
@@ -99,7 +93,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 </_textRTF>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.28.2020::13:5:20</_modifiedTime>
+			<_modifiedTime type="a">11.17.2020::9:49:34</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
