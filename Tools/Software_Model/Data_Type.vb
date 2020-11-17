@@ -183,8 +183,10 @@ Public MustInherit Class Data_Type_Base_Typed
             Me.Needed_Elements = New List(Of SMM_Classifier)
             Dim data_type As Data_Type
             data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
-            If Not data_type.Is_Basic_Type Then
-                Me.Needed_Elements.Add(data_type)
+            If Not IsNothing(data_type) Then
+                If Not data_type.Is_Basic_Type Then
+                    Me.Needed_Elements.Add(data_type)
+                End If
             End If
         End If
         Return Me.Needed_Elements
@@ -197,6 +199,12 @@ Public MustInherit Class Basic_Type
 
     Inherits Data_Type
 
+    Public Sub New(symbol As String, guid_str As String, rpy_type As RPModelElement)
+        Me.Name = symbol
+        Guid.TryParse(guid_str, Me.UUID)
+        Me.Rpy_Element = rpy_type
+    End Sub
+
     Public Overrides Function Is_Basic_Type() As Boolean
         Return True
     End Function
@@ -208,10 +216,6 @@ Public MustInherit Class Basic_Type
     Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         Return Nothing
     End Function
-
-    Public Sub Set_Rpy_Element(rpy_type As RPModelElement)
-        Me.Rpy_Element = rpy_type
-    End Sub
 
 End Class
 
@@ -232,9 +236,7 @@ Public Class Basic_Integer_Type
         rpy_type As RPModelElement,
         size As Integer,
         signedness As E_Signedness_Type)
-        Me.Name = symbol
-        Guid.TryParse(guid_str, Me.UUID)
-        Me.Rpy_Element = rpy_type
+        MyBase.New(symbol, guid_str, rpy_type)
         Me.Size = size
         Me.Signedness = signedness
     End Sub
@@ -303,6 +305,10 @@ End Class
 Public Class Basic_Floating_Point_Type
     Inherits Basic_Type
 
+    Sub New(symbol As String, guid_str As String, rpy_type As RPModelElement)
+        MyBase.New(symbol, guid_str, rpy_type)
+    End Sub
+
     Public Overrides Function Is_Value_Valid(value As String) As Boolean
         If Regex.IsMatch(value, "^[0-9]+[.|,][0-9]+$") Then
             Return True
@@ -315,6 +321,11 @@ End Class
 
 Public Class Basic_Boolean_Type
     Inherits Basic_Type
+
+
+    Sub New(symbol As String, guid_str As String, rpy_type As RPModelElement)
+        MyBase.New(symbol, guid_str, rpy_type)
+    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
@@ -331,7 +342,16 @@ End Class
 Public Class Basic_Integer_Array_Type
     Inherits Basic_Type
 
-    Private Basic_Integer_Type_Ref As Guid
+    Private Basic_Integer_Type As Basic_Integer_Type
+
+    Public Sub New(
+        symbol As String,
+        guid_str As String,
+        rpy_type As RPModelElement,
+        basic_type As Basic_Integer_Type)
+        MyBase.New(symbol, guid_str, rpy_type)
+        Me.Basic_Integer_Type = basic_type
+    End Sub
 
     Public Overrides Function Is_Value_Valid(value As String) As Boolean
         Dim is_valid As Boolean = False
@@ -340,10 +360,8 @@ Public Class Basic_Integer_Array_Type
             values_list = Split(value.Substring(1, value.Length - 2), " ")
             If values_list.Count >= 2 Then
                 Dim all_valid As Boolean = True
-                Dim base_type As Data_Type
-                base_type = CType(Get_Element_By_Uuid(Me.Basic_Integer_Type_Ref), Data_Type)
                 For idx = 0 To values_list.Count - 1
-                    If base_type.Is_Value_Valid(values_list(idx)) = False Then
+                    If Me.Basic_Integer_Type.Is_Value_Valid(values_list(idx)) = False Then
                         all_valid = False
                         Exit For
                     End If
@@ -360,6 +378,11 @@ Public Class Basic_Character_Type
     Inherits Basic_Type
 
     Private Size As Integer ' character number, 0 for infinite
+
+    Sub New(symbol As String, guid_str As String, rpy_type As RPModelElement, max_size As Integer)
+        MyBase.New(symbol, guid_str, rpy_type)
+        Me.Size = max_size
+    End Sub
 
     Public Overrides Function Is_Value_Valid(value As String) As Boolean
         Dim is_valid As Boolean = False
@@ -665,8 +688,9 @@ Public Class Array_Data_Type
     Public Overrides Function Is_Value_Valid(value As String) As Boolean
         Dim is_valid As Boolean = False
         If Regex.IsMatch(value, "^\[[\d|\D]*\]$") Then
-            Dim values_list As String()
-            values_list = Split(value.Substring(1, value.Length - 2), " ")
+            Dim values_list As List(Of String)
+            values_list = Split(value.Substring(1, value.Length - 2), " ").ToList
+            values_list.RemoveAll(Function(str) str = "")
             If values_list.Count = CDbl(Me.Multiplicity) Then
                 Dim all_valid As Boolean = True
                 Dim base_type As Data_Type
@@ -850,8 +874,10 @@ Public Class Physical_Data_Type
             value_integer = CInt((value_decimal - Me.Offset) / Me.Resolution)
             Dim base_integer_type As Data_Type
             base_integer_type = CType(Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
-            If base_integer_type.Is_Value_Valid(value_integer.ToString) Then
-                is_valid = True
+            If Not IsNothing(base_integer_type) Then
+                If base_integer_type.Is_Value_Valid(value_integer.ToString) Then
+                    is_valid = True
+                End If
             End If
         End If
 
@@ -940,17 +966,23 @@ Public Class Structured_Data_Type
 
     Public Overrides Function Is_Value_Valid(value As String) As Boolean
         Dim is_valid As Boolean = False
-        If Regex.IsMatch(value, "^\{[\d|\D]*\}$") Then
-            Dim values_list As String()
-            values_list = Split(value.Substring(1, value.Length - 2), ";")
-            If values_list.Count = CDbl(Me.Fields.Count) Then
+        Dim struct_match As Match
+        struct_match = Regex.Match(value, "^\s*\{([\d|\D]*)\}\s*$")
+        If struct_match.Success = True Then
+            Dim struct_fields_match As MatchCollection
+            struct_fields_match = Regex.Matches(struct_match.Groups(1).Value, "([^;])+")
+            Dim fields_list As New List(Of String)
+            For idx = 0 To struct_fields_match.Count - 1
+                fields_list.Add(struct_fields_match.Item(idx).Value.Trim)
+            Next
+            If fields_list.Count = CDbl(Me.Fields.Count) Then
                 Dim all_valid As Boolean = True
-                For idx = 0 To values_list.Count - 1
+                For idx = 0 To fields_list.Count - 1
                     Dim field_type_uuid As Guid
                     field_type_uuid = Me.Fields(idx).Base_Data_Type_Ref
                     Dim field_type As Data_Type
                     field_type = CType(Get_Element_By_Uuid(field_type_uuid), Data_Type)
-                    If field_type.Is_Value_Valid(values_list(idx)) = False Then
+                    If field_type.Is_Value_Valid(fields_list(idx)) = False Then
                         all_valid = False
                         Exit For
                     End If
@@ -980,9 +1012,11 @@ Public Class Structured_Data_Type
             For Each fd In Me.Fields
                 Dim data_type As Data_Type
                 data_type = CType(Me.Get_Element_By_Uuid(fd.Base_Data_Type_Ref), Data_Type)
-                If Not data_type.Is_Basic_Type Then
-                    If Not Me.Needed_Elements.Contains(data_type) Then
-                        Me.Needed_Elements.Add(data_type)
+                If Not IsNothing(data_type) Then
+                    If Not data_type.Is_Basic_Type Then
+                        If Not Me.Needed_Elements.Contains(data_type) Then
+                            Me.Needed_Elements.Add(data_type)
+                        End If
                     End If
                 End If
             Next

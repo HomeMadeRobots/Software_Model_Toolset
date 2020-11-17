@@ -3,6 +3,7 @@ Imports System.IO
 Imports System.Xml
 Imports System.Xml.Serialization
 Imports System.Text
+Imports Software_Model.Basic_Integer_Type
 
 
 
@@ -18,22 +19,19 @@ Public Class Software_Model_Container
     Private Consistency_Report As Consistency_Check_Report
     Private Import_Report As Report
 
-    Private Shared Basic_Integer_Type_Name_List() As String =
-        {"sint8", "sint16", "sint32", "sint64", "uint8", "uint16", "uint32", "uint64"}
-    Private Shared Basic_Integer_Type_Uuid_List() As String = {
-        "e6f0bcaa-8b2b-43b6-b1e5-553b4a3f74d0",
-        "ebb36a0f-a588-4dc2-b4ff-03b59b7f0451",
-        "874ecc76-8567-4d26-babc-0a38a4c8e1df",
-        "417d1937-91ff-4bc6-ad20-46b03d49d6b5",
-        "058963e7-375f-4f57-aceb-5a2f36b75490",
-        "0d6a9487-2e1a-4d71-8dcb-52824fa8170d",
-        "3f1b684a-51d5-4374-a479-56bd195faa9e",
-        "f49b3ace-96bc-463c-8444-5436f4a801f1"}
+    Private Shared Basic_Integer_Type_Data As Object(,) = New Object(,) {
+        {"sint8", "e6f0bcaa-8b2b-43b6-b1e5-553b4a3f74d0", 1, E_Signedness_Type.SIGNED},
+        {"sint16", "ebb36a0f-a588-4dc2-b4ff-03b59b7f0451", 2, E_Signedness_Type.SIGNED},
+        {"sint32", "874ecc76-8567-4d26-babc-0a38a4c8e1df", 4, E_Signedness_Type.SIGNED},
+        {"sint64", "417d1937-91ff-4bc6-ad20-46b03d49d6b5", 8, E_Signedness_Type.SIGNED},
+        {"uint8", "058963e7-375f-4f57-aceb-5a2f36b75490", 1, E_Signedness_Type.UNSIGNED},
+        {"uint16", "0d6a9487-2e1a-4d71-8dcb-52824fa8170d", 2, E_Signedness_Type.UNSIGNED},
+        {"uint32", "3f1b684a-51d5-4374-a479-56bd195faa9e", 4, E_Signedness_Type.UNSIGNED},
+        {"uint64", "f49b3ace-96bc-463c-8444-5436f4a801f1", 8, E_Signedness_Type.UNSIGNED}}
 
-    Private Shared Basic_Floating_Type_Name_List() As String = {"fp32", "fp64"}
-    Private Shared Basic_Floating_Type_Uuid_List() As String = {
-        "1045feea-03f6-4690-a89c-33134ec24f54",
-        "d74c7bfa-9e57-443f-ab99-96ab3cdcce0b"}
+    Private Shared Basic_Floating_Type_Data As Object(,) = New Object(,) {
+        {"fp32", "1045feea-03f6-4690-a89c-33134ec24f54"},
+        {"fp64", "d74c7bfa-9e57-443f-ab99-96ab3cdcce0b"}}
 
     Private Data_Types_List As List(Of Data_Type) = Nothing
     Private Interfaces_List As List(Of Software_Interface) = Nothing
@@ -207,57 +205,57 @@ Public Class Software_Model_Container
         Dim type As Basic_Type
         Dim rpy_type As RPModelElement
         ' Treat Basic_Integer_Types
-        Dim nb_int_types As Integer = Basic_Integer_Type_Name_List.Count
+        Dim nb_int_types As Integer = Basic_Integer_Type_Data.GetLength(0)
         For type_idx = 0 To nb_int_types - 1
-            type = New Basic_Integer_Type
-            type.Name = Basic_Integer_Type_Name_List(type_idx)
-            rpy_type = Me.Find_In_Rpy_Project("GUID " & Basic_Integer_Type_Uuid_List(type_idx))
-            type.Set_Rpy_Element(rpy_type)
-            Guid.TryParse(Basic_Integer_Type_Uuid_List(type_idx), type.UUID)
+            rpy_type = Me.Find_In_Rpy_Project("GUID " & CStr(Basic_Integer_Type_Data(type_idx, 1)))
+            type = New Basic_Integer_Type(
+                CStr(Basic_Integer_Type_Data(type_idx, 0)),
+                CStr(Basic_Integer_Type_Data(type_idx, 1)),
+                rpy_type,
+                CInt(Basic_Integer_Type_Data(type_idx, 2)),
+                CType(Basic_Integer_Type_Data(type_idx, 3), E_Signedness_Type))
             basic_types_pkg.Data_Types.Add(type)
             Me.Add_Element(type)
         Next
         ' Treat Basic_Floating_Point_Types
-        Dim nb_fp_types As Integer = Basic_Floating_Type_Name_List.Count
+        Dim nb_fp_types As Integer = Basic_Floating_Type_Data.GetLength(0)
         For type_idx = 0 To nb_fp_types - 1
-            type = New Basic_Floating_Point_Type
-            type.Name = Basic_Floating_Type_Name_List(type_idx)
-            rpy_type = Me.Find_In_Rpy_Project("GUID " & Basic_Integer_Type_Uuid_List(type_idx))
-            type.Set_Rpy_Element(rpy_type)
-            Guid.TryParse(Basic_Floating_Type_Uuid_List(type_idx), type.UUID)
+            rpy_type = Me.Find_In_Rpy_Project("GUID " & CStr(Basic_Floating_Type_Data(type_idx, 1)))
+            type = New Basic_Floating_Point_Type(
+                CStr(Basic_Floating_Type_Data(type_idx, 0)),
+                CStr(Basic_Floating_Type_Data(type_idx, 1)),
+                rpy_type)
             basic_types_pkg.Data_Types.Add(type)
             Me.Add_Element(type)
         Next
         ' Treat Basic_Boolean_Type
-        type = New Basic_Boolean_Type
-        type.Name = "boolean"
         rpy_type = Me.Find_In_Rpy_Project("GUID 5df8e979-be4c-4790-87a7-f8ee053c4162")
-        type.Set_Rpy_Element(rpy_type)
-        Guid.TryParse("5df8e979-be4c-4790-87a7-f8ee053c4162", type.UUID)
+        type = New Basic_Boolean_Type("boolean", "5df8e979-be4c-4790-87a7-f8ee053c4162", rpy_type)
         basic_types_pkg.Data_Types.Add(type)
         Me.Add_Element(type)
         ' Treat Basic_Integer_Array_Types
-        type = New Basic_Integer_Array_Type
-        type.Name = "uint8_array"
         rpy_type = Me.Find_In_Rpy_Project("GUID b86a2bc4-2c3f-4cff-9217-4a07af95fdd2")
-        type.Set_Rpy_Element(rpy_type)
-        Guid.TryParse("b86a2bc4-2c3f-4cff-9217-4a07af95fdd2", type.UUID)
+        Dim base_type_uuid As Guid
+        Guid.TryParse("058963e7-375f-4f57-aceb-5a2f36b75490", base_type_uuid)
+        Dim base_type As Software_Element
+        base_type = Me.Get_Element_By_Uuid(base_type_uuid)
+        type = New Basic_Integer_Array_Type(
+            "uint8_array",
+            "b86a2bc4-2c3f-4cff-9217-4a07af95fdd2",
+            rpy_type,
+            CType(base_type, Basic_Integer_Type))
         basic_types_pkg.Data_Types.Add(type)
         Me.Add_Element(type)
         ' Treat character
-        type = New Basic_Character_Type
-        type.Name = "character"
         rpy_type = Me.Find_In_Rpy_Project("GUID 0b72335d-1ae5-4182-a916-c731838ed0b7")
-        type.Set_Rpy_Element(rpy_type)
-        Guid.TryParse("0b72335d-1ae5-4182-a916-c731838ed0b7", type.UUID)
+        type = New Basic_Character_Type(
+            "character", "0b72335d-1ae5-4182-a916-c731838ed0b7", rpy_type, 1)
         basic_types_pkg.Data_Types.Add(type)
         Me.Add_Element(type)
         ' Treat characters_string
-        type = New Basic_Character_Type
-        type.Name = "characters_string"
         rpy_type = Me.Find_In_Rpy_Project("GUID 9b2c2f9e-c662-4494-a932-00581b21d3bb")
-        type.Set_Rpy_Element(rpy_type)
-        Guid.TryParse("9b2c2f9e-c662-4494-a932-00581b21d3bb", type.UUID)
+        type = New Basic_Character_Type(
+            "characters_string", "9b2c2f9e-c662-4494-a932-00581b21d3bb", rpy_type, 0)
         basic_types_pkg.Data_Types.Add(type)
         Me.Add_Element(type)
 
