@@ -43,14 +43,14 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Physical_Software_Architecture_Metamodel</_name>
-			<_modifiedTimeWeak type="a">11.6.2020::15:2:24</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">11.18.2020::9:28:13</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Architecture_Metamodel profile defines meta-classes allowing to model any architecture pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">11.6.2020::15:2:24</_modifiedTime>
+			<_modifiedTime type="a">11.18.2020::9:32:24</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">11.6.2020::15:2:24</weakCGTime>
+			<weakCGTime type="a">11.18.2020::9:28:13</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID cb071234-229f-4e53-945f-4b65413c0797</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -2267,10 +2267,10 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_id type="a">GUID d805ef58-dd19-4ea6-ad1f-99a12cea99b4</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">11.6.2020::14:52:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.18.2020::9:28:13</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:28:13</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">11.6.2020::14:52:57</weakCGTime>
+			<weakCGTime type="a">11.18.2020::9:28:13</weakCGTime>
 			<strongCGTime type="a">5.14.2018::8:35:23</strongCGTime>
 			<_defaultComposite type="s">GUID 4237a6eb-f20a-485c-b0bf-134376eacf45</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -6790,7 +6790,7 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<m_dataSize type="a">411</m_dataSize>
 			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az9c4cb122Z4cb122z394cb122Z4cb122z394cb122Z4cb122z394cb122Z4cb122z394cb122Z4cb122z254cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122z114cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122Z4cb122z254cb122Z4cb122z394cb122Z4cb122z394cb122Z4cb122z394cb122Z4cb122z394cb122Z4cb122z9dg40</m_data>
 			<m_srcFile type="a">..\icons\green_cross.ico</m_srcFile>
-			<m_fileModifiedTime type="a">9.3.2020::8:25:53</m_fileModifiedTime>
+			<m_fileModifiedTime type="a">9.3.2020::7:25:53</m_fileModifiedTime>
 		</CGIImageData>
 		<CGIImageData type="e">
 			<_id type="a">GUID fbd96c23-a24c-44ff-8cfa-2cd809c9d4d2</_id>
@@ -9057,7 +9057,7 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<m_dataSize type="a">3994</m_dataSize>
 			<m_data type="a">25be#GG01G01G3030GG01G20Ga825GG16g0328g0330g0360g0301G20g0624GGc30eGGc30eg0azFFzFFzFFzFFzFFzFFz26a449a3Za449a3zb9a449a3Za449a3Za449a3Za449a3zb1a449a3Za449a3Za449a3Za449a3Za449a3Za449a3za9a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3za1a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z99a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z91a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z89a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z81a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z79a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z71a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z69a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z61a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z59a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z51a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z49a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z41a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z41a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z49a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z51a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z59a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z61a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z69a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z71a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z79a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z81a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z89a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z91a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3z99a449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3Za449a3za1a449a3Za449a3Za449a3Za449a3Za449a3Za449a3za9a449a3Za449a3Za449a3Za449a3zb1a449a3Za449a3zFFzFFzFFzFFzFFzFFz9fgFFg81</m_data>
 			<m_srcFile type="a">..\icons\purple_triangle.ico</m_srcFile>
-			<m_fileModifiedTime type="a">9.3.2020::8:25:53</m_fileModifiedTime>
+			<m_fileModifiedTime type="a">9.3.2020::7:25:53</m_fileModifiedTime>
 		</CGIImageData>
 		<CGIImageData type="e">
 			<_id type="a">GUID d2447d9a-c1d9-4370-837e-1de24874bd3f</_id>
@@ -9777,21 +9777,25 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_id type="a">GUID f28a6f03-2134-4631-860b-f7cf76664d78</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">11.6.2020::14:52:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
-			<_lastID type="a">23</_lastID>
-			<weakCGTime type="a">11.6.2020::14:52:57</weakCGTime>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:11</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:16:11</_modifiedTime>
+			<_lastID type="a">26</_lastID>
+			<weakCGTime type="a">11.18.2020::9:16:11</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:0:12</strongCGTime>
 			<_defaultComposite type="s">GUID 157e4980-50b5-4091-987e-9c9729619a3d</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
-			<_configurationRelatedTime type="a">9.17.2020::6:54:34</_configurationRelatedTime>
+			<_configurationRelatedTime type="a">11.18.2020::8:46:6</_configurationRelatedTime>
 			<AggregatesList type="e">
 				<value>GUID 0ce1560a-5d72-405d-95ce-d4eb89f30449</value>
+				<value>GUID f293f374-dabb-4ef3-b526-dacacadea2e6</value>
+				<value>GUID 817bfdcc-5e75-4f13-aa95-8d25856541d9</value>
 				<value>GUID 698eaaca-a093-489d-9ead-3c057defa948</value>
 				<value>GUID 258e9f0c-839a-43d1-9628-910380390ecd</value>
+				<value>GUID e042608a-9ab9-476e-807d-e5a2f6ad4704</value>
 				<value>GUID 157e4980-50b5-4091-987e-9c9729619a3d</value>
 				<value>GUID 5c2516a7-2f69-4104-b74e-5c0e27257c84</value>
 				<value>GUID 59a90eb2-482c-4228-9d4f-c908d99139fa</value>
+				<value>GUID abe87e7f-b78c-4142-928a-bc4404db4f38</value>
 			</AggregatesList>
 		</ISubsystem>
 		<IRequirement type="e">
@@ -9859,26 +9863,367 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
 			<_value type="a">Error</_value>
 		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID f293f374-dabb-4ef3-b526-dacacadea2e6</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_SWCT_2</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::8:16:21</_modifiedTimeWeak>
+			<_description type="p"><IDescription type="e">
+				<_text type="a">A composite Component_Type aggregates existing behaviors from other Component_Types. It does not define any new behavior.</_text>
+			</IDescription>
+			</_description>
+			<_modifiedTime type="a">11.18.2020::8:16:21</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A composite Component_Type shall not aggregate Conguration_Parameters.\par%0D
+}%0D
+</_body>
+			<reqID type="a">SWCT_2</reqID>
+			<AggregatesList type="e">
+				<value>GUID ff925275-5faa-4176-93a5-aaba7c6ee6c5</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID ff925275-5faa-4176-93a5-aaba7c6ee6c5</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:13:59</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 4ddeaa54-8709-4c1c-bfe9-5a6b1b5b653e</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 4ddeaa54-8709-4c1c-bfe9-5a6b1b5b653e</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 817bfdcc-5e75-4f13-aa95-8d25856541d9</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_SWCT_3</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::8:17:25</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:17:25</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A composite Component_Type shall not inherit from an other Component_Type.\par%0D
+}%0D
+</_body>
+			<reqID type="a">SWCT_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID bbfea459-cbfc-4221-9687-7e6e08b902be</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID bbfea459-cbfc-4221-9687-7e6e08b902be</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:16:34</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 4b4740c4-13f0-4af6-bd78-67c15bf2efb9</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 4b4740c4-13f0-4af6-bd78-67c15bf2efb9</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
 		<ISubsystem type="e">
 			<_id type="a">GUID 698eaaca-a093-489d-9ead-3c057defa948</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Ports</_name>
-			<_modifiedTimeWeak type="a">11.6.2020::14:52:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.18.2020::8:36:58</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:36:58</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">11.6.2020::14:52:57</weakCGTime>
+			<weakCGTime type="a">11.18.2020::8:36:58</weakCGTime>
 			<strongCGTime type="a">5.9.2019::8:31:50</strongCGTime>
 			<_defaultComposite type="s">GUID 75359c93-b821-476c-bb13-8de38c00b10b</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
 			<AggregatesList type="e">
+				<value>GUID 1340ba33-6d5a-4646-b61d-b30422c7f287</value>
+				<value>GUID 3b08b691-6f00-43f6-a130-25495b568860</value>
+				<value>GUID 66d142fa-e722-42ca-93b5-581c59429ccf</value>
 				<value>GUID c9d2bf57-8701-423d-8ea0-f61710590397</value>
 				<value>GUID 75359c93-b821-476c-bb13-8de38c00b10b</value>
 				<value>GUID 4a3ec7f1-5551-4d97-85bf-7dd792d4702d</value>
 				<value>GUID 5ab6e27a-02ac-4e3a-b3ef-cf334126acf1</value>
 				<value>GUID fb1807dc-44c9-43a6-a060-91eab5dd4d67</value>
+				<value>GUID 5a7a7d55-8385-4f1e-932d-2319c63383cc</value>
 			</AggregatesList>
 		</ISubsystem>
+		<IRequirement type="e">
+			<_id type="a">GUID 1340ba33-6d5a-4646-b61d-b30422c7f287</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PORT_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::8:32:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:32:33</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Port shall have one and only one contract.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PORT_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID 43a5e9f1-1626-4e9b-924f-0c621924a1f4</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 43a5e9f1-1626-4e9b-924f-0c621924a1f4</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:31:43</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID e99b3d4f-d63f-4e16-b17d-92a5db5ee542</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID e99b3d4f-d63f-4e16-b17d-92a5db5ee542</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 3b08b691-6f00-43f6-a130-25495b568860</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PPORT_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::8:34:10</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:34:10</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Provider_Port of a composite Component_Type shall be delegated to only one port of a Component_Type_Part.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PPORT_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID addbcf08-3013-46e4-b991-9029c498574c</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID addbcf08-3013-46e4-b991-9029c498574c</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:32:42</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 52070bd3-a8a8-451d-8d99-06e2125edd08</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 52070bd3-a8a8-451d-8d99-06e2125edd08</_id>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 66d142fa-e722-42ca-93b5-581c59429ccf</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_RPORT_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::8:35:12</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:35:12</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Requirer_Port of a composite Component_Type shall be delegated to at least one port of a Component_Type_Part.\par%0D
+}%0D
+</_body>
+			<reqID type="a">RPORT_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID 2a6527ef-143d-4813-bf79-c82ecb23b1ee</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 2a6527ef-143d-4813-bf79-c82ecb23b1ee</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:34:17</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 67e9ea41-e2f1-4a48-b198-2e5165a988c9</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 67e9ea41-e2f1-4a48-b198-2e5165a988c9</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
 		<IDiagram type="e">
 			<_id type="a">GUID c9d2bf57-8701-423d-8ea0-f61710590397</_id>
 			<_myState type="a">8192</_myState>
@@ -11240,7 +11585,7 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_id type="a">GUID 4a3ec7f1-5551-4d97-85bf-7dd792d4702d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Port</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::14:55:13</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">11.18.2020::8:38:49</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -11251,9 +11596,9 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				<_text type="a">Abstract class.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">9.3.2020::14:55:13</_modifiedTime>
+			<_modifiedTime type="a">11.18.2020::8:38:49</_modifiedTime>
 			<_lastID type="a">1</_lastID>
-			<weakCGTime type="a">9.3.2020::14:55:13</weakCGTime>
+			<weakCGTime type="a">11.18.2020::8:38:49</weakCGTime>
 			<strongCGTime type="a">8.12.2019::13:52:8</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11261,9 +11606,46 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 			<AggregatesList type="e">
+				<value>GUID 824909ef-9f41-4361-8843-45eca2eb1ebc</value>
+				<value>GUID aa7197fe-1953-40e4-a4d8-29dc2fecfd06</value>
 				<value>GUID 534eeae1-ee58-433a-aedd-8052b088a8de</value>
 			</AggregatesList>
 		</IClass>
+		<IDependency type="e">
+			<_id type="a">GUID 824909ef-9f41-4361-8843-45eca2eb1ebc</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_PORT_1</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:35:33</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:35:33</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 1340ba33-6d5a-4646-b61d-b30422c7f287</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 4a3ec7f1-5551-4d97-85bf-7dd792d4702d</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IGeneralization type="e">
+			<_id type="a">GUID aa7197fe-1953-40e4-a4d8-29dc2fecfd06</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Software_Element</_hname>
+					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
 		<IAssociationEnd type="e">
 			<_id type="a">GUID 534eeae1-ee58-433a-aedd-8052b088a8de</_id>
 			<_myState type="a">8192</_myState>
@@ -11326,16 +11708,16 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Provider_Port</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::12:59:36</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">11.18.2020::8:38:22</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hid type="a">GUID 4400a687-9169-49ac-84a9-d8dc1fcc537a</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">10.5.2020::12:59:36</_modifiedTime>
+			<_modifiedTime type="a">11.18.2020::8:38:22</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">10.5.2020::12:59:36</weakCGTime>
+			<weakCGTime type="a">11.18.2020::8:38:22</weakCGTime>
 			<strongCGTime type="a">10.5.2020::12:59:36</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11343,26 +11725,29 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 			<AggregatesList type="e">
-				<value>GUID 6a6e26cf-b3db-4665-9ac8-d957d3745e71</value>
+				<value>GUID b41e60e1-3519-45d6-b5c1-6905d83c5305</value>
 				<value>GUID be036b1d-edb3-4c1a-85b9-27050e3c6512</value>
 			</AggregatesList>
 		</IClass>
-		<IGeneralization type="e">
-			<_id type="a">GUID 6a6e26cf-b3db-4665-9ac8-d957d3745e71</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+		<IDependency type="e">
+			<_id type="a">GUID b41e60e1-3519-45d6-b5c1-6905d83c5305</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_PPORT_1</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:35:49</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:35:49</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
-					<_hname type="a">Software_Element</_hname>
-					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 3b08b691-6f00-43f6-a130-25495b568860</_hid>
 				</INObjectHandle>
 			</_dependsOn>
-			<_inheritanceType type="a">iPublic</_inheritanceType>
-			<_isVirtual type="a">0</_isVirtual>
-		</IGeneralization>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 5ab6e27a-02ac-4e3a-b3ef-cf334126acf1</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
 		<IGeneralization type="e">
 			<_id type="a">GUID be036b1d-edb3-4c1a-85b9-27050e3c6512</_id>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
@@ -11418,7 +11803,7 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Requirer_Port</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:3:37</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">11.18.2020::8:38:27</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
@@ -11428,9 +11813,9 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 					<_hid type="a">GUID dc5fef9e-f7d6-4827-af76-e9fb6128e16d</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">10.5.2020::14:3:37</_modifiedTime>
+			<_modifiedTime type="a">11.18.2020::8:38:27</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">10.5.2020::14:3:37</weakCGTime>
+			<weakCGTime type="a">11.18.2020::8:38:27</weakCGTime>
 			<strongCGTime type="a">10.5.2020::14:3:37</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -11438,26 +11823,29 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 			<AggregatesList type="e">
-				<value>GUID ee87dc33-31b6-4e20-a7eb-d5b2291eca2c</value>
+				<value>GUID 16b28466-ff79-43f6-acfb-789af61a5590</value>
 				<value>GUID 29a69f6e-5b47-478c-82e4-e354110cea4a</value>
 			</AggregatesList>
 		</IClass>
-		<IGeneralization type="e">
-			<_id type="a">GUID ee87dc33-31b6-4e20-a7eb-d5b2291eca2c</_id>
-			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+		<IDependency type="e">
+			<_id type="a">GUID 16b28466-ff79-43f6-acfb-789af61a5590</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_RPORT_1</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:36:1</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:36:1</_modifiedTime>
 			<_dependsOn type="r">
 				<INObjectHandle type="e">
-					<_hm2Class type="a">IClass</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
-					<_hname type="a">Software_Element</_hname>
-					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 66d142fa-e722-42ca-93b5-581c59429ccf</_hid>
 				</INObjectHandle>
 			</_dependsOn>
-			<_inheritanceType type="a">iPublic</_inheritanceType>
-			<_isVirtual type="a">0</_isVirtual>
-		</IGeneralization>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID fb1807dc-44c9-43a6-a060-91eab5dd4d67</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
 		<IGeneralization type="e">
 			<_id type="a">GUID 29a69f6e-5b47-478c-82e4-e354110cea4a</_id>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
@@ -11471,6 +11859,33 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_inheritanceType type="a">iPublic</_inheritanceType>
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
+		<ITableInstance type="e">
+			<_id type="a">GUID 5a7a7d55-8385-4f1e-932d-2319c63383cc</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">View_Ports_Rules</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:36:58</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:36:58</_modifiedTime>
+			<LayoutHandle type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Layout_Rules</_hname>
+					<_hid type="a">GUID f0924af9-082d-47dd-a294-10ac65845e8c</_hid>
+				</IHandle>
+			</LayoutHandle>
+			<ScopeHandles type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hid type="a">GUID 698eaaca-a093-489d-9ead-3c057defa948</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</ScopeHandles>
+		</ITableInstance>
 		<IDiagram type="e">
 			<_id type="a">GUID 258e9f0c-839a-43d1-9628-910380390ecd</_id>
 			<_myState type="a">8192</_myState>
@@ -11720,8 +12135,8 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
-			<_lastModifiedTime type="a">11.6.2020::14:52:57</_lastModifiedTime>
+			<_modifiedTime type="a">11.18.2020::8:36:1</_modifiedTime>
+			<_lastModifiedTime type="a">11.18.2020::8:36:1</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -12516,43 +12931,9 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<m_bOrdered type="a">1</m_bOrdered>
 			<Items type="c">
 				<IRPYRawContainer type="e">
-					<size type="a">3</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IAttribute</_hm2Class>
-							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Software_Element</_hclass>
-							<_hname type="a">Name</_hname>
-							<_hid type="a">GUID 5b570ec3-77b8-4d1b-ab55-7a5ab9a44922</_hid>
-						</IHandle>
-					
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IAttribute</_hm2Class>
-							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Software_Element</_hclass>
-							<_hname type="a">UUID</_hname>
-							<_hid type="a">GUID 7605bd74-6af2-4c83-8c63-611092ebdf15</_hid>
-						</IHandle>
-					
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IAttribute</_hm2Class>
-							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Software_Element</_hclass>
-							<_hname type="a">Description</_hname>
-							<_hid type="a">GUID bd8623ef-3c2e-4135-bd93-c2e067a2c59c</_hid>
-						</IHandle>
-					
+					<size type="a">0</size>
 				</IRPYRawContainer>
 			</Items>
-			<_itemValueOfFontPropertiesMapCount type="a">3</_itemValueOfFontPropertiesMapCount>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
 		</CGICompartment>
 		<CGIClass type="e">
 			<_id type="a">GUID 72c1afa5-dcf5-4982-bb70-05369b84b922</_id>
@@ -12721,43 +13102,9 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<m_bOrdered type="a">1</m_bOrdered>
 			<Items type="c">
 				<IRPYRawContainer type="e">
-					<size type="a">3</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IAttribute</_hm2Class>
-							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Software_Element</_hclass>
-							<_hname type="a">Name</_hname>
-							<_hid type="a">GUID 5b570ec3-77b8-4d1b-ab55-7a5ab9a44922</_hid>
-						</IHandle>
-					
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IAttribute</_hm2Class>
-							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Software_Element</_hclass>
-							<_hname type="a">UUID</_hname>
-							<_hid type="a">GUID 7605bd74-6af2-4c83-8c63-611092ebdf15</_hid>
-						</IHandle>
-					
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IAttribute</_hm2Class>
-							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
-							<_hclass type="a">Software_Element</_hclass>
-							<_hname type="a">Description</_hname>
-							<_hid type="a">GUID bd8623ef-3c2e-4135-bd93-c2e067a2c59c</_hid>
-						</IHandle>
-					
+					<size type="a">0</size>
 				</IRPYRawContainer>
 			</Items>
-			<_itemValueOfFontPropertiesMapCount type="a">3</_itemValueOfFontPropertiesMapCount>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
-			<_fontPropValues type="a">Tahoma 8 400 0 0 0 0</_fontPropValues>
 		</CGICompartment>
 		<CGIClass type="e">
 			<_id type="a">GUID 911af5b2-8a68-479a-9ad2-2786145d1483</_id>
@@ -15220,6 +15567,734 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<m_srcFile type="a">.\icons\black_class_with_ports.ico</m_srcFile>
 			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
 		</CGIImageData>
+		<ISubsystem type="e">
+			<_id type="a">GUID e042608a-9ab9-476e-807d-e5a2f6ad4704</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Composite</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:17:5</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:17:5</_modifiedTime>
+			<weakCGTime type="a">11.18.2020::9:17:5</weakCGTime>
+			<strongCGTime type="a">11.18.2020::9:16:56</strongCGTime>
+			<_defaultComposite type="s">GUID 60bff309-282b-44c8-8103-8d2af43bf053</_defaultComposite>
+			<_eventsBaseID type="a">-1</_eventsBaseID>
+			<_configurationRelatedTime type="a">1.2.1990::0:0:0</_configurationRelatedTime>
+			<AggregatesList type="e">
+				<value>GUID 60ad126a-82e5-452e-b893-867b70167a49</value>
+				<value>GUID 5c0e3f45-5d24-4c22-809e-e8567b4bdd87</value>
+				<value>GUID 539a8d01-3b5c-4e10-8b15-cfc0a7c9bf44</value>
+				<value>GUID 1a935ce9-d113-46af-bea3-0da4c3aea2d7</value>
+				<value>GUID 7944979a-a97c-44c2-b219-87d1daf98468</value>
+				<value>GUID a250318b-0b41-4efa-a370-2e7ba650dee8</value>
+				<value>GUID 28a32c12-b2fe-487e-a268-5d6a83553e43</value>
+				<value>GUID 60bff309-282b-44c8-8103-8d2af43bf053</value>
+				<value>GUID 4685936f-fede-4cb4-8701-96ab48c41d1f</value>
+				<value>GUID 2ea0a26d-f4bb-4211-8e61-0611be1e9f13</value>
+			</AggregatesList>
+		</ISubsystem>
+		<IRequirement type="e">
+			<_id type="a">GUID 60ad126a-82e5-452e-b893-867b70167a49</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PART_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:55:38</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 The referenced class shall be a Component_Type.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PART_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID a699ed0c-2ce4-41e6-923b-f9b21f6bb57e</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID a699ed0c-2ce4-41e6-923b-f9b21f6bb57e</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:54:25</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 6286a2c0-8675-480d-915c-b79afe21de9b</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 6286a2c0-8675-480d-915c-b79afe21de9b</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 5c0e3f45-5d24-4c22-809e-e8567b4bdd87</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PART_2</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:56:47</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Component_Type_Part shall not reference its parent Component_Type.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PART_2</reqID>
+			<AggregatesList type="e">
+				<value>GUID 79e6ab9f-3d49-41ef-8284-ebf9cceafbce</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 79e6ab9f-3d49-41ef-8284-ebf9cceafbce</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:55:45</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID fd8b2208-7b49-4fdc-91ee-f9bf8368829c</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID fd8b2208-7b49-4fdc-91ee-f9bf8368829c</_id>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 539a8d01-3b5c-4e10-8b15-cfc0a7c9bf44</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PART_4</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:6:40</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Provider_Port of a Component_Type_Part can be delegated only one time.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PART_4</reqID>
+			<AggregatesList type="e">
+				<value>GUID 3cba390e-3923-48c2-8092-6e35b6e93a31</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 3cba390e-3923-48c2-8092-6e35b6e93a31</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:58:14</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 168148db-ee28-4639-b4ae-b15880dde271</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 168148db-ee28-4639-b4ae-b15880dde271</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 1a935ce9-d113-46af-bea3-0da4c3aea2d7</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PART_3</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:6:36</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Provider_Port of a Component_Type_Part can be delegated or assembled.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PART_3</reqID>
+			<AggregatesList type="e">
+				<value>GUID a772b9c4-f780-4e5e-b2cc-34e2c86a83f7</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID a772b9c4-f780-4e5e-b2cc-34e2c86a83f7</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:0:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:0:36</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 41469006-b8ec-4447-898f-5fc951803cc9</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 41469006-b8ec-4447-898f-5fc951803cc9</_id>
+			<_modifiedTimeWeak type="a">11.18.2020::9:0:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:0:36</_modifiedTime>
+			<_value type="a">Information</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 7944979a-a97c-44c2-b219-87d1daf98468</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_PART_5</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:5:52</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Requirer_Port of a Component_Type_Part shall be connected (delegated or assembled) one and only one time.\par%0D
+}%0D
+</_body>
+			<reqID type="a">PART_5</reqID>
+			<AggregatesList type="e">
+				<value>GUID 946aed68-1448-4e46-9eef-e7a97f7a990b</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 946aed68-1448-4e46-9eef-e7a97f7a990b</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:1:7</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID bdc4615b-d6c8-4db7-850e-1da4c3a6dba7</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID bdc4615b-d6c8-4db7-850e-1da4c3a6dba7</_id>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID a250318b-0b41-4efa-a370-2e7ba650dee8</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_DELEG_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:9:57</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Delegation_Connector shall link two Ports of the same kind (two Provider_Ports or two Requirer_Ports).\par%0D
+}%0D
+</_body>
+			<reqID type="a">DELEG_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID 0a53e7f4-e7b1-41ac-96d3-391f8169d764</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 0a53e7f4-e7b1-41ac-96d3-391f8169d764</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:8:49</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 77c4b288-32de-4705-96f7-f52e84820617</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 77c4b288-32de-4705-96f7-f52e84820617</_id>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 28a32c12-b2fe-487e-a268-5d6a83553e43</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_DELEG_2</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:16:36</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 A Delegation_Connector shall link two Ports that reference the same interface.\par%0D
+}%0D
+</_body>
+			<reqID type="a">DELEG_2</reqID>
+			<AggregatesList type="e">
+				<value>GUID b3a6a85a-0330-4c53-88b1-7c7286b0e2e6</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID b3a6a85a-0330-4c53-88b1-7c7286b0e2e6</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:10:8</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 05ab400a-254e-44ea-8d23-f087dbccb160</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 05ab400a-254e-44ea-8d23-f087dbccb160</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IClass type="e">
+			<_id type="a">GUID 60bff309-282b-44c8-8103-8d2af43bf053</_id>
+			<_myState type="a">40960</_myState>
+			<_name type="a">TopLevel</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<weakCGTime type="a">11.18.2020::9:16:56</weakCGTime>
+			<strongCGTime type="a">11.18.2020::9:16:56</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+		</IClass>
+		<IClass type="e">
+			<_id type="a">GUID 4685936f-fede-4cb4-8701-96ab48c41d1f</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Delegation_Connector</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:17:9</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:17:9</_modifiedTime>
+			<weakCGTime type="a">11.18.2020::9:17:9</weakCGTime>
+			<strongCGTime type="a">11.18.2020::9:16:56</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 2bcc6be7-caff-4eaa-b803-2270e7bcc686</value>
+				<value>GUID 95173abf-21db-49d5-9cab-d8b03bd340f1</value>
+				<value>GUID 32b906f2-4836-444a-bb3d-c0fe3536089d</value>
+			</AggregatesList>
+		</IClass>
+		<IDependency type="e">
+			<_id type="a">GUID 2bcc6be7-caff-4eaa-b803-2270e7bcc686</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_DELEG_2</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:58</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:16:58</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 28a32c12-b2fe-487e-a268-5d6a83553e43</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 4685936f-fede-4cb4-8701-96ab48c41d1f</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 95173abf-21db-49d5-9cab-d8b03bd340f1</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_DELEG_1</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:17:9</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:17:9</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID a250318b-0b41-4efa-a370-2e7ba650dee8</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 4685936f-fede-4cb4-8701-96ab48c41d1f</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IGeneralization type="e">
+			<_id type="a">GUID 32b906f2-4836-444a-bb3d-c0fe3536089d</_id>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:55</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Software_Element</_hname>
+					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
+		<IClass type="e">
+			<_id type="a">GUID 2ea0a26d-f4bb-4211-8e61-0611be1e9f13</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Component_Type_Part</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:16:56</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:7:39</_modifiedTime>
+			<weakCGTime type="a">11.18.2020::9:16:56</weakCGTime>
+			<strongCGTime type="a">11.18.2020::9:16:56</strongCGTime>
+			<_itsStateChart type="r">
+				<IHandle type="e">
+				</IHandle>
+			</_itsStateChart>
+			<_classModifier type="a">Unspecified</_classModifier>
+			<AggregatesList type="e">
+				<value>GUID 5c078276-40c9-4346-9ea8-809c78453d9d</value>
+				<value>GUID f169c8ad-6da7-488b-af20-13fef26a315b</value>
+				<value>GUID d945e7ab-87d8-4b26-8759-8b21a6eefaff</value>
+				<value>GUID 507383d2-4cc9-41a1-a858-8af0679dcbbc</value>
+				<value>GUID 7e182414-2264-4daa-88a2-b245c442b745</value>
+				<value>GUID ca0664e5-33f2-4101-83b0-ce64a99a6042</value>
+				<value>GUID e99a3b4a-10cb-4b02-accd-01465bcccd62</value>
+			</AggregatesList>
+		</IClass>
+		<IDependency type="e">
+			<_id type="a">GUID 5c078276-40c9-4346-9ea8-809c78453d9d</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_OBJ_1</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:53:22</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:53:22</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Rule_OBJ_1</_hname>
+					<_hid type="a">GUID 206def7e-e2a8-4740-8680-352faa76aac9</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 2ea0a26d-f4bb-4211-8e61-0611be1e9f13</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID f169c8ad-6da7-488b-af20-13fef26a315b</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_PART_1</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:58:6</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:58:6</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 60ad126a-82e5-452e-b893-867b70167a49</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 2ea0a26d-f4bb-4211-8e61-0611be1e9f13</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID d945e7ab-87d8-4b26-8759-8b21a6eefaff</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_PART_2</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:58:9</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:58:9</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 5c0e3f45-5d24-4c22-809e-e8567b4bdd87</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 2ea0a26d-f4bb-4211-8e61-0611be1e9f13</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 507383d2-4cc9-41a1-a858-8af0679dcbbc</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_PART_3</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:7:32</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:7:32</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 1a935ce9-d113-46af-bea3-0da4c3aea2d7</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 2ea0a26d-f4bb-4211-8e61-0611be1e9f13</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 7e182414-2264-4daa-88a2-b245c442b745</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_PART_4</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:7:36</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:7:36</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 539a8d01-3b5c-4e10-8b15-cfc0a7c9bf44</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 2ea0a26d-f4bb-4211-8e61-0611be1e9f13</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID ca0664e5-33f2-4101-83b0-ce64a99a6042</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_PART_5</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:7:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:7:39</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 7944979a-a97c-44c2-b219-87d1daf98468</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 2ea0a26d-f4bb-4211-8e61-0611be1e9f13</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IGeneralization type="e">
+			<_id type="a">GUID e99a3b4a-10cb-4b02-accd-01465bcccd62</_id>
+			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
+			<_modifiedTime type="a">1.2.1990::0:0:0</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
+					<_hname type="a">Software_Element</_hname>
+					<_hid type="a">GUID 94a5f1c9-24c6-4850-8fe0-28ec456d96f3</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_inheritanceType type="a">iPublic</_inheritanceType>
+			<_isVirtual type="a">0</_isVirtual>
+		</IGeneralization>
 		<IClass type="e">
 			<_id type="a">GUID 157e4980-50b5-4091-987e-9c9729619a3d</_id>
 			<_myState type="a">40960</_myState>
@@ -15276,16 +16351,16 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Type</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::13:27:28</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">11.18.2020::8:18:53</_modifiedTimeWeak>
 			<_theMainDiagram type="r">
 				<IHandle type="e">
 					<_hm2Class type="a">IDiagram</_hm2Class>
 					<_hid type="a">GUID 4400a687-9169-49ac-84a9-d8dc1fcc537a</_hid>
 				</IHandle>
 			</_theMainDiagram>
-			<_modifiedTime type="a">10.6.2020::13:27:28</_modifiedTime>
+			<_modifiedTime type="a">11.18.2020::8:18:53</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">10.6.2020::13:27:28</weakCGTime>
+			<weakCGTime type="a">11.18.2020::8:18:53</weakCGTime>
 			<strongCGTime type="a">10.5.2020::12:18:20</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -15296,6 +16371,8 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				<value>GUID 348e2972-4ca2-4c67-b001-f92b7e121124</value>
 				<value>GUID c4833ca0-e36a-4d94-b4cf-a785bd413eff</value>
 				<value>GUID 3990a851-c724-4699-872e-d788333cbdea</value>
+				<value>GUID 9d4e9359-02ad-49bf-8756-8f3a839c8d8f</value>
+				<value>GUID 3f7bc689-9948-48d1-963b-0ad11d323f06</value>
 				<value>GUID afb40115-c607-4c7b-aefe-05baef6a185e</value>
 				<value>GUID 434976c4-d7c8-4240-b25c-cb14c5a48ae5</value>
 				<value>GUID e22ae95e-dd5c-4da6-88ef-465ec5fa8290</value>
@@ -15357,6 +16434,44 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description</_hsubsystem>
 					<_hname type="a">Rule_CLASS_2</_hname>
 					<_hid type="a">GUID 4049352e-5617-47da-97ba-05a8a3ba29fa</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 5c2516a7-2f69-4104-b74e-5c0e27257c84</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 9d4e9359-02ad-49bf-8756-8f3a839c8d8f</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_SWCT_2</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:18:39</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:18:39</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID f293f374-dabb-4ef3-b526-dacacadea2e6</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 5c2516a7-2f69-4104-b74e-5c0e27257c84</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 3f7bc689-9948-48d1-963b-0ad11d323f06</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_SWCT_3</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:18:53</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:18:53</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 817bfdcc-5e75-4f13-aa95-8d25856541d9</_hid>
 				</INObjectHandle>
 			</_dependsOn>
 			<_dependent type="r">
@@ -15542,19 +16657,49 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<_inheritanceType type="a">iPublic</_inheritanceType>
 			<_isVirtual type="a">0</_isVirtual>
 		</IGeneralization>
+		<ITableInstance type="e">
+			<_id type="a">GUID abe87e7f-b78c-4142-928a-bc4404db4f38</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">View_Component_Type_Rules</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::8:43:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:43:28</_modifiedTime>
+			<LayoutHandle type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITableLayout</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Layout_Rules</_hname>
+					<_hid type="a">GUID f0924af9-082d-47dd-a294-10ac65845e8c</_hid>
+				</IHandle>
+			</LayoutHandle>
+			<ScopeHandles type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">ISubsystem</_hm2Class>
+							<_hid type="a">GUID f28a6f03-2134-4631-860b-f7cf76664d78</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</ScopeHandles>
+		</ITableInstance>
 		<ISubsystem type="e">
 			<_id type="a">GUID ddbd4b83-969d-4f5d-81bb-c7b52017df0d</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Compositions</_name>
-			<_modifiedTimeWeak type="a">11.6.2020::14:52:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.18.2020::9:29:40</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:29:40</_modifiedTime>
 			<_lastID type="a">7</_lastID>
-			<weakCGTime type="a">11.6.2020::14:52:57</weakCGTime>
+			<weakCGTime type="a">11.18.2020::9:29:40</weakCGTime>
 			<strongCGTime type="a">6.21.2018::8:3:56</strongCGTime>
 			<_defaultComposite type="s">GUID ffab7b65-dabd-4c05-ab73-5f233604e4a5</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
 			<_configurationRelatedTime type="a">9.17.2019::13:42:44</_configurationRelatedTime>
 			<AggregatesList type="e">
+				<value>GUID febea57e-286e-40fe-a802-b71035788190</value>
+				<value>GUID 0be191be-e1e5-4b1e-872f-856d6de51ad8</value>
+				<value>GUID b0c70b05-9ae2-4346-98e9-be29d3a2debc</value>
 				<value>GUID 4400a687-9169-49ac-84a9-d8dc1fcc537a</value>
 				<value>GUID ffab7b65-dabd-4c05-ab73-5f233604e4a5</value>
 				<value>GUID 04499ed0-9e85-458e-a3aa-605da0710533</value>
@@ -15562,6 +16707,205 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				<value>GUID b740d14b-7914-4b53-a8f5-ecdd86c58edb</value>
 			</AggregatesList>
 		</ISubsystem>
+		<IRequirement type="e">
+			<_id type="a">GUID febea57e-286e-40fe-a802-b71035788190</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ASSBL_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:19:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:19:47</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 An Assembly_Connector shall link Ports of two different objects.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ASSBL_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID 691b4391-d5b6-4444-8380-8fb88b7e5a00</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 691b4391-d5b6-4444-8380-8fb88b7e5a00</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:18:20</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 0043bdb1-e0f3-4f84-8acb-9eff892ed673</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 0043bdb1-e0f3-4f84-8acb-9eff892ed673</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 0be191be-e1e5-4b1e-872f-856d6de51ad8</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ASSBL_3</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:29:40</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:29:40</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 An Assembly_Connector shall link two Ports that reference the same interface.\par%0D
+}%0D
+</_body>
+			<reqID type="a">ASSBL_3</reqID>
+			<AggregatesList type="e">
+				<value>GUID 469f69ba-4a57-4817-bb9c-4efde658c296</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 469f69ba-4a57-4817-bb9c-4efde658c296</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:20:56</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 4d69447c-56ab-4ae6-8304-8d97ab83e8fc</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 4d69447c-56ab-4ae6-8304-8d97ab83e8fc</_id>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID b0c70b05-9ae2-4346-98e9-be29d3a2debc</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_ASSBL_2</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+							<_hname type="a">SWMM_Rule</_hname>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::9:29:19</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:29:19</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 An Assembly_Connector shall link two Ports of different kind (one Provider_Port and one Requirer_Port).\par%0D
+}%0D
+</_body>
+			<reqID type="a">ASSBL_2</reqID>
+			<AggregatesList type="e">
+				<value>GUID 4d221c80-1d86-4635-944b-fb413ab33fcd</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 4d221c80-1d86-4635-944b-fb413ab33fcd</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:28:13</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hname type="a">Criticality_Type</_hname>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
+					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
+					<_hclass type="a">SWMM_Rule</_hclass>
+					<_hname type="a">Criticality</_hname>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID 0b62c9ab-c882-4648-8f02-4e0290d9786b</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID 0b62c9ab-c882-4648-8f02-4e0290d9786b</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">9.29.2020::9:14:28</_modifiedTimeWeak>
+			<_modifiedTime type="a">9.29.2020::9:14:28</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
 		<IDiagram type="e">
 			<_id type="a">GUID 4400a687-9169-49ac-84a9-d8dc1fcc537a</_id>
 			<_myState type="a">8192</_myState>
@@ -15754,8 +17098,8 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">11.6.2020::14:52:57</_modifiedTime>
-			<_lastModifiedTime type="a">11.6.2020::14:52:57</_lastModifiedTime>
+			<_modifiedTime type="a">11.18.2020::8:18:53</_modifiedTime>
+			<_lastModifiedTime type="a">11.18.2020::8:18:53</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -16150,7 +17494,7 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			<m_dataSize type="a">786</m_dataSize>
 			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az187f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz157f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0dg03Zg03Z7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0dg03z057f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz097f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0dg03z097f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0dg03z3dg03z3dg03z3dg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03Zg03z3dg03z3dg03z097f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fz0dg03z097f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz097f7f7fz15g03z097f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZg03Zg03Zg03Zg03Zg03Zg03z097f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz097f7f7fz217f7f7fZ7f7f7fZ7f7f7fZ7f7f7fZ7f7f7fz0d7f7f7fZ7f7f7fz19g40</m_data>
 			<m_srcFile type="a">..\icons\connector.ico</m_srcFile>
-			<m_fileModifiedTime type="a">9.3.2020::8:25:53</m_fileModifiedTime>
+			<m_fileModifiedTime type="a">9.3.2020::7:25:53</m_fileModifiedTime>
 		</CGIImageData>
 		<CGIClass type="e">
 			<_id type="a">GUID fb54c26b-70f9-4383-a1a1-9b2a607acb84</_id>
@@ -19342,10 +20686,10 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Assembly_Connector</_name>
-			<_modifiedTimeWeak type="a">9.3.2020::15:26:20</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.3.2020::15:26:20</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.18.2020::9:29:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:29:47</_modifiedTime>
 			<_lastID type="a">3</_lastID>
-			<weakCGTime type="a">9.3.2020::15:26:20</weakCGTime>
+			<weakCGTime type="a">11.18.2020::9:29:47</weakCGTime>
 			<strongCGTime type="a">11.7.2019::9:7:47</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -19353,6 +20697,9 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 			<AggregatesList type="e">
+				<value>GUID 5edfe3d6-810d-467f-b354-46404021f481</value>
+				<value>GUID 9208090c-a63e-4053-ab7e-02adcbfdbf9a</value>
+				<value>GUID fdf44f1f-62af-4315-aadd-19454cce2573</value>
 				<value>GUID 6a5126fe-da3c-4cec-a2ef-d6c2d6492177</value>
 				<value>GUID 3af15631-c5b0-4e7f-bc57-c27ad1e58a77</value>
 				<value>GUID 9b306d54-5b12-4b79-bcc7-632eabede5fd</value>
@@ -19360,6 +20707,63 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 				<value>GUID de47ea1a-bb27-4a36-98fe-4bfeb7cc4264</value>
 			</AggregatesList>
 		</IClass>
+		<IDependency type="e">
+			<_id type="a">GUID 5edfe3d6-810d-467f-b354-46404021f481</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ASSBL_1</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:20:50</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:20:50</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID febea57e-286e-40fe-a802-b71035788190</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID b740d14b-7914-4b53-a8f5-ecdd86c58edb</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 9208090c-a63e-4053-ab7e-02adcbfdbf9a</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ASSBL_3</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:28:20</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:28:20</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 0be191be-e1e5-4b1e-872f-856d6de51ad8</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID b740d14b-7914-4b53-a8f5-ecdd86c58edb</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID fdf44f1f-62af-4315-aadd-19454cce2573</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ASSBL_2</_name>
+			<_modifiedTimeWeak type="a">11.18.2020::9:29:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:29:47</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID b0c70b05-9ae2-4346-98e9-be29d3a2debc</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID b740d14b-7914-4b53-a8f5-ecdd86c58edb</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
 		<IGeneralization type="e">
 			<_id type="a">GUID 6a5126fe-da3c-4cec-a2ef-d6c2d6492177</_id>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
@@ -19787,7 +21191,6 @@ Has a Priority, it is a positive integer indicating which child operation shall 
 					
 				</IRPYRawContainer>
 			</DataColumns>
-			<m_CollapseFirstColumn type="a">1</m_CollapseFirstColumn>
 		</ITableLayout>
 		<ITableLayout type="e">
 			<_id type="a">GUID 2f245f71-19cd-41d2-941c-c436c4dd4fb0</_id>
@@ -20699,11 +22102,6 @@ return dir_list;&lt;/CODE&gt;
 			<_name type="a">Tasks_Layout</_name>
 			<_modifiedTimeWeak type="a">11.6.2020::15:2:59</_modifiedTimeWeak>
 			<_modifiedTime type="a">11.6.2020::15:2:59</_modifiedTime>
-			<TableElementTypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</TableElementTypes>
 			<DataColumns type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">5</size>
@@ -20795,17 +22193,6 @@ return dir_list;&lt;/CODE&gt;
 					
 				</IRPYRawContainer>
 			</DataColumns>
-			<m_CollapseFirstColumn type="a">1</m_CollapseFirstColumn>
-			<TableFromElementTypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</TableFromElementTypes>
-			<TableToElementTypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">0</size>
-				</IRPYRawContainer>
-			</TableToElementTypes>
 		</ITableLayout>
 		<IClass type="e">
 			<_id type="a">GUID cb071234-229f-4e53-945f-4b65413c0797</_id>

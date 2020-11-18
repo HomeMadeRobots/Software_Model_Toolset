@@ -11,14 +11,14 @@
 			<_id type="a">GUID 8bd5e492-f817-4ae3-bbe5-45e3bd35c53b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Project_Metamodel</_name>
-			<_modifiedTimeWeak type="a">10.7.2020::11:26:50</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">11.18.2020::9:32:16</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Structure_Metamodel profile defines common elements used by the other profiles of software meta-model.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.7.2020::11:26:50</_modifiedTime>
+			<_modifiedTime type="a">11.18.2020::9:32:24</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">10.7.2020::11:26:50</weakCGTime>
+			<weakCGTime type="a">11.18.2020::9:32:16</weakCGTime>
 			<strongCGTime type="a">10.24.2019::10:15:13</strongCGTime>
 			<_defaultComposite type="s">GUID 81b20c47-0170-4a3f-8aef-091534e9641f</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -504,10 +504,10 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 33e89129-d52e-4c81-8ace-f9b9ec5cf010</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Project_Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">10.7.2020::11:26:50</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.7.2020::11:26:50</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.18.2020::9:32:16</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:32:16</_modifiedTime>
 			<_lastID type="a">24</_lastID>
-			<weakCGTime type="a">10.7.2020::11:26:50</weakCGTime>
+			<weakCGTime type="a">11.18.2020::9:32:16</weakCGTime>
 			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_defaultComposite type="s">GUID 6577669f-22fc-4683-a0ca-efa1c9825a2c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -521,6 +521,7 @@ It gathers cohesive software elements.</_text>
 				<value>GUID 1a23800d-80aa-4e55-a2a6-b23c658ae545</value>
 				<value>GUID d133b4ff-f0fd-4eba-b94e-5e40378a8f00</value>
 				<value>GUID 4049352e-5617-47da-97ba-05a8a3ba29fa</value>
+				<value>GUID 206def7e-e2a8-4740-8680-352faa76aac9</value>
 				<value>GUID 133304e0-b714-43e9-a14e-c075c3beb445</value>
 				<value>GUID 69c163c6-a1f3-4bba-90fd-f7fcb8d8fee4</value>
 				<value>GUID 45c08f00-5bdc-4be2-b378-0328d823b980</value>
@@ -994,6 +995,63 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 95576cba-236b-4e95-95ba-d2d83e91096b</_id>
 			<_modifiedTimeWeak type="a">10.6.2020::13:25:39</_modifiedTimeWeak>
 			<_modifiedTime type="a">10.6.2020::13:25:39</_modifiedTime>
+			<_value type="a">Error</_value>
+		</ILiteralSpecification>
+		<IRequirement type="e">
+			<_id type="a">GUID 206def7e-e2a8-4740-8680-352faa76aac9</_id>
+			<_myState type="a">8192</_myState>
+			<_name type="a">Rule_OBJ_1</_name>
+			<Stereotypes type="c">
+				<IRPYRawContainer type="e">
+					<size type="a">1</size>
+					
+						<IHandle type="e">
+							<_hm2Class type="a">IStereotype</_hm2Class>
+							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
+						</IHandle>
+					
+				</IRPYRawContainer>
+			</Stereotypes>
+			<_modifiedTimeWeak type="a">11.18.2020::8:52:57</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:52:57</_modifiedTime>
+			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
+\viewkind4\uc1\pard\fs20 An object shall reference one and only one class.\par%0D
+}%0D
+</_body>
+			<reqID type="a">OBJ_1</reqID>
+			<AggregatesList type="e">
+				<value>GUID 8e3459ee-74ef-4090-8812-7843fb9e4a47</value>
+			</AggregatesList>
+		</IRequirement>
+		<ITag type="e">
+			<_id type="a">GUID 8e3459ee-74ef-4090-8812-7843fb9e4a47</_id>
+			<_myState type="a">8192</_myState>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_name type="a">Criticality</_name>
+			<_modifiedTimeWeak type="a">10.6.2020::13:24:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::8:47:1</_modifiedTime>
+			<_typeOf type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">IType</_hm2Class>
+					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
+				</IHandle>
+			</_typeOf>
+			<_isOrdered type="a">0</_isOrdered>
+			<_base type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">ITag</_hm2Class>
+					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+				</IHandle>
+			</_base>
+			<AggregatesList type="e">
+				<value>GUID ac991d9d-e782-40dc-bdc1-122caa48e3f8</value>
+			</AggregatesList>
+		</ITag>
+		<ILiteralSpecification type="e">
+			<_id type="a">GUID ac991d9d-e782-40dc-bdc1-122caa48e3f8</_id>
+			<_rmmServerID type="a">-1</_rmmServerID>
+			<_modifiedTimeWeak type="a">10.6.2020::13:24:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">10.6.2020::13:24:47</_modifiedTime>
 			<_value type="a">Error</_value>
 		</ILiteralSpecification>
 		<IDiagram type="e">
@@ -1975,7 +2033,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\package.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\package.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -2890,8 +2948,8 @@ It gathers cohesive software elements.</_text>
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.6.2020::13:27:28</_modifiedTime>
-			<_lastModifiedTime type="a">10.6.2020::13:27:28</_lastModifiedTime>
+			<_modifiedTime type="a">11.18.2020::8:18:53</_modifiedTime>
+			<_lastModifiedTime type="a">11.18.2020::8:18:53</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -3205,7 +3263,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\package.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\package.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -3606,7 +3664,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\black_class_with_ports.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_class_with_ports.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -4005,7 +4063,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\composition.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\composition.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -4429,7 +4487,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\data_type.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -5744,7 +5802,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\package.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\package.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -6916,7 +6974,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\black_composite_class_with_ports.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_composite_class_with_ports.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -7099,7 +7157,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\black_class.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\black_class.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -8247,7 +8305,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\package.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\package.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -10203,7 +10261,7 @@ It gathers cohesive software elements.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,.\icons\data_type.ico&gt;
+&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\Documents\Software_Model_Toolset\Rhapsody_Profiles\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -10670,9 +10728,9 @@ It gathers cohesive software elements.</_text>
 			<_id type="a">GUID 2719fc8f-4da1-4e83-af5a-a29f49359334</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Metamodel_Description_Utilities</_name>
-			<_modifiedTimeWeak type="a">10.7.2020::11:29:52</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.7.2020::11:29:52</_modifiedTime>
-			<weakCGTime type="a">10.7.2020::11:29:52</weakCGTime>
+			<_modifiedTimeWeak type="a">11.18.2020::9:32:16</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:32:16</_modifiedTime>
+			<weakCGTime type="a">11.18.2020::9:32:16</weakCGTime>
 			<strongCGTime type="a">10.6.2020::12:11:38</strongCGTime>
 			<_defaultComposite type="s">GUID 625c01d7-151f-46e6-bbb9-41c3ecaa0f97</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -11069,8 +11127,8 @@ It gathers cohesive software elements.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Layout_Rules_By_Metaclass</_name>
-			<_modifiedTimeWeak type="a">10.6.2020::12:11:38</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.1.2020::6:4:12</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.18.2020::9:32:16</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.18.2020::9:32:16</_modifiedTime>
 			<TableElementTypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -11092,7 +11150,7 @@ It gathers cohesive software elements.</_text>
 			</TableElementTypes>
 			<DataColumns type="c">
 				<IRPYRawContainer type="e">
-					<size type="a">3</size>
+					<size type="a">5</size>
 					<TableDataDefinition type="e">
 						<_myTable type="r">
 							<IHandle type="e">
@@ -11134,6 +11192,25 @@ It gathers cohesive software elements.</_text>
 						</_myTable>
 						<_modelElement type="r">
 							<IHandle type="e">
+								<_hm2Class type="a">ITag</_hm2Class>
+								<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">Criticality</TableDataDefinitionName>
+						<_DataType type="a">4</_DataType>
+						<_columnName type="a">Criticality</_columnName>
+						<_contextPatternLabel type="a">Rule</_contextPatternLabel>
+					</TableDataDefinition>
+					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 7dee7e85-bedc-4fbe-992f-cbe95af58a67</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
 							</IHandle>
 						</_modelElement>
 						<TableDataDefinitionName type="a">Requirement.Specification</TableDataDefinitionName>
@@ -11141,8 +11218,25 @@ It gathers cohesive software elements.</_text>
 						<_contextPatternLabel type="a">Rule</_contextPatternLabel>
 					</TableDataDefinition>
 					
+					<TableDataDefinition type="e">
+						<_myTable type="r">
+							<IHandle type="e">
+								<_hm2Class type="a">ITableLayout</_hm2Class>
+								<_hid type="a">GUID 7dee7e85-bedc-4fbe-992f-cbe95af58a67</_hid>
+							</IHandle>
+						</_myTable>
+						<_modelElement type="r">
+							<IHandle type="e">
+							</IHandle>
+						</_modelElement>
+						<TableDataDefinitionName type="a">General.Description</TableDataDefinitionName>
+						<_columnName type="a">Rationale</_columnName>
+						<_contextPatternLabel type="a">Rule</_contextPatternLabel>
+					</TableDataDefinition>
+					
 				</IRPYRawContainer>
 			</DataColumns>
+			<m_CollapseFirstColumn type="a">1</m_CollapseFirstColumn>
 			<TableFromElementTypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
