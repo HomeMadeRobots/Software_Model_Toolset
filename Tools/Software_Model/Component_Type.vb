@@ -728,14 +728,14 @@ Public Class Component_Type_Part
                 If nb_delegation_by_port.Item(pport.UUID) <> 1 Then
                     ' several delegation
                     Me.Add_Consistency_Check_Error_Item(report,
-                        "TBD", "Provider_Port '" & pport.Name & "' delegated several time.")
+                        "PART_4", "Provider_Port '" & pport.Name & "' delegated several time.")
                 End If
             Else
                 ' no delegation
                 If Not nb_assembly_by_pport.ContainsKey(pport.UUID) Then
                     ' no delegation, no assembly
                     Me.Add_Consistency_Check_Information_Item(report,
-                        "TBD", "Provider_Port '" & pport.Name & "' not used.")
+                        "PART_3", "Provider_Port '" & pport.Name & "' not used.")
                 End If
             End If
         Next
@@ -744,13 +744,13 @@ Public Class Component_Type_Part
                 If nb_delegation_by_port.Item(rport.UUID) <> 1 Then
                     ' several delegation
                     Me.Add_Consistency_Check_Error_Item(report,
-                        "TBD", "Requirer_Port '" & rport.Name & "' delegated several time.")
+                        "PART_5", "Requirer_Port '" & rport.Name & "' delegated several time.")
                 Else
                     ' one delegation
                     If nb_assembly_by_rport.ContainsKey(rport.UUID) Then
                         ' one delegation + n assembly
                         Me.Add_Consistency_Check_Error_Item(report,
-                            "TBD", "Requirer_Port '" & rport.Name & "' delegated and assembled.")
+                            "PART_5", "Requirer_Port '" & rport.Name & "' delegated and assembled.")
                     End If
                 End If
             Else
@@ -758,12 +758,12 @@ Public Class Component_Type_Part
                 If Not nb_assembly_by_rport.ContainsKey(rport.UUID) Then
                     ' no delegation, no assembly
                     Me.Add_Consistency_Check_Error_Item(report,
-                        "TBD", "Requirer_Port '" & rport.Name & "' not used.")
+                        "PART_5", "Requirer_Port '" & rport.Name & "' not used.")
                 Else
                     If nb_assembly_by_rport.Item(rport.UUID) > 1 Then
                         ' to many assembly
                         Me.Add_Consistency_Check_Error_Item(report,
-                            "TBD", "Requirer_Port '" & rport.Name & "' assembled several time.")
+                            "PART_5", "Requirer_Port '" & rport.Name & "' assembled several time.")
                     End If
                 End If
             End If
@@ -946,7 +946,7 @@ Public Class Delegation_Connector
         End If
         If part_port.Contract_Ref <> swct_port.Contract_Ref Then
             Me.Add_Consistency_Check_Error_Item(report, "DELEG_2",
-                "Linked ports do not refer to the same contract.")
+                "Linked ports do not reference the same interface.")
         End If
 
     End Sub
