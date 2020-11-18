@@ -193,17 +193,22 @@ Public Class Assembly_Connector
         MyBase.Check_Own_Consistency(report)
 
         If Me.Provider_Component_Ref = Me.Requirer_Component_Ref Then
-            Me.Add_Consistency_Check_Error_Item(report,
-                "CONN_1",
-                "Shall link two different components.")
+            Me.Add_Consistency_Check_Error_Item(report, "ASSBL_1",
+                "Shall link two different objects.")
         End If
 
-        Dim rport As Requirer_Port = CType(Get_Element_By_Uuid(Me.Requirer_Port_Ref), Requirer_Port)
-        Dim pport As Provider_Port = CType(Get_Element_By_Uuid(Me.Provider_Port_Ref), Provider_Port)
+        Dim rport As Port = CType(Get_Element_By_Uuid(Me.Requirer_Port_Ref), Port)
+        Dim pport As Port = CType(Get_Element_By_Uuid(Me.Provider_Port_Ref), Port)
+
+        If rport.GetType = pport.GetType Then
+            Me.Add_Consistency_Check_Error_Item(report, "ASSBL_2",
+                "Linked ports are of the same kind.")
+        End If
+
         If Not (IsNothing(rport) And IsNothing(pport)) Then
             If rport.Contract_Ref <> pport.Contract_Ref Then
-                Me.Add_Consistency_Check_Error_Item(report,
-                    "TBD", "Linked ports do not refer to the same interface.")
+                Me.Add_Consistency_Check_Error_Item(report, "ASSBL_3",
+                    "Linked ports do not reference the same interface.")
             End If
         End If
 
