@@ -2,7 +2,7 @@
 
 Public Class Root_Software_Composition
 
-    Inherits SMM_Class
+    Inherits SMM_Class_With_Delegable_Operations
 
     Public Component_Prototypes As New List(Of Component_Prototype)
     Public Assembly_Connectors As New List(Of Assembly_Connector)
@@ -22,6 +22,21 @@ Public Class Root_Software_Composition
             Me.Children = children_list
         End If
         Return Me.Children
+    End Function
+
+    Public Overrides Function Is_Composite() As Boolean
+        Return True
+    End Function
+
+    Public Overrides Function Is_My_Part(part_uuid As Guid) As Boolean
+        Dim got_it As Boolean = False
+        For Each part In Me.Component_Prototypes
+            If part.UUID = part_uuid Then
+                got_it = True
+                Exit For
+            End If
+        Next
+        Return got_it
     End Function
 
 
@@ -62,7 +77,7 @@ Public Class Root_Software_Composition
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             If Is_OS_Task(CType(rpy_ope, RPModelElement)) Then
-                Dim ope As OS_Task = New OS_Task
+                Dim ope As OS_Task = New OS_Task(Me)
                 Me.Tasks.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             End If
@@ -271,6 +286,15 @@ End Class
 Public Class OS_Task
 
     Inherits Delegable_Operation
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
+    Public Sub New()
+    End Sub
+
+    Public Sub New(parent_class As Root_Software_Composition)
+        MyBase.New(parent_class)
+    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge

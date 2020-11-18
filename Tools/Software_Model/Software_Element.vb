@@ -624,6 +624,17 @@ Public MustInherit Class SMM_Class
 End Class
 
 
+Public MustInherit Class SMM_Class_With_Delegable_Operations
+    Inherits SMM_Class
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
+    Public MustOverride Function Is_Composite() As Boolean
+    Public MustOverride Function Is_My_Part(part_uuid As Guid) As Boolean
+
+End Class
+
+
 Public MustInherit Class Typed_Software_Element
 
     Inherits Software_Element

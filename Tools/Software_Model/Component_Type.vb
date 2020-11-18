@@ -4,7 +4,7 @@ Imports System.Xml.Serialization
 
 Public Class Component_Type
 
-    Inherits SMM_Class
+    Inherits SMM_Class_With_Delegable_Operations
 
     Public OS_Operations As New List(Of OS_Operation)
     <XmlArrayItem("Configuration")>
@@ -15,7 +15,7 @@ Public Class Component_Type
     Public Assembly_Connectors As New List(Of Assembly_Connector)
     Public Delegation_Connectors As New List(Of Delegation_Connector)
 
-    Private Is_Composite As Boolean = False
+    Private Is_Composite_Component_Type As Boolean = False
 
     '----------------------------------------------------------------------------------------------'
     ' General methods
@@ -36,8 +36,8 @@ Public Class Component_Type
         Return Me.Children
     End Function
 
-    Public Function Is_Composite_Component_Type() As Boolean
-        Return Me.Is_Composite
+    Public Overrides Function Is_Composite() As Boolean
+        Return Me.Is_Composite_Component_Type
     End Function
 
     Public Function Is_My_Provider_Port(port_uuid As Guid) As Boolean
@@ -66,6 +66,17 @@ Public Class Component_Type
         Dim got_it As Boolean = False
         For Each op In Me.Get_All_OS_Operations()
             If op.UUID = op_uuid Then
+                got_it = True
+                Exit For
+            End If
+        Next
+        Return got_it
+    End Function
+
+    Public Overrides Function Is_My_Part(part_uuid As Guid) As Boolean
+        Dim got_it As Boolean = False
+        For Each part In Me.Parts
+            If part.UUID = part_uuid Then
                 got_it = True
                 Exit For
             End If
@@ -149,7 +160,7 @@ Public Class Component_Type
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             If Is_OS_Operation(CType(rpy_ope, RPModelElement)) Then
-                Dim ope As OS_Operation = New OS_Operation
+                Dim ope As OS_Operation = New OS_Operation(Me)
                 Me.OS_Operations.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             End If
@@ -170,7 +181,7 @@ Public Class Component_Type
                 Dim part As Component_Type_Part = New Component_Type_Part(Me)
                 Me.Parts.Add(part)
                 part.Import_From_Rhapsody_Model(Me, CType(rpy_object, RPModelElement))
-                Me.Is_Composite = True
+                Me.Is_Composite_Component_Type = True
             End If
         Next
 
@@ -212,7 +223,7 @@ Public Class Component_Type
                 "Shall aggregate at least one Port.")
         End If
 
-        If Me.Is_Composite = False Then
+        If Me.Is_Composite_Component_Type = False Then
             If Me.Configurations.Count <> 0 Then
                 Me.Add_Consistency_Check_Error_Item(report,
                     "SWCT_2",
@@ -362,7 +373,7 @@ Public MustInherit Class Port
 
     Protected Function Get_Nb_Delegations_In_Composite() As Integer
         Dim nb_delegation As Integer = 0
-        If Me.Owner.Is_Composite_Component_Type Then
+        If Me.Owner.Is_Composite Then
             Dim rpy_port As RPPort = CType(Me.Rpy_Element, RPPort)
             Dim rpy_elmt As RPModelElement
             For Each rpy_elmt In rpy_port.references
@@ -513,7 +524,7 @@ Public Class Provider_Port
                 "Shall have one and only one contract.")
         End If
 
-        If Me.Owner.Is_Composite_Component_Type Then
+        If Me.Owner.Is_Composite Then
             If Me.Get_Nb_Delegations_In_Composite = 0 Then
                 Me.Add_Consistency_Check_Error_Item(report, "PORT_2",
                     "Shall be delegated to only one port.")
@@ -611,7 +622,7 @@ Public Class Requirer_Port
     ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
-        If Me.Owner.Is_Composite_Component_Type Then
+        If Me.Owner.Is_Composite Then
             If Me.Get_Nb_Delegations_In_Composite = 0 Then
                 Me.Add_Consistency_Check_Error_Item(report, "PORT_3",
                     "Shall be delegated to at least one port.")
@@ -626,6 +637,14 @@ Public Class OS_Operation
 
     Inherits Delegable_Operation
 
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
+    Public Sub New()
+    End Sub
+
+    Public Sub New(parent_class As Component_Type)
+        MyBase.New(parent_class)
+    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge

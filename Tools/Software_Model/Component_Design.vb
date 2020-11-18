@@ -406,7 +406,7 @@ Public Class Component_Design
             Dim swct As Component_Type
             swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), Component_Type)
 
-            If swct.Is_Composite_Component_Type Then
+            If swct.Is_Composite Then
                 Me.Add_Consistency_Check_Error_Item(report, "SWCD_2",
                     "Shall be associated to an atomic Component_Type.")
                 Exit Sub
