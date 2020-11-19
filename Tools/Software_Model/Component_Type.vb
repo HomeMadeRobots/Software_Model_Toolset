@@ -703,10 +703,11 @@ Public Class Component_Type_Part
             End If
         End If
 
-        ' Check connections (delegation and assembly)
+        ' Count references on Me
         Dim nb_assembly_by_pport As New Dictionary(Of Guid, Integer)
         Dim nb_assembly_by_rport As New Dictionary(Of Guid, Integer)
         Dim nb_delegation_by_port As New Dictionary(Of Guid, Integer)
+        Dim nb_delegation_by_op As New Dictionary(Of Guid, Integer)
         Dim rpy_obj As RPInstance
         rpy_obj = CType(Me.Rpy_Element, RPInstance)
         Dim rpy_elmt As RPModelElement
@@ -739,9 +740,21 @@ Public Class Component_Type_Part
                         nb_delegation_by_port.Add(delegation.Part_Port_Ref, 1)
                     End If
                 End If
+            ElseIf Is_Operation_Delegation(rpy_elmt) Then
+                Dim op_deleg As Operation_Delegation
+                op_deleg = CType(Me.Get_Element_By_Rpy_Guid(rpy_elmt.GUID), Operation_Delegation)
+                If op_deleg.Part_Ref = Me.UUID Then
+                    If nb_delegation_by_op.ContainsKey(op_deleg.OS_Operation_Ref) Then
+                        nb_delegation_by_op(op_deleg.OS_Operation_Ref) += 1
+                    Else
+                        nb_delegation_by_op.Add(op_deleg.OS_Operation_Ref, 1)
+                    End If
+                End If
             End If
         Next
+
         Dim base_swct As Component_Type = CType(base_class, Component_Type)
+        ' Check connections (delegation and assembly)
         For Each pport In base_swct.Provider_Ports
             If nb_delegation_by_port.ContainsKey(pport.UUID) Then
                 If nb_delegation_by_port.Item(pport.UUID) <> 1 Then
@@ -785,6 +798,15 @@ Public Class Component_Type_Part
                             "PART_5", "Requirer_Port '" & rport.Name & "' assembled several time.")
                     End If
                 End If
+            End If
+        Next
+
+        ' Check OS_Operation delegation
+        For Each op In base_swct.OS_Operations
+            If Not nb_delegation_by_op.ContainsKey(op.UUID) Then
+                ' No delegation
+                Me.Add_Consistency_Check_Information_Item(report,
+                    "PART_6", "OS_Operation '" & op.Name & "' not called by the owner.")
             End If
         Next
 
