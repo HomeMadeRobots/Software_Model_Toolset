@@ -185,7 +185,7 @@ Public Class Component_Type
             End If
         Next
 
-        If Me.Is_Composite = True Then
+        If Me.Is_Composite_Component_Type = True Then
             Dim rpy_link As RPLink
             For Each rpy_link In CType(Me.Rpy_Element, RPClass).links
                 If Is_Connector_Prototype(CType(rpy_link, RPModelElement)) Then
@@ -223,7 +223,7 @@ Public Class Component_Type
                 "Shall aggregate at least one Port.")
         End If
 
-        If Me.Is_Composite_Component_Type = False Then
+        If Me.Is_Composite_Component_Type = True Then
             If Me.Configurations.Count <> 0 Then
                 Me.Add_Consistency_Check_Error_Item(report,
                     "SWCT_2",
