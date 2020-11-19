@@ -8,8 +8,6 @@ Public Class Root_Software_Composition
     Public Assembly_Connectors As New List(Of Assembly_Connector)
     Public Tasks As New List(Of OS_Task)
 
-    Private Nb_Conn_By_PPort_By_Component As New Dictionary(Of Guid, Dictionary(Of Guid, Integer))
-    Private Nb_Conn_By_RPort_By_Component As New Dictionary(Of Guid, Dictionary(Of Guid, Integer))
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -47,7 +45,6 @@ Public Class Root_Software_Composition
         ' Ignore generalizations added to a Root_Software_Composition
         Me.Nb_Base_Class_Ref = 0 ' Could have been set to 1 by SMM_Class
     End Sub
-
 
     Protected Overrides Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean
         Return Is_Root_Software_Composition(rpy_element)
@@ -97,94 +94,16 @@ Public Class Root_Software_Composition
     ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
-
         If Component_Prototypes.Count < 2 Then
             Me.Add_Consistency_Check_Warning_Item(report,
                 "COMP_1",
                 "Should aggregate at least two Component_Prototypes.")
         End If
-
-        For Each conn In Me.Assembly_Connectors
-            Dim p_swc_port As Port = CType(Me.Get_Element_By_Uuid(conn.Provider_Port_Ref), Port)
-            Dim r_swc_port As Port = CType(Me.Get_Element_By_Uuid(conn.Requirer_Port_Ref), Port)
-
-            If IsNothing(p_swc_port) Or IsNothing(r_swc_port) Then
-                Exit For
-            End If
-
-            ' Check connected ports contract.
-            If p_swc_port.Contract_Ref <> r_swc_port.Contract_Ref Then
-                Dim r_swc As Component_Prototype
-                r_swc = CType(
-                            Me.Get_Element_By_Uuid(conn.Requirer_Component_Ref), 
-                            Component_Prototype)
-                r_swc.Add_Consistency_Check_Error_Item(report,
-                    "SWC_4",
-                    r_swc_port.Name & " shall be linked to a Provider_Port with the same contract.")
-            End If
-
-            ' Build dictionaries of assembly connections
-            ' These dictionaries will be used for Component_Prototype the consistency check.
-            Dim nb_conn As Integer
-            Dim nb_conn_by_port As Dictionary(Of Guid, Integer)
-            ' Treat the provider Component_Prototype
-            If Nb_Conn_By_PPort_By_Component.ContainsKey(conn.Provider_Component_Ref) Then
-                nb_conn_by_port = Nb_Conn_By_PPort_By_Component.Item(conn.Provider_Component_Ref)
-                If nb_conn_by_port.ContainsKey(p_swc_port.UUID) Then
-                    nb_conn = nb_conn_by_port.Item(p_swc_port.UUID)
-                    nb_conn_by_port.Item(p_swc_port.UUID) = nb_conn + 1
-                Else
-                    nb_conn_by_port.Add(p_swc_port.UUID, 1)
-                End If
-            Else
-                nb_conn_by_port = New Dictionary(Of Guid, Integer)
-                nb_conn_by_port.Add(p_swc_port.UUID, 1)
-                Nb_Conn_By_PPort_By_Component.Add(conn.Provider_Component_Ref, nb_conn_by_port)
-            End If
-            ' Treat the requirer Component_Prototype
-            If Nb_Conn_By_RPort_By_Component.ContainsKey(conn.Requirer_Component_Ref) Then
-                nb_conn_by_port = Nb_Conn_By_RPort_By_Component.Item(conn.Requirer_Component_Ref)
-                If nb_conn_by_port.ContainsKey(r_swc_port.UUID) Then
-                    nb_conn = nb_conn_by_port.Item(r_swc_port.UUID)
-                    nb_conn_by_port.Item(r_swc_port.UUID) = nb_conn + 1
-                Else
-                    nb_conn_by_port.Add(r_swc_port.UUID, 1)
-                End If
-            Else
-                nb_conn_by_port = New Dictionary(Of Guid, Integer)
-                nb_conn_by_port.Add(r_swc_port.UUID, 1)
-                Nb_Conn_By_RPort_By_Component.Add(conn.Requirer_Component_Ref, nb_conn_by_port)
-            End If
-
-        Next
-
     End Sub
 
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
-    Public Function Get_PPort_Nb_Connection(component_uuid As Guid, port_uuid As Guid) As Integer
-        Dim nb_conn As Integer = 0
-        If Nb_Conn_By_PPort_By_Component.ContainsKey(component_uuid) Then
-            Dim nb_conn_by_port = Nb_Conn_By_PPort_By_Component.Item(component_uuid)
-            If nb_conn_by_port.ContainsKey(port_uuid) Then
-                nb_conn = nb_conn_by_port.Item(port_uuid)
-            End If
-        End If
-        Return nb_conn
-    End Function
-
-    Public Function Get_RPort_Nb_Connection(component_uuid As Guid, port_uuid As Guid) As Integer
-        Dim nb_conn As Integer = 0
-        If Nb_Conn_By_RPort_By_Component.ContainsKey(component_uuid) Then
-            Dim nb_conn_by_port = Nb_Conn_By_RPort_By_Component.Item(component_uuid)
-            If nb_conn_by_port.ContainsKey(port_uuid) Then
-                nb_conn = nb_conn_by_port.Item(port_uuid)
-            End If
-        End If
-        Return nb_conn
-    End Function
-
     Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         If IsNothing(Me.Needed_Elements) Then
             Me.Needed_Elements = New List(Of SMM_Classifier)
@@ -245,38 +164,81 @@ Public Class Component_Prototype
         MyBase.Check_Own_Consistency(report)
 
         If Not Me.Type_Ref.Equals(Guid.Empty) Then
-            ' Check Ports connections
-            Dim port As Port
-            Dim nb_conn As Integer
-
-            Dim referenced_swct As Component_Type
-            referenced_swct = CType(Me.Get_Element_By_Uuid(Me.Type_Ref), Component_Type)
-
-            For Each port In referenced_swct.Provider_Ports
-                nb_conn = CType(Me.Owner, Root_Software_Composition). _
-                            Get_PPort_Nb_Connection(Me.UUID, port.UUID)
-                If nb_conn = 0 Then
-                    Me.Add_Consistency_Check_Information_Item(report,
-                        "SWC_3",
-                        "Provider_Port " & port.Name & " not connected.")
-                End If
-            Next
-
-            For Each port In referenced_swct.Requirer_Ports
-                nb_conn = CType(Me.Owner, Root_Software_Composition). _
-                            Get_RPort_Nb_Connection(Me.UUID, port.UUID)
-                If nb_conn = 0 Then
-                    Me.Add_Consistency_Check_Error_Item(report,
-                        "SWC_2",
-                        "Requirer_Port " & port.Name & " shall be connected.")
-                ElseIf nb_conn > 1 Then
-                    Me.Add_Consistency_Check_Error_Item(report,
-                        "SWC_2",
-                        "Requirer_Port " & port.Name & " shall be connected to only one port.")
-                End If
-            Next
-
+            ' Exit sub
         End If
+
+        ' Count references on Me
+        Dim nb_assembly_by_pport As New Dictionary(Of Guid, Integer)
+        Dim nb_assembly_by_rport As New Dictionary(Of Guid, Integer)
+        Dim nb_delegation_by_op As New Dictionary(Of Guid, Integer)
+        Dim rpy_obj As RPInstance
+        rpy_obj = CType(Me.Rpy_Element, RPInstance)
+        Dim rpy_elmt As RPModelElement
+        For Each rpy_elmt In rpy_obj.references
+            If Is_Connector_Prototype(rpy_elmt) Then
+                Dim rpy_link As RPLink = CType(rpy_elmt, RPLink)
+                If Assembly_Connector.Is_Assembly_Connector(rpy_link) Then
+                    Dim assembly As Assembly_Connector
+                    assembly = CType(Me.Get_Element_By_Rpy_Guid(rpy_link.GUID), Assembly_Connector)
+                    If assembly.Provider_Component_Ref = Me.UUID Then
+                        If nb_assembly_by_pport.ContainsKey(assembly.Provider_Port_Ref) Then
+                            nb_assembly_by_pport(assembly.Provider_Port_Ref) += 1
+                        Else
+                            nb_assembly_by_pport.Add(assembly.Provider_Port_Ref, 1)
+                        End If
+                    Else
+                        If nb_assembly_by_rport.ContainsKey(assembly.Requirer_Port_Ref) Then
+                            nb_assembly_by_rport(assembly.Requirer_Port_Ref) += 1
+                        Else
+                            nb_assembly_by_rport.Add(assembly.Requirer_Port_Ref, 1)
+                        End If
+                    End If
+                End If
+            ElseIf Is_Operation_Delegation(rpy_elmt) Then
+                Dim op_deleg As Operation_Delegation
+                op_deleg = CType(Me.Get_Element_By_Rpy_Guid(rpy_elmt.GUID), Operation_Delegation)
+                If op_deleg.Part_Ref = Me.UUID Then
+                    If nb_delegation_by_op.ContainsKey(op_deleg.OS_Operation_Ref) Then
+                        nb_delegation_by_op(op_deleg.OS_Operation_Ref) += 1
+                    Else
+                        nb_delegation_by_op.Add(op_deleg.OS_Operation_Ref, 1)
+                    End If
+                End If
+            End If
+        Next
+
+        Dim referenced_swct As Component_Type
+        referenced_swct = CType(Me.Get_Element_By_Uuid(Me.Type_Ref), Component_Type)
+
+        ' Check connections (assembly)
+        For Each pport In referenced_swct.Provider_Ports
+            If Not nb_assembly_by_pport.ContainsKey(pport.UUID) Then
+                ' no assembly
+                Me.Add_Consistency_Check_Information_Item(report, "SWC_3",
+                    "Provider_Port '" & pport.Name & "' not used.")
+            End If
+        Next
+        For Each rport In referenced_swct.Requirer_Ports
+           If Not nb_assembly_by_rport.ContainsKey(rport.UUID) Then
+                ' No assembly
+                Me.Add_Consistency_Check_Error_Item(report, "SWC_2",
+                    "Requirer_Port '" & rport.Name & "' shall be connected.")
+            Else
+                If nb_assembly_by_rport.Item(rport.UUID) > 1 Then
+                    Me.Add_Consistency_Check_Error_Item(report, "SWC_2",
+                        "Requirer_Port '" & rport.Name & "' connected to several ports.")
+                End If
+            End If
+        Next
+
+        ' Check OS_Operation delegation
+        For Each op In referenced_swct.OS_Operations
+            If Not nb_delegation_by_op.ContainsKey(op.UUID) Then
+                ' No delegation
+                Me.Add_Consistency_Check_Information_Item(report,
+                    "SWC_4", "OS_Operation '" & op.Name & "' not called by the OS tasks.")
+            End If
+        Next
 
     End Sub
 
