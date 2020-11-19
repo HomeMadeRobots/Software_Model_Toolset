@@ -214,26 +214,26 @@ Public Class Operation_Delegation
 
         ' Check Priority
         If Is_Priority_UInteger = False Then
-            Me.Add_Consistency_Check_Error_Item(report, "OPDELEG_2",
+            Me.Add_Consistency_Check_Error_Item(report, "OPDELEG_1",
                 "Priority shall be an unsigned integer.")
         End If
 
         ' Check Part_Ref
         If Not Me.Owner.Get_Owner.Is_My_Part(Me.Part_Ref) Then
-            Me.Add_Consistency_Check_Error_Item(report, "OPDELEG_1",
+            Me.Add_Consistency_Check_Error_Item(report, "OPDELEG_2",
                 "Referenced part shall belong to the owner of my operation.")
-        End If
-
-        ' Check OS_Operation_Ref
-        Dim swc As SMM_Object
-        swc = CType(Me.Get_Element_By_Uuid(Me.Part_Ref), SMM_Object)
-        If Not IsNothing(swc) Then
-            Dim swct As Component_Type
-            swct = CType(Me.Get_Element_By_Uuid(swc.Type_Ref), Component_Type)
+        Else
+            ' Check OS_Operation_Ref
+            Dim swc As SMM_Object
+            swc = CType(Me.Get_Element_By_Uuid(Me.Part_Ref), SMM_Object)
             If Not IsNothing(swc) Then
-                If Not swct.Is_My_OS_Operation(Me.OS_Operation_Ref) Then
-                    Me.Add_Consistency_Check_Error_Item(report, "OPDELEG_1",
-                        "Referenced operation shall belong to a part of the owner of my operation.")
+                Dim swct As Component_Type
+                swct = CType(Me.Get_Element_By_Uuid(swc.Type_Ref), Component_Type)
+                If Not IsNothing(swct) Then
+                    If Not swct.Is_My_OS_Operation(Me.OS_Operation_Ref) Then
+                        Me.Add_Consistency_Check_Error_Item(report, "OPDELEG_3",
+                            "Referenced operation shall belong to the referenced part.")
+                    End If
                 End If
             End If
         End If
