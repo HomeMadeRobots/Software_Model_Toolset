@@ -8,6 +8,7 @@ Public Class Root_Software_Composition
     Public Assembly_Connectors As New List(Of Assembly_Connector)
     Public Tasks As New List(Of OS_Task)
 
+    Private Cyclic_Dependencies_List As List(Of List(Of Component_Prototype)) = Nothing
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -99,7 +100,32 @@ Public Class Root_Software_Composition
                 "COMP_1",
                 "Should aggregate at least two Component_Prototypes.")
         End If
+
+        Me.Find_Cyclic_Dependencies()
     End Sub
+
+    Public Function Find_Cyclic_Dependencies() As List(Of List(Of Component_Prototype))
+        If IsNothing(Me.Cyclic_Dependencies_List) Then
+
+            Me.Cyclic_Dependencies_List = New List(Of List(Of Component_Prototype))
+
+            For Each swc In Me.Component_Prototypes
+                swc.Find_Needed_Component_Prototypes()
+            Next
+
+            For Each start_swc In Me.Component_Prototypes
+                Dim current_swc_path As New List(Of Component_Prototype)
+                Dim start_swc_cyclic_dep_list As New List(Of List(Of Component_Prototype))
+                start_swc.Complete_Cyclic_Dependency_Path(
+                    start_swc.UUID,
+                    start_swc_cyclic_dep_list,
+                    current_swc_path)
+                Me.Cyclic_Dependencies_List.AddRange(start_swc_cyclic_dep_list)
+            Next
+
+        End If
+        Return Me.Cyclic_Dependencies_List
+    End Function
 
 
     '----------------------------------------------------------------------------------------------'
@@ -138,7 +164,8 @@ Public Class Component_Prototype
     Inherits SMM_Object
 
     Private Owner As Root_Software_Composition = Nothing
-
+    Private Needed_Component_Prototypes_List As List(Of Component_Prototype) = Nothing
+    Private Dependency_Cycle As List(Of Component_Prototype) ' first found
 
     '----------------------------------------------------------------------------------------------'
     ' General methods
@@ -155,6 +182,33 @@ Public Class Component_Prototype
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Component_Prototype", "Object")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for metrics computation
+    Public Sub Find_Needed_Component_Prototypes()
+        Me.Needed_Component_Prototypes_List = New List(Of Component_Prototype)
+        Dim rpy_obj As RPInstance
+        rpy_obj = CType(Me.Rpy_Element, RPInstance)
+        Dim rpy_elmt As RPModelElement
+        For Each rpy_elmt In rpy_obj.references
+            If Is_Connector_Prototype(rpy_elmt) Then
+                Dim rpy_link As RPLink = CType(rpy_elmt, RPLink)
+                If Assembly_Connector.Is_Assembly_Connector(rpy_link) Then
+                    Dim assembly As Assembly_Connector
+                    assembly = CType(Me.Get_Element_By_Rpy_Guid(rpy_link.GUID), Assembly_Connector)
+                    If assembly.Requirer_Component_Ref = Me.UUID Then
+                        Dim prov_swc As Component_Prototype
+                        prov_swc = CType(Me.Get_Element_By_Uuid(assembly.Provider_Component_Ref), 
+                            Component_Prototype)
+                        If Not Me.Needed_Component_Prototypes_List.Contains(prov_swc) Then
+                            Me.Needed_Component_Prototypes_List.Add(prov_swc)
+                        End If
+                    End If
+                End If
+            End If
+        Next
     End Sub
 
 
@@ -240,7 +294,50 @@ Public Class Component_Prototype
             End If
         Next
 
+
+        If Not IsNothing(Me.Dependency_Cycle) Then
+            Dim swc_path_str As String = Transform_Path_To_String(Me.Dependency_Cycle)
+            Me.Add_Consistency_Check_Warning_Item(report,
+                "SWC_5",
+                "Involved in at least one dependency cycle : " & swc_path_str & ".")
+        End If
+
     End Sub
+
+    Public Sub Complete_Cyclic_Dependency_Path(
+        start_swc_uuid As Guid,
+        start_swc_cyclic_dep_list As List(Of List(Of Component_Prototype)),
+        current_swc_path As List(Of Component_Prototype))
+        For Each swc In Me.Needed_Component_Prototypes_List
+            If Not current_swc_path.Contains(swc) Then
+                Dim local_current_swc_path As New List(Of Component_Prototype)
+                local_current_swc_path.AddRange(current_swc_path)
+                local_current_swc_path.Add(swc)
+                If swc.UUID = start_swc_uuid Then
+                    ' Cyclic dependency found
+                    start_swc_cyclic_dep_list.Add(local_current_swc_path)
+                    ' Strore the first cycle found for Me
+                    If IsNothing(Me.Dependency_Cycle) Then
+                        Me.Dependency_Cycle = local_current_swc_path
+                    End If
+                End If
+                swc.Complete_Cyclic_Dependency_Path(
+                    start_swc_uuid,
+                    start_swc_cyclic_dep_list,
+                    local_current_swc_path)
+            End If
+        Next
+    End Sub
+
+    Public Shared Function Transform_Path_To_String(swc_list As List(Of Component_Prototype)) _
+        As String
+        Dim path_str As String = ""
+        For Each swc In swc_list
+           path_str &= swc.Name & "->"
+        Next
+        path_str &= swc_list.First.Name
+        Return path_str
+    End Function
 
 End Class
 
