@@ -452,16 +452,16 @@ Public Class Rpy_Model_Controller
             Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
             Me.Write_Csl_Line(" done.")
 
-
-            Dim dep_list As List(Of List(Of Top_Level_Package))
-            dep_list = Me.Model.Find_Cyclic_Dependencies()
-            If dep_list.Count = 0 Then
+            Dim dep_list_str As List(Of String)
+            dep_list_str = Me.Model.Find_Cyclic_Dependencies()
+            If dep_list_str.Count = 0 Then
                 Me.Write_Csl_Line("No cyclic dependencies.")
             Else
-                Me.Write_Csl_Line("Cyclic dependencies list :")
-                For Each pkg_list In dep_list
-                    Dim path_str As String = Top_Level_Package.Transform_Path_To_String(pkg_list)
-                    Me.Write_Csl_Line("   " & path_str)
+                Me.Write_Csl_Line("Cyclic dependencies list : (" & dep_list_str.Count & ")")
+                Dim counter As Integer = 0
+                For Each pkg_path In dep_list_str
+                    counter += 1
+                    Me.Write_Csl_Line("   " & counter & " - " & pkg_path)
                 Next
             End If
         End If
@@ -497,6 +497,58 @@ Public Class Rpy_Model_Controller
 
         ' Display result to output window
         Me.Write_Csl_Line("End removing empty Packages.")
+        chrono.Stop()
+        Me.Write_Csl(Get_Elapsed_Time(chrono))
+    End Sub
+
+    Public Sub Find_Component_Prototypes_Cyclic_Dependencies()
+        ' Initialize output window and display start message
+        Dim chrono As New Stopwatch
+        chrono.Start()
+        Me.Clear_Window()
+        Me.Write_Csl_Line("Find component prototypes cyclic dependencies...")
+
+        ' Get selected element and check that it is a Root_Software_Composition
+        Dim rpy_sw_mdl As RPProject = Nothing
+        Dim selected_element As RPModelElement = Rhapsody_App.getSelectedElement
+        Dim rpy_class As RPClass = Nothing
+        If Is_Root_Software_Composition(selected_element) Then
+            rpy_class = CType(selected_element, RPClass)
+            rpy_sw_mdl = CType(rpy_class.project, RPProject)
+        End If
+
+        If IsNothing(rpy_class) Then
+            Me.Write_Csl_Line("Error : a Root_Software_Composition shall be selected.")
+            Me.Write_Csl_Line("Find component prototypes cyclic dependencies end.")
+            Exit Sub
+        End If
+
+        If Not IsNothing(rpy_sw_mdl) Then
+            Me.Write_Csl("Get model from Rhapsody...")
+            Me.Model = New Software_Model_Container
+            Me.Model.Import_All_From_Rhapsody_Model(rpy_sw_mdl)
+            Me.Write_Csl_Line(" done.")
+
+            Dim root_compo As Root_Software_Composition
+            root_compo = CType(Me.Model.Get_Element_By_Rpy_Guid(rpy_class.GUID), 
+                Root_Software_Composition)
+
+            Dim dep_list_str As List(Of String)
+            dep_list_str = root_compo.Find_Cyclic_Dependencies()
+            If dep_list_str.Count = 0 Then
+                Me.Write_Csl_Line("No cyclic dependencies.")
+            Else
+                Me.Write_Csl_Line("Cyclic dependencies list : (" & dep_list_str.Count & ")")
+                Dim counter As Integer = 0
+                For Each swc_path In dep_list_str
+                    counter += 1
+                    Me.Write_Csl_Line("   " & counter & " - " & swc_path)
+                Next
+            End If
+        End If
+
+        ' Display Result to output window
+        Me.Write_Csl_Line("Find component prototypes cyclic dependencies end.")
         chrono.Stop()
         Me.Write_Csl(Get_Elapsed_Time(chrono))
     End Sub

@@ -84,6 +84,10 @@ Module Software_Model_Helpers
                     Dim sw_mdl_ctrl As New Rpy_Model_Controller
                     sw_mdl_ctrl.Find_Packages_Cyclic_Dependencies()
 
+                Case "Find_Component_Prototypes_Cyclic_Dependencies"
+                    Dim sw_mdl_ctrl As New Rpy_Model_Controller
+                    sw_mdl_ctrl.Find_Component_Prototypes_Cyclic_Dependencies()
+
             End Select
         Catch ex As Exception
             MsgBox("Software_Model_Tool : an error occured." & vbCrLf & vbCrLf & ex.Message)

@@ -83,6 +83,7 @@
     <Compile Include="Data_Series.vb" />
     <Compile Include="Data_Type.vb" />
     <Compile Include="Delegable_Operation.vb" />
+    <Compile Include="Cyclic_Dependencies_Manager.vb" />
     <Compile Include="Guid_Utilities.vb" />
     <Compile Include="Implementation_File.vb" />
     <Compile Include="Merge_Report_Item.vb" />
