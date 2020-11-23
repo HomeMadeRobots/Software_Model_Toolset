@@ -101,23 +101,29 @@ Public Class Root_Software_Composition
                 "Should aggregate at least two Component_Prototypes.")
         End If
 
-        Me.Find_Cyclic_Dependencies()
+        ' Check cyclic dependencies
+        Dim swc_dep_cycle As New List(Of Dependent_Element)
+        Dim list_of_swc As New List(Of Dependent_Element)
+        For Each swc In Me.Component_Prototypes
+            swc.Find_Needed_Component_Prototypes()
+            list_of_swc.Add(swc)
+        Next
+        swc_dep_cycle = Cyclic_Dependencies_Manager.Find_First_Cyclic_Dependency(list_of_swc)
+        If swc_dep_cycle.Count > 0 Then
+            Me.Add_Consistency_Check_Warning_Item(report, "COMPO_2",
+                "Components involved in at least one dependency cycle : " & _
+                Cyclic_Dependencies_Manager.Transform_Cycle_To_String(swc_dep_cycle) & ".")
+        End If
     End Sub
 
     Public Function Find_Cyclic_Dependencies() As List(Of String)
-        If IsNothing(Me.Cyclic_Dep_Mgr) Then
-
-            For Each swc In Me.Component_Prototypes
-                swc.Find_Needed_Component_Prototypes()
-            Next
-
-            Me.Cyclic_Dep_Mgr = New Cyclic_Dependencies_Manager()
-            Dim list_of_swc As New List(Of Dependent_Element)
-            For Each swc In Me.Component_Prototypes
-                list_of_swc.Add(swc)
-            Next
-            Me.Cyclic_Dep_Mgr.Find_Cyclic_Dependencies(list_of_swc)
-        End If
+        Me.Cyclic_Dep_Mgr = New Cyclic_Dependencies_Manager()
+        Dim list_of_swc As New List(Of Dependent_Element)
+        For Each swc In Me.Component_Prototypes
+            swc.Find_Needed_Component_Prototypes()
+            list_of_swc.Add(swc)
+        Next
+        Me.Cyclic_Dep_Mgr.Find_Cyclic_Dependencies(list_of_swc)
         Return Me.Cyclic_Dep_Mgr.Get_Cycles_List_String
     End Function
 

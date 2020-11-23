@@ -440,8 +440,21 @@ Public Class Software_Model_Container
 
         Me.Check_Own_Consistency(Me.Consistency_Report)
 
-        Me.Find_Cyclic_Dependencies()
+        ' Check cyclic dependencies
+        Dim pkg_dep_cycle As New List(Of Dependent_Element)
+        Dim list_of_pkg As New List(Of Dependent_Element)
+        For Each pkg In Me.Packages
+            pkg.Find_Needed_Elements()
+            list_of_pkg.Add(pkg)
+        Next
+        pkg_dep_cycle = Cyclic_Dependencies_Manager.Find_First_Cyclic_Dependency(list_of_pkg)
+        If pkg_dep_cycle.Count > 0 Then
+            Me.Add_Consistency_Check_Warning_Item(Me.Consistency_Report, "PROJ_1",
+                "Packages involved in at least one dependency cycle : " & _
+                Cyclic_Dependencies_Manager.Transform_Cycle_To_String(pkg_dep_cycle) & ".")
+        End If
 
+        ' Check packages
         For Each pkg In Me.Packages
             If pkg_name_list.Contains(pkg.Name) Then
                 pkg.Check_Consistency(Me.Consistency_Report)
@@ -490,19 +503,13 @@ Public Class Software_Model_Container
     End Sub
 
     Public Function Find_Cyclic_Dependencies() As List(Of String)
-        If IsNothing(Me.Cyclic_Dep_Mgr) Then
-
-            For Each pkg In Me.Packages
-                pkg.Find_Needed_Elements()
-            Next
-
-            Me.Cyclic_Dep_Mgr = New Cyclic_Dependencies_Manager()
-            Dim list_of_pkg As New List(Of Dependent_Element)
-            For Each pkg In Me.Packages
-                list_of_pkg.Add(pkg)
-            Next
-            Me.Cyclic_Dep_Mgr.Find_Cyclic_Dependencies(list_of_pkg)
-        End If
+        Me.Cyclic_Dep_Mgr = New Cyclic_Dependencies_Manager()
+        Dim list_of_pkg As New List(Of Dependent_Element)
+        For Each pkg In Me.Packages
+            pkg.Find_Needed_Elements()
+            list_of_pkg.Add(pkg)
+        Next
+        Me.Cyclic_Dep_Mgr.Find_Cyclic_Dependencies(list_of_pkg)
         Return Me.Cyclic_Dep_Mgr.Get_Cycles_List_String
     End Function
 
