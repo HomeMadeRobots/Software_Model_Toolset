@@ -355,7 +355,7 @@ Public Class Rpy_Model_Controller
             ' Create string of the date for created files
             Dim date_str As String = Now.ToString("yyyy_MM_dd_HH_mm_ss")
 
-            ' Select txt file directory
+            ' Select output files directory
             Dim output_directory As String
             output_directory = Me.Select_Directory("all documents")
             If output_directory = "" Then
@@ -414,13 +414,10 @@ Public Class Rpy_Model_Controller
                     Me.Model.Compute_PSWA_Metrics()
                     Me.Write_Csl_Line(" done.")
 
-                    ' Open txt file
                     Me.Write_Csl("Create report file...")
-                    file_name = rpy_sw_mdl.name & "_Metrics_Report_" & date_str & ".txt"
+                    file_name = rpy_sw_mdl.name & "_Metrics_Report_" & date_str & ".xlsx"
                     file_path = output_directory & "\" & file_name
-
                     Me.Model.Generate_PSWA_Metrics_Report(file_path)
-
                     Me.Write_Csl_Line(" done.")
 
                     Me.Write_Csl_Line("Metrics report file full path : " & file_path)
