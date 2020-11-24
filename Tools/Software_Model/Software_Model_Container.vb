@@ -177,6 +177,7 @@ Public Class Software_Model_Container
     ' Methods for model import from Rhapsody
     Public Sub Import_All_From_Rhapsody_Model(rpy_proj As RPProject)
 
+        Me.Owner = Nothing
         Me.Rpy_Element = CType(rpy_proj, RPModelElement)
         Me.Container = Me
 

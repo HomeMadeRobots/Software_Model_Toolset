@@ -59,7 +59,6 @@ Public Class Root_Software_Composition
                 Dim component As New Component_Prototype
                 Me.Component_Prototypes.Add(component)
                 component.Import_From_Rhapsody_Model(Me, CType(rpy_component, RPModelElement))
-                component.Set_Owner(Me)
             End If
         Next
 
@@ -75,7 +74,7 @@ Public Class Root_Software_Composition
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             If Is_OS_Task(CType(rpy_ope, RPModelElement)) Then
-                Dim ope As OS_Task = New OS_Task(Me)
+                Dim ope As OS_Task = New OS_Task
                 Me.Tasks.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             End If
@@ -165,15 +164,11 @@ Public Class Component_Prototype
 
     Implements Dependent_Element
 
-    Private Owner As Root_Software_Composition = Nothing
     Private Needed_Component_Prototypes_List As List(Of Dependent_Element) = Nothing
 
 
     '----------------------------------------------------------------------------------------------'
     ' General methods
-    Public Sub Set_Owner(parent As Root_Software_Composition)
-        Me.Owner = parent
-    End Sub
 
 
     '----------------------------------------------------------------------------------------------'
@@ -323,12 +318,7 @@ Public Class OS_Task
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Public Sub New()
-    End Sub
 
-    Public Sub New(parent_class As Root_Software_Composition)
-        MyBase.New(parent_class)
-    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge

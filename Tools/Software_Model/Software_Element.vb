@@ -8,6 +8,7 @@ Public MustInherit Class Software_Element
     Public UUID As Guid = Nothing
     Public Description As String = Nothing
 
+    Protected Owner As Software_Element
     Protected Children As List(Of Software_Element) = Nothing
     Protected Rpy_Element As RPModelElement = Nothing
     Protected Container As Software_Model_Container = Nothing
@@ -36,6 +37,10 @@ Public MustInherit Class Software_Element
         Return result
     End Function
 
+    Public Function Get_Owner() As Software_Element
+        Return Me.Owner
+    End Function
+
     Public Overridable Function Get_Children() As List(Of Software_Element)
         Return Nothing
     End Function
@@ -59,6 +64,7 @@ Public MustInherit Class Software_Element
         owner As Software_Element,
         rpy_mdl_element As RPModelElement)
 
+        Me.Owner = owner
         Me.Container = owner.Container
         Me.Rpy_Element = rpy_mdl_element
 

@@ -147,11 +147,11 @@ Public Class Component_Type
         Dim rpy_port As RPPort
         For Each rpy_port In CType(Me.Rpy_Element, RPClass).ports
             If Is_Provider_Port(CType(rpy_port, RPModelElement)) Then
-                Dim pport As Provider_Port = New Provider_Port(Me)
+                Dim pport As Provider_Port = New Provider_Port
                 Me.Provider_Ports.Add(pport)
                 pport.Import_From_Rhapsody_Model(Me, CType(rpy_port, RPModelElement))
             ElseIf Is_Requirer_Port(CType(rpy_port, RPModelElement)) Then
-                Dim rport As Requirer_Port = New Requirer_Port(Me)
+                Dim rport As Requirer_Port = New Requirer_Port
                 Me.Requirer_Ports.Add(rport)
                 rport.Import_From_Rhapsody_Model(Me, CType(rpy_port, RPModelElement))
             End If
@@ -160,7 +160,7 @@ Public Class Component_Type
         Dim rpy_ope As RPOperation
         For Each rpy_ope In CType(Me.Rpy_Element, RPClass).operations
             If Is_OS_Operation(CType(rpy_ope, RPModelElement)) Then
-                Dim ope As OS_Operation = New OS_Operation(Me)
+                Dim ope As OS_Operation = New OS_Operation
                 Me.OS_Operations.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             End If
@@ -178,7 +178,7 @@ Public Class Component_Type
         Dim rpy_object As RPInstance
         For Each rpy_object In CType(Me.Rpy_Element, RPClass).relations
             If Is_Component_Type_Part(CType(rpy_object, RPModelElement)) Then
-                Dim part As Component_Type_Part = New Component_Type_Part(Me)
+                Dim part As Component_Type_Part = New Component_Type_Part
                 Me.Parts.Add(part)
                 part.Import_From_Rhapsody_Model(Me, CType(rpy_object, RPModelElement))
                 Me.Is_Composite_Component_Type = True
@@ -191,7 +191,7 @@ Public Class Component_Type
                 If Is_Connector_Prototype(CType(rpy_link, RPModelElement)) Then
                     Dim connector As Software_Element
                     If Delegation_Connector.Is_Delegation_Connector(rpy_link) Then
-                        connector = New Delegation_Connector(Me)
+                        connector = New Delegation_Connector
                         Me.Delegation_Connectors.Add(CType(connector, Delegation_Connector))
                         connector.Import_From_Rhapsody_Model(Me, CType(rpy_link, RPModelElement))
                     ElseIf Assembly_Connector.Is_Assembly_Connector(rpy_link) Then
@@ -321,17 +321,10 @@ Public MustInherit Class Port
     Public Contract_Ref As Guid = Nothing
 
     Protected Nb_Contracts As UInteger = 0
-    Protected Owner As Component_Type
+
 
     '----------------------------------------------------------------------------------------------'
     ' General methods
-    Public Sub New()
-
-    End Sub
-
-    Public Sub New(parent_swct As Component_Type)
-        Me.Owner = parent_swct
-    End Sub
 
 
     '----------------------------------------------------------------------------------------------'
@@ -373,7 +366,7 @@ Public MustInherit Class Port
 
     Protected Function Get_Nb_Delegations_In_Composite() As Integer
         Dim nb_delegation As Integer = 0
-        If Me.Owner.Is_Composite Then
+        If CType(Me.Owner, SMM_Class_With_Delegable_Operations).Is_Composite Then
             Dim rpy_port As RPPort = CType(Me.Rpy_Element, RPPort)
             Dim rpy_elmt As RPModelElement
             For Each rpy_elmt In rpy_port.references
@@ -403,12 +396,6 @@ Public Class Provider_Port
 
     '----------------------------------------------------------------------------------------------'
     ' General methods
-    Public Sub New()
-    End Sub
-
-    Public Sub New(parent_swct As Component_Type)
-        MyBase.New(parent_swct)
-    End Sub
 
 
     '----------------------------------------------------------------------------------------------'
@@ -524,7 +511,7 @@ Public Class Provider_Port
                 "Shall have one and only one contract.")
         End If
 
-        If Me.Owner.Is_Composite Then
+        If CType(Me.Owner, SMM_Class_With_Delegable_Operations).Is_Composite Then
             If Me.Get_Nb_Delegations_In_Composite = 0 Then
                 Me.Add_Consistency_Check_Error_Item(report, "PORT_2",
                     "Shall be delegated to only one port.")
@@ -542,12 +529,6 @@ Public Class Requirer_Port
 
     '----------------------------------------------------------------------------------------------'
     ' General methods
-    Public Sub New()
-    End Sub
-
-    Public Sub New(parent_swct As Component_Type)
-        MyBase.New(parent_swct)
-    End Sub
 
 
     '----------------------------------------------------------------------------------------------'
@@ -622,7 +603,7 @@ Public Class Requirer_Port
     ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
-        If Me.Owner.Is_Composite Then
+        If CType(Me.Owner, SMM_Class_With_Delegable_Operations).Is_Composite Then
             If Me.Get_Nb_Delegations_In_Composite = 0 Then
                 Me.Add_Consistency_Check_Error_Item(report, "PORT_3",
                     "Shall be delegated to at least one port.")
@@ -639,12 +620,7 @@ Public Class OS_Operation
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Public Sub New()
-    End Sub
 
-    Public Sub New(parent_class As Component_Type)
-        MyBase.New(parent_class)
-    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
@@ -658,17 +634,10 @@ End Class
 Public Class Component_Type_Part
     Inherits SMM_Object
 
-    Private Owner As Component_Type
 
     '----------------------------------------------------------------------------------------------'
     ' General methods
-    Public Sub New()
-        ' For serialization
-    End Sub
 
-    Public Sub New(parent_swct As Component_Type)
-        Me.Owner = parent_swct
-    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -823,8 +792,6 @@ Public Class Delegation_Connector
     Public Part_Port_Ref As Guid
     Public Component_Type_Port_Ref As Guid
 
-    Private Owner As Component_Type
-
     ' Used for model merge
     Private Rpy_Part As RPInstance = Nothing
     Private Rpy_Part_Port As RPPort = Nothing
@@ -832,13 +799,6 @@ Public Class Delegation_Connector
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Public Sub New()
-    End Sub
-
-    Public Sub New(parent_swct As Component_Type)
-        Me.Owner = parent_swct
-    End Sub
-
     Public Shared Function Is_Delegation_Connector(rpy_link As RPLink) As Boolean
         ' case # 1                      case #2
         ' toPort = swc_port             fromPort = swc_port

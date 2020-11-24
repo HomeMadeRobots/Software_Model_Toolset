@@ -6,23 +6,10 @@ Public MustInherit Class Delegable_Operation
     Inherits SMM_Operation
     Public Delegations As New List(Of Operation_Delegation)
 
-    Private Owner As SMM_Class_With_Delegable_Operations
-
     Private OP_2_Rised As Boolean = False
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Public Sub New()
-    End Sub
-
-    Public Sub New(parent_class As SMM_Class_With_Delegable_Operations)
-        Me.Owner = parent_class
-    End Sub
-
-    Public Function Get_Owner() As SMM_Class_With_Delegable_Operations
-        Return Me.Owner
-    End Function
-
     Public Overrides Function Get_Children() As List(Of Software_Element)
         If IsNothing(Me.Children) Then
             Dim children_list As New List(Of Software_Element)
@@ -43,7 +30,7 @@ Public MustInherit Class Delegable_Operation
         Dim rpy_dep As RPModelElement
         For Each rpy_dep In CType(Me.Rpy_Element, RPOperation).dependencies
             If Is_Operation_Delegation(rpy_dep) Then
-                Dim ope_delegation As Operation_Delegation = New Operation_Delegation(Me)
+                Dim ope_delegation As Operation_Delegation = New Operation_Delegation
                 Me.Delegations.Add(ope_delegation)
                 ope_delegation.Import_From_Rhapsody_Model(Me, rpy_dep)
             End If
@@ -55,7 +42,7 @@ Public MustInherit Class Delegable_Operation
     ' Methods for consistency check model
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
-        If Me.Owner.Is_Composite Then
+        If CType(Me.Owner, SMM_Class_With_Delegable_Operations).Is_Composite Then
             If Me.Delegations.Count = 0 Then
                 Me.Add_Consistency_Check_Error_Item(report, "OP_1",
                     "Shall be delegated.")
@@ -81,16 +68,11 @@ Public Class Operation_Delegation
 
     Private Rpy_Part As RPInstance
     Private Is_Priority_UInteger As Boolean = False
-    Private Owner As Delegable_Operation
+
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Public Sub New()
-    End Sub
 
-    Public Sub New(parent_op As Delegable_Operation)
-        Me.Owner = parent_op
-    End Sub
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -208,7 +190,7 @@ Public Class Operation_Delegation
     Protected Overrides Sub Check_Own_Consistency(report As Report)
         MyBase.Check_Own_Consistency(report)
 
-        If Me.Owner.Shall_Be_Delegated = False Then
+        If CType(Me.Owner, Delegable_Operation).Shall_Be_Delegated = False Then
             Exit Sub
         End If
 
@@ -219,7 +201,9 @@ Public Class Operation_Delegation
         End If
 
         ' Check Part_Ref
-        If Not Me.Owner.Get_Owner.Is_My_Part(Me.Part_Ref) Then
+        Dim owner_class As SMM_Class_With_Delegable_Operations
+        owner_class = CType(Me.Owner.Get_Owner, SMM_Class_With_Delegable_Operations)
+        If Not owner_class.Is_My_Part(Me.Part_Ref) Then
             Me.Add_Consistency_Check_Error_Item(report, "OPDELEG_2",
                 "Referenced part shall belong to the owner of my operation.")
         Else
