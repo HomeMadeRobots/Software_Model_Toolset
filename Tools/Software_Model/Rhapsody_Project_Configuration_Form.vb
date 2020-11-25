@@ -3,7 +3,7 @@ Imports System.IO
 
 Public Class Rhapsody_Project_Configuration_Form
 
-    Inherits Form
+    Inherits SMH_Form
 
     Private Controller As Rpy_Project_Controller
 
@@ -14,15 +14,15 @@ Public Class Rhapsody_Project_Configuration_Form
         Private WithEvents Status_Button As New Button
         Private Status_Message As String
 
-        Public Sub New(name As String, vertical_pos As Integer, owner As Form)
+        Public Sub New(name As String, vertical_pos As Integer, owner As Control)
             Me.Name = name
             Me.To_Be_Configured_Check_Box.Location = New Point(Marge, vertical_pos)
-            Me.To_Be_Configured_Check_Box.Size = ChckBx_Size
+            Me.To_Be_Configured_Check_Box.Size = Path_Text_Size
             Me.To_Be_Configured_Check_Box.Text = name
             owner.Controls.Add(Me.To_Be_Configured_Check_Box)
 
-            Me.Status_Button.Location = New Point(Button_X_Pos, vertical_pos)
-            Me.Status_Button.Size = Bttn_Size
+            Me.Status_Button.Location = New Point(Path_Button_X_Pos, vertical_pos)
+            Me.Status_Button.Size = Path_Button_Size
             Me.Status_Button.Visible = False
             owner.Controls.Add(Me.Status_Button)
         End Sub
@@ -84,81 +84,91 @@ Public Class Rhapsody_Project_Configuration_Form
 
     Private WithEvents Configure_Button As New Button
 
-    Private Const Form_Width As Integer = 500
-    Private Const Marge As Integer = 20
-    Private Const Item_Height As Integer = 20
-    Private Const Item_Width As Integer = Form_Width - 3 * Marge - Button_Width
-    Private Const Button_Width As Integer = 2 * Marge
-    Private Const Button_X_Pos As Integer = Item_Width + 2 * Marge
-    Private Shared ChckBx_Size As New Size(Item_Width, Item_Height)
-    Private Shared Bttn_Size As New Size(Button_Width, Item_Height)
 
     Public Sub New()
         Dim item_y_pos As Integer = Marge
+        Dim inner_item_y_pos As Integer = Marge
 
         '------------------------------------------------------------------------------------------'
         ' Add Toolset path selection stuff
+        Dim toolset_path_panel As New Panel
+        toolset_path_panel.Location = New Point(Marge, item_y_pos)
+        toolset_path_panel.BorderStyle = BorderStyle.FixedSingle
+        Me.Controls.Add(toolset_path_panel)
+
         Dim toolset_path_title As New Label
         toolset_path_title.Text = "Software_Model_Toolset path :"
-        toolset_path_title.Location = New Point(Marge, item_y_pos)
-        toolset_path_title.Size = ChckBx_Size
-        Me.Controls.Add(toolset_path_title)
-        item_y_pos += Item_Height
+        toolset_path_title.Location = New Point(Marge, inner_item_y_pos)
+        toolset_path_title.Size = Label_Size
+        toolset_path_panel.Controls.Add(toolset_path_title)
+        inner_item_y_pos += toolset_path_title.Height + Marge
 
-        Me.Toolset_Path_TxtBx.Location = New Point(Marge, item_y_pos)
-        Me.Toolset_Path_TxtBx.Size = New Size(Item_Width, Item_Height)
+        Me.Toolset_Path_TxtBx.Location = New Point(Marge, inner_item_y_pos)
+        Me.Toolset_Path_TxtBx.Size = Path_Text_Size
         Me.Toolset_Path_TxtBx.Enabled = False
-        Me.Controls.Add(Me.Toolset_Path_TxtBx)
+        toolset_path_panel.Controls.Add(Me.Toolset_Path_TxtBx)
 
-        Me.Toolset_Path_Button.Location = New Point(Button_X_Pos, item_y_pos)
-        Me.Toolset_Path_Button.Size = Bttn_Size
+        Me.Toolset_Path_Button.Location = New Point(Path_Button_X_Pos, inner_item_y_pos)
+        Me.Toolset_Path_Button.Size = Path_Button_Size
         Me.Toolset_Path_Button.Text = "..."
         Me.Toolset_Path_Button.Enabled = False
-        Me.Controls.Add(Me.Toolset_Path_Button)
+        toolset_path_panel.Controls.Add(Me.Toolset_Path_Button)
+        inner_item_y_pos += Me.Toolset_Path_Button.Height + Marge
 
-        item_y_pos += Item_Height + Marge
+        toolset_path_panel.Size = New Size(Panel_Width, inner_item_y_pos)
+        item_y_pos += toolset_path_panel.Height + Marge
 
         '------------------------------------------------------------------------------------------'
         ' Add items to configure
+        inner_item_y_pos = Marge
+        Dim configuration_list_panel As New Panel
+        configuration_list_panel.Location = New Point(Marge, item_y_pos)
+        configuration_list_panel.BorderStyle = BorderStyle.FixedSingle
+        Me.Controls.Add(configuration_list_panel)
+
         Dim configuration_list_title As New Label
         configuration_list_title.Text = "Configurable items :"
-        configuration_list_title.Location = New Point(Marge, item_y_pos)
-        configuration_list_title.Size = ChckBx_Size
-        Me.Controls.Add(configuration_list_title)
-        item_y_pos += Item_Height
+        configuration_list_title.Location = New Point(Marge, inner_item_y_pos)
+        configuration_list_title.Size = Label_Size
+        configuration_list_panel.Controls.Add(configuration_list_title)
+        inner_item_y_pos += configuration_list_title.Height + Marge
 
         ' Add profiles configuration stuff
-        Me.Profiles_Configuration = New Configured_Element_View("Profiles", item_y_pos, Me)
+        Me.Profiles_Configuration = New Configured_Element_View(
+            "Profiles", inner_item_y_pos, configuration_list_panel)
         Add_Click_Handlers_For_Config_Needed_Toolset_Path(Me.Profiles_Configuration)
-        item_y_pos += Item_Height
+        inner_item_y_pos += Item_Height
 
         ' Add Rhapsody helpers configuration stuff
-        Me.Helpers_Configuration = New Configured_Element_View("Helpers", item_y_pos, Me)
+        Me.Helpers_Configuration = New Configured_Element_View(
+            "Helpers", inner_item_y_pos, configuration_list_panel)
         Add_Click_Handlers_For_Config_Needed_Toolset_Path(Me.Helpers_Configuration)
-        item_y_pos += Item_Height
+        inner_item_y_pos += Item_Height
 
         ' Add activity diagram configuration stuff
         Me.Activity_Diagrams_Configuration = New Configured_Element_View(
-            "Activity diagrams", item_y_pos, Me)
-        item_y_pos += Item_Height
+            "Activity diagrams", inner_item_y_pos, configuration_list_panel)
+        inner_item_y_pos += Item_Height
 
         ' Add Rhapsody project views configuration stuff
         Me.Packages_Are_Not_Unit_Configuration = New Configured_Element_View(
-            "Packages are not unit",
-            item_y_pos, Me)
-        item_y_pos += Item_Height
+            "Packages are not unit", inner_item_y_pos, configuration_list_panel)
+        inner_item_y_pos += Item_Height
 
         Me.Accessible_Types_Configuration = New Configured_Element_View(
-            "Accessible types", item_y_pos, Me)
-        item_y_pos += Item_Height + Marge
+            "Accessible types", inner_item_y_pos, configuration_list_panel)
+        inner_item_y_pos += Item_Height + Marge
+
+        configuration_list_panel.Size = New Size(Panel_Width, inner_item_y_pos)
+        item_y_pos += configuration_list_panel.Height + Marge
 
         '------------------------------------------------------------------------------------------'
         ' Add main button
         Me.Configure_Button.Text = "Configure"
         Me.Controls.Add(Me.Configure_Button)
-        Me.Configure_Button.Size = New Size(100, Item_Height * 2)
-        Me.Configure_Button.Location = New Point(Form_Width \ 2 - Button_Width \ 2, item_y_pos)
-        item_y_pos += Me.Configure_Button.Size.Height + Marge
+        Me.Configure_Button.Size = Button_Size
+        Me.Configure_Button.Location = New Point((Form_Width - Button_Width) \ 2, item_y_pos)
+        item_y_pos += Me.Configure_Button.Height + Marge
 
         '------------------------------------------------------------------------------------------'
         ' Design Form
@@ -167,7 +177,6 @@ Public Class Rhapsody_Project_Configuration_Form
         Me.FormBorderStyle = FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.FontHeight = 40
 
     End Sub
 
@@ -224,19 +233,7 @@ Public Class Rhapsody_Project_Configuration_Form
     End Sub
 
     Private Sub Toolset_Path_Selection_Button_Clicked() Handles Toolset_Path_Button.Click
-        Dim dialog_box As FolderBrowserDialog
-        dialog_box = New FolderBrowserDialog
-        If Directory.Exists(Me.Toolset_Path_TxtBx.Text) Then
-            dialog_box.SelectedPath = Me.Toolset_Path_TxtBx.Text
-        Else
-            dialog_box.SelectedPath =
-                Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)
-        End If
-        dialog_box.Description = "Select Software_Model_Toolset directory"
-        Dim result As Forms.DialogResult = dialog_box.ShowDialog()
-        If result = Forms.DialogResult.OK Then
-            Me.Toolset_Path_TxtBx.Text = dialog_box.SelectedPath
-        End If
+        SMH_Form.Select_Directory("Select Software_Model_Toolset directory", Me.Toolset_Path_TxtBx)
     End Sub
 
     Private Sub Manage_Toolset_Path_Visibility()

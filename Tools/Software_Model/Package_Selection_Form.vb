@@ -1,5 +1,5 @@
 ﻿Public Class Package_Selection_Form
-    Inherits Form
+    Inherits SMH_Form
 
     Private Package_Selection_Panel As New Panel
 
@@ -9,21 +9,9 @@
     Private WithEvents Unselect_All_Button As New Button
     Private Pkg_CheckBox_List As New List(Of CheckBox)
 
-    Protected Const Form_Width As Integer = 500
-    Protected Const Marge As Integer = 10
+    Protected Const Package_Selection_Panel_Height As Integer = 500
+    Private Shared CheckBox_Size As New Size(Label_Width - 40, Item_Height) ' -40 : scroll bar
 
-    Protected Const Panel_Width As Integer = Form_Width - 2 * Marge
-    Protected Const Panel_Height As Integer = 500
-    Protected Const Item_Width As Integer = Panel_Width - 2 * Marge
-
-    Protected Const Text_Field_Height As Integer = 20
-    Protected Shared Text_Field_Size As New Size(Item_Width, Text_Field_Height)
-
-    Private Shared CheckBox_Size As New Size(Item_Width - 40, Text_Field_Height) ' -40 : scroll bar
-
-    Protected Const Button_Width As Integer = 100
-    Protected Const Button_Height As Integer = 2 * Marge
-    Protected Shared Button_Size As New Size(Button_Width, Button_Height)
 
     Public Sub New(
         pkg_name_list As List(Of String),
@@ -35,7 +23,7 @@
         ' Add package selection panel
         Me.Package_Selection_Panel.Location = New Point(Marge, Marge)
         Me.Package_Selection_Panel.BorderStyle = BorderStyle.FixedSingle
-        Me.Package_Selection_Panel.Size = New Size(Panel_Width, Panel_Height)
+        Me.Package_Selection_Panel.Size = New Size(Panel_Width, Package_Selection_Panel_Height)
         Me.Controls.Add(Me.Package_Selection_Panel)
         Dim inner_item_y_pos As Integer = Marge
 
@@ -44,7 +32,7 @@
         Dim package_selection_label As New Label
         package_selection_label.Text = "Top level packages selection"
         package_selection_label.Location = New Point(Marge, inner_item_y_pos)
-        package_selection_label.Size = Text_Field_Size
+        package_selection_label.Size = Label_Size
         Me.Package_Selection_Panel.Controls.Add(package_selection_label)
         inner_item_y_pos += package_selection_label.Height + Marge
 
@@ -66,7 +54,9 @@
         ' Add package selection checkboxes panel
         Me.Pkg_CheckBox_Panel.AutoScroll = True
         Me.Pkg_CheckBox_Panel.Location = New Point(Marge, inner_item_y_pos)
-        Me.Pkg_CheckBox_Panel.Size = New Size(Item_Width, Panel_Height - inner_item_y_pos)
+        Me.Pkg_CheckBox_Panel.Size = New Size(
+            Label_Width,
+            Package_Selection_Panel_Height - inner_item_y_pos)
         Me.Package_Selection_Panel.Controls.Add(Me.Pkg_CheckBox_Panel)
 
         ' Add a checkbox for each package
@@ -76,7 +66,7 @@
             Dim pkg_checkbox As New CheckBox
             Me.Pkg_CheckBox_Panel.Controls.Add(pkg_checkbox)
             Me.Pkg_CheckBox_List.Add(pkg_checkbox)
-            pkg_checkbox.Location = New Point(0, pkg_idx * Text_Field_Height)
+            pkg_checkbox.Location = New Point(0, pkg_idx * Item_Height)
             pkg_checkbox.Size = CheckBox_Size
             pkg_checkbox.Text = pkg_name
             ' Check the check box if the package was previously transformed
@@ -86,14 +76,14 @@
             pkg_idx = pkg_idx + 1
         Next
 
-        item_y_pos += Panel_Height + Marge * 2
+        item_y_pos += Package_Selection_Panel_Height + Marge * 2
 
         '------------------------------------------------------------------------------------------'
         ' Add OK button
         Me.OK_Button.Text = "Selection done"
         Me.Controls.Add(OK_Button)
-        OK_Button.Size = New Size(Button_Width, Button_Height * 2)
-        OK_Button.Location = New Point(Form_Width \ 2 - Button_Width \ 2, item_y_pos)
+        OK_Button.Size = Button_Size
+        OK_Button.Location = New Point((Form_Width - Button_Width) \ 2, item_y_pos)
         item_y_pos += Me.OK_Button.Height + Marge
 
         '------------------------------------------------------------------------------------------'
