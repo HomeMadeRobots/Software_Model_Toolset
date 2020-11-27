@@ -34,7 +34,7 @@
         package_selection_label.Location = New Point(Marge, inner_item_y_pos)
         package_selection_label.Size = Label_Size
         Me.Package_Selection_Panel.Controls.Add(package_selection_label)
-        inner_item_y_pos += package_selection_label.Height + Marge
+        inner_item_y_pos += package_selection_label.Height
 
 
         ' Add select/unselect all button
