@@ -30,8 +30,8 @@ Public Class Software_Model_Container
         {"uint64", "f49b3ace-96bc-463c-8444-5436f4a801f1", 8, E_Signedness_Type.UNSIGNED}}
 
     Private Shared Basic_Floating_Type_Data As Object(,) = New Object(,) {
-        {"fp32", "1045feea-03f6-4690-a89c-33134ec24f54"},
-        {"fp64", "d74c7bfa-9e57-443f-ab99-96ab3cdcce0b"}}
+        {"fp32", "1045feea-03f6-4690-a89c-33134ec24f54", 4},
+        {"fp64", "d74c7bfa-9e57-443f-ab99-96ab3cdcce0b", 8}}
 
     Private Data_Types_List As List(Of Data_Type) = Nothing
     Private Interfaces_List As List(Of Software_Interface) = Nothing
@@ -224,6 +224,7 @@ Public Class Software_Model_Container
             type = New Basic_Floating_Point_Type(
                 CStr(Basic_Floating_Type_Data(type_idx, 0)),
                 CStr(Basic_Floating_Type_Data(type_idx, 1)),
+                CInt(Basic_Floating_Type_Data(type_idx, 2)),
                 rpy_type)
             basic_types_pkg.Data_Types.Add(type)
             Me.Add_Element(type)

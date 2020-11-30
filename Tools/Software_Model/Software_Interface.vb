@@ -41,7 +41,9 @@ Public Class Client_Server_Interface
     <XmlArrayItemAttribute(GetType(Synchronous_Operation)), _
      XmlArrayItemAttribute(GetType(Asynchronous_Operation)), _
      XmlArray("Operations")>
-    Public Operations As New List(Of Operation_With_Arguments)
+    Public Operations As New List(Of Client_Server_Operation)
+
+    Private Has_Asynchronous_Operation As Boolean = False
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
@@ -83,6 +85,7 @@ Public Class Client_Server_Interface
         Return all_operations
     End Function
 
+
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected Overrides Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean
@@ -97,6 +100,7 @@ Public Class Client_Server_Interface
                 Me.Operations.Add(operation)
                 operation.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
             ElseIf Is_Asynchronous_Operation(CType(rpy_ope, RPModelElement)) Then
+                Me.Has_Asynchronous_Operation = True
                 Dim operation As Asynchronous_Operation = New Asynchronous_Operation
                 Me.Operations.Add(operation)
                 operation.Import_From_Rhapsody_Model(Me, CType(rpy_ope, RPModelElement))
@@ -163,14 +167,40 @@ Public Class Client_Server_Interface
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
-    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+    Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
+        Dim file_stream As StreamWriter = Me.Create_C_Header_File_Stream_Writer(parent_folder_path)
+        Me.Add_C_Multiple_Inclusion_Guard(file_stream)
+        Me.Add_CLOOF_Inclusion_Directives(file_stream)
+        If Me.Has_Asynchronous_Operation = True Then
+            file_stream.WriteLine("#include ""Asynchronous_Operation_Manager.h""")
+            file_stream.WriteLine("")
+        End If
+        Me.Add_C_Title(file_stream)
+        file_stream.WriteLine("typedef struct {")
+        For Each op In Me.Operations
+            op.Transform_To_CLOOF(file_stream)
+        Next
+        file_stream.WriteLine("} " & Me.Name & ";")
+        file_stream.WriteLine()
+        Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
+        file_stream.Close()
     End Sub
 
 End Class
 
 
-Public Class Synchronous_Operation
+Public MustInherit Class Client_Server_Operation
     Inherits Operation_With_Arguments
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public MustOverride Sub Transform_To_CLOOF(file_stream As StreamWriter)
+
+End Class
+
+
+Public Class Synchronous_Operation
+    Inherits Client_Server_Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
@@ -178,16 +208,57 @@ Public Class Synchronous_Operation
         Me.Rpy_Element.addStereotype("Synchronous_Operation", "Operation")
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(file_stream As StreamWriter)
+        file_stream.Write("    void (*" & Me.Name & ") ( ")
+        If Me.Arguments.Count = 0 Then
+            file_stream.Write("void")
+        Else
+            file_stream.WriteLine("")
+            Dim is_last As Boolean = False
+            For Each arg In Me.Arguments
+                If arg Is Me.Arguments.Last Then
+                    is_last = True
+                End If
+                arg.Transform_To_CLOOF(file_stream, is_last)
+            Next
+        End If
+        file_stream.WriteLine(" );")
+    End Sub
+
 End Class
 
 
 Public Class Asynchronous_Operation
-    Inherits Operation_With_Arguments
+    Inherits Client_Server_Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Asynchronous_Operation", "Operation")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(file_stream As StreamWriter)
+        file_stream.WriteLine("    void (*" & Me.Name & ") ( ")
+        file_stream.Write("        const Asynchronous_Operation_Manager* async_op_mgr")
+        If Me.Arguments.Count = 0 Then
+            file_stream.WriteLine(" );")
+        Else
+            file_stream.WriteLine(",")
+            Dim is_last As Boolean = False
+            For Each arg In Me.Arguments
+                If arg Is Me.Arguments.Last Then
+                    is_last = True
+                End If
+                arg.Transform_To_CLOOF(file_stream, is_last)
+            Next
+            file_stream.WriteLine(" );")
+        End If
     End Sub
 
 End Class
@@ -269,7 +340,28 @@ Public Class Event_Interface
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
-    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+    Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
+        Dim file_stream As StreamWriter = Me.Create_C_Header_File_Stream_Writer(parent_folder_path)
+        Me.Add_C_Multiple_Inclusion_Guard(file_stream)
+        Me.Add_CLOOF_Inclusion_Directives(file_stream)
+        Me.Add_C_Title(file_stream)
+        file_stream.Write("typedef void (*" & Me.Name & ")")
+        If Me.Arguments.Count = 0 Then
+            file_stream.WriteLine("(void);")
+        Else
+            file_stream.WriteLine(" (")
+            Dim is_last As Boolean = False
+            For Each arg In Me.Arguments
+                If arg Is Me.Arguments.Last Then
+                    is_last = True
+                End If
+                arg.Transform_To_CLOOF(file_stream, is_last)
+            Next
+            file_stream.WriteLine(" );")
+        End If
+        file_stream.WriteLine()
+        Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
+        file_stream.Close()
     End Sub
 
 End Class
@@ -293,6 +385,21 @@ Public Class Event_Argument
 
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Event_Argument", "Attribute")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Sub Transform_To_CLOOF(file_stream As StreamWriter, is_last As Boolean)
+        Dim arg_dt As Data_Type
+        arg_dt = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        file_stream.Write("    " & _
+            arg_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT))
+        If is_last = True Then
+            file_stream.Write(" " & Me.Name)
+        Else
+            file_stream.WriteLine(" " & Me.Name & ",")
+        End If
     End Sub
 
 End Class

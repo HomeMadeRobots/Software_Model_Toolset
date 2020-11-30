@@ -84,6 +84,18 @@ Public MustInherit Class Data_Type
     ' Methods for consistency check model
     Public MustOverride Function Is_Value_Valid(value As String) As Boolean
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overridable Function Get_CLOOF_Arg_Type_Declaration(
+            stream As Operation_Argument.E_STREAM) As String
+        If stream = Operation_Argument.E_STREAM.INPUT Then
+            Return Me.Name
+        Else
+            Return Me.Name & "*"
+        End If
+    End Function
+
 End Class
 
 
@@ -310,13 +322,26 @@ Public Class Basic_Integer_Type
         Return "#include <stdint.h>"
     End Function
 
+
+    Public Overrides Function Get_CLOOF_Arg_Type_Declaration(
+            stream As Operation_Argument.E_STREAM) As String
+        If stream = Operation_Argument.E_STREAM.INPUT Then
+            Return Me.Name & "_t"
+        Else
+            Return Me.Name & "_t*"
+        End If
+    End Function
+
 End Class
 
 Public Class Basic_Floating_Point_Type
     Inherits Basic_Type
 
-    Sub New(symbol As String, guid_str As String, rpy_type As RPModelElement)
+    Private Size As Integer ' number of bytes
+
+    Sub New(symbol As String, guid_str As String, size As Integer, rpy_type As RPModelElement)
         MyBase.New(symbol, guid_str, rpy_type)
+        Me.Size = size
     End Sub
 
     Public Overrides Function Is_Value_Valid(value As String) As Boolean
@@ -332,6 +357,25 @@ Public Class Basic_Floating_Point_Type
     ' Methods for transformation
     Public Overrides Function Get_CLOOF_Inclusion_Directive() As String
         Return ""
+    End Function
+
+
+    Public Overrides Function Get_CLOOF_Arg_Type_Declaration(
+            stream As Operation_Argument.E_STREAM) As String
+        Select Case Me.Size
+            Case 8
+                If stream = Operation_Argument.E_STREAM.INPUT Then
+                    Return "double"
+                Else
+                    Return "double*"
+                End If
+            Case Else
+                If stream = Operation_Argument.E_STREAM.INPUT Then
+                    Return "float"
+                Else
+                    Return "float*"
+                End If
+        End Select
     End Function
 
 End Class
@@ -359,6 +403,15 @@ Public Class Basic_Boolean_Type
     ' Methods for transformation
     Public Overrides Function Get_CLOOF_Inclusion_Directive() As String
         Return "#include <stdbool.h>"
+    End Function
+
+    Public Overrides Function Get_CLOOF_Arg_Type_Declaration(
+            stream As Operation_Argument.E_STREAM) As String
+        If stream = Operation_Argument.E_STREAM.INPUT Then
+            Return "bool"
+        Else
+            Return "bool*"
+        End If
     End Function
 
 End Class
@@ -403,6 +456,15 @@ Public Class Basic_Integer_Array_Type
         Return "#include <stdint.h>"
     End Function
 
+    Public Overrides Function Get_CLOOF_Arg_Type_Declaration(
+            stream As Operation_Argument.E_STREAM) As String
+        If stream = Operation_Argument.E_STREAM.INPUT Then
+            Return "const uint8_t*"
+        Else
+            Return "uint8_t*"
+        End If
+    End Function
+
 End Class
 
 Public Class Basic_Character_Type
@@ -430,6 +492,15 @@ Public Class Basic_Character_Type
     ' Methods for transformation
     Public Overrides Function Get_CLOOF_Inclusion_Directive() As String
         Return ""
+    End Function
+
+    Public Overrides Function Get_CLOOF_Arg_Type_Declaration(
+            stream As Operation_Argument.E_STREAM) As String
+        If stream = Operation_Argument.E_STREAM.INPUT Then
+            Return "const char*"
+        Else
+            Return "char*"
+        End If
     End Function
 
 End Class
@@ -787,8 +858,9 @@ Public Class Array_Data_Type
         Me.Add_CLOOF_Inclusion_Directives(file_stream)
         Me.Add_C_Title(file_stream)
         Dim base_dt As Data_Type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
-        file_stream.WriteLine(
-            "typedef " & base_dt.Name & " " & Me.Name & "[" & Me.Multiplicity.ToString & "];")
+        file_stream.WriteLine("typedef " & _
+            base_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & _
+            " " & Me.Name & "[" & Me.Multiplicity.ToString & "];")
         file_stream.WriteLine()
         Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
         file_stream.Close()
@@ -975,7 +1047,9 @@ Public Class Physical_Data_Type
         Me.Add_CLOOF_Inclusion_Directives(file_stream)
         Me.Add_C_Title(file_stream)
         Dim base_dt As Data_Type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
-        file_stream.WriteLine("typedef " & base_dt.Name & " " & Me.Name & ";")
+        file_stream.WriteLine("typedef " & _
+            base_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & _
+            " " & Me.Name & ";")
         file_stream.WriteLine()
         Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
         file_stream.Close()
@@ -1124,7 +1198,9 @@ Public Class Structured_Data_Type
         For Each field In Me.Fields
             Dim field_dt As Data_Type
             field_dt = CType(Me.Get_Element_By_Uuid(field.Base_Data_Type_Ref), Data_Type)
-            file_stream.WriteLine("    " & field_dt.Name & " " & field.Name & ";")
+            file_stream.WriteLine("    " & _
+                field_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & _
+                " " & field.Name & ";")
         Next
         file_stream.WriteLine("} " & Me.Name & ";")
         file_stream.WriteLine()

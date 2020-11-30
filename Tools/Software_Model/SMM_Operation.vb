@@ -173,4 +173,18 @@ Public Class Operation_Argument
         End If
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Sub Transform_To_CLOOF(file_stream As IO.StreamWriter, is_last As Boolean)
+        Dim arg_dt As Data_Type
+        arg_dt = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        file_stream.Write("        " & arg_dt.Get_CLOOF_Arg_Type_Declaration(Me.Stream))
+        If is_last = True Then
+            file_stream.Write(" " & Me.Name)
+        Else
+            file_stream.WriteLine(" " & Me.Name & ",")
+        End If
+     End Sub
+
 End Class
