@@ -70,6 +70,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CLOOF_Transformation_Form.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Component_Design.vb" />
     <Compile Include="Component_Design_Model_Creation_Form.vb">
       <SubType>Form</SubType>
@@ -107,6 +110,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Rpy_Component_Design_Controller.vb" />
+    <Compile Include="Rpy_Model_Transformer.vb" />
     <Compile Include="SMH_Form.vb">
       <SubType>Form</SubType>
     </Compile>

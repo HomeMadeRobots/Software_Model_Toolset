@@ -88,6 +88,10 @@ Module Software_Model_Helpers
                     Dim sw_mdl_ctrl As New Rpy_Model_Controller
                     sw_mdl_ctrl.Find_Component_Prototypes_Cyclic_Dependencies()
 
+                Case "Transform_To_CLOOF"
+                    Dim mdl_transf As New Rpy_Model_Transformer
+                    mdl_transf.Transform_To_CLOOF()
+
             End Select
         Catch ex As Exception
             MsgBox("Software_Model_Tool : an error occured." & vbCrLf & vbCrLf & ex.Message)

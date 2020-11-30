@@ -35,7 +35,8 @@ Public Class Rhapsody_Project_Configurator
         {"Create Component_Design model", "Create_Component_Design_Model", "Component_Type"},
         {"Find cyclic dependencies", "Find_Packages_Cyclic_Dependencies", "Project"},
         {"Find cyclic dependencies", "Find_Component_Prototypes_Cyclic_Dependencies",
-            "Root_Software_Composition"}}
+            "Root_Software_Composition"},
+        {"Transform to C OO framework", "Transform_To_CLOOF", "Software_Package"}}
 
     Public Sub New(rpy_proj As RPProject)
         Me.Rpy_Proj = rpy_proj

@@ -1,4 +1,6 @@
 ﻿Imports rhapsody2
+Imports System.IO
+
 
 Public Class Root_Software_Composition
 
@@ -154,6 +156,12 @@ Public Class Root_Software_Composition
     Public Overrides Function Compute_WMC() As Double
         Return 0 ' to be implemented when OS_Task will be modeled.
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+    End Sub
 
 End Class
 

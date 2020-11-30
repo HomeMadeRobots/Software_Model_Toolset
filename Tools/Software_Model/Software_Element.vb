@@ -1,6 +1,8 @@
 ﻿Imports rhapsody2
 Imports System.Xml.Serialization
 Imports System.Text.RegularExpressions
+Imports System.IO
+
 
 Public MustInherit Class Software_Element
 
@@ -411,6 +413,66 @@ Public MustInherit Class SMM_Classifier
     Public Function Get_Dependent_Elements_Nb() As Double
         Return Me.Dependent_Elements.Count
     End Function
+
+    ' Returns True if the element is natively defined in the meta-model.
+    Public Overridable Function Is_Native() As Boolean
+        Return False
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public MustOverride Sub Transform_To_CLOOF(parent_folder_path As String)
+
+    Public Function Create_C_Header_File_Stream_Writer(folder_path As String) As StreamWriter
+        Dim header_file_name As String = Me.Name & ".h"
+        Dim header_file_path As String = folder_path & "/" & header_file_name
+        Dim file_stream As New StreamWriter(header_file_path, False)
+        Return file_stream
+    End Function
+
+    Public Overridable Function Get_CLOOF_Inclusion_Directive() As String
+        Return "#include """ & Me.Name & ".h"""
+    End Function
+
+    Public Sub Add_C_Multiple_Inclusion_Guard(file_stream As StreamWriter)
+        Dim file_label As String = Me.Name.ToUpper & "_H"
+        file_stream.WriteLine("#ifndef " & file_label)
+        file_stream.WriteLine("#define " & file_label)
+        file_stream.WriteLine()
+    End Sub
+
+    Public Sub Finish_C_Multiple_Inclusion_Guard(file_stream As StreamWriter)
+        file_stream.WriteLine("#endif")
+    End Sub
+
+    Public Sub Add_CLOOF_Inclusion_Directives(file_stream As StreamWriter)
+        Dim inclusion_directives_list As New List(Of String)
+        For Each elmt In Me.Find_Needed_Elements()
+            Dim inclusion_directive As String = elmt.Get_CLOOF_Inclusion_Directive()
+            If Not inclusion_directives_list.Contains(inclusion_directive) Then
+                inclusion_directives_list.Add(inclusion_directive)
+            End If
+        Next
+        Dim one_directive_added As Boolean = False
+        For Each inclusion_directive In inclusion_directives_list
+            If inclusion_directive <> "" Then
+                file_stream.WriteLine(inclusion_directive)
+                one_directive_added = True
+            End If
+        Next
+        If one_directive_added = True Then
+            file_stream.WriteLine()
+        End If
+    End Sub
+
+    Public Sub Add_C_Title(file_stream As StreamWriter)
+        file_stream.WriteLine(
+            "/*============================================================================*/")
+        file_stream.WriteLine("/* " & Me.GetType.ToString.Split("."c).Last & " */")
+        file_stream.WriteLine(
+            "/*============================================================================*/")
+    End Sub
 
 End Class
 

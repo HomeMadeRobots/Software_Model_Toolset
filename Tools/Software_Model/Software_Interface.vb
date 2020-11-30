@@ -1,5 +1,6 @@
 ﻿Imports rhapsody2
 Imports System.Xml.Serialization
+Imports System.IO
 
 
 Public MustInherit Class Software_Interface
@@ -133,10 +134,8 @@ Public Class Client_Server_Interface
                     Dim data_type As Data_Type
                     data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
                     If Not IsNothing(data_type) Then
-                        If Not data_type.Is_Basic_Type Then
-                            If Not Me.Needed_Elements.Contains(data_type) Then
-                                Me.Needed_Elements.Add(data_type)
-                            End If
+                        If Not Me.Needed_Elements.Contains(data_type) Then
+                            Me.Needed_Elements.Add(data_type)
                         End If
                     End If
                 Next
@@ -160,6 +159,12 @@ Public Class Client_Server_Interface
         End If
         Return Me.Weighted_Methods_Per_Class
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+    End Sub
 
 End Class
 
@@ -240,10 +245,8 @@ Public Class Event_Interface
                 Dim data_type As Data_Type
                 data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
                 If Not IsNothing(data_type) Then
-                    If Not data_type.Is_Basic_Type Then
-                        If Not Me.Needed_Elements.Contains(data_type) Then
-                            Me.Needed_Elements.Add(data_type)
-                        End If
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
                     End If
                 End If
             Next
@@ -262,6 +265,12 @@ Public Class Event_Interface
         End If
         Return Me.Weighted_Methods_Per_Class
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+    End Sub
 
 End Class
 

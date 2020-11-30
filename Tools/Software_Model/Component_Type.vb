@@ -270,10 +270,8 @@ Public Class Component_Type
                 Dim data_type As Data_Type
                 data_type = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
                 If Not IsNothing(data_type) Then
-                    If Not data_type.Is_Basic_Type Then
-                        If Not Me.Needed_Elements.Contains(data_type) Then
-                            Me.Needed_Elements.Add(data_type)
-                        End If
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
                     End If
                 End If
             Next
@@ -310,6 +308,13 @@ Public Class Component_Type
         End If
         Return Me.Weighted_Methods_Per_Class
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+        ' Not transformed
+    End Sub
 
 End Class
 

@@ -1,5 +1,6 @@
 ﻿Imports rhapsody2
 Imports System.Xml.Serialization
+Imports System.IO
 
 
 Public Class Internal_Design_Class
@@ -167,6 +168,12 @@ Public Class Internal_Design_Class
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation (not yet implemented for Internal_Design_Class)
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+    End Sub
 
 End Class
 

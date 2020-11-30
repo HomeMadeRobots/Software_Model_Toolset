@@ -1,6 +1,8 @@
 ﻿Imports rhapsody2
 Imports System.Globalization
 Imports System.Text.RegularExpressions
+Imports System.IO
+
 
 Public MustInherit Class Data_Type
 
@@ -8,9 +10,6 @@ Public MustInherit Class Data_Type
 
     '----------------------------------------------------------------------------------------------'
     ' General methods 
-    Public Overridable Function Is_Basic_Type() As Boolean
-        Return False
-    End Function
 
 
     '----------------------------------------------------------------------------------------------'
@@ -184,9 +183,7 @@ Public MustInherit Class Data_Type_Base_Typed
             Dim data_type As Data_Type
             data_type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
             If Not IsNothing(data_type) Then
-                If Not data_type.Is_Basic_Type Then
-                    Me.Needed_Elements.Add(data_type)
-                End If
+                Me.Needed_Elements.Add(data_type)
             End If
         End If
         Return Me.Needed_Elements
@@ -205,10 +202,6 @@ Public MustInherit Class Basic_Type
         Me.Rpy_Element = rpy_type
     End Sub
 
-    Public Overrides Function Is_Basic_Type() As Boolean
-        Return True
-    End Function
-
     Public Overrides Function Get_Complexity() As Double
         Return 1
     End Function
@@ -216,6 +209,16 @@ Public MustInherit Class Basic_Type
     Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
         Return Nothing
     End Function
+
+    Public Overrides Function Is_Native() As Boolean
+        Return True
+    End Function
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+        ' No transformation for Basic_Types
+    End Sub
 
 End Class
 
@@ -300,6 +303,13 @@ Public Class Basic_Integer_Type
         Return is_valid
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Function Get_CLOOF_Inclusion_Directive() As String
+        Return "#include <stdint.h>"
+    End Function
+
 End Class
 
 Public Class Basic_Floating_Point_Type
@@ -315,6 +325,13 @@ Public Class Basic_Floating_Point_Type
         Else
             Return False
         End If
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Function Get_CLOOF_Inclusion_Directive() As String
+        Return ""
     End Function
 
 End Class
@@ -335,6 +352,13 @@ Public Class Basic_Boolean_Type
         Else
             Return False
         End If
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Function Get_CLOOF_Inclusion_Directive() As String
+        Return "#include <stdbool.h>"
     End Function
 
 End Class
@@ -372,6 +396,13 @@ Public Class Basic_Integer_Array_Type
         Return is_valid
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Function Get_CLOOF_Inclusion_Directive() As String
+        Return "#include <stdint.h>"
+    End Function
+
 End Class
 
 Public Class Basic_Character_Type
@@ -392,6 +423,13 @@ Public Class Basic_Character_Type
             is_valid = True
         End If
         Return is_valid
+    End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Function Get_CLOOF_Inclusion_Directive() As String
+        Return ""
     End Function
 
 End Class
@@ -566,6 +604,27 @@ Public Class Enumerated_Data_Type
         Return Nothing
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
+        Dim file_stream As StreamWriter = Me.Create_C_Header_File_Stream_Writer(parent_folder_path)
+        Me.Add_C_Multiple_Inclusion_Guard(file_stream)
+        Me.Add_C_Title(file_stream)
+        file_stream.WriteLine("typedef enum {")
+        For Each literal In Me.Enumerals
+            If literal Is Me.Enumerals.Last Then
+                file_stream.WriteLine("    " & literal.Name)
+            Else
+                file_stream.WriteLine("    " & literal.Name & ",")
+            End If
+        Next
+        file_stream.WriteLine("} " & Me.Name & ";")
+        file_stream.WriteLine()
+        Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
+        file_stream.Close()
+    End Sub
+
 End Class
 
 
@@ -718,6 +777,22 @@ Public Class Array_Data_Type
         End If
         Return Me.Complexity
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
+        Dim file_stream As StreamWriter = Me.Create_C_Header_File_Stream_Writer(parent_folder_path)
+        Me.Add_C_Multiple_Inclusion_Guard(file_stream)
+        Me.Add_CLOOF_Inclusion_Directives(file_stream)
+        Me.Add_C_Title(file_stream)
+        Dim base_dt As Data_Type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        file_stream.WriteLine(
+            "typedef " & base_dt.Name & " " & Me.Name & "[" & Me.Multiplicity.ToString & "];")
+        file_stream.WriteLine()
+        Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
+        file_stream.Close()
+    End Sub
 
 End Class
 
@@ -891,6 +966,21 @@ Public Class Physical_Data_Type
         Return 1.2
     End Function
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
+        Dim file_stream As StreamWriter = Me.Create_C_Header_File_Stream_Writer(parent_folder_path)
+        Me.Add_C_Multiple_Inclusion_Guard(file_stream)
+        Me.Add_CLOOF_Inclusion_Directives(file_stream)
+        Me.Add_C_Title(file_stream)
+        Dim base_dt As Data_Type = CType(Me.Get_Element_By_Uuid(Me.Base_Data_Type_Ref), Data_Type)
+        file_stream.WriteLine("typedef " & base_dt.Name & " " & Me.Name & ";")
+        file_stream.WriteLine()
+        Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
+        file_stream.Close()
+    End Sub
+
 End Class
 
 
@@ -1013,16 +1103,34 @@ Public Class Structured_Data_Type
                 Dim data_type As Data_Type
                 data_type = CType(Me.Get_Element_By_Uuid(fd.Base_Data_Type_Ref), Data_Type)
                 If Not IsNothing(data_type) Then
-                    If Not data_type.Is_Basic_Type Then
-                        If Not Me.Needed_Elements.Contains(data_type) Then
-                            Me.Needed_Elements.Add(data_type)
-                        End If
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
                     End If
                 End If
             Next
         End If
         Return Me.Needed_Elements
     End Function
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
+        Dim file_stream As StreamWriter = Me.Create_C_Header_File_Stream_Writer(parent_folder_path)
+        Me.Add_C_Multiple_Inclusion_Guard(file_stream)
+        Me.Add_CLOOF_Inclusion_Directives(file_stream)
+        Me.Add_C_Title(file_stream)
+        file_stream.WriteLine("typedef struct {")
+        For Each field In Me.Fields
+            Dim field_dt As Data_Type
+            field_dt = CType(Me.Get_Element_By_Uuid(field.Base_Data_Type_Ref), Data_Type)
+            file_stream.WriteLine("    " & field_dt.Name & " " & field.Name & ";")
+        Next
+        file_stream.WriteLine("} " & Me.Name & ";")
+        file_stream.WriteLine()
+        Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
+        file_stream.Close()
+    End Sub
 
 End Class
 

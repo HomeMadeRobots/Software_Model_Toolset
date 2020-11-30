@@ -1,5 +1,6 @@
 ﻿Imports rhapsody2
 Imports System.Xml.Serialization
+Imports System.IO
 
 
 Public Class Component_Design
@@ -496,6 +497,12 @@ Public Class Component_Design
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for metrics computation
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+    End Sub
 
 End Class
 

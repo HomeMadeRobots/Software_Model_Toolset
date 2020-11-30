@@ -333,6 +333,15 @@ Public Class Software_Package
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Sub Transform_To_CLOOF(folder_path As String)
+        For Each dt In Me.Data_Types
+            dt.Transform_To_CLOOF(folder_path)
+        Next
+    End Sub
+
 End Class
 
 
@@ -434,12 +443,14 @@ Public Class Top_Level_Package
         tmp_needed_elements_list = tmp_needed_elements_list.Distinct().ToList
 
         For Each element In tmp_needed_elements_list
-            Dim owner_pkg As Top_Level_Package = element.Get_Top_Package()
-            If owner_pkg.UUID <> Me.UUID Then
-                If Not Me.Needed_Top_Packages_List.Contains(owner_pkg) Then
-                    Me.Needed_Top_Packages_List.Add(owner_pkg)
+            If Not element.Is_Native Then
+                Dim owner_pkg As Top_Level_Package = element.Get_Top_Package()
+                If owner_pkg.UUID <> Me.UUID Then
+                    If Not Me.Needed_Top_Packages_List.Contains(owner_pkg) Then
+                        Me.Needed_Top_Packages_List.Add(owner_pkg)
+                    End If
+                    Me.Needed_Elements_List.Add(element)
                 End If
-                Me.Needed_Elements_List.Add(element)
             End If
         Next
     End Sub
