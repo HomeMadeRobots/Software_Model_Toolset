@@ -53,7 +53,7 @@ Public Class CLOOF_Transformation_Form
 
         '------------------------------------------------------------------------------------------'
         ' Design Form
-        Me.Text = "AUTOSAR 4-3-0 transformation"
+        Me.Text = "C language object oriented framework transformation"
         Me.ClientSize = New Size(Form_Width, item_y_pos)
 
     End Sub
