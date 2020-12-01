@@ -222,7 +222,7 @@ Public Class Synchronous_Operation
                 If arg Is Me.Arguments.Last Then
                     is_last = True
                 End If
-                arg.Transform_To_CLOOF(file_stream, is_last)
+                arg.Transform_To_CLOOF(file_stream, is_last, 2)
             Next
         End If
         file_stream.WriteLine(" );")
@@ -255,7 +255,7 @@ Public Class Asynchronous_Operation
                 If arg Is Me.Arguments.Last Then
                     is_last = True
                 End If
-                arg.Transform_To_CLOOF(file_stream, is_last)
+                arg.Transform_To_CLOOF(file_stream, is_last, 2)
             Next
             file_stream.WriteLine(" );")
         End If

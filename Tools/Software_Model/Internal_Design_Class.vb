@@ -257,6 +257,71 @@ Public Class Internal_Design_Class
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
     Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
+        Dim file_stream As StreamWriter = Me.Create_C_Header_File_Stream_Writer(parent_folder_path)
+        Me.Add_C_Multiple_Inclusion_Guard(file_stream)
+        Me.Add_CLOOF_Inclusion_Directives(file_stream)
+        Me.Add_C_Title(file_stream)
+
+        If Me.Attributes.Count > 0 Then
+            file_stream.WriteLine("typedef struct {")
+            For Each attr In Me.Attributes
+                Dim attr_dt As Data_Type
+                attr_dt = CType(Me.Get_Element_By_Uuid(attr.Base_Data_Type_Ref), Data_Type)
+                file_stream.WriteLine("    " & _
+                    attr_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & _
+                    " " & attr.Name & ";")
+            Next
+            file_stream.WriteLine("} " & Me.Name & "_Var;")
+            file_stream.WriteLine()
+        End If
+
+        file_stream.WriteLine("typedef struct {")
+        file_stream.WriteLine()
+
+        file_stream.WriteLine("    /* Variable attributes */")
+        If Me.Attributes.Count > 0 Then
+            file_stream.WriteLine("    " & Me.Name & "_Var* var_attr;")
+        End If
+        file_stream.WriteLine()
+
+        file_stream.WriteLine("    /* Sent events */")
+        For Each ev_uuid In Me.Sent_Events
+            Dim ev_if As Event_Interface
+            ev_if = CType(Me.Get_Element_By_Uuid(ev_uuid), Event_Interface)
+            file_stream.WriteLine("    " & ev_if.Name & " " & ev_if.Name & ";")
+        Next
+        file_stream.WriteLine()
+
+        file_stream.WriteLine("    /* Associated objects */")
+        For Each assoc In Me.Associations
+            Dim assoc_class As Internal_Design_Class
+            assoc_class = CType(Me.Get_Element_By_Uuid(assoc.Associated_Class_Ref), 
+                Internal_Design_Class)
+            file_stream.WriteLine("    const " & assoc_class.Name & "* " & assoc.Name & ";")
+        Next
+        file_stream.WriteLine()
+
+        file_stream.WriteLine("    /* Configurations parameters */")
+        For Each conf In Me.Configurations
+            Dim conf_dt As Data_Type
+            conf_dt = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
+            file_stream.WriteLine("    " & _
+                conf_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & _
+                " " & conf.Name & ";")
+        Next
+        file_stream.WriteLine()
+
+        file_stream.WriteLine("} " & Me.Name & ";")
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Public methods")
+        For Each op In Me.Public_Operations
+            op.Transform_To_CLOOF(file_stream, Me.Name)
+        Next
+
+        file_stream.WriteLine()
+        Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
+        file_stream.Close()
     End Sub
 
 End Class
@@ -279,6 +344,7 @@ Public Class Public_Operation
             Me.Is_Abstract = False
         End If
     End Sub
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
@@ -312,6 +378,41 @@ Public Class Public_Operation
             CType(Me.Rpy_Element, RPOperation).isAbstract = 1
         Else
             CType(Me.Rpy_Element, RPOperation).isAbstract = 0
+        End If
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Sub Transform_To_CLOOF(file_stream As StreamWriter, class_id As String)
+        Dim is_getter As Boolean = False
+        If Me.Arguments.Count = 1 Then
+            If Me.Arguments(0).Stream = Operation_Argument.E_STREAM.OUTPUT Then
+                is_getter = True
+            End If
+        End If
+        Dim ref_to_me As String = "const " & class_id & "* Me"
+        Dim arg_dt As Data_Type
+        If is_getter = True Then
+            arg_dt = CType(Me.Get_Element_By_Uuid(Me.Arguments(0).Base_Data_Type_Ref), Data_Type)
+            file_stream.WriteLine(
+                arg_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & " " & _
+                class_id & "__" & Me.Name & "( " & ref_to_me & " );")
+        Else
+            file_stream.Write("void " & class_id & "__" & Me.Name & "( " & ref_to_me)
+            If Me.Arguments.Count = 0 Then
+                file_stream.WriteLine(" );")
+            Else
+                file_stream.WriteLine(",")
+                Dim is_last As Boolean = False
+                For Each arg In Me.Arguments
+                    If arg Is Me.Arguments.Last Then
+                        is_last = True
+                    End If
+                    arg.Transform_To_CLOOF(file_stream, is_last, 1)
+                Next
+                file_stream.WriteLine(" );")
+            End If
         End If
     End Sub
 

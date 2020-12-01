@@ -474,6 +474,14 @@ Public MustInherit Class SMM_Classifier
             "/*============================================================================*/")
     End Sub
 
+    Public Shared Sub Add_C_Title(file_stream As StreamWriter, title As String)
+        file_stream.WriteLine(
+            "/*============================================================================*/")
+        file_stream.WriteLine("/* " & title & " */")
+        file_stream.WriteLine(
+            "/*============================================================================*/")
+    End Sub
+
 End Class
 
 
