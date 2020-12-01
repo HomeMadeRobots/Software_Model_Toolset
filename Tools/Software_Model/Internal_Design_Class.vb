@@ -239,6 +239,16 @@ Public Class Internal_Design_Class
                     End If
                 End If
             Next
+            For Each assoc In Me.Associations
+                Dim assoc_class As Internal_Design_Class
+                assoc_class = CType(Me.Get_Element_By_Uuid(assoc.Associated_Class_Ref), 
+                    Internal_Design_Class)
+                If Not IsNothing(assoc_class) Then
+                    If Not Me.Needed_Elements.Contains(assoc_class) Then
+                        Me.Needed_Elements.Add(assoc_class)
+                    End If
+                End If
+            Next
         End If
         Return Me.Needed_Elements
     End Function
@@ -246,7 +256,7 @@ Public Class Internal_Design_Class
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
-    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+    Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
     End Sub
 
 End Class
