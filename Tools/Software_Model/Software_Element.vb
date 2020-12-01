@@ -535,7 +535,7 @@ Public MustInherit Class SMM_Class
         Return CType(rpy_parent_pkg.addClass(Me.Name), RPModelElement)
     End Function
 
-    Public Function Is_Exportable(any_rpy_elmt As RPModelElement) As Boolean
+    Public Overridable Function Is_Exportable(any_rpy_elmt As RPModelElement) As Boolean
         If Me.Base_Class_Ref = Guid.Empty Then
             Return True
         End If

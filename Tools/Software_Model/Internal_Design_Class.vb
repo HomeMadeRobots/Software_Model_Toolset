@@ -14,6 +14,7 @@ Public Class Internal_Design_Class
     Public Realized_Interfaces As New List(Of Guid)
     <XmlArrayItem("Needed_Interface")>
     Public Needed_Interfaces As New List(Of Guid)
+    Public Associations As New List(Of Classes_Association)
 
 
     '----------------------------------------------------------------------------------------------'
@@ -24,6 +25,7 @@ Public Class Internal_Design_Class
             children_list = MyBase.Get_Children
             children_list.AddRange(Me.Configurations)
             children_list.AddRange(Me.Public_Operations)
+            children_list.AddRange(Me.Associations)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -83,6 +85,14 @@ Public Class Internal_Design_Class
                 Dim ope As Public_Operation = New Public_Operation
                 Me.Public_Operations.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
+            End If
+        Next
+
+        For Each rpy_elmt In CType(Me.Rpy_Element, RPClass).relations
+            If rpy_elmt.metaClass = "AssociationEnd" Then
+                Dim class_assoc As New Classes_Association
+                Me.Associations.Add(class_assoc)
+                class_assoc.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
 
@@ -161,13 +171,77 @@ Public Class Internal_Design_Class
 
     End Sub
 
+    Public Overrides Function Is_Exportable(any_rpy_elmt As RPModelElement) As Boolean
+        If Not MyBase.Is_Exportable(any_rpy_elmt) Then
+            Return False
+        Else
+            Dim result As Boolean = True
+            Dim assoc_rpy_class As RPClass
+            Dim assoc_rpy_class_guid As String
+            Dim rpy_proj As RPProject = CType(any_rpy_elmt.project, RPProject)
+            For Each class_assoc In Me.Associations
+                assoc_rpy_class_guid = Transform_Guid_To_Rpy_GUID(class_assoc.Associated_Class_Ref)
+                assoc_rpy_class = CType(rpy_proj.findElementByGUID(assoc_rpy_class_guid), RPClass)
+                If IsNothing(assoc_rpy_class) Then
+                    result = False
+                    Exit For
+                End If
+            Next
+            Return result
+        End If
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
 
 
     '----------------------------------------------------------------------------------------------'
-    ' Methods for metrics computation (not yet implemented for Internal_Design_Class)
+    ' Methods for metrics computation
+    Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
+        If IsNothing(Me.Needed_Elements) Then
+            Me.Needed_Elements = MyBase.Find_Needed_Elements()
+            For Each conf In Me.Configurations
+                Dim data_type As Data_Type
+                data_type = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
+                If Not IsNothing(data_type) Then
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
+                    End If
+                End If
+            Next
+            For Each current_ope In Me.Public_Operations
+                For Each arg In current_ope.Arguments
+                    Dim data_type As Data_Type
+                    data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                    If Not IsNothing(data_type) Then
+                        If Not Me.Needed_Elements.Contains(data_type) Then
+                            Me.Needed_Elements.Add(data_type)
+                        End If
+                    End If
+                Next
+            Next
+            For Each cs_if_uuid In Me.Realized_Interfaces
+                Dim cs_if As Client_Server_Interface
+                cs_if = CType(Me.Get_Element_By_Uuid(cs_if_uuid), Client_Server_Interface)
+                If Not IsNothing(cs_if) Then
+                    If Not Me.Needed_Elements.Contains(cs_if) Then
+                        Me.Needed_Elements.Add(cs_if)
+                    End If
+                End If
+            Next
+            For Each cs_if_uuid In Me.Needed_Interfaces
+                Dim cs_if As Client_Server_Interface
+                cs_if = CType(Me.Get_Element_By_Uuid(cs_if_uuid), Client_Server_Interface)
+                If Not IsNothing(cs_if) Then
+                    If Not Me.Needed_Elements.Contains(cs_if) Then
+                        Me.Needed_Elements.Add(cs_if)
+                    End If
+                End If
+            Next
+        End If
+        Return Me.Needed_Elements
+    End Function
 
 
     '----------------------------------------------------------------------------------------------'
@@ -229,6 +303,64 @@ Public Class Public_Operation
         Else
             CType(Me.Rpy_Element, RPOperation).isAbstract = 0
         End If
+    End Sub
+
+End Class
+
+
+Public Class Classes_Association
+    Inherits Software_Element
+
+    Public Associated_Class_Ref As Guid
+    Private Rpy_Associated_Class As RPModelElement = Nothing
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for model import from Rhapsody
+    Protected Overrides Sub Get_Own_Data_From_Rhapsody_Model()
+        MyBase.Get_Own_Data_From_Rhapsody_Model()
+        Dim rpy_rel As RPRelation = CType(Me.Rpy_Element, RPRelation)
+        Me.Associated_Class_Ref = Transform_Rpy_GUID_To_Guid(rpy_rel.otherClass.GUID)
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Function Create_Rpy_Element(rpy_parent As RPModelElement) As RPModelElement
+        Dim rpy_rel As RPRelation = Nothing
+        Dim rpy_parent_class As RPClass = CType(rpy_parent, RPClass)
+
+        ' Dirty trick to be able to call Find_In_Rpy_Project before really assigning Rpy_Element
+        Me.Rpy_Element = rpy_parent
+
+        Me.Rpy_Associated_Class = Me.Find_In_Rpy_Project(Me.Associated_Class_Ref)
+
+        If Not IsNothing(Me.Rpy_Associated_Class) Then
+            rpy_rel = rpy_parent_class.addUnidirectionalRelation(
+                Me.Rpy_Associated_Class.name,
+                Me.Rpy_Associated_Class.owner.name,
+                Me.Name, "Association", "1", "")
+        End If
+        Return CType(rpy_rel, RPModelElement)
+    End Function
+
+    Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
+        If Not IsNothing(rpy_elmt) Then
+            MyBase.Set_Rpy_Element_Attributes(rpy_elmt, report)
+        Else
+            If IsNothing(Me.Rpy_Associated_Class) Then
+                Me.Add_Export_Error_Item(report,
+                    Merge_Report_Item.E_Merge_Status.MISSING_REFERENCED_ELEMENTS,
+                    "Internal_Design_Class not found : " & Me.Associated_Class_Ref.ToString & ".")
+            End If
+        End If
+    End Sub
+
+    Protected Overrides Function Get_Rpy_Metaclass() As String
+        Return "Association"
+    End Function
+
+    Protected Overrides Sub Set_Stereotype()
+        ' No stereotype
     End Sub
 
 End Class
