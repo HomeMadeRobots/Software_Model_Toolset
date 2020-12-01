@@ -109,7 +109,48 @@ Public MustInherit Class SDD_Class
     End Function
 
     Public Overrides Function Find_Needed_Elements() As List(Of SMM_Classifier)
-        Return Nothing
+        If IsNothing(Me.Needed_Elements) Then
+            Me.Needed_Elements = MyBase.Find_Needed_Elements()
+            For Each var_attr In Me.Attributes
+                Dim data_type As Data_Type
+                data_type = CType(Me.Get_Element_By_Uuid(var_attr.Base_Data_Type_Ref), Data_Type)
+                If Not IsNothing(data_type) Then
+                    If Not Me.Needed_Elements.Contains(data_type) Then
+                        Me.Needed_Elements.Add(data_type)
+                    End If
+                End If
+            Next
+            For Each current_ope In Me.Private_Operations
+                For Each arg In current_ope.Arguments
+                    Dim data_type As Data_Type
+                    data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                    If Not IsNothing(data_type) Then
+                        If Not Me.Needed_Elements.Contains(data_type) Then
+                            Me.Needed_Elements.Add(data_type)
+                        End If
+                    End If
+                Next
+            Next
+            For Each ev_uuid In Me.Sent_Events
+                Dim ev_if As Event_Interface
+                ev_if = CType(Me.Get_Element_By_Uuid(ev_uuid), Event_Interface)
+                If Not IsNothing(ev_if) Then
+                    If Not Me.Needed_Elements.Contains(ev_if) Then
+                        Me.Needed_Elements.Add(ev_if)
+                    End If
+                End If
+            Next
+            For Each ev_uuid In Me.Received_Events
+                Dim ev_if As Event_Interface
+                ev_if = CType(Me.Get_Element_By_Uuid(ev_uuid), Event_Interface)
+                If Not IsNothing(ev_if) Then
+                    If Not Me.Needed_Elements.Contains(ev_if) Then
+                        Me.Needed_Elements.Add(ev_if)
+                    End If
+                End If
+            Next
+        End If
+        Return Me.Needed_Elements
     End Function
 
 
