@@ -1,4 +1,5 @@
 ﻿Imports rhapsody2
+Imports System.IO
 
 
 Public MustInherit Class SMM_Operation
@@ -52,6 +53,24 @@ Public MustInherit Class Operation_With_Arguments
             argument.Import_From_Rhapsody_Model(Me, CType(rpy_arg, RPModelElement))
         Next
     End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Sub Create_CLOOF_Declaration(file_stream As StreamWriter, class_id As String)
+        Me.Create_CLOOF_Prototype(file_stream, class_id)
+        file_stream.WriteLine(";")
+    End Sub
+
+    Public Sub Create_CLOOF_Definition(file_stream As StreamWriter, class_id As String)
+        Me.Create_CLOOF_Prototype(file_stream, class_id)
+        file_stream.WriteLine("")
+        file_stream.WriteLine("{")
+        file_stream.WriteLine("")
+        file_stream.WriteLine("}")
+    End Sub
+
+    Public MustOverride Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
 
 End Class
 

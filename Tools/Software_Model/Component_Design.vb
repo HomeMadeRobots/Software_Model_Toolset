@@ -683,6 +683,13 @@ Public Class Operation_Realization
         End If
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+     Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
+
+     End Sub
+
 End Class
 
 
@@ -767,6 +774,13 @@ Public Class Event_Reception_Realization
             End If
         End If
     End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+     Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
+
+     End Sub
 
 End Class
 

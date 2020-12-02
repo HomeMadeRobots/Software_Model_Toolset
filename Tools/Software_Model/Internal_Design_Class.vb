@@ -257,6 +257,11 @@ Public Class Internal_Design_Class
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
     Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
+        Me.Create_CLOOF_Header_File(parent_folder_path)
+        Me.Create_CLOOF_Source_File(parent_folder_path)
+    End Sub
+
+    Private Sub Create_CLOOF_Header_File(parent_folder_path As String)
         Dim file_stream As StreamWriter = Me.Create_C_Header_File_Stream_Writer(parent_folder_path)
         Me.Add_C_Multiple_Inclusion_Guard(file_stream)
         Me.Add_CLOOF_Inclusion_Directives(file_stream)
@@ -316,11 +321,67 @@ Public Class Internal_Design_Class
 
         Add_C_Title(file_stream, "Public methods")
         For Each op In Me.Public_Operations
-            op.Transform_To_CLOOF(file_stream, Me.Name)
+            op.Create_CLOOF_Declaration(file_stream, Me.Name)
         Next
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Received events")
+        For Each ev In Me.Event_Receptions
+            ev.Create_CLOOF_Declaration(file_stream, Me.Name)
+        Next
+        file_stream.WriteLine()
 
         file_stream.WriteLine()
         Me.Finish_C_Multiple_Inclusion_Guard(file_stream)
+        file_stream.Close()
+    End Sub
+
+    Private Sub Create_CLOOF_Source_File(parent_folder_path As String)
+        Dim file_stream As StreamWriter
+        file_stream = Me.Create_C_Source_File_Stream_Writer(parent_folder_path)
+
+        file_stream.WriteLine("#include """ & Me.Name & ".h""")
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Attributes access")
+        For Each attr In Me.Attributes
+            file_stream.WriteLine("#define My_" & attr.Name & " (Me->var_attr->" & attr.Name & ")")
+        Next
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Private methods declaration")
+        For Each meth In Me.Private_Operations
+            meth.Create_CLOOF_Declaration(file_stream, Me.Name)
+        Next
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Public methods")
+        For Each meth In Me.Public_Operations
+            meth.Create_CLOOF_Definition(file_stream, Me.Name)
+            If Not meth Is Me.Public_Operations.Last Then
+                SMM_Classifier.Add_C_Separator(file_stream)
+            End If
+        Next
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Received events")
+        For Each meth In Me.Event_Receptions
+            meth.Create_CLOOF_Definition(file_stream, Me.Name)
+            If Not meth Is Me.Event_Receptions.Last Then
+                SMM_Classifier.Add_C_Separator(file_stream)
+            End If
+        Next
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Private methods definition")
+        For Each meth In Me.Private_Operations
+            meth.Create_CLOOF_Definition(file_stream, Me.Name)
+            If Not meth Is Me.Private_Operations.Last Then
+                SMM_Classifier.Add_C_Separator(file_stream)
+            End If
+        Next
+        file_stream.WriteLine()
+
         file_stream.Close()
     End Sub
 
@@ -384,7 +445,7 @@ Public Class Public_Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
-    Public Sub Transform_To_CLOOF(file_stream As StreamWriter, class_id As String)
+    Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
         Dim is_getter As Boolean = False
         If Me.Arguments.Count = 1 Then
             If Me.Arguments(0).Stream = Operation_Argument.E_STREAM.OUTPUT Then
@@ -395,13 +456,13 @@ Public Class Public_Operation
         Dim arg_dt As Data_Type
         If is_getter = True Then
             arg_dt = CType(Me.Get_Element_By_Uuid(Me.Arguments(0).Base_Data_Type_Ref), Data_Type)
-            file_stream.WriteLine(
+            file_stream.Write(
                 arg_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & " " & _
-                class_id & "__" & Me.Name & "( " & ref_to_me & " );")
+                class_id & "__" & Me.Name & "( " & ref_to_me & " )")
         Else
             file_stream.Write("void " & class_id & "__" & Me.Name & "( " & ref_to_me)
             If Me.Arguments.Count = 0 Then
-                file_stream.WriteLine(" );")
+                file_stream.Write(" )")
             Else
                 file_stream.WriteLine(",")
                 Dim is_last As Boolean = False
@@ -411,7 +472,7 @@ Public Class Public_Operation
                     End If
                     arg.Transform_To_CLOOF(file_stream, is_last, 1)
                 Next
-                file_stream.WriteLine(" );")
+                file_stream.Write(" )")
             End If
         End If
     End Sub

@@ -1,5 +1,6 @@
 ﻿Imports rhapsody2
 Imports System.Xml.Serialization
+Imports System.IO
 
 
 Public MustInherit Class SDD_Class
@@ -187,6 +188,26 @@ Public Class Private_Operation
         Me.Rpy_Element.addStereotype("Private_Operation", "Operation")
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
+        file_stream.Write("static void " & Me.Name & "( const " & class_id & "* Me")
+        If Me.Arguments.Count = 0 Then
+            file_stream.Write(" )")
+        Else
+            file_stream.WriteLine(",")
+            Dim is_last As Boolean = False
+            For Each arg In Me.Arguments
+                If arg Is Me.Arguments.Last Then
+                    is_last = True
+                End If
+                arg.Transform_To_CLOOF(file_stream, is_last, 1)
+            Next
+            file_stream.Write(" )")
+        End If
+    End Sub
+
 End Class
 
 
@@ -199,6 +220,27 @@ Public Class Event_Reception
     ' Methods for models merge
     Protected Overrides Sub Set_Stereotype()
         Me.Rpy_Element.addStereotype("Event_Reception", "Operation")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
+        Dim ref_to_me As String = "const " & class_id & "* Me"
+        file_stream.Write("void " & class_id & "__" & Me.Name & "( " & ref_to_me)
+        If Me.Arguments.Count = 0 Then
+            file_stream.Write(" )")
+        Else
+            file_stream.WriteLine(",")
+            Dim is_last As Boolean = False
+            For Each arg In Me.Arguments
+                If arg Is Me.Arguments.Last Then
+                    is_last = True
+                End If
+                arg.Transform_To_CLOOF(file_stream, is_last, 1)
+            Next
+            file_stream.Write(" )")
+        End If
     End Sub
 
 End Class

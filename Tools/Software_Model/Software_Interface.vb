@@ -178,7 +178,7 @@ Public Class Client_Server_Interface
         Me.Add_C_Title(file_stream)
         file_stream.WriteLine("typedef struct {")
         For Each op In Me.Operations
-            op.Transform_To_CLOOF(file_stream)
+            op.Create_CLOOF_Declaration(file_stream, "")
         Next
         file_stream.WriteLine("} " & Me.Name & ";")
         file_stream.WriteLine()
@@ -194,7 +194,6 @@ Public MustInherit Class Client_Server_Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
-    Public MustOverride Sub Transform_To_CLOOF(file_stream As StreamWriter)
 
 End Class
 
@@ -211,7 +210,7 @@ Public Class Synchronous_Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
-    Public Overrides Sub Transform_To_CLOOF(file_stream As StreamWriter)
+     Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
         file_stream.Write("    void (*" & Me.Name & ") ( ")
         If Me.Arguments.Count = 0 Then
             file_stream.Write("void")
@@ -225,7 +224,7 @@ Public Class Synchronous_Operation
                 arg.Transform_To_CLOOF(file_stream, is_last, 2)
             Next
         End If
-        file_stream.WriteLine(" );")
+        file_stream.Write(" )")
     End Sub
 
 End Class
@@ -243,11 +242,11 @@ Public Class Asynchronous_Operation
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
-    Public Overrides Sub Transform_To_CLOOF(file_stream As StreamWriter)
+    Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
         file_stream.WriteLine("    void (*" & Me.Name & ") ( ")
         file_stream.Write("        const Asynchronous_Operation_Manager* async_op_mgr")
         If Me.Arguments.Count = 0 Then
-            file_stream.WriteLine(" );")
+            file_stream.Write(" )")
         Else
             file_stream.WriteLine(",")
             Dim is_last As Boolean = False
@@ -257,7 +256,7 @@ Public Class Asynchronous_Operation
                 End If
                 arg.Transform_To_CLOOF(file_stream, is_last, 2)
             Next
-            file_stream.WriteLine(" );")
+            file_stream.Write(" )")
         End If
     End Sub
 

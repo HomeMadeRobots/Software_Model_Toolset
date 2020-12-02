@@ -431,6 +431,13 @@ Public MustInherit Class SMM_Classifier
         Return file_stream
     End Function
 
+    Public Function Create_C_Source_File_Stream_Writer(folder_path As String) As StreamWriter
+        Dim source_file_name As String = Me.Name & ".c"
+        Dim source_file_path As String = folder_path & "/" & source_file_name
+        Dim file_stream As New StreamWriter(source_file_path, False)
+        Return file_stream
+    End Function
+
     Public Overridable Function Get_CLOOF_Inclusion_Directive() As String
         Return "#include """ & Me.Name & ".h"""
     End Function
@@ -480,6 +487,11 @@ Public MustInherit Class SMM_Classifier
         file_stream.WriteLine("/* " & title & " */")
         file_stream.WriteLine(
             "/*============================================================================*/")
+    End Sub
+
+    Public Shared Sub Add_C_Separator(file_stream As StreamWriter)
+        file_stream.WriteLine(
+            "/*----------------------------------------------------------------------------*/")
     End Sub
 
 End Class
