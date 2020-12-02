@@ -177,6 +177,11 @@ Public Class Client_Server_Interface
         End If
         Me.Add_C_Title(file_stream)
         file_stream.WriteLine("typedef struct {")
+        Dim parent_cs_if As Client_Server_Interface
+        parent_cs_if = CType(Me.Get_Element_By_Uuid(Me.Base_Class_Ref), Client_Server_Interface)
+        If Not IsNothing(parent_cs_if) Then
+            file_stream.WriteLine("    " & parent_cs_if.Name & " base;")
+        End If
         For Each op In Me.Operations
             op.Create_CLOOF_Declaration(file_stream, "")
         Next
