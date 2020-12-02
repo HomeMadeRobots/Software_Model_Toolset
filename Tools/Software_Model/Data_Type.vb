@@ -325,10 +325,14 @@ Public Class Basic_Integer_Type
 
     Public Overrides Function Get_CLOOF_Arg_Type_Declaration(
             stream As Operation_Argument.E_STREAM) As String
+        Dim type_decla As String = Me.Name
+        If Me.Signedness = E_Signedness_Type.SIGNED Then
+            type_decla = type_decla.Substring(1)
+        End If
         If stream = Operation_Argument.E_STREAM.INPUT Then
-            Return Me.Name & "_t"
+            Return type_decla & "_t"
         Else
-            Return Me.Name & "_t*"
+            Return type_decla & "_t*"
         End If
     End Function
 
