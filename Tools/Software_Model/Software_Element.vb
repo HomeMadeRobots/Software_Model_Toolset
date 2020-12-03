@@ -507,6 +507,18 @@ Public MustInherit Class SMM_Class
 
     Protected Weighted_Methods_Per_Class As Double = 0
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' General methods 
+    Public Function Is_Specialization() As Boolean
+        If Me.Base_Class_Ref <> Guid.Empty Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
     Protected MustOverride Function Is_My_Metaclass(rpy_element As RPModelElement) As Boolean

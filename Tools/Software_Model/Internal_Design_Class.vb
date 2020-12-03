@@ -31,6 +31,108 @@ Public Class Internal_Design_Class
         Return Me.Children
     End Function
 
+    Private Function Is_CS_Operation_Realization(op As Public_Operation) As Boolean
+        Dim result As Boolean = False
+        For Each cs_if_uuid In Me.Realized_Interfaces
+            Dim cs_if As Client_Server_Interface
+            cs_if = CType(Me.Get_Element_By_Uuid(cs_if_uuid), Client_Server_Interface)
+            For Each cs_op In cs_if.Operations
+                If cs_op.Name = op.Name Then
+                    Return True
+                End If
+            Next
+        Next
+        Return result
+    End Function
+
+    Public Function Is_Abstract() As Boolean
+        Dim result As Boolean = False
+
+        ' Check if public operations are abtract
+        For Each op In Me.Public_Operations
+            If op.Is_Abstract = True Then
+                result = True
+                Exit For
+            End If
+        Next
+
+        ' Check if received events are implemented
+        If result = False Then
+            ' TODO : take into account Received_Events from parents
+            For Each ev_uuid In Me.Received_Events
+                Dim is_ev_recep_realized As Boolean = False
+                Dim ev As Event_Interface = CType(Me.Get_Element_By_Uuid(ev_uuid), Event_Interface)
+                For Each ev_recep In Me.Event_Receptions
+                    If ev.Name = ev_recep.Name Then
+                        is_ev_recep_realized = True
+                        Exit For
+                    End If
+                Next
+                If is_ev_recep_realized = False Then
+                    result = True
+                    Exit For
+                End If
+            Next
+        End If
+
+        ' Check if realized interface operation's are implemented
+        If result = False Then
+            ' TODO : take into account Realized_Interfaces from parents
+            For Each cs_if_uuid In Me.Realized_Interfaces
+                Dim is_cs_if_realized As Boolean = True
+                Dim cs_if As Client_Server_Interface
+                cs_if = CType(Me.Get_Element_By_Uuid(cs_if_uuid), Client_Server_Interface)
+                For Each cs_if_op In cs_if.Operations
+                    Dim is_cs_if_op_realized As Boolean = False
+                    For Each op In Me.Public_Operations
+                        If op.Name = cs_if_op.Name Then
+                            is_cs_if_op_realized = True
+                            Exit For
+                        End If
+                    Next
+                    If is_cs_if_op_realized = False Then
+                        is_cs_if_realized = False
+                        Exit For
+                    End If
+                Next
+                If is_cs_if_realized = False Then
+                    result = True
+                    Exit For
+                End If
+            Next
+        End If
+
+        ' Check if inherited abstract operations are implemented
+        If result = False Then
+            ' TODO : take into abstract operations from grand parents
+            Dim parent As Internal_Design_Class
+            parent = CType(Me.Get_Element_By_Uuid(Me.Base_Class_Ref), Internal_Design_Class)
+            If Not IsNothing(parent) Then
+                Dim are_all_parent_op_realized As Boolean = True
+                For Each parent_op In parent.Public_Operations
+                    Dim is_parent_op_realized As Boolean = False
+                    If parent_op.Is_Abstract = True Then
+                        For Each op In Me.Public_Operations
+                            If op.Name = parent_op.Name Then
+                                is_parent_op_realized = True
+                                Exit For
+                            End If
+                        Next
+                        If is_parent_op_realized = False Then
+                            are_all_parent_op_realized = False
+                            Exit For
+                        End If
+                    End If
+                Next
+                If are_all_parent_op_realized = False Then
+                    result = True
+                End If
+            End If
+        End If
+
+        Return result
+    End Function
+
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -194,6 +296,9 @@ Public Class Internal_Design_Class
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
+    Protected Overrides Sub Check_Children_Name_Against_Inherited(report As Report)
+
+    End Sub
 
 
     '----------------------------------------------------------------------------------------------'
@@ -211,15 +316,17 @@ Public Class Internal_Design_Class
                 End If
             Next
             For Each current_ope In Me.Public_Operations
-                For Each arg In current_ope.Arguments
-                    Dim data_type As Data_Type
-                    data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
-                    If Not IsNothing(data_type) Then
-                        If Not Me.Needed_Elements.Contains(data_type) Then
-                            Me.Needed_Elements.Add(data_type)
+                If Not Me.Is_CS_Operation_Realization(current_ope) Then
+                    For Each arg In current_ope.Arguments
+                        Dim data_type As Data_Type
+                        data_type = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                        If Not IsNothing(data_type) Then
+                            If Not Me.Needed_Elements.Contains(data_type) Then
+                                Me.Needed_Elements.Add(data_type)
+                            End If
                         End If
-                    End If
-                Next
+                    Next
+                End If
             Next
             For Each cs_if_uuid In Me.Realized_Interfaces
                 Dim cs_if As Client_Server_Interface
@@ -257,8 +364,10 @@ Public Class Internal_Design_Class
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
     Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
-        Me.Create_CLOOF_Header_File(parent_folder_path)
-        Me.Create_CLOOF_Source_File(parent_folder_path)
+        If Me.Is_Abstract = False And Me.Is_Specialization = False Then
+            Me.Create_CLOOF_Header_File(parent_folder_path)
+            Me.Create_CLOOF_Source_File(parent_folder_path)
+        End If
     End Sub
 
     Private Sub Create_CLOOF_Header_File(parent_folder_path As String)
