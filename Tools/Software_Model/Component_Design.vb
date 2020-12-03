@@ -14,6 +14,7 @@ Public Class Component_Design
     Public Callback_Realizations As New List(Of Callback_Realization)
     <XmlArrayItem("Part")>
     Public Parts As New List(Of Internal_Design_Object)
+    Public Inner_Event_Receptions As New List(Of Inner_Event_Reception)
     Public Object_Connectors As New List(Of Object_Connector)
 
     Private Nb_Component_Type_Ref As Integer
@@ -29,6 +30,7 @@ Public Class Component_Design
             children_list.AddRange(Me.Operation_Realizations)
             children_list.AddRange(Me.Event_Reception_Realizations)
             children_list.AddRange(Me.Callback_Realizations)
+            children_list.AddRange(Me.Inner_Event_Receptions)
             children_list.AddRange(Me.Parts)
             children_list.AddRange(Me.Object_Connectors)
             Me.Children = children_list
@@ -264,6 +266,10 @@ Public Class Component_Design
                 Dim clbk_rea As Callback_Realization = New Callback_Realization
                 Me.Callback_Realizations.Add(clbk_rea)
                 clbk_rea.Import_From_Rhapsody_Model(Me, rpy_elmt)
+            ElseIf Is_Event_Reception(rpy_elmt) Then
+                Dim ope As Inner_Event_Reception = New Inner_Event_Reception
+                Me.Inner_Event_Receptions.Add(ope)
+                ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
 
@@ -899,6 +905,39 @@ Public Class Callback_Realization
         End If
     End Sub
 
+End Class
+
+
+Public Class Inner_Event_Reception
+    Inherits Operation_With_Arguments
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Event_Reception", "Operation")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
+        Dim ref_to_me As String = "const " & class_id & "* Me"
+        file_stream.Write("void " & class_id & "__" & Me.Name & "( " & ref_to_me)
+        If Me.Arguments.Count = 0 Then
+            file_stream.Write(" )")
+        Else
+            file_stream.WriteLine(",")
+            Dim is_last As Boolean = False
+            For Each arg In Me.Arguments
+                If arg Is Me.Arguments.Last Then
+                    is_last = True
+                End If
+                arg.Transform_To_CLOOF(file_stream, is_last, 1)
+            Next
+            file_stream.Write(" )")
+        End If
+    End Sub
 End Class
 
 

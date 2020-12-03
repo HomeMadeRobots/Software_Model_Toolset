@@ -9,7 +9,6 @@ Public MustInherit Class SDD_Class
     <XmlArrayItem("Attribute")>
     Public Attributes As New List(Of Variable_Attribute)
     Public Private_Operations As New List(Of Private_Operation)
-    Public Event_Receptions As New List(Of Event_Reception)
     <XmlArrayItem("Sent_Event")>
     Public Sent_Events As New List(Of Guid)
     <XmlArrayItem("Received_Event")>
@@ -22,7 +21,6 @@ Public MustInherit Class SDD_Class
             Dim children_list As New List(Of Software_Element)
             children_list.AddRange(Me.Attributes)
             children_list.AddRange(Me.Private_Operations)
-            children_list.AddRange(Me.Event_Receptions)
             Me.Children = children_list
         End If
         Return Me.Children
@@ -68,10 +66,6 @@ Public MustInherit Class SDD_Class
             If Is_Private_Operation(rpy_elmt) Then
                 Dim ope As Private_Operation = New Private_Operation
                 Me.Private_Operations.Add(ope)
-                ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
-            ElseIf Is_Event_Reception(rpy_elmt) Then
-                Dim ope As Event_Reception = New Event_Reception
-                Me.Event_Receptions.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
@@ -193,41 +187,6 @@ Public Class Private_Operation
     ' Methods for transformation
     Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
         file_stream.Write("static void " & Me.Name & "( const " & class_id & "* Me")
-        If Me.Arguments.Count = 0 Then
-            file_stream.Write(" )")
-        Else
-            file_stream.WriteLine(",")
-            Dim is_last As Boolean = False
-            For Each arg In Me.Arguments
-                If arg Is Me.Arguments.Last Then
-                    is_last = True
-                End If
-                arg.Transform_To_CLOOF(file_stream, is_last, 1)
-            Next
-            file_stream.Write(" )")
-        End If
-    End Sub
-
-End Class
-
-
-Public Class Event_Reception
-
-    Inherits Operation_With_Arguments
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for models merge
-    Protected Overrides Sub Set_Stereotype()
-        Me.Rpy_Element.addStereotype("Event_Reception", "Operation")
-    End Sub
-
-
-    '----------------------------------------------------------------------------------------------'
-    ' Methods for transformation
-    Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
-        Dim ref_to_me As String = "const " & class_id & "* Me"
-        file_stream.Write("void " & class_id & "__" & Me.Name & "( " & ref_to_me)
         If Me.Arguments.Count = 0 Then
             file_stream.Write(" )")
         Else

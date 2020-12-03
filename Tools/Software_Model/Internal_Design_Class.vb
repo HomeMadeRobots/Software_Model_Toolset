@@ -10,11 +10,14 @@ Public Class Internal_Design_Class
     <XmlArrayItem("Configuration")>
     Public Configurations As New List(Of Configuration_Parameter)
     Public Public_Operations As New List(Of Public_Operation)
+    <XmlArrayItem("Event_Reception")>
+    Public Event_Receptions As New List(Of Design_Class_Event_Reception)
     <XmlArrayItem("Realized_Interface")>
     Public Realized_Interfaces As New List(Of Guid)
     <XmlArrayItem("Needed_Interface")>
     Public Needed_Interfaces As New List(Of Guid)
     Public Associations As New List(Of Classes_Association)
+
 
 
     '----------------------------------------------------------------------------------------------'
@@ -25,6 +28,7 @@ Public Class Internal_Design_Class
             children_list = MyBase.Get_Children
             children_list.AddRange(Me.Configurations)
             children_list.AddRange(Me.Public_Operations)
+            children_list.AddRange(Me.Event_Receptions)
             children_list.AddRange(Me.Associations)
             Me.Children = children_list
         End If
@@ -186,6 +190,10 @@ Public Class Internal_Design_Class
             If Is_Public_Operation(rpy_elmt) Then
                 Dim ope As Public_Operation = New Public_Operation
                 Me.Public_Operations.Add(ope)
+                ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
+            ElseIf Is_Event_Reception(rpy_elmt) Then
+                Dim ope As Design_Class_Event_Reception = New Design_Class_Event_Reception
+                Me.Event_Receptions.Add(ope)
                 ope.Import_From_Rhapsody_Model(Me, rpy_elmt)
             End If
         Next
@@ -497,11 +505,11 @@ Public Class Internal_Design_Class
 End Class
 
 
-Public Class Public_Operation
-
+Public MustInherit Class Public_Method
     Inherits Operation_With_Arguments
 
     Public Is_Abstract As Boolean
+    Public Is_Virtual As Boolean
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for model import from Rhapsody
@@ -512,6 +520,12 @@ Public Class Public_Operation
             Me.Is_Abstract = True
         Else
             Me.Is_Abstract = False
+            If rpy_op.isVirtual > 0 Then
+                Me.Is_Virtual = True
+            Else
+                Me.Is_Virtual = False
+
+            End If
         End If
     End Sub
 
@@ -536,10 +550,21 @@ Public Class Public_Operation
                     "Is_Abstract merged : False -> True.")
             End If
         End If
-    End Sub
-
-    Protected Overrides Sub Set_Stereotype()
-        Me.Rpy_Element.addStereotype("Public_Operation", "Operation")
+        If rpy_op.isVirtual > 0 Then
+            If Me.Is_Virtual = False Then
+                rpy_op.isVirtual = 0
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Is_Virtual merged : True -> False.")
+            End If
+        Else
+            If Me.Is_Virtual = True Then
+                rpy_op.isVirtual = 1
+                Me.Add_Export_Information_Item(report,
+                    Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
+                    "Is_Virtual merged : False -> True.")
+            End If
+        End If
     End Sub
 
     Protected Overrides Sub Set_Rpy_Element_Attributes(rpy_elmt As RPModelElement, report As Report)
@@ -549,6 +574,20 @@ Public Class Public_Operation
         Else
             CType(Me.Rpy_Element, RPOperation).isAbstract = 0
         End If
+    End Sub
+
+End Class
+
+
+Public Class Public_Operation
+
+    Inherits Public_Method
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Public_Operation", "Operation")
     End Sub
 
 
@@ -583,6 +622,40 @@ Public Class Public_Operation
                 Next
                 file_stream.Write(" )")
             End If
+        End If
+    End Sub
+
+End Class
+
+
+Public Class Design_Class_Event_Reception
+    Inherits Public_Method
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for models merge
+    Protected Overrides Sub Set_Stereotype()
+        Me.Rpy_Element.addStereotype("Event_Reception", "Operation")
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Overrides Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
+        Dim ref_to_me As String = "const " & class_id & "* Me"
+        file_stream.Write("void " & class_id & "__" & Me.Name & "( " & ref_to_me)
+        If Me.Arguments.Count = 0 Then
+            file_stream.Write(" )")
+        Else
+            file_stream.WriteLine(",")
+            Dim is_last As Boolean = False
+            For Each arg In Me.Arguments
+                If arg Is Me.Arguments.Last Then
+                    is_last = True
+                End If
+                arg.Transform_To_CLOOF(file_stream, is_last, 1)
+            Next
+            file_stream.Write(" )")
         End If
     End Sub
 
