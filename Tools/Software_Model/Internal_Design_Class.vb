@@ -519,7 +519,7 @@ Public Class Internal_Design_Class
         For Each ev_uuid In Me.Sent_Events
             Dim ev_if As Event_Interface
             ev_if = CType(Me.Get_Element_By_Uuid(ev_uuid), Event_Interface)
-            file_stream.WriteLine("    " & ev_if.Name & " " & ev_if.Name & "_ev;")
+            file_stream.WriteLine("    " & ev_if.Name & " Send__" & ev_if.Name & ";")
         Next
         file_stream.WriteLine()
 
@@ -687,9 +687,9 @@ Public MustInherit Class Public_Method
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
-    Public Sub Create_CLOOF_Pointer_To_Function(file_stream As StreamWriter, class_id As String)
-        file_stream.WriteLine("    void (*" & Me.Name.ToLower & ") ( const " & class_id & "* );")
-    End Sub
+    Public MustOverride Sub Create_CLOOF_Pointer_To_Function(
+            file_stream As StreamWriter,
+            class_id As String)
 
 End Class
 
@@ -740,6 +740,45 @@ Public Class Public_Operation
         End If
     End Sub
 
+
+    Public Overrides Sub Create_CLOOF_Pointer_To_Function(
+            file_stream As StreamWriter,
+            class_id As String)
+        Dim is_getter As Boolean = False
+        If Me.Arguments.Count = 1 Then
+            If Me.Arguments(0).Stream = Operation_Argument.E_STREAM.OUTPUT Then
+                is_getter = True
+            End If
+        End If
+
+        Dim ref_to_me As String = "const " & class_id & "*"
+        Dim arg_dt As Data_Type
+
+        If is_getter = True Then
+            arg_dt = CType(Me.Get_Element_By_Uuid(Me.Arguments(0).Base_Data_Type_Ref), Data_Type)
+            file_stream.WriteLine("   " &
+                arg_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) &
+                " (*" & Me.Name.ToLower & ") ( " & ref_to_me & " );")
+        Else
+            file_stream.Write("    void (*" & Me.Name.ToLower & ") ( " & ref_to_me)
+            If Me.Arguments.Count = 0 Then
+                file_stream.WriteLine(" );")
+            Else
+                file_stream.WriteLine(",")
+                Dim is_last As Boolean = False
+                For Each arg In Me.Arguments
+                    arg_dt = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                    file_stream.Write("        " & arg_dt.Get_CLOOF_Arg_Type_Declaration(arg.Stream))
+                    If Not (arg Is Me.Arguments.Last) Then
+                        file_stream.WriteLine(",")
+                    End If
+                Next
+                file_stream.WriteLine(" );")
+            End If
+        End If
+
+    End Sub
+
 End Class
 
 
@@ -772,6 +811,29 @@ Public Class Design_Class_Event_Reception
             Next
             file_stream.Write(" )")
         End If
+    End Sub
+
+    Public Overrides Sub Create_CLOOF_Pointer_To_Function(
+            file_stream As StreamWriter,
+            class_id As String)
+        file_stream.Write("    void (*" & Me.Name.ToLower & ") ( " & "const " & class_id & "*")
+        If Me.Arguments.Count = 0 Then
+            file_stream.WriteLine(" );")
+        Else
+            file_stream.WriteLine(",")
+            Dim is_last As Boolean = False
+            For Each arg In Me.Arguments
+                Dim arg_dt As Data_Type
+                arg_dt = CType(Me.Get_Element_By_Uuid(arg.Base_Data_Type_Ref), Data_Type)
+                file_stream.Write("        " &
+                    arg_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT))
+                If Not (arg Is Me.Arguments.Last) Then
+                    file_stream.WriteLine(",")
+                End If
+            Next
+            file_stream.WriteLine(" );")
+        End If
+
     End Sub
 
 End Class
