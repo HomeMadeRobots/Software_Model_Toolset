@@ -19,7 +19,6 @@ Public Class Internal_Design_Class
     Public Associations As New List(Of Classes_Association)
 
 
-
     '----------------------------------------------------------------------------------------------'
     ' General methods 
     Public Overrides Function Get_Children() As List(Of Software_Element)
@@ -51,89 +50,74 @@ Public Class Internal_Design_Class
 
     Public Function Is_Abstract() As Boolean
         Dim result As Boolean = False
-
-        ' Check if public operations are abtract
+        ' Check if public operations are abtract (pure virtual)
         For Each op In Me.Public_Operations
             If op.Is_Abstract = True Then
                 result = True
                 Exit For
             End If
         Next
-
-        ' Check if received events are implemented
+        ' Check if events reception are abtract (pure virtual)
         If result = False Then
-            ' TODO : take into account Received_Events from parents
-            For Each ev_uuid In Me.Received_Events
-                Dim is_ev_recep_realized As Boolean = False
-                Dim ev As Event_Interface = CType(Me.Get_Element_By_Uuid(ev_uuid), Event_Interface)
-                For Each ev_recep In Me.Event_Receptions
-                    If ev.Name = ev_recep.Name Then
-                        is_ev_recep_realized = True
-                        Exit For
-                    End If
-                Next
-                If is_ev_recep_realized = False Then
+            For Each ev In Me.Event_Receptions
+                If ev.Is_Abstract = True Then
                     result = True
                     Exit For
                 End If
             Next
         End If
+        Return result
+    End Function
 
-        ' Check if realized interface operation's are implemented
+    Public Function Is_Overridable() As Boolean
+        Dim result As Boolean = False
+        ' Check if public operations are virtual
+        For Each op In Me.Public_Operations
+            If op.Is_Virtual = True Then
+                result = True
+                Exit For
+            End If
+        Next
+        ' Check if events reception are virtual
         If result = False Then
-            ' TODO : take into account Realized_Interfaces from parents
-            For Each cs_if_uuid In Me.Realized_Interfaces
-                Dim is_cs_if_realized As Boolean = True
-                Dim cs_if As Client_Server_Interface
-                cs_if = CType(Me.Get_Element_By_Uuid(cs_if_uuid), Client_Server_Interface)
-                For Each cs_if_op In cs_if.Operations
-                    Dim is_cs_if_op_realized As Boolean = False
-                    For Each op In Me.Public_Operations
-                        If op.Name = cs_if_op.Name Then
-                            is_cs_if_op_realized = True
-                            Exit For
-                        End If
-                    Next
-                    If is_cs_if_op_realized = False Then
-                        is_cs_if_realized = False
-                        Exit For
-                    End If
-                Next
-                If is_cs_if_realized = False Then
+            For Each ev In Me.Event_Receptions
+                If ev.Is_Virtual = True Then
                     result = True
                     Exit For
                 End If
             Next
         End If
+        Return result
+    End Function
 
-        ' Check if inherited abstract operations are implemented
-        If result = False Then
-            ' TODO : take into abstract operations from grand parents
-            Dim parent As Internal_Design_Class
-            parent = CType(Me.Get_Element_By_Uuid(Me.Base_Class_Ref), Internal_Design_Class)
-            If Not IsNothing(parent) Then
-                Dim are_all_parent_op_realized As Boolean = True
-                For Each parent_op In parent.Public_Operations
-                    Dim is_parent_op_realized As Boolean = False
-                    If parent_op.Is_Abstract = True Then
-                        For Each op In Me.Public_Operations
-                            If op.Name = parent_op.Name Then
-                                is_parent_op_realized = True
-                                Exit For
-                            End If
-                        Next
-                        If is_parent_op_realized = False Then
-                            are_all_parent_op_realized = False
-                            Exit For
-                        End If
+    Public Function Is_My_Bases_Abstract_or_Overridable() As Boolean
+        Dim result As Boolean = False
+        Dim base As Internal_Design_Class
+        base = CType(Me.Get_Element_By_Uuid(Me.Base_Class_Ref), Internal_Design_Class)
+        While (Not IsNothing(base) And result = False)
+            If base.Is_Abstract Or base.Is_Overridable Then
+                result = True
+            End If
+            base = CType(Me.Get_Element_By_Uuid(base.Base_Class_Ref), Internal_Design_Class)
+        End While
+        Return result
+    End Function
+
+    Private Function Is_My_Virtual_Or_Abstract(meth As Public_Method) As Boolean
+        Dim result As Boolean = False
+        If meth.Is_Abstract = True Or meth.Is_Virtual = True Then
+            result = True
+            Dim base As Internal_Design_Class
+            base = CType(Me.Get_Element_By_Uuid(Me.Base_Class_Ref), Internal_Design_Class)
+            If Not IsNothing(base) Then
+                For Each child In base.Get_Children
+                    If child.Name = meth.Name Then
+                        result = False
+                        Exit For
                     End If
                 Next
-                If are_all_parent_op_realized = False Then
-                    result = True
-                End If
             End If
         End If
-
         Return result
     End Function
 
@@ -304,6 +288,91 @@ Public Class Internal_Design_Class
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for consistency check model
+    Protected Overrides Sub Check_Own_Consistency(report As Report)
+        MyBase.Check_Own_Consistency(report)
+
+        ' Check that operations from realized cs interfaces are realized
+        For Each cs_if_uuid In Me.Realized_Interfaces
+            Dim cs_if As Client_Server_Interface
+            cs_if = CType(Me.Get_Element_By_Uuid(cs_if_uuid), Client_Server_Interface)
+            For Each cs_if_op In cs_if.Operations
+                Dim is_cs_if_op_realized As Boolean = False
+                For Each op In Me.Public_Operations
+                    If op.Name = cs_if_op.Name Then
+                        is_cs_if_op_realized = True
+                        Exit For
+                    End If
+                Next
+                If is_cs_if_op_realized = False Then
+                    Me.Add_Consistency_Check_Error_Item(report, "TBD",
+                        "Operation " & cs_if.Name & "." & cs_if_op.Name & " shall be realized.")
+                End If
+            Next
+        Next
+
+        ' Check that events from received event interfaces are realized
+        For Each ev_uuid In Me.Received_Events
+            Dim is_ev_recep_realized As Boolean = False
+            Dim ev As Event_Interface = CType(Me.Get_Element_By_Uuid(ev_uuid), Event_Interface)
+            For Each ev_recep In Me.Event_Receptions
+                If ev.Name = ev_recep.Name Then
+                    is_ev_recep_realized = True
+                    Exit For
+                End If
+            Next
+            If is_ev_recep_realized = False Then
+                Me.Add_Consistency_Check_Error_Item(report, "TBD",
+                    "Event " & ev.Name & " shall be realized.")
+            End If
+        Next
+
+        ' Check that abstract operations from base are realized (but can still be abstract...)
+        Dim base As Internal_Design_Class
+        base = CType(Me.Get_Element_By_Uuid(Me.Base_Class_Ref), Internal_Design_Class)
+        If Not IsNothing(base) Then
+            For Each base_op In base.Public_Operations
+                Dim is_base_op_realized As Boolean = False
+                If base_op.Is_Abstract = True Then
+                    For Each op In Me.Public_Operations
+                        If op.Name = base_op.Name Then
+                            is_base_op_realized = True
+                            Exit For
+                        End If
+                    Next
+                    If is_base_op_realized = False Then
+                        Me.Add_Consistency_Check_Error_Item(report, "TBD",
+                            "Operation " & base_op.Name & " from base class shall be realized.")
+                    End If
+                End If
+            Next
+            For Each base_ev In base.Event_Receptions
+                Dim is_base_ev_realized As Boolean = False
+                If base_ev.Is_Abstract = True Then
+                    For Each ev In Me.Event_Receptions
+                        If ev.Name = base_ev.Name Then
+                            is_base_ev_realized = True
+                            Exit For
+                        End If
+                    Next
+                    If is_base_ev_realized = False Then
+                        Me.Add_Consistency_Check_Error_Item(report, "TBD",
+                            "Event " & base_ev.Name & " from base class shall be realized.")
+                    End If
+                End If
+            Next
+        End If
+
+        ' Note that virtual operations from base do not need to be realized
+        ' (implementation is taken from base)
+
+        If Me.Is_Specialization = False Then
+            If Me.Attributes.Count = 0 Then
+                Me.Add_Consistency_Check_Error_Item(report, "TBD",
+                    "Shall define variable attributes.")
+            End If
+        End If
+    End Sub
+
     Protected Overrides Sub Check_Children_Name_Against_Inherited(report As Report)
 
     End Sub
@@ -372,45 +441,85 @@ Public Class Internal_Design_Class
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
     Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
-        If Me.Is_Abstract = False And Me.Is_Specialization = False Then
-            Me.Create_CLOOF_Header_File(parent_folder_path)
-            Me.Create_CLOOF_Source_File(parent_folder_path)
-        End If
+        Me.Create_CLOOF_Header_File(parent_folder_path)
+        Me.Create_CLOOF_Source_File(parent_folder_path)
     End Sub
 
     Private Sub Create_CLOOF_Header_File(parent_folder_path As String)
+
+        Dim base_class As Internal_Design_Class
+        base_class = CType(Me.Get_Element_By_Uuid(Me.Base_Class_Ref), Internal_Design_Class)
+
         Dim file_stream As StreamWriter = Me.Create_C_Header_File_Stream_Writer(parent_folder_path)
         Me.Add_C_Multiple_Inclusion_Guard(file_stream)
         Me.Add_CLOOF_Inclusion_Directives(file_stream)
         Me.Add_C_Title(file_stream)
 
-        If Me.Attributes.Count > 0 Then
+        file_stream.WriteLine("typedef struct {")
+        If Not IsNothing(base_class) Then
+            file_stream.WriteLine("    /* Inheritance */")
+            file_stream.WriteLine("    " & base_class.Name & "_Var base;")
+            file_stream.WriteLine()
+        End If
+        For Each attr In Me.Attributes
+            Dim attr_dt As Data_Type
+            attr_dt = CType(Me.Get_Element_By_Uuid(attr.Base_Data_Type_Ref), Data_Type)
+            file_stream.WriteLine("    " & _
+                attr_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & _
+                " " & attr.Name & ";")
+        Next
+        file_stream.WriteLine("} " & Me.Name & "_Var;")
+        file_stream.WriteLine()
+
+        If Me.Is_My_Bases_Abstract_or_Overridable Or Me.Is_Abstract Or Me.Is_Overridable Then
             file_stream.WriteLine("typedef struct {")
-            For Each attr In Me.Attributes
-                Dim attr_dt As Data_Type
-                attr_dt = CType(Me.Get_Element_By_Uuid(attr.Base_Data_Type_Ref), Data_Type)
-                file_stream.WriteLine("    " & _
-                    attr_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & _
-                    " " & attr.Name & ";")
+            If Me.Is_My_Bases_Abstract_or_Overridable Then
+                file_stream.WriteLine("    /* Inheritance */")
+                file_stream.WriteLine("    " & base_class.Name & "_Virtual_Operations base;")
+                file_stream.WriteLine()
+            End If
+            For Each op In Me.Public_Operations
+                If Me.Is_My_Virtual_Or_Abstract(op) = True Then
+                    op.Create_CLOOF_Pointer_To_Function(file_stream, Me.Name)
+                End If
             Next
-            file_stream.WriteLine("} " & Me.Name & "_Var;")
+            For Each ev In Me.Event_Receptions
+                If Me.Is_My_Virtual_Or_Abstract(ev) = True Then
+                    ev.Create_CLOOF_Pointer_To_Function(file_stream, Me.Name)
+                End If
+            Next
+            file_stream.WriteLine("} " & Me.Name & "_Virtual_Operations;")
             file_stream.WriteLine()
         End If
 
         file_stream.WriteLine("typedef struct {")
         file_stream.WriteLine()
 
-        file_stream.WriteLine("    /* Variable attributes */")
-        If Me.Attributes.Count > 0 Then
-            file_stream.WriteLine("    " & Me.Name & "_Var* var_attr;")
+        If Not IsNothing(base_class) Then
+            file_stream.WriteLine("    /* Inheritance */")
+            file_stream.WriteLine("    " & base_class.Name & " base;")
+            file_stream.WriteLine()
         End If
-        file_stream.WriteLine()
+
+        If Not Me.Is_My_Bases_Abstract_or_Overridable And (Me.Is_Abstract Or Me.Is_Overridable) Then
+            file_stream.WriteLine("    /* Virtual operations */")
+            file_stream.WriteLine("    const " & Me.Name & "_Virtual_Operations* virtual_op;")
+            file_stream.WriteLine()
+        End If
+
+        If IsNothing(base_class) Then
+            file_stream.WriteLine("    /* Variable attributes */")
+            If Me.Attributes.Count > 0 Then
+                file_stream.WriteLine("    " & Me.Name & "_Var* var_attr;")
+            End If
+            file_stream.WriteLine()
+        End If
 
         file_stream.WriteLine("    /* Sent events */")
         For Each ev_uuid In Me.Sent_Events
             Dim ev_if As Event_Interface
             ev_if = CType(Me.Get_Element_By_Uuid(ev_uuid), Event_Interface)
-            file_stream.WriteLine("    " & ev_if.Name & " " & ev_if.Name & ";")
+            file_stream.WriteLine("    " & ev_if.Name & " " & ev_if.Name & "_ev;")
         Next
         file_stream.WriteLine()
 
@@ -508,7 +617,7 @@ End Class
 Public MustInherit Class Public_Method
     Inherits Operation_With_Arguments
 
-    Public Is_Abstract As Boolean
+    Public Is_Abstract As Boolean ' = pure virtual
     Public Is_Virtual As Boolean
 
     '----------------------------------------------------------------------------------------------'
@@ -524,7 +633,6 @@ Public MustInherit Class Public_Method
                 Me.Is_Virtual = True
             Else
                 Me.Is_Virtual = False
-
             End If
         End If
     End Sub
@@ -574,6 +682,13 @@ Public MustInherit Class Public_Method
         Else
             CType(Me.Rpy_Element, RPOperation).isAbstract = 0
         End If
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Sub Create_CLOOF_Pointer_To_Function(file_stream As StreamWriter, class_id As String)
+        file_stream.WriteLine("    void (*" & Me.Name.ToLower & ") ( const " & class_id & "* );")
     End Sub
 
 End Class
