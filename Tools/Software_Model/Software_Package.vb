@@ -346,6 +346,9 @@ Public Class Software_Package
         For Each sw_class In Me.Classes
             sw_class.Transform_To_CLOOF(folder_path)
         Next
+        For Each swct_design In Me.Component_Designs
+            swct_design.Transform_To_CLOOF(folder_path)
+        Next
     End Sub
 
 End Class

@@ -525,6 +525,17 @@ Public Class Provider_Port
 
     End Sub
 
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Sub Create_CLOOF_Access(file_stream As IO.StreamWriter)
+        Dim sw_if As Software_Interface
+        sw_if = CType(Me.Get_Element_By_Uuid(Me.Contract_Ref), Software_Interface)
+        If sw_if.GetType = GetType(Event_Interface) Then
+            file_stream.WriteLine("    " & sw_if.Name & "* Send__" & Me.Name & ";")
+        End If
+    End Sub
+
 End Class
 
 
@@ -613,6 +624,17 @@ Public Class Requirer_Port
                 Me.Add_Consistency_Check_Error_Item(report, "PORT_3",
                     "Shall be delegated to at least one port.")
             End If
+        End If
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Sub Create_CLOOF_Access(file_stream As IO.StreamWriter)
+        Dim sw_if As Software_Interface
+        sw_if = CType(Me.Get_Element_By_Uuid(Me.Contract_Ref), Software_Interface)
+        If sw_if.GetType = GetType(Client_Server_Interface) Then
+            file_stream.WriteLine("    const " & sw_if.Name & "* " & Me.Name & ";")
         End If
     End Sub
 

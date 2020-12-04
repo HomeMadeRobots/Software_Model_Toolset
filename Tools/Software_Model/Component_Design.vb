@@ -507,7 +507,102 @@ Public Class Component_Design
 
     '----------------------------------------------------------------------------------------------'
     ' Methods for transformation
-    Public Overrides Sub Transform_To_CLOOF(folder_path As String)
+    Public Overrides Sub Transform_To_CLOOF(parent_folder_path As String)
+        Dim designed_swct As Component_Type
+        designed_swct = CType(Me.Get_Element_By_Uuid(Me.Component_Type_Ref), Component_Type)
+        Me.Create_CLOOF_Header_File(parent_folder_path, designed_swct)
+        Me.Create_CLOOF_Source_File(parent_folder_path, designed_swct)
+    End Sub
+
+    Private Sub Create_CLOOF_Header_File(
+            parent_folder_path As String,
+            designed_swct As Component_Type)
+
+        Dim file_stream As StreamWriter
+        file_stream = designed_swct.Create_C_Header_File_Stream_Writer(parent_folder_path)
+
+        designed_swct.Add_C_Multiple_Inclusion_Guard(file_stream)
+
+        designed_swct.Add_CLOOF_Inclusion_Directives(file_stream)
+        ' TODO : add variable attributes data type + objects type
+
+        Add_C_Title(file_stream, "Component_Type")
+        If Me.Attributes.Count <> 0 Then
+            file_stream.WriteLine("typedef struct {")
+            For Each attr In Me.Attributes
+                Dim attr_dt As Data_Type
+                attr_dt = CType(Me.Get_Element_By_Uuid(attr.Base_Data_Type_Ref), Data_Type)
+                file_stream.WriteLine("    " & _
+                    attr_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & _
+                    " " & attr.Name & ";")
+            Next
+            file_stream.WriteLine("} " & Me.Name & "_Var;")
+            file_stream.WriteLine()
+        End If
+        file_stream.WriteLine("typedef struct {")
+        file_stream.WriteLine()
+        file_stream.WriteLine("    /* Variable attributes */")
+        If Me.Attributes.Count <> 0 Then
+            If Me.Attributes.Count > 0 Then
+                file_stream.WriteLine("    " & Me.Name & "_Var* var_attr;")
+            End If
+        End If
+        file_stream.WriteLine()
+        file_stream.WriteLine("    /* Required interfaces */")
+        For Each rport In designed_swct.Requirer_Ports
+            rport.Create_CLOOF_Access(file_stream)
+        Next
+        file_stream.WriteLine()
+        file_stream.WriteLine("    /* Sent events */")
+        For Each pport In designed_swct.Provider_Ports
+            pport.Create_CLOOF_Access(file_stream)
+        Next
+        file_stream.WriteLine()
+        file_stream.WriteLine("    /* Configuration_Parameters */")
+        For Each conf In designed_swct.Configurations
+            Dim conf_dt As Data_Type
+            conf_dt = CType(Me.Get_Element_By_Uuid(conf.Base_Data_Type_Ref), Data_Type)
+            file_stream.WriteLine("    " & _
+                conf_dt.Get_CLOOF_Arg_Type_Declaration(Operation_Argument.E_STREAM.INPUT) & _
+                " " & conf.Name & ";")
+        Next
+        file_stream.WriteLine()
+        file_stream.WriteLine("    /* Inner objects */")
+        For Each inner_obj In Me.Parts
+            Dim obj_class As Internal_Design_Class
+            obj_class = CType(Me.Get_Element_By_Uuid(inner_obj.Type_Ref), Internal_Design_Class)
+            file_stream.WriteLine("    const " & obj_class.Name & "* " & inner_obj.Name & ";")
+        Next
+        file_stream.WriteLine()
+        file_stream.WriteLine("} " & designed_swct.Name & ";")
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Component_Operations")
+        For Each os_op In designed_swct.OS_Operations
+            os_op.Create_CLOOF_Declaration(file_stream, designed_swct.Name)
+        Next
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Realized interfaces")
+        file_stream.WriteLine()
+
+        Add_C_Title(file_stream, "Received events")
+
+
+        file_stream.Close()
+    End Sub
+
+    Private Sub Create_CLOOF_Source_File(
+            parent_folder_path As String,
+            designed_swct As Component_Type)
+
+        Dim file_stream As StreamWriter
+        file_stream = designed_swct.Create_C_Source_File_Stream_Writer(parent_folder_path)
+
+        file_stream.WriteLine("#include """ & designed_swct.Name & ".h""")
+        file_stream.WriteLine()
+
+        file_stream.Close()
     End Sub
 
 End Class

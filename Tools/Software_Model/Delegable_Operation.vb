@@ -1,5 +1,7 @@
 ﻿Imports rhapsody2
 Imports System.Globalization
+Imports System.IO
+
 
 Public MustInherit Class Delegable_Operation
 
@@ -54,6 +56,27 @@ Public MustInherit Class Delegable_Operation
                 Me.OP_2_Rised = True
             End If
         End If
+    End Sub
+
+
+    '----------------------------------------------------------------------------------------------'
+    ' Methods for transformation
+    Public Sub Create_CLOOF_Declaration(file_stream As StreamWriter, class_id As String)
+        Me.Create_CLOOF_Prototype(file_stream, class_id)
+        file_stream.WriteLine(";")
+    End Sub
+
+    Public Sub Create_CLOOF_Definition(file_stream As StreamWriter, class_id As String)
+        Me.Create_CLOOF_Prototype(file_stream, class_id)
+        file_stream.WriteLine("")
+        file_stream.WriteLine("{")
+        file_stream.WriteLine("")
+        file_stream.WriteLine("}")
+    End Sub
+
+    Public Sub Create_CLOOF_Prototype(file_stream As StreamWriter, class_id As String)
+        file_stream.WriteLine(
+            "void " & class_id & "__" & Me.Name & "( const " & class_id & "* Me )")
     End Sub
 
 End Class
