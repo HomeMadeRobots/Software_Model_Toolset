@@ -533,6 +533,7 @@ Public Class Enumerated_Data_Type
     '----------------------------------------------------------------------------------------------'
     ' Methods for models merge
     Protected Overrides Sub Merge_Rpy_Element(rpy_element As RPModelElement, report As Report)
+        ' TODO : manage merge if label order has change
         MyBase.Merge_Rpy_Element(rpy_element, report)
         Dim rpy_type As RPType = CType(rpy_element, RPType)
         Dim label_idx As Integer = 1
@@ -543,11 +544,9 @@ Public Class Enumerated_Data_Type
                 rpy_label =
                     CType(rpy_type.enumerationLiterals.Item(label_idx), RPEnumerationLiteral)
                 If rpy_label.name <> label.Name Or
-                    rpy_label.value <> label.Value Or
                     rpy_label.description <> label.Description Then
                     rpy_type.getSaveUnit.setReadOnly(0)
                     rpy_label.name = label.Name
-                    rpy_label.value = label.Value
                     rpy_label.description = label.Description
                     Me.Add_Export_Information_Item(report,
                         Merge_Report_Item.E_Merge_Status.ELEMENT_ATTRIBUTE_MERGED,
@@ -605,54 +604,18 @@ Public Class Enumerated_Data_Type
                 "ENUM_2",
                 "Should aggregate at least two Enumerated_Data_Type_Enumeral.")
             End If
-
-            Dim enumeral_values_list As New List(Of UInteger)
-            Dim enumeral_without_value_nb As Integer = 0
             For Each enumeral In Me.Enumerals
-
                 If Not Is_Symbol_Valid(enumeral.Name) Then
                     Me.Add_Consistency_Check_Error_Item(report,
-                        "ENUM_7",
+                        "ENUM_3",
                         "Invalid enumeral symbol : " & enumeral.Name)
                 End If
-
                 If enumeral.Description = "" Then
                     Me.Add_Consistency_Check_Information_Item(report,
-                        "ENUM_6",
+                        "ENUM_4",
                         "Enumeral " & enumeral.Name & " could have a description.")
                 End If
-
-                If enumeral.Value <> "" Then
-                    Dim dummy As UInteger = 0
-                    Dim is_uinteger As Boolean
-                    is_uinteger = UInteger.TryParse(enumeral.Value, dummy)
-                    If is_uinteger = False Then
-                        Me.Add_Consistency_Check_Error_Item(report,
-                            "ENUM_4",
-                            "Value of " & enumeral.Name & " shall be a positive integer or empty.")
-                    Else
-                        enumeral_values_list.Add(dummy)
-                    End If
-                Else
-                    enumeral_without_value_nb += 1
-                End If
-
             Next
-
-            If enumeral_without_value_nb > 0 And enumeral_values_list.Count > 0 Then
-                Me.Add_Consistency_Check_Error_Item(report,
-                    "ENUM_3",
-                    "If at least one enumeral has a Value, all the enumerals shall have a Value.")
-            End If
-
-            If enumeral_values_list.Count > 0 Then
-                If enumeral_values_list.Count <> enumeral_values_list.Distinct.Count() Then
-                    Me.Add_Consistency_Check_Error_Item(report,
-                    "ENUM_5",
-                    "The value of the enumerals shall be unique.")
-                End If
-            End If
-
         End If
 
     End Sub
@@ -707,7 +670,6 @@ Public Class Enumerated_Data_Type_Enumeral
 
     Public Name As String
     Public Description As String
-    Public Value As String
 
     Private Parent As Enumerated_Data_Type
     Private Rpy_Element As RPEnumerationLiteral
@@ -718,15 +680,11 @@ Public Class Enumerated_Data_Type_Enumeral
     Public Sub Import_From_Rhapsody_Model(
             owner As Enumerated_Data_Type,
             rpy_mdl_element As RPEnumerationLiteral)
-
         Me.Parent = owner
         Me.Rpy_Element = rpy_mdl_element
         Me.Name = Me.Rpy_Element.name
         If Me.Rpy_Element.description <> "" Then
             Me.Description = Me.Rpy_Element.description
-        End If
-        If Me.Rpy_Element.value <> "" Then
-            Me.Value = Me.Rpy_Element.value
         End If
     End Sub
 
@@ -738,7 +696,6 @@ Public Class Enumerated_Data_Type_Enumeral
         rpy_label = rpy_enum.addEnumerationLiteral(Me.Name)
         Me.Rpy_Element = rpy_label
         rpy_label.description = Me.Description
-        rpy_label.value = Me.Value
     End Sub
 
 End Class
