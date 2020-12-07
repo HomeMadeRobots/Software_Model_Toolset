@@ -11,14 +11,14 @@
 			<_id type="a">GUID fb48d6a1-4193-4abc-a7e4-2e98bfe4df96</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Data_Type_Metamodel</_name>
-			<_modifiedTimeWeak type="a">11.17.2020::9:49:34</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">12.7.2020::12:45:45</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Data_Type_Metamodel profile defines meta-classes allowing to model any kind of data types used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">11.17.2020::9:49:34</_modifiedTime>
+			<_modifiedTime type="a">12.7.2020::12:45:45</_modifiedTime>
 			<_lastID type="a">6</_lastID>
-			<weakCGTime type="a">11.17.2020::9:49:34</weakCGTime>
+			<weakCGTime type="a">12.7.2020::12:45:45</weakCGTime>
 			<strongCGTime type="a">8.14.2019::9:19:12</strongCGTime>
 			<_defaultComposite type="s">GUID e1a7b393-5e2c-474c-bdbc-ce062cebc552</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -325,10 +325,10 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_id type="a">GUID aacddf34-804b-419c-8593-e1557c6452f1</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Data_Type_Metamodel_Description</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::12:24:9</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::12:24:9</_modifiedTime>
+			<_modifiedTimeWeak type="a">12.7.2020::12:45:45</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.7.2020::12:45:45</_modifiedTime>
 			<_lastID type="a">39</_lastID>
-			<weakCGTime type="a">10.5.2020::12:24:9</weakCGTime>
+			<weakCGTime type="a">12.7.2020::12:45:45</weakCGTime>
 			<strongCGTime type="a">9.28.2020::13:1:20</strongCGTime>
 			<_defaultComposite type="s">GUID 5589414c-eac2-4252-8a39-9b48b514233d</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -336,9 +336,6 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<AggregatesList type="e">
 				<value>GUID 8390df9b-0634-45c0-9b3f-c1a232e9e231</value>
 				<value>GUID 2674ffe0-fde1-444b-9dad-e926ee63ee04</value>
-				<value>GUID bf9297d9-ec51-434a-9ab5-998bb1f932af</value>
-				<value>GUID fbb975b2-3795-4bc1-9962-72924e12e0ec</value>
-				<value>GUID 7f8be680-9523-4fbf-bc39-c4d9c13f51ef</value>
 				<value>GUID 5556c9ad-3836-497b-a609-83cfc01cf8ac</value>
 				<value>GUID a0d33eec-0a86-4912-8547-c2c1deb68b87</value>
 				<value>GUID bf9f7862-1ffb-473d-a2cc-4938fb2f2747</value>
@@ -508,72 +505,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 			<_value type="a">Warning</_value>
 		</ILiteralSpecification>
 		<IRequirement type="e">
-			<_id type="a">GUID bf9297d9-ec51-434a-9ab5-998bb1f932af</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">Rule_ENUM_3</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
-							<_hname type="a">SWMM_Rule</_hname>
-							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.28.2020::12:32:21</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:32:21</_modifiedTime>
-			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
-\viewkind4\uc1\pard\fs20 If at least one Enumerated_Data_Type_Enumeral of an Enumerated_Data_Type has a Value, all the Enumerated_Data_Type_Enumerals of this Enumerated_Data_Type shall have a Value.\par%0D
-}%0D
-</_body>
-			<reqID type="a">ENUM_3</reqID>
-			<AggregatesList type="e">
-				<value>GUID 31fed5f3-3e61-4ecd-8eaa-26795f753f19</value>
-			</AggregatesList>
-		</IRequirement>
-		<ITag type="e">
-			<_id type="a">GUID 31fed5f3-3e61-4ecd-8eaa-26795f753f19</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">Criticality</_name>
-			<_modifiedTimeWeak type="a">9.28.2020::12:32:21</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:32:21</_modifiedTime>
-			<_typeOf type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IType</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
-					<_hname type="a">Criticality_Type</_hname>
-					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
-				</IHandle>
-			</_typeOf>
-			<_isOrdered type="a">0</_isOrdered>
-			<_base type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">ITag</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
-					<_hclass type="a">SWMM_Rule</_hclass>
-					<_hname type="a">Criticality</_hname>
-					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
-				</IHandle>
-			</_base>
-			<AggregatesList type="e">
-				<value>GUID 522eb387-ff8a-4f37-bd14-a5d0182aae53</value>
-			</AggregatesList>
-		</ITag>
-		<ILiteralSpecification type="e">
-			<_id type="a">GUID 522eb387-ff8a-4f37-bd14-a5d0182aae53</_id>
-			<_modifiedTimeWeak type="a">9.28.2020::12:32:21</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:32:21</_modifiedTime>
-			<_value type="a">Error</_value>
-		</ILiteralSpecification>
-		<IRequirement type="e">
-			<_id type="a">GUID fbb975b2-3795-4bc1-9962-72924e12e0ec</_id>
+			<_id type="a">GUID 5556c9ad-3836-497b-a609-83cfc01cf8ac</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Rule_ENUM_4</_name>
 			<Stereotypes type="c">
@@ -590,143 +522,13 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.28.2020::12:32:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:32:57</_modifiedTime>
-			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
-\viewkind4\uc1\pard\fs20 If not empty, the Value of an Enumerated_Data_Type_Enumeral shall be a positive integer.\par%0D
-}%0D
-</_body>
-			<reqID type="a">ENUM_4</reqID>
-			<AggregatesList type="e">
-				<value>GUID 51317a6d-6ab3-415f-88a4-b44a2bd31d7a</value>
-			</AggregatesList>
-		</IRequirement>
-		<ITag type="e">
-			<_id type="a">GUID 51317a6d-6ab3-415f-88a4-b44a2bd31d7a</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">Criticality</_name>
-			<_modifiedTimeWeak type="a">9.28.2020::12:32:47</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:32:47</_modifiedTime>
-			<_typeOf type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IType</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
-					<_hname type="a">Criticality_Type</_hname>
-					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
-				</IHandle>
-			</_typeOf>
-			<_isOrdered type="a">0</_isOrdered>
-			<_base type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">ITag</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
-					<_hclass type="a">SWMM_Rule</_hclass>
-					<_hname type="a">Criticality</_hname>
-					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
-				</IHandle>
-			</_base>
-			<AggregatesList type="e">
-				<value>GUID f35788e4-08e2-42dd-a3c9-b73625c2abae</value>
-			</AggregatesList>
-		</ITag>
-		<ILiteralSpecification type="e">
-			<_id type="a">GUID f35788e4-08e2-42dd-a3c9-b73625c2abae</_id>
-			<_modifiedTimeWeak type="a">9.28.2020::12:32:47</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:32:47</_modifiedTime>
-			<_value type="a">Error</_value>
-		</ILiteralSpecification>
-		<IRequirement type="e">
-			<_id type="a">GUID 7f8be680-9523-4fbf-bc39-c4d9c13f51ef</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">Rule_ENUM_5</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
-							<_hname type="a">SWMM_Rule</_hname>
-							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.28.2020::12:33:27</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:33:27</_modifiedTime>
-			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
-\viewkind4\uc1\pard\fs20 If not empty, the Value of an Enumerated_Data_Type_Enumeral shall be unique among the Value of the Enumerated_Data_Type_Enumerals of a given Enumerated_Data_Type.\par%0D
-}%0D
-</_body>
-			<reqID type="a">ENUM_5</reqID>
-			<AggregatesList type="e">
-				<value>GUID 5d5a2e07-5567-4387-9163-2a96beed78cc</value>
-			</AggregatesList>
-		</IRequirement>
-		<ITag type="e">
-			<_id type="a">GUID 5d5a2e07-5567-4387-9163-2a96beed78cc</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">Criticality</_name>
-			<_modifiedTimeWeak type="a">9.28.2020::12:33:27</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:33:27</_modifiedTime>
-			<_typeOf type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">IType</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
-					<_hname type="a">Criticality_Type</_hname>
-					<_hid type="a">GUID 420bf3cb-d016-4958-a497-4994a76f616c</_hid>
-				</IHandle>
-			</_typeOf>
-			<_isOrdered type="a">0</_isOrdered>
-			<_base type="r">
-				<IHandle type="e">
-					<_hm2Class type="a">ITag</_hm2Class>
-					<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-					<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
-					<_hclass type="a">SWMM_Rule</_hclass>
-					<_hname type="a">Criticality</_hname>
-					<_hid type="a">GUID b5c53aba-8143-48ca-9d8d-9605b361fec7</_hid>
-				</IHandle>
-			</_base>
-			<AggregatesList type="e">
-				<value>GUID 43530fe4-8906-414b-824e-40925a12934d</value>
-			</AggregatesList>
-		</ITag>
-		<ILiteralSpecification type="e">
-			<_id type="a">GUID 43530fe4-8906-414b-824e-40925a12934d</_id>
-			<_modifiedTimeWeak type="a">9.28.2020::12:33:27</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:33:27</_modifiedTime>
-			<_value type="a">Error</_value>
-		</ILiteralSpecification>
-		<IRequirement type="e">
-			<_id type="a">GUID 5556c9ad-3836-497b-a609-83cfc01cf8ac</_id>
-			<_myState type="a">8192</_myState>
-			<_name type="a">Rule_ENUM_6</_name>
-			<Stereotypes type="c">
-				<IRPYRawContainer type="e">
-					<size type="a">1</size>
-					
-						<IHandle type="e">
-							<_hm2Class type="a">IStereotype</_hm2Class>
-							<_hfilename type="a">.\Project_Metamodel.sbsx</_hfilename>
-							<_hsubsystem type="a">Project_Metamodel::Project_Metamodel_Description::Metamodel_Description_Utilities</_hsubsystem>
-							<_hname type="a">SWMM_Rule</_hname>
-							<_hid type="a">GUID b3bcceb7-f55e-4fb5-89b5-b5711691e90e</_hid>
-						</IHandle>
-					
-				</IRPYRawContainer>
-			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.28.2020::12:33:57</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:33:57</_modifiedTime>
+			<_modifiedTimeWeak type="a">12.7.2020::12:45:9</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.7.2020::12:45:9</_modifiedTime>
 			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 \viewkind4\uc1\pard\fs20 The Description of an Enumerated_Data_Type_Enumeral shall be fulfilled.\par%0D
 }%0D
 </_body>
-			<reqID type="a">ENUM_6</reqID>
+			<reqID type="a">ENUM_4</reqID>
 			<AggregatesList type="e">
 				<value>GUID a48e23cc-b2a6-4a07-95c3-e15a85fbaec5</value>
 			</AggregatesList>
@@ -770,7 +572,7 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 		<IRequirement type="e">
 			<_id type="a">GUID a0d33eec-0a86-4912-8547-c2c1deb68b87</_id>
 			<_myState type="a">8192</_myState>
-			<_name type="a">Rule_ENUM_7</_name>
+			<_name type="a">Rule_ENUM_3</_name>
 			<Stereotypes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -785,13 +587,13 @@ Data_Type is an abstract element that gathers all kind of data type available wi
 					
 				</IRPYRawContainer>
 			</Stereotypes>
-			<_modifiedTimeWeak type="a">9.28.2020::12:34:29</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:34:29</_modifiedTime>
+			<_modifiedTimeWeak type="a">12.7.2020::12:45:1</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.7.2020::12:45:1</_modifiedTime>
 			<_body type="a">{\rtf1\ansi\ansicpg1252\deff0\deflang1036{\fonttbl{\f0\fnil\fcharset0 Arial;}}%0D
 \viewkind4\uc1\pard\fs20 The Name of an Enumerated_Data_Type_Enumeral is a string of characters. Allowed characters are a to z, A to Z, 0 to 9 and underscore. It shall begin with a letter.\par%0D
 }%0D
 </_body>
-			<reqID type="a">ENUM_7</reqID>
+			<reqID type="a">ENUM_3</reqID>
 			<AggregatesList type="e">
 				<value>GUID 63147723-f62d-4221-a55a-722c022c51b4</value>
 			</AggregatesList>
@@ -2778,8 +2580,8 @@ From architecture point of view, this is useless.</_text>
 				</IRPYRawContainer>
 			</Stereotypes>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.28.2020::12:21:32</_modifiedTime>
-			<_lastModifiedTime type="a">9.28.2020::12:21:32</_lastModifiedTime>
+			<_modifiedTime type="a">12.7.2020::12:45:48</_modifiedTime>
+			<_lastModifiedTime type="a">12.7.2020::12:45:48</_lastModifiedTime>
 			<m_hReferencedDiagram type="r">
 				<IHandle type="e">
 				</IHandle>
@@ -3246,7 +3048,7 @@ From architecture point of view, this is useless.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACEee318ad8-5c2b-46a9-a367-139dec455064.ico&gt;
+&lt;frame name=StereotypeBitmap,..\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -3303,7 +3105,7 @@ From architecture point of view, this is useless.</_text>
 			<m_dataSize type="a">879</m_dataSize>
 			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az5ce7c8b4Ze7c8b4z35ebd2c1Zd59874Zd59874Zebd1c1z2dedd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z25efd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd3926dZefd8cbz1dedd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z15ebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz09fez03e7c6b2Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf6e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez03fez03e7c6b1Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf5e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez0bebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz15edd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z1defd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd2926dZefd8cbz25edd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z2debd2c1Zd59874Zd59874Zebd1c1z35e7c8b4Ze7c8b4z5dg40</m_data>
 			<m_srcFile type="a">..\icons\data_type.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.20.2020::11:50:24</m_fileModifiedTime>
+			<m_fileModifiedTime type="a">9.3.2020::7:25:53</m_fileModifiedTime>
 		</CGIImageData>
 		<CGIAssociationEnd type="e">
 			<_id type="a">GUID 2b2875f8-bc24-4c39-b60b-5eaf0623fe50</_id>
@@ -4018,7 +3820,7 @@ From architecture point of view, this is useless.</_text>
 			</m_name>
 			<m_drawBehavior type="a">0</m_drawBehavior>
 			<m_bIsPreferencesInitialized type="a">0</m_bIsPreferencesInitialized>
-			<elementList type="a">6</elementList>
+			<elementList type="a">7</elementList>
 			
 			<m_access type="a">'Z'</m_access>
 			<m_modified type="a">'N'</m_modified>
@@ -4037,6 +3839,7 @@ From architecture point of view, this is useless.</_text>
 				<value>GUID a7764b12-e8e0-43b9-a515-cb3e11b8c43f</value>
 				<value>GUID 956f7d5d-0b4c-45cb-a220-9f1c5f5849c0</value>
 				<value>GUID 9f5d75cb-8405-410d-b71c-5539592d51d4</value>
+				<value>GUID 32624e8d-2041-4c9d-a1fd-a996945e3f0f</value>
 			</AggregatesList>
 		</CGIClassChart>
 		<CGIClass type="e">
@@ -4445,10 +4248,17 @@ From architecture point of view, this is useless.</_text>
 					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_AdditionalLabel>
+			<m_pImageViewData type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">OMGEElement</_hm2Class>
+					<_hid type="a">GUID 32624e8d-2041-4c9d-a1fd-a996945e3f0f</_hid>
+				</IHandle>
+			</m_pImageViewData>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=100%25&gt;
+			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
+&lt;frame name=StereotypeBitmap,..\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -4805,6 +4615,37 @@ From architecture point of view, this is useless.</_text>
 			<m_srcFile type="a">.\icons\data_type.ico</m_srcFile>
 			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
 		</CGIImageData>
+		<CGIImageData type="e">
+			<_id type="a">GUID 32624e8d-2041-4c9d-a1fd-a996945e3f0f</_id>
+			<m_type type="a">0</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID 79ec3eb1-27bf-4fab-a352-ed3cbf89db5d</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4096</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_dataSize type="a">879</m_dataSize>
+			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az5ce7c8b4Ze7c8b4z35ebd2c1Zd59874Zd59874Zebd1c1z2dedd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z25efd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd3926dZefd8cbz1dedd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z15ebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz09fez03e7c6b2Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf6e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez03fez03e7c6b1Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf5e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez0bebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz15edd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z1defd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd2926dZefd8cbz25edd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z2debd2c1Zd59874Zd59874Zebd1c1z35e7c8b4Ze7c8b4z5dg40</m_data>
+			<m_srcFile type="a">..\icons\data_type.ico</m_srcFile>
+			<m_fileModifiedTime type="a">9.3.2020::7:25:53</m_fileModifiedTime>
+		</CGIImageData>
 		<IDiagram type="e">
 			<_id type="a">GUID bbec62b4-29c7-424a-9e6e-4d67e1cb4a2a</_id>
 			<_myState type="a">8192</_myState>
@@ -5008,7 +4849,7 @@ From architecture point of view, this is useless.</_text>
 			</m_name>
 			<m_drawBehavior type="a">0</m_drawBehavior>
 			<m_bIsPreferencesInitialized type="a">0</m_bIsPreferencesInitialized>
-			<elementList type="a">7</elementList>
+			<elementList type="a">8</elementList>
 			
 			<m_access type="a">'Z'</m_access>
 			<m_modified type="a">'N'</m_modified>
@@ -5028,6 +4869,7 @@ From architecture point of view, this is useless.</_text>
 				<value>GUID 29a6a8e2-3ad9-462b-8742-1a41b924e2f4</value>
 				<value>GUID 76bdee00-7c1d-4cd9-a728-3ba58136fe21</value>
 				<value>GUID c02dc550-ef60-470e-9e78-58d63c20ac81</value>
+				<value>GUID d941f0b2-4b4c-4fa8-b1ec-a5571c249bc2</value>
 			</AggregatesList>
 		</CGIClassChart>
 		<CGIClass type="e">
@@ -5436,11 +5278,18 @@ From architecture point of view, this is useless.</_text>
 					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_AdditionalLabel>
+			<m_pImageViewData type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">OMGEElement</_hm2Class>
+					<_hid type="a">GUID d941f0b2-4b4c-4fa8-b1ec-a5571c249bc2</_hid>
+				</IHandle>
+			</m_pImageViewData>
 			<m_bFramesetModified type="a">1</m_bFramesetModified>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=100%25&gt;
+			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
+&lt;frame name=StereotypeBitmap,..\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -5948,6 +5797,37 @@ From architecture point of view, this is useless.</_text>
 			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az5ce7c8b4Ze7c8b4z35ebd2c1Zd59874Zd59874Zebd1c1z2dedd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z25efd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd3926dZefd8cbz1dedd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z15ebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz09fez03e7c6b2Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf6e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez03fez03e7c6b1Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf5e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez0bebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz15edd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z1defd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd2926dZefd8cbz25edd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z2debd2c1Zd59874Zd59874Zebd1c1z35e7c8b4Ze7c8b4z5dg40</m_data>
 			<m_srcFile type="a">.\icons\data_type.ico</m_srcFile>
 			<m_fileModifiedTime type="a">1.1.1970::1:0:0</m_fileModifiedTime>
+		</CGIImageData>
+		<CGIImageData type="e">
+			<_id type="a">GUID d941f0b2-4b4c-4fa8-b1ec-a5571c249bc2</_id>
+			<m_type type="a">0</m_type>
+			<m_pModelObject type="r">
+				<IHandle type="e">
+				</IHandle>
+			</m_pModelObject>
+			<m_pParent type="s">GUID e3c3200c-434b-4c5a-94d9-59a4ff969ee9</m_pParent>
+			<m_name type="p">
+				<CGIText type="e">
+					<m_style type="a">Arial; 10 0 0 0 1 </m_style>
+					<m_color type="p">
+						<IColor type="e">
+							<m_fgColor type="a">0</m_fgColor>
+							<m_bgColor type="a">0</m_bgColor>
+							<m_bgFlag type="a">0</m_bgFlag>
+						</IColor>
+					</m_color>
+					<m_position type="a">1 0 0  </m_position>
+					<m_nIdent type="a">0</m_nIdent>
+					<m_bImplicitSetRectPoints type="a">0</m_bImplicitSetRectPoints>
+					<m_nOrientationCtrlPt type="a">8</m_nOrientationCtrlPt>
+				</CGIText>
+			</m_name>
+			<m_drawBehavior type="a">4096</m_drawBehavior>
+			<m_bIsPreferencesInitialized type="a">1</m_bIsPreferencesInitialized>
+			<m_dataSize type="a">879</m_dataSize>
+			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az5ce7c8b4Ze7c8b4z35ebd2c1Zd59874Zd59874Zebd1c1z2dedd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z25efd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd3926dZefd8cbz1dedd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z15ebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz09fez03e7c6b2Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf6e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez03fez03e7c6b1Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf5e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez0bebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz15edd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z1defd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd2926dZefd8cbz25edd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z2debd2c1Zd59874Zd59874Zebd1c1z35e7c8b4Ze7c8b4z5dg40</m_data>
+			<m_srcFile type="a">..\icons\data_type.ico</m_srcFile>
+			<m_fileModifiedTime type="a">9.3.2020::7:25:53</m_fileModifiedTime>
 		</CGIImageData>
 		<IDiagram type="e">
 			<_id type="a">GUID 59e2f5c2-f339-4c84-a801-971296a46e4a</_id>
@@ -6627,7 +6507,7 @@ From architecture point of view, this is useless.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACE523163ab-cd8e-403b-b2c5-23cf4150a75f.ico&gt;
+&lt;frame name=StereotypeBitmap,..\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -6768,7 +6648,7 @@ From architecture point of view, this is useless.</_text>
 			<m_dataSize type="a">879</m_dataSize>
 			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az5ce7c8b4Ze7c8b4z35ebd2c1Zd59874Zd59874Zebd1c1z2dedd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z25efd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd3926dZefd8cbz1dedd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z15ebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz09fez03e7c6b2Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf6e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez03fez03e7c6b1Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf5e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez0bebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz15edd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z1defd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd2926dZefd8cbz25edd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z2debd2c1Zd59874Zd59874Zebd1c1z35e7c8b4Ze7c8b4z5dg40</m_data>
 			<m_srcFile type="a">..\icons\data_type.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.20.2020::11:50:24</m_fileModifiedTime>
+			<m_fileModifiedTime type="a">9.3.2020::7:25:53</m_fileModifiedTime>
 		</CGIImageData>
 		<CGIClass type="e">
 			<_id type="a">GUID e090090f-f96a-484f-a029-41b70bb30972</_id>
@@ -8591,7 +8471,7 @@ From architecture point of view, this is useless.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACE221d26a9-3a12-47d5-999f-b95c17bd470d.ico&gt;
+&lt;frame name=StereotypeBitmap,..\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -8836,7 +8716,7 @@ From architecture point of view, this is useless.</_text>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
 			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
-&lt;frame name=StereotypeBitmap,C:\Users\uidj8371\AppData\Local\Temp/GUID$SPACE221d26a9-3a12-47d5-999f-b95c17bd470d.ico&gt;
+&lt;frame name=StereotypeBitmap,..\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -9106,11 +8986,18 @@ From architecture point of view, this is useless.</_text>
 					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_AdditionalLabel>
+			<m_pImageViewData type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">OMGEElement</_hm2Class>
+					<_hid type="a">GUID 221d26a9-3a12-47d5-999f-b95c17bd470d</_hid>
+				</IHandle>
+			</m_pImageViewData>
 			<m_bFramesetModified type="a">1</m_bFramesetModified>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=100%25&gt;
+			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
+&lt;frame name=StereotypeBitmap,..\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -9250,10 +9137,17 @@ From architecture point of view, this is useless.</_text>
 					<m_nOrientationCtrlPt type="a">1</m_nOrientationCtrlPt>
 				</CGIText>
 			</m_AdditionalLabel>
+			<m_pImageViewData type="r">
+				<IHandle type="e">
+					<_hm2Class type="a">OMGEElement</_hm2Class>
+					<_hid type="a">GUID 221d26a9-3a12-47d5-999f-b95c17bd470d</_hid>
+				</IHandle>
+			</m_pImageViewData>
 			<m_polygon type="a">4 2 329  2 1451  1061 1451  1061 329  </m_polygon>
 			<m_nNameFormat type="a">0</m_nNameFormat>
 			<m_nIsNameFormat type="a">0</m_nIsNameFormat>
-			<frameset type="a">&lt;frameset rows=100%25&gt;
+			<frameset type="a">&lt;frameset rows=50%25,50%25&gt;
+&lt;frame name=StereotypeBitmap,..\icons\data_type.ico&gt;
 &lt;frame name=AttributeListCompartment&gt;</frameset>
 			<Attrs type="c">
 				<IRPYRawContainer type="e">
@@ -9940,7 +9834,7 @@ From architecture point of view, this is useless.</_text>
 			<m_dataSize type="a">879</m_dataSize>
 			<m_data type="a">47e#GG01G01GHHGG01G20G6804GG16g0328g03Hg0320g0301G20g0604GGc30eGGc30eg0az5ce7c8b4Ze7c8b4z35ebd2c1Zd59874Zd59874Zebd1c1z2dedd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z25efd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd3926dZefd8cbz1dedd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z15ebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz09fez03e7c6b2Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf6e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez03fez03e7c6b1Zd69875Zd7a387Ze1VbdZece1d8Zf5eaWZf5e8deZf5e8deZf5eaWZece1d8Ze1VbdZd7a487Zd69875Ze6c6b1Zfez0bebd2c1Zd49874Zd7Q83Zdec3b3Zebdfd5Zf5eaWZf5eaWZebdfd5Zdec3b3Zd7Q83Zd49873Zebd1Uz15edd6c7Zd2936dZd8a184Zddc4b2Zece2d8Zece2d8Zddc4b2Zd8a185Zd2936dZedd6c7z1defd9cbZd2926cZd7Q83Ze1VbdZe1VbdZd7a182Zd2926dZefd8cbz25edd5c7Zd59672Zd7a5OZd7a5OZd59772Zedd5c6z2debd2c1Zd59874Zd59874Zebd1c1z35e7c8b4Ze7c8b4z5dg40</m_data>
 			<m_srcFile type="a">..\icons\data_type.ico</m_srcFile>
-			<m_fileModifiedTime type="a">1.20.2020::11:50:24</m_fileModifiedTime>
+			<m_fileModifiedTime type="a">9.3.2020::7:25:53</m_fileModifiedTime>
 		</CGIImageData>
 		<CGIClass type="e">
 			<_id type="a">GUID cf336993-96e2-40e0-b5ba-0bc3c156ec48</_id>
@@ -12214,9 +12108,9 @@ From architecture point of view, this is useless.</_text>
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Enumerated_Data_Type</_name>
-			<_modifiedTimeWeak type="a">9.4.2020::6:23:12</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.4.2020::6:23:12</_modifiedTime>
-			<weakCGTime type="a">9.4.2020::6:23:12</weakCGTime>
+			<_modifiedTimeWeak type="a">12.7.2020::12:45:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.7.2020::12:45:48</_modifiedTime>
+			<weakCGTime type="a">12.7.2020::12:45:48</weakCGTime>
 			<strongCGTime type="a">7.25.2019::12:7:14</strongCGTime>
 			<_itsStateChart type="r">
 				<IHandle type="e">
@@ -12224,10 +12118,90 @@ From architecture point of view, this is useless.</_text>
 			</_itsStateChart>
 			<_classModifier type="a">Unspecified</_classModifier>
 			<AggregatesList type="e">
+				<value>GUID 1e434ef2-d2d0-4198-8fa5-310178fff4a1</value>
+				<value>GUID 37ba524e-bf46-412a-ac8c-e45f44729324</value>
+				<value>GUID 93c6dc36-f4c6-4eca-a6cd-1275da3cdfb0</value>
+				<value>GUID c3da2415-f31c-43e3-a8ad-6b31d27c79a4</value>
 				<value>GUID 536d90ca-8fa2-4517-b145-503f41c34f4b</value>
 				<value>GUID 78ee49dd-69ca-4273-9712-76fb9dfdb830</value>
 			</AggregatesList>
 		</IClass>
+		<IDependency type="e">
+			<_id type="a">GUID 1e434ef2-d2d0-4198-8fa5-310178fff4a1</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ENUM_1</_name>
+			<_modifiedTimeWeak type="a">12.7.2020::12:45:45</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.7.2020::12:45:45</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 8390df9b-0634-45c0-9b3f-c1a232e9e231</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 8eb7b478-f387-4948-aead-c99302f2b71a</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 37ba524e-bf46-412a-ac8c-e45f44729324</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ENUM_2</_name>
+			<_modifiedTimeWeak type="a">12.7.2020::12:45:46</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.7.2020::12:45:46</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 2674ffe0-fde1-444b-9dad-e926ee63ee04</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 8eb7b478-f387-4948-aead-c99302f2b71a</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID 93c6dc36-f4c6-4eca-a6cd-1275da3cdfb0</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ENUM_3</_name>
+			<_modifiedTimeWeak type="a">12.7.2020::12:45:47</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.7.2020::12:45:47</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID a0d33eec-0a86-4912-8547-c2c1deb68b87</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 8eb7b478-f387-4948-aead-c99302f2b71a</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
+		<IDependency type="e">
+			<_id type="a">GUID c3da2415-f31c-43e3-a8ad-6b31d27c79a4</_id>
+			<_myState type="a">2048</_myState>
+			<_name type="a">Rule_ENUM_4</_name>
+			<_modifiedTimeWeak type="a">12.7.2020::12:45:48</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.7.2020::12:45:48</_modifiedTime>
+			<_dependsOn type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IRequirement</_hm2Class>
+					<_hid type="a">GUID 5556c9ad-3836-497b-a609-83cfc01cf8ac</_hid>
+				</INObjectHandle>
+			</_dependsOn>
+			<_dependent type="r">
+				<INObjectHandle type="e">
+					<_hm2Class type="a">IClass</_hm2Class>
+					<_hid type="a">GUID 8eb7b478-f387-4948-aead-c99302f2b71a</_hid>
+				</INObjectHandle>
+			</_dependent>
+		</IDependency>
 		<IGeneralization type="e">
 			<_id type="a">GUID 536d90ca-8fa2-4517-b145-503f41c34f4b</_id>
 			<_modifiedTimeWeak type="a">1.2.1990::0:0:0</_modifiedTimeWeak>
