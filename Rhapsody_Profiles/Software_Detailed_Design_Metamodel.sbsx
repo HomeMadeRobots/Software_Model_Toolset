@@ -11,14 +11,14 @@
 			<_id type="a">GUID e6dd7000-5327-4839-ad4b-6da8f8351563</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Software_Detailed_Design_Metamodel</_name>
-			<_modifiedTimeWeak type="a">10.7.2020::11:44:10</_modifiedTimeWeak>
+			<_modifiedTimeWeak type="a">12.1.2020::9:14:8</_modifiedTimeWeak>
 			<_description type="p"><IDescription type="e">
 				<_text type="a">The Software_Component_Design_Metamodel profile defines meta-classes allowing to model any design pattern used within a embedded software project.</_text>
 			</IDescription>
 			</_description>
-			<_modifiedTime type="a">10.7.2020::11:44:10</_modifiedTime>
+			<_modifiedTime type="a">12.1.2020::9:14:8</_modifiedTime>
 			<_lastID type="a">5</_lastID>
-			<weakCGTime type="a">10.7.2020::11:44:10</weakCGTime>
+			<weakCGTime type="a">12.1.2020::9:14:8</weakCGTime>
 			<strongCGTime type="a">10.25.2019::13:35:24</strongCGTime>
 			<_defaultComposite type="s">GUID f61c1e09-4b38-4294-ba41-f87637329589</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -33,10 +33,10 @@
 			<_id type="a">GUID 9c4f06ad-7647-4018-8692-8c6ae32b4d1b</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Stereotypes</_name>
-			<_modifiedTimeWeak type="a">10.7.2020::11:44:10</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.7.2020::11:44:10</_modifiedTime>
+			<_modifiedTimeWeak type="a">12.1.2020::9:14:8</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.1.2020::9:14:8</_modifiedTime>
 			<_lastID type="a">34</_lastID>
-			<weakCGTime type="a">10.7.2020::11:44:10</weakCGTime>
+			<weakCGTime type="a">12.1.2020::9:14:8</weakCGTime>
 			<strongCGTime type="a">6.8.2018::8:29:18</strongCGTime>
 			<_defaultComposite type="s">GUID 1c3659ae-c124-4218-83bf-cc594f2a034c</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -54,10 +54,10 @@
 			<_id type="a">GUID bc1d51e4-d1f5-4009-9809-324aa67b2197</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Diagrams</_name>
-			<_modifiedTimeWeak type="a">10.7.2020::11:44:10</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.7.2020::11:44:10</_modifiedTime>
+			<_modifiedTimeWeak type="a">12.1.2020::9:14:8</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.1.2020::9:14:8</_modifiedTime>
 			<_lastID type="a">2</_lastID>
-			<weakCGTime type="a">10.7.2020::11:44:10</weakCGTime>
+			<weakCGTime type="a">12.1.2020::9:14:8</weakCGTime>
 			<strongCGTime type="a">1.11.2019::10:44:50</strongCGTime>
 			<_defaultComposite type="s">GUID a7b8aca8-98fe-49b3-9ca3-777d5cfacb2b</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -193,7 +193,7 @@
 												<size type="a">2</size>
 												<IProperty type="e">
 													<_Name type="a">DrawingToolbar</_Name>
-													<_Value type="a">Data_Type, Physical_Data_Type, Event_Interface, Internal_Design_Class, Variable_Attribute, Configuration_Parameter, Private_Operation, Public_Operation, Event_Reception, Generalization, Realized_Interface, Needed_Interface, Sent_Event, Received_Event, Association, Directed Association</_Value>
+													<_Value type="a">Data_Type, Physical_Data_Type, Event_Interface, Internal_Design_Class, Variable_Attribute, Configuration_Parameter, Private_Operation, Public_Operation, Event_Reception, Generalization, Realized_Interface, Needed_Interface, Sent_Event, Received_Event, Directed Association</_Value>
 													<_Type type="a">String</_Type>
 												</IProperty>
 												
@@ -285,8 +285,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Internal_Design_Class_Diagram</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:6:58</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:6:58</_modifiedTime>
+			<_modifiedTimeWeak type="a">12.1.2020::9:14:8</_modifiedTimeWeak>
+			<_modifiedTime type="a">12.1.2020::9:14:8</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -313,10 +313,10 @@
 			<_id type="a">GUID 12048228-d7eb-47c2-9016-90250609be6c</_id>
 			<_myState type="a">8192</_myState>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:53:34</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:53:34</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.24.2020::14:27:32</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.24.2020::14:27:32</_modifiedTime>
 			<_lastID type="a">14</_lastID>
-			<weakCGTime type="a">10.5.2020::14:53:34</weakCGTime>
+			<weakCGTime type="a">11.24.2020::14:27:32</weakCGTime>
 			<strongCGTime type="a">11.30.2018::9:38:46</strongCGTime>
 			<_defaultComposite type="s">GUID 100f872a-a62e-4cfc-a3c8-ef5346429906</_defaultComposite>
 			<_eventsBaseID type="a">-1</_eventsBaseID>
@@ -470,8 +470,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Component_Design</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:36:46</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:36:46</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.24.2020::14:27:15</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.24.2020::14:27:15</_modifiedTime>
 			<_lastID type="a">1</_lastID>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
@@ -1000,7 +1000,13 @@
 										<_Name type="a">Stereotype</_Name>
 										<Properties type="c">
 											<IRPYRawContainer type="e">
-												<size type="a">4</size>
+												<size type="a">5</size>
+												<IProperty type="e">
+													<_Name type="a">AllowedTypes</_Name>
+													<_Value type="a">Internal_Design_Class</_Value>
+													<_Type type="a">String</_Type>
+												</IProperty>
+												
 												<IProperty type="e">
 													<_Name type="a">BrowserGroupIcon</_Name>
 													<_Value type="a">./icons/grey_object.ico</_Value>
@@ -1038,8 +1044,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">Internal_Design_Object</_name>
-			<_modifiedTimeWeak type="a">9.17.2020::11:3:53</_modifiedTimeWeak>
-			<_modifiedTime type="a">9.17.2020::11:3:53</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.19.2020::8:57:54</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.19.2020::8:57:54</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
@@ -1214,8 +1220,8 @@
 			</IPropertyContainer>
 			</_properties>
 			<_name type="a">OS_Operation_Realization</_name>
-			<_modifiedTimeWeak type="a">10.5.2020::14:46:12</_modifiedTimeWeak>
-			<_modifiedTime type="a">10.5.2020::14:46:12</_modifiedTime>
+			<_modifiedTimeWeak type="a">11.24.2020::14:27:32</_modifiedTimeWeak>
+			<_modifiedTime type="a">11.24.2020::14:27:32</_modifiedTime>
 			<_m2Classes type="c">
 				<IRPYRawContainer type="e">
 					<size type="a">1</size>
