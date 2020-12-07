@@ -7,3 +7,5 @@
 *.vbproj.user
 Tools/Software_Model/obj
 Tools/Software_Model/bin/Debug
+
+Test_Models
