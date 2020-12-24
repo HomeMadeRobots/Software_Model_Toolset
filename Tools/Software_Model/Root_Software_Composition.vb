@@ -67,9 +67,11 @@ Public Class Root_Software_Composition
         Dim rpy_link As RPLink
         For Each rpy_link In CType(Me.Rpy_Element, RPClass).links
             If Is_Connector_Prototype(CType(rpy_link, RPModelElement)) Then
-                Dim connector As New Assembly_Connector
-                Me.Assembly_Connectors.Add(connector)
-                connector.Import_From_Rhapsody_Model(Me, CType(rpy_link, RPModelElement))
+                If Assembly_Connector.Is_Assembly_Connector(rpy_link) Then
+                    Dim connector As New Assembly_Connector
+                    Me.Assembly_Connectors.Add(connector)
+                    connector.Import_From_Rhapsody_Model(Me, CType(rpy_link, RPModelElement))
+                End If
             End If
         Next
 
